@@ -1,0 +1,93 @@
+// Filename     : OF_LISHI.CPP
+// Description : eating flower interface function
+
+
+#include <OF_LISH.H>
+#include <OVGA.H>
+#include <OMODEID.H>
+#include <OIMGRES.H>
+#include <OGAME.H>
+#include <OBITMAPW.H>
+#include <OBITMAP.H>
+#include <OFONT.H>
+
+//----------- Begin of function FirmLishorr::put_info -----------//
+
+void FirmLishorr::put_info(int refreshFlag)
+{
+//	if( !should_show_info() )
+//		return;
+	
+	vga.active_buf->put_bitmap( INFO_X1, INFO_Y1, image_gameif.read("MISSBASE") );
+
+	int hitPoints;
+	String str;
+	int offsetX = 0;
+	int offsetY = 0;
+
+	if( hit_points > (float)0 && hit_points < (float)1 )
+		hitPoints = 1;		// display 1 for value between 0 and 1
+	else
+		hitPoints = (int) hit_points;
+
+	if ( max_hit_points() ) 
+	{
+		offsetX = -35;
+		offsetY = -14;
+		short*	hitPointBitmap =NULL;
+		int ratio = hitPoints *40 / (int)max_hit_points();
+		int size = hitPoints *76 / (int)max_hit_points();
+		
+		//106 x 35 --- 15 to 90 ie. 0 to 40
+		hitPointBitmap = (short *)mem_add( BitmapW::size(15 +size, 35) );	
+		if (ratio <11)
+			vga.active_buf->put_bitmap_trans( INFO_X1 +80 +20 +offsetX, INFO_Y1 +49 +offsetY, image_spict.read("MTR_B2"));
+		else
+		if (ratio <40)
+			vga.active_buf->put_bitmap_trans( INFO_X1 +80 +20 +offsetX, INFO_Y1 +49 +offsetY, image_spict.read("MTR_B3"));
+		else
+			vga.active_buf->put_bitmap_trans( INFO_X1 +80 +20 +offsetX, INFO_Y1 +49 +offsetY, image_spict.read("MTR_B4"));
+			
+		vga.active_buf->read_bitmapW( INFO_X1 +80 +20 +offsetX, INFO_Y1 +49 +offsetY, INFO_X1 +94 +20 +size +offsetX, INFO_Y1 +80 +offsetY, hitPointBitmap );
+		vga.active_buf->put_bitmap_trans( INFO_X1 +80 +20 +offsetX, INFO_Y1 +49 +offsetY, image_spict.read("MTR_B1"));
+		vga.active_buf->put_bitmapW( INFO_X1 +80 +20 +offsetX, INFO_Y1 +49 +offsetY, hitPointBitmap );
+		mem_del( hitPointBitmap );				
+			
+		font_whbl.center_put( INFO_X1 +43, INFO_Y1 +45, INFO_X1 +65, INFO_Y1 +57, m.format((int)hitPoints,4));
+		font_whbl.center_put( INFO_X1 +169, INFO_Y1 +45, INFO_X1 +191, INFO_Y1 +57, m.format((int)max_hit_points(),4) );
+	}
+
+//	if (firm_id != FIRM_WILDE_LISHORR)
+//		font_whbl.center_put( INFO_X1 +12, INFO_Y1 +9, INFO_X2, INFO_Y1 +21, "Lishorr", 0, 1 );
+//	else
+//		font_whbl.center_put( INFO_X1 +12, INFO_Y1 +9, INFO_X2, INFO_Y1 +21, "Wilde Lishorr", 0, 1 );
+
+	FirmBuild* firmBuild = firm_res.get_build(firm_build_id);
+	font_whbl.center_put( INFO_X1 +12, INFO_Y1 +9, INFO_X2, INFO_Y1 +21, firmBuild->name, 0, 1 );
+
+	short *colorRemapTable = firmBuild->get_color_remap_table(nation_recno, firm_array.selected_recno == firm_recno);
+	colorRemapTable = firm_res.calc_color_remap_table( colorRemapTable, 1.0f );
+
+	FirmBitmap* firmBitmap = firm_res.get_bitmap(firmBuild->first_bitmap(firm_cur_frame[0]));
+	if( firmBitmap )
+	{
+		Bitmap* bitmapPtr = (Bitmap *) firmBuild->res_bitmap.read_imported(firmBitmap->bitmap_ptr);
+		
+		int x1 = INFO_X1 +113 +firmBitmap->offset_x;
+		int y1 = INFO_Y1 +158 +firmBitmap->offset_y;
+		int x2 = x1 + bitmapPtr->get_width() -1;
+		int y2 = y1 + bitmapPtr->get_height() -1;
+		int srcX1 = max(x1, INFO_X1+15)-x1;
+		int srcY1 = 0;
+		int srcX2 = min(x2, INFO_X2)-x1;
+		int srcY2 = min(y2, INFO_Y2)-y1;
+
+		vga.active_buf->put_bitmap_area_trans_remap_decompress(x1, y1, (char *) bitmapPtr, srcX1, srcY1, srcX2, srcY2, colorRemapTable);
+
+	//	vga_back.put_bitmap_trans_remap_decompress(INFO_X1 +113 +firmBitmap->offset_x,
+	//		INFO_Y1 +158 +firmBitmap->offset_y, bitmapPtr, colorRemapTable);
+	}
+}
+//----------- End of function FirmLishorr::put_info -----------//
+
+

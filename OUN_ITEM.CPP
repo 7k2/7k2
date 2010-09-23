@@ -1,0 +1,88 @@
+// Filename    : OUN_ITEM.CPP
+// Description : unit item functions
+
+#include <OUNIT.H>
+#include <OREMOTE.H>
+#include <OITEMRES.H>
+#include <OSITE.H>
+#include <OGAME.H>
+
+//------ Begin of function Unit::pick_item --------//
+
+int Unit::pick_item( short itemId, int itemPara )
+{
+	if( item.id )
+		return 0;
+
+	// ##### begin Gilbert 6/1 #######//
+	if( !item_res.can_pick(itemId, sprite_recno) )
+	// ##### begin Gilbert 6/1 #######//
+		return 0;
+
+	item.set( itemId, itemPara );
+
+	// ### begin Gilbert 4/11 #####//
+	set_combat_level(-1);			// update any change because of combat level
+	// ### end Gilbert 4/11 #####//
+
+	// ##### begin Gilbert 23/1 ########//
+	// ------- update win/lose condition on item taken -----//
+
+	game.update_condition_item_acquired(itemId, nation_recno);
+	// ##### end Gilbert 23/1 ########//
+	return 1;
+}
+//------ End of function Unit::pick_item --------//
+
+
+//------ Begin of function Unit::drop_item --------//
+
+void Unit::drop_item(char remoteAction)
+{
+	if( !item.id )
+		return;
+
+	if( !remoteAction && remote.is_enable() )
+	{
+		short *shortPtr = (short *)remote.new_send_queue_msg(MSG_UNIT_DROP_ITEM, sizeof(short) );
+		// packet structure : <sprite recno>
+		*shortPtr = sprite_recno;
+		return;
+	}
+
+	//--------------------------------------//
+
+	short xLoc, yLoc;
+
+	// BUGHERE : how to avoid pick up again right after drop?
+
+	if( get_cur_loc(xLoc, yLoc) )
+	{
+		for( int r = 1; r <= 6; ++r )
+		{
+			int xMin = max(xLoc-r,0);
+			int xMax = xLoc+loc_width-1+r;
+			if( xMax >= MAX_WORLD_X_LOC )
+				xMax = MAX_WORLD_X_LOC-1;
+			int yMin = max(yLoc-r,0);
+			int yMax = yLoc+loc_height-1+r;
+			if( yMax >= MAX_WORLD_Y_LOC )
+				yMax = MAX_WORLD_Y_LOC-1;
+
+			for( int y = yMin; y <= yMax; ++y )
+			{
+				for( int x = xMin; x <= xMax; ++x )
+				{
+					Location *locPtr = world.get_loc(x, y);
+					if( locPtr->can_build_site() && site_array.add_site( x, y, SITE_ITEM, item.id, item.para ) )
+					{
+						item.clear();
+						set_combat_level(-1);			// update any change because of combat level
+						return;
+					}
+				}
+			}
+		}
+	}
+}
+//------ End of function Unit::drop_item --------//

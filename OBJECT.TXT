@@ -1,0 +1,429 @@
+$x = class x
+%$x = header of class x
+^ = member, member function
+
+%$Town
+{
+public:
+
+^loc_x1;
+^loc_y1;
+^loc_x2;
+^loc_y2;
+^altitude;
+
+$RaceId ^race_id;
+^population;
+^employed;
+
+^wall_type;			// 0=none, 1=basic wall, 2=advanced_wall
+^wall_hitpoint;	
+^wall_max_hitpoint;
+^wall_upgrade_progress;	// non-zero when upgrading
+^wall_build_frame_count;	// sys.frame_count when the wall construction/destruction begin
+
+less public:
+
+town_link_count;
+$LinkFlag ^town_link[MAX_LINK_COUNT];
+firm_link_count;
+$LinkFlag ^firm_link[MAX_LINK_COUNT];
+
+$Loyalty loyalty;
+$Loyalty target_loyalty;
+$Resistance resistance_array[MAX_NATION];
+$Resistance target_resistance_array[MAX_NATION];
+$Resistance apparent_target_resistance_array[MAX_NATION];
+
+
+public:
+
+void ^init();
+void ^deinit();
+void ^draw();
+void ^disp_info();
+void ^detect_info();
+
+
+int ^can_enter($Unit*);	// return 0 if fail (may different race, diff nation, town full)
+int ^enter($Unit*);		// return 0 if fail
+
+int ^get_race_id();
+int ^get_population();
+int ^get_unemployed();
+int ^get_employed();
+int ^inc_unemployed();
+int ^inc_employed();
+int ^dec_unemployed();
+int ^dec_employed();
+int ^employ_one();			// one unemployed become employed
+int	^unemploy_one();		// one employed become unemployed
+int	^population_level();		// 1 = low, 2 = high
+
+void ^upgrade_wall();
+void ^process_wall();
+void ^repair_wall();
+void ^damage_wall(int damage);
+// How to present constructing wall and destructing wall (a few frames after the wall fall).
+
+$Unit* ^recruit();				// return unit recno, 0 if fails, or multiplayer
+void ^collect_tax();
+void ^set_collect_tax_level($Loyalty);
+void ^grant();
+void ^set_grant_level($Loyalty);
+bool ^sell();		// or destruct, return true if success (no people inside)
+
+
+less public:
+
+void link_town($Town*);
+void unlink_town($Town*);
+void link_firm($Town*);
+void unlink_firm($Town*);
+
+void ^process_produce_food();
+void ^process_update_resistance();
+void ^change_nation($Nation*);
+
+
+};
+
+
+%$Sprite
+{
+^recno;
+};
+
+%$Unit
+{
+$RaceId ^race_id;		// 0 if race-less
+$UnitType unit_type;		// 1=civilian, 2=infantry, 3=special unit
+$UnitId ^unit_id;
+$Skill ^skill;
+$Skill ^apparent_skill;		// new : different if it is a spy
+$RankId ^rank_id;
+bool royal_member;			// 1 if related to campaign
+$Item ^item;
+$Nation* nation_recno;
+
+void ^attack($Town &);
+bool can_change_royal();		// can set royal or can clear royal
+void set_royal(bool);
+};
+
+
+%$Firm
+{
+$FirmId ^firm_id
+$FirmBuildId ^firm_build_id;
+bool ^under_construction;
+^hitpoints
+^max_hitpoints
+$Unit* ^builder_unit_recno;
+
+$Unit* ^overseer_recno;
+^max_worker;
+^worker_needed;
+^worker_count;
+Worker ^worker_array[MAX_WORKER];
+
+town_link_count;
+$LinkFlag ^town_link[MAX_LINK_COUNT];
+firm_link_count;
+$LinkFlag ^firm_link[MAX_LINK_COUNT];
+
+
+void ^complete_construction();
+
+void ^assign_overseer();
+void ^mobilize_overseer();
+void ^kill_overseer();
+
+void ^assign_worker();
+void ^kill_worker($Worker*);
+
+
+void ^add_worker(...);
+void ^del_worker(...);
+void ^mobilize_worker(...);
+void ^set_worker_demand(int );
+void ^process_recruit_worker(...);
+void ^resign_worker(...);
+
+int ^productivity();
+int ^is_operating();
+
+less public:
+
+void link_town($Town*);
+void unlink_town($Town*);
+void link_firm($Town*);
+void unlink_firm($Town*);
+
+};
+
+
+
+%$Fort : public $Firm		// also for camp
+{
+^train_frame_count;		// frame which training start
+$RaceId ^train_race_id;			// race training
+^train_queue_count;
+$RaceId ^train_queue_array[MAX_TRAIN_QUEUE];
+
+
+^archer_count;
+^archer_upgrade_progress;
+^archer_delay[MAX_ARCHER_COUNT];	// countdown to zero, zero mean archer can fire
+^target_archer_count;
+
+void ^train_unit($RaceId raceId);
+void ^cancel_train();
+void ^add_train_queue($RaceId raceId);
+void ^del_train_queue($RaceId raceId);
+void ^process_train();
+void ^complete_train();
+
+void ^train_archer();
+void ^set_target_archer(int);
+int ^has_free_archer();
+void ^archer_fire(int xLoc, int yLoc);
+void process_archer();		// reduce archer_delay
+};
+
+%$Barrack : $Firm
+{
+$RaceId race_id;
+
+^train_frame_count;		// frame which training start
+^train_queue_count;
+$RaceId train_race_queue[MAX_TRAIN_COUNT];
+
+void ^train_unit();
+void ^cancel_train();
+void ^add_train_queue();
+void ^del_train_queue();
+void ^process_train();
+void ^complete_train();
+};
+
+
+%$Mine : $Firm
+{
+$Site* ^site_recno;
+$RawId ^rawId;		// duplicate from site Id; 0 if no raw material
+^stock_qty;			// mined raw materials stock
+^max_stock_qty;
+
+
+int ^is_operating();
+
+void ^process_mining();
+void ^process_transfer_raw();
+};
+
+%$Factory : $Firm
+{
+$Site* ^site_recno;
+$RawId ^rawId;
+^raw_stock_qty;			// raw materials stock
+^max_raw_stock_qty;
+$ProductId ^productId;
+^stock_qty;			// finished product stock
+^max_stock_qty;
+
+int ^is_operating();
+
+void ^process_manufacturing();
+void ^process_transfer_product();
+
+void ^change_product($ProductId);
+};
+
+%$Market : $Firm
+{
+^raw_stock_qty[MAX_RAW_TYPE];
+^product_stock_qty[MAX_PRODUCT_TYPE];
+
+// cannot scrap slot
+};
+
+
+%$College : $Firm
+{
+^train_frame_count;
+$RaceId ^train_race_id;
+$UnitType ^train_unit_type;
+
+^train_queue_count;
+$RaceId train_race_queue[MAX_TRAIN_QUEUE];
+$UnitType train_type_queue[MAX_TRAIN_QUEUE];
+
+void ^train_spy($RaceId, $UnitType);
+void ^cancel_train();
+void ^add_train_spy($RaceId, $UnitType);
+void ^remove_train_spy($RaceId);
+void ^process_train();
+void ^complete_train();
+};
+
+%$WarFactory : $Firm
+{
+^build_frame_count;
+$TechId ^build_tech_id;
+
+^train_queue_count;
+$TechId ^build_queue[MAX_TRAIN_QUEUE];
+
+void ^build_weapon($Unit);
+void ^cancel_build();
+void ^add_build_weapon($TechId);
+void ^remove_build_weapon($TechId);
+void ^process_build();
+void ^complete_build();
+}
+
+
+%$InnUnit
+{
+^unit_id;
+$Skill ^skill;
+$Skill ^apparent_skill;
+spy_skill;		// for spy occupation merc only.
+^hire_cost;
+^stay_count;		// how long this unit is going to stay until it leaves the inn if you do not hire him.
+^spy_recno;		// >0 if this unit is a spy
+void ^set_hire_cost();
+};
+
+%$Inn : $Firm
+{
+^inn_count;
+$InnUnit inn_unit[MAX_INN_HIRE];
+
+void ^generate_new_merc();e
+void process_training leave();
+void ^process_leave();
+$Unit* ^hire_merc($InnUhnit;);		// retunr merc. unit recno
+
+};
+
+
+%$Reseach : $Firm
+{
+$TechId ^tech_id;		// tech id researching, 0 for no reseaching anything
+
+void ^began_research($TechId);
+void ^steal_reseach($Spy, $TechId);
+void ^progress_reseach();		// progress in tech_res
+void ^change_research($TechId, bool global);		
+	// call other $Research of the same nation to change reseach, if global is true
+};
+
+%$Base : $Firm
+{
+^god_power;
+
+$Unit *invoke();
+};
+
+
+%$MonsterLair : $Firm
+{
+$RaceId ^raceId;
+
+void ^subordinate($Nation);
+void ^order_attack($Nation, $Nation);
+};
+
+
+
+%$Site
+{
+	$RawId;
+	$reserve_qty;
+};
+
+// small data type
+$RawId;
+$ProductId;
+$RaceId;
+$UnitId;
+$UnitType;		// 1=civilian 2=infantry 3=special units (bit 1 = military unit)
+$RankId;		// 1=
+$FirmId;
+$TechId;
+$FirmBuildId;
+$Loyalty;
+$Resistance;
+$LinkFlag; (link between towns and firms)
+%$Skill
+{
+^leadership;
+^combat_skill;
+^potential;
+^max_combat_skill;
+};
+
+%$Worker
+{
+	$Town& ^town_recno;		// where it comes from
+	$RaceId ^race_id;		// not necessary, can determine from town
+	^productivity;			// began with small values, increase as time, until max.
+};
+
+
+
+%$TechClass
+{
+TECH_CLASS_NULL = 0,
+TECH_CLASS_PRODUCTION,
+TECH_CLASS_SPYING,
+TECH_CLASS_INFANTRY,
+TECH_CLASS_SPU,
+TECH_CLASS_WEAPON,
+
+};
+
+
+%$TechId
+{
+TECH_NULL = 0,
+
+TECH_MINING,
+TECH_MANUFACTURING,
+TECH_WAR_MACHINE,
+TECH_FARMING,
+
+TECH_SABOTAGE,
+TECH_AGITATION,
+TECH_COUNTER_SPY,
+TECH_INFO_THEFT,
+TECH_BRIBE,
+TECH_ASSASSIN,
+TECH_STEAL_TECH,
+TECH_FAKE_SKILL,
+TECH_CAMOUFLAGE,
+TECH_INCIDENT,
+
+TECH_INFANTRY_CLOSE_COMBAT,
+TECH_INFANTRY_RANGE_COMBAT,
+TECH_INFANTRY_DEFENSE,
+
+TECH_CALALRY_ATTACK,
+TECH_CALALRY_DEFENSE,
+TECH_SPU_ELEPHANT,
+TECH_SPU_MARTIAL,
+TECH_SPU_NINJA,
+TECH_SPU_CHARIOT,
+TECH_SPU_SHOFAR_BEARER,
+TECH_SPU_AXETHROWER,
+TECH_SPU_DERUVID_MAGIC,
+
+TECH_CATAPULT,
+TECH_BALLISTA,
+TECH_CANNON,
+TECH_FLAMETHR,
+TECH_EXPCART,
+TECH_F_BALLISTA,
+};

@@ -1,0 +1,17 @@
+del *.asm
+del *.as1
+del *.cpp
+del *.cp1
+del *.c
+del *.h
+del *.rc
+del *.ico
+del *.inc
+del *.dbf
+del *.doc
+del *.lnk
+del *.mak
+del *.mdp
+del *.dsp
+del *.dsw
+del *.txt

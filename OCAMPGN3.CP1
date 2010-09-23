@@ -1,0 +1,1062 @@
+
+// ------- define static function --------//
+
+void disp_color_button(ButtonCustom *, int repaintBody);
+void disp_scenario_button(ButtonCustom *, int repaintBody);
+
+
+//-------- Begin of function Campaign::new_campaign_menu ----//
+//
+// return 0 on cancel, 1 for proceed, 2 for load
+//
+int Campaign::new_campaign_menu()
+{
+
+#define NC_OPTION_PAGE       0x00000001
+#define NC_OPTION_RACE       0x00000002
+#define NC_OPTION_COLOR      0x00000004
+#define NC_OPTION_NAME       0x00000008
+#define NC_OPTION_ALL        0x0fffffff
+
+	int retFlag = 0;
+	int x, y;
+
+	// create race button
+
+	err_when( game_set.set_opened_flag );		// game_set already open
+	game_set.open_set(1);
+	err_when( unit_res.init_flag );
+	unit_res.init();
+	err_when( race_res.init_flag );				// race_res already open
+	race_res.init();
+
+	x = 100;
+	y = 100;
+
+#define RACE_BUTTON_WIDTH 90
+#define RACE_BUTTON_HEIGHT 40
+#define RACE_BUTTON_X_SPACE 100
+#define RACE_BUTTON_Y_SPACE 60
+
+	int raceId;
+	int humanRaceCount = race_res.race_count;
+	ButtonCustomGroup raceGroup(humanRaceCount);
+	humanRaceCount = 0;
+	for( raceId=1; raceId <= race_res.race_count; ++raceId )
+	{
+		raceGroup[humanRaceCount].create(x, y, x+RACE_BUTTON_WIDTH-1, y+RACE_BUTTON_HEIGHT-1, 
+			ButtonCustom::disp_text2_button_func, ButtonCustomPara(race_res[raceId]->name, raceId), 0);
+
+		++humanRaceCount;
+		x += RACE_BUTTON_X_SPACE;
+		if( x >= VGA_WIDTH - RACE_BUTTON_X_SPACE )
+		{
+			x = 100;
+			y += RACE_BUTTON_Y_SPACE;
+		}
+	}
+
+	// create nation color button
+
+	x = 100;
+	y = 300;
+#define COLOR_BUTTON_WIDTH 40
+#define COLOR_BUTTON_HEIGHT 40
+#define COLOR_BUTTON_X_SPACE 50
+
+	ButtonCustomGroup colorGroup(MAX_COLOR_SCHEME);
+	for( int colorId = 1; colorId <= MAX_COLOR_SCHEME; ++colorId )
+	{
+		colorGroup[colorId-1].create( x, y, x+COLOR_BUTTON_WIDTH-1, y+COLOR_BUTTON_HEIGHT-1,
+			disp_color_button, ButtonCustomPara(&game.color_remap_array[colorId], colorId), 0);
+		x += COLOR_BUTTON_X_SPACE;
+	}
+
+	// --------- create name field -------------//
+
+	x = 200;
+	y = 430;
+
+	GetA playerNameField;
+	playerNameField.init( x, y, x + 400, player_name, HUMAN_NAME_LEN, 
+		&font_bard, 0, 1);
+
+	// -------- create start, cancel button -------//
+
+	Button3D startButton, returnButton;
+	startButton.create(194, 538, "START-U", "START-D", 1, 0);
+	returnButton.create(440, 538, "CANCEL-U", "CANCEL-D", 1, 0);
+	// BUGHERE : one more button for load game
+
+	int refreshFlag = NC_OPTION_ALL;
+
+	vga_front.temp_unlock();
+
+	int breakFlag = 0;
+	while(!breakFlag)
+	{
+		MSG msg;
+		if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
+		{
+			if (!GetMessage( &msg, NULL, 0, 0))
+			{
+				sys.signal_exit_flag = 1;
+				retFlag = 0;
+				break;
+			}
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+			continue;
+		}
+		else if( sys.paused_flag || !sys.active_flag )
+		{
+			WaitMessage();
+			continue;
+		}
+		if( sys.need_redraw_flag )
+		{
+			refreshFlag = NC_OPTION_ALL;
+			sys.need_redraw_flag = 0;
+		}
+
+		vga_front.temp_lock();
+
+		sys.yield();
+		mouse.get_event();
+
+		// -------- display ----------//
+		if( refreshFlag )
+		{
+			if( refreshFlag & NC_OPTION_PAGE )
+			{
+				vga_back.bar(0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, VGA_DARK_BLUE);
+				vga.blt_buf(0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 1);
+				startButton.paint();
+				returnButton.paint();
+			}
+
+			if( refreshFlag & NC_OPTION_RACE )
+			{
+				for( int b = humanRaceCount-1; b >= 0 && player_race_id != raceGroup[b].custom_para.value; --b );
+				raceGroup.paint(b);
+			}
+
+			if( refreshFlag & NC_OPTION_COLOR )
+				colorGroup.paint(player_color-1);
+
+			if( refreshFlag & NC_OPTION_NAME )
+				playerNameField.paint();
+
+			refreshFlag = 0;
+		}
+
+		sys.blt_virtual_buf();
+
+		// --------- detect basic option -------- //
+		if( raceGroup.detect() >= 0)
+		{
+			player_race_id = raceGroup[raceGroup()].custom_para.value;
+			//refreshFlag |= NC_OPTION_RACE;
+		}
+		else if( colorGroup.detect() >= 0)
+		{
+			player_color = colorGroup[colorGroup()].custom_para.value;
+			//refreshFlag |= NC_OPTION_COLOR;
+		}
+		else if( playerNameField.detect() )
+		{
+			refreshFlag |= NC_OPTION_NAME;
+		}
+
+		// --------- detect start button --------//
+
+		else if( startButton.detect() )
+		{
+			retFlag = 1;		// if load game, return 2
+			breakFlag = 1;
+		}
+		else if( returnButton.detect() )
+		{
+			retFlag = 0;
+			breakFlag = 1;
+		}
+
+		vga_front.temp_restore_unlock();
+	}
+
+	vga_front.temp_restore_lock();
+
+	race_res.deinit();
+	unit_res.deinit();
+	game_set.close_set();
+	return retFlag;
+}
+//-------- End of function Campaign::main_campaign_menu ------//
+
+
+//------ Begin of function Campaign::select_scenario_menu ------//
+//
+// return 0 for cancel, other for selected scenario
+//
+int Campaign::select_scenario_menu()
+{
+#define SC_OPTION_PAGE       0x00000001
+#define SC_OPTION_SCENARIO   0x00000002
+#define SC_OPTION_ALL        0x0fffffff
+
+	int retFlag = 0;
+	int x, y;
+
+	// --------- create scenario button group -------- //
+
+	err_when( next_scenario_count <= 0 || next_scenario_count > MAX_NEXT_SCENARIO );
+	ButtonCustomGroup scenarioGroup(next_scenario_count);
+
+#define SCENARIO_BUTTON_WIDTH 200
+#define SCENARIO_BUTTON_HEIGHT 200
+#define SCENARIO_BUTTON_X_SPACING 250
+
+	x = 50;
+	y = 300;
+	for(int s = 1; s <= next_scenario_count; ++s )
+	{
+		scenarioGroup[s-1].create(x, y, x+SCENARIO_BUTTON_WIDTH-1, y+SCENARIO_BUTTON_HEIGHT-1,
+			disp_scenario_button, ButtonCustomPara(NULL, s), 0 );
+		if( !can_play_scenario(s) )
+			scenarioGroup[s-1].enable_flag = 0;		// disable if not choosable by player
+		x += SCENARIO_BUTTON_X_SPACING;
+	}
+
+	for( s = next_scenario_count; s > 0 ; --s )
+	{
+		if( can_play_scenario(s) )			// enable the first playable button
+		{
+			scenarioGroup.push(s-1, 0);
+			if( get_scenario(s)->boss_id )		// boss stage get higher priority
+				break;
+		}
+	}
+
+	err_when( s > next_scenario_count );
+
+	// -------- create start, cancel button -------//
+
+	Button3D startButton, returnButton;
+	startButton.create(194, 538, "START-U", "START-D", 1, 0);
+	returnButton.create(440, 538, "CANCEL-U", "CANCEL-D", 1, 0);
+
+	// -------------------------------------------- //
+
+	int refreshFlag = SC_OPTION_ALL;
+
+	vga_front.temp_unlock();
+
+	int breakFlag = 0;
+	while(!breakFlag)
+	{
+		MSG msg;
+		if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
+		{
+			if (!GetMessage( &msg, NULL, 0, 0))
+			{
+				sys.signal_exit_flag = 1;
+				retFlag = 0;
+				break;
+			}
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+			continue;
+		}
+		else if( sys.paused_flag || !sys.active_flag )
+		{
+			WaitMessage();
+			continue;
+		}
+		if( sys.need_redraw_flag )
+		{
+			refreshFlag = SC_OPTION_ALL;
+			sys.need_redraw_flag = 0;
+		}
+
+		vga_front.temp_lock();
+
+		sys.yield();
+		mouse.get_event();
+
+		// -------- display ----------//
+		if( refreshFlag )
+		{
+			if( refreshFlag & SC_OPTION_PAGE )
+			{
+				vga_back.bar(0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, V_BLACK);
+				vga.blt_buf(0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 1);
+				startButton.paint();
+				returnButton.paint();
+
+				x = 140;
+				y = 50;
+				int pixelPerPower = (VGA_WIDTH - 200) / MAX_NATION_POWER;
+
+				// display nations power
+
+				for( int n=1; n <= nation_count(); ++n )
+				{
+					if( !is_nation_deleted(n) )
+					{
+						CampaignNation *nationPtr = get_nation(n);
+
+						// display name of nation
+						font_san.put( 20, y, nationPtr->king_name );
+
+						// display power bar of each nation
+						char nationColor = game.color_remap_array[nationPtr->color_scheme_id].main_color;
+
+						if( nationPtr->power_level() > 0 )
+							vga_front.bar(x, y, x+nationPtr->power_level()*pixelPerPower-1, y+20, nationColor );
+					}
+
+					y += 30;
+				}
+
+				// ###### begin Gilbert 8/10 #######//
+			}
+
+			if( refreshFlag & SC_OPTION_SCENARIO )
+				scenarioGroup.paint(current_scenario);
+
+			refreshFlag = 0;
+		}
+
+		sys.blt_virtual_buf();
+
+		// --------- detect basic option -------- //
+		if( scenarioGroup.detect() >= 0)
+		{
+			current_scenario = scenarioGroup[scenarioGroup()].custom_para.value -1;
+			//refreshFlag |= SC_OPTION_SCENARIO;
+		}
+
+		// --------- detect start button --------//
+
+		else if( startButton.detect() )
+		{
+			retFlag = scenarioGroup[scenarioGroup()].custom_para.value;
+			breakFlag = 1;
+		}
+		else if( returnButton.detect() )
+		{
+			retFlag = 0;
+			breakFlag = 1;
+		}
+
+		vga_front.temp_restore_unlock();
+	}
+
+	vga_front.temp_restore_lock();
+
+	return retFlag;
+}
+//------ End of function Campaign::select_scenario_menu ------//
+
+
+//-------- Begin of function Campaign::display_result -------//
+
+void Campaign::display_result(Campaign *oldState)
+{
+	int retFlag = 0;
+	int x, y;
+
+	// --------- create scenario button group -------- //
+
+	err_when( next_scenario_count <= 0 || next_scenario_count > MAX_NEXT_SCENARIO );
+	ButtonCustomGroup scenarioGroup(next_scenario_count);
+
+	x = 50;
+	y = 300;
+	for(int s = 1; s <= next_scenario_count; ++s )
+	{
+		scenarioGroup[s-1].create(x, y, x+SCENARIO_BUTTON_WIDTH-1, y+SCENARIO_BUTTON_HEIGHT-1,
+			disp_scenario_button, ButtonCustomPara(NULL, s), 0 );
+		x += SCENARIO_BUTTON_X_SPACING;
+	}
+
+	// -------- create start, cancel button -------//
+
+	Button3D startButton, returnButton;
+	startButton.create(194, 538, "START-U", "START-D", 1, 0);
+	returnButton.create(440, 538, "CANCEL-U", "CANCEL-D", 1, 0);
+
+	// -------------------------------------------- //
+
+	int refreshFlag = SC_OPTION_ALL;
+
+	vga_front.temp_unlock();
+
+	int breakFlag = 0;
+	while(!breakFlag)
+	{
+		MSG msg;
+		if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
+		{
+			if (!GetMessage( &msg, NULL, 0, 0))
+			{
+				sys.signal_exit_flag = 1;
+				retFlag = 0;
+				break;
+			}
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+			continue;
+		}
+		else if( sys.paused_flag || !sys.active_flag )
+		{
+			WaitMessage();
+			continue;
+		}
+		if( sys.need_redraw_flag )
+		{
+			refreshFlag = SC_OPTION_ALL;
+			sys.need_redraw_flag = 0;
+		}
+
+		vga_front.temp_lock();
+
+		sys.yield();
+		mouse.get_event();
+
+		// -------- display ----------//
+
+		if( refreshFlag )
+		{
+			if( refreshFlag & SC_OPTION_PAGE )
+			{
+				vga_back.bar(0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, V_BLACK);
+				vga.blt_buf(0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 1);
+				startButton.paint();
+				returnButton.paint();
+
+				x = 140;
+				y = 50;
+				int pixelPerPower = (VGA_WIDTH - 200) / MAX_NATION_POWER;
+
+				// display nations power
+
+				for( int n=1; n <= nation_count(); ++n )
+				{
+					if( !is_nation_deleted(n) )
+					{
+						CampaignNation *nationPtr = get_nation(n);
+
+						// display name of nation
+						font_san.put( 20, y, nationPtr->king_name );
+
+						// display power bar of each nation
+						char nationColor = game.color_remap_array[nationPtr->color_scheme_id].main_color;
+
+						if( nationPtr->power_level() > 0 )
+							vga_front.bar(x, y, x+nationPtr->power_level()*pixelPerPower-1, y+20, nationColor );
+					}
+
+					y += 30;
+				}
+			}
+
+			if( refreshFlag & SC_OPTION_SCENARIO )
+				scenarioGroup.paint(current_scenario);
+
+			refreshFlag = 0;
+		}
+
+		sys.blt_virtual_buf();
+
+		// --------- detect basic option -------- //
+		if( scenarioGroup.detect() >= 0)
+		{
+			current_scenario = scenarioGroup[scenarioGroup()].custom_para.value -1;
+			//refreshFlag |= SC_OPTION_SCENARIO;
+		}
+
+		// --------- detect start button --------//
+
+		else if( startButton.detect() )
+		{
+			retFlag = scenarioGroup[scenarioGroup()].custom_para.value;
+			breakFlag = 1;
+		}
+		else if( returnButton.detect() )
+		{
+			retFlag = 0;
+			breakFlag = 1;
+		}
+
+		vga_front.temp_restore_unlock();
+	}
+
+	vga_front.temp_restore_lock();
+
+	return;
+}
+//-------- End of function Campaign::display_result -------//
+
+
+//-------- Begin of static function disp_color_button ------//
+
+static void disp_color_button(ButtonCustom *button, int repaintBody)
+{
+	int x1 = button->x1;
+	int y1 = button->y1;
+	int x2 = button->x2;
+	int y2 = button->y2;
+
+	if( !button->pushed_flag )
+	{
+		// button is up
+		char colorUp = VgaBuf::color_up;
+		VgaBuf::color_up = ((ColorRemap *)button->custom_para.ptr)->main_color;
+		vga.active_buf->d3_panel_up( x1, y1, x2, y2, 2, 1 );
+		VgaBuf::color_up = colorUp;
+	}
+	else
+	{
+		// button is down
+		char colorDown = VgaBuf::color_down;
+		VgaBuf::color_down = ((ColorRemap *)button->custom_para.ptr)->main_color;
+		vga.active_buf->d3_panel_down( x1, y1, x2, y2, 2, 1 );
+		VgaBuf::color_down = colorDown;
+	}
+}
+//-------- End of static function disp_color_button ------//
+
+
+//-------- Begin of static function disp_scenario_button ------//
+
+static void disp_scenario_button(ButtonCustom *button, int repaintBody)
+{
+	int x1 = button->x1;
+	int y1 = button->y1;
+	int x2 = button->x2;
+	int y2 = button->y2;
+	int barX = x1 + 5;
+	int barY = y1 + 20;
+
+	if( !button->pushed_flag )
+	{
+		vga.active_buf->d3_panel_up(x1, y1, x2, y2, 2, 1 );
+	}
+	else
+	{
+		vga.active_buf->d3_panel_down(x1, y1, x2, y2, 2, 1 );
+		++barX;
+		++barY;
+	}
+
+	CampaignScenario *scenario = game.campaign()->get_scenario(button->custom_para.value);
+
+	for( int n = 0; n <= MAX_NATION; ++n, barY += 20 )
+	{
+		char nationColor;
+		if( n == 0 )
+			nationColor = game.color_remap_array[n].main_color;
+		else if( !game.campaign()->is_nation_deleted(n) )
+			nationColor = game.color_remap_array[game.campaign()->get_nation(n)->color_scheme_id].main_color;
+		else
+			continue;	// skip that deleted nation
+
+		int displayLen = scenario->power_assign[n] * (x2-x1+1-10) / MAX_NATION_POWER;
+		if( scenario->power_assign[n] > 0 )
+			vga.active_buf->bar( barX, barY, barX+displayLen, barY+6, nationColor );
+
+		displayLen = scenario->power_result[n] * (x2-x1+1-10) / MAX_NATION_POWER;
+		if( scenario->power_result[n] > 0 )
+			vga.active_buf->bar( barX, barY+7, barX+displayLen, barY+13, nationColor );
+	}
+}
+//-------- End of static function disp_scenario_button ------//
+
+
+//-------- Begin of function Campaign::update_nation ------//
+//
+// update from nation_array, unit_array, spy_array
+// update game_date from info; after game finish
+//
+void Campaign::update_nation(int simulated)
+{
+	Campaign oldState(*this);		// keep an old copy
+
+	int s, n;
+
+	//--- update game_year, game_month, game_day from info ---//
+
+	if( simulated )
+	{
+		// random date passed
+		 // 5 - 10 years
+		long julianDay = date.julian(game_year, game_month, game_day) + 1825 + random(1825);
+		game_year  = date.year(julianDay);
+		game_month = date.month(julianDay);
+		game_day   = date.day(julianDay);
+	}
+	else
+	{
+		game_year  = info.game_year;
+		game_month = info.game_month;
+		game_day   = info.game_day;
+	}
+
+	long monthPass = (game_year - oldState.game_year) * 12 + (game_month - oldState.game_month);
+	if( monthPass > 120 )
+		monthPass = 120;			// limit turns in simulation
+
+	//--------------------------------------------//
+
+	int bossStage = 0;
+	int duelStage = 0;
+
+	if( monster_nation_recno && !is_nation_deleted(monster_nation_recno) )
+	{
+		if( get_nation(monster_nation_recno)->power_level() <= AVG_NATION_POWER / 2 )
+			bossStage = 1;		// boss appear in one of the scenario
+	}
+	else
+	{
+		duelStage = 1;
+	}
+
+	for( s = 1; s <= next_scenario_count; ++s )
+	{
+		CampaignScenario *scenario = get_scenario(s);
+		if( s != current_scenario || simulated )
+		{
+			double nationPower[1+MAX_NATION];
+			// calculate the power_result of each nation
+			for( n = 0; n <= MAX_NATION; ++n )
+			{
+				nationPower[n] = scenario->power_assign[n];
+			}
+
+			for( long monthCount = monthPass; monthCount > 0; --monthCount )
+			{
+
+				// growth of independent power
+				n = 0;
+				if( nationPower[n] >= 0.01 )
+				{
+					nationPower[n] += ( randomf(5.0) + randomf(1.0 + nationPower[n]) 
+						- square(1.0 + randomf(nationPower[n])) / AVG_NATION_POWER ) / 12.0;
+				}
+
+				if( nationPower[n] < 0.01 )
+					nationPower[n] = 0.0;
+
+				double sumPower = 0.0;
+				double sumPower2 = 0.0;
+				double maxNationPower = 0.0;
+
+				for( n = 1; n <= MAX_NATION; ++n )
+				{
+					if( nationPower[n] < 0.01 )
+					{
+						nationPower[n] = 0.0;
+						continue;			// eliminated
+					}
+
+					// growth and death
+
+					if( get_nation(n)->nation_type == CAMPAIGN_NATION_MONSTER )
+						nationPower[n] += (randomf(5.0) - randomf(nationPower[n]) / AVG_NATION_POWER )/ 12.0;
+					else
+						nationPower[n] += ( randomf(5.0) + randomf(1.0 + nationPower[n]) 
+							- square(1.0 + randomf(nationPower[n])) / AVG_NATION_POWER ) / 12.0;
+
+					// conquer independent nation
+
+					if( nationPower[0] >= 1.0 && random(24) <= 1 )
+					{
+						nationPower[n] += 0.8;
+						nationPower[0] -= 1.0;
+					}
+
+					// avoid too big or too small
+
+					if( nationPower[n] > min(MAX_NATION_POWER, AVG_NATION_POWER*2) )
+						nationPower[n] = min(MAX_NATION_POWER, AVG_NATION_POWER*2);
+
+					if( nationPower[n] < 0.01 )
+						nationPower[n] = 0.00;
+
+					if( nationPower[n] > maxNationPower )
+						maxNationPower = nationPower[n];
+					sumPower += nationPower[n];
+					sumPower2 += nationPower[n] * nationPower[n];
+				}
+
+				// war
+				if( duelStage || (bossStage && nationPower[monster_nation_recno] > 0.00) ||	// force war on duel stage and boss stage
+					(sumPower >= 2.0 && maxNationPower < sumPower && randomf(sumPower) < maxNationPower) )
+				{
+					// calculate war participation, a matrix
+
+					double warParticipation[1+MAX_NATION];
+					double force[1+MAX_NATION][1+MAX_NATION];
+					int m;
+					// force[n][m] mean military force of nation n attacking nation m
+
+					for( n = 1; n <= MAX_NATION ; ++n )
+					{
+						// generate weight to each nation
+
+						if( is_nation_deleted(n) || nationPower[n] <= 0.0 )
+						{
+							warParticipation[n] = 0.0;
+							for( m = 1; m <= MAX_NATION; ++m )
+								force[n][m] = 0.0;
+							continue;
+						}
+
+						double sumWeight = 0.0;
+						for( m = 1; m <= MAX_NATION; ++m )
+						{
+							double weight = 0.0;
+							if( m != n && nationPower[m] > 0.0 )
+							{
+								if( get_nation(n)->nation_type == CAMPAIGN_NATION_MONSTER )
+								{
+									if( get_nation(m)->nation_type == CAMPAIGN_NATION_MONSTER )
+										weight = 0.5 + nationPower[m];		// peaceful between monster kingoms
+									else
+										weight = 1.0 + nationPower[m] * nationPower[m];
+								}
+								else
+								{
+									if( get_nation(m)->nation_type == CAMPAIGN_NATION_MONSTER )
+										weight = 1.0 + nationPower[m] * (nationPower[m]+AVG_NATION_POWER/2);
+									else
+										weight = 1.0 + nationPower[m] * nationPower[m];
+								}
+							}
+							sumWeight += (force[n][m] = weight);
+						}
+
+						if( nationPower[n] >= 10.0 )
+							warParticipation[n] = 2.0 + randomf(2.0);
+						else if( nationPower[n] >= 2.0 )
+							warParticipation[n] = 1.0 + randomf(1.0);
+						else if( nationPower[n] > 0.0 )
+							warParticipation[n] = nationPower[n] - randomf(nationPower[n] / 8.0);
+						else
+							warParticipation[n] = 0.0;
+
+						if( sumWeight >= 0.01 )
+						{
+							for( m = 1; m <= MAX_NATION; ++m )
+								force[n][m] *= warParticipation[n] / sumWeight;
+						}
+						else
+						{
+							warParticipation[n] = 0.0;
+							for( m = 1; m <= MAX_NATION; ++m )
+								force[n][m] = 0.0;
+						}
+					}
+
+					// calcuate causalty of force
+					for( n = 1; n <= MAX_NATION ; ++n )
+					{
+						for( m = n+1; m <=MAX_NATION; ++m )
+						{
+							double forceN = force[n][m];
+							double forceM = force[m][n];
+							if( forceM > 0.0 && forceN > 0.0 )
+							{
+								// bias on monster nation in boss stage
+								if( get_nation(n)->nation_type == CAMPAIGN_NATION_MONSTER &&
+									get_nation(m)->nation_type == CAMPAIGN_NATION_MONSTER )
+								{
+									force[n][m] -= forceM * (0.5 + randomf(1.0)) + 0.3 * forceN;
+									force[m][n] -= forceN * (0.5 + randomf(1.0)) + 0.3 * forceM;
+								}
+								else if( get_nation(n)->nation_type == CAMPAIGN_NATION_MONSTER )
+								{
+									force[n][m] -= forceM * (1.0 + randomf(1.0));
+									force[m][n] -= forceN * (0.5 + randomf(1.0)) + 0.2 * forceM;
+								}
+								else if( get_nation(m)->nation_type == CAMPAIGN_NATION_MONSTER )
+								{
+									force[n][m] -= forceM * (0.5 + randomf(1.0)) + 0.2 * forceN;
+									force[m][n] -= forceN * (1.0 + randomf(1.0));
+								}
+								else
+								{
+									force[n][m] -= forceM * (0.5 + randomf(1.0)) + 0.2 * forceN;
+									force[m][n] -= forceN * (0.5 + randomf(1.0)) + 0.2 * forceM;
+								}
+							}
+						}
+					}
+
+					// calculate power loss
+					for( n = 1; n <= MAX_NATION; ++n )
+					{
+						nationPower[n] -= warParticipation[n];
+						for( m = 1; m <= MAX_NATION; ++m )
+						{
+							if( force[n][m] >= 0.0 )
+								nationPower[n] += force[n][m];		// survived military force
+						}
+					}
+				}
+			}
+
+			for( n = 0; n <= MAX_NATION; ++n )
+			{
+				scenario->power_result[n] = (short) nationPower[n];
+			}
+		}
+		else
+		{
+			err_here();
+			// update nations, nation power from nation_array
+			// update nobles from unit_array
+		}
+	}
+
+	//---- depreciation of power, delete nation if power is out -----//
+
+	for( n = 1; n <= MAX_NATION; ++n )
+	{
+		if( is_nation_deleted(n) )
+			continue;
+
+		for( s = 0; s < next_scenario_count; ++s )
+		{
+			get_nation(n)->power += next_scenario[s].power_result[n] - next_scenario[s].power_assign[n];
+		}
+
+		if( get_nation(n)->power > MAX_NATION_POWER )
+			get_nation(n)->power = MAX_NATION_POWER;
+	}
+
+//	display_result(&oldState);
+
+	//----- update campaign_end if the campaign has ended ------//
+
+	{
+		int nationCount = 0;
+		for( n = 1; n <= MAX_NATION; ++n )
+		{
+			if( is_nation_deleted(n) )
+				continue;
+			if( get_nation(n)->power <= 0 )
+				del_nation(n);
+			else
+				++nationCount;
+		}
+
+//		if( duelStage || nationCount <= 1 || is_nation_deleted(player_nation_recno) )
+//			campaign_end = 1;
+	}
+
+}
+//-------- End of function Campaign::update_nation ------//
+
+
+//------ Begin of function Campaign::generate_scenario ------//
+
+void Campaign::generate_scenario()
+{
+	next_scenario_count = 0;
+	current_scenario = 0;			// reset selected scenario
+	int generate = MAX_NEXT_SCENARIO;
+
+	int bossStage = 0;
+	int duelStage = 0;
+
+	//------ see if boss appear ---------//
+
+	// if monster boss has been defeated, generate duel scenario, which all human nation get the final victory
+	if( monster_nation_recno && !is_nation_deleted(monster_nation_recno) )
+	{
+		if( get_nation(monster_nation_recno)->power_level() <= AVG_NATION_POWER / 2 )
+		{
+			bossStage = 1;		// boss appear in one of the scenario
+		}
+	}
+	else
+	{
+		duelStage = 1;
+		generate = 1;
+	}
+
+	if( player_nation_recno && !is_nation_deleted(player_nation_recno) &&
+		get_nation(player_nation_recno)->power_level() <= AVG_NATION_POWER / 2 )
+	{
+		// if player is too weak, concentrate power in one scenario
+		generate = 1;
+	}
+
+	int s;
+
+	for( s = 0; s < generate; ++s )
+	{
+		memset( next_scenario[s].power_assign, 0, sizeof(next_scenario[s].power_assign) );
+		next_scenario[s].boss_id = 0;
+		next_scenario[s].game_setting = config;
+	}
+
+	for( int n = 1; n <= MAX_NATION; ++n )
+	{
+		if( is_nation_deleted(n) || get_nation(n)->power_level() <= 0)
+		{
+			for( s = 0; s < generate; ++s )
+				next_scenario[s].power_assign[n] = 0;
+		}
+		else
+		{
+			short nationPower = get_nation(n)->power_level();
+			int concentratePower = 0;
+
+			//-- sum of power of all scenarios of a nation --//
+
+			short sumPower;
+
+			if( duelStage || nationPower <= AVG_NATION_POWER / 2 )
+			{
+				// in final stage, each nation put all resource
+				// or if a nation is too weak, also concenrate on one resource
+				sumPower = nationPower;
+				concentratePower = 1;
+			}
+			else
+			{
+				sumPower = 0;
+				concentratePower = 0;
+				for( s = 0; s < generate; ++s )
+					sumPower += (short) random( 2 * AVG_NATION_POWER );
+				if( sumPower > nationPower )
+					sumPower = nationPower;
+			}
+
+			//---- generate power of that nation ---//
+
+			if( concentratePower )
+			{
+				// for last scenario, simply put all power in one of the scenarios
+
+				next_scenario[random(generate)].power_assign[n] = sumPower;
+			}
+			else
+			{
+				int totalWeight = 0;
+
+				for( s = 0; s < generate; ++s )
+				{
+					next_scenario[s].power_assign[n]
+						= (n==player_nation_recno?1:0) + (short) random(2 * AVG_NATION_POWER);
+
+					totalWeight += next_scenario[s].power_assign[n];
+				}
+
+				//-- (n==player_recno)?1:0 make sure player must have sum power in each scenario --//
+
+				if( totalWeight > 0 )
+				{
+					// next_scenario[s].power_assign[n] is a weight
+
+					for( s = 0; s < generate; ++s )
+						next_scenario[s].power_assign[n] = next_scenario[s].power_assign[n] * sumPower / totalWeight;
+				}
+
+				//-- else for all s in next_scenario[s].power_assign[n] == 0 --//
+			}
+		}
+	}
+
+	//------ determine independent power -------//
+
+	if( !duelStage )
+	{
+		for( s = 0; s < generate; ++s )
+			next_scenario[s].power_assign[0] = (short) random(2 * AVG_NATION_POWER);
+	}
+
+	//---- set power_result and remove redundant scenario -----//
+
+	for( s = 0; s < generate; ++s )
+	{
+		int keepFlag = 0;
+
+		// more than one player exist, keep
+
+		for( n = 1; n <= MAX_NATION; ++n )
+		{
+			if( next_scenario[s].power_assign[n] > 0 )
+				keepFlag++;
+		}
+
+		if( keepFlag < 2)
+		{
+			m.del_array_rec(next_scenario, MAX_NEXT_SCENARIO, sizeof(next_scenario[0]), s+1);
+			--generate;
+			--s;
+
+			err_when(generate < 0);
+		}
+		else
+		{
+			memcpy(next_scenario[s].power_result, next_scenario[s].power_assign, sizeof( next_scenario[s].power_assign) );
+		}
+	}
+
+	next_scenario_count = generate;
+
+//	if( generate <= 0 )
+//		campaign_end = 1;		// victory or lose
+}
+//------ End of function Campaign::generate_scenario ------//
+
+
+//-------- Begin of function Campaign::get_scenario_count ------//
+
+int Campaign::get_scenario_count()
+{
+	return next_scenario_count;
+}
+//-------- End of function Campaign::get_scenario_count ------//
+
+
+//-------- Begin of function Campaign::select_scenario ------//
+
+void Campaign::select_scenario(int i)
+{
+	err_when( i <= 0 || i > next_scenario_count );
+	current_scenario = i-1;
+}
+//-------- End of function Campaign::select_scenario ------//
+
+
+//-------- Begin of function Campaign::get_scenario ------//
+
+CampaignScenario* Campaign::get_scenario(int i)
+{
+	if( i == 0 )
+		return &next_scenario[current_scenario];
+	else if( i > 0 && i <= next_scenario_count )
+		return &next_scenario[i-1];
+	else
+		return NULL;
+}
+//-------- Begin of function Campaign::get_scenario ------//
+
+
+//-------- Begin of function Campaign::can_play_scenario ------//
+
+int Campaign::can_play_scenario(int s)
+{
+	if( get_scenario(s) && get_scenario(s)->power_assign[player_nation_recno] > 0 )
+		return 1;
+	else
+		return 0;
+}
+
+//-------- End of function Campaign::can_play_scenario ------//
+

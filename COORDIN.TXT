@@ -1,0 +1,105 @@
+	cur_x, cur_y, cur_z
+
+Logical coordinate on the map, the top left pixel of the map is
+cur_x=0, cur_y=0. cur_z is the altitude in pixel, positive mean
+upwards. 
+
+
+	loc_x, loc_y
+
+loc_x (Location) and loc_y is coordinate of a cell
+(a Location struct) of the map matrix. Each location is
+32 cur_x by 32 cur_y (LOCATE_WIDTH x LOCATE_HEIGHT).
+LOCATE_WIDTH_SHIFT, LOCATE_HEIGHT_SHIFT are both 5 for
+using shift operator instead of multiplication.
+LOCATE_WIDTH_MASK, LOCATE_HEIGHT_MASK are both 31 for
+using binary and operator to get the (cur_x,y) inside
+a location.
+loc_x = cur_x / LOCATE_WIDTH = cur_x >> LOCATE_WIDTH_SHIFT
+loc_y = cur_y / LOCATE_HEIGHT = cur_y >> LOCATE_HEIGHT_SHIFT
+
+
+	zoom_x, zoom_y
+
+Display coordinate relative to the display window (Zoom Matrix).
+zoom_x=0, zoom_y=0 mean the top left corner of the zoom window.
+
+
+	scrn_x, scrn_y
+
+Actual display coordinate on the screen.
+scrn_x = zoom_x + ZOOM_X1 = zoom_x + world.zoom_matrix->image_x1
+scrn_y = zoom_y + ZOOM_Y1 = zoom_y + world.zoom_matrix->image_y1
+Beware of clipping by the zoom_matrix
+Make use of ZoomMatrix::put_bitmap_clip, put_bitmap_remap_clip,
+put_bitmap and put_bitmap_offset
+
+
+	top_x_loc, top_y_loc
+
+Location whose centre pixel of base is at the top left corner
+pixel of the zoom matrix.
+
+
+	abs_x, abs_y
+
+Related to display coordinate, but independent of scrolling.
+if cur_x=0 cur_y=0 cur_z=0, abs_x=0 and abs_y=0.
+abs_x = cur_x * ZOOM_LOC_X_WIDTH / LOCATE_WIDTH
+	+ cur_y * ZOOM_LOC_Y_WIDTH / LOCATE_HEIGHT
+	+ cur_z * ZOOM_Z_WIDTH
+abs_y = cur_x * ZOOM_LOC_X_HEIGHT / LOCATE_WIDTH
+	+ cur_y * ZOOM_LOC_Y_HEIGHT / LOCATE_HEIGHT
+	+ cur_z * ZOOM_Z_HEIGHT
+
+
+	ZOOM_LOC_X_WIDTH, ZOOM_LOC_X_HEIGHT
+
+Increase 1 in loc_x, pixel increase on the screen
+(like zoom_x/y, abs_x/y, scrn_x/y)
+
+
+	ZOOM_LOC_Y_WIDTH, ZOOM_LOC_Y_HEIGHT
+
+Increase 1 in loc_y, pixel increase on the screen
+(like zoom_x/y, abs_x/y, scrn_x/y)
+
+
+	ZOOM_Z_WIDTH, ZOOM_Z_HEIGHT
+
+Increase 1 in cur_z, pixel increase on the screen
+(like zoom_x/y, abs_x/y, scrn_x/y)
+
+
+	calc_zoom_x(), calc_zoom_y()
+
+Convert cur_x, cur_y, cur_z to zoom_x, zoom_y
+
+
+	calc_abs_x(), calc_abs_y()
+
+Convert cur_x, cur_y, cur_z to abs_x, abs_y
+
+
+	get_base_x(), get_base_y()
+
+Depend on top_x_loc, top_y_loc, the difference between
+abs_x/y and zoom_x/y
+
+abs_x = zoom_x + get_base_x()
+abs_y = zoom_y + get_base_y()
+
+
+	calc_cur_x(), calc_cur_y()
+
+Given abs_x, abs_y and cur_z, find cur_x and cur_y.
+This pair of functions usually ignore height, so the default
+argument of cur_z is 0
+
+
+	row, column
+
+When traverse locations of the screen from back to front.
+column, row is a rectangular coordinate respect to screen.
+Inc in 2 columns = inc 1 in loc_x and dec 1 in loc_y
+Inc in 2 rows = inc 1 in loc_x and inc 1 in loc_y

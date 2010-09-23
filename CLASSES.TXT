@@ -1,0 +1,56 @@
+class Mem mem
+	mem_add
+	mem_del
+	mem_resize
+
+class Error err
+	err_when
+	err_here
+	err.run
+
+class Misc m
+
+class String
+
+class DateInfo date
+
+class DynArray
+ class DynArrayB
+
+class File
+ class FileTxt 
+ class Database
+ class Resource
+ class ResourceIdx
+ class ResourceDb
+
+class Directory
+
+class Vga vga
+class VgaBuf vga_front, vga_back, vga_true_front
+
+class Font font_san, font_std, font_small, font_mid, font_news, 
+           font_hitpoint, font_bible, font_bard
+
+class Mouse mouse
+
+class GetA
+
+class Translate translate
+
+class Box box
+
+class Button 
+class Button3D
+class ButtonCustom
+
+class Bitmap
+class BitmapW
+
+
+non-class header file
+
+all.h
+gamedef.h
+color.h
+key.h

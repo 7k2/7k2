@@ -1,0 +1,104 @@
+"-"=outstanding, "."=finish
+
+. display sort
+. firm/town bottom side clipping
+. town flag
+. mini map rectangle/rhombus
+. ZoomMatirx::get_detect_location
+- mine cargo display offset
+. market cargo display offset
+. loc_bitmap_cache error in load game
+- hit points bar above unit (too low!)
+. check fire
+. check plant display offset
+. bullet go_x, go_y
+. disappeared arrow?
+. power.test_detect
+. power.detect_select, select by frame
+. display white square and link link when selecting building area
+. link lines (e.g between town and firm)
+. scroll to left side of the map
+- detect building graphics rectangular, may be too wide or too small?
+. town next_day bug : plateau, world.locate_space look at top left corner,
+  but Town::setup_link look at center_x
+- Location's nation power
+- blacken map, fog or war
+- cannot select raw material site
+- some plant on the coast!
+
+
+- building graphics : correct shadow casting, Dennis assume some buildings are 2x2 to
+  centre the graphics.
+- compress save game
+- switchable to 1024x768
+- replacement for outlining
+- sub-location, 2x2 units in a location, and each location is 64x64 pixels
+- sea texture
+
+
+
+
+-- transition to hi-color
+
+- all bitmap resource - terrain, sprite, firm, interface are in 8-bit color
+  when bltting, pass a remap table to hi-color
+- that remap table calculated after primary surface is created, the palette 
+  is loaded.
+- extra remap table, find is generated for brightness/darkness and
+  blending effects
+- nation color code, each nation has its own color table
+- may have problem in outline :
+  because it checks key color before remap,
+  but outlining requires remapping before checking key color.
+  Solution 1 : check for bright green after remap (not good)
+  Solution 2 : no outline at all, draw with the bitmap again with blending remap table
+- how to include blending color in a bitmap?
+- encyclopedia (if any) can use high color, (need true color compression?)
+
+- assembly functions 
+
+geometry functions
+bar
+line
+rect
+
+8-to-16 bltting
+put_bitmap_remap, +area +mirror +area+mirror
+put_bitmap_blend, +area +mirror +area+mirror (re-draw sprite after building)
+
+8-to-16 bltting with key color
+put_bitmap_trans_remap, +area +mirror +area+mirror
+put_bitmap_compress_remap, +area +mirror +area+mirror
+
+16-to-16 bltting
+read_wbitmap
+put_wbitmap +area
+remap_bar or change brightness
+
+16-to-16 bltting with trans
+put_wbitmap_trans +area		(draw rendered terrain Blob2D)
+
+
+
+Functions do not support oversize (>4x4) buildings
+
+UnitArray::analyse_surround_location (OUNITAAT.CPP)
+OUNITATB.CPP arrays;
+
+rhombus mini-map
+FirmArray::draw_dot
+TownArray::draw_dot
+UnitArray::draw_dot
+TornadoArray::draw_dot
+World::explore
+WarPoint
+
+
+-- ground save screen
+0. blacken back ground, render location, put location w/trans
+1. blacken back ground, put location, get screen
+2. put screen
+
+
+
+
