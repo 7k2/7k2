@@ -1169,9 +1169,8 @@ int Mouse::poll_event()
 
 			if( earlyDevice == 1 )
 			{
-				switch(mouseMsg->dwOfs)
+				if (mouseMsg->dwOfs == DIMOFS_BUTTON0)
 				{
-				case DIMOFS_BUTTON0:
 					if( mouseMsg->dwData & 0x80)
 					{
 						// mouse button pressed
@@ -1200,8 +1199,9 @@ int Mouse::poll_event()
 						reset_boundary();			// reset_boundary whenever left button is released
 						rc = 1;
 					}
-					break;
-				case DIMOFS_BUTTON1:
+                                }
+                                else if (mouseMsg->dwOfs == DIMOFS_BUTTON1)
+                                {
 					if( mouseMsg->dwData & 0x80)
 					{
 						// mouse button pressed
@@ -1228,14 +1228,17 @@ int Mouse::poll_event()
 						add_event(&ev);
 						rc = 1;
 					}
-					break;
-				case DIMOFS_BUTTON2:
+                                }
+                                else if (mouseMsg->dwOfs == DIMOFS_BUTTON2)
+                                {
 					// not interested
-					break;
-				case DIMOFS_BUTTON3:
+                                }
+                                else if (mouseMsg->dwOfs == DIMOFS_BUTTON3)
+                                {
 					// not interested
-					break;
-				case DIMOFS_X:
+                                }
+                                else if (mouseMsg->dwOfs == DIMOFS_X)
+                                {
 					cur_x += micky_to_displacement(mouseMsg->dwData);
 					// ##### begin Gilbert 9/10 ######//
 					switch( bound_type )
@@ -1260,8 +1263,9 @@ int Mouse::poll_event()
 					}
 					// ##### end Gilbert 9/10 ######//
 					moveFlag = 1;
-					break;
-				case DIMOFS_Y:
+                                }
+                                else if (mouseMsg->dwOfs == DIMOFS_Y)
+                                {
 					cur_y += micky_to_displacement(mouseMsg->dwData);
 					// ##### begin Gilbert 9/10 ######//
 					switch( bound_type )
@@ -1286,10 +1290,10 @@ int Mouse::poll_event()
 					}
 					// ##### end Gilbert 9/10 ######//
 					moveFlag = 1;
-					break;
-				case DIMOFS_Z:
+                                }
+                                else if (mouseMsg->dwOfs == DIMOFS_Z)
+                                {
 					// not interested
-					break;
 				}
 				--mouseLen;
 				++mouseMsg;
