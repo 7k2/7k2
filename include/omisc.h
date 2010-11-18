@@ -24,6 +24,8 @@
 #ifndef __MISC_H
 #define __MISC_H
 
+#include <win32_compat.h>
+
 //-------- Define macro constant ---------//
 
 #define LINE_FEED    0xA        // Line feed ascii code
