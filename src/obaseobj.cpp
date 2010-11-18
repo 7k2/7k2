@@ -183,7 +183,8 @@ void BaseObj::being_attack_hit2(BaseObj* attackerObj)
 		{
 			if( obj_type == OBJ_FIRM )
 			{
-				RelVolume relVolume(PosVolume(obj_loc_x1(), obj_loc_y1()));
+                                PosVolume posv(obj_loc_x1(), obj_loc_y1());
+                                RelVolume relVolume(posv);
 				if( relVolume.rel_vol < 180)
 					relVolume.rel_vol = 180;
 
@@ -195,7 +196,8 @@ void BaseObj::being_attack_hit2(BaseObj* attackerObj)
 			else
 			if( obj_type == OBJ_TOWN )
 			{
-				RelVolume relVolume(PosVolume(obj_loc_x1(), obj_loc_y1()));
+                                PosVolume posv(obj_loc_x1(), obj_loc_y1());
+                                RelVolume relVolume(posv);
 				if( relVolume.rel_vol < 180)
 					relVolume.rel_vol = 180;
 

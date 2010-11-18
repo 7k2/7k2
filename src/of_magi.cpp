@@ -337,7 +337,8 @@ int FirmMagic::cast_magic( int magicId, int targetXLoc, int targetYLoc, int targ
 					int bulletId = bullet_array.add_bullet(this, firmPtr);
 
 					// sound effect
-					RelVolume relVolume(PosVolume(center_x, center_y));
+                                        PosVolume posv(center_x, center_y);
+                                        RelVolume relVolume(posv);
 					if( relVolume.rel_vol < 90)
 						relVolume.rel_vol = 90;
 					se_ctrl.request("BUILDUP", relVolume);
@@ -368,7 +369,8 @@ int FirmMagic::cast_magic( int magicId, int targetXLoc, int targetYLoc, int targ
 					int bulletId = bullet_array.add_bullet(this, townPtr);
 
 					// sound effect
-					RelVolume relVolume(PosVolume(center_x, center_y));
+                                        PosVolume posv(center_x, center_y);
+                                        RelVolume relVolume(posv);
 					if( relVolume.rel_vol < 90)
 						relVolume.rel_vol = 90;
 					se_ctrl.request("BUILDUP", relVolume);
@@ -480,7 +482,8 @@ int FirmMagic::cast_magic( int magicId, int targetXLoc, int targetYLoc, int targ
 				if( nation_array.should_attack( nation_recno, unitPtr->nation_recno ) )
 					bullet_array.add_bullet(this, unitPtr );
 				// sound effect
-				RelVolume relVolume(PosVolume(center_x, center_y));
+                                PosVolume posv(center_x, center_y);
+                                RelVolume relVolume(posv);
 				if( relVolume.rel_vol < 90)
 					relVolume.rel_vol = 90;
 				se_ctrl.request("BUILDUP", relVolume);
@@ -511,7 +514,8 @@ int FirmMagic::cast_magic( int magicId, int targetXLoc, int targetYLoc, int targ
 			rc = 1;
 			bullet_array.add_bullet(this, this);
 			// sound effect
-			RelVolume relVolume(PosVolume(center_x, center_y));
+                        PosVolume posv(center_x, center_y);
+                        RelVolume relVolume(posv);
 			if( relVolume.rel_vol < 90)
 				relVolume.rel_vol = 90;
 			se_ctrl.request("BUILDUP", relVolume);
@@ -530,7 +534,8 @@ int FirmMagic::cast_magic( int magicId, int targetXLoc, int targetYLoc, int targ
 			bullet_array.add_bullet(this, this);
 			delay_again_flag = 1;
 			// sound effect
-			RelVolume relVolume(PosVolume(center_x, center_y));
+                        PosVolume posv(center_x, center_y);
+                        RelVolume relVolume(posv);
 			if( relVolume.rel_vol < 90)
 				relVolume.rel_vol = 90;
 			se_ctrl.request("BUILDUP", relVolume);
@@ -552,7 +557,8 @@ int FirmMagic::cast_magic( int magicId, int targetXLoc, int targetYLoc, int targ
 			bullet_array.add_bullet(this, this);
 			delay_again_flag = 1;
 			// sound effect
-			RelVolume relVolume(PosVolume(center_x, center_y));
+                        PosVolume posv(center_x, center_y);
+                        RelVolume relVolume(posv);
 			if( relVolume.rel_vol < 90)
 				relVolume.rel_vol = 90;
 			se_ctrl.request("BUILDUP", relVolume);
@@ -693,7 +699,8 @@ int FirmMagic::process_delayed_magic(int magicId, int targetXLoc, int targetYLoc
 								locPtr->set_fire_src(1);		// such that the fire will be put out quickly
 		
 							// sound effect
-								RelVolume relVolume(PosVolume(x, y));
+                                                                PosVolume posv(x, y);
+                                                                RelVolume relVolume(posv);
 								if( relVolume.rel_vol < 100)
 									relVolume.rel_vol = 100;
 								se_ctrl.request("OFF-4", relVolume);
@@ -713,7 +720,8 @@ int FirmMagic::process_delayed_magic(int magicId, int targetXLoc, int targetYLoc
 								locPtr->set_fire_src(1);		// such that the fire will be put out quickly
 		
 							// sound effect
-							RelVolume relVolume(PosVolume(x, y));
+                                                        PosVolume posv(x, y);
+                                                        RelVolume relVolume(posv);
 							if( relVolume.rel_vol < 100)
 								relVolume.rel_vol = 100;
 							se_ctrl.request("OFF-4", relVolume);
@@ -733,7 +741,8 @@ int FirmMagic::process_delayed_magic(int magicId, int targetXLoc, int targetYLoc
 								locPtr->set_fire_src(1);		// such that the fire will be put out quickly
 		
 							// sound effect
-							RelVolume relVolume(PosVolume(x, y));
+                                                        PosVolume posv(x, y);
+                                                        RelVolume relVolume(posv);
 							if( relVolume.rel_vol < 100)
 								relVolume.rel_vol = 100;
 							se_ctrl.request("OFF-4", relVolume);
@@ -792,7 +801,8 @@ int FirmMagic::process_delayed_magic(int magicId, int targetXLoc, int targetYLoc
 								if( locPtr->fire_src() > 0 )
 									locPtr->set_fire_src(1);		// such that the fire will be put out quickly
 								// sound effect
-								RelVolume relVolume(PosVolume(x, y));
+                                                                PosVolume posv(x, y);
+                                                                RelVolume relVolume(posv);
 								if( relVolume.rel_vol < 100)
 									relVolume.rel_vol = 100;
 								se_ctrl.request("OFF-1", relVolume);
@@ -826,7 +836,8 @@ int FirmMagic::process_delayed_magic(int magicId, int targetXLoc, int targetYLoc
 								if( locPtr->fire_src() > 0 )
 									locPtr->set_fire_src(1);		// such that the fire will be put out quickly
 								// sound effect
-								RelVolume relVolume(PosVolume(x, y));
+                                                                PosVolume posv(x, y);
+                                                                RelVolume relVolume(posv);
 								if( relVolume.rel_vol < 100)
 									relVolume.rel_vol = 100;
 								se_ctrl.request("OFF-1", relVolume);
@@ -860,7 +871,8 @@ int FirmMagic::process_delayed_magic(int magicId, int targetXLoc, int targetYLoc
 								if( locPtr->fire_src() > 0 )
 									locPtr->set_fire_src(1);		// such that the fire will be put out quickly
 								// sound effect
-								RelVolume relVolume(PosVolume(x, y));
+                                                                PosVolume posv(x, y);
+                                                                RelVolume relVolume(posv);
 								if( relVolume.rel_vol < 100)
 									relVolume.rel_vol = 100;
 								se_ctrl.request("OFF-1", relVolume);
@@ -887,7 +899,8 @@ int FirmMagic::process_delayed_magic(int magicId, int targetXLoc, int targetYLoc
 							else
 							{
 								// sound effect
-								RelVolume relVolume(PosVolume(firmPtr->center_x, firmPtr->center_y));
+                                                                PosVolume posv(firmPtr->center_x, firmPtr->center_y);
+                                                                RelVolume relVolume(posv);
 								if( relVolume.rel_vol < 100)
 									relVolume.rel_vol = 100;
 								se_ctrl.request("OFF-1", relVolume);
@@ -927,7 +940,8 @@ int FirmMagic::process_delayed_magic(int magicId, int targetXLoc, int targetYLoc
 						if( nation_array.should_attack( nation_recno, unitPtr->nation_recno ) )
 							unitPtr->freeze(magicInfo->effect);
 						// sound effect
-						RelVolume relVolume(PosVolume(x, y));
+                                                PosVolume posv(x, y);
+                                                RelVolume relVolume(posv);
 						if( relVolume.rel_vol < 100)
 							relVolume.rel_vol = 100;
 						se_ctrl.request("OFF-2", relVolume);
@@ -938,7 +952,8 @@ int FirmMagic::process_delayed_magic(int magicId, int targetXLoc, int targetYLoc
 						if( nation_array.should_attack( nation_recno, unitPtr->nation_recno ) )
 							unitPtr->freeze(magicInfo->effect);
 						// sound effect
-						RelVolume relVolume(PosVolume(x, y));
+                                                PosVolume posv(x, y);
+                                                RelVolume relVolume(posv);
 						if( relVolume.rel_vol < 100)
 							relVolume.rel_vol = 100;
 						se_ctrl.request("OFF-2", relVolume);
@@ -949,7 +964,8 @@ int FirmMagic::process_delayed_magic(int magicId, int targetXLoc, int targetYLoc
 						if( nation_array.should_attack( nation_recno, unitPtr->nation_recno ) )
 							unitPtr->freeze(magicInfo->effect);
 						// sound effect
-						RelVolume relVolume(PosVolume(x, y));
+                                                PosVolume posv(x, y);
+                                                RelVolume relVolume(posv);
 						if( relVolume.rel_vol < 100)
 							relVolume.rel_vol = 100;
 						se_ctrl.request("OFF-2", relVolume);

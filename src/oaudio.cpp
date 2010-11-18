@@ -1442,7 +1442,10 @@ DsVolume Audio::get_loop_wav_volume(int ch)
 {
 	int chanNum = ch-1;
 	if( chanNum < 0 || chanNum >= MAX_LOOP_WAV_CH)
-		return RelVolume(0,0);
+        {
+                RelVolume rel = RelVolume(0,0);
+		return DsVolume(rel);
+        }
 
 	long volume;
 	long pan;
@@ -1452,7 +1455,8 @@ DsVolume Audio::get_loop_wav_volume(int ch)
 	{
 		return DsVolume(volume, pan);
 	}
-	return RelVolume(0,0);
+        RelVolume rel = RelVolume(0,0);
+	return DsVolume(rel);
 }
 //------- End of function Audio::get_loop_wav_volume -------//
 
