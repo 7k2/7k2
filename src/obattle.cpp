@@ -113,7 +113,7 @@ void Battle::run(NewNationPara *mpGame, int mpPlayerCount)
 	{
 		//--- unveil new tech to the player in each new stage ----//
 
-		static lastStageId=0;
+		static short lastStageId=0;
 
 		if( lastStageId != game.campaign()->stage_id )
 		{

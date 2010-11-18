@@ -65,9 +65,9 @@ void Sys::disp_view_mode(int observeMode)
 		return;
 
 	// ------- display highlight ----------//
-	const MIN_MODE_TO_DISPLAY = 1;
-	const MAX_MODE_TO_DISPLAY = 8;
-	const MODE_TO_DISPLAY_COUNT = MAX_MODE_TO_DISPLAY - MIN_MODE_TO_DISPLAY + 1;
+	const int MIN_MODE_TO_DISPLAY = 1;
+	const int MAX_MODE_TO_DISPLAY = 8;
+	const int MODE_TO_DISPLAY_COUNT = MAX_MODE_TO_DISPLAY - MIN_MODE_TO_DISPLAY + 1;
 
 	//###### end Gilbert 4/1 #####//
 	static short darkenXM0[MODE_TO_DISPLAY_COUNT] = {  6,  82, 158, 234,   6,  82, 158, 234};
@@ -95,8 +95,8 @@ void Sys::disp_view_mode(int observeMode)
 //	static char* scroll_name[8] = {"Kingdoms", "Towns", "Economy", "Trade",
 //										 "Military", "Tech", "Spies", "Rank"};
 
-	const darkenWidth = 75;
-	const darkenHeight = 21;
+	const int darkenWidth = 75;
+	const int darkenHeight = 21;
 	char scrollName[] = "SR1024-B";
 	int flag = 0;
 

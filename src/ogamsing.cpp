@@ -100,10 +100,10 @@ static int select_option2()
 {
 	char optionMode = OPTION_SPECIES;
 
-	const SHEET_X1 = 95;
-	const SHEET_Y1 = 74;
-	const SHEET_X2 = 703;
-	const SHEET_Y2 = 439;
+	const int SHEET_X1 = 95;
+	const int SHEET_Y1 = 74;
+	const int SHEET_X2 = 703;
+	const int SHEET_Y2 = 439;
 
 	Config tempConfig = config;
 
@@ -166,7 +166,7 @@ static int select_option2()
 
 	// -------- initialize info.random_seed field ------//
 
-	const mapIdSize = 11;		// enough to hold a dword in decimal
+	const int mapIdSize = 11;		// enough to hold a dword in decimal
 	char mapIdStr[mapIdSize+1];
 	info.init_random_seed(0);
 	ltoa( info.random_seed , mapIdStr, 10);
@@ -208,7 +208,7 @@ static int select_option2()
 	err_when( !race_res.init_flag );
 	cx = 210;
 	cy = 160;
-	const raceGroupYSpacing = 22;
+	const int raceGroupYSpacing = 22;
 	for( i = 0; i < MAX_RACE; ++i, (cy += raceGroupYSpacing) )
 	{
 		w = font_thin_black.text_width( race_res[i+1]->name );
@@ -223,7 +223,7 @@ static int select_option2()
 	err_when( !monster_res.init_flag );
 	cx = 210;
 	cy = 160;
-	const monsterGroupYSpacing = 22;
+	const int monsterGroupYSpacing = 22;
 	for( i = 0; i < MAX_MONSTER_TYPE; ++i, (cy += monsterGroupYSpacing) )		// MAX_MONSTER
 	{
 		w = font_thin_black.text_width( monster_res[i+1]->name );
@@ -235,12 +235,12 @@ static int select_option2()
 	// ------- create color group --------//
 
 	ButtonCustomGroup colorGroup(MAX_COLOR_SCHEME);
-	const colorButtonFrameX = 382;
-	const colorButtonFrameY = 155;
+	const int colorButtonFrameX = 382;
+	const int colorButtonFrameY = 155;
 	cx = 391;
 	cy = 162;
-	const colorButtonWidth = 29;
-	const colorButtonHeight = 30;
+	const int colorButtonWidth = 29;
+	const int colorButtonHeight = 30;
 	for(i = 0; i < MAX_COLOR_SCHEME; ++i, (cx+=colorButtonWidth) )
 	{
 		colorGroup[i].create( cx, cy, cx+colorButtonWidth-1, cy+colorButtonHeight-1, 
@@ -252,7 +252,7 @@ static int select_option2()
 	ButtonCustomGroup aiHumanNationGroup(MAX_NATION);
 	cx = 361;
 	cy = 258-20;
-	const nationButtonSpacing = 30;
+	const int nationButtonSpacing = 30;
 	for( i = 0; i < MAX_NATION; ++i, (cx+=nationButtonSpacing) )
 	{
 		aiHumanNationGroup[i].create( cx-10, cy-10, cx+10, cy+10,
@@ -326,7 +326,7 @@ static int select_option2()
 	
 	// ------- initialize explored group ------//
 
-	const option3X = 320;
+	const int option3X = 320;
 	ButtonCustomGroup exploreGroup(2);
 	cx = option3X;
 	cy = 99;
@@ -442,7 +442,7 @@ static int select_option2()
 
 	//  -------- initialize start_up_raw_site buttons --------- //
 
-	const option4X = 410;
+	const int option4X = 410;
 	ButtonCustomGroup rawSiteGroup(7);
 	cx = option4X;
 	cy = 100;
@@ -559,11 +559,11 @@ static int select_option2()
 	ButtonCustom clearEnemyButton, clearMonsterButton, allyWinButton, enoughPeopleButton, enoughIncomeButton, enoughScoreButton, timeLimitButton;
 	Button peopleInc, peopleDec, incomeInc, incomeDec, scoreInc, scoreDec, yearInc, yearDec;
 
-	const option5X = 126;
-	const tickWidth = 20;
-	const tickHeight = 20;
-	const option5X2 = 620;
-	const option5X3 = 642;
+	const int option5X = 126;
+	const int tickWidth = 20;
+	const int tickHeight = 20;
+	const int option5X2 = 620;
+	const int option5X3 = 642;
 	w = tickWidth;
 	h = tickHeight;
 
@@ -670,10 +670,10 @@ static int select_option2()
 
 						// ----- display picture -------//
 
-						const pictureWidth = 209; // 298;
-						const pictureHeight = 210; // 300;
-						const pictureXoffset = 35;
-						const pictureYoffset = 20;
+						const int pictureWidth = 209; // 298;
+						const int pictureHeight = 210; // 300;
+						const int pictureXoffset = 35;
+						const int pictureYoffset = 20;
 
 						if( !vga.use_back_buf )
 						{
@@ -769,10 +769,10 @@ static int select_option2()
 								char* bitmapPtr = image_interface.get_ptr(str);
 								// all p-x must be the same size
 								// center to 220,370
-								const picWidth = 198;
-								const picHeight = 121;
-								const picX = 220-picWidth/2;
-								const picY = 370-picHeight/2;
+								const int picWidth = 198;
+								const int picHeight = 121;
+								const int picX = 220-picWidth/2;
+								const int picY = 370-picHeight/2;
 								if( !vga.use_back_buf )
 								{
 									mouse.hide_area(picX, picY, picX+picWidth-1, picY+picHeight-1 );

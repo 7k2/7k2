@@ -35,7 +35,7 @@
 
 static void disp_vbrowse(int recNo,int x,int y,int refreshFlag);
 static SpinDispFP disp_vbrowse_func;
-static vbrowse_x2;
+static int vbrowse_x2;
 
 SpinnerSmall::SpinnerSmall()
 {

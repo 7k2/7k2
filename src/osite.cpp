@@ -457,7 +457,7 @@ int SiteArray::create_raw_site(int regionId, int townRecno)
 	{
 		// ####### begin Gilbert 26/5 ########//
 //		#define MAX_TOWN_SITE_DISTANCE   (MAX_LINKED_FIRM_TOWN-STD_TOWN_LOC_WIDTH)
-		const maxTownSiteDistance = world.effective_distance(FIRM_MINE, 0);
+		const int maxTownSiteDistance = world.effective_distance(FIRM_MINE, 0);
 
 		Town* townPtr = town_array[townRecno];
 

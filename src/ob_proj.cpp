@@ -177,7 +177,7 @@ short Projectile::get_z()
 	//     + (z_dest - z_init)*cur_step/(total_step+1)
 	//     + z_init
 
-	const a = -4;	// GRAVITY = -8;
+	const short a = -4;	// GRAVITY = -8;
 
 	return a * cur_step * (cur_step - total_step - 1)
 		+ (z_dest - z_init) * cur_step / (total_step + 1)

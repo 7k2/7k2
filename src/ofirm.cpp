@@ -351,7 +351,7 @@ void Firm::deinit()
 			// -------- create a firm die record ------//
 			// can be called as soon as restore_world_matrix
 
-			static effectId = sprite_res.search_sprite( "FIRE_EFF" );
+			static int effectId = sprite_res.search_sprite( "FIRE_EFF" );
 			err_when( !effectId );
 			Effect::create(effectId, loc_x1 *LOCATE_WIDTH, loc_y1 *LOCATE_HEIGHT, SPRITE_IDLE, 1, 8, 0);
 					

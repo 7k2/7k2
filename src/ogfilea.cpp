@@ -1219,8 +1219,8 @@ int GameFile::ask_desc()
 
 	// ------ ok cancel button --------//
 
-	const buttonWidth = 100;
-	const buttonHeight = 24;
+	const int buttonWidth = 100;
+	const int buttonHeight = 24;
 	Button button_ok, button_cancel;
 
 	int x = (2*boxX1 + boxX2) / 3 - buttonWidth / 2;

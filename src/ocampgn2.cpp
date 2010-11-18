@@ -3425,7 +3425,7 @@ void Campaign::attack_animation( CampaignAnimationUnit *attackerArray,
 					int attackerCount, CampaignAnimationUnit *defender,
 					int firstStep, int lastStep )
 {
-	const MAX_ATTACKER = 2;
+	const int MAX_ATTACKER = 2;
 	err_when( attackerCount > MAX_ATTACKER );
 
 	int a;

@@ -1107,7 +1107,7 @@ char FirmMagic::bullet_fire()
 //
 short FirmMagic::bullet_id()
 {
-	static spriteId;
+	static short spriteId;
 	switch( casting_magic_id )
 	{
 	case MAGIC_DESTROY_BUILDING:

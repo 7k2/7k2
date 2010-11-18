@@ -415,7 +415,7 @@ char FirmFort::bullet_fire()
 
 short FirmFort::bullet_id()
 {
-	static spriteId = sprite_res.search_sprite( "ARROW" );
+	static short spriteId = sprite_res.search_sprite( "ARROW" );
 	err_when( !spriteId );
 
 	return spriteId;

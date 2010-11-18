@@ -660,7 +660,7 @@ int Sys::restore()
 //
 void Sys::yield()
 {
-   static isYielding=0;
+   static int isYielding=0;
 
    if( isYielding )
       return;

@@ -55,7 +55,7 @@ void CampaignEastWest::plot_c1_create_game()
 
 	// create charm on any own unit
 
-	const maxItemCount = 3;
+	const int maxItemCount = 3;
 	int itemCreated = maxItemCount;
 
 	for( int i = 1; itemCreated > 0 && i <= unit_array.size(); ++i )

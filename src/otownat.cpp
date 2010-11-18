@@ -223,7 +223,7 @@ char Town::bullet_fire()
 //
 short Town::bullet_id()
 {
-	static spriteId;
+	static int spriteId;
 
 	if ((sys.frame_count+town_recno) & 1)
 		spriteId = sprite_res.search_sprite( "ROCK" );

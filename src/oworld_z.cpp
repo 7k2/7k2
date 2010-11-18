@@ -97,7 +97,7 @@
 static Rain 		rain;
 static YLightning lightning;
 static Snow			snow;
-static init_fire = -10;									// reset on new game and load game
+static int init_fire = -10;									// reset on new game and load game
 
 
 // to be moved to member of ZoomMatrix
@@ -4280,7 +4280,7 @@ static void draw_cubic_plane(int zoomX, int zoomY, LocationCorners lc, UCHAR col
 	long c12 = lc.loc_ptr->c12;
 	long c03 = lc.loc_ptr->c03;
 
-	const lineCountPeriod = 4;
+	const int lineCountPeriod = 4;
 	// int lineCount;
 	int lineCountMod4 = 0;
 #define UVMULTIPLIER 4

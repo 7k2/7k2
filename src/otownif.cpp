@@ -1468,8 +1468,8 @@ int Town::input_town_name()
 				
 	// ------ ok cancel button --------//
 
-	const buttonWidth = 60;
-	const buttonHeight = 20;
+	const int buttonWidth = 60;
+	const int buttonHeight = 20;
 	Button button_ok, button_cancel;
 
 	int x = (2*boxX1 + boxX2) / 3 - buttonWidth / 2;

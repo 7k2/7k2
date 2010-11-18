@@ -59,7 +59,7 @@ void CampaignEastWest::plot_d3_create_game()
 //
 void CampaignEastWest::plot_d3_next_day()
 {
-	const period = 4;
+	const int period = 4;
 
 	// whenever soldier enter lair, give/refill unseen torque soldier
 

@@ -48,9 +48,9 @@
 
 // ------ define constant -------- //
 // x of bottom_left corner
-const TOWN_ADJ_OFFSET_X = STD_TOWN_LOC_HEIGHT*ZOOM_LOC_Y_WIDTH - 25;
+const int TOWN_ADJ_OFFSET_X = STD_TOWN_LOC_HEIGHT*ZOOM_LOC_Y_WIDTH - 25;
 // y of top_left_corner
-const TOWN_ADJ_OFFSET_Y = -7;
+const int TOWN_ADJ_OFFSET_Y = -7;
 
 //------- Begin of function Town::draw -----------//
 //

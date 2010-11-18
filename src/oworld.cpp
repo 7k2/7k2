@@ -3300,11 +3300,11 @@ int World::effective_distance(int placeId1, int placeId2)
 {
 	err_when( STD_TOWN_LOC_WIDTH != 6 ); // reduce town_town, firm_town, camp_town if town size is smaller in small building set
 
-	static dist_town_town[2] = { 12, 12 }; // { 12, 9 }
-	static dist_firm_town[2] = { 18, 16 }; // { 18, 15 }
-	static dist_firm_firm[2] = { 18, 15 };
-	static dist_camp_town[2] = { 12, 10 }; // { 12, 9 }
-	static dist_lair_lair[2] = { 12, 9 };
+	static int dist_town_town[2] = { 12, 12 }; // { 12, 9 }
+	static int dist_firm_town[2] = { 18, 16 }; // { 18, 15 }
+	static int dist_firm_firm[2] = { 18, 15 };
+	static int dist_camp_town[2] = { 12, 10 }; // { 12, 9 }
+	static int dist_lair_lair[2] = { 12, 9 };
 	err_when( config.building_size <= 0 || config.building_size > 2 );	// can handle building_size 1 and 2
 
 	#define EFFECTIVE_TOWN_TOWN_DISTANCE dist_town_town[config.building_size-1]     // The minimum distance between 2 towns

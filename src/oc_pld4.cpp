@@ -51,8 +51,8 @@ void CampaignEastWest::plot_d4_create_game()
 {
 	// find place for reinforcement, place farthest away from your towns
 
-	const searchAreaWidth = 8;
-	const searchAreaHeight = 8;
+	const int searchAreaWidth = 8;
+	const int searchAreaHeight = 8;
 
 	int avgDist = 0;
 	int countDist = 0;

@@ -387,7 +387,7 @@ int Game::select_campaign_menu()
 	err_when( !race_res.init_flag );
 	cx = 210;
 	cy = 160;
-	const raceGroupYSpacing = 22;
+	const int raceGroupYSpacing = 22;
 	for( i = 0; i < MAX_RACE; ++i, (cy += raceGroupYSpacing) )
 	{
 		w = font_thin_black.text_width( race_res[i+1]->name );
@@ -399,12 +399,12 @@ int Game::select_campaign_menu()
 	// ------- create color group --------//
 
 	ButtonCustomGroup colorGroup(MAX_COLOR_SCHEME);
-	const colorButtonFrameX = 382;
-	const colorButtonFrameY = 155;
+	const int colorButtonFrameX = 382;
+	const int colorButtonFrameY = 155;
 	cx = 391;
 	cy = 162;
-	const colorButtonWidth = 29;
-	const colorButtonHeight = 30;
+	const int colorButtonWidth = 29;
+	const int colorButtonHeight = 30;
 	for(i = 0; i < MAX_COLOR_SCHEME; ++i, (cx+=colorButtonWidth) )
 	{
 		colorGroup[i].create( cx, cy, cx+colorButtonWidth-1, cy+colorButtonHeight-1, 
@@ -449,7 +449,7 @@ int Game::select_campaign_menu()
 
 	// ------ initialize fog of war ------//
 
-	const option3X = 320;
+	const int option3X = 320;
 	ButtonCustomGroup fogGroup(2);
 	cx = option3X;
 	cy = 173; // cy = 143;

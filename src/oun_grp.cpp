@@ -244,7 +244,7 @@ void UnitGroup::select_all()
 //
 int UnitGroup::get_write_len()
 {
-	const memberSize = (sizeof(*this) - sizeof(DynArray) + sizeof(short) - 1) / sizeof(short);
+	const int memberSize = (sizeof(*this) - sizeof(DynArray) + sizeof(short) - 1) / sizeof(short);
 
 	// <member in UnitGroup> <unit count> <unit recno> ...
 	return memberSize * sizeof(short) + sizeof(short) + ele_size * size();
@@ -256,7 +256,7 @@ int UnitGroup::get_write_len()
 //
 void UnitGroup::write_mem( short *msg )
 {
-	const memberSize = (sizeof(*this) - sizeof(DynArray) + sizeof(*msg) - 1) / sizeof(*msg);
+	const int memberSize = (sizeof(*this) - sizeof(DynArray) + sizeof(*msg) - 1) / sizeof(*msg);
 	memcpy( msg, ((char *)this) + sizeof(DynArray), sizeof(*this) - sizeof(DynArray) );
 	msg[memberSize] = size();
 
@@ -271,7 +271,7 @@ void UnitGroup::write_mem( short *msg )
 void UnitGroup::read_mem( short *msg )
 {
 	// restore member units
-	const memberSize = (sizeof(*this) - sizeof(DynArray) + sizeof(*msg) - 1) / sizeof(*msg);
+	const int memberSize = (sizeof(*this) - sizeof(DynArray) + sizeof(*msg) - 1) / sizeof(*msg);
 	set( msg+memberSize+1, msg[memberSize] );
 
 	// restore data member

@@ -370,8 +370,8 @@ static void brush_plasma( Plasma &plasma, int xLoc, int yLoc, int range, int pre
 				// scan adjacent point to find the minimum and maximum
 
 				int adjX, adjY;
-				static offsetX[8] = { -1,  0,  1, -1,  1, -1,  0,  1 };
-				static offsetY[8] = { -1, -1, -1,  0,  0,  1,  1,  1 };
+				static int offsetX[8] = { -1,  0,  1, -1,  1, -1,  0,  1 };
+				static int offsetY[8] = { -1, -1, -1,  0,  0,  1,  1,  1 };
 				for( int sur = 0; sur < 8; ++sur )
 				{
 					adjX = x+offsetX[sur];

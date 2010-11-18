@@ -606,8 +606,8 @@ void Sys::detect_letter_key(unsigned scanCode, unsigned skeyState)
 	// control key combination, notice that control keys are cheat keys
    if( (keyCode = mouse.is_key(scanCode, skeyState, (WORD) 0, K_IS_CTRL)) )
 	{
-		const SCROLL_MAGNITUDE_H = 4;
-		const SCROLL_MAGNITUDE_V = 8;
+		const int SCROLL_MAGNITUDE_H = 4;
+		const int SCROLL_MAGNITUDE_V = 8;
 
 		switch(keyCode)
 		{

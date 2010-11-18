@@ -27,7 +27,7 @@
 #include <asmfun.h>
 
 typedef unsigned char CRC_TYPE;
-const CRC_LEN = sizeof(CRC_TYPE);
+const unsigned int CRC_LEN = sizeof(CRC_TYPE);
 
 extern "C"
 {

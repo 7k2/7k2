@@ -48,7 +48,7 @@ void CampaignEastWest::plot_a6_create_game()
 {
 	// the largest independent population town
 
-	const maxSelectedTownCount = 3;
+	const int maxSelectedTownCount = 3;
 	int selectedTownCount = 0;
 	int townRecnoArray[maxSelectedTownCount];
 

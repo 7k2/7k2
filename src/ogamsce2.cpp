@@ -166,8 +166,8 @@ int Game::select_scenario(int scenCount, ScenInfo* scenInfoArray)
 	// create one button for each path
 	{
 		// char *groupEnableButtonStr[MAX_SCENARIO_PATH] = { "Custom", "Pre-made",	};
-		const groupButtonWidth = 100;
-		const groupButtonHeight = 20;
+		const int groupButtonWidth = 100;
+		const int groupButtonHeight = 20;
 		int x1 = SCROLL_SHEET_X1+40;
 
 		for( i = 0; i < MAX_SCENARIO_PATH; ++i, (x1+=groupButtonWidth) )
@@ -284,8 +284,8 @@ int Game::select_scenario(int scenCount, ScenInfo* scenInfoArray)
 	*(textBuffer.reserve(1)) = '\0';
 
 	Font &textFont = font_cara_w;
-	const TEXT_LINE_SPACE = 2;
-	const ESTIMATED_LINE_IN_TEXT_AREA = 
+	const int TEXT_LINE_SPACE = 2;
+	const int ESTIMATED_LINE_IN_TEXT_AREA =
 		(TEXT_AREA_Y2 - TEXT_AREA_Y1 + 1) / (textFont.font_height + TEXT_LINE_SPACE);
 
 	SlideVBar textScrollBar;

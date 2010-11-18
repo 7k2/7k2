@@ -598,7 +598,7 @@ static void disp_nation_info()
 
 	int x1=REPORT_DET_X1+6, x2=REPORT_DET_X1+380, x3=REPORT_DET_X2-10;
 	int y=REPORT_DET_Y1+6;
-	const lineSpacing = 19;
+	const int lineSpacing = 19;
 
 	//---- display the nationality of the king ----//
 

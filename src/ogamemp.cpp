@@ -827,7 +827,7 @@ int Game::mp_select_service()
 #define SVOPTION_PAGE        0x40000000
 #define SVOPTION_ALL         0x7fffffff
 
-	const MAX_SERVICE_BUTTON = 6;
+	const int MAX_SERVICE_BUTTON = 6;
 
 	int refreshFlag = SVOPTION_ALL;
 
@@ -1212,12 +1212,12 @@ int Game::mp_select_session()
 #define SSOPTION_SCROLL_BAR     0x00000004
 #define SSOPTION_ALL            0x7fffffff
 
-	const SESSION_PER_PAGE = 10;
-	const sx1 = SCROLL_SHEET_X1+16;
-	const sx2 = SCROLL_SHEET_X2-16;
-	const sy1 = SCROLL_SHEET_Y1 + 30;
-	const sy2 = SCROLL_SHEET_Y2 - 10;
-	const ySpacing = (sy2 - sy1 + 1) / SESSION_PER_PAGE;
+	const int SESSION_PER_PAGE = 10;
+	const int sx1 = SCROLL_SHEET_X1+16;
+	const int sx2 = SCROLL_SHEET_X2-16;
+	const int sy1 = SCROLL_SHEET_Y1 + 30;
+	const int sy2 = SCROLL_SHEET_Y2 - 10;
+	const int ySpacing = (sy2 - sy1 + 1) / SESSION_PER_PAGE;
 
 	// join session, but selected in lobby
 	if( mp_obj.is_lobbied() == 2 )
@@ -1529,10 +1529,10 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 	char optionMode = OPTION_SPECIES;
 	char backupOptionMode;		// when switch to OPTION_CHAT_LOG, backup the current optionMode
 
-	const SHEET_X1 = 95;
-	const SHEET_Y1 = 74;
-	const SHEET_X2 = 703;
-	const SHEET_Y2 = 439;
+	const int SHEET_X1 = 95;
+	const int SHEET_Y1 = 74;
+	const int SHEET_X2 = 703;
+	const int SHEET_Y2 = 439;
 
 	Config tempConfig = config;
 	tempConfig.reset_cheat_setting();
@@ -1564,7 +1564,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 	char *recvPtr;
 
 	char raceAssignedBiased[MAX_MONSTER_TYPE+1+MAX_RACE];		// master copy belongs to host's
-	const raceBias = MAX_MONSTER_TYPE;			// access raceAssignedBiased[raceBias + raceId]
+	const int raceBias = MAX_MONSTER_TYPE;			// access raceAssignedBiased[raceBias + raceId]
 	char *raceAssigned_ = raceAssignedBiased + MAX_MONSTER_TYPE;		// change back to raceAssigned later
 	char colorAssigned[MAX_COLOR_SCHEME];		// master copy belongs to host's
 
@@ -1663,10 +1663,10 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 	}
 #endif
 
-	static tickX[MAX_NATION] = { 132, 396, 132, 396, 132, 396, 132 };
-	static tickY[MAX_NATION] = {   6,   6,  22,  22,  38,  38,  54 };
-	const nameTickWidth = 13;
-	const nameTickHeight = 13;
+	static int tickX[MAX_NATION] = { 132, 396, 132, 396, 132, 396, 132 };
+	static int tickY[MAX_NATION] = {   6,   6,  22,  22,  38,  38,  54 };
+	const int nameTickWidth = 13;
+	const int nameTickHeight = 13;
 
 	//--------- initialize variable ---------//
 
@@ -1772,7 +1772,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 
 	// -------- initialize info.random_seed field ------//
 
-	const mapIdSize = 11;		// enough to hold a dword in decimal
+	const int mapIdSize = 11;		// enough to hold a dword in decimal
 	char mapIdStr[mapIdSize+1];
 	info.init_random_seed(0);
 	ltoa( info.random_seed , mapIdStr, 10);
@@ -1863,7 +1863,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 	err_when( !race_res.init_flag );
 	cx = 210;
 	cy = 160;
-	const raceGroupYSpacing = 22;
+	const int raceGroupYSpacing = 22;
 	for( i = 0; i < MAX_RACE; ++i, (cy += raceGroupYSpacing) )
 	{
 		w = font_thin_black.text_width( race_res[i+1]->name );
@@ -1878,7 +1878,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 	err_when( !monster_res.init_flag );
 	cx = 210;
 	cy = 160;
-	const monsterGroupYSpacing = 22;
+	const int monsterGroupYSpacing = 22;
 	for( i = 0; i < MAX_MONSTER_TYPE; ++i, (cy += monsterGroupYSpacing) )		// MAX_MONSTER
 	{
 		w = font_thin_black.text_width( monster_res[i+1]->name );
@@ -1890,12 +1890,12 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 	// ------- create color group --------//
 
 	ButtonCustomGroup colorGroup(MAX_COLOR_SCHEME);
-	const colorButtonFrameX = 382;
-	const colorButtonFrameY = 155;
+	const int colorButtonFrameX = 382;
+	const int colorButtonFrameY = 155;
 	cx = 391;
 	cy = 162;
-	const colorButtonWidth = 29;
-	const colorButtonHeight = 30;
+	const int colorButtonWidth = 29;
+	const int colorButtonHeight = 30;
 	for(i = 0; i < MAX_COLOR_SCHEME; ++i, (cx+=colorButtonWidth) )
 	{
 		colorGroup[i].create( cx, cy, cx+colorButtonWidth-1, cy+colorButtonHeight-1, 
@@ -1907,7 +1907,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 	ButtonCustomGroup aiHumanNationGroup(MAX_NATION);
 	cx = 361;
 	cy = 258-20;
-	const nationButtonSpacing = 30;
+	const int nationButtonSpacing = 30;
 	for( i = 0; i < MAX_NATION; ++i, (cx+=nationButtonSpacing) )
 	{
 		aiHumanNationGroup[i].create( cx-10, cy-10, cx+10, cy+10,
@@ -1981,7 +1981,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 	
 	// ------- initialize explored group ------//
 
-	const option3X = 320;
+	const int option3X = 320;
 	ButtonCustomGroup exploreGroup(2);
 	cx = option3X;
 	cy = 99;
@@ -2098,7 +2098,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 
 	//  -------- initialize start_up_raw_site buttons --------- //
 
-	const option4X = 410;
+	const int option4X = 410;
 	ButtonCustomGroup rawSiteGroup(7);
 	cx = option4X;
 	cy = 100;
@@ -2215,11 +2215,11 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 	ButtonCustom clearEnemyButton, clearMonsterButton, allyWinButton, enoughPeopleButton, enoughIncomeButton, enoughScoreButton, timeLimitButton;
 	Button peopleInc, peopleDec, incomeInc, incomeDec, scoreInc, scoreDec, yearInc, yearDec;
 
-	const option5X = 126;
-	const tickWidth = 20;
-	const tickHeight = 20;
-	const option5X2 = 620;
-	const option5X3 = 642;
+	const int option5X = 126;
+	const int tickWidth = 20;
+	const int tickHeight = 20;
+	const int option5X2 = 620;
+	const int option5X3 = 642;
 	w = tickWidth;
 	h = tickHeight;
 
@@ -2337,10 +2337,10 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 						// ###### begin Gilbert 29/6 #########//
 						// ----- display picture -------//
 
-						const pictureWidth = 209; // 298;
-						const pictureHeight = 210; // 300;
-						const pictureXoffset = 35;
-						const pictureYoffset = 10;
+						const int pictureWidth = 209; // 298;
+						const int pictureHeight = 210; // 300;
+						const int pictureXoffset = 35;
+						const int pictureYoffset = 10;
 
 						if( !vga.use_back_buf )
 						{
@@ -2487,10 +2487,10 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 								char* bitmapPtr = image_interface.get_ptr(str);
 								// all p-x must be the same size
 								// center to 220,370
-								const picWidth = 198;
-								const picHeight = 121;
-								const picX = 220-picWidth/2;
-								const picY = 370-picHeight/2;
+								const int picWidth = 198;
+								const int picHeight = 121;
+								const int picX = 220-picWidth/2;
+								const int picY = 370-picHeight/2;
 								if( !vga.use_back_buf )
 								{
 									mouse.hide_area(picX, picY, picX+picWidth-1, picY+picHeight-1 );
@@ -4304,10 +4304,10 @@ int Game::mp_select_load_option(char *fileName)
 	char optionMode = OPTION_SPECIES;
 	char backupOptionMode;		// when switch to OPTION_CHAT_LOG, backup the current optionMode
 
-	const SHEET_X1 = 95;
-	const SHEET_Y1 = 74;
-	const SHEET_X2 = 703;
-	const SHEET_Y2 = 439;
+	const int SHEET_X1 = 95;
+	const int SHEET_Y1 = 74;
+	const int SHEET_X2 = 703;
+	const int SHEET_Y2 = 439;
 
 	Config &tempConfig = config;
 
@@ -4322,7 +4322,7 @@ int Game::mp_select_load_option(char *fileName)
 	char *recvPtr;
 
 	char raceAssignedBiased[MAX_MONSTER_TYPE+1+MAX_RACE];		// master copy belongs to host's
-	const raceBias = MAX_MONSTER_TYPE;			// access raceAssignedBiased[raceBias + raceId]
+	const int raceBias = MAX_MONSTER_TYPE;			// access raceAssignedBiased[raceBias + raceId]
 	char *raceAssigned_ = raceAssignedBiased + MAX_MONSTER_TYPE;		// change back to raceAssigned later
 	char colorAssigned[MAX_COLOR_SCHEME];		// master copy belongs to host's
 
@@ -4420,10 +4420,10 @@ int Game::mp_select_load_option(char *fileName)
 //	err_when( tempConfig.race_id != (~nation_array)->race_id );
 	err_when( tempConfig.player_nation_color != (~nation_array)->color_scheme_id );
 
-	static tickX[MAX_NATION] = { 132, 396, 132, 396, 132, 396, 132 };
-	static tickY[MAX_NATION] = {   6,   6,  22,  22,  38,  38,  54 };
-	const nameTickWidth = 13;
-	const nameTickHeight = 13;
+	static int tickX[MAX_NATION] = { 132, 396, 132, 396, 132, 396, 132 };
+	static int tickY[MAX_NATION] = {   6,   6,  22,  22,  38,  38,  54 };
+	const int nameTickWidth = 13;
+	const int nameTickHeight = 13;
 
 	//--------- initialize variable ---------//
 
@@ -4507,7 +4507,7 @@ int Game::mp_select_load_option(char *fileName)
 
 	// -------- initialize info.random_seed field ------//
 
-	const mapIdSize = 11;		// enough to hold a dword in decimal
+	const int mapIdSize = 11;		// enough to hold a dword in decimal
 	char mapIdStr[mapIdSize+1];
 	// info.init_random_seed(0);
 	ltoa( info.random_seed , mapIdStr, 10);
@@ -4601,7 +4601,7 @@ int Game::mp_select_load_option(char *fileName)
 	err_when( !race_res.init_flag );
 	cx = 210;
 	cy = 160;
-	const raceGroupYSpacing = 22;
+	const int raceGroupYSpacing = 22;
 	for( i = 0; i < MAX_RACE; ++i, (cy += raceGroupYSpacing) )
 	{
 		w = font_thin_black.text_width( race_res[i+1]->name );
@@ -4616,7 +4616,7 @@ int Game::mp_select_load_option(char *fileName)
 	err_when( !monster_res.init_flag );
 	cx = 210;
 	cy = 160;
-	const monsterGroupYSpacing = 22;
+	const int monsterGroupYSpacing = 22;
 	for( i = 0; i < MAX_MONSTER_TYPE; ++i, (cy += monsterGroupYSpacing) )		// MAX_MONSTER
 	{
 		w = font_thin_black.text_width( monster_res[i+1]->name );
@@ -4628,12 +4628,12 @@ int Game::mp_select_load_option(char *fileName)
 	// ------- create color group --------//
 
 	ButtonCustomGroup colorGroup(MAX_COLOR_SCHEME);
-	const colorButtonFrameX = 382;
-	const colorButtonFrameY = 155;
+	const int colorButtonFrameX = 382;
+	const int colorButtonFrameY = 155;
 	cx = 391;
 	cy = 162;
-	const colorButtonWidth = 29;
-	const colorButtonHeight = 30;
+	const int colorButtonWidth = 29;
+	const int colorButtonHeight = 30;
 	for(i = 0; i < MAX_COLOR_SCHEME; ++i, (cx+=colorButtonWidth) )
 	{
 		colorGroup[i].create( cx, cy, cx+colorButtonWidth-1, cy+colorButtonHeight-1, 
@@ -4645,7 +4645,7 @@ int Game::mp_select_load_option(char *fileName)
 	ButtonCustomGroup aiHumanNationGroup(MAX_NATION);
 	cx = 361;
 	cy = 258-20;
-	const nationButtonSpacing = 30;
+	const int nationButtonSpacing = 30;
 	for( i = 0; i < MAX_NATION; ++i, (cx+=nationButtonSpacing) )
 	{
 		aiHumanNationGroup[i].create( cx-10, cy-10, cx+10, cy+10,
@@ -4719,7 +4719,7 @@ int Game::mp_select_load_option(char *fileName)
 
 	// ------- initialize explored group ------//
 
-	const option3X = 320;
+	const int option3X = 320;
 	ButtonCustomGroup exploreGroup(2);
 	cx = option3X;
 	cy = 99;
@@ -4835,7 +4835,7 @@ int Game::mp_select_load_option(char *fileName)
 
 	//  -------- initialize start_up_raw_site buttons --------- //
 
-	const option4X = 410;
+	const int option4X = 410;
 	ButtonCustomGroup rawSiteGroup(7);
 	cx = option4X;
 	cy = 100;
@@ -4952,11 +4952,11 @@ int Game::mp_select_load_option(char *fileName)
 	ButtonCustom clearEnemyButton, clearMonsterButton, allyWinButton, enoughPeopleButton, enoughIncomeButton, enoughScoreButton, timeLimitButton;
 	Button peopleInc, peopleDec, incomeInc, incomeDec, scoreInc, scoreDec, yearInc, yearDec;
 
-	const option5X = 126;
-	const tickWidth = 20;
-	const tickHeight = 20;
-	const option5X2 = 620;
-	const option5X3 = 642;
+	const int option5X = 126;
+	const int tickWidth = 20;
+	const int tickHeight = 20;
+	const int option5X2 = 620;
+	const int option5X3 = 642;
 	w = tickWidth;
 	h = tickHeight;
 
@@ -5074,10 +5074,10 @@ int Game::mp_select_load_option(char *fileName)
 						// ###### begin Gilbert 29/6 #########//
 						// ----- display picture -------//
 
-						const pictureWidth = 209; // 298;
-						const pictureHeight = 210; // 300;
-						const pictureXoffset = 35;
-						const pictureYoffset = 10;
+						const int pictureWidth = 209; // 298;
+						const int pictureHeight = 210; // 300;
+						const int pictureXoffset = 35;
+						const int pictureYoffset = 10;
 
 						if( !vga.use_back_buf )
 						{
@@ -5229,10 +5229,10 @@ int Game::mp_select_load_option(char *fileName)
 								char* bitmapPtr = image_interface.get_ptr(str);
 								// all p-x must be the same size
 								// center to 220,370
-								const picWidth = 198;
-								const picHeight = 121;
-								const picX = 220-picWidth/2;
-								const picY = 370-picHeight/2;
+								const int picWidth = 198;
+								const int picHeight = 121;
+								const int picX = 220-picWidth/2;
+								const int picY = 370-picHeight/2;
 								if( !vga.use_back_buf )
 								{
 									mouse.hide_area(picX, picY, picX+picWidth-1, picY+picHeight-1 );

@@ -196,8 +196,8 @@ void Site::detect_info()
 void Site::draw(int curX, int curY, int curZ, int drawFlag)
 {
 
-	const SITE_DRAW_OFFSET_X = -LOCATE_WIDTH/2 - (-ZOOM_LOC_X_WIDTH/2 + -ZOOM_LOC_Y_WIDTH/2);
-	const SITE_DRAW_OFFSET_Y = -LOCATE_HEIGHT/2 - (-ZOOM_LOC_X_HEIGHT/2 + -ZOOM_LOC_Y_HEIGHT/2);
+	const int SITE_DRAW_OFFSET_X = -LOCATE_WIDTH/2 - (-ZOOM_LOC_X_WIDTH/2 + -ZOOM_LOC_Y_WIDTH/2);
+	const int SITE_DRAW_OFFSET_Y = -LOCATE_HEIGHT/2 - (-ZOOM_LOC_X_HEIGHT/2 + -ZOOM_LOC_Y_HEIGHT/2);
 	int offsetX = SITE_DRAW_OFFSET_X;
 	int offsetY = SITE_DRAW_OFFSET_Y;
 

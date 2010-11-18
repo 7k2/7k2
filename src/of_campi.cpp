@@ -53,7 +53,7 @@ enum	{PATROL_ALL=0,
 
 //----------- Define static vars -------------//
 
-static patrol_state = PATROL_ALL;
+static short patrol_state = PATROL_ALL;
 static char	last_menu_mode;
 static Button3D button_patrol, button_reward, button_defense, button_camp_upgrade;
 static Button3D button_promote;

@@ -254,11 +254,11 @@ void Game::disp_gen_game_status(int addStep)
 //	const POPUP_WINDOW_WIDTH = 535;
 //	const POPUP_WINDOW_HEIGHT = 386;
 	
-	const POPUP_WINDOW_X1 = (vga_front.buf_width() - POPUP_WINDOW_WIDTH) / 2;
-	const POPUP_WINDOW_Y1 = (vga_front.buf_height() - POPUP_WINDOW_HEIGHT) / 2;
+	const int POPUP_WINDOW_X1 = (vga_front.buf_width() - POPUP_WINDOW_WIDTH) / 2;
+	const int POPUP_WINDOW_Y1 = (vga_front.buf_height() - POPUP_WINDOW_HEIGHT) / 2;
 
-	const BAR_X1 = POPUP_WINDOW_X1 + 105;
-	const BAR_Y1 = POPUP_WINDOW_Y1 + 198;
+	const int BAR_X1 = POPUP_WINDOW_X1 + 105;
+	const int BAR_Y1 = POPUP_WINDOW_Y1 + 198;
 
 	static int genGameProgress=0;
 	

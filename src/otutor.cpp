@@ -83,10 +83,10 @@ static Button button_close;
 static Button3D button_sample;
 static Button3D button_prev, button_next;
 
-static minize_detect_area_x1;
-static minize_detect_area_y1;
-static minize_detect_area_x2;
-static minize_detect_area_y2;
+static int minize_detect_area_x1;
+static int minize_detect_area_y1;
+static int minize_detect_area_x2;
+static int minize_detect_area_y2;
 	
 static unsigned seed = 35;				// last random number
 

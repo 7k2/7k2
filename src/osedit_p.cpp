@@ -228,7 +228,7 @@ void ScenarioEditor::detect_players_main()
 
 		const int yOffs = 4;
 		const int lrMargin = 5;
-		const FIELD_LEN = 30;
+		const unsigned int FIELD_LEN = 30;
 
 		mouse.hide();
 

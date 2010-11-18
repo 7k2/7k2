@@ -183,7 +183,7 @@ void Campaign::update_royal_unit()
 {
 	CampaignNation *cNation = get_nation(CAMPAIGN_PLAYER_NATION_RECNO);
 
-	const royalMax = sizeof(cNation->noble) / sizeof(cNation->noble[0]);
+	const int royalMax = sizeof(cNation->noble) / sizeof(cNation->noble[0]);
 
 	// add king first, so drop_extra_royal_menu can manipulate king's item
 
@@ -486,24 +486,24 @@ char* CampaignMember::unit_name(int nationRecno, int withTitle, int firstNameOnl
 //
 void Campaign::select_royal_menu(CampaignMember *king, CampaignMember *royalList, int& royalCount)
 {
-	const UNIT_ICON_X1 = SCROLL_SHEET_X1+25;
-	const UNIT_ICON_Y1 = SCROLL_SHEET_Y1+39;
-	const UNIT_ICON_WIDTH = 50;
-	const UNIT_ICON_HEIGHT = 100;
-	const UNIT_ROW = 10;
-	const UNIT_MAX_ROW = 3;
-	const UNIT_ICON_OFFSET_X = UNIT_ICON_WIDTH/2;
-	const UNIT_ICON_OFFSET_Y = UNIT_ICON_HEIGHT-28;
-	const UNIT_INFO_X1 = SCROLL_SHEET_X1+40;
-	const UNIT_INFO_Y1 = SCROLL_SHEET_Y2+16;
-	const UNIT_INFO_X2 = SCROLL_SHEET_X2-40;
-	const UNIT_INFO_Y2 = SCROLL_SHEET_Y2+74;
-	const ITEM_OFFSET_X = 27;
-	const ITEM_OFFSET_Y = 25;
-	const TICK_OFFSET_X = 28;
-	const TICK_OFFSET_Y = 2;
-	const tickWidth = 20;
-	const tickHeight = 20;
+	const int UNIT_ICON_X1 = SCROLL_SHEET_X1+25;
+	const int UNIT_ICON_Y1 = SCROLL_SHEET_Y1+39;
+	const int UNIT_ICON_WIDTH = 50;
+	const int UNIT_ICON_HEIGHT = 100;
+	const int UNIT_ROW = 10;
+	const int UNIT_MAX_ROW = 3;
+	const int UNIT_ICON_OFFSET_X = UNIT_ICON_WIDTH/2;
+	const int UNIT_ICON_OFFSET_Y = UNIT_ICON_HEIGHT-28;
+	const int UNIT_INFO_X1 = SCROLL_SHEET_X1+40;
+	const int UNIT_INFO_Y1 = SCROLL_SHEET_Y2+16;
+	const int UNIT_INFO_X2 = SCROLL_SHEET_X2-40;
+	const int UNIT_INFO_Y2 = SCROLL_SHEET_Y2+74;
+	const int ITEM_OFFSET_X = 27;
+	const int ITEM_OFFSET_Y = 25;
+	const int TICK_OFFSET_X = 28;
+	const int TICK_OFFSET_Y = 2;
+	const int tickWidth = 20;
+	const int tickHeight = 20;
 
 //	char *helpText = text_campaign.str_select_royal_help_1(); // "Check the units that you wish to use in this scenario. You may Click on an Artifact and move it to another unit.";
 	int selectedRecno = 0;

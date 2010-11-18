@@ -690,7 +690,7 @@ void UnitGod::think_mongol_god()
 {
 	// check if any standing target nearby
 
-	const shortRange = 5;
+	const short shortRange = 5;
 	int x1, y1, x2, y2, x, y;
 
 	x1 = next_x_loc() - shortRange;
