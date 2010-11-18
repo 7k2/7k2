@@ -25,7 +25,7 @@
 #define __OHERORES_H
 
 #ifndef __ORESDB_H
-#include <ORESDB.H>
+#include <oresdb.h>
 #endif
 
 //-------- Define constant ----------//

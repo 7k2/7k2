@@ -21,14 +21,14 @@
 // Filename    : OFLC.CPP
 // Description : class Flc (animation format)
 
-#include <OFLC.H>
-#include <ALL.H>
+#include <oflc.h>
+#include <all.h>
 
 extern "C"
 {
-	#include <TOPFLC.H>
-	#include <TFLIB.H>
-	#include <TFANIMAT.H>
+	#include <topflc.h>
+	#include <tflib.h>
+	#include <tfanimat.h>
 }
 //#include <mem.h>
 

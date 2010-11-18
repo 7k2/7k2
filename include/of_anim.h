@@ -25,7 +25,7 @@
 #ifndef __OF_ANIM_H
 #define __OF_ANIM_H
 
-#include <OFIRM.H>
+#include <ofirm.h>
 
 // ------- define constant -------//
 

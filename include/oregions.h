@@ -25,7 +25,7 @@
 #define __OREGIONS_H
 
 #ifndef __OFIRMID_H
-#include <OFIRMID.H>
+#include <ofirmid.h>
 #endif
 
 #define MAX_NATION 7

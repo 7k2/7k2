@@ -24,15 +24,15 @@
 #ifndef __OCAMPGN_H
 #define __OCAMPGN_H
 
-#include <GAMEDEF.H>
-#include <OSKILL.H>
-#include <ODYNARR.H>
-#include <OBATTLE.H>
-#include <OCONFIG.H>
-#include <OTECH.H>
-#include <ORESX.H>
-#include <OPLASMA.H>
-#include <OFONT.H>
+#include <gamedef.h>
+#include <oskill.h>
+#include <odynarr.h>
+#include <obattle.h>
+#include <oconfig.h>
+#include <otech.h>
+#include <oresx.h>
+#include <oplasma.h>
+#include <ofont.h>
 
 //----------- define constant -------------//
 

@@ -24,7 +24,7 @@
 #ifndef __OFILE_H
 #define __OFILE_H
 
-// #include <WINDOWS.H>
+// #include <windows.h>
 
 // -------- define constant and types assemble to Windows' -------//
 // if definition is different from Windows, it will be reflected in compiling OFILE.CPP

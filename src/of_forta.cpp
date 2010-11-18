@@ -21,13 +21,13 @@
 //Filename    : OF_FORTA.CPP
 //Description : Firm Fort - AI functions
 
-#include <ONATION.H>
-#include <OINFO.H>
-#include <OCONFIG.H>
-#include <OTOWN.H>
-#include <OSPY.H>
-#include <OUNIT.H>
-#include <OF_FORT.H>
+#include <onation.h>
+#include <oinfo.h>
+#include <oconfig.h>
+#include <otown.h>
+#include <ospy.h>
+#include <ounit.h>
+#include <of_fort.h>
 
 //--------- Begin of function FirmFort::process_ai ---------//
 

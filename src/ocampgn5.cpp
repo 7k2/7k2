@@ -21,7 +21,7 @@
 //Filename   : OCAMPGN5.CPP
 //Description: Campaign functions
 
-#include <OCAMPGN.H>
+#include <ocampgn.h>
 
 
 //--- Begin of function Campaign::player_pick_attack_target ---//

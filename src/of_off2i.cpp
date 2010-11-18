@@ -22,15 +22,15 @@
 // Description : eating flower interface function
 
 
-#include <OF_OFF2.H>
-#include <OVGA.H> 
-#include <OMODEID.H>
-#include <OIMGRES.H>
-#include <OGAME.H>
-#include <OBITMAPW.H>
-#include <OBITMAP.H>
-#include <OFONT.H>
-#include <OCONFIG.H>
+#include <of_off2.h>
+#include <ovga.h> 
+#include <omodeid.h>
+#include <oimgres.h>
+#include <ogame.h>
+#include <obitmapw.h>
+#include <obitmap.h>
+#include <ofont.h>
+#include <oconfig.h>
 
 //----------- Begin of function FirmOffensive2::put_info -----------//
 

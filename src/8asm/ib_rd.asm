@@ -20,8 +20,8 @@
 ;Description : decompress and color remapping handling with color key transparency
 
 
-INCLUDE IMGFUN.INC
-INCLUDE COLCODE.INC
+INCLUDE imgfun.inc
+INCLUDE colcode.inc
 
 .CODE
 

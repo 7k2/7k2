@@ -22,12 +22,12 @@
 // Description : Sound Effect Controller
 // Owner       : Gilbert
 
-#include <OSE.H>
-#include <ALL.H>
-#include <OAUDIO.H>
-#include <OGAMESET.H>
-#include <OMISC.H>
-#include <OCONFIG.H>
+#include <ose.h>
+#include <all.h>
+#include <oaudio.h>
+#include <ogameset.h>
+#include <omisc.h>
+#include <oconfig.h>
 
 #define MIN_AUDIO_VOL 10
 

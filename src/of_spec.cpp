@@ -21,14 +21,14 @@
 // Filename    : OF_SPEC.CPP
 // Description : Firm Stable
 
-#include <OF_SPEC.H>
-#include <ALL.H>
-#include <OREMOTE.H>
-#include <ONATION.H>
-#include <OUNIT.H>
-#include <OUNITRES.H>
-#include <ORACERES.H>
-#include <OTOWN.H>
+#include <of_spec.h>
+#include <all.h>
+#include <oremote.h>
+#include <onation.h>
+#include <ounit.h>
+#include <ounitres.h>
+#include <oraceres.h>
+#include <otown.h>
 
 //--------- Begin of function FirmSpecial::FirmSpecial() ------//
 

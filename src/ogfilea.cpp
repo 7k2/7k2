@@ -21,36 +21,36 @@
 //Filename    : OGFILEA.CPP
 //Description : Game File Array
 
-#include <IO.H>
-#include <KEY.H>
-#include <ODIR.H>
-#include <OSYS.H>
-#include <ODATE.H>
-#include <OMOUSE.H>
-#include <OMOUSECR.H>
-#include <OPOWER.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OUNITRES.H>
-#include <OIMGRES.H>
-#include <OVGA.H>
-#include <OCOLTBL.H>
-#include <OBOX.H>
-#include <OFONT.H>
-#include <OINFO.H>
-#include <OGAME.H>
-#include <OGAMESET.H>
-#include <OGFILE.H>
-#include <OBUTTON.H>
-#include <OBUTT3D.H>
-#include <OGETA.H>
-#include <OSLIDCUS.H>
-#include <OBLOB.H>
-#include <OGAMMENU.H>
-#include <OBITMAP.H>
-#include <OCAMPGN.H>
-#include <OT_GMENU.H>
-#include <OT_BASIC.H>
+#include <io.h>
+#include <key.h>
+#include <odir.h>
+#include <osys.h>
+#include <odate.h>
+#include <omouse.h>
+#include <omousecr.h>
+#include <opower.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <ounitres.h>
+#include <oimgres.h>
+#include <ovga.h>
+#include <ocoltbl.h>
+#include <obox.h>
+#include <ofont.h>
+#include <oinfo.h>
+#include <ogame.h>
+#include <ogameset.h>
+#include <ogfile.h>
+#include <obutton.h>
+#include <obutt3d.h>
+#include <ogeta.h>
+#include <oslidcus.h>
+#include <oblob.h>
+#include <ogammenu.h>
+#include <obitmap.h>
+#include <ocampgn.h>
+#include <ot_gmenu.h>
+#include <ot_basic.h>
 
 
 //--------- Define constant ---------//

@@ -21,17 +21,17 @@
 //Filename    : OMOUSECR.CPP
 //Description : Object Cursor Resource
 
-#include <OMOUSECR.H>
-#include <ALL.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <ODB.H>
-#include <OMOUSE.H>
-#include <OBLOB2W.H>
-#include <OSYS.H>
-#include <OBITMAP.H>
-#include <OCONFIG.H>
-#include <OPOWER.H>
+#include <omousecr.h>
+#include <all.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <odb.h>
+#include <omouse.h>
+#include <oblob2w.h>
+#include <osys.h>
+#include <obitmap.h>
+#include <oconfig.h>
+#include <opower.h>
 
 //---------- define constant ------------//
 

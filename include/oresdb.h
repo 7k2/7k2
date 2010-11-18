@@ -24,7 +24,7 @@
 #ifndef __ORESDB_H
 #define __ORESDB_H
 
-#include <OFILE.H>
+#include <ofile.h>
 
 //--------- Define class ResourceDb ----------//
 

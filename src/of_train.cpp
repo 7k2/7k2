@@ -21,17 +21,17 @@
 // Filename    : OF_TRAIN.CPP
 // Description : FirmTrain
 
-#include <OF_TRAIN.H>
-#include <OCONFIG.H>
-#include <OSYS.H>
-#include <OREMOTE.H>
-#include <ONATION.H>
-#include <OUNIT.H>
-#include <OUNITRES.H>
-#include <ORACERES.H>
-#include <OSPY.H>
-#include <OPOWER.H>
-#include <OGAME.H>
+#include <of_train.h>
+#include <oconfig.h>
+#include <osys.h>
+#include <oremote.h>
+#include <onation.h>
+#include <ounit.h>
+#include <ounitres.h>
+#include <oraceres.h>
+#include <ospy.h>
+#include <opower.h>
+#include <ogame.h>
  
 //------ define class member vars ------//
 

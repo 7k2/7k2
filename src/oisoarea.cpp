@@ -19,10 +19,10 @@
  */
 
 #include <math.h>
-#include <OISOAREA.H>
-#include <OMISC.H>
-#include <ALL.H>
-#include <OWORLD.H>
+#include <oisoarea.h>
+#include <omisc.h>
+#include <all.h>
+#include <oworld.h>
 
 //--------- Begin of function IsolateArea::IsolateArea ---------//
 IsolateArea::IsolateArea()

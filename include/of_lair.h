@@ -24,7 +24,7 @@
 #ifndef __OF_LAIR_H
 #define __OF_LAIR_H
 
-#include <OF_CAMP.H>
+#include <of_camp.h>
 
 // ------ define menu mode ----------//
 

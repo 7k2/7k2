@@ -23,11 +23,11 @@
 
 #include <string.h>
 
-#include <ALL.H>
-#include <OVGA.H>
-#include <OMOUSE.H>
-#include <OIMGRES.H>
-#include <OBITMAP.H>
+#include <all.h>
+#include <ovga.h>
+#include <omouse.h>
+#include <oimgres.h>
+#include <obitmap.h>
 
 
 //--------- Format of RES file ------------//

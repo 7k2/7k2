@@ -21,7 +21,7 @@
 // Filename   : OATTACK.CPP
 // Description : attack attribute
 
-#include <OATTACK.H>
+#include <oattack.h>
 
 
 float AttackAttribute::effectiveness ( DefenseAttribute &da )

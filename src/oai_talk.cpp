@@ -21,11 +21,11 @@
 //Filename   : OAI_TALK.CPP
 //Description: AI routines on diplomacy.
 
-#include <OCONFIG.H>
-#include <OTALKRES.H>
-#include <OTECHRES.H>
-#include <OF_MARK.H>
-#include <ONATION.H>
+#include <oconfig.h>
+#include <otalkres.h>
+#include <otechres.h>
+#include <of_mark.h>
+#include <onation.h>
 
 
 //-------- Declare static functions ---------//

@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <ODYNARR.H>
+#include <odynarr.h>
 
 //--------- BEGIN OF FUNCTION DynArray Constructor -------//
 //

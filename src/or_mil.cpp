@@ -21,23 +21,23 @@
 //Filename    : OINFOMIL.CPP
 //Description : Economy information screen
 
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OFONT.H>
-#include <OCONFIG.H>
-#include <OSPY.H>
-#include <OIMGRES.H>
-#include <OUNITRES.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OVBROWIF.H> 
-#include <OBUTTON.H>
-#include <OF_CAMP.H>
-#include <ONATION.H>
-#include <OUNIT.H>
-#include <OT_REPS.H>
-#include <OT_UNIT.H>
+#include <oinfo.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ofont.h>
+#include <oconfig.h>
+#include <ospy.h>
+#include <oimgres.h>
+#include <ounitres.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <ovbrowif.h> 
+#include <obutton.h>
+#include <of_camp.h>
+#include <onation.h>
+#include <ounit.h>
+#include <ot_reps.h>
+#include <ot_unit.h>
 
 //------------- Define coordinations -----------//
 

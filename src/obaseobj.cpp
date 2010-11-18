@@ -21,13 +21,13 @@
 //Filename   : OBASEOBJ.CPP
 //Description: BaseObj Array
 
-#include <OWARPT.H>
-#include <OBASEOBJ.H>
-#include <OFIRM.H>
-#include <ONATION.H>
-#include <OSE.H>
-#include <OVOLUME.H>
-#include <ONEWS.H>
+#include <owarpt.h>
+#include <obaseobj.h>
+#include <ofirm.h>
+#include <onation.h>
+#include <ose.h>
+#include <ovolume.h>
+#include <onews.h>
 
 //-------- Begin of function BaseObj::BaseObj --------//
 

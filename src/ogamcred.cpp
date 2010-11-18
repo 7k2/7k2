@@ -21,15 +21,15 @@
 // Filename    : OGAMCRED.CPP
 // Description : viewing credits
 
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OVGALOCK.H>
-#include <OFONT.H>
-#include <OMOUSE.H>
-#include <OMUSIC.H>
-#include <OIMGRES.H>
-#include <OGAME.H>
-#include <OFILETXT.H>
+#include <osys.h>
+#include <ovga.h>
+#include <ovgalock.h>
+#include <ofont.h>
+#include <omouse.h>
+#include <omusic.h>
+#include <oimgres.h>
+#include <ogame.h>
+#include <ofiletxt.h>
 
 //------ Declare static functions --------//
 

@@ -21,8 +21,8 @@
 ;              but without color key transparency handling
 
 
-INCLUDE IMGFUN.INC
-INCLUDE COLCODE.INC
+INCLUDE imgfun.inc
+INCLUDE colcode.inc
 
 .CODE
 

@@ -22,13 +22,13 @@
 //Description: AI - capturing independent towns
 
 #include <stdlib.h>
-#include <ALL.H>
-#include <OREMOTE.H>
-#include <OCONFIG.H>
-#include <OUNIT.H>
-#include <OF_CAMP.H>
-#include <OF_INN.H>
-#include <ONATION.H>
+#include <all.h>
+#include <oremote.h>
+#include <oconfig.h>
+#include <ounit.h>
+#include <of_camp.h>
+#include <of_inn.h>
+#include <onation.h>
 
 //------- define struct CaptureTown -------//
 

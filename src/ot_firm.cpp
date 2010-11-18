@@ -22,11 +22,11 @@
 // Description : Text resource firm
 
 
-#include <OT_FIRM.H>
-#include <ALL.H>
-#include <OGODRES.H>
-#include <OITEM.H>
-#include <OF_OFF.H>
+#include <ot_firm.h>
+#include <all.h>
+#include <ogodres.h>
+#include <oitem.h>
+#include <of_off.h>
 
 
 void TextResFirm::init()

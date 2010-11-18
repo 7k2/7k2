@@ -21,23 +21,23 @@
 //Filename    : ONEWS.CPP
 //Description : Object News
 
-#include <ONEWS.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OINFO.H>
-#include <OHELP.H>
-#include <OGAME.H>
-#include <OCONFIG.H>
-#include <OSYS.H>
-#include <OMOUSE.H>
-#include <OFONT.H>
-#include <ODATE.H>
-#include <OIMGRES.H>
-#include <ONATION.H>
-#include <OTALKRES.H>
-#include <OSE.H>
-#include <OTUTOR.H>
-// #include <OWORLDMT.H>
+#include <onews.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <oinfo.h>
+#include <ohelp.h>
+#include <ogame.h>
+#include <oconfig.h>
+#include <osys.h>
+#include <omouse.h>
+#include <ofont.h>
+#include <odate.h>
+#include <oimgres.h>
+#include <onation.h>
+#include <otalkres.h>
+#include <ose.h>
+#include <otutor.h>
+// #include <oworldmt.h>
 
 
 //------- define screen coordinations -------//

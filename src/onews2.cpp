@@ -21,18 +21,18 @@
 //Filename    : ONEWS2.CPP
 //Description : News adding functions
 
-#include <OTOWN.H>
-#include <ONATION.H>
-#include <OHERORES.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OTALKRES.H>
-#include <OFIRM.H>
-#include <OSPY.H>
-#include <OUNIT.H>
-#include <OTORNADO.H>
-#include <ONEWS.H>
-#include <OSE.H> 
+#include <otown.h>
+#include <onation.h>
+#include <oherores.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <otalkres.h>
+#include <ofirm.h>
+#include <ospy.h>
+#include <ounit.h>
+#include <otornado.h>
+#include <onews.h>
+#include <ose.h> 
 
 //-------- Declare static functions ---------//
 

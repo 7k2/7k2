@@ -21,11 +21,11 @@
 // Filename    : OTOWNAT.CPP
 // Description : town attack
 
-#include <OTOWN.H>
-#include <ALL.H>
-#include <ONATIONA.H>
-#include <OBULLET.H>
-#include <OSYS.H>
+#include <otown.h>
+#include <all.h>
+#include <onationa.h>
+#include <obullet.h>
+#include <osys.h>
 
 #define TOWN_BULLET_DAMAGE_BASE 6
 #define TOWN_BULLET_DAMAGE_LOYAL 8

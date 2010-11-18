@@ -22,20 +22,20 @@
 // Description : destruting firm
 
 
-#include <OSTR.H>
-#include <OFIRMRES.H>
-#include <OFIRMDIE.H>
-#include <OGAMESET.H>
-#include <OGAME.H>
-#include <ORESDB.H>
-#include <ALL.H>
-#include <OWORLDMT.H>
-#include <OVGA.H>
-#include <OCOLTBL.H>
-#include <OMISC.H>
-#include <OSYS.H>
-#include <OCONFIG.H>
-#include <OSERES.H>
+#include <ostr.h>
+#include <ofirmres.h>
+#include <ofirmdie.h>
+#include <ogameset.h>
+#include <ogame.h>
+#include <oresdb.h>
+#include <all.h>
+#include <oworldmt.h>
+#include <ovga.h>
+#include <ocoltbl.h>
+#include <omisc.h>
+#include <osys.h>
+#include <oconfig.h>
+#include <oseres.h>
 
 #define FIRM_BUILD_DB 	"FDBUILD"
 #define FIRM_FRAME_DB 	"FDFRAME"

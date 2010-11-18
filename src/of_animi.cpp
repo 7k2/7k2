@@ -22,34 +22,34 @@
 // Descriptiion : Animal Habitat interface functions
 
 
-#include <OF_ANIM.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <OINFO.H>
-#include <OBOX.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OSTR.H>
-#include <OIMGRES.H>
-#include <OFONT.H>
-#include <OMOUSE.H>
-#include <OHELP.H>
-#include <OBUTT3D.H>
-#include <OSERES.H>
-#include <OCONFIG.H>
-#include <OGAME.H>
-#include <OREMOTE.H>
-#include <OSPRTRES.H>
-#include <OSFRMRES.H>
-#include <ORACERES.H>
-#include <OHERORES.H>
-#include <OWORLDMT.H>
-#include <ONATION.H>
-#include <OSPY.H>
-#include <OWORLD.H>
-#include <OSE.H>
-#include <OT_FIRM.H>
-#include <OT_UNIT.H>
+#include <of_anim.h>
+#include <all.h>
+#include <osys.h>
+#include <oinfo.h>
+#include <obox.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ostr.h>
+#include <oimgres.h>
+#include <ofont.h>
+#include <omouse.h>
+#include <ohelp.h>
+#include <obutt3d.h>
+#include <oseres.h>
+#include <oconfig.h>
+#include <ogame.h>
+#include <oremote.h>
+#include <osprtres.h>
+#include <osfrmres.h>
+#include <oraceres.h>
+#include <oherores.h>
+#include <oworldmt.h>
+#include <onation.h>
+#include <ospy.h>
+#include <oworld.h>
+#include <ose.h>
+#include <ot_firm.h>
+#include <ot_unit.h>
 
 // ----------- Define constant --------//
 

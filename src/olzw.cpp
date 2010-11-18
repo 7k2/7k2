@@ -22,9 +22,9 @@
 // Description : LZW compression and decompression
 
 
-#include <ALL.H>
-#include <OFILE.H>
-#include <OLZW.H>
+#include <all.h>
+#include <ofile.h>
+#include <olzw.h>
 
 // --------- define constant ------------//
 

@@ -21,31 +21,31 @@
 //Filename    : OSPY.CPP
 //Description : Object Spy
 
-#include <OSPY.H>
-#include <OPOWER.H>
-#include <OGAME.H>
-#include <ODATE.H>
-#include <ONEWS.H>
-#include <OFONT.H>
-#include <OIMGRES.H>
-#include <OUNIT.H>
-#include <OWORLD.H>
-#include <OBUTTON.H>
-#include <OBUTT3D.H>
-#include <OBUTTCUS.H>
-#include <OFIRM.H>
-#include <OFIRMALL.H>
-#include <OTOWN.H>
-#include <ONATION.H>
-#include <ORACERES.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OSYS.H>
-#include <OTECHRES.H>
-#include <OTECH.H>
-#include <OSE.H>
-#include <OT_FIRM.H>
-#include <OT_REPS.H>
+#include <ospy.h>
+#include <opower.h>
+#include <ogame.h>
+#include <odate.h>
+#include <onews.h>
+#include <ofont.h>
+#include <oimgres.h>
+#include <ounit.h>
+#include <oworld.h>
+#include <obutton.h>
+#include <obutt3d.h>
+#include <obuttcus.h>
+#include <ofirm.h>
+#include <ofirmall.h>
+#include <otown.h>
+#include <onation.h>
+#include <oraceres.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <osys.h>
+#include <otechres.h>
+#include <otech.h>
+#include <ose.h>
+#include <ot_firm.h>
+#include <ot_reps.h>
 
 //----- Define constants for viewing secret menu ------//
 

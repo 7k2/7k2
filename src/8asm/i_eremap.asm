@@ -21,7 +21,7 @@
 ; a modified version, 16 mask
 ; second modification, 8-bit remap table selector instead of 1-bit tone mask
 
-INCLUDE IMGFUN.INC
+INCLUDE imgfun.inc
 
 ; ------------ Define constant ------------
 

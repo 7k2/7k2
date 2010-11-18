@@ -25,19 +25,19 @@
 #define __OSPRITE_H
 
 #ifndef __OBASEOBJ_H
-#include <OBASEOBJ.H>
+#include <obaseobj.h>
 #endif
 
 #ifndef __ODYNARRB_H
-#include <ODYNARRB.H>
+#include <odynarrb.h>
 #endif
 
 #ifndef __OSPRTRES_H
-#include <OSPRTRES.H>
+#include <osprtres.h>
 #endif
 
 #ifndef __OWORLD_H
-#include <OWORLD.H>
+#include <oworld.h>
 #endif
 
 

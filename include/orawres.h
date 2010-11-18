@@ -25,14 +25,14 @@
 #define __ORAWRES_H
 
 #ifndef __ORES_H
-#include <ORES.H>
+#include <ores.h>
 #endif
 
 #ifndef __ODYNARR_H
-#include <ODYNARR.H>
+#include <odynarr.h>
 #endif
 
-#include <ORESDB.H>
+#include <oresdb.h>
 
 //------------- define constant --------------//
 

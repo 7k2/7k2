@@ -21,21 +21,21 @@
 //Filename    : OF_MONSI.CPP
 //Description : Firm Monster
 
-#include <OF_MONS.H>
-#include <OMONSRES.H>
-#include <OU_MONS.H>
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <ODATE.H>
-#include <OSTR.H>
-#include <OSYS.H>
-#include <OCONFIG.H>
-#include <OSITE.H>
-#include <OFONT.H>
-#include <OBUTTON.H>
-#include <OTOWN.H>
-#include <ONATION.H>
+#include <of_mons.h>
+#include <omonsres.h>
+#include <ou_mons.h>
+#include <oinfo.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <odate.h>
+#include <ostr.h>
+#include <osys.h>
+#include <oconfig.h>
+#include <osite.h>
+#include <ofont.h>
+#include <obutton.h>
+#include <otown.h>
+#include <onation.h>
 
 
 

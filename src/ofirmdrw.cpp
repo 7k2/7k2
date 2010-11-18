@@ -21,33 +21,33 @@
 //Filename    : OFIRMDRW.CPP
 //Description : Firm drawing routines
 
-#include <OFIRM.H>
-#include <OF_BASE.H>
-#include <COLCODE.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <ONATION.H>
-#include <OSPRITE.H>
-#include <OINFO.H>
-#include <OFIRMRES.H>
-#include <ORAWRES.H>
-#include <OPOWER.H>
-#include <OGAME.H>
-#include <OANLINE.H>
-#include <OIMGRES.H>
-#include <OWORLD.H>
-#include <OWORLDMT.H>
-#include <OSE.H>
-#include <OREMOTE.H>
-#include <OF_LAIR.H>
-#include <OF_FORT.H>
-#include <OF_LISH.H>
-#include <OBITMAP.H>
-#include <OBLOB2W.H>
-#include <OLOCATE.H>
-#include <OHELP.H>
-#include <OSEDITOR.H>
+#include <ofirm.h>
+#include <of_base.h>
+#include <colcode.h>
+#include <osys.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <onation.h>
+#include <osprite.h>
+#include <oinfo.h>
+#include <ofirmres.h>
+#include <orawres.h>
+#include <opower.h>
+#include <ogame.h>
+#include <oanline.h>
+#include <oimgres.h>
+#include <oworld.h>
+#include <oworldmt.h>
+#include <ose.h>
+#include <oremote.h>
+#include <of_lair.h>
+#include <of_fort.h>
+#include <of_lish.h>
+#include <obitmap.h>
+#include <oblob2w.h>
+#include <olocate.h>
+#include <ohelp.h>
+#include <oseditor.h>
 
 //------- define static vars -------//
 

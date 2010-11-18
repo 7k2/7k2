@@ -21,24 +21,24 @@
 //Filename   : OU_GODI.CPP
 //Description: God Unit
 
-#include <OVGA.H>
-#include <OU_GOD.H>
-#include <OSYS.H>
-#include <OMOUSE.H>
-#include <OGAME.H>
-#include <OMODEID.H>
-#include <OBUTT3D.H>
-#include <OGODRES.H>
-#include <OF_BASE.H>
-#include <ORACERES.H>
-#include <OPOWER.H>
-#include <OWEATHER.H>
-#include <OTORNADO.H>
-#include <OIMGRES.H>
-#include <OFONT.H>
-#include <OBITMAPW.H>
-#include <OHELP.H>
-#include <OT_UNIT.H>
+#include <ovga.h>
+#include <ou_god.h>
+#include <osys.h>
+#include <omouse.h>
+#include <ogame.h>
+#include <omodeid.h>
+#include <obutt3d.h>
+#include <ogodres.h>
+#include <of_base.h>
+#include <oraceres.h>
+#include <opower.h>
+#include <oweather.h>
+#include <otornado.h>
+#include <oimgres.h>
+#include <ofont.h>
+#include <obitmapw.h>
+#include <ohelp.h>
+#include <ot_unit.h>
 
 //--------- Define static vars ----------//
 

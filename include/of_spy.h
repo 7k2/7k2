@@ -25,7 +25,7 @@
 #ifndef __OF_SPY_H
 #define __OF_SPY_H
 
-#include <OF_TRAIN.H>
+#include <of_train.h>
 
 class FirmSpy : public FirmTrain
 {

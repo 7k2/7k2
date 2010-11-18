@@ -22,22 +22,22 @@
 // Description  : Monster Fortress
 
 
-#include <OF_MFORT.H>
-#include <OSYS.H>
-#include <OREMOTE.H>
-#include <OPOWER.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OROCKRES.H>
-#include <OTERRAIN.H>
-#include <ONATIONA.H>
-#include <OUNIT.H>
-#include <OSPY.H>
-#include <OSITE.H>
-#include <OGAME.H>
-#include <OITEMRES.H>
+#include <of_mfort.h>
+#include <osys.h>
+#include <oremote.h>
+#include <opower.h>
+#include <otech.h>
+#include <otechres.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <orockres.h>
+#include <oterrain.h>
+#include <onationa.h>
+#include <ounit.h>
+#include <ospy.h>
+#include <osite.h>
+#include <ogame.h>
+#include <oitemres.h>
 
 
 // ----- begin of function FirmMonsterFortress::FirmMonsterFortress -----//

@@ -22,16 +22,16 @@
 //Description : Wall resource object
 //Ownership   : Gilbert
 
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OFONT.H>
-#include <OGAMESET.H>
-#include <OWORLD.H>
-// #include <OWORLDMT.H>
-#include <ONATION.H>
-#include <WALLTILE.H>
-#include <OWALLRES.H>
+#include <osys.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ofont.h>
+#include <ogameset.h>
+#include <oworld.h>
+// #include <oworldmt.h>
+#include <onation.h>
+#include <walltile.h>
+#include <owallres.h>
 
 //---------- #define constant ------------//
 

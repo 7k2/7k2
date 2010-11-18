@@ -21,9 +21,9 @@
 //Filename    : OF_BASE2.CPP
 //Description : Firm Base - part 2, the AI functions
 
-#include <ONATION.H>
-#include <OTOWN.H>
-#include <OF_BASE.H>
+#include <onation.h>
+#include <otown.h>
+#include <of_base.h>
 
 //--------- Begin of function FirmBase::process_ai ---------//
 

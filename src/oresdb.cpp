@@ -22,10 +22,10 @@
 //Description : Resource library with database index reading object
 
 #include <string.h>
-#include <OSYS.H>
-#include <ODB.H>
-#include <ORESDB.H>
-#include <ALL.H>
+#include <osys.h>
+#include <odb.h>
+#include <oresdb.h>
+#include <all.h>
 
 
 //-------------------------------------------------------//

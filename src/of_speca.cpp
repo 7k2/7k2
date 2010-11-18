@@ -21,12 +21,12 @@
 //Filename    : OF_SPECA.CPP
 //Description : Firm special unit training structure - AI functions
 
-#include <ONATION.H>
-#include <OINFO.H>
-#include <OTOWN.H>
-#include <OUN_GRP.H>
-#include <OF_CAMP.H>
-#include <OF_SPEC.H>
+#include <onation.h>
+#include <oinfo.h>
+#include <otown.h>
+#include <oun_grp.h>
+#include <of_camp.h>
+#include <of_spec.h>
 
 //--------- Begin of function FirmSpecial::process_ai ---------//
 

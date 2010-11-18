@@ -22,12 +22,12 @@
 // Description : Town wall
 
 
-#include <OTOWN.H>
-#include <OCONFIG.H>
-#include <OREMOTE.H>
-#include <OINFO.H>
-#include <ONATION.H>
-#include <OGODRES.H>
+#include <otown.h>
+#include <oconfig.h>
+#include <oremote.h>
+#include <oinfo.h>
+#include <onation.h>
+#include <ogodres.h>
 
 
 //-------- begin of function Town::process_wall ----------//

@@ -22,16 +22,16 @@
 // Description: growth of plant
 // Ownership  : Gilbert
 
-#include <OMATRIX.H>
-#include <OWORLD.H>
-#include <OWORLDMT.H>
-#include <OWEATHER.H>
-#include <OPLANT.H>
-#include <OTERRAIN.H>
-#include <ALL.H>
+#include <omatrix.h>
+#include <oworld.h>
+#include <oworldmt.h>
+#include <oweather.h>
+#include <oplant.h>
+#include <oterrain.h>
+#include <all.h>
 #include <math.h>
-#include	<OROCKRES.H>
-#include	<OROCK.H>
+#include	<orockres.h>
+#include	<orock.h>
 
 //------------ Define constant ---------------//
 static short opt_temp[3] = { 32, 25, 28 };		// tropical,temperate and both

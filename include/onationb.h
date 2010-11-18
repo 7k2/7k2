@@ -25,19 +25,19 @@
 #define __ONATIONB_H
 
 #ifndef __OINFO_H
-#include <OINFO.H>
+#include <oinfo.h>
 #endif
 
 #ifndef __ORAWRES_H
-#include <ORAWRES.H>
+#include <orawres.h>
 #endif
 
 #ifndef __OTALKMSG_H
-#include <OTALKMSG.H>
+#include <otalkmsg.h>
 #endif
 
 #ifndef __OUNITRES_H
-#include <OUNITRES.H>
+#include <ounitres.h>
 #endif
 
 //---------- Define constant -----------//

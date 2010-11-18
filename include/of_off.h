@@ -25,8 +25,8 @@
 #ifndef __OF_OFF_H
 #define __OF_OFF_H
 
-#include <OFIRM.H>
-#include <OF_MAGI.H>
+#include <ofirm.h>
+#include <of_magi.h>
 
 class FirmOffensive : public FirmMagic
 {

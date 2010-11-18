@@ -21,28 +21,28 @@
 //Filename    : OFIRMA.CPP
 //Description : Object Firm Array
 
-#include <OFIRMA.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <ONATION.H>
-#include <OSYS.H>
-#include <OGAME.H>
-#include <OCONFIG.H>
-#include <OWORLDMT.H>
-#include <ORACERES.H>
-#include <OTOWN.H>
-#include <OFIRMALL.H>
-#include <OFIRMRES.H>
-#include <OGODRES.H>
-#include <OINFO.H>
-#include <OSERES.H>
-#include <OLOG.H>
-#include <OWORLD.H>
-#include <OU_CARA.H>
+#include <ofirma.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <onation.h>
+#include <osys.h>
+#include <ogame.h>
+#include <oconfig.h>
+#include <oworldmt.h>
+#include <oraceres.h>
+#include <otown.h>
+#include <ofirmall.h>
+#include <ofirmres.h>
+#include <ogodres.h>
+#include <oinfo.h>
+#include <oseres.h>
+#include <olog.h>
+#include <oworld.h>
+#include <ou_cara.h>
 
 //### begin alex 22/9 ###//
 #ifdef DEBUG
-#include <OFONT.H>
+#include <ofont.h>
 
 static unsigned long	last_firm_ai_profile_time = 0L;
 static unsigned long	firm_ai_profile_time = 0L;

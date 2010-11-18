@@ -22,17 +22,17 @@
 //Description: God Unit
 
 #include <windows.h>
-#include <OU_GOD.H>
-#include <OSYS.H>
-#include <OGAME.H>
-#include <OGODRES.H>
-#include <OF_BASE.H>
-#include <OF_CAMP.H>
-#include <OF_INN.H>
-#include <ORACERES.H>
-#include <OWEATHER.H>
-#include <OTORNADO.H>
-#include <OSPY.H>
+#include <ou_god.h>
+#include <osys.h>
+#include <ogame.h>
+#include <ogodres.h>
+#include <of_base.h>
+#include <of_camp.h>
+#include <of_inn.h>
+#include <oraceres.h>
+#include <oweather.h>
+#include <otornado.h>
+#include <ospy.h>
 #include <math.h>
 
 // -------- Begin of function UnitGod::UnitGod --------//

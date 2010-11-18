@@ -21,8 +21,8 @@
 // Filename    : OSERIAL.CPP
 // Description : Serial number repository , acquire, store, and checking
 
-#include <OSERIAL.H>
-#include <ALL.H>
+#include <oserial.h>
+#include <all.h>
 
 
 // ------ begin of function SerialRepository::SerialRepository --------//

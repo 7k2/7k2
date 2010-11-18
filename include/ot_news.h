@@ -25,7 +25,7 @@
 #ifndef __OT_NEWS_H
 #define __OT_NEWS_H
 
-#include <OTXTRES.H>
+#include <otxtres.h>
 
 class TextResNews : public TextResource
 {

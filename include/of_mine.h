@@ -25,11 +25,11 @@
 #define __OF_MINE_H
 
 #ifndef __OF_WORK_H
-#include <OF_WORK.H>
+#include <of_work.h>
 #endif
 
 #ifndef __ORAWRES_H
-#include <ORAWRES.H>
+#include <orawres.h>
 #endif
 
 //-------- define constant ---------//

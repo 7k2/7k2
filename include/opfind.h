@@ -25,7 +25,7 @@
 #define __OPFIND_H
 
 #ifndef __ALL_H
-#include <ALL.H>
+#include <all.h>
 #endif
 
 #define MAX_CHILD_NODE 8  // maximum 8 directions

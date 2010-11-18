@@ -21,30 +21,30 @@
 //Filename    : OGFILE3.CPP
 //Description : Object Game file, save game and restore game, part 3
 
-#include <OUNIT.H>
+#include <ounit.h>
 
-#include <OBULLET.H>
-#include <OB_PROJ.H>
-#include <OSITE.H>
-#include <OTOWN.H>
-#include <ONATION.H>
-#include <OFIRM.H>
-#include <OF_ANIM.H>
-#include <OTORNADO.H>
-#include <OREBEL.H>
-#include <OSPY.H>
-#include <OSNOWG.H>
-#include <OREGION.H>
-#include <OSTATE.H>
-#include <OREGIONS.H>
-#include <ONEWS.H> 
-#include <OWAYPNT.H>
-#include <OGFILE.H>
-#include <OUNIT.H>
-#include <OPFIND.H>
-#include <OUN_GRP.H>
+#include <obullet.h>
+#include <ob_proj.h>
+#include <osite.h>
+#include <otown.h>
+#include <onation.h>
+#include <ofirm.h>
+#include <of_anim.h>
+#include <otornado.h>
+#include <orebel.h>
+#include <ospy.h>
+#include <osnowg.h>
+#include <oregion.h>
+#include <ostate.h>
+#include <oregions.h>
+#include <onews.h> 
+#include <owaypnt.h>
+#include <ogfile.h>
+#include <ounit.h>
+#include <opfind.h>
+#include <oun_grp.h>
 
-#include <OGF_V1.H>
+#include <ogf_v1.h>
 
 //------- declare static functions -------//
 

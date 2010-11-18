@@ -21,8 +21,8 @@
 ;              surface on the same place with transparency handling
 
 
-INCLUDE IMGFUN.INC
-INCLUDE COLCODE.INC
+INCLUDE imgfun.inc
+INCLUDE colcode.inc
 
 .CODE
 

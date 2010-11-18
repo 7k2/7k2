@@ -23,11 +23,11 @@
 //Ownership   : Gilbert
 
 
-#include <OAUDIO.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <OBOX.H>
-#include <OVGALOCK.H>
+#include <oaudio.h>
+#include <all.h>
+#include <osys.h>
+#include <obox.h>
+#include <ovgalock.h>
 
 #include <windows.h>
 #include <windowsx.h>

@@ -21,14 +21,14 @@
 // Filename    : OB_PROG.CPP
 // Description : BulletProgram, Programming bullet
 
-#include <OB_PROG.H>
-#include <OVGA.H>
-#include <OMAGIC.H>
-#include <OF_FORT.H>
-#include <OSFRMRES.H>
-#include <OWORLDMT.H>
-#include <OSERES.H>
-#include <OCONFIG.H>
+#include <ob_prog.h>
+#include <ovga.h>
+#include <omagic.h>
+#include <of_fort.h>
+#include <osfrmres.h>
+#include <oworldmt.h>
+#include <oseres.h>
+#include <oconfig.h>
 #include <math.h>
 
 // --------- begin of function BulletProgram::BulletProgram --------//

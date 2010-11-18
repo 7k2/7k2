@@ -21,16 +21,16 @@
 //Filename   : OAI_ACT2.CPP
 //Description: AI - action progressing functions
 
-#include <ALL.H> 
-#include <OBOX.H>
-#include <OSYS.H>
-#include <OSPY.H>
-#include <OINFO.H>
-#include <OUNIT.H>
-#include <OF_CAMP.H>
-#include <OU_WAGON.H>
-#include <ONATION.H>
-#include <OGAME.H>
+#include <all.h> 
+#include <obox.h>
+#include <osys.h>
+#include <ospy.h>
+#include <oinfo.h>
+#include <ounit.h>
+#include <of_camp.h>
+#include <ou_wagon.h>
+#include <onation.h>
+#include <ogame.h>
 
 //-------- Begin of function Nation::ai_build_firm -------//
 //

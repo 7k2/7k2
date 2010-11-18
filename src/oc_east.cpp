@@ -21,15 +21,15 @@
 //Filename   : OC_EAST.CPP
 //Description: CampaignEastWest
 
-#include <ALL.H>
-#include <OINFO.H>
-#include <ONATION.H>
-#include <OHERORES.H>
-#include <OGODRES.H>
-#include <OSTATE.H>
-#include <OC_EAST.H>
-#include <OGAME.H>
-#include <OT_CAMP.H>
+#include <all.h>
+#include <oinfo.h>
+#include <onation.h>
+#include <oherores.h>
+#include <ogodres.h>
+#include <ostate.h>
+#include <oc_east.h>
+#include <ogame.h>
+#include <ot_camp.h>
 
 //----- Begin of function CampaignEastWest::init_new_campaign_derived -----//
 //

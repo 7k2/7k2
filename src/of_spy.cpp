@@ -21,15 +21,15 @@
 // Filename    : OF_SPY.CPP
 // Description : Firm College
 
-#include <OF_SPY.H>
-#include <ALL.H>
-#include <OREMOTE.H>
-#include <ONATION.H>
-#include <OUNIT.H>
-#include <OUNITRES.H>
-#include <ORACERES.H>
-#include <OTOWN.H>
-#include <OSPY.H>
+#include <of_spy.h>
+#include <all.h>
+#include <oremote.h>
+#include <onation.h>
+#include <ounit.h>
+#include <ounitres.h>
+#include <oraceres.h>
+#include <otown.h>
+#include <ospy.h>
 
 //-------- Define constant ----------//
 

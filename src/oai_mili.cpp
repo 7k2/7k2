@@ -21,10 +21,10 @@
 //Filename   : OAI_MILI.CPP
 //Description: AI - think about expanding the military force
 
-#include <ALL.H>
-#include <OTOWN.H>
-#include <OF_CAMP.H>
-#include <ONATION.H>
+#include <all.h>
+#include <otown.h>
+#include <of_camp.h>
+#include <onation.h>
 
 //--------- Begin of function Nation::think_military --------//
 

@@ -22,10 +22,10 @@
 // Description : Text Resource end condition
 
 
-#include <OT_ENDC.H>
-#include <ALL.H>
-#include <OEND_CON.H>
-#include <OT_UNIT.H>
+#include <ot_endc.h>
+#include <all.h>
+#include <oend_con.h>
+#include <ot_unit.h>
 
 
 void TextResEndCondition::init()

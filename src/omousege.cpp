@@ -23,14 +23,14 @@
 
 #if(defined(GERMAN))
 
-#include <ALL.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OPOWER.H>
-#include <OMOUSE.H>
-#include <OMOUSECR.H>
-#include <KEY.H>
-#include <OVGALOCK.H>
+#include <all.h>
+#include <osys.h>
+#include <ovga.h>
+#include <opower.h>
+#include <omouse.h>
+#include <omousecr.h>
+#include <key.h>
+#include <ovgalock.h>
 
 // define the graphic key scan code
 // if not defined, use RMENU

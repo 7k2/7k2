@@ -18,10 +18,10 @@
  *
  */
 
-#include <OU_CARA.H>
-#include <OF_MINE.H>
-#include <OF_FACT.H>
-#include <OF_MARK.H>
+#include <ou_cara.h>
+#include <of_mine.h>
+#include <of_fact.h>
+#include <of_mark.h>
  
 //--------- Begin of function TradeStop::pick_up_set_auto ---------//
 void TradeStop::pick_up_set_auto()

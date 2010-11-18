@@ -21,33 +21,33 @@
 //Filename    : OFIRMIF.CPP
 //Description : Firm interface routines
 
-#include <OFIRM.H>
-#include <OSTR.H>
-#include <KEY.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OHELP.H>
-#include <OMOUSE.H>
-#include <OFONT.H>
-#include <OBUTT3D.H>
-#include <OBUTTON.H>
-#include <OSLIDER.H>
-#include <OCONFIG.H>
-#include <ONATION.H>
-#include <OINFO.H>
-#include <ORACERES.H>
-#include <OUNIT.H>
-#include <OSPY.H>
-#include <OTOWN.H>
-#include <OWORLD.H>
-#include <OREMOTE.H>
-#include <OIMGRES.H>
-#include <OGAME.H>
-#include <OSYS.H>
-#include <OSE.H>
-#include <OSERES.H>
-#include <OT_FIRM.H>
-#include <OT_UNIT.H>
+#include <ofirm.h>
+#include <ostr.h>
+#include <key.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ohelp.h>
+#include <omouse.h>
+#include <ofont.h>
+#include <obutt3d.h>
+#include <obutton.h>
+#include <oslider.h>
+#include <oconfig.h>
+#include <onation.h>
+#include <oinfo.h>
+#include <oraceres.h>
+#include <ounit.h>
+#include <ospy.h>
+#include <otown.h>
+#include <oworld.h>
+#include <oremote.h>
+#include <oimgres.h>
+#include <ogame.h>
+#include <osys.h>
+#include <ose.h>
+#include <oseres.h>
+#include <ot_firm.h>
+#include <ot_unit.h>
 
 //---------- Define static variables ------------//
 

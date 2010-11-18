@@ -21,13 +21,13 @@
 // Filename    : OTRAINEE.CPP
 // Description : Trainee
 
-#include <OF_TRAIN.H>
-#include <OFIRM.H>
-#include <ONATION.H>
-#include <ORACERES.H>
-#include <OSPY.H>
-#include <OGODRES.H>
-#include <OF_BASE.H>
+#include <of_train.h>
+#include <ofirm.h>
+#include <onation.h>
+#include <oraceres.h>
+#include <ospy.h>
+#include <ogodres.h>
+#include <of_base.h>
 
 
 //------ Begin of function Trainee::init --------//

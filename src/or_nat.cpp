@@ -22,29 +22,29 @@
 //Description : Nation Report
 
 #include <stdlib.h>
-#include <KEY.H>
-#include <OCONFIG.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OFONT.H>
-#include <OSTR.H>
-#include <OGETA.H>
-#include <ODATE.H>
-#include <OMOUSE.H>
-#include <OIMGRES.H>
-#include <OVBROWIF.H> 
-#include <OBUTTON.H>
-#include <OSYS.H>
-#include <ONATION.H>
-#include <OTALKRES.H>
-#include <OINFO.H>
-#include <ONEWS.H>
-#include <OREMOTE.H>
-// #include <OWORLDMT.H>
-#include <OT_REPS.H>
-#include <OT_TALK.H>
+#include <key.h>
+#include <oconfig.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ofont.h>
+#include <ostr.h>
+#include <ogeta.h>
+#include <odate.h>
+#include <omouse.h>
+#include <oimgres.h>
+#include <ovbrowif.h> 
+#include <obutton.h>
+#include <osys.h>
+#include <onation.h>
+#include <otalkres.h>
+#include <oinfo.h>
+#include <onews.h>
+#include <oremote.h>
+// #include <oworldmt.h>
+#include <ot_reps.h>
+#include <ot_talk.h>
 
 //------------- Define coordinations -----------//
 

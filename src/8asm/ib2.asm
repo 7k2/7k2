@@ -20,7 +20,7 @@
 ;Description : Blt a bitmap to the display surface buffer without color key transparency handling
 
 
-INCLUDE IMGFUN.INC
+INCLUDE imgfun.inc
 
 .CODE
 

@@ -25,11 +25,11 @@
 #define __OU_GOD_H
 
 #ifndef __OUNIT_H
-#include <OUNIT.H>
+#include <ounit.h>
 #endif
 
 #ifndef __OFIRM_H
-#include <OFIRM.H>
+#include <ofirm.h>
 #endif
 
 //----------- Define constant ------------//

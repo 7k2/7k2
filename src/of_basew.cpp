@@ -22,23 +22,23 @@
 // Description : Seat of power wish
 
 
-#include <OF_BASE.H>
-#include <OREMOTE.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OUNITRES.H>
-#include <OHERORES.H>
-#include <OITEMRES.H>
-#include <ONATION.H>
-#include <OSITE.H>
-#include <OUNIT.H>
-#include <OSPY.H>
-#include <OTOWN.H>
-#include <OF_CAMP.H>
-#include <OF_TRAIN.H>
-#include <OT_FIRM.H>
+#include <of_base.h>
+#include <oremote.h>
+#include <otech.h>
+#include <otechres.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <ounitres.h>
+#include <oherores.h>
+#include <oitemres.h>
+#include <onation.h>
+#include <osite.h>
+#include <ounit.h>
+#include <ospy.h>
+#include <otown.h>
+#include <of_camp.h>
+#include <of_train.h>
+#include <ot_firm.h>
 
 
 enum

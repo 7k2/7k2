@@ -19,7 +19,7 @@
 ;Filename    : I_FREMAP.ASM
 ;Description : Blt fog remap of 32x32 to the display surface buffer
 
-INCLUDE IMGFUN.INC
+INCLUDE imgfun.inc
 
 ; ------------ Define constant ------------
 

@@ -22,27 +22,27 @@
 // Description  : Monster Fortress Interface functions
 
 
-#include <OF_MFORT.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OIMGRES.H>
-#include <OMOUSE.H>
-#include <OFONT.H>
-#include <OBUTTON.H>
-#include <OBUTT3D.H>
-#include <OSYS.H>
-#include <OSE.H>
-#include <OSERES.H>
-#include <OREMOTE.H>
-#include <OINFO.H>
-#include <OMONSRES.H>
-#include <OROCKRES.H>
-#include <ONATION.H>
-#include <OUNIT.H>
-#include <OSPY.H>
-#include <OITEMRES.H>
-#include <OBITMAP.H>
-#include <OT_UNIT.H>
+#include <of_mfort.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <oimgres.h>
+#include <omouse.h>
+#include <ofont.h>
+#include <obutton.h>
+#include <obutt3d.h>
+#include <osys.h>
+#include <ose.h>
+#include <oseres.h>
+#include <oremote.h>
+#include <oinfo.h>
+#include <omonsres.h>
+#include <orockres.h>
+#include <onation.h>
+#include <ounit.h>
+#include <ospy.h>
+#include <oitemres.h>
+#include <obitmap.h>
+#include <ot_unit.h>
 
 
 // --------- define constant --------//

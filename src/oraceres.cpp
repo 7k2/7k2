@@ -21,13 +21,13 @@
 //Filename    : ORACERES.CPP
 //Description : Race resource object
 
-#include <ORACERES.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <OGAMESET.H>
-#include <OSKILL.H>
-#include <OUNITRES.H>
-#include <OTRANSL.H>
+#include <oraceres.h>
+#include <all.h>
+#include <osys.h>
+#include <ogameset.h>
+#include <oskill.h>
+#include <ounitres.h>
+#include <otransl.h>
 
 //---------- #define constant ------------//
 

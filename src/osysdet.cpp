@@ -21,34 +21,34 @@
 //Filename    : OSYSDET.CPP
 //Description : class Sys - detect functions
 
-#include <OSYS.H>
-#include <OINFO.H>
-#include <KEY.H>
-#include <COLOR.H>
-#include <OMODEID.H>
-#include <OCAMPGN.H>
-#include <OCONFIG.H>
-#include <OMOUSE.H>
-#include <OREMOTE.H>
-#include <OOPTMENU.H>
-#include <OINGMENU.H>
-#include <OGODRES.H>
-#include <OTIPS.H>
-#include <OGAME.H>
-#include <OMAGIC.H>
-#include <OTUTOR.H>
-#include <OBOX.H>
-#include <OSITE.H>
-#include <OWORLD.H>
-#include <OWORLDMT.H>
-#include <ONEWS.H>
-#include <OSPY.H>
-#include <ONATION.H>
-#include <OF_BASE.H>
-#include <OF_CAMP.H>
-#include <OTECHRES.H>
-#include <OUN_GRP.H>
-#include <OT_GMENU.H>
+#include <osys.h>
+#include <oinfo.h>
+#include <key.h>
+#include <color.h>
+#include <omodeid.h>
+#include <ocampgn.h>
+#include <oconfig.h>
+#include <omouse.h>
+#include <oremote.h>
+#include <ooptmenu.h>
+#include <oingmenu.h>
+#include <ogodres.h>
+#include <otips.h>
+#include <ogame.h>
+#include <omagic.h>
+#include <otutor.h>
+#include <obox.h>
+#include <osite.h>
+#include <oworld.h>
+#include <oworldmt.h>
+#include <onews.h>
+#include <ospy.h>
+#include <onation.h>
+#include <of_base.h>
+#include <of_camp.h>
+#include <otechres.h>
+#include <oun_grp.h>
+#include <ot_gmenu.h>
 
 
 //------- Define static functions -----------//

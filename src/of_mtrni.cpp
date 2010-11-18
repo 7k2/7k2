@@ -21,25 +21,25 @@
 // Filename    : OF_MTRNI.CPP
 // Description : FirmMonsterTrain Interface
 
-#include <OF_MTRN.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OMOUSE.H>
-#include <OFONT.H>
-#include <OIMGRES.H>
-#include <OBUTT3D.H>
-#include <OREMOTE.H>
-#include <OUNITRES.H>
-#include <ORACERES.H>
-#include <OCONFIG.H>
-#include <OINFO.H>
-#include <ONATION.H>
-#include <OSPY.H> 
-#include <OITEMRES.H>
-#include <OBITMAP.H>
-#include <OSE.H>
-#include <OSERES.H>
-#include <OT_UNIT.H>
+#include <of_mtrn.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <omouse.h>
+#include <ofont.h>
+#include <oimgres.h>
+#include <obutt3d.h>
+#include <oremote.h>
+#include <ounitres.h>
+#include <oraceres.h>
+#include <oconfig.h>
+#include <oinfo.h>
+#include <onation.h>
+#include <ospy.h> 
+#include <oitemres.h>
+#include <obitmap.h>
+#include <ose.h>
+#include <oseres.h>
+#include <ot_unit.h>
 
 // --------- define constant --------//
 

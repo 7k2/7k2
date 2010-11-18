@@ -26,7 +26,7 @@
 #define __OTXTRES_H
 
 
-#include <OSTR.H>
+#include <ostr.h>
 #include <stdarg.h>
 
 #define CHECK_MARK_STRLEN 4

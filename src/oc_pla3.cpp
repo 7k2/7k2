@@ -21,18 +21,18 @@
 // Filename    : OC_PLA3.CPP
 // Description : sub-plot 3
 
-#include <OC_EAST.H>
-#include <OUNITRES.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OFIRMRES.H>
-#include <OTECHRES.H>
-#include <OTECH.H>
-#include <ONATIONA.H>
-#include <ONATION2.H>
-#include <OF_BASE.H>
-#include <OTALKRES.H>
-#include <OGODRES.H>
+#include <oc_east.h>
+#include <ounitres.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <ofirmres.h>
+#include <otechres.h>
+#include <otech.h>
+#include <onationa.h>
+#include <onation2.h>
+#include <of_base.h>
+#include <otalkres.h>
+#include <ogodres.h>
 
 
 /*

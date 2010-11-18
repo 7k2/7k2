@@ -21,18 +21,18 @@
 //Filename    : OF_CAMPA.CPP
 //Description : Firm Military Camp - AI functions
 
-#include <ONATION.H>
-#include <OINFO.H>
-#include <OBATTLE.H>
-#include <OCONFIG.H>  
-#include <OTOWN.H>
-#include <OSPY.H>
-#include <OUNIT.H>
-#include <OUN_GRP.H>
-#include <OF_INN.H>
-#include <OF_LAIR.H>
-#include <OF_CAMP.H>
-#include <OGAME.H>
+#include <onation.h>
+#include <oinfo.h>
+#include <obattle.h>
+#include <oconfig.h>  
+#include <otown.h>
+#include <ospy.h>
+#include <ounit.h>
+#include <oun_grp.h>
+#include <of_inn.h>
+#include <of_lair.h>
+#include <of_camp.h>
+#include <ogame.h>
 
 //--------- Begin of function FirmCamp::process_ai ---------//
 

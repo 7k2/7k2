@@ -25,15 +25,15 @@
 #define __OTALKRES_H
 
 #ifndef __OSTR_H
-#include <OSTR.H>
+#include <ostr.h>
 #endif
 
 #ifndef __ODYNARRB_H
-#include <ODYNARRB.H>
+#include <odynarrb.h>
 #endif
 
 #ifndef __OTALKMSG_H
-#include <OTALKMSG.H>
+#include <otalkmsg.h>
 #endif
 
 //-------- define constant ----------//

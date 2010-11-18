@@ -21,27 +21,27 @@
 //Filename    : OSITE2.CPP
 //Description : Object Site Material - display info functions
 
-#include <OSITE.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-// #include <OINFO.H>
-#include <OMOUSE.H>
-#include <OFONT.H>
-#include <OSYS.H>
-#include <OWORLD.H>
-#include <OWORLDMT.H>
-#include <OIMGRES.H>
-#include <ORAWRES.H>
-#include <OGODRES.H>
-#include <ORACERES.H>
-#include <OITEMRES.H>
-#include <OTECHRES.H>
-#include <OBITMAP.H>
-#include <ONATION.H>
-#include <OGAME.H>
-#include <OFIRMRES.H>
-#include <OT_FIRM.H>
-#include <OT_SEDIT.H>
+#include <osite.h>
+#include <ovga.h>
+#include <omodeid.h>
+// #include <oinfo.h>
+#include <omouse.h>
+#include <ofont.h>
+#include <osys.h>
+#include <oworld.h>
+#include <oworldmt.h>
+#include <oimgres.h>
+#include <orawres.h>
+#include <ogodres.h>
+#include <oraceres.h>
+#include <oitemres.h>
+#include <otechres.h>
+#include <obitmap.h>
+#include <onation.h>
+#include <ogame.h>
+#include <ofirmres.h>
+#include <ot_firm.h>
+#include <ot_sedit.h>
 
 static short edit_id_x1, edit_id_y1, edit_id_x2, edit_id_y2, edit_id_enable;
 static short edit_res_x1, edit_res_y1, edit_res_x2, edit_res_y2, edit_res_enable;

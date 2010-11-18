@@ -22,10 +22,10 @@
 // Description : custom slide bar
 
 
-#include <OMOUSE.H>
-#include <OSLIDCUS.H>
-#include <ALL.H>
-#include <OSYS.H>
+#include <omouse.h>
+#include <oslidcus.h>
+#include <all.h>
+#include <osys.h>
 
 // ------- begin of inline function bound ---------//
 

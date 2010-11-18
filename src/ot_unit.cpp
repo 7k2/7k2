@@ -22,10 +22,10 @@
 // Description : text resource on unit
 
 
-#include <OT_UNIT.H>
-#include <ALL.H>
-#include <OUNIT.H>
-#include <ONATIONB.H>
+#include <ot_unit.h>
+#include <all.h>
+#include <ounit.h>
+#include <onationb.h>
 
 void TextResUnit::init()
 {

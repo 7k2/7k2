@@ -21,8 +21,8 @@
 //Filename   : OC_EASTP.CPP
 //Description: Campaign functions
 
-#include <OSTATE.H>
-#include <OC_EAST.H>
+#include <ostate.h>
+#include <oc_east.h>
 
 
 //--- Begin of function CampaignEastWest::player_pick_attack_target ---//

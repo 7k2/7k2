@@ -21,19 +21,19 @@
 // Filename    : OSEDITOR.CPP
 // Description : Scenario editor
 
-#include <OSEDITOR.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OFONT.H>
-#include <OBUTTON.H>
-#include <OIMGRES.H>
-#include <OBLOB2W.H>
-#include <OANLINE.H>
-#include <COLCODE.H>
-#include <OINFO.H>
-#include <OWORLDMT.H>
-#include <OCONFIG.H>
-#include <OT_SEDIT.H>
+#include <oseditor.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ofont.h>
+#include <obutton.h>
+#include <oimgres.h>
+#include <oblob2w.h>
+#include <oanline.h>
+#include <colcode.h>
+#include <oinfo.h>
+#include <oworldmt.h>
+#include <oconfig.h>
+#include <ot_sedit.h>
 
 
 // -------- define constant --------//

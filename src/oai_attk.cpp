@@ -22,16 +22,16 @@
 //Description: AI - attacking
 
 #include <stdlib.h>
-#include <ALL.H>
-#include <OUN_GRP.H>
-#include <OCONFIG.H>
-#include <ORACERES.H>
-#include <OFIRMALL.H>
-#include <OMONSRES.H>
-#include <OTALKRES.H>
-#include <OGAME.H>
-#include <OCAMPGN.H>
-#include <ONATION.H>
+#include <all.h>
+#include <oun_grp.h>
+#include <oconfig.h>
+#include <oraceres.h>
+#include <ofirmall.h>
+#include <omonsres.h>
+#include <otalkres.h>
+#include <ogame.h>
+#include <ocampgn.h>
+#include <onation.h>
 
 
 //------ Declare static functions --------//

@@ -21,36 +21,36 @@
 //Filename    : OGAMEND.CPP
 //Description : Game ending screen
 
-#include <OGAME.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OVGALOCK.H>
-#include <ODATE.H>
-#include <OREMOTE.H>
-#include <OBOX.H>
-#include <OCONFIG.H>
-#include <OSERIAL.H>
-#include <OCAMPGN.H>
-#include <OPROFILE.H>
-#include <OSTR.H>
-#include <OSYS.H>
-#include <OFONT.H>
-#include <OMOUSE.H>
-#include <OIMGRES.H>
-#include <ORACERES.H>
-#include <OGFILE.H>
-#include <ONATION.H>
-#include <OMOUSECR.H>
-#include <OMUSIC.H>
-#include <OOPTMENU.H>
-#include <OINGMENU.H>
-#include <OPOWER.H>
-#include <OMONSRES.H>
-#include <OLINEAR.H>
-#include <OT_ENDC.H>
-#include <OT_GMENU.H>
-#include <OT_UNIT.H>
-#include <OT_REPS.H>
+#include <ogame.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ovgalock.h>
+#include <odate.h>
+#include <oremote.h>
+#include <obox.h>
+#include <oconfig.h>
+#include <oserial.h>
+#include <ocampgn.h>
+#include <oprofile.h>
+#include <ostr.h>
+#include <osys.h>
+#include <ofont.h>
+#include <omouse.h>
+#include <oimgres.h>
+#include <oraceres.h>
+#include <ogfile.h>
+#include <onation.h>
+#include <omousecr.h>
+#include <omusic.h>
+#include <ooptmenu.h>
+#include <oingmenu.h>
+#include <opower.h>
+#include <omonsres.h>
+#include <olinear.h>
+#include <ot_endc.h>
+#include <ot_gmenu.h>
+#include <ot_unit.h>
+#include <ot_reps.h>
 
 
 //-------- Declare static vars & functions ---------//

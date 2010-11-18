@@ -23,9 +23,9 @@
 
 #include <string.h>
 
-#include <ALL.H>			
-#include <OSYS.H>
-#include <ORES.H>
+#include <all.h>			
+#include <osys.h>
+#include <ores.h>
 
 //------------ Format of RES file -------------//
 //

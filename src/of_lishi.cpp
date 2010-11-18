@@ -22,14 +22,14 @@
 // Description : eating flower interface function
 
 
-#include <OF_LISH.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OIMGRES.H>
-#include <OGAME.H>
-#include <OBITMAPW.H>
-#include <OBITMAP.H>
-#include <OFONT.H>
+#include <of_lish.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <oimgres.h>
+#include <ogame.h>
+#include <obitmapw.h>
+#include <obitmap.h>
+#include <ofont.h>
 
 //----------- Begin of function FirmLishorr::put_info -----------//
 

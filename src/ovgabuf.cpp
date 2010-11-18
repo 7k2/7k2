@@ -22,17 +22,17 @@
 //Description : OVGABUF direct draw surface class
 
 #include <ddraw.h>
-#include <OVGABUF.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <ALL.H>
-#include <OMOUSE.H>
-#include <IMGFUN.H>
-#include <OSYS.H>
-#include <OWORLD.H>
-#include <OBITMAP.H>
-#include <OBITMAPW.H>
-#include <OCOLTBL.H>
+#include <ovgabuf.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <all.h>
+#include <omouse.h>
+#include <imgfun.h>
+#include <osys.h>
+#include <oworld.h>
+#include <obitmap.h>
+#include <obitmapw.h>
+#include <ocoltbl.h>
 #include <stdio.h>
 
 short *VgaBuf::default_remap_table;

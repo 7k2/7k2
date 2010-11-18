@@ -24,11 +24,11 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include <ALL.H>
-#include <OGAME.H>
-#include <OSYS.H>
-#include <OFILETXT.H>
-#include <OTRANSL.H>
+#include <all.h>
+#include <ogame.h>
+#include <osys.h>
+#include <ofiletxt.h>
+#include <otransl.h>
 
 
 //--------- Define constant ---------//

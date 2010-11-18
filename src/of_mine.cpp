@@ -21,21 +21,21 @@
 //Filename    : OF_MINE.CPP
 //Description : Firm Mine
 
-#include <OF_MINE.H>
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OSYS.H>
-#include <OSTR.H>
-#include <OFONT.H>
-#include <ONEWS.H>
-#include <OUNIT.H>
-#include <ORACERES.H>
-#include <OTECHRES.H>
-#include <OTECH.H>
-#include <ONATION.H>
-#include <OSITE.H>
-#include <OF_FACT.H>
+#include <of_mine.h>
+#include <oinfo.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <osys.h>
+#include <ostr.h>
+#include <ofont.h>
+#include <onews.h>
+#include <ounit.h>
+#include <oraceres.h>
+#include <otechres.h>
+#include <otech.h>
+#include <onation.h>
+#include <osite.h>
+#include <of_fact.h>
 
 //--------- Begin of function FirmMine::FirmMine ---------//
 //

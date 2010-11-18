@@ -26,7 +26,7 @@
 #define __OT_GMENU_H
 
 
-#include <OTXTRES.H>
+#include <otxtres.h>
 
 class TextResGameMenu : public TextResource
 {

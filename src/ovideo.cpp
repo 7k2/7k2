@@ -38,11 +38,11 @@
 //#include <mmsystem.h>
 //#include <digitalv.h>
 
-#include <ALL.H>
-#include <OSTR.H>
-#include <OVIDEO.H>
-#include <OVGA.H>
-#include <OSYS.H>
+#include <all.h>
+#include <ostr.h>
+#include <ovideo.h>
+#include <ovga.h>
+#include <osys.h>
 
 // --------- Define constant -------//
 // OATRUE and OAFALSE are defined in classes\base\ctlutil.h under active movie SDK

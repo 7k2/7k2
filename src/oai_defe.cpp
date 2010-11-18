@@ -21,9 +21,9 @@
 //Filename   : OAI_DEFE.CPP
 //Description: AI on defense
 
-#include <ALL.H>
-#include <OTALKRES.H>
-#include <ONATION.H>
+#include <all.h>
+#include <otalkres.h>
+#include <onation.h>
 
 //----- Begin of function Nation::ai_defend -----//
 //

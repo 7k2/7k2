@@ -21,14 +21,14 @@
 //Filename    : OUN_IND.CPP
 //Description : Object independent Unit AI
 
-#include <OSYS.H>
-#include <OSPY.H>
-#include <OREBEL.H>
-#include <OUNIT.H>
-#include <OITEMRES.H>
-#include <OCONFIG.H>
-#include <OF_CAMP.H>
-#include <ONATION.H>
+#include <osys.h>
+#include <ospy.h>
+#include <orebel.h>
+#include <ounit.h>
+#include <oitemres.h>
+#include <oconfig.h>
+#include <of_camp.h>
+#include <onation.h>
 
 //--------- Begin of function Unit::think_independent_unit --------//
 //

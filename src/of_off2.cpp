@@ -23,27 +23,27 @@
 // it auti attack nearby land units only
 
 
-#include <OF_OFF2.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <OREMOTE.H>
-#include <ONATION.H>
-#include <OUNITRES.H> 
-#include <OBULLET.H>
-#include <OSPY.H>
-#include <OPLANT.H>
-#include <OLOCATE.H>
-#include <OWORLD.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <OTERRAIN.H>
-#include <OWORLDMT.H>
-#include <OMONSRES.H>
-#include <ORACERES.H>
-#include <OWEATHER.H>
+#include <of_off2.h>
+#include <all.h>
+#include <osys.h>
+#include <oremote.h>
+#include <onation.h>
+#include <ounitres.h> 
+#include <obullet.h>
+#include <ospy.h>
+#include <oplant.h>
+#include <olocate.h>
+#include <oworld.h>
+#include <otech.h>
+#include <otechres.h>
+#include <oterrain.h>
+#include <oworldmt.h>
+#include <omonsres.h>
+#include <oraceres.h>
+#include <oweather.h>
 #include <math.h>
-#include <OCONFIG.H>
-#include <OSERES.H>
+#include <oconfig.h>
+#include <oseres.h>
 
 enum { SCAN_X_RANGE = 8,
 		 SCAN_Y_RANGE = 8,

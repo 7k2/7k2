@@ -22,13 +22,13 @@
 // Description : Incubator
 
 
-#include <OF_INCU.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <OCONFIG.H>
-#include <OSERES.H>
-#include <ONATION.H>
-#include <OUNIT.H>
+#include <of_incu.h>
+#include <all.h>
+#include <osys.h>
+#include <oconfig.h>
+#include <oseres.h>
+#include <onation.h>
+#include <ounit.h>
 
 
 short FirmIncubator::incubate_unit_id[MAX_INCUBATE_TYPE] =

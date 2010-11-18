@@ -25,11 +25,11 @@
 #define __ODIR_H
 
 #ifndef __WINDOWS_
-#include <windows.H>
+#include <windows.h>
 #endif
 
 #ifndef __ODYNARR_H
-#include <ODYNARR.H>
+#include <odynarr.h>
 #endif
 
 //---------- Define struct FileInfo ----------//

@@ -21,36 +21,36 @@
 //Filename    : OTUTOR.CPP
 //Description : Class Tutor
 
-#include <OTUTOR.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OSYS.H>
-#include <OAUDIO.H>
-#include <OBATTLE.H>
-#include <OFONT.H>
-#include <OMONSRES.H>
-#include <OIMGRES.H>
-#include <OBUTTON.H>
-#include <OBUTT3D.H>
-#include <OGFILE.H>
-#include <OGAME.H>
-#include <OGAMESET.H>
-#include <OWORLD.H>
-// #include <OWORLDMT.H>
-#include <OFILETXT.H>
-#include <OCONFIG.H>
-#include <OMOUSE.H> 
-#include <OFIRM.H> 
-#include <OTOWN.H> 
-#include <OWORLDMT.H>
-#include <ONEWS.H>
-#include <OT_TUTOR.H>
-#include <OT_GMENU.H>
-#include <OPOWER.H>
-#include <OOPTMENU.H>
-#include <OINGMENU.H>
-#include <OBOX.H>
-#include <ODATE.H>
+#include <otutor.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <osys.h>
+#include <oaudio.h>
+#include <obattle.h>
+#include <ofont.h>
+#include <omonsres.h>
+#include <oimgres.h>
+#include <obutton.h>
+#include <obutt3d.h>
+#include <ogfile.h>
+#include <ogame.h>
+#include <ogameset.h>
+#include <oworld.h>
+// #include <oworldmt.h>
+#include <ofiletxt.h>
+#include <oconfig.h>
+#include <omouse.h> 
+#include <ofirm.h> 
+#include <otown.h> 
+#include <oworldmt.h>
+#include <onews.h>
+#include <ot_tutor.h>
+#include <ot_gmenu.h>
+#include <opower.h>
+#include <ooptmenu.h>
+#include <oingmenu.h>
+#include <obox.h>
+#include <odate.h>
 #include <stdio.h>
 
 //---------- define constant ------------//

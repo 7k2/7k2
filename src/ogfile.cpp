@@ -25,23 +25,23 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include <OBOX.H>
-#include <OSTR.H>
-#include <ODATE.H>
-#include <OMOUSECR.H>
-#include <OTALKRES.H>
-#include <ONATION.H>
-#include <OWORLD.H>
-#include <OPOWER.H>
-#include <OGAME.H>
-#include <OINFO.H>
-#include <OGFILE.H>
-#include <OSYS.H>
-#include <OAUDIO.H>
-#include <OMUSIC.H>
-#include <OCONFIG.H>
-#include <OCAMPGN.H>
-#include <OT_GMENU.H>
+#include <obox.h>
+#include <ostr.h>
+#include <odate.h>
+#include <omousecr.h>
+#include <otalkres.h>
+#include <onation.h>
+#include <oworld.h>
+#include <opower.h>
+#include <ogame.h>
+#include <oinfo.h>
+#include <ogfile.h>
+#include <osys.h>
+#include <oaudio.h>
+#include <omusic.h>
+#include <oconfig.h>
+#include <ocampgn.h>
+#include <ot_gmenu.h>
 
 
 // -------- define constant ----------//

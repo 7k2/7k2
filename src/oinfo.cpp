@@ -21,43 +21,43 @@
 //Filename    : OINFO.CPP
 //Description : Info class
 
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OIMGRES.H>
-#include <OSPY.H>
-#include <OSTR.H>
-#include <OBUTTON.H>
-#include <OMOUSE.H>
-#include <OFIRM.H>
-#include <OSEDITOR.H>
-#include <ONEWS.H>
-#include <ONATION.H> 
+#include <oinfo.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <oimgres.h>
+#include <ospy.h>
+#include <ostr.h>
+#include <obutton.h>
+#include <omouse.h>
+#include <ofirm.h>
+#include <oseditor.h>
+#include <onews.h>
+#include <onation.h> 
 
-#include <OFONT.H>
-#include <ODATE.H>
-#include <OTOWN.H>
-#include <OGAME.H>
-#include <OGFILE.H>
-#include <OPOWER.H>
-#include <OSITE.H>
-#include <OWALLRES.H>
-#include <OSYS.H>
-#include <OUNIT.H>
-#include <OCOLTBL.H>
-#include <OOPTMENU.H>
-#include <OBITMAP.H>
-#include <OBITMAPW.H>
-#include <OHELP.H>
+#include <ofont.h>
+#include <odate.h>
+#include <otown.h>
+#include <ogame.h>
+#include <ogfile.h>
+#include <opower.h>
+#include <osite.h>
+#include <owallres.h>
+#include <osys.h>
+#include <ounit.h>
+#include <ocoltbl.h>
+#include <ooptmenu.h>
+#include <obitmap.h>
+#include <obitmapw.h>
+#include <ohelp.h>
 #include <time.h>
-#include <OMODEID.H>
-#include <OGAME.H>
-#include <OCAMPGN.H>
-#include <OT_UNIT.H>
-#include <OT_REPS.H>
-#include <OT_GMENU.H>
-#include <OTUTOR.H>
-#include <OFILETXT.H>
+#include <omodeid.h>
+#include <ogame.h>
+#include <ocampgn.h>
+#include <ot_unit.h>
+#include <ot_reps.h>
+#include <ot_gmenu.h>
+#include <otutor.h>
+#include <ofiletxt.h>
 
 #define FIRST_REMAP_KEY       0xE0        // the source color code of the colors to be remapped
 														// if change, remember also in ogame.cpp 

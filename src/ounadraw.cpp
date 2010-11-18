@@ -21,24 +21,24 @@
 //Filename    : OUNADRAW.CPP
 //Description : Object UnitArray draw functions.
 
-#include <ALL.H>
-#include <OVGA.H>
-#include <OGAME.H>
-#include <OCONFIG.H>
-#include <OPFIND.H>
-#include <OSYS.H>
-#include <OMODEID.H>
-#include <OWORLD.H>
-#include <OWORLDMT.H>
-#include <OANLINE.H>
-#include <ONATION.H>
-#include <OUNIT.H>
-#include <OU_CARA.H>
-#include <OFIRM.H>
-#include <OFONT.H>
-#include <OMOUSE.H>
-#include <OGODRES.H>
-#include <COLCODE.H>
+#include <all.h>
+#include <ovga.h>
+#include <ogame.h>
+#include <oconfig.h>
+#include <opfind.h>
+#include <osys.h>
+#include <omodeid.h>
+#include <oworld.h>
+#include <oworldmt.h>
+#include <oanline.h>
+#include <onation.h>
+#include <ounit.h>
+#include <ou_cara.h>
+#include <ofirm.h>
+#include <ofont.h>
+#include <omouse.h>
+#include <ogodres.h>
+#include <colcode.h>
 
 //--------- Declare static functions ---------//
 

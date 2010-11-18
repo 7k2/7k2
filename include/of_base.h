@@ -25,15 +25,15 @@
 #define __OF_BASE_H
 
 #ifndef __OUNIT_H
-#include <OUNIT.H>
+#include <ounit.h>
 #endif
 
 #ifndef __OSKILL_H
-#include <OSKILL.H>
+#include <oskill.h>
 #endif
 
 #ifndef __OF_WORK_H
-#include <OF_WORK.H>
+#include <of_work.h>
 #endif
 
 //------- Define constant -----------//

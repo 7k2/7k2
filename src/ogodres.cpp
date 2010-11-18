@@ -21,19 +21,19 @@
 //Filename    : OGODRES.CPP
 //Description : God resource class
 
-#include <OSYS.H>
-#include <OGAMESET.H>
-#include <OWORLD.H>
-#include <OSPRTRES.H>
-#include <ONATION.H>
-#include <OUNIT.H>
-#include <OUNITRES.H>
-#include <OU_GOD.H>
-#include <OF_BASE.H>
-#include <OMONSRES.H>
-#include <OGODRES.H>
-#include <OSERES.H>
-#include <OPOWER.H>
+#include <osys.h>
+#include <ogameset.h>
+#include <oworld.h>
+#include <osprtres.h>
+#include <onation.h>
+#include <ounit.h>
+#include <ounitres.h>
+#include <ou_god.h>
+#include <of_base.h>
+#include <omonsres.h>
+#include <ogodres.h>
+#include <oseres.h>
+#include <opower.h>
 
 //---------- #define constant ------------//
 

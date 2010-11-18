@@ -21,16 +21,16 @@
 // Filename    : OF_FORT.CPP
 // Description : Firm Monster Lair
 
-#include <ALL.H>
-#include <GAMEDEF.H>
-#include <OSYS.H>
-#include <OREMOTE.H>
-#include <ONATION.H>
-#include <OUNITRES.H>
-#include <OMONSRES.H>
-#include <OTECHRES.H>
-#include <ONEWS.H>
-#include <OF_LAIR.H> 
+#include <all.h>
+#include <gamedef.h>
+#include <osys.h>
+#include <oremote.h>
+#include <onation.h>
+#include <ounitres.h>
+#include <omonsres.h>
+#include <otechres.h>
+#include <onews.h>
+#include <of_lair.h> 
 
 //------ begin of function FirmLair::FirmLair -------//
 //

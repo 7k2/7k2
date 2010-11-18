@@ -25,7 +25,7 @@
 #ifndef __OT_FIRM_H
 #define __OT_FIRM_H
 
-#include <OTXTRES.H>
+#include <otxtres.h>
 
 struct Item;
 

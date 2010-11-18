@@ -22,11 +22,11 @@
 // Description : Town Wall Resource
 
 
-#include <OTWALRES.H>
-#include <ALL.H>
-#include <OMATRIX.H>
-#include <OWORLDMT.H>
-#include <OGAMESET.H>
+#include <otwalres.h>
+#include <all.h>
+#include <omatrix.h>
+#include <oworldmt.h>
+#include <ogameset.h>
 
 
 //---------- define constant ------------//

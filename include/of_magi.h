@@ -25,7 +25,7 @@
 #ifndef __OF_MAGI_H
 #define __OF_MAGI_H
 
-#include <OFIRM.H>
+#include <ofirm.h>
 
 // ------ define constant -------//
 

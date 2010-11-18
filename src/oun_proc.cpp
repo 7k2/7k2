@@ -21,24 +21,24 @@
 //Filename	 : OUN_PROC.CPP
 //Description: Unit functions related to unit processing
 
-#include <OCONFIG.H>
-#include <OGAME.H>
-#include <OSYS.H>
-#include <OSPY.H>
-#include <OSITE.H>
-#include <OGODRES.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <OREMOTE.H>
-#include <OUNITRES.H>
-#include <ORACERES.H> 
-#include <ONATION.H>
-#include <OPOWER.H>
-#include <ONEWS.H>
-#include <OFIRM.H>
-#include <OUNIT.H>
-#include <ITEMID.H>
-#include <OWEATHER.H>
+#include <oconfig.h>
+#include <ogame.h>
+#include <osys.h>
+#include <ospy.h>
+#include <osite.h>
+#include <ogodres.h>
+#include <otech.h>
+#include <otechres.h>
+#include <oremote.h>
+#include <ounitres.h>
+#include <oraceres.h> 
+#include <onation.h>
+#include <opower.h>
+#include <onews.h>
+#include <ofirm.h>
+#include <ounit.h>
+#include <itemid.h>
+#include <oweather.h>
 
 //--------- Begin of function Unit::next_day ---------//
 //

@@ -25,10 +25,10 @@
 #define __OBASEOBJ_H
 
 #ifndef __ODYNARRB_H
-#include <ODYNARRB.H>
+#include <odynarrb.h>
 #endif
 
-#include <OATTACK.H>
+#include <oattack.h>
 //------- define BaseObj type --------//
 
 enum { OBJ_UNIT=1,

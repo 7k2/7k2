@@ -22,22 +22,22 @@
 //Description : Object Bullet
 //Owner		  : Alex
 
-#include <OVGA.H>
-#include <OUNIT.H>
-#include <OBULLET.H>
-#include <OF_FORT.H>
-#include <OWORLD.H>
-#include <OSERES.H>
-#include <OU_CART.H>
-#include <OTOWN.H>
-#include <ONATIONA.H>
-#include <OWORLDMT.H>
-#include <OSPRTRES.H>
-#include <OSFRMRES.H>
-#include <OUN_SPAB.H>
+#include <ovga.h>
+#include <ounit.h>
+#include <obullet.h>
+#include <of_fort.h>
+#include <oworld.h>
+#include <oseres.h>
+#include <ou_cart.h>
+#include <otown.h>
+#include <onationa.h>
+#include <oworldmt.h>
+#include <osprtres.h>
+#include <osfrmres.h>
+#include <oun_spab.h>
 #include <math.h>
-#include <OSYS.H>
-#include <OEFFECT.H>
+#include <osys.h>
+#include <oeffect.h>
 
 // -------- Define constant ---------//
 

@@ -21,31 +21,31 @@
 //Filename   : OCAMPGN4.CPP
 //Description: Campaign functions
 
-#include <OCAMPGN.H>
-#include <OINFO.H>
-#include <OSYS.H>
-#include <OSTR.H>
-#include <OUNIT.H>
-#include <OUN_GRP.H>
-#include <OTOWN.H>
-#include <ONEWS.H>
-#include <OFIRMALL.H>
-#include <OSITE.H>
-#include <ONATION.H>
-#include <ONATION2.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <ORACERES.H>
-#include <OGAME.H>
-#include <OCONFIG.H>
-#include <ODATE.H>
-#include <OMOUSE.H>
-#include <OMONSRES.H>
-#include <OU_WAGON.H>
-#include <OSTATE.H>
-#include <OVGA.H>
-#include <OHELP.H>
-#include <OWORLDMT.H>
+#include <ocampgn.h>
+#include <oinfo.h>
+#include <osys.h>
+#include <ostr.h>
+#include <ounit.h>
+#include <oun_grp.h>
+#include <otown.h>
+#include <onews.h>
+#include <ofirmall.h>
+#include <osite.h>
+#include <onation.h>
+#include <onation2.h>
+#include <otech.h>
+#include <otechres.h>
+#include <oraceres.h>
+#include <ogame.h>
+#include <oconfig.h>
+#include <odate.h>
+#include <omouse.h>
+#include <omonsres.h>
+#include <ou_wagon.h>
+#include <ostate.h>
+#include <ovga.h>
+#include <ohelp.h>
+#include <oworldmt.h>
 
 //------ define static vars ------//
 

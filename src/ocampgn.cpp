@@ -21,26 +21,26 @@
 // Filename     : OCAMPGN.CPP
 // Description  : Campaign class
 
-#include <OCAMPGN.H>
-#include <OINFO.H>
-#include <OSYS.H>
-#include <OSTR.H>
-#include <OSITE.H>
-#include <ONATION.H>
-#include <ORACERES.H>
-#include <OHERORES.H>
-#include <OGAME.H>
-#include <OCONFIG.H>
-#include <ODATE.H>
-#include <OMOUSE.H>
-#include <OMONSRES.H>
-#include <OSTATE.H>
-#include <OVGA.H>
-#include <OGAMESET.H>
-#include <OHELP.H>
-#include <OWORLDMT.H>
-#include <OPLASMA.H>
-#include <OT_REPS.H>
+#include <ocampgn.h>
+#include <oinfo.h>
+#include <osys.h>
+#include <ostr.h>
+#include <osite.h>
+#include <onation.h>
+#include <oraceres.h>
+#include <oherores.h>
+#include <ogame.h>
+#include <oconfig.h>
+#include <odate.h>
+#include <omouse.h>
+#include <omonsres.h>
+#include <ostate.h>
+#include <ovga.h>
+#include <ogameset.h>
+#include <ohelp.h>
+#include <oworldmt.h>
+#include <oplasma.h>
+#include <ot_reps.h>
 
 #include <stdlib.h>
 #include <time.h>

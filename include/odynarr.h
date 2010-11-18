@@ -25,7 +25,7 @@
 #define __ODYNARR_H
 
 #ifndef __ALL_H
-#include <ALL.H>
+#include <all.h>
 #endif
 
 #ifndef __STRING_H

@@ -21,12 +21,12 @@
 //Filename   : OSPINNER.CPP
 //Description: class Spinner
 
-#include <OSPINNER.H>
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OFONT.H>
-#include <OIMGRES.H>
-#include <OMOUSE.H>
+#include <ospinner.h>
+#include <oinfo.h>
+#include <ovga.h>
+#include <ofont.h>
+#include <oimgres.h>
+#include <omouse.h>
 
 //------ Define static class member vars ------//
 

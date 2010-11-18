@@ -21,9 +21,9 @@
 // Filename    : OT_CAMP.CPP
 // Description : tutorialgame menu text resource
 
-#include <OT_CAMP.H>
-#include <ALL.H>
-#include <OCAMPGN.H>
+#include <ot_camp.h>
+#include <all.h>
+#include <ocampgn.h>
 
 
 void TextResCampaign::init()

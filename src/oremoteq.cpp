@@ -21,9 +21,9 @@
 // Filename    : OREMOTEQ.CPP
 // Description : remote message queue
 
-#include <ALL.H>
-#include <OREMOTEQ.H>
-#include <OREMOTE.H>
+#include <all.h>
+#include <oremoteq.h>
+#include <oremote.h>
 
 // structure of queue_buf in RemoteQueue :
 // <1st message length (short), not including this 2 bytes> <1st message content>

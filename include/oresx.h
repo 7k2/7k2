@@ -24,7 +24,7 @@
 #ifndef __ORESX_H
 #define __ORESX_H
 
-#include <OFILE.H>
+#include <ofile.h>
 
 //--------- Define structure ResIndex ----------//
 

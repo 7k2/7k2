@@ -21,16 +21,16 @@
 //Filename   : OLOCATE.CPP
 //Description: Functions in Location class
 
-#include <ALL.H>
-#include <OHILLRES.H>
-#include <OWALLRES.H>
-#include <OFIRM.H>
-#include <OTOWN.H>
-#include <OUNIT.H> 
-#include <OMATRIX.H>
-#include <OROCK.H>
-#include <OROCKRES.H>
-#include <OWORLD.H>
+#include <all.h>
+#include <ohillres.h>
+#include <owallres.h>
+#include <ofirm.h>
+#include <otown.h>
+#include <ounit.h> 
+#include <omatrix.h>
+#include <orock.h>
+#include <orockres.h>
+#include <oworld.h>
 
 // --------- define constant ----------//
 

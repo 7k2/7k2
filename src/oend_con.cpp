@@ -22,19 +22,19 @@
 // Description : End Condition
 
 
-#include <OEND_CON.H>
-#include <OSTR.H>
-#include <ONATION.H>
-#include <OUNITRES.H>
-#include <OUNIT.H>
-#include <OFIRM.H>
-#include <OTRANSL.H>
-#include <OITEMRES.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <OSITE.H>
-#include <OT_UNIT.H>
-#include <OT_ENDC.H>
+#include <oend_con.h>
+#include <ostr.h>
+#include <onation.h>
+#include <ounitres.h>
+#include <ounit.h>
+#include <ofirm.h>
+#include <otransl.h>
+#include <oitemres.h>
+#include <otech.h>
+#include <otechres.h>
+#include <osite.h>
+#include <ot_unit.h>
+#include <ot_endc.h>
 
 #define MEET_UNIT_RANGE 2
 

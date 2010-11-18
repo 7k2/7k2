@@ -21,37 +21,37 @@
 //Filename    : OSYSVIEW.CPP
 //Description : class Sys - view report functions
 
-#include <OVGA.H>
-#include <OSYS.H>
-#include <OINFO.H>
-#include <OMODEID.H>
-#include <OCONFIG.H>
-#include <OFIRM.H>
-#include <OTOWN.H>
-#include <OSPY.H>
-#include <OFONT.H>
-#include <OIMGRES.H>
-#include <OINGMENU.H>
-#include <OTUTOR.H>
-#include <OTIPS.H>
+#include <ovga.h>
+#include <osys.h>
+#include <oinfo.h>
+#include <omodeid.h>
+#include <oconfig.h>
+#include <ofirm.h>
+#include <otown.h>
+#include <ospy.h>
+#include <ofont.h>
+#include <oimgres.h>
+#include <oingmenu.h>
+#include <otutor.h>
+#include <otips.h>
 // ##### begin Gilbert 13/10 ######//
-#include <OSEDITOR.H>
+#include <oseditor.h>
 // ##### end Gilbert 13/10 ######//
-#include <OMOUSE.H>
-#include <OMOUSECR.H>
-#include <OSE.H>
-#include <OSERES.H>
-#include <OPOWER.H>
-#include <OHELP.H>
-#include <ONEWS.H>
-#include <OGAME.H>
-#include <OWORLDMT.H>
-#include <OREMOTE.H>
-#include <OAUDIO.H>
-#include <ONATION.H>
-#include <OUNIT.H>
-#include <OUN_GRP.H>
-#include <OT_REPS.H>
+#include <omouse.h>
+#include <omousecr.h>
+#include <ose.h>
+#include <oseres.h>
+#include <opower.h>
+#include <ohelp.h>
+#include <onews.h>
+#include <ogame.h>
+#include <oworldmt.h>
+#include <oremote.h>
+#include <oaudio.h>
+#include <onation.h>
+#include <ounit.h>
+#include <oun_grp.h>
+#include <ot_reps.h>
 
 //--------- Begin of funtion Sys::disp_view_mode ---------//
 //

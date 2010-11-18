@@ -26,11 +26,11 @@
 #define __OOPTMENU_H
 
 
-#include <OCONFIG.H>
-#include <OBUTTCUS.H>
-#include <OBUTTON.H>
-#include <OSLIDCUS.H>
-#include <GAMEDEF.H>
+#include <oconfig.h>
+#include <obuttcus.h>
+#include <obutton.h>
+#include <oslidcus.h>
+#include <gamedef.h>
 
 class OptionMenu
 {

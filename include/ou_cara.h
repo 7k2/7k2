@@ -25,19 +25,19 @@
 #define __OU_CARA_H
 
 #ifndef __ODYNARR_H
-#include <ODYNARR.H>
+#include <odynarr.h>
 #endif
 
 #ifndef __OUNIT_H
-#include <OUNIT.H>
+#include <ounit.h>
 #endif
 
 #ifndef __ORAWRES_H
-#include <ORAWRES.H>
+#include <orawres.h>
 #endif
 
 #ifndef __F_MARK_H
-#include <OF_MARK.H>
+#include <of_mark.h>
 #endif
 
 //------------- Define constant -----------//

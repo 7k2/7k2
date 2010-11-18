@@ -24,7 +24,7 @@
 #ifndef __OT_ENDC_H
 #define __OT_ENDC_H
 
-#include <OTXTRES.H>
+#include <otxtres.h>
 
 struct EndCondition;
 

@@ -21,19 +21,19 @@
 // Filename    : OF_OFF.CPP
 // Description : magic tower
 
-#include <OF_OFF.H>
-#include <OF_MAGI.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <OCONFIG.H>
-#include <OREMOTE.H>
-#include <OWORLD.H>
-#include <ONATION.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <OUNIT.H>
-#include <OBULLET.H>
-#include <ONEWS.H>
+#include <of_off.h>
+#include <of_magi.h>
+#include <all.h>
+#include <osys.h>
+#include <oconfig.h>
+#include <oremote.h>
+#include <oworld.h>
+#include <onation.h>
+#include <otech.h>
+#include <otechres.h>
+#include <ounit.h>
+#include <obullet.h>
+#include <onews.h>
 
 
 // ----- begin of function FirmOffensive::FirmOffensive --------//

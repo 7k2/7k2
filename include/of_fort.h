@@ -24,7 +24,7 @@
 #ifndef __OF_FORT_H
 #define __OF_FORT_H
 
-#include <OF_CAMP.H>
+#include <of_camp.h>
 
 //------ define constant -------//
 

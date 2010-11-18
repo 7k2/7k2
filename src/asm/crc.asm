@@ -19,7 +19,7 @@
 ;Filename    : CRC.ASM
 ;Description : calculate 8-bit CRC
 
-INCLUDE ALL.INC
+INCLUDE all.inc
 
 		.CODE
 

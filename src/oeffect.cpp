@@ -23,10 +23,10 @@
 
 // note : Effect and effect_array are not saved
 
-#include <OWORLDMT.H>
-#include <OEFFECT.H>
-#include <OMAGIC.H>
-#include <OVGA.H>
+#include <oworldmt.h>
+#include <oeffect.h>
+#include <omagic.h>
+#include <ovga.h>
 
 // ------- Begin of function Effect::Effect -------//
 Effect::Effect() : Sprite()

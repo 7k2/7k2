@@ -16,7 +16,7 @@
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;
 
-; Filename    : COLCODE.INC
+; Filename    : colcode.inc
 ; Description : ASM include file for defining special colour
 ;               see/update also COLCODE.H for C
 

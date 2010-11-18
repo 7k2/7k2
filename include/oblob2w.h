@@ -24,7 +24,7 @@
 #ifndef __OBLOB2W_H
 #define __OBLOB2W_H
 
-#include <OBITMAPW.H>
+#include <obitmapw.h>
 
 // ------- define class Blob2DW ----------//
 

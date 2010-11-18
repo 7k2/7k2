@@ -21,13 +21,13 @@
 //Filename   : ON_MONS.CPP
 //Description: Functions for the class NationMonster
 
-#include <OBASEOBJ.H>
-#include <OTOWN.H>
-#include <OCONFIG.H>
-#include <OF_LAIR.H>
-#include <OMONSRES.H>
-#include <ONATION2.H>
-#include <OGAME.H>
+#include <obaseobj.h>
+#include <otown.h>
+#include <oconfig.h>
+#include <of_lair.h>
+#include <omonsres.h>
+#include <onation2.h>
+#include <ogame.h>
 
 //--------- Begin of function NationMonster::process_ai --------//
 

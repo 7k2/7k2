@@ -21,10 +21,10 @@
 //Filename    : OVBROWIF.CPP
 //Description : Object Visual Browse for the Interface
 
-#include <OSYS.H>
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OVBROWIF.H>
+#include <osys.h>
+#include <oinfo.h>
+#include <ovga.h>
+#include <ovbrowif.h>
 
 //--------- Begin of function VBrowseIF::init --------//
 void VBrowseIF::init(int inX1, int inY1, int inX2, int inY2,

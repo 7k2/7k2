@@ -20,7 +20,7 @@
 
 // Filename    : COLCODE.H
 // Description : C include file for defining special color
-//               see/update also COLCODE.INC for assembly
+//               see/update also colcode.inc for assembly
 
 // for transparent code repeated for 1 to UNIQUE_REPEAT_CODE_NUM times,
 // write FEW_TRANSPARENT_CODE(repeated_times)

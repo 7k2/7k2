@@ -21,16 +21,16 @@
 //Filename    : OCONFIG.CPP
 //Description : Config Object
 
-#include <OCONFIG.H>
-#include <OSYS.H>
-#include <OHELP.H>
-#include <ONATION.H>
-#include <OMONSRES.H>
-#include <OUNITRES.H>
-#include <OFIRMRES.H> 
-#include <OMODEID.H>
-#include <OGAME.H>
-//#include <OT_GMENU.H>
+#include <oconfig.h>
+#include <osys.h>
+#include <ohelp.h>
+#include <onation.h>
+#include <omonsres.h>
+#include <ounitres.h>
+#include <ofirmres.h> 
+#include <omodeid.h>
+#include <ogame.h>
+//#include <ot_gmenu.h>
 
 // ------- define difficult table ---------//
 

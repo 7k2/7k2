@@ -21,9 +21,9 @@
 //Filename   : OUN_HERO.CPP
 //Description: Unit functions related to heroes.
 
-#include <OUNIT.H>
-#include <ONATION.H>
-#include <OHERORES.H>
+#include <ounit.h>
+#include <onation.h>
+#include <oherores.h>
 
 
 //------ Begin of function Unit::is_hero_for_hire -------//

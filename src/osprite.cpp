@@ -21,17 +21,17 @@
 //Filename    : OSPRITE.CPP
 //Description : Object Sprite
 
-#include <OSPRITE.H>
-#include <ALL.H>
-#include <OSFRMRES.H>
-#include <OSTR.H>
-#include <OVGA.H>
-#include <OINFO.H>
-#include <OGAME.H>
-#include <ONATION.H>
-#include <OCOLTBL.H>
-#include <OCONFIG.H>
-#include <OWORLDMT.H>
+#include <osprite.h>
+#include <all.h>
+#include <osfrmres.h>
+#include <ostr.h>
+#include <ovga.h>
+#include <oinfo.h>
+#include <ogame.h>
+#include <onation.h>
+#include <ocoltbl.h>
+#include <oconfig.h>
+#include <oworldmt.h>
 
 //----------- Define static class member variables -----------//
 

@@ -25,7 +25,7 @@
 #define __ODYNARRB_H
 
 #ifndef __ODYNARR_H
-#include <ODYNARR.H>
+#include <odynarr.h>
 #endif
 
 //------------ Define Constant -------------//

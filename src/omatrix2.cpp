@@ -21,15 +21,15 @@
 // Filename    : OMATRIX2.CPP
 // Description : render a location
 
-#include <OMATRIX.H>
-#include <OBLOB2W.H>
-#include <OWORLDMT.H>
-#include <OVGA.H>
-#include <OCOLTBL.H>
-#include <OTERRAIN.H>
-#include <OCONFIG.H>
-#include <OSYS.H>
-#include <OEXPMASK.H>
+#include <omatrix.h>
+#include <oblob2w.h>
+#include <oworldmt.h>
+#include <ovga.h>
+#include <ocoltbl.h>
+#include <oterrain.h>
+#include <oconfig.h>
+#include <osys.h>
+#include <oexpmask.h>
 
 
 // ------- define constant table ---------//

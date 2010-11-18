@@ -21,19 +21,19 @@
 //Filename   : OC_EAS12.CPP
 //Description: CampaignEastWest - STAGE_FRYHTAN_RAGE_ATTACK
 
-#include <ALL.H>
-#include <OSITE.H>
-#include <OTECH.H>
-#include <OGAME.H>
-#include <OTECHRES.H>
-#include <OSTATE.H>
-#include <OGODRES.H>
-#include <ORACERES.H>
-#include <ONEWS.H>
-#include <OMONSRES.H>
-#include <ONATION2.H>
-#include <OC_EAST.H>
-#include <OF_CAMP.H>
+#include <all.h>
+#include <osite.h>
+#include <otech.h>
+#include <ogame.h>
+#include <otechres.h>
+#include <ostate.h>
+#include <ogodres.h>
+#include <oraceres.h>
+#include <onews.h>
+#include <omonsres.h>
+#include <onation2.h>
+#include <oc_east.h>
+#include <of_camp.h>
 
 //----- define constant ----------//
 

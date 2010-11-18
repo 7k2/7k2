@@ -21,10 +21,10 @@
 // Filename     : OSTATE.CPP
 // Description  : state for campaign
 
-#include <OGAME.H>
-#include <OSTATE.H>
-#include <ONATION2.H>
-#include <OCAMPGN.H>
+#include <ogame.h>
+#include <ostate.h>
+#include <onation2.h>
+#include <ocampgn.h>
 #include <stdlib.h>
 #include <math.h>
 

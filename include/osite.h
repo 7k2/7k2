@@ -25,11 +25,11 @@
 #define __OSITE_H
 
 #ifndef __ODYNARRB_H
-#include <ODYNARRB.H>
+#include <odynarrb.h>
 #endif
 
 #ifndef __ORAWRES_H
-#include <ORAWRES.H>
+#include <orawres.h>
 #endif
 
 //-------- Define Site Type --------//

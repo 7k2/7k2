@@ -22,9 +22,9 @@
 // Description : Text Resource Talk
 
 
-#include <OT_TALK.H>
-#include <ALL.H>
-#include <ONATIONB.H>
+#include <ot_talk.h>
+#include <all.h>
+#include <onationb.h>
 
 
 void TextResTalk::init()

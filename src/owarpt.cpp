@@ -22,13 +22,13 @@
 // Description : War point
 
 
-#include <OWARPT.H>
-#include <COLOR.H>
-#include <OVGABUF.H>
-#include <OWORLD.H>
-#include <OWORLDMT.H>
-#include <OMODEID.H>
-#include <ALL.H>
+#include <owarpt.h>
+#include <color.h>
+#include <ovgabuf.h>
+#include <oworld.h>
+#include <oworldmt.h>
+#include <omodeid.h>
+#include <all.h>
 
 // --------- define constant ---------//
 

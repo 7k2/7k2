@@ -21,16 +21,16 @@
 //Filename   : OPLACE.CPP
 //Description: Class Place
 
-#include <OSYS.H>
-#include <OPLACE.H>
-#include <ONATION.H>
-#include <OUNIT.H>
-#include <OSPRTRES.H>
-#include <OTOWN.H>
-#include <OF_CAMP.H>
-#include <OF_LAIR.H>
-#include <OCONFIG.H>
-#include <OGAME.H>
+#include <osys.h>
+#include <oplace.h>
+#include <onation.h>
+#include <ounit.h>
+#include <osprtres.h>
+#include <otown.h>
+#include <of_camp.h>
+#include <of_lair.h>
+#include <oconfig.h>
+#include <ogame.h>
 
 
 //----------- define static parameters -------------//

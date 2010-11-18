@@ -21,7 +21,7 @@
 //Filename    : OF_TRAIA.CPP
 //Description : Firm Training Buildings - AI functions
 
-#include <OF_TRAIN.H>
+#include <of_train.h>
 
 
 //--------- Begin of function FirmTrain::total_combat_level ---------//

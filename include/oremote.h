@@ -24,8 +24,8 @@
 #ifndef __OREMOTE_H
 #define __OREMOTE_H
 
-#include <MPTYPES.H>
-#include <OREMOTEQ.H>
+#include <mptypes.h>
+#include <oremoteq.h>
 
 // correct MAX_PATH is found in windef.h
 #define MAX_PATH 260

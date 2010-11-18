@@ -21,21 +21,21 @@
 //Filename    : OBOX.CPP
 //Description : A collection of box objects
 
-#include <OBOX.H>
-#include <KEY.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OMOUSE.H>
-#include <OFONT.H>
-#include <OBUTTON.H>
-#include <OPOWER.H>
-#include <OT_BASIC.H>
+#include <obox.h>
+#include <key.h>
+#include <osys.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <omouse.h>
+#include <ofont.h>
+#include <obutton.h>
+#include <opower.h>
+#include <ot_basic.h>
 
 #include <string.h>
 #include <stdio.h>
 #include <stdarg.h>
-#include <time.H>
+#include <time.h>
 
 //----------- Define constant -------------//
 

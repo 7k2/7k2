@@ -21,23 +21,23 @@
 //Filename    : OR_TOWN.CPP
 //Description : Town Report
 
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OSTR.H>
-#include <OFONT.H>
-#include <OIMGRES.H>
-#include <OVBROWIF.H>
-#include <OBUTTON.H>
-#include <ORACERES.H>
-#include <OFIRM.H>
-#include <OWORLD.H>
-#include <ONATION.H> 
-#include <OU_CARA.H>
-// #include <OU_MARI.H>
-// #include <OWORLDMT.H>
-#include <OT_REPS.H>
-#include <OT_UNIT.H>
+#include <oinfo.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ostr.h>
+#include <ofont.h>
+#include <oimgres.h>
+#include <ovbrowif.h>
+#include <obutton.h>
+#include <oraceres.h>
+#include <ofirm.h>
+#include <oworld.h>
+#include <onation.h> 
+#include <ou_cara.h>
+// #include <ou_mari.h>
+// #include <oworldmt.h>
+#include <ot_reps.h>
+#include <ot_unit.h>
 
 
 //------------- Define coordinations -----------//

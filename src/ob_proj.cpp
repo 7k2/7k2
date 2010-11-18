@@ -23,7 +23,7 @@
 // Owner       : Gilbert
 
 
-#include <OB_PROJ.H>
+#include <ob_proj.h>
 
 
 // --------- Begin of function Projectile::Projectile --------//

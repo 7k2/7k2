@@ -25,7 +25,7 @@
 #define __OSKILL_H
 
 #ifndef __OITEM_H
-#include <OITEM.H>
+#include <oitem.h>
 #endif 
 
 //--- Define the default skill of the citizens ---//

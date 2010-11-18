@@ -22,17 +22,17 @@
 // Description  : FirmSpy interface
 
 
-#include <OF_SPY.H>
-#include <ALL.H>
-#include <OMODEID.H>
-#include <OMOUSE.H>
-#include <OFONT.H>
-#include <OINFO.H>
-#include <ORACERES.H>
-#include <OBUTT3D.H>
-#include <OTOWN.H>
-#include <OSE.H>
-#include <OSERES.H>
+#include <of_spy.h>
+#include <all.h>
+#include <omodeid.h>
+#include <omouse.h>
+#include <ofont.h>
+#include <oinfo.h>
+#include <oraceres.h>
+#include <obutt3d.h>
+#include <otown.h>
+#include <ose.h>
+#include <oseres.h>
 
 
 // --------- define constant --------//

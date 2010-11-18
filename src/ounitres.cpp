@@ -21,20 +21,20 @@
 //Filename    : OUNITRES.CPP
 //Description : Object Sprite Frame Resource
 
-#include <OUNITRES.H>
-#include <ALL.H>
-#include <OSTR.H>
-#include <OSYS.H>
-#include <OGAMESET.H>
-#include <ONATION.H>
-#include <OSPRTRES.H>
-#include <OWORLDMT.H>
-#include <OTRANSL.H>
-#include <ORESX.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OHERORES.H>
-#include <OT_UNIT.H>
+#include <ounitres.h>
+#include <all.h>
+#include <ostr.h>
+#include <osys.h>
+#include <ogameset.h>
+#include <onation.h>
+#include <osprtres.h>
+#include <oworldmt.h>
+#include <otransl.h>
+#include <oresx.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <oherores.h>
+#include <ot_unit.h>
 
 #ifdef NO_DEBUG_UNIT
 #undef err_when

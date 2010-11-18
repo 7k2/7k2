@@ -21,14 +21,14 @@
 //Filename    : OSPRITE2.CPP
 //Description : Object Sprite
 
-#include <ALL.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OREMOTE.H>
-#include <OUNIT.H>
-#include <OSPRITE.H>
-#include <OSERES.H>
-#include <OWORLDMT.H>
+#include <all.h>
+#include <osys.h>
+#include <ovga.h>
+#include <oremote.h>
+#include <ounit.h>
+#include <osprite.h>
+#include <oseres.h>
+#include <oworldmt.h>
 #include <math.h>
 
 //--------- define static vars ---------//

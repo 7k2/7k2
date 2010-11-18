@@ -22,10 +22,10 @@
 // Description: class SnowLayer
 // Onwership  : Gilbert
 
-#include <OSNOW.H>
-#include <OVGABUF.H>
-#include <COLOR.H>
-#include <ALL.H>
+#include <osnow.h>
+#include <ovgabuf.h>
+#include <color.h>
+#include <all.h>
 
 //---------- Define constant -------------//
 

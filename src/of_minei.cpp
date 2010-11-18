@@ -21,22 +21,22 @@
 //Filename    : OF_MINEI.CPP
 //Description : Firm Mine - interface functions
 
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OMOUSE.H>
-#include <OSTR.H>
-#include <OFONT.H>
-#include <ONEWS.H>
-#include <OUNIT.H>
-#include <ORACERES.H>
-#include <ONATION.H>
-#include <OSITE.H>
-#include <OF_MINE.H>
-#include <OF_FACT.H>
-#include <OIMGRES.H>
-#include <OCONFIG.H>
-#include <OT_FIRM.H>
+#include <oinfo.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <omouse.h>
+#include <ostr.h>
+#include <ofont.h>
+#include <onews.h>
+#include <ounit.h>
+#include <oraceres.h>
+#include <onation.h>
+#include <osite.h>
+#include <of_mine.h>
+#include <of_fact.h>
+#include <oimgres.h>
+#include <oconfig.h>
+#include <ot_firm.h>
 
 static int animate_seqno =1;
 static short edit_reserve_x1, edit_reserve_y1, edit_reserve_x2, edit_reserve_y2, edit_reserve_enable;

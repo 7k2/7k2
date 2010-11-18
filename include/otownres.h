@@ -24,8 +24,8 @@
 #ifndef __OTOWNRES_H
 #define __OTOWNRES_H
 
-#include <ORESDB.H>
-// #include <OTOWNREC.H>
+#include <oresdb.h>
+// #include <otownrec.h>
 
 //--------- define game constants --------//
 

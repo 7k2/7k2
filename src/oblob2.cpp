@@ -21,10 +21,10 @@
 // Filename    : OBLOB2.CPP
 // Description : 2D binary block, four side extensible
 
-#include <OBLOB2.H>
-#include <ALL.H>
-#include <COLCODE.H>
-#include <OBITMAP.H>
+#include <oblob2.h>
+#include <all.h>
+#include <colcode.h>
+#include <obitmap.h>
 
 
 // ------- define constant -------//

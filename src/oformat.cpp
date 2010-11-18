@@ -21,10 +21,10 @@
 //Filename		: OFORMAT.CPP
 //Description	: Unit Group Formation
 
-#include <OUN_GRP.H>
-#include <ALL.H>
-#include <OUNIT.H>
-#include <MATH.H>
+#include <oun_grp.h>
+#include <all.h>
+#include <ounit.h>
+#include <math.h>
 
 //--- Begin of function UnitGroup::vanguard_formation ---//
 // This function calculate the location, and set the unit to move to, to form a

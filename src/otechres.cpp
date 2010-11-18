@@ -21,17 +21,17 @@
 //Filename    : OTECHRES.CPP
 //Description : Tech class
 
-#include <ALL.H>
-#include <OGAME.H>
-#include <OGAMESET.H>
-#include <OMONSRES.H>
-#include <OF_RESE.H>
-#include <OUNIT.H>
-#include <ORESX.H>
-#include <ONATION.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <OTRANSL.H>
+#include <all.h>
+#include <ogame.h>
+#include <ogameset.h>
+#include <omonsres.h>
+#include <of_rese.h>
+#include <ounit.h>
+#include <oresx.h>
+#include <onation.h>
+#include <otech.h>
+#include <otechres.h>
+#include <otransl.h>
 
 //---------- #define constant ------------//
 

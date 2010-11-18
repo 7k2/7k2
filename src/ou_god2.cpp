@@ -21,11 +21,11 @@
 //Filename   : OU_GOD2.CPP
 //Description: God Unit - AI functions
 
-#include <OGODRES.H>
-#include <ORACERES.H>
-#include <OF_CAMP.H>
-#include <OF_TRAIN.H>
-#include <OU_GOD.H>
+#include <ogodres.h>
+#include <oraceres.h>
+#include <of_camp.h>
+#include <of_train.h>
+#include <ou_god.h>
 
 //------- Begin of function UnitGod::process_ai --------//
 

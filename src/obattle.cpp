@@ -21,41 +21,41 @@
 //Filename    : OBATTLE.CPP
 //Description : Battle Object
 
-#include <OBATTLE.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OVGALOCK.H>
-#include <OWORLD.H>
-#include <OPOWER.H>
-#include <OCONFIG.H>
-#include <OSPY.H>
-#include <OMOUSE.H>
-#include <OMUSIC.H>
-#include <OSITE.H>
-#include <ORACERES.H>
-#include <OHERORES.H>
-#include <OGODRES.H>
-#include <OTECHRES.H>
-#include <OITEMRES.H>
-#include <OCONFIG.H>
-#include <OREMOTE.H>
-#include <OUNIT.H>
-#include <OTOWN.H>
-#include <OF_FORT.H>
-#include <OF_LAIR.H>
-#include <ONEWS.H>
-#include <ONATION2.H>
-#include <OMONSRES.H>
-#include <OCAMPGN.H>
-#include <OWALLRES.H>
-#include <OSTATE.H>
-#include <OINFO.H>
-#include <OUNITALL.H>
-#include <OGAME.H>
-#include <OMOUSECR.H>
-#include <OTERRAIN.H>
-#include <OPLASMA.H>
+#include <obattle.h>
+#include <osys.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ovgalock.h>
+#include <oworld.h>
+#include <opower.h>
+#include <oconfig.h>
+#include <ospy.h>
+#include <omouse.h>
+#include <omusic.h>
+#include <osite.h>
+#include <oraceres.h>
+#include <oherores.h>
+#include <ogodres.h>
+#include <otechres.h>
+#include <oitemres.h>
+#include <oconfig.h>
+#include <oremote.h>
+#include <ounit.h>
+#include <otown.h>
+#include <of_fort.h>
+#include <of_lair.h>
+#include <onews.h>
+#include <onation2.h>
+#include <omonsres.h>
+#include <ocampgn.h>
+#include <owallres.h>
+#include <ostate.h>
+#include <oinfo.h>
+#include <ounitall.h>
+#include <ogame.h>
+#include <omousecr.h>
+#include <oterrain.h>
+#include <oplasma.h>
 
 //-------- Define static vars --------//
 

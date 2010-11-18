@@ -21,9 +21,9 @@
 //Filename    : ORESTXT.CPP
 //Description : Text Resource library handling object
 
-#include <ALL.H>
-#include <OSTR.H>
-#include <ORESTXT.H>
+#include <all.h>
+#include <ostr.h>
+#include <orestxt.h>
 
 
 //------------ Format of RTI file -------------//

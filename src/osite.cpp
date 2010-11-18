@@ -21,23 +21,23 @@
 //Filename    : OSITE.CPP
 //Description : Object Site
 
-#include <OSYS.H>
-#include <OINFO.H>
-#include <OWORLD.H>
-#include <OTOWN.H>
-#include <OFIRM.H>
-#include <OUNIT.H>
-#include <ONEWS.H>
-#include <OGODRES.H>
-#include <ONATION.H>
-#include <OSITE.H>
-#include <OITEMRES.H>
-#include <OTECHRES.H>
-#include <OMODEID.H>
-#include <OWORLDMT.H>
-#include <OIMGRES.H>
-#include <OCONFIG.H>
-#include <OGAME.H>
+#include <osys.h>
+#include <oinfo.h>
+#include <oworld.h>
+#include <otown.h>
+#include <ofirm.h>
+#include <ounit.h>
+#include <onews.h>
+#include <ogodres.h>
+#include <onation.h>
+#include <osite.h>
+#include <oitemres.h>
+#include <otechres.h>
+#include <omodeid.h>
+#include <oworldmt.h>
+#include <oimgres.h>
+#include <oconfig.h>
+#include <ogame.h>
 #include <math.h>
 
 //-------------- Define constant -----------//

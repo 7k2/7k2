@@ -21,8 +21,8 @@
 // Filename    : OT_NEWS.H
 // Description : text resource news
 
-#include <OT_NEWS.H>
-#include <ALL.H>
+#include <ot_news.h>
+#include <all.h>
 
 
 void TextResNews::init()

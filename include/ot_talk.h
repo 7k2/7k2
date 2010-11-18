@@ -25,7 +25,7 @@
 #ifndef __OT_TALK_H
 #define __OT_TALK_H
 
-#include <OTXTRES.H>
+#include <otxtres.h>
 
 class TextResTalk : public TextResource
 {

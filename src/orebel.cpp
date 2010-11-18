@@ -21,15 +21,15 @@
 //Filename    : OREBEL.CPP
 //Description : Object Rebel
 
-#include <OPOWER.H>
-#include <OGAME.H>
-#include <OUN_GRP.H>
-#include <OFIRM.H>
-#include <OTOWN.H>
-#include <ONEWS.H>
-#include <OREBEL.H>
-#include <ORACERES.H>
-#include <ONATION.H>
+#include <opower.h>
+#include <ogame.h>
+#include <oun_grp.h>
+#include <ofirm.h>
+#include <otown.h>
+#include <onews.h>
+#include <orebel.h>
+#include <oraceres.h>
+#include <onation.h>
 
 
 //--------- Begin of function RebelArray::RebelArray ----------//

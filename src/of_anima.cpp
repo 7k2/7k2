@@ -21,9 +21,9 @@
 //Filename    : OF_ANIMA.CPP
 //Description : Firm Animal Training firm.
 
-#include <ONATION.H>
-#include <OINFO.H>
-#include <OF_ANIM.H>
+#include <onation.h>
+#include <oinfo.h>
+#include <of_anim.h>
 
 //--------- Begin of function FirmAnimal::process_ai ---------//
 

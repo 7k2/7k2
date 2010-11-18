@@ -25,7 +25,7 @@
 #define __OC_EAST_H
 
 #ifndef __OCAMPGN_H
-#include <OCAMPGN.H>
+#include <ocampgn.h>
 #endif
 
 //--------- Define variable type ----------//

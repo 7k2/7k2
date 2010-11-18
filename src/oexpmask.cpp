@@ -23,14 +23,14 @@
 // Owner       : Gilbert
 
 
-#include <OEXPMASK.H>
-#include <OFILE.H>
-#include <OWORLDMT.H>
-#include <OVGABUF.H>
-#include <OSTR.H>
-#include <OCOLTBL.H>
-#include <OCONFIG.H>
-#include <OSYS.H>
+#include <oexpmask.h>
+#include <ofile.h>
+#include <oworldmt.h>
+#include <ovgabuf.h>
+#include <ostr.h>
+#include <ocoltbl.h>
+#include <oconfig.h>
+#include <osys.h>
 
 // --------- Define Constant ------//
 

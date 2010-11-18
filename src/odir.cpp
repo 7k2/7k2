@@ -23,7 +23,7 @@
 
 #include <string.h>
 #include <windows.h>
-#include <ODIR.H>
+#include <odir.h>
 
 
 //----------- Define static function ------------//

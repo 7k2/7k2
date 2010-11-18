@@ -25,10 +25,10 @@
 #define __OMOUSECR_H
 
 
-// #include <OVGA.H>
+// #include <ovga.h>
 
-#include <ORESDB.H>
-#include <OBLOB2W.H>
+#include <oresdb.h>
+#include <oblob2w.h>
 
 
 // ------------ Define constant -------- // 

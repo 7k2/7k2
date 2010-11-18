@@ -25,31 +25,31 @@
 #define __OFIRM_H
 
 #ifndef __GAMEDEF_H
-#include <GAMEDEF.H>
+#include <gamedef.h>
 #endif
  
 #ifndef __OPLACE_H
-#include <OPLACE.H>
+#include <oplace.h>
 #endif
 
 #ifndef __OFIRMA_H
-#include <OFIRMA.H>
+#include <ofirma.h>
 #endif
 
 #ifndef __OINFO_H
-#include <OINFO.H>
+#include <oinfo.h>
 #endif
 
 #ifndef __OFIRMID_H
-#include <OFIRMID.H>
+#include <ofirmid.h>
 #endif
 
 #ifndef __OFIRMRES_H
-#include <OFIRMRES.H>
+#include <ofirmres.h>
 #endif
 
 #ifndef __OSKILL_H
-#include <OSKILL.H>
+#include <oskill.h>
 #endif
 
 //----------- Define constant ------------//

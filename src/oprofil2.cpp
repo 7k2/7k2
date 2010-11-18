@@ -21,29 +21,29 @@
 // Filename    : OPROFIL2.H
 // Description : PlayerProfile menu
 
-#include <OPROFILE.H>
-#include <ALL.H>
-#include <ODIR.H>
-#include <OBLOB.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OVGABUF.H>
-#include <OVGALOCK.H>
-#include <OMOUSE.H>
-#include <OMOUSECR.H>
-#include <OFONT.H>
-#include <OGETA.H>
-#include <KEY.H>
-#include <OSLIDCUS.H>
-#include <OBUTTON.H>
-#include <OBUTT3D.H>
-#include <OIMGRES.H>
-#include <OBOX.H>
-#include <OGAMESET.H>
-#include <OUNITRES.H>
-#include <ORACERES.H>
-#include <OT_GMENU.H>
+#include <oprofile.h>
+#include <all.h>
+#include <odir.h>
+#include <oblob.h>
+#include <osys.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ovgabuf.h>
+#include <ovgalock.h>
+#include <omouse.h>
+#include <omousecr.h>
+#include <ofont.h>
+#include <ogeta.h>
+#include <key.h>
+#include <oslidcus.h>
+#include <obutton.h>
+#include <obutt3d.h>
+#include <oimgres.h>
+#include <obox.h>
+#include <ogameset.h>
+#include <ounitres.h>
+#include <oraceres.h>
+#include <ot_gmenu.h>
 
 #include <io.h>
 

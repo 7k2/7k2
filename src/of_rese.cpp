@@ -21,21 +21,21 @@
 //Filename    : OF_RESE.CPP
 //Description : Firm Magic Tower
 
-#include <OF_RESE.H>
-#include <OINFO.H>
-#include <OMODEID.H>
-#include <ODATE.H>
-#include <OSTR.H>
-#include <ONEWS.H>
-#include <OCONFIG.H>
-#include <OSYS.H>
-#include <OUNIT.H>
-#include <ONATION.H>
-#include <OGODRES.H>
-#include <OTECHRES.H>
-#include <OREMOTE.H>
-#include <OSE.H>
-#include <OSERES.H>
+#include <of_rese.h>
+#include <oinfo.h>
+#include <omodeid.h>
+#include <odate.h>
+#include <ostr.h>
+#include <onews.h>
+#include <oconfig.h>
+#include <osys.h>
+#include <ounit.h>
+#include <onation.h>
+#include <ogodres.h>
+#include <otechres.h>
+#include <oremote.h>
+#include <ose.h>
+#include <oseres.h>
 
 
 //--------- Begin of function FirmResearch::FirmResearch ---------//

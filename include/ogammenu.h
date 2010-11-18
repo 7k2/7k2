@@ -25,12 +25,12 @@
 #define __OGAMMENU_H
 
 
-#include <OGAMESET.H>
-#include <OUNITRES.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OHERORES.H>
-#include <OITEMRES.H>
+#include <ogameset.h>
+#include <ounitres.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <oherores.h>
+#include <oitemres.h>
 
 
 // ------ define button of coordinate ------ //

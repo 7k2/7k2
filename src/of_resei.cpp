@@ -21,30 +21,30 @@
 //Filename    : OF_RESE.CPP
 //Description : Firm Research
 
-#include <OF_RESE.H>
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <ODATE.H>
-#include <OSTR.H>
-#include <ONEWS.H>
-#include <OFONT.H>
-#include <OCONFIG.H>
-#include <OBUTT3D.H>
-#include <OMOUSE.H>
-#include <OSYS.H>
-#include <OUNIT.H>
-#include <ONATION.H>
-#include <OTECHRES.H>
-#include <OTECH.H>
-#include <OREMOTE.H>
-#include <OSE.H>
-#include <OSERES.H>
-#include <OBUTTCUS.H>
-#include <OIMGRES.H>
-#include <OBITMAP.H>
-#include <OBITMAPW.H>
-#include <OT_FIRM.H>
+#include <of_rese.h>
+#include <oinfo.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <odate.h>
+#include <ostr.h>
+#include <onews.h>
+#include <ofont.h>
+#include <oconfig.h>
+#include <obutt3d.h>
+#include <omouse.h>
+#include <osys.h>
+#include <ounit.h>
+#include <onation.h>
+#include <otechres.h>
+#include <otech.h>
+#include <oremote.h>
+#include <ose.h>
+#include <oseres.h>
+#include <obuttcus.h>
+#include <oimgres.h>
+#include <obitmap.h>
+#include <obitmapw.h>
+#include <ot_firm.h>
 
 //------------- Define constant ------------//
 

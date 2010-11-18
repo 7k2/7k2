@@ -21,14 +21,14 @@
 // Filename    : OSPIN_S.CPP
 // Description : Small spinner
 
-#include <OSPIN_S.H>
-#include <ALL.H> 
-#include <OBITMAP.H>
-#include <OVGA.H>
-#include <OVGABUF.H>
-#include <OIMGRES.H>
-#include <OVBROWIF.H>
-#include <OMOUSE.H>
+#include <ospin_s.h>
+#include <all.h> 
+#include <obitmap.h>
+#include <ovga.h>
+#include <ovgabuf.h>
+#include <oimgres.h>
+#include <ovbrowif.h>
+#include <omouse.h>
 
 #define SCROLL_BUTTON_WIDTH 8
 #define D3_PANEL_THICK 4

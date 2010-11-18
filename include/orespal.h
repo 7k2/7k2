@@ -25,7 +25,7 @@
 #ifndef __ORESPAL_H
 #define __ORESPAL_H
 
-#include <ORESDB.H>
+#include <oresdb.h>
 
 class ResourcePal : public ResourceDb
 {

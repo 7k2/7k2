@@ -27,11 +27,11 @@
 #include <stdarg.h>
 #include <windows.h>
 
-#include <OSYS.H>
-#include <OBOX.H>
-#include <OVGA.H>
-#include <OVGALOCK.H>
-#include <ALL.H>
+#include <osys.h>
+#include <obox.h>
+#include <ovga.h>
+#include <ovgalock.h>
+#include <all.h>
 
 //------------------------------------------------//
 //

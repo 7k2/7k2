@@ -21,13 +21,13 @@
 //Filename    : OF_LAIRA.CPP
 //Description : Firm Monster Lair  - AI functions
 
-#include <OTOWN.H>
-#include <OUNIT.H>
-#include <ONATION.H>
-#include <OMONSRES.H>
-#include <OTECHRES.H>
-#include <OF_LAIR.H>
-#include <OGAME.H>
+#include <otown.h>
+#include <ounit.h>
+#include <onation.h>
+#include <omonsres.h>
+#include <otechres.h>
+#include <of_lair.h>
+#include <ogame.h>
 
 //--------- Begin of function FirmLair::process_ai ---------//
 

@@ -21,30 +21,30 @@
 //Filename    : OF_CAMP.CPP
 //Description : Firm Military Camp
 
-#include <OF_CAMP.H>
-#include <OVGA.H>
-#include <OCONFIG.H>
-#include <OMODEID.H> 
-#include <OIMGRES.H>
-#include <OHELP.H>
-#include <OSYS.H>
-#include <ONEWS.H>
-#include <OSTR.H>
-#include <OPOWER.H>
-#include <OUNIT.H>
-#include <OMONSRES.H>
-#include <OSPY.H>
-#include <ONATION.H>
-#include <ORACERES.H>
-#include <OGODRES.H>
-#include <OREMOTE.H>
-#include <OSERES.H>
-#include <OSE.H>
-#include <OITEMRES.H>
-#include <OITEM.H>
-#include <ITEMID.H>
-#include <OGAME.H>
-#include <OF_BASE.H>
+#include <of_camp.h>
+#include <ovga.h>
+#include <oconfig.h>
+#include <omodeid.h> 
+#include <oimgres.h>
+#include <ohelp.h>
+#include <osys.h>
+#include <onews.h>
+#include <ostr.h>
+#include <opower.h>
+#include <ounit.h>
+#include <omonsres.h>
+#include <ospy.h>
+#include <onation.h>
+#include <oraceres.h>
+#include <ogodres.h>
+#include <oremote.h>
+#include <oseres.h>
+#include <ose.h>
+#include <oitemres.h>
+#include <oitem.h>
+#include <itemid.h>
+#include <ogame.h>
+#include <of_base.h>
 #include <stdlib.h>
 
 //----------- Define static vars -------------//

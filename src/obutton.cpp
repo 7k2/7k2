@@ -21,17 +21,17 @@
 //Filename    : OBUTTON.CPP
 //Description : Button Object
 
-#include <KEY.H>
-#include <ALL.H>
-#include <OHELP.H>
-#include <OFONT.H>
-#include <OSYS.H>
-#include <OMOUSE.H>
-#include <OVGA.H>
-#include <OIMGRES.H>
-#include <OBUTTON.H>
-#include <OTUTOR.H>
-#include <OGAME.H>
+#include <key.h>
+#include <all.h>
+#include <ohelp.h>
+#include <ofont.h>
+#include <osys.h>
+#include <omouse.h>
+#include <ovga.h>
+#include <oimgres.h>
+#include <obutton.h>
+#include <otutor.h>
+#include <ogame.h>
 
 //----------- Begin of function Button::Button -----------//
 //

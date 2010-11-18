@@ -25,7 +25,7 @@
 #define __ORESTXT_H
 
 #ifndef __OFILE_H
-#include <OFILE.H>
+#include <ofile.h>
 #endif
 
 //------ Begin of function TxtIndex ------//

@@ -21,31 +21,31 @@
 //Filename   : OF_CAMPI.CPP
 //Description: Interface for Camp
 
-#include <OVGA.H>
-#include <OF_CAMP.H> 
-#include <ALL.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OHERORES.H>
-#include <OSYS.H>
-#include <OMODEID.H>
-#include <OFONT.H>
-#include <OMOUSE.H>
-#include <OIMGRES.H>
-#include <OREMOTE.H>
-#include <OSE.H> 
-#include <OHELP.H>
-#include <OTRANSL.H>
-#include <OBUTT3D.H>
-#include <OCONFIG.H>
-#include <ONATION.H>
-#include <OUNIT.H>
-#include <OSPY.H>
-#include <OITEMRES.H>
-#include <OBITMAP.H>
-#include <OSERES.H>
-#include <OT_FIRM.H>
-#include <OT_UNIT.H>
+#include <ovga.h>
+#include <of_camp.h> 
+#include <all.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <oherores.h>
+#include <osys.h>
+#include <omodeid.h>
+#include <ofont.h>
+#include <omouse.h>
+#include <oimgres.h>
+#include <oremote.h>
+#include <ose.h> 
+#include <ohelp.h>
+#include <otransl.h>
+#include <obutt3d.h>
+#include <oconfig.h>
+#include <onation.h>
+#include <ounit.h>
+#include <ospy.h>
+#include <oitemres.h>
+#include <obitmap.h>
+#include <oseres.h>
+#include <ot_firm.h>
+#include <ot_unit.h>
 
 enum	{PATROL_ALL=0,
 		 PATROL_NO_GENERAL=1,

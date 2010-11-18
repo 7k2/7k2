@@ -21,12 +21,12 @@
 //Filename   : OTOWNLNK.CPP
 //Description: class Town - functions for setting up and updating links
 
-#include <ALL.H>
-#include <OTOWN.H>
-#include <ONATION.H>
-#include <OFIRM.H>
-#include <OF_CAMP.H>
-#include <OREMOTE.H>
+#include <all.h>
+#include <otown.h>
+#include <onation.h>
+#include <ofirm.h>
+#include <of_camp.h>
+#include <oremote.h>
 
 //------- Begin of function Town::setup_link ---------//
 //

@@ -21,26 +21,26 @@
 //Filename    : OF_BASEI.CPP
 //Description : Firm Base - interface functions
 
-#include <OF_BASE.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OMOUSE.H>
-#include <OIMGRES.H>
-#include <OHELP.H>
-#include <OSTR.H>
-#include <OFONT.H> 
-#include <OCONFIG.H>
-#include <OUNIT.H>
-#include <OBUTT3D.H>
-#include <ONATION.H>
-#include <OGODRES.H>
-#include <OREMOTE.H>
-#include <OSERES.H>
-#include <OSE.H>
-#include <OBITMAPW.H>
-#include <OSYS.H>
-#include <ORACERES.H>
-#include <OT_FIRM.H>
+#include <of_base.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <omouse.h>
+#include <oimgres.h>
+#include <ohelp.h>
+#include <ostr.h>
+#include <ofont.h> 
+#include <oconfig.h>
+#include <ounit.h>
+#include <obutt3d.h>
+#include <onation.h>
+#include <ogodres.h>
+#include <oremote.h>
+#include <oseres.h>
+#include <ose.h>
+#include <obitmapw.h>
+#include <osys.h>
+#include <oraceres.h>
+#include <ot_firm.h>
 
 //----------- Define static vars -------------//
 

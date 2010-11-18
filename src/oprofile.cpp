@@ -21,18 +21,18 @@
 // Filename    : OPROFILE.H
 // Description : player profile 
 
-#include <OPROFILE.H>
-#include <CRC.H>
-#include <ALL.H>
-#include <OUNITRES.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OHERORES.H>
-#include <OUNIT.H>
-#include <OSPY.H>
-#include <OSOLDIER.H>
-#include <OTRANSL.H>
-#include <OT_UNIT.H>
+#include <oprofile.h>
+#include <crc.h>
+#include <all.h>
+#include <ounitres.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <oherores.h>
+#include <ounit.h>
+#include <ospy.h>
+#include <osoldier.h>
+#include <otransl.h>
+#include <ot_unit.h>
 
 #include <stdlib.h>
 

@@ -25,13 +25,13 @@
 // some GUID initialization problems exist if OVGA.H is included in ODPLAY.CPP
 
 #include <ddraw.h>
-#include <OSYS.H>
-#include <OVGALOCK.H>
-#include <OVGABUF.H>
-#include <OVGA.H>
-#include <OFILE.H>
-#include <OMOUSE.H>
-#include <ALL.H>
+#include <osys.h>
+#include <ovgalock.h>
+#include <ovgabuf.h>
+#include <ovga.h>
+#include <ofile.h>
+#include <omouse.h>
+#include <all.h>
 
 
 VgaFrontLock::VgaFrontLock()

@@ -21,12 +21,12 @@
 // Filename    : OGAMDEMO.CPP
 // Description : display the advertising page for the demo
 
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OVGALOCK.H>
-#include <OMOUSE.H>
-#include <OGAME.H>
+#include <osys.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ovgalock.h>
+#include <omouse.h>
+#include <ogame.h>
 
 //------ Begin of function Game::demo_disp_ad_page ------//
 

@@ -21,15 +21,15 @@
 //Filename    : OBUTTCUS.CPP
 //Description : Custom Button Object
 
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OMOUSE.H>
-#include <OIMGRES.H>
-#include <OBUTTCUS.H>
-#include <OFONT.H>
-#include <OHELP.H>
-#include <OTUTOR.H>
-#include <OGAME.H>
+#include <osys.h>
+#include <ovga.h>
+#include <omouse.h>
+#include <oimgres.h>
+#include <obuttcus.h>
+#include <ofont.h>
+#include <ohelp.h>
+#include <otutor.h>
+#include <ogame.h>
 
 
 ButtonCustom customButton1;

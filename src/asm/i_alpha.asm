@@ -20,8 +20,8 @@
 ;Description : Draw a rectangle bar on vga image buffer alpha blending
 
 
-INCLUDE IMGFUN.INC
-INCLUDE I_EFFECT.INC
+INCLUDE imgfun.inc
+INCLUDE i_effect.inc
 
 .CODE
 

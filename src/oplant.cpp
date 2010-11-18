@@ -22,17 +22,17 @@
 //Description : Plant resource object
 //Owner       : Gilbert
 
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OGAMESET.H>
-#include <OWORLD.H>
-#include <OTERRAIN.H>
-#include <OINFO.H>
-#include <OPLANT.H>
-#include <OCONFIG.H>
-#include <OWORLDMT.H>
-#include <OCOLTBL.H>
-#include <OBITMAP.H>
+#include <osys.h>
+#include <ovga.h>
+#include <ogameset.h>
+#include <oworld.h>
+#include <oterrain.h>
+#include <oinfo.h>
+#include <oplant.h>
+#include <oconfig.h>
+#include <oworldmt.h>
+#include <ocoltbl.h>
+#include <obitmap.h>
 
 //---------- #define constant ------------//
 

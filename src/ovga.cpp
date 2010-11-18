@@ -26,18 +26,18 @@
 #include <windowsx.h>
 #include <ddraw.h>
 // include ddraw before ovga.h such that dd_buf is translated
-#include <ALL.H>
-#include <IMGFUN.H>
-#include <COLCODE.H>
-#include <OMOUSE.H>
-#include <OMOUSECR.H>
-#include <OCOLTBL.H>
-#include <OFILE.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OLOG.H>
-#include <OVGALOCK.H>
-#include <OMODEID.H>
+#include <all.h>
+#include <imgfun.h>
+#include <colcode.h>
+#include <omouse.h>
+#include <omousecr.h>
+#include <ocoltbl.h>
+#include <ofile.h>
+#include <osys.h>
+#include <ovga.h>
+#include <olog.h>
+#include <ovgalock.h>
+#include <omodeid.h>
 
 //-------- Define constant --------//
 

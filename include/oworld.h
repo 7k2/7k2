@@ -24,8 +24,8 @@
 #ifndef __OWORLD_H
 #define __OWORLD_H
 
-#include <OMATRIX.H>
-#include <OMISC.H>
+#include <omatrix.h>
+#include <omisc.h>
 
 //----------- Define constant ------------//
 

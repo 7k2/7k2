@@ -22,18 +22,18 @@
 //Description : Object Bullet Array
 //Owner		  : Alex
 
-#include <OVGA.H>
-#include <OUNIT.H>
-#include <OBULLET.H>
-#include <OWORLD.H>
-#include <OTOWN.H>
-#include <OF_FORT.H>
-#include <OF_LISH.H>
-#include <OWORLDMT.H>
-#include <OB_PROJ.H>
-#include <OB_HOMIN.H>
-#include <OB_FLAME.H>
-#include <OB_PROG.H>
+#include <ovga.h>
+#include <ounit.h>
+#include <obullet.h>
+#include <oworld.h>
+#include <otown.h>
+#include <of_fort.h>
+#include <of_lish.h>
+#include <oworldmt.h>
+#include <ob_proj.h>
+#include <ob_homin.h>
+#include <ob_flame.h>
+#include <ob_prog.h>
 #include <math.h>
 
 //--------- Begin of function BulletArray::BulletArray ---------//

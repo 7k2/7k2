@@ -21,13 +21,13 @@
 //Filename   : OAI_ACT.CPP
 //Description: AI - action progressing functions
 
-#include <ALL.H>
-#include <OBOX.H>
-#include <OSYS.H>
-#include <OCONFIG.H>
-#include <OINFO.H>
-#include <OU_MARI.H>
-#include <ONATION.H>
+#include <all.h>
+#include <obox.h>
+#include <osys.h>
+#include <oconfig.h>
+#include <oinfo.h>
+#include <ou_mari.h>
+#include <onation.h>
 
 //------- Begin of function Nation::process_action --------//
 //

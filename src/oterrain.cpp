@@ -22,16 +22,16 @@
 //Description : Terrain resource object
 //Ownership   : Gilbert
 
-#include <OTERRAIN.H>
-#include <ALL.H>
-#include <OIMGRES.H>
-#include <COLOR.H>
-#include <OSYS.H>
-#include <OGAMESET.H>
-#include <OWORLD.H>
-#include <OCONFIG.H>
-#include <OBITMAP.H>
-#include <OCOLTBL.H>
+#include <oterrain.h>
+#include <all.h>
+#include <oimgres.h>
+#include <color.h>
+#include <osys.h>
+#include <ogameset.h>
+#include <oworld.h>
+#include <oconfig.h>
+#include <obitmap.h>
+#include <ocoltbl.h>
 
 //---------- #define constant ------------//
 

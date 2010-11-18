@@ -21,11 +21,11 @@
 // Filename    : OUN_ITEM.CPP
 // Description : unit item functions
 
-#include <OUNIT.H>
-#include <OREMOTE.H>
-#include <OITEMRES.H>
-#include <OSITE.H>
-#include <OGAME.H>
+#include <ounit.h>
+#include <oremote.h>
+#include <oitemres.h>
+#include <osite.h>
+#include <ogame.h>
 
 //------ Begin of function Unit::pick_item --------//
 

@@ -21,25 +21,25 @@
 //Filename	  : OPOWER2.CPP
 //Description : Object Power - part 2
 
-#include <OPOWER.H>
-#include <OMOUSE.H>
-#include <OMOUSECR.H>
-#include <OUNIT.H>
-#include <OFIRM.H>
-#include <OTOWN.H>
-#include <OSITE.H>
-#include <OSYS.H>
-#include <OMODEID.H>
-#include <ONATION.H>
-#include <OBOX.H>
-#include <OIMGRES.H>
-#include <OMOUSECR.H>
-#include <OWORLD.H>
-#include <OINFO.H>
-#include <OU_CARA.H>
-#include <OSERES.H>
-#include <OREMOTE.H>
-#include <OWORLDMT.H>
+#include <opower.h>
+#include <omouse.h>
+#include <omousecr.h>
+#include <ounit.h>
+#include <ofirm.h>
+#include <otown.h>
+#include <osite.h>
+#include <osys.h>
+#include <omodeid.h>
+#include <onation.h>
+#include <obox.h>
+#include <oimgres.h>
+#include <omousecr.h>
+#include <oworld.h>
+#include <oinfo.h>
+#include <ou_cara.h>
+#include <oseres.h>
+#include <oremote.h>
+#include <oworldmt.h>
 
 
 //--------- Begin of function Power::get_link_icon ---------//

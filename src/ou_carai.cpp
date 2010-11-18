@@ -21,28 +21,28 @@
 //Filename    : OU_CARAI.CPP
 //Description : Unit Caravan - interface functions
 
-#include <OU_CARA.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OSTR.H>
-#include <OBITMAP.H>
-#include <OHELP.H>
-#include <OFONT.H>
-#include <OINFO.H>
-#include <OCONFIG.H>
-#include <OIMGRES.H>
-#include <OMOUSE.H>
-#include <OGAME.H>
-#include <OPOWER.H>
-#include <OBUTTON.H>
-#include <OBUTT3D.H>
-#include <ONATION.H>
-#include <OREMOTE.H>
-#include <OF_MINE.H>
-#include <OF_FACT.H>
-#include <OBUTTCUS.H>
-#include <OSE.H>
-#include <OT_UNIT.H>
+#include <ou_cara.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ostr.h>
+#include <obitmap.h>
+#include <ohelp.h>
+#include <ofont.h>
+#include <oinfo.h>
+#include <oconfig.h>
+#include <oimgres.h>
+#include <omouse.h>
+#include <ogame.h>
+#include <opower.h>
+#include <obutton.h>
+#include <obutt3d.h>
+#include <onation.h>
+#include <oremote.h>
+#include <of_mine.h>
+#include <of_fact.h>
+#include <obuttcus.h>
+#include <ose.h>
+#include <ot_unit.h>
 
 //------------- Define static vars ------------//
 

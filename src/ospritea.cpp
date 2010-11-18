@@ -21,15 +21,15 @@
 //Filename    : OSPRITEA.CPP
 //Description : Object SpriteArray
 
-#include <ALL.H>
-#include <OVGA.H>
-#include <OSTR.H>
-#include <OSYS.H>
-#include <OSPRTRES.H>
-#include <OSPRITE.H>
-#include <OUNIT.H>
-#include <OBULLET.H>
-#include <OTORNADO.H>
+#include <all.h>
+#include <ovga.h>
+#include <ostr.h>
+#include <osys.h>
+#include <osprtres.h>
+#include <osprite.h>
+#include <ounit.h>
+#include <obullet.h>
+#include <otornado.h>
 
 //--------- Begin of function SpriteArray::SpriteArray ---------//
 //

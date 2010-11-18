@@ -21,16 +21,16 @@
 //Filename   : OVGA2.CPP
 //Description: Functions for display big image
 
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <ALL.H>
-#include <OSTR.H>
-#include <OSYS.H>
-#include <OFILE.H>
-#include <OMOUSE.H>
-#include <OVGALOCK.H>
-#include <OCOLTBL.H>
-#include <OJPEG.H>
+#include <ovga.h>
+#include <omodeid.h>
+#include <all.h>
+#include <ostr.h>
+#include <osys.h>
+#include <ofile.h>
+#include <omouse.h>
+#include <ovgalock.h>
+#include <ocoltbl.h>
+#include <ojpeg.h>
 
 // -------- define static function --------//
 

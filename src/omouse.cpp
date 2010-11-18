@@ -21,17 +21,17 @@
 //Filename    : OMOUSE.CPP
 //Description : Mouse handling Object
 
-#include <OMOUSE.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OPOWER.H>
-#include <OMOUSECR.H>
-#include <KEY.H>
-#include <OVGALOCK.H>
-#include <OTUTOR.H>
-#include <OGAME.H>
+#include <omouse.h>
+#include <all.h>
+#include <osys.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <opower.h>
+#include <omousecr.h>
+#include <key.h>
+#include <ovgalock.h>
+#include <otutor.h>
+#include <ogame.h>
 
 //--- define the size of a buffer for real-time vga screen updating ---//
 

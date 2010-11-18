@@ -21,9 +21,9 @@
 //Filename    : OSTR.CPP
 //Description : Object String
 
-#include <OMISC.H>
-#include <CTYPE.H>
-#include <OSTR.H>
+#include <omisc.h>
+#include <ctype.h>
+#include <ostr.h>
 
 
 //------- Define static variable --------//

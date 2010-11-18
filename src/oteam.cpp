@@ -21,7 +21,7 @@
 //Filename: OTEAM.CPP
 //Description: Functions for the Team class
 
-#include <OUNIT.H>
+#include <ounit.h>
 
 
 //----------- Begin of function TeamInfo::TeamInfo ---------//

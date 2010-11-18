@@ -21,9 +21,9 @@
 //Filename    : OFILE.CPP
 //Description : Object File
 
-#include <OFILE.H>
-#include <OBOX.H>
-#include <ALL.H>
+#include <ofile.h>
+#include <obox.h>
+#include <all.h>
 #include <windows.h>
 #include <stdio.h>
 

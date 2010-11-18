@@ -21,9 +21,9 @@
 // Filename    : OLOCBMP.CPP
 // Description : Location Bitmap cache
 
-#include <OLOCBMP.H>
-#include <ALL.H>
-#include <OBLOB2W.H>
+#include <olocbmp.h>
+#include <all.h>
+#include <oblob2w.h>
 
 
 // if isometric view, #define RHOMBUS_LOCATION 1

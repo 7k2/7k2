@@ -21,17 +21,17 @@
 // Filename     :OF_SPECI.CPP
 // Description  : FirmSpecial interface
 
-#include <OF_SPEC.H>
-#include <ALL.H>
-#include <OMODEID.H>
-#include <OINFO.H>
-#include <OBUTT3D.H>
-#include <OFONT.H>
-#include <ORACERES.H>
-#include <OUNITRES.H>
-#include <OTOWN.H>
-#include <OSE.H>
-#include <OSERES.H>
+#include <of_spec.h>
+#include <all.h>
+#include <omodeid.h>
+#include <oinfo.h>
+#include <obutt3d.h>
+#include <ofont.h>
+#include <oraceres.h>
+#include <ounitres.h>
+#include <otown.h>
+#include <ose.h>
+#include <oseres.h>
 
 static Button3D button_train;
 

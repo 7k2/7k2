@@ -21,15 +21,15 @@
 // Filename    : OC_PLOT2.CPP
 // Description : sub-plot 2
 
-#include <OC_EAST.H>
-#include <OUNITRES.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OFIRMRES.H>
-#include <OTECHRES.H>
-#include <OTECH.H>
-#include <ONATIONA.H>
-#include <ONATION2.H>
+#include <oc_east.h>
+#include <ounitres.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <ofirmres.h>
+#include <otechres.h>
+#include <otech.h>
+#include <onationa.h>
+#include <onation2.h>
 
 
 /*

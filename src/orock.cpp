@@ -23,10 +23,10 @@
 // Owner       : Gilbert
 
 
-#include <OROCK.H>
-#include <OROCKRES.H>
-#include <OWORLD.H>
-#include <OCONFIG.H>
+#include <orock.h>
+#include <orockres.h>
+#include <oworld.h>
+#include <oconfig.h>
 
 // --------- define constant ----------//
 #define ROCK_ALT_PATH 19

@@ -26,10 +26,10 @@
 
 //--------- Include other headers -------//
 
-#include <OMISC.H>
-#include <OSTR.H>
-#include <OFILE.H>
-#include <GAMEDEF.H>
+#include <omisc.h>
+#include <ostr.h>
+#include <ofile.h>
+#include <gamedef.h>
 #include <malloc.h>
 
 //-------- define standard type ---------//

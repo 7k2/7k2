@@ -21,9 +21,9 @@
 //Filename    : ORESX.CPP
 //Description : Object of resource library with name index
 
-#include <ORESX.H>
-#include <ALL.H>
-#include <OSYS.H>
+#include <oresx.h>
+#include <all.h>
+#include <osys.h>
 #include <string.h>
 #include <stdlib.h>
 

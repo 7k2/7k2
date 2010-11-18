@@ -23,8 +23,8 @@
 
 #include <string.h>
 
-#include <ALL.H>
-#include <ODB.H>
+#include <all.h>
+#include <odb.h>
 
 #define RECORD_SPEC_TERM_CHAR '\r'
 #define PRE_RECORD_CHAR ' '

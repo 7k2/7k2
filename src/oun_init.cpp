@@ -21,18 +21,18 @@
 //Filename	 : OPER_INF.CPP
 //Description: Unit functions related to basic information
 
-#include <OSYS.H>
-#include <OSPY.H>
-#include <OTRANSL.H>
-#include <OFIRM.H>
-#include <OUNITRES.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <ONATION.H>
-#include <OPOWER.H>
-#include <OUNIT.H>
-#include <ITEMID.H>
-#include <OGAME.H>
+#include <osys.h>
+#include <ospy.h>
+#include <otransl.h>
+#include <ofirm.h>
+#include <ounitres.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <onation.h>
+#include <opower.h>
+#include <ounit.h>
+#include <itemid.h>
+#include <ogame.h>
 
 
 //--------- Begin of function Unit::Unit ---------//

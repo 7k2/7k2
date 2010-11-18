@@ -25,7 +25,7 @@
 #define __OF_WORK_H
 
 #ifndef __OFIRM_H
-#include <OFIRM.H>
+#include <ofirm.h>
 #endif
 
 //--------- Define constant ----------//

@@ -21,15 +21,15 @@
 //Filename    : OR_AI.CPP
 //Description : Report for displaying AI actions
 
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <ODATE.H>
-#include <OFONT.H>
-#include <OVBROWIF.H> 
-#include <OBUTTON.H>
-#include <OFIRMRES.H>
-#include <ONATION.H>
+#include <oinfo.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <odate.h>
+#include <ofont.h>
+#include <ovbrowif.h> 
+#include <obutton.h>
+#include <ofirmres.h>
+#include <onation.h>
 
 //------------- Define coordinations -----------//
 

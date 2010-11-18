@@ -21,14 +21,14 @@
 // Filename     : OCNATION.CPP
 // Description  : CampaignNation functions
 
-#include <OSTR.H>
-#include <OGAME.H>
-#include <OCAMPGN.H>
-#include <ONATION.H>
-#include <OGAMESET.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OT_UNIT.H>
+#include <ostr.h>
+#include <ogame.h>
+#include <ocampgn.h>
+#include <onation.h>
+#include <ogameset.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <ot_unit.h>
 
 //-------- Begin of function CampaignNation::init ------//
 

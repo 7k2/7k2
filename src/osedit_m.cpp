@@ -22,28 +22,28 @@
 // Description : Scenario editor misc mode
 
 
-#include <OSEDITOR.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OMOUSE.H>
-#include <OFONT.H>
-#include <OBUTTON.H>
-#include <OVBROWIF.H>
-#include <OIMGRES.H>
-#include <ORACERES.H>
-#include <OROCKRES.H>
-#include <OROCK.H>
-#include <OINFO.H>
-#include <OPOWER.H>
-#include <OWORLDMT.H>
-#include <OSITE.H>
-#include <OITEM.H>
-#include <OITEMRES.H>
-#include <ITEMID.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <OPLANT.H>
-#include <OT_SEDIT.H>
+#include <oseditor.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <omouse.h>
+#include <ofont.h>
+#include <obutton.h>
+#include <ovbrowif.h>
+#include <oimgres.h>
+#include <oraceres.h>
+#include <orockres.h>
+#include <orock.h>
+#include <oinfo.h>
+#include <opower.h>
+#include <oworldmt.h>
+#include <osite.h>
+#include <oitem.h>
+#include <oitemres.h>
+#include <itemid.h>
+#include <otech.h>
+#include <otechres.h>
+#include <oplant.h>
+#include <ot_sedit.h>
 
 
 

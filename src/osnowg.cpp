@@ -22,10 +22,10 @@
 // Description : the bitmap of a snow ground bitmap
 // Owner       : Gilbert
 
-#include <OSNOWG.H>
-#include <OSNOWRES.H>
-#include <OWEATHER.H>
-#include <OWORLDMT.H>
+#include <osnowg.h>
+#include <osnowres.h>
+#include <oweather.h>
+#include <oworldmt.h>
 
 // ------- Define constant --------//
 #define SCAN_DENSITY 4

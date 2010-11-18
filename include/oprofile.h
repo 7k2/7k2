@@ -25,8 +25,8 @@
 #ifndef __OPROFILE_H
 #define __OPROFILE_H
 
-#include <OITEM.H>
-#include <OSKILL.H>
+#include <oitem.h>
+#include <oskill.h>
 
 typedef unsigned short WORD;
 typedef unsigned char BYTE;

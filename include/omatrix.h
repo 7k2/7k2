@@ -24,9 +24,9 @@
 #ifndef __OMATRIX_H
 #define __OMATRIX_H
 
-#include <GAMEDEF.H>
-#include <OREGION.H>
-#include <OLOCATE.H>
+#include <gamedef.h>
+#include <oregion.h>
+#include <olocate.h>
 
 //------------ Define class Matrix -----------//
 

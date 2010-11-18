@@ -26,8 +26,8 @@
 #ifndef __OAUDIO_H
 #define __OAUDIO_H
 
-#include <ORESX.H>
-#include <OVOLUME.H>
+#include <oresx.h>
+#include <ovolume.h>
 #include <dsound.h>
 
 //------ Define constant -----------//

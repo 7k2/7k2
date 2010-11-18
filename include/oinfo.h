@@ -25,15 +25,15 @@
 #define __OINFO_H
 
 #ifndef __OSKILL_H
-#include <OSKILL.H>
+#include <oskill.h>
 #endif
 
 #ifndef __ODYNARR_H
-#include <ODYNARR.H>
+#include <odynarr.h>
 #endif
 
 #ifndef __OWORLD_H
-#include <OWORLD.H>
+#include <oworld.h>
 #endif
 
 //---------- Define constant ---------//

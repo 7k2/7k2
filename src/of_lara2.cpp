@@ -21,13 +21,13 @@
 //Filename    : OF_LARA2.CPP
 //Description : Firm Monster Lair  - AI functions part 2
 
-#include <OTOWN.H>
-#include <OUNIT.H>
-#include <ONATION.H>
-#include <OMONSRES.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <OFIRMALL.H>
+#include <otown.h>
+#include <ounit.h>
+#include <onation.h>
+#include <omonsres.h>
+#include <otech.h>
+#include <otechres.h>
+#include <ofirmall.h>
 
 //--------- Begin of function FirmLair::think_build_special --------//
 

@@ -21,12 +21,12 @@
 //Filename    : OF_INN2.CPP
 //Description : Firm Inn - AI functions
 
-#include <ONATION.H>
-#include <OINFO.H>
-#include <OTOWN.H>
-#include <OUNIT.H>
-#include <OF_INN.H>
-#include <OF_CAMP.H>
+#include <onation.h>
+#include <oinfo.h>
+#include <otown.h>
+#include <ounit.h>
+#include <of_inn.h>
+#include <of_camp.h>
 
 //--------- Begin of function FirmInn::process_ai ---------//
 

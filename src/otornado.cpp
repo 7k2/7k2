@@ -22,20 +22,20 @@
 //Description : Object Tornado
 //Ownership   : Gilbert
 
-#include <OTORNADO.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OUNIT.H>
-#include <OWORLD.H>
-#include <OWORLDMT.H>
-#include <OWEATHER.H>
-#include <OFIRM.H>
-#include <OFIRMA.H>
-#include <OSERES.H>
-#include <OTOWN.H>
-#include <OCONFIG.H>
-#include <ONEWS.H>
+#include <otornado.h>
+#include <osys.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ounit.h>
+#include <oworld.h>
+#include <oworldmt.h>
+#include <oweather.h>
+#include <ofirm.h>
+#include <ofirma.h>
+#include <oseres.h>
+#include <otown.h>
+#include <oconfig.h>
+#include <onews.h>
 #include <math.h>
 
 

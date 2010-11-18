@@ -21,20 +21,20 @@
 //Filename    : OF_WAR.CPP
 //Description : Firm War Factory
 
-#include <OINFO.H>
-#include <OMODEID.H>
-#include <OSTR.H>
-#include <OCONFIG.H>
-#include <OUNIT.H>
-#include <OSYS.H>
-#include <ONATION.H>
-#include <OREMOTE.H>
-#include <OSE.H>
-#include <OSERES.H>
-#include <OF_WAR.H>
-#include <OTECHRES.H>
-#include <OTECH.H>
-#include <OGODRES.H>
+#include <oinfo.h>
+#include <omodeid.h>
+#include <ostr.h>
+#include <oconfig.h>
+#include <ounit.h>
+#include <osys.h>
+#include <onation.h>
+#include <oremote.h>
+#include <ose.h>
+#include <oseres.h>
+#include <of_war.h>
+#include <otechres.h>
+#include <otech.h>
+#include <ogodres.h>
 
 //--------- Begin of function FirmWar::FirmWar ---------//
 //

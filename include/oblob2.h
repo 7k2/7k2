@@ -24,7 +24,7 @@
 #ifndef __OBLOB2_H
 #define __OBLOB2_H
 
-#include <OBITMAP.H>
+#include <obitmap.h>
 
 // ------- define class Blob2D ----------//
 

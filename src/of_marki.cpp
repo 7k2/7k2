@@ -21,30 +21,30 @@
 //Filename    : OF_MARKI.CPP
 //Description : Firm Market Place - interface functions
 
-#include <OF_MARK.H>
-#include <OF_WORK.H>
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OSTR.H>
-#include <OBITMAP.H>
-#include <OMOUSE.H>
-#include <OBUTTON.H>
-#include <OBUTT3D.H>
-#include <OFONT.H>
-#include <OIMGRES.H>
-#include <OHELP.H>
-#include <OCONFIG.H>
-#include <ORAWRES.H>
-#include <ORACERES.H>
-#include <OTOWN.H>
-#include <ONATION.H>
-#include <OWORLDMT.H>
-#include <OSYS.H>
-#include <OREMOTE.H>
-#include <OSE.H>
-#include <OCONFIG.H>
-#include <OT_FIRM.H>
+#include <of_mark.h>
+#include <of_work.h>
+#include <oinfo.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ostr.h>
+#include <obitmap.h>
+#include <omouse.h>
+#include <obutton.h>
+#include <obutt3d.h>
+#include <ofont.h>
+#include <oimgres.h>
+#include <ohelp.h>
+#include <oconfig.h>
+#include <orawres.h>
+#include <oraceres.h>
+#include <otown.h>
+#include <onation.h>
+#include <oworldmt.h>
+#include <osys.h>
+#include <oremote.h>
+#include <ose.h>
+#include <oconfig.h>
+#include <ot_firm.h>
 
 // ------- define constant --------//
 

@@ -21,20 +21,20 @@
 //Filename	 : OUN_ATK2.CPP
 //Description: Unit attacking functions
 
-#include <OUNITRES.H>
-#include <OITEM.H>
-#include <OEFFECT.H>
-#include <OITEMRES.H>
-#include <ITEMID.H>
-#include <OFIRM.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <ORACERES.H> 
-#include <OGODRES.H>
-#include <OUNIT.H>
-#include <OFIRM.H>
-#include <OSYS.H>
-#include <OWEATHER.H>
+#include <ounitres.h>
+#include <oitem.h>
+#include <oeffect.h>
+#include <oitemres.h>
+#include <itemid.h>
+#include <ofirm.h>
+#include <otech.h>
+#include <otechres.h>
+#include <oraceres.h> 
+#include <ogodres.h>
+#include <ounit.h>
+#include <ofirm.h>
+#include <osys.h>
+#include <oweather.h>
 
 //--------- Begin of function Unit::choose_best_attack_mode ---------//
 //

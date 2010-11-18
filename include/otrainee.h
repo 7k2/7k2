@@ -24,7 +24,7 @@
 #ifndef __OTRAINEE_H
 #define __OTRAINEE_H
 
-#include <OSKILL.H>
+#include <oskill.h>
 
 //------- define struct Trainee ---------//
 

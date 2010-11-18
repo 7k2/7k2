@@ -25,23 +25,23 @@
 #if(defined(CHINESE))
 // if in tranditional Chinese, TRADITIONAL is defined in the project setting
 
-#include <OFONT.H>
-#include <ALL.H>
-#include <IMGFUN.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OSTR.H>
-#include <OSYS.H>
-#include <ORES.H>
-#include <OINFO.H>
-#include <OGAME.H>
-#include <OMOUSE.H>
-#include <OTRANSL.H>
-#include <ONATION.H>
-#include <OHELP.H>
-#include <OBLOB.H>
-#include <RESOURCE.H>
-#include <ENGLISHTOCHINESE.H>
+#include <ofont.h>
+#include <all.h>
+#include <imgfun.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ostr.h>
+#include <osys.h>
+#include <ores.h>
+#include <oinfo.h>
+#include <ogame.h>
+#include <omouse.h>
+#include <otransl.h>
+#include <onation.h>
+#include <ohelp.h>
+#include <oblob.h>
+#include <resource.h>
+#include <englishtochinese.h>
 #include <string.h>
 #include <stdio.h>
 //

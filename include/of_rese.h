@@ -25,7 +25,7 @@
 #define __OF_RESE_H
 
 #ifndef __OF_WORK_H
-#include <OF_WORK.H>
+#include <of_work.h>
 #endif
 
 

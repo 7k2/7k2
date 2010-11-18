@@ -21,17 +21,17 @@
 //Filename    : OTALKMSG.CPP
 //Description : Object TalkMsg
 
-#include <OMOUSE.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OINFO.H>
-#include <OFONT.H>
-#include <OTECHRES.H>
-#include <OGAMESET.H>
-#include <ONEWS.H>
-#include <ONATION.H>
-#include <OTALKRES.H>
-#include <OT_UNIT.H>
+#include <omouse.h>
+#include <osys.h>
+#include <ovga.h>
+#include <oinfo.h>
+#include <ofont.h>
+#include <otechres.h>
+#include <ogameset.h>
+#include <onews.h>
+#include <onation.h>
+#include <otalkres.h>
+#include <ot_unit.h>
 
 //------ Define function pointers array ------//
 

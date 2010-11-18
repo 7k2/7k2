@@ -24,9 +24,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <ALL.H>
-#include <OGAME.H>
-#include <OWORLD.H>
+#include <all.h>
+#include <ogame.h>
+#include <oworld.h>
 
 //--------------- define types --------------//
 

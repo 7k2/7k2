@@ -21,7 +21,7 @@
 //Filename   : OC_PLOT.CPP
 //Description: Plot functions
 
-#include <OC_EAST.H>
+#include <oc_east.h>
 
 //--------- Define constant ----------//
 

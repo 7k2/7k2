@@ -20,7 +20,7 @@
 
 // Filename   : OLONGLOG.CPP
 
-#include <OLONGLOG.H>
+#include <olonglog.h>
 #include <stdio.h>
 #include <windows.h>
 

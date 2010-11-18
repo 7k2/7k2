@@ -26,18 +26,18 @@
 #define __OBULLET_H
 
 #ifndef __OSPRITE_H
-#include <OSPRITE.H>
+#include <osprite.h>
 #endif
 
 #ifndef __OUNIT_H
-#include <OUNIT.H>
+#include <ounit.h>
 #endif
 
 #ifndef __OFIRM_H
-#include <OFIRM.H>
+#include <ofirm.h>
 #endif
 
-#include <OATTACK.H>
+#include <oattack.h>
 
 //------ define the parent type ------//
 enum	{	BULLET_BY_UNIT = 1,

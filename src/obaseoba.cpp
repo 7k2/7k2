@@ -21,10 +21,10 @@
 //Filename   : OBASEOBJ.CPP
 //Description: BaseObj Array
 
-#include <OUNIT.H>
-#include <OFIRM.H>
-#include <OTOWN.H>
-#include <OBASEOBJ.H>
+#include <ounit.h>
+#include <ofirm.h>
+#include <otown.h>
+#include <obaseobj.h>
 
 //--------- Begin of function BaseObjArray::BaseObjArray ---------//
 //

@@ -24,8 +24,8 @@
 #ifndef __OF_TRAIN_H
 #define __OF_TRAIN_H
 
-#include <OFIRM.H>
-#include <OTRAINEE.H>
+#include <ofirm.h>
+#include <otrainee.h>
 
 //------ Define constant ---------//
 

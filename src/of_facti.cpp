@@ -21,28 +21,28 @@
 //Filename    : OF_FACTI.CPP
 //Description : Firm Factory - Interface functions
 
-#include <OF_FACT.H>
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OSTR.H>
-#include <OUNIT.H>
-#include <OFONT.H>
-#include <OMOUSE.H>
-#include <OBUTT3D.H>
-#include <OBUTTCUS.H>
-#include <ONATION.H>
-#include <ORAWRES.H>
-#include <ORACERES.H>
-#include <OF_MINE.H>
-#include <OF_MARK.H>
-#include <OREMOTE.H>
-#include <OSE.H>
-#include <OIMGRES.H>
-#include <OCONFIG.H>
-#include <OBITMAP.H>
-#include <OT_FIRM.H>
-#include <OHELP.H>
+#include <of_fact.h>
+#include <oinfo.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ostr.h>
+#include <ounit.h>
+#include <ofont.h>
+#include <omouse.h>
+#include <obutt3d.h>
+#include <obuttcus.h>
+#include <onation.h>
+#include <orawres.h>
+#include <oraceres.h>
+#include <of_mine.h>
+#include <of_mark.h>
+#include <oremote.h>
+#include <ose.h>
+#include <oimgres.h>
+#include <oconfig.h>
+#include <obitmap.h>
+#include <ot_firm.h>
+#include <ohelp.h>
 
 //------- define static vars -------//
 

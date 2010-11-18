@@ -25,7 +25,7 @@
 #define __ONATION2_H
 
 #ifndef __ONATION_H
-#include <ONATION.H>
+#include <onation.h>
 #endif
 
 //------ Define dervied nation class id.  --------//

@@ -24,7 +24,7 @@
 #ifndef __OB_PROG_H
 #define __OB_PROG_H
 
-#include <OBULLET.H>
+#include <obullet.h>
 
 class BulletProgram : public Bullet
 {

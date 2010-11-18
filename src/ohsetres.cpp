@@ -22,12 +22,12 @@
 //Description : Hill Set, Pattern resource object
 //Ownership   : Gilbert
 
-#include <OHSETRES.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OGAMESET.H>
-#include <OWORLD.H>
+#include <ohsetres.h>
+#include <all.h>
+#include <osys.h>
+#include <ovga.h>
+#include <ogameset.h>
+#include <oworld.h>
 
 //---------- #define constant ------------//
 

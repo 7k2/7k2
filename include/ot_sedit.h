@@ -25,7 +25,7 @@
 #ifndef __OT_SEDIT_H
 #define __OT_SEDIT_H
 
-#include <OTXTRES.H>
+#include <otxtres.h>
 
 class TextResEditor : public TextResource
 {

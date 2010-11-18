@@ -23,16 +23,16 @@
 // Owner       : Gilbert
 
 
-#include <OROCKRES.H>
-#include <OGAMESET.H>
-#include <OMISC.H>
-#include <OWORLD.H>
-#include <OVGABUF.H>
-#include <OTERRAIN.H>
-#include <OCONFIG.H>
-#include <OWORLDMT.H>
-#include <OVGA.H>
-#include <OVGABUF.H>
+#include <orockres.h>
+#include <ogameset.h>
+#include <omisc.h>
+#include <oworld.h>
+#include <ovgabuf.h>
+#include <oterrain.h>
+#include <oconfig.h>
+#include <oworldmt.h>
+#include <ovga.h>
+#include <ovgabuf.h>
 #include <string.h>
 
 // ---------- Define constant ------------//

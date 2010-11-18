@@ -23,9 +23,9 @@
 // Ownership  : Gilbert
 
 #include <stdlib.h>
-#include <ALL.H>
-#include <OCONFIG.H>
-#include <OPLASMA.H>
+#include <all.h>
+#include <oconfig.h>
+#include <oplasma.h>
 
 // ---------- define constant ----------//
 

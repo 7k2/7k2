@@ -24,7 +24,7 @@
 #ifndef __OB_HOMIN_H
 #define __OB_HOMIN_H
 
-#include <OBULLET.H>
+#include <obullet.h>
 
 class BulletHoming : public Bullet
 {

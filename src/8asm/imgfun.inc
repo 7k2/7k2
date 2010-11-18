@@ -16,11 +16,11 @@
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;
 
-;Filename    : IMGFUN.INC
+;Filename    : imgfun.inc
 ;Description : Include file for image buffer processing functions
 
 
-INCLUDE ALL.INC
+INCLUDE all.inc
 
 ;---------------------------------------------------
 

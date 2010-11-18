@@ -23,12 +23,12 @@
 
 
 
-#include <ORESPAL.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <ODB.H>
-#include <OCOLTBL.H>
+#include <orespal.h>
+#include <all.h>
+#include <osys.h>
+#include <ovga.h>
+#include <odb.h>
+#include <ocoltbl.h>
 #include <string.h>
 
 

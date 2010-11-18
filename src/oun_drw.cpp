@@ -21,22 +21,22 @@
 //Filename    : OPERSDRW.CPP
 //Description : Object Unit Drawing routines
 
-#include <OSYS.H>
-#include <OBITMAP.H>
-#include <OBITMAPW.H>
-#include <OVGA.H>
-#include <ONATION.H>
-#include <OCONFIG.H>
-#include <OIMGRES.H>
-#include <OBITMAPW.H>
-#include <OSPRITE.H>
-#include <OSPRTRES.H>
-#include <OSFRMRES.H>
-#include <OWORLD.H>
-#include <OWORLDMT.H>
-#include <OUNIT.H>
-#include <OGAME.H>
-#include <OITEMRES.H>
+#include <osys.h>
+#include <obitmap.h>
+#include <obitmapw.h>
+#include <ovga.h>
+#include <onation.h>
+#include <oconfig.h>
+#include <oimgres.h>
+#include <obitmapw.h>
+#include <osprite.h>
+#include <osprtres.h>
+#include <osfrmres.h>
+#include <oworld.h>
+#include <oworldmt.h>
+#include <ounit.h>
+#include <ogame.h>
+#include <oitemres.h>
 #include <math.h>
 
 //--------- Begin of function Unit::draw ---------//

@@ -24,8 +24,8 @@
 #ifndef __VGABUF_H
 #define __VGABUF_H
 
-#include <IMGFUN.H>
-// #include <DDRAW.H>
+#include <imgfun.h>
+// #include <ddraw.h>
 
 typedef unsigned char UCHAR;
 typedef unsigned short WORD;

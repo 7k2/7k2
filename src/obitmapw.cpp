@@ -20,8 +20,8 @@
 
 // Filename    : OBITMAPW.CPP
 
-#include <OBITMAPW.H>
-#include <ALL.H>
+#include <obitmapw.h>
+#include <all.h>
 
 
 // ------ begin of function BitmapW::init ------//

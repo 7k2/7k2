@@ -22,11 +22,11 @@
 // Description : FirmAnimal
 
 
-#include <OF_ANIM.H>
-#include <ONATION.H>
-#include <OTECHRES.H>
-#include <OTECH.H>
-#include <OUNIT.H>
+#include <of_anim.h>
+#include <onation.h>
+#include <otechres.h>
+#include <otech.h>
+#include <ounit.h>
 
 
 // ------ define constant --------//

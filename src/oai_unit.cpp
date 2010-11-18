@@ -21,12 +21,12 @@
 //Filename   : OAI_UNIT.CPP
 //Description: AI - unit related functions
 
-#include <ALL.H>
-#include <OUNIT.H>
-#include <OF_INN.H>
-#include <OF_CAMP.H>
-#include <OTOWN.H>
-#include <ONATION.H>
+#include <all.h>
+#include <ounit.h>
+#include <of_inn.h>
+#include <of_camp.h>
+#include <otown.h>
+#include <onation.h>
 
 
 //-------- Begin of function Nation::ai_get_unit -------//

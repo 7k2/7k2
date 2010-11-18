@@ -23,23 +23,23 @@
 
 // #if( !defined(GERMAN) && !defined(FRENCH) && !defined(SPANISH) )
 
-#include <OSTR.H>
-#include <OTOWN.H>
-#include <OFIRMRES.H>
-#include <ONATION.H>
-#include <OUNIT.H>
-#include <OSPY.H>
-#include <OFONT.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <OMONSRES.H>
-#include <OREMOTE.H>
-#include <OGODRES.H>
-#include <ORACERES.H>
-#include <OTALKRES.H>
-#include <ONEWS.H>
-#include <OT_NEWS.H>
-#include <OT_UNIT.H>
+#include <ostr.h>
+#include <otown.h>
+#include <ofirmres.h>
+#include <onation.h>
+#include <ounit.h>
+#include <ospy.h>
+#include <ofont.h>
+#include <otech.h>
+#include <otechres.h>
+#include <omonsres.h>
+#include <oremote.h>
+#include <ogodres.h>
+#include <oraceres.h>
+#include <otalkres.h>
+#include <onews.h>
+#include <ot_news.h>
+#include <ot_unit.h>
 
 //--------- Define variable type ----------//
 

@@ -24,7 +24,7 @@
 #ifndef __OT_BASIC_H
 #define __OT_BASIC_H
 
-#include <OTXTRES.H>
+#include <otxtres.h>
 
 class TextResBasic : public TextResource
 {

@@ -22,24 +22,24 @@
 // Description : random event
 
 
-#include <OEVENT.H>
-#include <ALL.H>
-#include <OCONFIG.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <ITEMID.H>
-#include <OITEMRES.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OUNITRES.H>
-#include <OSPRTRES.H>
-#include <OGAME.H>
-#include <ONATION.H>
-#include <OSITE.H>
-#include <OFIRMALL.H>
-#include <OUNITALL.H>
-#include <OTOWN.H>
-#include <ONEWS.H>
+#include <oevent.h>
+#include <all.h>
+#include <oconfig.h>
+#include <otech.h>
+#include <otechres.h>
+#include <itemid.h>
+#include <oitemres.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <ounitres.h>
+#include <osprtres.h>
+#include <ogame.h>
+#include <onation.h>
+#include <osite.h>
+#include <ofirmall.h>
+#include <ounitall.h>
+#include <otown.h>
+#include <onews.h>
 
 #ifdef DEBUG
 // define this macro if random event (preferably) happen on this nation

@@ -21,19 +21,19 @@
 //Filename    : OR_NEWS.CPP
 //Description : Report for displaying AI actions
 
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <ODATE.H>
-#include <OSYS.H>
-#include <OFONT.H>
-#include <OMOUSE.H>
-#include <OIMGRES.H>
-#include <OVBROWIF.H>
-#include <OBUTTON.H>
-#include <OTALKRES.H>
-#include <ONEWS.H>
-#include <OINFO.H>
-// #include <OWORLDMT.H>
+#include <ovga.h>
+#include <omodeid.h>
+#include <odate.h>
+#include <osys.h>
+#include <ofont.h>
+#include <omouse.h>
+#include <oimgres.h>
+#include <ovbrowif.h>
+#include <obutton.h>
+#include <otalkres.h>
+#include <onews.h>
+#include <oinfo.h>
+// #include <oworldmt.h>
  
 //------------- Define coordinations -----------//
 

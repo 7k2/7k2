@@ -21,17 +21,17 @@
 //Filename    : OTOWNRES.CPP
 //Description : Town resource object
 
-#include <OTOWNRES.H>
-#include <OTOWNREC.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <OGAMESET.H>
-#include <OWORLD.H>
-#include <OIMGRES.H>
-#include <ORACERES.H>
-#include <OVGA.H>
-#include <OCOLTBL.H>
-#include <OWORLDMT.H>
+#include <otownres.h>
+#include <otownrec.h>
+#include <all.h>
+#include <osys.h>
+#include <ogameset.h>
+#include <oworld.h>
+#include <oimgres.h>
+#include <oraceres.h>
+#include <ovga.h>
+#include <ocoltbl.h>
+#include <oworldmt.h>
 
 
 //---------- define constant ------------//

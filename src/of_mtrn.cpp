@@ -21,13 +21,13 @@
 //Filename   : OF_MTRN.CPP
 //Description: Class of FirmMonsterTrain
 
-#include <OF_MTRN.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <OREMOTE.H>
-#include <ONATION.H>
-#include <OUNITRES.H>
-#include <OCONFIG.H>
+#include <of_mtrn.h>
+#include <all.h>
+#include <osys.h>
+#include <oremote.h>
+#include <onation.h>
+#include <ounitres.h>
+#include <oconfig.h>
  
 // -------- defind static variable ---------//
 

@@ -22,11 +22,11 @@
 // Description : Generate hill
 // Ownership   : Gilbert
 
-#include <ALL.H>
-#include <OWORLD.H>
-#include <OMATRIX.H>
-#include <OHILLRES.H>
-#include <OTERRAIN.H>
+#include <all.h>
+#include <oworld.h>
+#include <omatrix.h>
+#include <ohillres.h>
+#include <oterrain.h>
 
 
 // ---------- begin of function World::gen_hills --------//

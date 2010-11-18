@@ -24,9 +24,9 @@
 #ifndef __OERRCTRL_H
 #define __OERRCTRL_H
 
-#include <GAMEDEF.H>
-#include <MPTYPES.H>
-#include <OVQUEUE.H>
+#include <gamedef.h>
+#include <mptypes.h>
+#include <ovqueue.h>
 
 struct EcMsgHeader
 {

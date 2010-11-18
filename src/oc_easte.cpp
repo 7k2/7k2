@@ -21,15 +21,15 @@
 //Filename   : OC_EASTE.CPP
 //Description: CampaignEastWest
 
-#include <ALL.H>
-#include <OSYS.H>
-#include <ODATE.H>
-#include <ONATION.H>
-#include <OSTATE.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OFONT.H>
-#include <OC_EAST.H>
+#include <all.h>
+#include <osys.h>
+#include <odate.h>
+#include <onation.h>
+#include <ostate.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <ofont.h>
+#include <oc_east.h>
 
 //------ Define function pointers array ------//
 

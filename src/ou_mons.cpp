@@ -21,15 +21,15 @@
 //Filename   : OU_MONS.CPP
 //Description: Unit Monster
 
-#include <OWORLD.H>
-#include <OSITE.H>
-#include <ONEWS.H>
-#include <OTOWN.H>
-#include <OFIRM.H>
-#include <ONATION.H>
-#include <OMONSRES.H>
-#include <OU_MONS.H>
-#include <OT_UNIT.H>
+#include <oworld.h>
+#include <osite.h>
+#include <onews.h>
+#include <otown.h>
+#include <ofirm.h>
+#include <onation.h>
+#include <omonsres.h>
+#include <ou_mons.h>
+#include <ot_unit.h>
 
 
 //--------- Begin of function UnitMonster::unit_name ---------//

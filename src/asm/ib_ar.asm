@@ -21,8 +21,8 @@
 ;		but with colour Remapping
 
 
-INCLUDE IMGFUN.INC
-INCLUDE COLCODE.INC
+INCLUDE imgfun.inc
+INCLUDE colcode.inc
 
 .CODE
 

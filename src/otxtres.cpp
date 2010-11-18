@@ -22,9 +22,9 @@
 // Description : text resource
 
 
-#include <OTXTRES.H>
-#include <ALL.H>
-#include <OFILETXT.H>
+#include <otxtres.h>
+#include <all.h>
+#include <ofiletxt.h>
 #include <stdio.h>
 #include <stdlib.h>
 

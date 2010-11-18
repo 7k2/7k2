@@ -21,10 +21,10 @@
 //Filename    : OU_CARA2.CPP
 //Description : Unit Caravan - AI functions
 
-#include <OINFO.H>
-#include <ONATION.H>
-#include <OF_FACT.H>
-#include <OU_CARA.H>
+#include <oinfo.h>
+#include <onation.h>
+#include <of_fact.h>
+#include <ou_cara.h>
  
 
 //------- Begin of function UnitCaravan::init_derived --------//

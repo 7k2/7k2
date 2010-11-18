@@ -21,17 +21,17 @@
 //Filename    : OUN_AI.CPP
 //Description : Object Unit AI
 
-#include <OSYS.H>
-#include <OSPY.H>
-#include <OREBEL.H>
-#include <ITEMID.H>
-#include <OITEM.H>
-#include <OUN_GRP.H>
-#include <OCONFIG.H>
-#include <OREGIONS.H>
-#include <OF_CAMP.H>
-#include <OF_MFORT.H>
-#include <ONATION.H>
+#include <osys.h>
+#include <ospy.h>
+#include <orebel.h>
+#include <itemid.h>
+#include <oitem.h>
+#include <oun_grp.h>
+#include <oconfig.h>
+#include <oregions.h>
+#include <of_camp.h>
+#include <of_mfort.h>
+#include <onation.h>
  
 //--------- Begin of function Unit::process_ai --------//
 //

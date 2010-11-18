@@ -21,11 +21,11 @@
 //Filename	 : OFIRMAT.CPP
 //Description: Firm attacking and being attacked functions
 
-#include <OSERES.H>
-#include <ONEWS.H>
-#include <OBULLET.H>
-#include <ONATION.H>
-#include <OF_LAIR.H> 
+#include <oseres.h>
+#include <onews.h>
+#include <obullet.h>
+#include <onation.h>
+#include <of_lair.h> 
 
 
 //--------- Begin of function Firm::being_attack_hit --------//

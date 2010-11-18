@@ -24,7 +24,7 @@
 #ifndef __OB_PROJ_H
 #define __OB_PROJ_H
 
-#include <OBULLET.H>
+#include <obullet.h>
 
 class Projectile : public Bullet
 {

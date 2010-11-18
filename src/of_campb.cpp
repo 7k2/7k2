@@ -21,31 +21,31 @@
 // Filename    : OF_CAMPB.CPP
 // Description : Firm Camp bribe function
 
-#include <OF_CAMP.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OFONT.H>
-#include <OMOUSE.H>
-#include <OIMGRES.H>
-#include <OREMOTE.H>
-#include <OSE.H>
-#include <OHELP.H>
-#include <OTRANSL.H>
-#include <OBUTTON.H>
-#include <OBUTT3D.H>
-#include <OBUTTCUS.H>
-#include <OCONFIG.H>
-#include <ORACERES.H>
-#include <ONATION.H>
-#include <OSPY.H>
-#include <OUNIT.H>
-#include <OTECHRES.H> 
-#include <OTECH.H>
-#include <OGODRES.H>
-#include <OT_FIRM.H>
-#include <OT_UNIT.H>
+#include <of_camp.h>
+#include <all.h>
+#include <osys.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ofont.h>
+#include <omouse.h>
+#include <oimgres.h>
+#include <oremote.h>
+#include <ose.h>
+#include <ohelp.h>
+#include <otransl.h>
+#include <obutton.h>
+#include <obutt3d.h>
+#include <obuttcus.h>
+#include <oconfig.h>
+#include <oraceres.h>
+#include <onation.h>
+#include <ospy.h>
+#include <ounit.h>
+#include <otechres.h> 
+#include <otech.h>
+#include <ogodres.h>
+#include <ot_firm.h>
+#include <ot_unit.h>
 
 //---------- Define constant ------------//
 

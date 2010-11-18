@@ -21,37 +21,37 @@
 //Filename    : OWORLD.CPP
 //Description : Object World
 
-#include <OWORLD.H>
-#include <ALL.H>
-#include <OWORLDMT.H>
+#include <oworld.h>
+#include <all.h>
+#include <oworldmt.h>
 
-#include <OSYS.H>
-#include <OGAME.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OFONT.H>
-#include <OMOUSE.H>
-#include <OMOUSECR.H>
-#include <OCONFIG.H>
-#include <OFIRMRES.H>
-#include <OGODRES.H>
-#include <OPLANT.H>
-#include <OPOWER.H>
-#include <OSITE.H>
-#include <OINFO.H>
-#include <OTOWN.H>
-#include <OUNIT.H>
-#include <ONATION.H>
-#include <OWEATHER.H>
-#include <OTERRAIN.H>
-#include <OANLINE.H>
-#include <OTORNADO.H>
-#include <OSERES.H>
-#include <OREMOTE.H>
-#include <ONEWS.H>
-#include <OPFIND.H>
-#include <OROCK.H>
-#include <OROCKRES.H>
+#include <osys.h>
+#include <ogame.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ofont.h>
+#include <omouse.h>
+#include <omousecr.h>
+#include <oconfig.h>
+#include <ofirmres.h>
+#include <ogodres.h>
+#include <oplant.h>
+#include <opower.h>
+#include <osite.h>
+#include <oinfo.h>
+#include <otown.h>
+#include <ounit.h>
+#include <onation.h>
+#include <oweather.h>
+#include <oterrain.h>
+#include <oanline.h>
+#include <otornado.h>
+#include <oseres.h>
+#include <oremote.h>
+#include <onews.h>
+#include <opfind.h>
+#include <orock.h>
+#include <orockres.h>
 
 //------------ Define static class variables ------------//
 

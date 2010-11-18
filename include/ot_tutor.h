@@ -26,7 +26,7 @@
 #define __OT_TUTOR_H
 
 
-#include <OTXTRES.H>
+#include <otxtres.h>
 
 
 class TextResTutorial : public TextResource

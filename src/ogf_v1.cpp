@@ -24,9 +24,9 @@
 #ifdef AMPLUS
 
 #include <ogf_v1.h>
-#include <OTOWN.H>
-#include <ONATIONA.H>
-#include <ONATION.H>
+#include <otown.h>
+#include <onationa.h>
+#include <onation.h>
 
 //---------------- begin of function Version_1_Town::convert_to_version_2() -----------------//
 void Version_1_Town::convert_to_version_2(Town *townPtr)

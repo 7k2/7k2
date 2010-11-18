@@ -23,9 +23,9 @@
 
 #include <stdlib.h>
 
-#include <ALL.H>
-#include <KEY.H>
-#include <OFILETXT.H>
+#include <all.h>
+#include <key.h>
+#include <ofiletxt.h>
 
 
 //---- marco function for advancing to next token, bypassing space, ',' and ':' ---//

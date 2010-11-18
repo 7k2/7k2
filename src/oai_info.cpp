@@ -21,15 +21,15 @@
 //Filename		: OAI_INFO.CPP
 //Description	: AI - A.I. info structure
 
-#include <OSYS.H>
-#include <OGODRES.H>
-#include <OTOWN.H> 
-#include <OF_MARK.H>
-#include <OF_WORK.H>
-#include <OF_CAMP.H>
-#include <OU_CARA.H>
-#include <OF_BASE.H>
-#include <ONATION.H>
+#include <osys.h>
+#include <ogodres.h>
+#include <otown.h> 
+#include <of_mark.h>
+#include <of_work.h>
+#include <of_camp.h>
+#include <ou_cara.h>
+#include <of_base.h>
+#include <onation.h>
 
 
 //--------- Begin of function Nation::update_ai_firm_array --------//

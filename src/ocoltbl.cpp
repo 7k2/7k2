@@ -21,10 +21,10 @@
 // Filename    : OCOLTBL.CPP
 // Description : generated color remap table
 
-#include <OCOLTBL.H>
-#include <ALL.H>
+#include <ocoltbl.h>
+#include <all.h>
 #include <math.h>
-#include <OVGA.H>
+#include <ovga.h>
 
 // ---------- define const -----------//
 

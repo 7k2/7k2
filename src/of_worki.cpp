@@ -22,36 +22,36 @@
 // Description : FirmWork interface function
 
 
-#include <OF_WORK.H>
-#include <OMODEID.H>
-#include <OINFO.H>
+#include <of_work.h>
+#include <omodeid.h>
+#include <oinfo.h>
 
-#include <OFIRM.H>
-#include <OSTR.H>
-#include <KEY.H>
-#include <OVGA.H>
+#include <ofirm.h>
+#include <ostr.h>
+#include <key.h>
+#include <ovga.h>
 
-#include <OHELP.H>
-#include <OMOUSE.H>
-#include <OFONT.H>
-#include <OBUTT3D.H>
-#include <OBUTTON.H>
-#include <OSLIDER.H>
-#include <ONATION.H>
+#include <ohelp.h>
+#include <omouse.h>
+#include <ofont.h>
+#include <obutt3d.h>
+#include <obutton.h>
+#include <oslider.h>
+#include <onation.h>
 
-#include <ORACERES.H>
-#include <OUNIT.H>
-#include <OSPY.H>
-#include <OTOWN.H>
-#include <OWORLD.H>
-#include <OREMOTE.H>
-#include <OIMGRES.H>
-#include <OGAME.H>
-#include <OSYS.H>
-#include <OANLINE.H>
-#include <OWORLDMT.H>
-#include <OSLIDCUS.H>
-#include <OT_FIRM.H>
+#include <oraceres.h>
+#include <ounit.h>
+#include <ospy.h>
+#include <otown.h>
+#include <oworld.h>
+#include <oremote.h>
+#include <oimgres.h>
+#include <ogame.h>
+#include <osys.h>
+#include <oanline.h>
+#include <oworldmt.h>
+#include <oslidcus.h>
+#include <ot_firm.h>
 
 short pop_disp_y1;
 

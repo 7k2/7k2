@@ -21,7 +21,7 @@
 ;              but without color key transparency handling
 
 
-INCLUDE IMGFUN.INC
+INCLUDE imgfun.inc
 
 .CODE
 

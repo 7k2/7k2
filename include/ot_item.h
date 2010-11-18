@@ -25,7 +25,7 @@
 #ifndef __OT_ITEM_H
 #define __OT_ITEM_H
 
-#include <OTXTRES.H>
+#include <otxtres.h>
 
 class TextResItem : public TextResource
 {

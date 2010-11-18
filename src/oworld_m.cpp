@@ -21,27 +21,27 @@
 //Filename    : OWORLD_M.CPP
 //Description : Object MapMatrix
 
-#include <OWORLDMT.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OMOUSE.H>
-#include <OHELP.H>
-#include <OIMGRES.H>
-#include <OBUTTON.H>
-#include <OPLANT.H>
-#include <OTOWN.H>
-#include <ONATION.H>
-#include <OFIRM.H>
-#include <OSYS.H>
-#include <OPOWER.H>
-#include <OGAME.H>
-#include <OWORLD.H>
-#include <OTERRAIN.H>
-#include <OANLINE.H>
-#include <OVGABUF.H>
-#include <OBUTT3D.H>
-#include	<OROCK.H>
-#include	<OROCKRES.H>
+#include <oworldmt.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <omouse.h>
+#include <ohelp.h>
+#include <oimgres.h>
+#include <obutton.h>
+#include <oplant.h>
+#include <otown.h>
+#include <onation.h>
+#include <ofirm.h>
+#include <osys.h>
+#include <opower.h>
+#include <ogame.h>
+#include <oworld.h>
+#include <oterrain.h>
+#include <oanline.h>
+#include <ovgabuf.h>
+#include <obutt3d.h>
+#include	<orock.h>
+#include	<orockres.h>
 
 static Button3D button_filter_object;
 static Button3D button_filter_nation;

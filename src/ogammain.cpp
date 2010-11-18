@@ -21,30 +21,30 @@
 //Filename    : OGAMMAIN.CPP
 //Description : Main Game Object - Main menu
 
-#include <OGAME.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OIMGRES.H>
-#include <OSYS.H>
-#include <OMOUSE.H>
-#include <OMOUSECR.H>
-#include <OFONT.H>
-#include <OTUTOR.H>
-#include <OBUTTON.H>
-#include <OBATTLE.H>
-#include <OGFILE.H>
-#include <OMUSIC.H>
-#include <OCONFIG.H>
-#include <OVGALOCK.H>
-#include <OC_EAST.H>
-// #include <OC_TUTOR.H>
-#include <OPROFILE.H>
-#include <OGAMMENU.H>
-#include <OBOX.H>
-#include <ODPLAY.H>
-#include <OIMMPLAY.H>
-#include <OT_GMENU.H>
-#include <OCOLTBL.H>
+#include <ogame.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <oimgres.h>
+#include <osys.h>
+#include <omouse.h>
+#include <omousecr.h>
+#include <ofont.h>
+#include <otutor.h>
+#include <obutton.h>
+#include <obattle.h>
+#include <ogfile.h>
+#include <omusic.h>
+#include <oconfig.h>
+#include <ovgalock.h>
+#include <oc_east.h>
+// #include <oc_tutor.h>
+#include <oprofile.h>
+#include <ogammenu.h>
+#include <obox.h>
+#include <odplay.h>
+#include <oimmplay.h>
+#include <ot_gmenu.h>
+#include <ocoltbl.h>
 
 #undef DISABLE_MULTI_PLAYER
 #undef DISABLE_SINGLE_PLAYER_NEW_GAME

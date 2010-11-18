@@ -24,10 +24,10 @@
 #ifndef __OWORLDMT_H
 #define __OWORLDMT_H
 
-#include <OMATRIX.H>
-#include <ODYNARR.H>
-#include <OWORLD.H>
-#include <OFONT.H>
+#include <omatrix.h>
+#include <odynarr.h>
+#include <oworld.h>
+#include <ofont.h>
 
 //------------- Map window -------------//
 

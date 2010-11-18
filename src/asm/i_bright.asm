@@ -20,8 +20,8 @@
 ;Description : Change brightness of a rectangle bar on vga image buffer
 
 
-INCLUDE IMGFUN.INC
-INCLUDE I_EFFECT.INC
+INCLUDE imgfun.inc
+INCLUDE i_effect.inc
 
 .DATA
 

@@ -21,27 +21,27 @@
 // Filename    : OF_CAMPS.CPP
 // Description : FirmCamp Spy interface
 
-#include <OF_CAMP.H>
-#include <ALL.H>
-#include <OMODEID.H>
-#include <OMOUSE.H>
-#include <OVBROWIF.H>
-#include <OBUTT3D.H>
-#include <OFONT.H>
-#include <OHELP.H>
-#include <OREMOTE.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <ONATION.H>
-#include <OSPY.H>
-#include <OUNIT.H>
-#include <OTECHRES.H>
-#include <OTECH.H>
-#include <OCONFIG.H>
-#include <OSE.H>
-#include <OSERES.H>
-#include <OT_FIRM.H>
-#include <OT_UNIT.H>
+#include <of_camp.h>
+#include <all.h>
+#include <omodeid.h>
+#include <omouse.h>
+#include <ovbrowif.h>
+#include <obutt3d.h>
+#include <ofont.h>
+#include <ohelp.h>
+#include <oremote.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <onation.h>
+#include <ospy.h>
+#include <ounit.h>
+#include <otechres.h>
+#include <otech.h>
+#include <oconfig.h>
+#include <ose.h>
+#include <oseres.h>
+#include <ot_firm.h>
+#include <ot_unit.h>
 
 //------------- Define coordinations -----------//
 

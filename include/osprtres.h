@@ -24,9 +24,9 @@
 #ifndef __OSPRTRES_H
 #define __OSPRTRES_H
 
-#include <GAMEDEF.H>
-#include <ORESDB.H>
-// #include <OSFRMRES.H>
+#include <gamedef.h>
+#include <oresdb.h>
+// #include <osfrmres.h>
 
 // ------- declare basic type -----------//
 

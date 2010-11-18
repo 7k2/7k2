@@ -23,17 +23,17 @@
 
 // #if( !defined(GERMAN) && !defined(FRENCH) && !defined(SPANISH) )
 
-#include <OMOUSE.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OINFO.H>
-#include <OFONT.H>
-#include <OTECHRES.H>
-#include <OGAMESET.H>
-#include <ONEWS.H>
-#include <ONATION.H>
-#include <OTALKRES.H>
-#include <OT_TALK.H>
+#include <omouse.h>
+#include <osys.h>
+#include <ovga.h>
+#include <oinfo.h>
+#include <ofont.h>
+#include <otechres.h>
+#include <ogameset.h>
+#include <onews.h>
+#include <onation.h>
+#include <otalkres.h>
+#include <ot_talk.h>
 
 //-------- define static vars --------//
 

@@ -24,7 +24,7 @@
 #ifndef __OLONGLOG_H
 #define __OLONGLOG_H
 
-#include <OFILE.H>
+#include <ofile.h>
 
 class LongLog : public File
 {

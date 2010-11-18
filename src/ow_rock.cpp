@@ -22,13 +22,13 @@
 // Description : generate random rock on map
 
 
-#include <OWORLD.H>
-#include <OWORLDMT.H>
-#include <OROCKRES.H>
-#include <OROCK.H>
-#include <OCAMPGN.H>
-#include <OTERRAIN.H>
-#include <OSITE.H>
+#include <oworld.h>
+#include <oworldmt.h>
+#include <orockres.h>
+#include <orock.h>
+#include <ocampgn.h>
+#include <oterrain.h>
+#include <osite.h>
 #include <math.h>
 
 //------------ Define constant ----------//

@@ -21,13 +21,13 @@
 //Filename    : OF_WARA.CPP
 //Description : Firm War Factory - AI functions
 
-#include <ONATION.H>
-#include <OINFO.H>
-#include <OTOWN.H>
-#include <OUNIT.H>
-#include <OTECHRES.H>
-#include <OF_CAMP.H>
-#include <OF_WAR.H>
+#include <onation.h>
+#include <oinfo.h>
+#include <otown.h>
+#include <ounit.h>
+#include <otechres.h>
+#include <of_camp.h>
+#include <of_war.h>
 
 //--------- Begin of function FirmWar::process_ai ---------//
 

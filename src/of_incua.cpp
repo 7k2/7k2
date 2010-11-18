@@ -21,9 +21,9 @@
 //Filename    : OF_INCUA.CPP
 //Description : Firm Incubator
 
-#include <ONATION.H>
-#include <OINFO.H>
-#include <OF_INCU.H>
+#include <onation.h>
+#include <oinfo.h>
+#include <of_incu.h>
 
 //--------- Begin of function FirmIncubator::process_ai ---------//
 

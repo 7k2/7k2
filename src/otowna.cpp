@@ -21,24 +21,24 @@
 //Filename    : OTOWNA.CPP
 //Description : Object Town Array
 
-#include <OTOWN.H>
-#include <OBOX.H>
-#include <OINFO.H>
-#include <OLOG.H>
-#include <OCONFIG.H>
-#include <OSYS.H>
-#include <OF_MARK.H>
-#include <ONATION.H>
-#include <OGAME.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OWORLDMT.H>
+#include <otown.h>
+#include <obox.h>
+#include <oinfo.h>
+#include <olog.h>
+#include <oconfig.h>
+#include <osys.h>
+#include <of_mark.h>
+#include <onation.h>
+#include <ogame.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <oworldmt.h>
 #include <stdlib.h>
-#include <OWORLD.H>
-#include <OF_LAIR.H>
+#include <oworld.h>
+#include <of_lair.h>
 
 #ifdef DEBUG
-#include <OFONT.H>
+#include <ofont.h>
 static unsigned long	last_town_ai_profile_time = 0L;
 static unsigned long	town_ai_profile_time = 0L;
 static unsigned long	last_town_profile_time = 0L;

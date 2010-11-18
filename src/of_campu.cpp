@@ -21,19 +21,19 @@
 //Filename    : OF_CAMPU.CPP
 //Description : Firm Military Camp2 - unit assign functions
 
-#include <OF_CAMP.H>
-#include <OSYS.H>
-#include <OPOWER.H>
-#include <OUN_GRP.H>
-#include <OUNIT.H>
-#include <OSPY.H>
-#include <ONATION.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OUNITRES.H> 
-#include <OREMOTE.H>
-#include <OGAME.H>
-#include <OITEMRES.H>
+#include <of_camp.h>
+#include <osys.h>
+#include <opower.h>
+#include <oun_grp.h>
+#include <ounit.h>
+#include <ospy.h>
+#include <onation.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <ounitres.h> 
+#include <oremote.h>
+#include <ogame.h>
+#include <oitemres.h>
 
 
 //--------- Begin of function FirmCamp::assign_unit ---------//

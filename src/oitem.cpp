@@ -21,11 +21,11 @@
 // Filename    : OITEM.CPP
 // Description : Item resource
 
-#include <OITEM.H>
-#include <OITEMRES.H>
-#include <ITEMID.H>
-#include <ALL.H>
-#include <OCONFIG.H>
+#include <oitem.h>
+#include <oitemres.h>
+#include <itemid.h>
+#include <all.h>
+#include <oconfig.h>
 
 
 //-------- begin of function Item::next_day-------//

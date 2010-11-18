@@ -25,7 +25,7 @@
 #ifndef __OT_REPS_H
 #define __OT_REPS_H
 
-#include <OTXTRES.H>
+#include <otxtres.h>
 
 class TextResReports : public TextResource
 {

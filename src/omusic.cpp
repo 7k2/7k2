@@ -21,12 +21,12 @@
 // Filename    : OMUSIC.CPP
 // Description : music
 
-#include <GAMEDEF.H>
-#include <ALL.H>
-#include <OAUDIO.H>
-#include <OMUSIC.H>
-#include <OSYS.H>
-#include <OCONFIG.H>
+#include <gamedef.h>
+#include <all.h>
+#include <oaudio.h>
+#include <omusic.h>
+#include <osys.h>
+#include <oconfig.h>
 
 // -------- define constant --------//
 // random select 2 - 8 for background music

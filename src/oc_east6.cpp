@@ -21,21 +21,21 @@
 //Filename   : OC_EAST6.CPP
 //Description: CampaignEastWest - STAGE_HERO_DEBUT
 
-#include <ALL.H>
-#include <ITEMID.H>
-#include <OSITE.H>
-#include <OTECH.H>
-#include <OGAME.H>
-#include <OTECHRES.H>
-#include <OSTATE.H> 
-#include <OGODRES.H>
-#include <ORACERES.H>
-#include <OHERORES.H>
-#include <ONEWS.H>
-#include <OMONSRES.H>
-#include <ONATION2.H>
-#include <OC_EAST.H>
-#include <OF_CAMP.H>
+#include <all.h>
+#include <itemid.h>
+#include <osite.h>
+#include <otech.h>
+#include <ogame.h>
+#include <otechres.h>
+#include <ostate.h> 
+#include <ogodres.h>
+#include <oraceres.h>
+#include <oherores.h>
+#include <onews.h>
+#include <omonsres.h>
+#include <onation2.h>
+#include <oc_east.h>
+#include <of_camp.h>
 
 //----- define constant ----------//
 

@@ -21,16 +21,16 @@
 //Filename:    OPE_AI2.CPP
 //Description: Unit Basic AI function - for both player and AI units.
 
-#include <OSYS.H>
-#include <OSPY.H>
-#include <OWORLD.H>
-#include <ONATION.H>
-#include <OFIRM.H>
-#include <OREBEL.H>
-#include <OTOWN.H>
-#include <OUNIT.H>
-#include <OPFIND.H>
-#include <OW_TRV.H>
+#include <osys.h>
+#include <ospy.h>
+#include <oworld.h>
+#include <onation.h>
+#include <ofirm.h>
+#include <orebel.h>
+#include <otown.h>
+#include <ounit.h>
+#include <opfind.h>
+#include <ow_trv.h>
 
 //------- Begin of function Unit::think_aggressive_action --------//
 //

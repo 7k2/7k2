@@ -27,7 +27,7 @@
 // define DIRECTINPUT_VERSION before include dinput.h for directx 3 emulation
 #define DIRECTINPUT_VERSION 0x0300
 #include <dinput.h>
-#include <OMODEID.H>
+#include <omodeid.h>
 
 //-------- Define macro constant --------//
 //

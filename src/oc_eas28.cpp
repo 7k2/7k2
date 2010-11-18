@@ -21,19 +21,19 @@
 //Filename   : OC_EAS28.CPP
 //Description: CampaignEastWest - STAGE_GROW_POPULATION
 
-#include <ALL.H>
-#include <OSITE.H>
-#include <OTECH.H>
-#include <OGAME.H>
-#include <OTECHRES.H>
-#include <OSTATE.H>
-#include <OGODRES.H>
-#include <ORACERES.H>
-#include <ONEWS.H>
-#include <OMONSRES.H>
-#include <ONATION2.H>
-#include <OC_EAST.H>
-#include <OFIRM.H>
+#include <all.h>
+#include <osite.h>
+#include <otech.h>
+#include <ogame.h>
+#include <otechres.h>
+#include <ostate.h>
+#include <ogodres.h>
+#include <oraceres.h>
+#include <onews.h>
+#include <omonsres.h>
+#include <onation2.h>
+#include <oc_east.h>
+#include <ofirm.h>
 
 
 //---------- Define static vars ------------//

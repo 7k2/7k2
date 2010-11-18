@@ -25,27 +25,27 @@
 #define __OTOWN_H
 
 #ifndef __ODYNARRB_H
-#include <ODYNARRB.H>
+#include <odynarrb.h>
 #endif
 
 #ifndef __OPLACE_H
-#include <OPLACE.H>
+#include <oplace.h>
 #endif
 
 #ifndef __OSKILL_H
-#include <OSKILL.H>
+#include <oskill.h>
 #endif
 
 #ifndef __OFIRMID_H
-#include <OFIRMID.H>
+#include <ofirmid.h>
 #endif
 
 #ifndef __ORAWRES_H
-#include <ORAWRES.H>
+#include <orawres.h>
 #endif
 
 #ifndef __OTOWNRES_H
-#include <OTOWNRES.H>
+#include <otownres.h>
 #endif
 
 //------- define constant --------//

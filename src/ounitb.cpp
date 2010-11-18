@@ -22,14 +22,14 @@
 //Description: Functions in the UnitB class
 
 #include <windows.h>
-#include <OPFIND.H>
-#include <ONATION.H>
-#include <OUNITRES.H>
-#include <OUNIT.H> 
-#include <OCONFIG.H>
-#include <ITEMID.H>
-#include <OLOCATE.H>
-#include <OGODRES.H>
+#include <opfind.h>
+#include <onation.h>
+#include <ounitres.h>
+#include <ounit.h> 
+#include <oconfig.h>
+#include <itemid.h>
+#include <olocate.h>
+#include <ogodres.h>
 
 #define	MAX_RETRY_STATE	5
 static short move_x_pixel_array[] = { 0, LOCATE_WIDTH, LOCATE_WIDTH, LOCATE_WIDTH, 0, -LOCATE_WIDTH, -LOCATE_WIDTH, -LOCATE_WIDTH };

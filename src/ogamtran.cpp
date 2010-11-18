@@ -22,22 +22,22 @@
 //Filename    : OGAMTRAN.CPP
 //Description : Learning Campaign related functions
 
-#include <OSYS.H>
-#include <OGAME.H>
-#include <OCAMPALL.H>
-#include <OGAMMENU.H>
-#include <OPROFILE.H>
-#include <OBITMAP.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OVGALOCK.H>
-#include <OCOLTBL.H>
-#include <OMOUSE.H> 
-#include <OIMGRES.H>
-#include <OFONT.H>
-#include <OBUTTCUS.H>
-#include <OGETA.H>
-#include <OMUSIC.H>
+#include <osys.h>
+#include <ogame.h>
+#include <ocampall.h>
+#include <ogammenu.h>
+#include <oprofile.h>
+#include <obitmap.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ovgalock.h>
+#include <ocoltbl.h>
+#include <omouse.h> 
+#include <oimgres.h>
+#include <ofont.h>
+#include <obuttcus.h>
+#include <ogeta.h>
+#include <omusic.h>
 
 
 //---------- Define option modes --------//

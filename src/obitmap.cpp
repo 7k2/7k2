@@ -20,8 +20,8 @@
 
 // Filename    : OBITMAP.CPP
 
-#include <OBITMAP.H>
-#include <ALL.H>
+#include <obitmap.h>
+#include <all.h>
 
 
 // ------ begin of function Bitmap::init ------//

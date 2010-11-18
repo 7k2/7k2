@@ -25,15 +25,15 @@
 #include <string.h>
 #include <windowsx.h>
 
-#include <OSTR.H>
-#include <OMISC.H>
-#include <OTRANSL.H>
-#include <ODATE.H>
+#include <ostr.h>
+#include <omisc.h>
+#include <otransl.h>
+#include <odate.h>
 
 #define USE_TEXT_RES
 
 #if(defined(USE_TEXT_RES))
-#include <OT_BASIC.H>
+#include <ot_basic.h>
 #endif
 
 

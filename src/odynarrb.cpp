@@ -21,8 +21,8 @@
 //Filename    : ODYNARRB.CPP
 //Description : Object Dynamic Array Version B
 
-#include <OINFO.H>
-#include <ODYNARRB.H>
+#include <oinfo.h>
+#include <odynarrb.h>
 
 
 //----------------------------------------------------------//

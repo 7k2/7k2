@@ -25,7 +25,7 @@
 #define __OTECHRES_H
 
 #ifndef __ORESX_H
-#include <ORESX.H>
+#include <oresx.h>
 #endif
 
 //------ define struct TechClassRec ---------//

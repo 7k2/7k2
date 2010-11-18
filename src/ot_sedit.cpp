@@ -21,10 +21,10 @@
 // Filename    : OT_SEDIT.H
 // Description : Text resource for scenario editor
 
-#include <OT_SEDIT.H>
-#include <ALL.H>
-#include <OSEDITOR.H>
-#include <ONATIONB.H>
+#include <ot_sedit.h>
+#include <all.h>
+#include <oseditor.h>
+#include <onationb.h>
 
  
 void TextResEditor::init()

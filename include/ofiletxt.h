@@ -25,7 +25,7 @@
 #define __FILETXT_H
 
 #ifndef __OFILE_H
-#include <OFILE.H>
+#include <ofile.h>
 #endif
 
 //--------- Define control characters ------------//

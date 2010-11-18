@@ -21,17 +21,17 @@
 //Filename	 : OUN_ORD.CPP
 //Description: Unit order processing functions
 
-#include <OUNITRES.H>
-#include <ONATION.H>
-#include <OREMOTE.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OUN_GRP.H>
-#include <OFIRMA.H>
-#include <OFIRMRES.H>
-#include <OTOWN.H>
-#include <OU_GOD.H>
-#include <OF_MFORT.H>
+#include <ounitres.h>
+#include <onation.h>
+#include <oremote.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <oun_grp.h>
+#include <ofirma.h>
+#include <ofirmres.h>
+#include <otown.h>
+#include <ou_god.h>
+#include <of_mfort.h>
 
 #define STD_REACH_DEST_RANGE 8
 

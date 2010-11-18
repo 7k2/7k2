@@ -25,10 +25,10 @@
 #define __OH
 
 #ifndef __ORESX_H
-#include <ORESX.H>
+#include <oresx.h>
 #endif
 
-#include <OUNIT.H>
+#include <ounit.h>
 
 //------------ Define constant -----------//
 

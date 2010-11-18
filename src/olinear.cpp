@@ -21,8 +21,8 @@
 // Filename    : OLINEAR.CPP
 // Description : Linear increment / decrement
 
-#include <OLINEAR.H>
-#include <ALL.H>
+#include <olinear.h>
+#include <all.h>
 
 
 // like a line drawing algorithm

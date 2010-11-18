@@ -22,27 +22,27 @@
 // Description : Scenario editor, player mode
 
 
-#include <OSEDITOR.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OFONT.H>
-#include <OBLOB2W.H>
-#include <OBITMAPW.H>
-#include <OMOUSE.H>
-#include <KEY.H>
-#include <OSYS.H>
-#include <OMUSIC.H>
-#include <OVBROWIF.H>
-#include <OBUTTON.H>
-#include <OBUTTCUS.H>
-#include <OGETA.H>
-#include <OINFO.H>
-#include <OGAME.H>
-#include <ONATIONA.H>
-#include <ONATION2.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OT_SEDIT.H>
+#include <oseditor.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ofont.h>
+#include <oblob2w.h>
+#include <obitmapw.h>
+#include <omouse.h>
+#include <key.h>
+#include <osys.h>
+#include <omusic.h>
+#include <ovbrowif.h>
+#include <obutton.h>
+#include <obuttcus.h>
+#include <ogeta.h>
+#include <oinfo.h>
+#include <ogame.h>
+#include <onationa.h>
+#include <onation2.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <ot_sedit.h>
 
 
 // ----- define static variable ---------//

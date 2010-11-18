@@ -21,12 +21,12 @@
 //Filename   : OAI_GRAN.CPP
 //Description: AI grand plans
 
-#include <OCONFIG.H>
-#include <OTALKRES.H>
-#include <ORACERES.H>
-#include <OREGIONS.H>
-#include <OF_CAMP.H>
-#include <ONATION.H>
+#include <oconfig.h>
+#include <otalkres.h>
+#include <oraceres.h>
+#include <oregions.h>
+#include <of_camp.h>
+#include <onation.h>
 
 
 //----- Begin of function Nation::think_grand_plan -----//

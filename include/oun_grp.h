@@ -25,11 +25,11 @@
 #define __OUN_GRP_H
 
 #ifndef __ODYNARRB_H
-#include <ODYNARRB.H>
+#include <odynarrb.h>
 #endif
 
 #ifndef __OUNIT_H
-#include <OUNIT.H>
+#include <ounit.h>
 #endif
 
 //------- Define constant -----------//

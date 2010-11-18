@@ -21,38 +21,38 @@
 //Filename    : OFIRM.CPP
 //Description : Object Firm
 
-#include <OVGA.H>
-#include <ODATE.H>
-#include <OMLINK.H>
-#include <OWORLD.H>
-#include <OWORLDMT.H>
-#include <OPOWER.H>
-#include <OCONFIG.H>
-#include <OGAME.H>
-#include <OUNIT.H>
-#include <ONEWS.H>
-#include <OSYS.H>
-#include <OSPY.H>
-#include <OSITE.H>
-#include <OINFO.H>
-#include <ONEWS.H>
-#include <ONATION.H>
-#include <OFIRM.H>
-#include <ORACERES.H>
-#include <OTOWN.H>
-#include <OSPRITE.H>
-#include <OFIRMRES.H>
-#include <OF_MARK.H>
-#include <OREMOTE.H>
-#include <OF_CAMP.H>
-#include <OSERES.H>
-#include <OREBEL.H>
-#include <OFIRMDIE.H>
-#include <OUNITRES.H>
-#include <OEFFECT.H>
-#include <OSEDITOR.H>
-#include <OBULLET.H>
-#include <OT_FIRM.H>
+#include <ovga.h>
+#include <odate.h>
+#include <omlink.h>
+#include <oworld.h>
+#include <oworldmt.h>
+#include <opower.h>
+#include <oconfig.h>
+#include <ogame.h>
+#include <ounit.h>
+#include <onews.h>
+#include <osys.h>
+#include <ospy.h>
+#include <osite.h>
+#include <oinfo.h>
+#include <onews.h>
+#include <onation.h>
+#include <ofirm.h>
+#include <oraceres.h>
+#include <otown.h>
+#include <osprite.h>
+#include <ofirmres.h>
+#include <of_mark.h>
+#include <oremote.h>
+#include <of_camp.h>
+#include <oseres.h>
+#include <orebel.h>
+#include <ofirmdie.h>
+#include <ounitres.h>
+#include <oeffect.h>
+#include <oseditor.h>
+#include <obullet.h>
+#include <ot_firm.h>
 
 //--------- Begin of function Firm::Firm --------//
 //

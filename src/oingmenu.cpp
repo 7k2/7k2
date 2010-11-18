@@ -21,29 +21,29 @@
 // Filename    : OINGMENU.H
 // Description : in-game menu (async version)
 
-#include <OINGMENU.H>
-#include <OVGA.H>
-#include <OVGABUF.H>
-#include <OMODEID.H>
-#include <OCOLTBL.H>
-#include <OSYS.H>
-#include <OIMGRES.H>
-#include <OMOUSE.H>
-#include <OMOUSECR.H>
-#include <KEY.H>
-#include <OPOWER.H>
-#include <OBOX.H>
-#include <OREMOTE.H>
-#include <OTUTOR.H>
-#include <ONATIONA.H>
-#include <OWORLDMT.H>
-#include <OGAME.H>
-#include <OOPTMENU.H>
-#include <OFONT.H>
-#include <OMUSIC.H>
-#include <OC_EAST.H>
-#include <OINFO.H>
-#include <OT_GMENU.H>
+#include <oingmenu.h>
+#include <ovga.h>
+#include <ovgabuf.h>
+#include <omodeid.h>
+#include <ocoltbl.h>
+#include <osys.h>
+#include <oimgres.h>
+#include <omouse.h>
+#include <omousecr.h>
+#include <key.h>
+#include <opower.h>
+#include <obox.h>
+#include <oremote.h>
+#include <otutor.h>
+#include <onationa.h>
+#include <oworldmt.h>
+#include <ogame.h>
+#include <ooptmenu.h>
+#include <ofont.h>
+#include <omusic.h>
+#include <oc_east.h>
+#include <oinfo.h>
+#include <ot_gmenu.h>
 
 
 

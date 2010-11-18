@@ -22,18 +22,18 @@
 // Description : sub-plot 5
 
 
-#include <OC_EAST.H>
-#include <OUNITRES.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OFIRMRES.H>
-#include <OTECHRES.H>
-#include <OTECH.H>
-#include <ONATIONA.H>
-#include <ONATION2.H>
-#include <OSITE.H>
-#include <ITEMID.H>
-#include <OITEMRES.H>
+#include <oc_east.h>
+#include <ounitres.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <ofirmres.h>
+#include <otechres.h>
+#include <otech.h>
+#include <onationa.h>
+#include <onation2.h>
+#include <osite.h>
+#include <itemid.h>
+#include <oitemres.h>
 
 void CampaignEastWest::plot_a5_create_game()
 {

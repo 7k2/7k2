@@ -21,17 +21,17 @@
 //Filename    : OVBROWIF2.CPP
 //Description : Object Visual Browse for the Interface
 
-#include <ALL.H>
-#include <OSYS.H>
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OVBROWIF.H>
-#include <OMOUSE.H>
-#include <OMODEID.H>
-#include <OIMGRES.H>
-//#include <OFONT.H>
-//#include <OPOWER.H>
-//#include <OVBROWSE.H>
+#include <all.h>
+#include <osys.h>
+#include <oinfo.h>
+#include <ovga.h>
+#include <ovbrowif.h>
+#include <omouse.h>
+#include <omodeid.h>
+#include <oimgres.h>
+//#include <ofont.h>
+//#include <opower.h>
+//#include <ovbrowse.h>
 
 
 //--------- Begin of function VBrowseIF2::init --------//

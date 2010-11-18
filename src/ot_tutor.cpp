@@ -21,8 +21,8 @@
 // Filename    : OT_TUTOR.CPP
 // Description : tutorialgame menu text resource
 
-#include <OT_TUTOR.H>
-#include <ALL.H>
+#include <ot_tutor.h>
+#include <all.h>
 
 
 void TextResTutorial::init()

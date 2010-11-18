@@ -22,25 +22,25 @@
 // Description : interface functions of Incubator
 
 
-#include <OF_INCU.H>
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OCOLTBL.H>
-#include <OSTR.H>
-#include <OCONFIG.H>
-#include <OFONT.H>
-#include <OMOUSE.H>
-#include <OBUTT3D.H>
-#include <OUNIT.H>
-#include <OSYS.H>
-#include <ONATION.H>
-#include <OREMOTE.H>
-#include <OIMGRES.H>
-#include <OSE.H>
-#include <OSERES.H>
-#include <OBUTTCUS.H>
-#include <OT_FIRM.H>
+#include <of_incu.h>
+#include <oinfo.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ocoltbl.h>
+#include <ostr.h>
+#include <oconfig.h>
+#include <ofont.h>
+#include <omouse.h>
+#include <obutt3d.h>
+#include <ounit.h>
+#include <osys.h>
+#include <onation.h>
+#include <oremote.h>
+#include <oimgres.h>
+#include <ose.h>
+#include <oseres.h>
+#include <obuttcus.h>
+#include <ot_firm.h>
 
 
 static int animate_seqno =1;

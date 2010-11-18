@@ -25,15 +25,15 @@
 #define __OF_INN_H
 
 #ifndef __OUNIT_H
-#include <OUNIT.H>
+#include <ounit.h>
 #endif
 
 #ifndef __OSKILL_H
-#include <OSKILL.H>
+#include <oskill.h>
 #endif
 
 #ifndef __OFIRM_H
-#include <OFIRM.H>
+#include <ofirm.h>
 #endif
 
 //----------- Define constant --------------//

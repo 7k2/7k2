@@ -22,13 +22,13 @@
 //Description : class Sys - file functions
 
 #include <stdio.h>
-#include <ALL.H>
-#include <OSYS.H>
-#include <OREMOTE.H>
-#include <OMOUSE.H>
-#include <OBOX.H>
-#include <OGFILE.H>
-#include <OT_GMENU.H>
+#include <all.h>
+#include <osys.h>
+#include <oremote.h>
+#include <omouse.h>
+#include <obox.h>
+#include <ogfile.h>
+#include <ot_gmenu.h>
 
 //-------- Begin of function Sys::load_game --------//
 //

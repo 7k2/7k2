@@ -21,20 +21,20 @@
 //Filename    : OINFOECO.CPP
 //Description : Economy information screen
 
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OSYS.H>
-#include <OFONT.H>
-#include <OIMGRES.H>
-#include <OVBROWIF.H>
-#include <OBUTTON.H>
-#include <OFIRM.H>
-#include <OFIRMRES.H>
-#include <ORACERES.H>
-#include <ONATION.H> 
-#include <OUNIT.H>
-#include <OT_REPS.H>
+#include <oinfo.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <osys.h>
+#include <ofont.h>
+#include <oimgres.h>
+#include <ovbrowif.h>
+#include <obutton.h>
+#include <ofirm.h>
+#include <ofirmres.h>
+#include <oraceres.h>
+#include <onation.h> 
+#include <ounit.h>
+#include <ot_reps.h>
 
 //------------- Define coordinations -----------//
 

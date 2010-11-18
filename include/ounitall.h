@@ -24,10 +24,10 @@
 #ifndef __OUNITALL_H
 #define __OUNITALL_H
 
-#include <OU_CARA.H>
-#include <OU_WAGON.H>
-#include <OU_CART.H>
-#include <OU_MONS.H>
-#include <OU_GOD.H>
+#include <ou_cara.h>
+#include <ou_wagon.h>
+#include <ou_cart.h>
+#include <ou_mons.h>
+#include <ou_god.h>
 
 #endif

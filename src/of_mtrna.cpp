@@ -21,11 +21,11 @@
 //Filename    : OF_MTRNA.CPP
 //Description : Firm special unit training structure - AI functions
 
-#include <ONATION.H>
-#include <OINFO.H>
-#include <OUN_GRP.H>
-#include <OF_CAMP.H>
-#include <OF_MTRN.H>
+#include <onation.h>
+#include <oinfo.h>
+#include <oun_grp.h>
+#include <of_camp.h>
+#include <of_mtrn.h>
  
 //--------- Begin of function FirmMonsterTrain::process_ai ---------//
 

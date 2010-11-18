@@ -25,11 +25,11 @@
 #define __OGODRES_H
 
 #ifndef __ONATION_H
-#include <ONATION.H>
+#include <onation.h>
 #endif
 
 #ifndef __OFILE_H
-#include <OFILE.H>
+#include <ofile.h>
 #endif
 
 //------------ Define god id. -------------//

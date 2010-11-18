@@ -24,9 +24,9 @@
 
 #include	<math.h>
 #include <stdlib.h>
-#include <ALL.H>
-#include <OVGABUF.H>
-#include <OLIGHTN.H>
+#include <all.h>
+#include <ovgabuf.h>
+#include <olightn.h>
 
 //------------ Define constant ----------//
 

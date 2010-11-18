@@ -21,7 +21,7 @@
 //Filename    : OMLINK.CPP
 //Description : Object Multiple Linker
 
-#include <OMLINK.H>
+#include <omlink.h>
 
 //--------- Begin of function MLink::MLink ---------//
 //

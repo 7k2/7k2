@@ -20,7 +20,7 @@
 ;Description : scroll bitmap
 
 
-INCLUDE IMGFUN.INC
+INCLUDE imgfun.inc
 
 .CODE
 

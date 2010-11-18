@@ -22,26 +22,26 @@
 //Description : Class Tutor
 
 
-#include <OTUTOR.H>
-#include <COLOR.H>
-#include <OSYS.H>
-#include <OGAME.H>
-#include <OMOUSE.H>
-#include <OMOUSECR.H>
-#include <OVGABUF.H>
-#include <OMODEID.H>
-#include <OIMGRES.H>
-#include <OBUTT3D.H>
-#include <OSLIDCUS.H>
-#include <OBOX.H>
-#include <OPOWER.H>
-#include <OFONT.H>
-#include <KEY.H>
-#include <OBLOB.H>
-#include <OINFO.H>
-#include <OMUSIC.H>
-#include <OCONFIG.H>
-#include <OT_TUTOR.H>
+#include <otutor.h>
+#include <color.h>
+#include <osys.h>
+#include <ogame.h>
+#include <omouse.h>
+#include <omousecr.h>
+#include <ovgabuf.h>
+#include <omodeid.h>
+#include <oimgres.h>
+#include <obutt3d.h>
+#include <oslidcus.h>
+#include <obox.h>
+#include <opower.h>
+#include <ofont.h>
+#include <key.h>
+#include <oblob.h>
+#include <oinfo.h>
+#include <omusic.h>
+#include <oconfig.h>
+#include <ot_tutor.h>
 
 // --------- declare static funtion --------//
 

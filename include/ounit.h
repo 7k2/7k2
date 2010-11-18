@@ -25,19 +25,19 @@
 #define __OUNIT_H
 
 #ifndef __OSKILL_H
-#include <OSKILL.H>
+#include <oskill.h>
 #endif
 
 #ifndef __OUNITRES_H
-#include <OUNITRES.H>
+#include <ounitres.h>
 #endif
 
 #ifndef __OSPRITE_H
-#include <OSPRITE.H>
+#include <osprite.h>
 #endif
 
 #ifndef __OITEM_H
-#include <OITEM.H>
+#include <oitem.h>
 #endif
 
 //-------------- unit rank -------------//

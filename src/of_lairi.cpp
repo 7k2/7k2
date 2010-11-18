@@ -21,25 +21,25 @@
 // Filename    : OF_LAIRI.CPP
 // Description : Monster Lair Interface
 
-#include <OF_LAIR.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OMONSRES.H>
-#include <ONATION.H>
-#include <OMOUSE.H>
-#include <OBITMAP.H>
-#include <OFONT.H>
-#include <OIMGRES.H>
-#include <OUNITRES.H>
-#include <OTECHRES.H>
-#include <OINFO.H>
-#include <OBUTTON.H>
-#include <OBUTT3D.H>
-#include <OBUTTCUS.H>
-#include <OSE.H>
-#include <OSERES.H>
-#include <OT_FIRM.H>
-#include <OT_BASIC.H>
+#include <of_lair.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <omonsres.h>
+#include <onation.h>
+#include <omouse.h>
+#include <obitmap.h>
+#include <ofont.h>
+#include <oimgres.h>
+#include <ounitres.h>
+#include <otechres.h>
+#include <oinfo.h>
+#include <obutton.h>
+#include <obutt3d.h>
+#include <obuttcus.h>
+#include <ose.h>
+#include <oseres.h>
+#include <ot_firm.h>
+#include <ot_basic.h>
 
 // -------- define constant --------//
 

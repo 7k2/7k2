@@ -25,15 +25,15 @@
 #define __OGAME_H
 
 #ifndef __GAMEDEF_H
-#include <GAMEDEF.H>
+#include <gamedef.h>
 #endif
 
 #ifndef __OEND_CON_H
-#include <OEND_CON.H>
+#include <oend_con.h>
 #endif
 
 #ifdef DEBUG
-#include <OLONGLOG.H>
+#include <olonglog.h>
 #endif
 
 //-------- Define game modes -----------//

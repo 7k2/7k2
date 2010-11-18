@@ -21,30 +21,30 @@
 //Filename    : OGAMSING.CPP
 //Description : Single player game interface
 
-#include <OGAME.H>
-#include <OBITMAP.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OCOLTBL.H>
-#include <OVGALOCK.H>
-#include <OSYS.H>
-#include <OMOUSE.H>
-#include <OFONT.H>
-#include <OIMGRES.H>
-#include <OINFO.H>
-#include <OBUTTON.H>
-#include <OBUTT3D.H> 
-#include <OGET.H>
-#include <OGAMMENU.H>
-#include <OBATTLE.H>
-#include <OGFILE.H>
-#include <OCONFIG.H>
-#include <OMUSIC.H>
-#include <OBUTTCUS.H>
-#include <OCOLTBL.H>
-#include <OGETA.H>
-#include <OPROFILE.H>
-#include <OT_GMENU.H>
+#include <ogame.h>
+#include <obitmap.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ocoltbl.h>
+#include <ovgalock.h>
+#include <osys.h>
+#include <omouse.h>
+#include <ofont.h>
+#include <oimgres.h>
+#include <oinfo.h>
+#include <obutton.h>
+#include <obutt3d.h> 
+#include <oget.h>
+#include <ogammenu.h>
+#include <obattle.h>
+#include <ogfile.h>
+#include <oconfig.h>
+#include <omusic.h>
+#include <obuttcus.h>
+#include <ocoltbl.h>
+#include <ogeta.h>
+#include <oprofile.h>
+#include <ot_gmenu.h>
 
 
 //---------- Define option modes --------//

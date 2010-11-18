@@ -21,10 +21,10 @@
 // Filename    : OT_GMENU.CPP
 // Description : game menu text resource
 
-#include <OT_GMENU.H>
-#include <ALL.H>
-#include <OCONFIG.H>
-#include <OFONT.H>
+#include <ot_gmenu.h>
+#include <all.h>
+#include <oconfig.h>
+#include <ofont.h>
 
 
 void TextResGameMenu::init()

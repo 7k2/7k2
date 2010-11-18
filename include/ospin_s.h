@@ -25,8 +25,8 @@
 #define __OSPIN_S_H
 
 
-#include <OBUTT3D.H>
-#include <OVBROWIF.H>
+#include <obutt3d.h>
+#include <ovbrowif.h>
 
 //----------- Define variable type -----------//
 

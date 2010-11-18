@@ -24,13 +24,13 @@
 
 #include	<math.h>
 #include <time.h>
-#include <OVGABUF.H>
-#include <OMISC.H>
-#include <OLIGHTN.H>
-#include <OWORLDMT.H>
-#include <COLOR.H>
-#include <OMAGIC.H>
-#include <OVGA.H>
+#include <ovgabuf.h>
+#include <omisc.h>
+#include <olightn.h>
+#include <oworldmt.h>
+#include <color.h>
+#include <omagic.h>
+#include <ovga.h>
 
 //------------ Define constant ----------//
 

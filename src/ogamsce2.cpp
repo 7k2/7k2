@@ -22,35 +22,35 @@
 // Description : select scenario menu
 
 
-#include <OGAME.H>
-#include <OSYS.H>
-#include <OMOUSE.H>
-#include <OMOUSECR.H>
-#include <COLOR.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OVGABUF.H>
-#include <OVGALOCK.H>
-#include <OGAMMENU.H>
-#include <OBITMAP.H>
-#include <OIMGRES.H>
-#include <OBUTTON.H>
-#include <OBUTT3D.H>
-#include <OSLIDCUS.H>
-#include <OBOX.H>
-#include <OPOWER.H>
-#include <OFONT.H>
-#include <KEY.H>
-#include <OBLOB.H>
-#include <OINFO.H>
-#include <OFILETXT.H>
-#include <OVQUEUE.H>
-#include <OGETA.H>
-#include <OMUSIC.H>
-#include <OPROFILE.H>
-#include <OCONFIG.H>
-#include <OJPEG.H>
-#include <OT_GMENU.H>
+#include <ogame.h>
+#include <osys.h>
+#include <omouse.h>
+#include <omousecr.h>
+#include <color.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ovgabuf.h>
+#include <ovgalock.h>
+#include <ogammenu.h>
+#include <obitmap.h>
+#include <oimgres.h>
+#include <obutton.h>
+#include <obutt3d.h>
+#include <oslidcus.h>
+#include <obox.h>
+#include <opower.h>
+#include <ofont.h>
+#include <key.h>
+#include <oblob.h>
+#include <oinfo.h>
+#include <ofiletxt.h>
+#include <ovqueue.h>
+#include <ogeta.h>
+#include <omusic.h>
+#include <oprofile.h>
+#include <oconfig.h>
+#include <ojpeg.h>
+#include <ot_gmenu.h>
 
 // --------- declare static funtion --------//
 

@@ -22,22 +22,22 @@
 // Description : Item resource
 
 
-#include <OITEMRES.H>
-#include <OITEM.H>
-#include <ITEMID.H>
-#include <ALL.H>
-#include <OCOLTBL.H>
-#include <OVGA.H>
-#include <OUNITRES.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OSPRTRES.H>
-#include <OUNIT.H>
-#include <OCONFIG.H>
-#include <OSE.H>
-#include <OPOWER.H>
-#include <OTOWN.H>
-#include <OT_ITEM.H>
+#include <oitemres.h>
+#include <oitem.h>
+#include <itemid.h>
+#include <all.h>
+#include <ocoltbl.h>
+#include <ovga.h>
+#include <ounitres.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <osprtres.h>
+#include <ounit.h>
+#include <oconfig.h>
+#include <ose.h>
+#include <opower.h>
+#include <otown.h>
+#include <ot_item.h>
 
 //--------- define static variable ----------//
 

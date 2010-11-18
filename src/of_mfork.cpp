@@ -21,11 +21,11 @@
 // Filename    : OF_MFORK.CPP
 // Description : Monster Fortress attack
 
-#include <OF_MFORT.H>
-#include <OUNIT.H>
-#include <OWORLD.H>
-#include <OBULLET.H>
-#include <ONATION.H>
+#include <of_mfort.h>
+#include <ounit.h>
+#include <oworld.h>
+#include <obullet.h>
+#include <onation.h>
 
 
 int FirmMonsterFortress::return_fire( BaseObj *attackerObj )

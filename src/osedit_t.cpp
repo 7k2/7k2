@@ -21,19 +21,19 @@
 // Filename    : OSEDIT_T.CPP
 // Description : Scenario editor, terrain mode
 
-#include <OSEDITOR.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <COLOR.H>
-#include <OMOUSE.H>
-#include <OFONT.H>
-#include <OBUTTON.H>
-#include <OSLIDER.H>
-#include <OPLASMA.H>
-#include <OINFO.H>
-#include <OTERRAIN.H>
-#include <OPLANT.H>
-#include <OWORLDMT.H>
+#include <oseditor.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <color.h>
+#include <omouse.h>
+#include <ofont.h>
+#include <obutton.h>
+#include <oslider.h>
+#include <oplasma.h>
+#include <oinfo.h>
+#include <oterrain.h>
+#include <oplant.h>
+#include <oworldmt.h>
 
 
 

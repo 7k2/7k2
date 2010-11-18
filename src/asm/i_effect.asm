@@ -19,9 +19,9 @@
 ; Filename    : I_EFFECT.ASM
 ; Description : 16-bit color effect
 
-INCLUDE ALL.INC
-INCLUDE COLCODE.INC
-INCLUDE I_EFFECT.INC
+INCLUDE all.inc
+INCLUDE colcode.inc
+INCLUDE i_effect.inc
 
 		PUBLIC	INITeffect, IMGeffect, IMGmakePixel, IMGdecodePixel
 		PUBLIC	pixel_format_flag

@@ -22,19 +22,19 @@
 // Description : Alchemy Tor interface
 
 
-#include <OF_ALCH.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OMOUSE.H>
-#include <OFONT.H>
-#include <OIMGRES.H>
-#include <OBUTT3D.H>
-#include <OREMOTE.H>
-#include <OINFO.H>
-#include <ORAWRES.H>
-#include <OTECHRES.H>
-#include <OTECH.H>
-#include <OT_FIRM.H>
+#include <of_alch.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <omouse.h>
+#include <ofont.h>
+#include <oimgres.h>
+#include <obutt3d.h>
+#include <oremote.h>
+#include <oinfo.h>
+#include <orawres.h>
+#include <otechres.h>
+#include <otech.h>
+#include <ot_firm.h>
 
 
 // -------- define constant --------//

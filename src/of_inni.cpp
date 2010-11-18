@@ -21,37 +21,37 @@
 //Filename    : OF_INNI.CPP
 //Description : Firm Inn - interface functions
 
-#include <OF_INN.H>
-#include <OINFO.H>
-// #include <OBOX.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OSTR.H>
-#include <OIMGRES.H>
-#include <OFONT.H>
-#include <OMOUSE.H>
-#include <OHERORES.H>
-#include <OHELP.H>
-#include <OVBROWIF.H>
-#include <OGAME.H>
-#include <OCONFIG.H>
-#include <OTOWN.H>
-#include <OBUTT3D.H>
-#include <OBUTTCUS.H>
-#include <ONATION.H>
-#include <ORAWRES.H>
-#include <ORACERES.H>
-#include <OWORLD.H>
-#include <OSPY.H>
-#include <OREMOTE.H>
-#include <OSERES.H>
-#include <OBITMAP.H>
-#include <OITEMRES.H>
-#include <OCOLTBL.H>
-#include <OSE.H>
-#include <OSERES.H>
-#include <OT_FIRM.H>
-#include <OT_UNIT.H>
+#include <of_inn.h>
+#include <oinfo.h>
+// #include <obox.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ostr.h>
+#include <oimgres.h>
+#include <ofont.h>
+#include <omouse.h>
+#include <oherores.h>
+#include <ohelp.h>
+#include <ovbrowif.h>
+#include <ogame.h>
+#include <oconfig.h>
+#include <otown.h>
+#include <obutt3d.h>
+#include <obuttcus.h>
+#include <onation.h>
+#include <orawres.h>
+#include <oraceres.h>
+#include <oworld.h>
+#include <ospy.h>
+#include <oremote.h>
+#include <oseres.h>
+#include <obitmap.h>
+#include <oitemres.h>
+#include <ocoltbl.h>
+#include <ose.h>
+#include <oseres.h>
+#include <ot_firm.h>
+#include <ot_unit.h>
 
 // ----------- Define constant --------//
 

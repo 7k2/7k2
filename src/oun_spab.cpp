@@ -21,9 +21,9 @@
 // Filename    : OUN_SPAB.CPP
 // Description : unit special ability
 
-#include <OUNIT.H>
-#include <OUN_SPAB.H>
-#include <OINFO.H>
+#include <ounit.h>
+#include <oun_spab.h>
+#include <oinfo.h>
 
 // number of days the ability last for
 #define SPECIAL_ABILITY_DURATION 10

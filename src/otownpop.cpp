@@ -21,25 +21,25 @@
 //Filename    : OTOWN.CPP
 //Description : Object Town - functions for processing population
 
-#include <OTOWN.H>
-#include <ONEWS.H>
-#include <OF_MARK.H>
-#include <OCONFIG.H>
-#include <OF_CAMP.H>
-#include <OF_WORK.H>
-#include <ONEWS.H>
-#include <OREMOTE.H>
-#include <OSERES.H>
-#include <OSE.H>
-#include <ORACERES.H>
-#include <OGODRES.H>
-#include <OSPY.H>
-#include <OUNIT.H>
-#include <OU_WAGON.H>
-#include <ONATION.H>
-#include <OITEMRES.H>
-#include <OITEM.H>
-#include <ITEMID.H>
+#include <otown.h>
+#include <onews.h>
+#include <of_mark.h>
+#include <oconfig.h>
+#include <of_camp.h>
+#include <of_work.h>
+#include <onews.h>
+#include <oremote.h>
+#include <oseres.h>
+#include <ose.h>
+#include <oraceres.h>
+#include <ogodres.h>
+#include <ospy.h>
+#include <ounit.h>
+#include <ou_wagon.h>
+#include <onation.h>
+#include <oitemres.h>
+#include <oitem.h>
+#include <itemid.h>
 
 
 //--------- Begin of function Town::init_pop ----------//

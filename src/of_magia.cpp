@@ -21,12 +21,12 @@
 //Filename    : OF_MAGIA.CPP
 //Description : Firm Magic Tor
 
-#include <ONATION.H>
-#include <OINFO.H>
-#include <OWORLDMT.H>
-// #include <OWARPT.H>
-#include <OF_MAGI.H>
-#include <OW_TRV.H>
+#include <onation.h>
+#include <oinfo.h>
+#include <oworldmt.h>
+// #include <owarpt.h>
+#include <of_magi.h>
+#include <ow_trv.h>
 #include <math.h>
 
 //--------- Begin of function FirmMagic::process_ai ---------//

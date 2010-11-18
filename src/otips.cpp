@@ -22,17 +22,17 @@
 // Description : tips resource
 
 
-#include <OTIPS.H>
-#include <ALL.H>
-#include <OFILETXT.H>
-#include <OVQUEUE.H>
-#include <OVGA.H>
-#include <OFONT.H>
-#include <OIMGRES.H>
-#include <OMOUSE.H>
-#include <OPROFILE.H>
-#include <OCONFIG.H>
-#include <OT_GMENU.H>
+#include <otips.h>
+#include <all.h>
+#include <ofiletxt.h>
+#include <ovqueue.h>
+#include <ovga.h>
+#include <ofont.h>
+#include <oimgres.h>
+#include <omouse.h>
+#include <oprofile.h>
+#include <oconfig.h>
+#include <ot_gmenu.h>
 
 
 #define TIPS_FILE_NAME "TIPS.RES"

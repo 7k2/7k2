@@ -21,15 +21,15 @@
 // Filename    : OF_ALCH.CPP
 // Description : alchemy Tor
 
-#include <OSYS.H>
-#include <OF_ALCH.H>
-#include <ALL.H>
-#include <OREMOTE.H>
-#include <OTECHRES.H>
-#include <OTECH.H>
-#include <ONEWS.H>
-#include <OSITE.H>
-#include <ONATION.H>
+#include <osys.h>
+#include <of_alch.h>
+#include <all.h>
+#include <oremote.h>
+#include <otechres.h>
+#include <otech.h>
+#include <onews.h>
+#include <osite.h>
+#include <onation.h>
 
 
 // ------ define constant ------//

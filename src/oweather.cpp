@@ -22,12 +22,12 @@
 // Description : class Weather
 // Ownership   : Gilbert
 
-#include <OINFO.H>
-#include <OCONFIG.H>
-#include <OWEATHER.H>
-#include <ALL.H>
+#include <oinfo.h>
+#include <oconfig.h>
+#include <oweather.h>
+#include <all.h>
 #include <math.h>
-#include <OWORLDMT.H>
+#include <oworldmt.h>
 
 //---------- Define constant -----------//
 #define RAIN_CLOUD 1

@@ -25,7 +25,7 @@
 #ifndef __OTERRAIN_H
 #define __OTERRAIN_H
 
-#include <ORESDB.H>
+#include <oresdb.h>
 #define NULL 0
 
 

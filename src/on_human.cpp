@@ -21,8 +21,8 @@
 //Filename   : ON_HUMAN.CPP
 //Description: Functions for the class NationHuman
 
-#include <ONATION2.H>
-#include <OGAME.H>
+#include <onation2.h>
+#include <ogame.h>
 
 //--------- Begin of function NationHuman::process_ai --------//
 

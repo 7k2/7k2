@@ -21,16 +21,16 @@
 // Filename    : OGAMENCY.CPP
 // description : view encyclopedia
 
-#include <OGAME.H>
-#include <ALL.H>
-#include <OIMGRES.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OSYS.H>
-#include <OMOUSE.H>
-#include <OMOUSECR.H>
-#include <OVGALOCK.H>
-#include <OMUSIC.H>
+#include <ogame.h>
+#include <all.h>
+#include <oimgres.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <osys.h>
+#include <omouse.h>
+#include <omousecr.h>
+#include <ovgalock.h>
+#include <omusic.h>
 
 //--------- define constant ---------//
 

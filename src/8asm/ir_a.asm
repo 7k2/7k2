@@ -20,7 +20,7 @@
 ;Description : Remap a bitmap on vga image buffer with clipping
 
 
-INCLUDE IMGFUN.INC
+INCLUDE imgfun.inc
 
 .CODE
 

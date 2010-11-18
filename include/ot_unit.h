@@ -24,7 +24,7 @@
 #ifndef __OT_UNIT_H
 #define __OT_UNIT_H
 
-#include <OTXTRES.H>
+#include <otxtres.h>
 
 class TextResUnit : public TextResource
 {

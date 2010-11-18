@@ -22,13 +22,13 @@
 // Description : Class Wagon
 
 
-#include <OU_WAGON.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <OSPY.H>
-#include <ONATION.H>
-#include <ONEWS.H>
-#include <ORACERES.H>
+#include <ou_wagon.h>
+#include <all.h>
+#include <osys.h>
+#include <ospy.h>
+#include <onation.h>
+#include <onews.h>
+#include <oraceres.h>
 
 // ------ begin of function UnitWagon::UnitWagon --------//
 //

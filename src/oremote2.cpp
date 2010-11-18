@@ -26,18 +26,18 @@
 #include <mmsystem.h>
 
 #define DEBUG_LOG_LOCAL 1
-#include <ALL.H>
-#include <OVGA.H>
-#include <OSTR.H>
-#include <OFONT.H>
-#include <OSYS.H>
-#include <OWORLD.H>
-#include <OPOWER.H>
-#include <ONATION.H>
-#include <OREMOTE.H>
-#include <OERRCTRL.H>
-#include <OLOG.H>
-#include <OWORLDMT.H>
+#include <all.h>
+#include <ovga.h>
+#include <ostr.h>
+#include <ofont.h>
+#include <osys.h>
+#include <oworld.h>
+#include <opower.h>
+#include <onation.h>
+#include <oremote.h>
+#include <oerrctrl.h>
+#include <olog.h>
+#include <oworldmt.h>
 
 //---------- Define static functions ----------//
 

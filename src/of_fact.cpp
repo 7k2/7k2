@@ -21,20 +21,20 @@
 //Filename    : OF_FACT.CPP
 //Description : Firm Factory
 
-#include <OINFO.H>
-#include <OMODEID.H>
-#include <OSTR.H>
-#include <OUNIT.H>
-#include <ONATION.H>
-#include <ORAWRES.H>
-#include <ORACERES.H>
-#include <OTECHRES.H>
-#include <OTECH.H>
-#include <OF_MINE.H>
-#include <OF_MARK.H>
-#include <OREMOTE.H>
-#include <OSE.H>
-#include <OF_FACT.H>
+#include <oinfo.h>
+#include <omodeid.h>
+#include <ostr.h>
+#include <ounit.h>
+#include <onation.h>
+#include <orawres.h>
+#include <oraceres.h>
+#include <otechres.h>
+#include <otech.h>
+#include <of_mine.h>
+#include <of_mark.h>
+#include <oremote.h>
+#include <ose.h>
+#include <of_fact.h>
 
 //-------- define constant ---------//
 

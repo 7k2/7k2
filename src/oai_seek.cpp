@@ -22,13 +22,13 @@
 //Description: AI - action progressing functions
 
 #include <windows.h>
-#include <ALL.H>
-#include <OUNIT.H>
-#include <OF_MINE.H>
-#include <OF_FACT.H>
-#include <OTOWN.H>
-#include <OSITE.H>
-#include <ONATION.H>
+#include <all.h>
+#include <ounit.h>
+#include <of_mine.h>
+#include <of_fact.h>
+#include <otown.h>
+#include <osite.h>
+#include <onation.h>
 
 //--------- Begin of function Nation::seek_mine --------//
 //

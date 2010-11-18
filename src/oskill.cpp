@@ -21,13 +21,13 @@
 //Filename   : OSKILL.CPP
 //Description: Class Skill
 
-#include <ONATION.H>
-#include <OSKILL.H>
-#include <OSPY.H>
-#include <OTECH.H>
-#include <OITEM.H>
-#include <OTECHRES.H>
-#include <ITEMID.H>
+#include <onation.h>
+#include <oskill.h>
+#include <ospy.h>
+#include <otech.h>
+#include <oitem.h>
+#include <otechres.h>
+#include <itemid.h>
 
 
 //--------- Begin of function Skill::Skill -----------//

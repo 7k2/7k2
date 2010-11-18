@@ -21,21 +21,21 @@
 //Filename   : OC_EAST.CPP
 //Description: CampaignEastWest - STAGE_FRYHTAN_INVASION_1
 
-#include <ALL.H>
-#include <OSITE.H>
-#include <OTECH.H>
-#include <OGAME.H>
-#include <OTECHRES.H>
-#include <OSTATE.H>
-#include <OUNIT.H>
-#include <OGODRES.H>
-#include <OUN_GRP.H>
-#include <ORACERES.H>
-#include <ONEWS.H>
-#include <OMONSRES.H>
-#include <ONATION2.H>
-#include <OC_EAST.H>
-#include <OF_CAMP.H>
+#include <all.h>
+#include <osite.h>
+#include <otech.h>
+#include <ogame.h>
+#include <otechres.h>
+#include <ostate.h>
+#include <ounit.h>
+#include <ogodres.h>
+#include <oun_grp.h>
+#include <oraceres.h>
+#include <onews.h>
+#include <omonsres.h>
+#include <onation2.h>
+#include <oc_east.h>
+#include <of_camp.h>
 
 //----- define constant ----------//
 

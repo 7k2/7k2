@@ -21,12 +21,12 @@
 //Filename	 : OUN_MODE.CPP
 //Description: Unit mode processing functions
 
-#include <OSYS.H>
-#include <ONATION.H>
-#include <OFIRM.H>
-#include <OTOWN.H>
-#include <OUNITRES.H>
-#include <OUNIT.H>
+#include <osys.h>
+#include <onation.h>
+#include <ofirm.h>
+#include <otown.h>
+#include <ounitres.h>
+#include <ounit.h>
 
  
 //----------- Begin of function Unit::set_mode ---------//

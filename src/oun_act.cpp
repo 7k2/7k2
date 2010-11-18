@@ -21,16 +21,16 @@
 //Filename	 : OUN_ACT.CPP
 //Description: Unit class functions
 
-#include <OCONFIG.H>
-#include <OUNITRES.H>
-#include <OSERES.H>
-#include <ORACERES.H>
-#include <OFIRMRES.H>
-#include <OGODRES.H>
-#include <ONATION.H>
-#include <OPOWER.H>
-#include <OUNIT.H>
-#include <ITEMID.H>
+#include <oconfig.h>
+#include <ounitres.h>
+#include <oseres.h>
+#include <oraceres.h>
+#include <ofirmres.h>
+#include <ogodres.h>
+#include <onation.h>
+#include <opower.h>
+#include <ounit.h>
+#include <itemid.h>
 
 //--------- Begin of function Unit::pre_process ---------//
 //

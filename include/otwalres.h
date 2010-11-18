@@ -25,7 +25,7 @@
 #ifndef __OTWALLRES_H
 #define __OTWALLRES_H
 
-#include <ORESDB.H>
+#include <oresdb.h>
 
 
 // ------- define struct TownRaceWallRec -------//

@@ -25,11 +25,11 @@
 #define __OWAYPNT_H
 
 #ifndef __ODYNARR_H
-#include <ODYNARR.H>
+#include <odynarr.h>
 #endif
 
 #ifndef __OUN_GRP_H
-#include <OUN_GRP.H>
+#include <oun_grp.h>
 #endif
 
 //------ Define struct OneWayPoint ------//

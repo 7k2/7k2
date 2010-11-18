@@ -26,9 +26,9 @@
 #define __OSEDITOR_H
 
 
-#include <OPLASMA.H>
-//#include <OEND_CON.H>
-#include <GAMEDEF.H>
+#include <oplasma.h>
+//#include <oend_con.h>
+#include <gamedef.h>
 
 // enum for edit_mode
 

@@ -22,8 +22,8 @@
 // Description : DisplayModeInfo
 
 
-#include <OMODEID.H>
-#include <ALL.H>
+#include <omodeid.h>
+#include <all.h>
 
 #define MAX_DISPLAY_MODE_ID 2
 

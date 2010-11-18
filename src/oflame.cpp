@@ -25,12 +25,12 @@
 // Frank Jan Sorensen Alias:Frank Patxi (fjs@lab.jt.dk) for the
 // fireroutine.
 
-#include <OFLAME.H>
-#include <OVGABUF.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <COLCODE.H>
-#include <OCOLTBL.H>
+#include <oflame.h>
+#include <ovgabuf.h>
+#include <all.h>
+#include <osys.h>
+#include <colcode.h>
+#include <ocoltbl.h>
 
 //-------------- Begin Function Flame::Flame ----------//
 Flame::Flame()

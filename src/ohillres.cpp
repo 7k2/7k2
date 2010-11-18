@@ -22,14 +22,14 @@
 //Description : Hill resource object
 //Onwership   : Gilbert
 
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OGAMESET.H>
-#include <OWORLD.H>
-#include <OHILLRES.H>
-#include <OCONFIG.H>
-#include <OWORLDMT.H>
-#include <ALL.H>
+#include <osys.h>
+#include <ovga.h>
+#include <ogameset.h>
+#include <oworld.h>
+#include <ohillres.h>
+#include <oconfig.h>
+#include <oworldmt.h>
+#include <all.h>
 
 //---------- #define constant ------------//
 

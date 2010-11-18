@@ -21,14 +21,14 @@
 //Filename   : OWAYPNT.CPP
 //Description: class WayPoint
 
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OBITMAP.H>
-#include <OIMGRES.H>
-#include <OWORLDMT.H>
-#include <OANLINE.H>
-#include <OPFIND.H>
-#include <OWAYPNT.H>
+#include <ovga.h>
+#include <omodeid.h>
+#include <obitmap.h>
+#include <oimgres.h>
+#include <oworldmt.h>
+#include <oanline.h>
+#include <opfind.h>
+#include <owaypnt.h>
 
 
 //--------- Begin of function WayPoint::WayPoint ---------//

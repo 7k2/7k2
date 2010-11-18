@@ -21,17 +21,17 @@
 //Filename    : OU_CARA.CPP
 //Description : Unit Caravan
 
-#include <OU_CARA.H>
-#include <OSTR.H>
-#include <OINFO.H>
-#include <OCONFIG.H>
-#include <OGAME.H>
-#include <ONATION.H>
-#include <OREMOTE.H>
-#include <OF_MINE.H>
-#include <OF_FACT.H>
-#include <OSE.H>
-#include <OFIRMALL.H>
+#include <ou_cara.h>
+#include <ostr.h>
+#include <oinfo.h>
+#include <oconfig.h>
+#include <ogame.h>
+#include <onation.h>
+#include <oremote.h>
+#include <of_mine.h>
+#include <of_fact.h>
+#include <ose.h>
+#include <ofirmall.h>
 
 //------------- Define static vars ------------//
 

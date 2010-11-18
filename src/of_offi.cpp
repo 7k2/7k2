@@ -22,29 +22,29 @@
 // Description : magic tower interface function
 
 
-#include <OF_OFF.H>
-#include <OF_MAGI.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OMOUSE.H>
-#include <OFONT.H>
-#include <OIMGRES.H>
-#include <OBUTT3D.H>
-#include <OBUTTCUS.H>
-#include <OHELP.H>
-#include <OINFO.H>
-#include <OPOWER.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <OWORLDMT.H>
-#include <OUNIT.H>
-#include <ONATION.H>
-#include <OBITMAPW.H>
-#include <OBITMAP.H>
-#include <OSYS.H>
-#include <OSE.H>
-#include <OSERES.H>
-#include <OT_FIRM.H>
+#include <of_off.h>
+#include <of_magi.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <omouse.h>
+#include <ofont.h>
+#include <oimgres.h>
+#include <obutt3d.h>
+#include <obuttcus.h>
+#include <ohelp.h>
+#include <oinfo.h>
+#include <opower.h>
+#include <otech.h>
+#include <otechres.h>
+#include <oworldmt.h>
+#include <ounit.h>
+#include <onation.h>
+#include <obitmapw.h>
+#include <obitmap.h>
+#include <osys.h>
+#include <ose.h>
+#include <oseres.h>
+#include <ot_firm.h>
 
 // ------- define static variable ------//
 

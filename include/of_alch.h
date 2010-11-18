@@ -25,7 +25,7 @@
 #define __OF_ALCH_H
 
 
-#include <OFIRM.H>
+#include <ofirm.h>
 
 
 class FirmMonsterAlchemy : public Firm

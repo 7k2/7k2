@@ -21,31 +21,31 @@
 //Filename    : OSPY.CPP
 //Description : Object Spy
 
-#include <OPOWER.H>
-#include <OGAME.H>
-#include <ODATE.H>
-#include <ONEWS.H>
-#include <OFONT.H>
-#include <OUNIT.H>
-#include <OU_WAGON.H>
-#include <OWORLD.H>
-#include <OBUTTON.H>
-#include <OFIRM.H>
-#include <OF_CAMP.H> 
-#include <OF_INN.H>
-#include <OF_TRAIN.H>
-#include <OTOWN.H>
-#include <ONATION.H>
-#include <ORACERES.H>
-#include <OSYS.H>
-#include <OSPY.H>
-#include <OTECHRES.H>
-#include <OTECH.H>
-#include <OGODRES.H>
-#include <OREMOTE.H>
-#include <OSE.H>
-#include <OTALKRES.H>
-#include <OT_REPS.H>
+#include <opower.h>
+#include <ogame.h>
+#include <odate.h>
+#include <onews.h>
+#include <ofont.h>
+#include <ounit.h>
+#include <ou_wagon.h>
+#include <oworld.h>
+#include <obutton.h>
+#include <ofirm.h>
+#include <of_camp.h> 
+#include <of_inn.h>
+#include <of_train.h>
+#include <otown.h>
+#include <onation.h>
+#include <oraceres.h>
+#include <osys.h>
+#include <ospy.h>
+#include <otechres.h>
+#include <otech.h>
+#include <ogodres.h>
+#include <oremote.h>
+#include <ose.h>
+#include <otalkres.h>
+#include <ot_reps.h>
 
 
 #define MIN_CAMOUFLAGE_POWER      20

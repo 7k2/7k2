@@ -21,9 +21,9 @@
 // Filename    : OVOLUME.CPP
 // Description : volume unit type
 
-#include <OAUDIO.H>
-#include <OCONFIG.H>
-#include <OVOLUME.H>
+#include <oaudio.h>
+#include <oconfig.h>
+#include <ovolume.h>
 
 const DEFAULT_VOL_DROP = 100;	// distance 100, no sound
 const	DEFAULT_DIST_LIMIT = 40;

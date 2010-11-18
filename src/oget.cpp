@@ -26,13 +26,13 @@
 #include <ctype.h>
 #include <time.h>
 
-#include <ALL.H>
-#include <KEY.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OFONT.H>
-#include <OMOUSE.H>
-#include <OGET.H>
+#include <all.h>
+#include <key.h>
+#include <osys.h>
+#include <ovga.h>
+#include <ofont.h>
+#include <omouse.h>
+#include <oget.h>
 
 //-------- Define constant ----------//
 

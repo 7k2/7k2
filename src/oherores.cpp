@@ -21,21 +21,21 @@
 //Filename    : OHERORES.CPP
 //Description : Hero resource object
 
-#include <OHERORES.H>
-#include <ALL.H>
-#include <ONATION.H>
-#include <OINFO.H>
-#include <OTOWN.H>
-#include <OGAME.H>
-#include <OCAMPGN.H>
-#include <OSYS.H>
-#include <ORACERES.H>
-#include <OITEMRES.H>
-#include <OGAMESET.H>
-#include <OSKILL.H>
-#include <OUNIT.H>
-#include <OUNITRES.H>
-#include <OTRANSL.H>
+#include <oherores.h>
+#include <all.h>
+#include <onation.h>
+#include <oinfo.h>
+#include <otown.h>
+#include <ogame.h>
+#include <ocampgn.h>
+#include <osys.h>
+#include <oraceres.h>
+#include <oitemres.h>
+#include <ogameset.h>
+#include <oskill.h>
+#include <ounit.h>
+#include <ounitres.h>
+#include <otransl.h>
 
 //---------- #define constant ------------//
 

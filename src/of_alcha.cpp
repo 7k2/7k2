@@ -21,13 +21,13 @@
 //Filename    : OF_ALCHA.CPP
 //Description : Firm Monster Alchemy - AI functions
 
-#include <ONATION.H>
-#include <OINFO.H>
-#include <OTOWN.H>
-#include <OUNIT.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <OF_ALCH.H>
+#include <onation.h>
+#include <oinfo.h>
+#include <otown.h>
+#include <ounit.h>
+#include <otech.h>
+#include <otechres.h>
+#include <of_alch.h>
 
 //--------- Begin of function FirmMonsterAlchemy::process_ai ---------//
 

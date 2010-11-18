@@ -21,10 +21,10 @@
 //Filename    : OF_SPYA.CPP
 //Description : Firm espionage college - AI functions
 
-#include <ONATION.H>
-#include <OINFO.H>
-#include <OTOWN.H>
-#include <OF_SPY.H>
+#include <onation.h>
+#include <oinfo.h>
+#include <otown.h>
+#include <of_spy.h>
 
 //--------- Begin of function FirmSpy::process_ai ---------//
 

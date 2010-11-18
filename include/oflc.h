@@ -27,7 +27,7 @@
 
 extern "C"
 {
-	#include <TFANIMAT.H>
+	#include <tfanimat.h>
 }
 
 class Flc

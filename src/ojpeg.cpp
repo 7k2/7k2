@@ -28,11 +28,11 @@ extern "C"
 #include <jpeglib.h>
 }
 
-#include <OJPEG.H>
-#include <ALL.H>
-#include <OVGA.H>
-#include <OCOLTBL.H>
-#include <OVGABUF.H>
+#include <ojpeg.h>
+#include <all.h>
+#include <ovga.h>
+#include <ocoltbl.h>
+#include <ovgabuf.h>
 
 
 

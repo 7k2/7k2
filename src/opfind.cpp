@@ -22,11 +22,11 @@
 // Description: Implementation of the Pathfinding algorithm
 
 #include <windows.h> 
-#include <ALL.H>
-#include <OPFIND.H>
-#include <OWORLDMT.H> 
-#include <OSPRITE.H>
-#include <OSYS.H>
+#include <all.h>
+#include <opfind.h>
+#include <oworldmt.h> 
+#include <osprite.h>
+#include <osys.h>
 
 //------- define constant --------//
 

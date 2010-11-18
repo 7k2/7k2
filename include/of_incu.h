@@ -25,7 +25,7 @@
 #ifndef __OF_INCU_H
 #define __OF_INCU_H
 
-#include <OFIRM.H>
+#include <ofirm.h>
 
 //-------- Define constant ---------//
 

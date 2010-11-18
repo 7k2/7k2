@@ -21,22 +21,22 @@
 //Filename    : OFIRMRES.CPP
 //Description : Firm material resource object
 
-#include <OSYS.H>
-#include <OGAMESET.H>
-#include <OWORLD.H>
-#include <OWORLDMT.H>
-#include <OUNIT.H>
-#include <ONATION.H>
-#include <OFIRMRES.H>
-#include <OTRANSL.H>
-#include <OMONSRES.H>
-#include <OVGA.H>
-#include <OCOLTBL.H>
-#include <OGAME.H> 
-#include <ORACERES.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <OCONFIG.H>
+#include <osys.h>
+#include <ogameset.h>
+#include <oworld.h>
+#include <oworldmt.h>
+#include <ounit.h>
+#include <onation.h>
+#include <ofirmres.h>
+#include <otransl.h>
+#include <omonsres.h>
+#include <ovga.h>
+#include <ocoltbl.h>
+#include <ogame.h> 
+#include <oraceres.h>
+#include <otech.h>
+#include <otechres.h>
+#include <oconfig.h>
 
 //---------- #define constant ------------//
 

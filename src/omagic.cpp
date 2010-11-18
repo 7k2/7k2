@@ -24,22 +24,22 @@
 
 #include <math.h>
 #include <time.h>
-#include <OVGABUF.H>
-#include <ALL.H>
-#include <OVGA.H>
-#include <OMISC.H>
-#include <OMAGIC.H>
-#include <OWORLDMT.H>
-#include <COLOR.H>
-#include <IMGFUN.H>
-#include <OMODEID.H>
-#include <OIMGRES.H>
-#include <OCONFIG.H>
-#include <OGODRES.H>
-#include <OBITMAP.H>
-#include <OBITMAPW.H>
-#include <OGAME.H>
-#include <OSYS.H>
+#include <ovgabuf.h>
+#include <all.h>
+#include <ovga.h>
+#include <omisc.h>
+#include <omagic.h>
+#include <oworldmt.h>
+#include <color.h>
+#include <imgfun.h>
+#include <omodeid.h>
+#include <oimgres.h>
+#include <oconfig.h>
+#include <ogodres.h>
+#include <obitmap.h>
+#include <obitmapw.h>
+#include <ogame.h>
+#include <osys.h>
 //------------ Define constant ----------//
 
 static int bound_x1;

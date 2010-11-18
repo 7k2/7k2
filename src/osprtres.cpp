@@ -21,16 +21,16 @@
 //Filename    : OSPRTRES.CPP
 //Description : Object Sprite resource
 
-#include <OSPRTRES.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <OWORLD.H>
-#include <OWORLDMT.H>
-#include <OGAMESET.H>
-#include <OWEATHER.H>
-#include <OVGA.H>
-#include <OCOLTBL.H>
-#include <OGAME.H>
+#include <osprtres.h>
+#include <all.h>
+#include <osys.h>
+#include <oworld.h>
+#include <oworldmt.h>
+#include <ogameset.h>
+#include <oweather.h>
+#include <ovga.h>
+#include <ocoltbl.h>
+#include <ogame.h>
 
 
 //-------- define file name -----------//

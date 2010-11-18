@@ -21,23 +21,23 @@
 // Filename    : OF_FORTI.CPP
 // Description : Fort Interface
 
-#include <ONATION.H>
-#include <OF_FORT.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OMOUSE.H>
-#include <OBITMAP.H>
-#include <OFONT.H>
-#include <OUNITRES.H>
-#include <OIMGRES.H>
-#include <OINFO.H>
-#include <OBUTT3D.H>
-#include <OBUTTCUS.H>
-#include <ORACERES.H>
-#include <OTOWN.H>
-#include <OHELP.H>
-#include <OSE.H>
-#include <OSERES.H>
+#include <onation.h>
+#include <of_fort.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <omouse.h>
+#include <obitmap.h>
+#include <ofont.h>
+#include <ounitres.h>
+#include <oimgres.h>
+#include <oinfo.h>
+#include <obutt3d.h>
+#include <obuttcus.h>
+#include <oraceres.h>
+#include <otown.h>
+#include <ohelp.h>
+#include <ose.h>
+#include <oseres.h>
 
 // ------- define constant -------//
 

@@ -21,19 +21,19 @@
 //Filename    : ORAWRES.CPP
 //Description : Raw material resource object
 
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OHELP.H>
-#include <OFONT.H>
-#include <OSYS.H>
-#include <OGAMESET.H>
-#include <OWORLDMT.H>
-#include <OF_FACT.H>
-#include <OF_MINE.H>
-#include <OF_MARK.H>
-#include <ORAWRES.H>
-#include <OCONFIG.H>
-#include <OT_FIRM.H>
+#include <oinfo.h>
+#include <ovga.h>
+#include <ohelp.h>
+#include <ofont.h>
+#include <osys.h>
+#include <ogameset.h>
+#include <oworldmt.h>
+#include <of_fact.h>
+#include <of_mine.h>
+#include <of_mark.h>
+#include <orawres.h>
+#include <oconfig.h>
+#include <ot_firm.h>
 
 //---------- #define constant ------------//
 

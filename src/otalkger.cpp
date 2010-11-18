@@ -23,16 +23,16 @@
 
 #ifdef GERMAN
 
-#include <OMOUSE.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OINFO.H>
-#include <OFONT.H>
-#include <OTECHRES.H>
-#include <OGAMESET.H>
-#include <ONEWS.H>
-#include <ONATION.H>
-#include <OTALKRES.H>
+#include <omouse.h>
+#include <osys.h>
+#include <ovga.h>
+#include <oinfo.h>
+#include <ofont.h>
+#include <otechres.h>
+#include <ogameset.h>
+#include <onews.h>
+#include <onation.h>
+#include <otalkres.h>
 
 
 //-------- define static vars --------//

@@ -24,7 +24,7 @@
 #ifndef __OEFFECT_H
 #define __OEFFECT_H
 
-#include <OSPRITE.H>
+#include <osprite.h>
 
 class Effect : public Sprite
 {

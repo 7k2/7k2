@@ -21,9 +21,9 @@
 //Filename    : OF_WORKA.CPP
 //Description : FirmWork - AI functions
 
-#include <OF_WORK.H>
-#include <ONATION.H>
-#include <OTOWN.H>
+#include <of_work.h>
+#include <onation.h>
+#include <otown.h>
 
 //---------- Begin of function FirmWork::process_ai --------//
 //

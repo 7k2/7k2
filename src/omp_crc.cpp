@@ -22,24 +22,24 @@
 //Description : crc checking for multiplayer debugging
 //Owner		  : Alex
 
-#include <CRC.H>
-#include <OBASEOBJ.H>
-#include <OSPRITE.H>
-#include <OUNITALL.H>
-#include <OPLACE.H>
-#include <OFIRMALL.H>
-#include <OTOWN.H>
-#include <ONATIONB.H>
-#include <ONATIONA.H>
-#include <OBULLET.H>
-#include <OB_PROJ.H>
-#include <OB_HOMIN.H>
-#include <OB_FLAME.H>
-#include <OB_PROG.H>
-#include <OREBEL.H>
-#include <OSPY.H>
-#include <OTALKRES.H>
-#include <OSITE.H>
+#include <crc.h>
+#include <obaseobj.h>
+#include <osprite.h>
+#include <ounitall.h>
+#include <oplace.h>
+#include <ofirmall.h>
+#include <otown.h>
+#include <onationb.h>
+#include <onationa.h>
+#include <obullet.h>
+#include <ob_proj.h>
+#include <ob_homin.h>
+#include <ob_flame.h>
+#include <ob_prog.h>
+#include <orebel.h>
+#include <ospy.h>
+#include <otalkres.h>
+#include <osite.h>
 
 #define RTRIM_ARRAY(a,s) { if(s<sizeof(a)/sizeof(*a)) memset(a+s,0,sizeof(a)-s*sizeof(*a)); }
 

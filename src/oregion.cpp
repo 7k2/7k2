@@ -21,9 +21,9 @@
 // Filename    : OREGION.CPP
 // Description : Class RegionArray , info on regions
 
-#include <OREGION.H>
-#include <OREGIONS.H>
-#include <OINFO.H>
+#include <oregion.h>
+#include <oregions.h>
+#include <oinfo.h>
 #include <stdlib.h>
 
 //--------- Define static function ---------//

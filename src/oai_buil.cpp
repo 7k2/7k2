@@ -21,14 +21,14 @@
 //Filename   : OAI_ACT.CPP
 //Description: AI - building firms
 
-#include <ALL.H>
-#include <OUNIT.H>
-#include <OF_MINE.H>
-#include <OF_CAMP.H>
-#include <OREGIONS.H>
-#include <OCONFIG.H>
-#include <OSITE.H>
-#include <ONATION.H>
+#include <all.h>
+#include <ounit.h>
+#include <of_mine.h>
+#include <of_camp.h>
+#include <oregions.h>
+#include <oconfig.h>
+#include <osite.h>
+#include <onation.h>
 
 
 //--------- Begin of function Nation::think_build_firm --------//

@@ -24,7 +24,7 @@
 #ifndef __OU_CART_H
 #define __OU_CART_H
 
-#include <OUNIT.H>
+#include <ounit.h>
 
 class UnitExpCart : public Unit
 {

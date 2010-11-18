@@ -20,8 +20,8 @@
 ;Description : Blt a bitmap to the display surface buffer with color key transparency and color remapping handling
 
 
-INCLUDE IMGFUN.INC
-INCLUDE COLCODE.INC
+INCLUDE imgfun.inc
+INCLUDE colcode.inc
 
 .CODE
 

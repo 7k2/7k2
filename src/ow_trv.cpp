@@ -22,9 +22,9 @@
 // Description : world traverse, find units in range
 
 
-#include <OW_TRV.H>
-#include <OWORLD.H>
-#include <OUNIT.H>
+#include <ow_trv.h>
+#include <oworld.h>
+#include <ounit.h>
 #include <stdlib.h>
 
 static int sort_center_x1;

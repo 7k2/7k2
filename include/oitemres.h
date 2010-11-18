@@ -24,7 +24,7 @@
 #ifndef __OITEMRES_H
 #define __OITEMRES_H
 
-#include <ORESX.H>
+#include <oresx.h>
 
 // ------- define constant -------//
 

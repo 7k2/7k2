@@ -20,7 +20,7 @@
 ;Description : VGA image buffer control routines
 
 
-INCLUDE ALL.INC
+INCLUDE all.inc
 
 .DATA
 

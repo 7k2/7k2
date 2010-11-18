@@ -22,19 +22,19 @@
 //Description : OVGABUF direct draw surface class - part 2
 
 #include <ddraw.h>
-#include <ALL.H>
-#include <IMGFUN.H>
-#include <OMOUSE.H>
-#include <OPOWER.H>
-#include <OCOLTBL.H>
-#include <OVGA.H>
-#include <OVGABUF.H>
-#include <OMODEID.H>
-#include <OIMGRES.H>
-#include <OFONT.H>
-#include <OBITMAP.H>
-#include <OBITMAPW.H>
-#include <OLINEAR.H>
+#include <all.h>
+#include <imgfun.h>
+#include <omouse.h>
+#include <opower.h>
+#include <ocoltbl.h>
+#include <ovga.h>
+#include <ovgabuf.h>
+#include <omodeid.h>
+#include <oimgres.h>
+#include <ofont.h>
+#include <obitmap.h>
+#include <obitmapw.h>
+#include <olinear.h>
 
 //------- Define static class member vars ---------//
 

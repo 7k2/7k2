@@ -25,7 +25,7 @@
 #define __OSOLDIER_H
 
 #ifndef __OSKILL_H
-#include <OSKILL.H>
+#include <oskill.h>
 #endif
 
 //------------- Define struct Soldier ------------//

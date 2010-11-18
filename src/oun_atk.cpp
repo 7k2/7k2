@@ -22,24 +22,24 @@
 //Description: Unit attacking functions
  
 #include <windows.h>
-#include <OREBEL.H>
-#include <OUNITRES.H>
-#include <OCONFIG.H>
-#include <OBULLET.H>
-#include <ONATION.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OTECHRES.H>
-#include <OTECH.H>
-#include <OU_WAGON.H>
-#include <OHERORES.H>
-#include <ITEMID.H>
-#include <OF_FORT.H>
-#include <OU_CART.H>
-#include <OW_TRV.H>
-#include <OUN_SPAB.H>
-#include <OEFFECT.H>
-#include <ONEWS.H>
+#include <orebel.h>
+#include <ounitres.h>
+#include <oconfig.h>
+#include <obullet.h>
+#include <onation.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <otechres.h>
+#include <otech.h>
+#include <ou_wagon.h>
+#include <oherores.h>
+#include <itemid.h>
+#include <of_fort.h>
+#include <ou_cart.h>
+#include <ow_trv.h>
+#include <oun_spab.h>
+#include <oeffect.h>
+#include <onews.h>
 
 
 // similar to MAX_UNIT_WAIT_STATE, but for attack, smaller for faster response

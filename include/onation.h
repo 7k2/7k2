@@ -25,15 +25,15 @@
 #define __ONATION_H
 
 #ifndef __ONATIONB_H
-#include <ONATIONB.H>
+#include <onationb.h>
 #endif
 
 #ifndef __OUNIT_H
-#include <OUNIT.H>
+#include <ounit.h>
 #endif
 
 #ifndef __OTOWN_H
-#include <OTOWN.H>
+#include <otown.h>
 #endif
 
 //--------- AI maximum constants -------//
@@ -636,7 +636,7 @@ public:
 };
 
 #ifndef __ONATIONA_H
-#include <ONATIONA.H>
+#include <onationa.h>
 #endif
 
 //-------------------------------------//

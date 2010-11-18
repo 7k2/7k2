@@ -21,8 +21,8 @@
 // Filename    : OT_ITEM.CPP
 // Description : text resource item
 
-#include <OT_ITEM.H>
-#include <ALL.H>
+#include <ot_item.h>
+#include <all.h>
 
 
 void TextResItem::init()

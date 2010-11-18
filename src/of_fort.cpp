@@ -21,17 +21,17 @@
 // Filename    : OF_FORT.CPP
 // Description : Firm Fort
 
-#include <OF_FORT.H>
-#include <ALL.H>
-#include <GAMEDEF.H>
-#include <OSYS.H>
-#include <OREMOTE.H>
-#include <ONATION.H>
-#include <OBULLET.H>
-#include <OUNITRES.H>
-#include <ORACERES.H>
-#include <OSPY.H>
-#include <OCONFIG.H>
+#include <of_fort.h>
+#include <all.h>
+#include <gamedef.h>
+#include <osys.h>
+#include <oremote.h>
+#include <onation.h>
+#include <obullet.h>
+#include <ounitres.h>
+#include <oraceres.h>
+#include <ospy.h>
+#include <oconfig.h>
 
 //------ begin of function FirmFort::FirmFort -------//
 //

@@ -25,7 +25,7 @@
 #ifndef __SNOWG_H
 #define __SNOWG_H
 
-#include <ODYNARRB.H>
+#include <odynarrb.h>
 
 class SnowGround
 {

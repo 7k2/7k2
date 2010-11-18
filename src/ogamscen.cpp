@@ -21,20 +21,20 @@
 //Filename    : OGAMSCEN.CPP
 //Description : Select Game Scenario
 
-#include <OSTR.H>
-#include <OSYS.H>
-#include <ONEWS.H>
-#include <ODATE.H>
-#include <OGFILE.H>
-#include <OMONSRES.H>
-#include <OFILETXT.H>
-#include <ODIR.H>
-#include <OBOX.H>
-#include <OBATTLE.H>
-#include <OGAME.H>
-#include <OCONFIG.H>
-#include <OWORLDMT.H>
-#include <OT_GMENU.H>
+#include <ostr.h>
+#include <osys.h>
+#include <onews.h>
+#include <odate.h>
+#include <ogfile.h>
+#include <omonsres.h>
+#include <ofiletxt.h>
+#include <odir.h>
+#include <obox.h>
+#include <obattle.h>
+#include <ogame.h>
+#include <oconfig.h>
+#include <oworldmt.h>
+#include <ot_gmenu.h>
 
 //--------- declare static vars ----------//
 

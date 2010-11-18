@@ -21,9 +21,9 @@
 ;	       with decompression, transparency handling and colormaping
 
 
-INCLUDE IMGFUN.INC
-INCLUDE COLCODE.INC
-INCLUDE I_EFFECT.INC
+INCLUDE imgfun.inc
+INCLUDE colcode.inc
+INCLUDE i_effect.inc
 
 .CODE
 

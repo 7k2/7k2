@@ -21,15 +21,15 @@
 // Filename    : OSEDIT_R.CPP
 // Description : Scenario editor, Diplomacy mode
 
-#include <OSEDITOR.H>
-#include <ALL.H>
-#include <OMODEID.H>
-#include <OMOUSE.H>
-#include <OFONT.H>
-#include <ONATIONA.H>
-#include <OVGA.H>
-#include <OT_SEDIT.H>
-#include <OT_TALK.H>
+#include <oseditor.h>
+#include <all.h>
+#include <omodeid.h>
+#include <omouse.h>
+#include <ofont.h>
+#include <onationa.h>
+#include <ovga.h>
+#include <ot_sedit.h>
+#include <ot_talk.h>
 
 #define X_SPACING    25
 #define Y_SPACING    26

@@ -21,16 +21,16 @@
 // Filename    : OSOLDIER.CPP
 // Description : soldier at Camp/Fort
 
-#include <OSOLDIER.H>
-#include <ALL.H>
-#include <OSKILL.H>
-#include <OUNITRES.H>
-#include <OMONSRES.H>
-#include <ORACERES.H>
-#include <OUNIT.H>
-#include <ONATION.H>
-#include <OF_CAMP.H>
-#include <OSPY.H>
+#include <osoldier.h>
+#include <all.h>
+#include <oskill.h>
+#include <ounitres.h>
+#include <omonsres.h>
+#include <oraceres.h>
+#include <ounit.h>
+#include <onation.h>
+#include <of_camp.h>
+#include <ospy.h>
 
 
 //------- Begin of function Soldier::Soldier -----------//

@@ -21,10 +21,10 @@
 //Filename   : OAI_QUER.CPP
 //Description: AI - query functions
 
-#include <ALL.H>
-#include <OTOWN.H>
-#include <OFIRM.H>
-#include <ONATION.H>
+#include <all.h>
+#include <otown.h>
+#include <ofirm.h>
+#include <onation.h>
 
 
 //--------- Begin of function Nation::check_firm_ready --------//

@@ -28,16 +28,16 @@
 // #define INITGUID for dplay.h to define IID_IDirectPlay3A
 #include <dplay.h>
 //#undef INITGUID
-#include <ODPLAY.H>
-#include <ALL.H>
+#include <odplay.h>
+#include <all.h>
 #include <string.h>
-#include <OVGALOCK.H>
-#include <OBLOB.H>
+#include <ovgalock.h>
+#include <oblob.h>
 
 #define USE_TEXT_RES
 
 #if(defined(USE_TEXT_RES))
-#include <OT_GMENU.H>
+#include <ot_gmenu.h>
 #endif
 
 

@@ -21,8 +21,8 @@
 // Filename    : OT_BASIC.CPP
 // Description : text resource basic
 
-#include <OT_BASIC.H>
-#include <ALL.H>
+#include <ot_basic.h>
+#include <all.h>
 
 void TextResBasic::init()
 {

@@ -21,11 +21,11 @@
 //Filename    : OFIRMLNK.CPP
 //Description : Object Firm - functions for setting links between firms and towns 
 
-#include <OFIRM.H>
-#include <OFIRMRES.H>
-#include <OREMOTE.H>
-#include <OTOWN.H>
-#include <OF_CAMP.H>
+#include <ofirm.h>
+#include <ofirmres.h>
+#include <oremote.h>
+#include <otown.h>
+#include <of_camp.h>
 
 //------- Begin of function Firm::setup_link ---------//
 //

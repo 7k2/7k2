@@ -21,19 +21,19 @@
 //Filename    : OR_SPY.CPP
 //Description : Spy Report
 
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OFONT.H>
-#include <OFIRMRES.H>
-#include <ONATION.H>
-#include <ORACERES.H>
-#include <OIMGRES.H>
-#include <OVBROWIF.H>
-#include <OSPY.H>
-// #include <OWORLDMT.H>
-#include <OT_REPS.H>
-#include <OT_UNIT.H>
+#include <oinfo.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ofont.h>
+#include <ofirmres.h>
+#include <onation.h>
+#include <oraceres.h>
+#include <oimgres.h>
+#include <ovbrowif.h>
+#include <ospy.h>
+// #include <oworldmt.h>
+#include <ot_reps.h>
+#include <ot_unit.h>
 
 //------------- Define coordinations -----------//
 

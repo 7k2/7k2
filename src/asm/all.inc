@@ -16,7 +16,7 @@
 ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;
 
-;Filename    : ALL.INC
+;Filename    : all.inc
 ;Description : General purpose include file
 
 .486

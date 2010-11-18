@@ -22,16 +22,16 @@
 // Description : Scenario editor edit mode
 
 
-#include <OSEDITOR.H>
-#include <OMODEID.H>
-#include <OMOUSE.H>
-#include <OPOWER.H>
-#include <OINFO.H>
-#include <OUNIT.H>
-#include <OFIRM.H>
-#include <OTOWN.H>
-#include <OSITE.H>
-#include <OWORLDMT.H>
+#include <oseditor.h>
+#include <omodeid.h>
+#include <omouse.h>
+#include <opower.h>
+#include <oinfo.h>
+#include <ounit.h>
+#include <ofirm.h>
+#include <otown.h>
+#include <osite.h>
+#include <oworldmt.h>
 
 
 

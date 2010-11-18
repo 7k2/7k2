@@ -27,15 +27,15 @@
 #define __OGFILE_H
 
 #ifndef __OFILE_H
-#include <OFILE.H>
+#include <ofile.h>
 #endif
 
 #ifndef __ODYNARR_H
-#include <ODYNARR.H>
+#include <odynarr.h>
 #endif
 
 #ifndef __ONATION_Hd
-#include <ONATION.H>
+#include <onation.h>
 #endif
 
 

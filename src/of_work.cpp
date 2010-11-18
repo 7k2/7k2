@@ -21,13 +21,13 @@
 //Filename    : OF_WORK.CPP
 //Description : FirmWork
 
-#include <OF_WORK.H>
-#include <OINFO.H>
-#include <OSYS.H>
-#include <OTOWN.H>
-#include <OREMOTE.H>
-#include <ONATION.H>
-#include <OSPY.H>
+#include <of_work.h>
+#include <oinfo.h>
+#include <osys.h>
+#include <otown.h>
+#include <oremote.h>
+#include <onation.h>
+#include <ospy.h>
 
 
 #define INIT_NEEDED_WORKER_COUNT 10

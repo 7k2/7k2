@@ -26,7 +26,7 @@
 #define __OREGION_H
 
 #ifndef DEBUG
-#include <OREGIONS.H>
+#include <oregions.h>
 #endif
 
 //---------- define constant ---------//

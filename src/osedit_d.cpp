@@ -21,20 +21,20 @@
 // Filename    : OSEDIT_D.CPP
 // Description : Scenario editor, define area mode
 
-#include <OSEDITOR.H>
-#include <ALL.H>
-#include <COLOR.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OMOUSE.H>
-#include <OFONT.H>
-#include <OSLIDER.H>
-#include <OBUTTCUS.H>
-#include <OINFO.H>
-#include <OWORLDMT.H>
-#include <ONATIONA.H>
+#include <oseditor.h>
+#include <all.h>
+#include <color.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <omouse.h>
+#include <ofont.h>
+#include <oslider.h>
+#include <obuttcus.h>
+#include <oinfo.h>
+#include <oworldmt.h>
+#include <onationa.h>
 #include <stdlib.h>
-#include <OBUTTON.H>
+#include <obutton.h>
 
 
 

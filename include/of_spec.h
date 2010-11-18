@@ -24,7 +24,7 @@
 #ifndef __OF_SPEC_H
 #define __OF_SPEC_H
 
-#include <OF_TRAIN.H>
+#include <of_train.h>
 
 //------- Define class FirmSpecial -------//
 

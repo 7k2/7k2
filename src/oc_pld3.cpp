@@ -21,22 +21,22 @@
 // Filename    : OC_PLD3.CPP
 // Description : campaign plot d3
 
-#include <ALL.H>
-#include <OSITE.H>
-#include <OTECH.H>
-#include <OGAME.H>
-#include <OTECHRES.H>
-#include <OSTATE.H>
-#include <ORACERES.H>
-#include <ONEWS.H>
-#include <OTALKRES.H>
-#include <OMONSRES.H>
-#include <ONATION2.H>
-#include <OC_EAST.H>
-#include <OITEM.H>
-#include <ITEMID.H>
-#include <OFIRM.H>
-#include <OF_CAMP.H>
+#include <all.h>
+#include <osite.h>
+#include <otech.h>
+#include <ogame.h>
+#include <otechres.h>
+#include <ostate.h>
+#include <oraceres.h>
+#include <onews.h>
+#include <otalkres.h>
+#include <omonsres.h>
+#include <onation2.h>
+#include <oc_east.h>
+#include <oitem.h>
+#include <itemid.h>
+#include <ofirm.h>
+#include <of_camp.h>
 
 
 /*

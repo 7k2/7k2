@@ -25,7 +25,7 @@
 #define __OU_MONS_H
 
 #ifndef __OUNIT_H
-#include <OUNIT.H>
+#include <ounit.h>
 #endif
 
 //----------- Define class Monster -----------//

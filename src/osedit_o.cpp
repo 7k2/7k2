@@ -23,27 +23,27 @@
 
 // update any to to OSEDIT_M.CPP as well
 
-#include <OSEDITOR.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OMOUSE.H>
-#include <OFONT.H>
-#include <OBUTTON.H>
-#include <OBUTTCUS.H>
-#include <OSPIN_S.H>
-#include <OVBROWIF.H>
-#include <OGAME.H>
-#include <OPOWER.H>
-#include <OGODRES.H>
-#include <ORACERES.H>
-#include <OUNITRES.H>
-#include <OFIRMRES.H>
-#include <OWORLDMT.H>
-#include <ONATIONA.H>
-#include <OU_WAGON.H>
-#include <OBOX.H>
-#include <OHERORES.H>
-#include <OT_SEDIT.H>
+#include <oseditor.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <omouse.h>
+#include <ofont.h>
+#include <obutton.h>
+#include <obuttcus.h>
+#include <ospin_s.h>
+#include <ovbrowif.h>
+#include <ogame.h>
+#include <opower.h>
+#include <ogodres.h>
+#include <oraceres.h>
+#include <ounitres.h>
+#include <ofirmres.h>
+#include <oworldmt.h>
+#include <onationa.h>
+#include <ou_wagon.h>
+#include <obox.h>
+#include <oherores.h>
+#include <ot_sedit.h>
 
 // ------- define static variable --------------//
 

@@ -21,19 +21,19 @@
 //Filename    : OR_RANK.CPP
 //Description : Ranking report
 
-#include <OINFO.H>
-#include <ODATE.H>
-#include <OFONT.H>
-#include <OGAME.H>
-#include <OCONFIG.H>
-#include <OCAMPGN.H>
-#include <OVBROWIF.H>
-#include <OVBROWSE.H>
-#include <ONATION.H>
-#include <ODATE.H>
-#include <OVGA.H>
-#include <OMODEID.H> 
-#include <OT_REPS.H>
+#include <oinfo.h>
+#include <odate.h>
+#include <ofont.h>
+#include <ogame.h>
+#include <oconfig.h>
+#include <ocampgn.h>
+#include <ovbrowif.h>
+#include <ovbrowse.h>
+#include <onation.h>
+#include <odate.h>
+#include <ovga.h>
+#include <omodeid.h> 
+#include <ot_reps.h>
 
 //------------- Define coordinations -----------//
 

@@ -21,14 +21,14 @@
 //Filename   : OUNITA.CPP
 //Description: Unit Array
 
-#include <OCONFIG.H>
-#include <OGODRES.H>
-#include <OREBEL.H>
-#include <OMOUSE.H>
-#include <OSYS.H>
-#include <OUN_GRP.H>
-#include <OUNIT.H>
-#include <OUNITALL.H>
+#include <oconfig.h>
+#include <ogodres.h>
+#include <orebel.h>
+#include <omouse.h>
+#include <osys.h>
+#include <oun_grp.h>
+#include <ounit.h>
+#include <ounitall.h>
 
 //--------- Begin of function UnitArray::UnitArray ---------//
 //

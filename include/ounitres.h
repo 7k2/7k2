@@ -24,10 +24,10 @@
 #ifndef __OUNITRES_H
 #define __OUNITRES_H
 
-#include <UNITTYPE.H>
-#include <GAMEDEF.H>
-#include <ORESDB.H>
-#include <OATTACK.H>
+#include <unittype.h>
+#include <gamedef.h>
+#include <oresdb.h>
+#include <oattack.h>
 
 typedef unsigned char BYTE;
 

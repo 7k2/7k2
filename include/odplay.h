@@ -29,7 +29,7 @@
 
 #include <dplay.h>
 #include <dplobby.h>
-#include <ODYNARRB.H>
+#include <odynarrb.h>
 
 extern GUID GAME_GUID;
 extern HANDLE PLAYER_MESSAGE_HANDLE;
@@ -170,7 +170,7 @@ protected:
 
 extern MultiPlayerDP mp_dp;
 
-#include <MPTYPES.H>
+#include <mptypes.h>
 
 #endif	// IMAGICMP
 #endif	// __ODPLAY_H

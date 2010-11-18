@@ -25,15 +25,15 @@
 #define __ONEWS_H
 
 #ifndef __OBUTTON_H
-#include <OBUTTON.H>
+#include <obutton.h>
 #endif
 
 #ifndef __OVBROWSE_H
-#include <OVBROWSE.H>
+#include <ovbrowse.h>
 #endif
  
 #ifndef __ODYNARRB_H
-#include <ODYNARRB.H>
+#include <odynarrb.h>
 #endif
 
 //----- Maximum no. of news ---------//

@@ -21,22 +21,22 @@
 //Filename    : OTOWNAI.CPP
 //Description : Object Town AI
 
-#include <OWORLD.H>
-#include <OUNIT.H>
-#include <OCONFIG.H>
-#include <OSITE.H>
-#include <ONEWS.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <OWALLRES.H>
-#include <ORACERES.H>
-#include <OGODRES.H>
-#include <OSPY.H>
-#include <OTOWN.H>
-#include <ONATION.H>
-#include <OINFO.H>
-#include <OFIRMALL.H>
-#include <OLOG.H>
+#include <oworld.h>
+#include <ounit.h>
+#include <oconfig.h>
+#include <osite.h>
+#include <onews.h>
+#include <otech.h>
+#include <otechres.h>
+#include <owallres.h>
+#include <oraceres.h>
+#include <ogodres.h>
+#include <ospy.h>
+#include <otown.h>
+#include <onation.h>
+#include <oinfo.h>
+#include <ofirmall.h>
+#include <olog.h>
 #include <math.h>
 
 

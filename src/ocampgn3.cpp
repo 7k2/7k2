@@ -21,33 +21,33 @@
 // Filename    : OCAMPGN3.CPP
 // Description : functions on royal units
 
-#include <OCAMPGN.H>
-#include <ALL.H>
-#include <ONATION.H>
-#include <OUNIT.H>
-#include <OSPY.H>
-#include <OSTATE.H>
-#include <OF_CAMP.H>
-#include <OGAMMENU.H>
-#include <OTECHRES.H>
-#include <OC_EAST.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OFONT.H>
-#include <KEY.H>
-#include <OMOUSE.H>
-#include <OMOUSECR.H>
-#include <OCOLTBL.H>
-#include <OVGALOCK.H>
-#include <OBITMAP.H>
-#include <OBLOB.H>
-#include <OBOX.H>
-#include <OIMGRES.H>
-#include <OGAME.H>
-#include <OMUSIC.H>
-#include <OT_CAMP.H>
-#include <OT_UNIT.H>
+#include <ocampgn.h>
+#include <all.h>
+#include <onation.h>
+#include <ounit.h>
+#include <ospy.h>
+#include <ostate.h>
+#include <of_camp.h>
+#include <ogammenu.h>
+#include <otechres.h>
+#include <oc_east.h>
+#include <osys.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <ofont.h>
+#include <key.h>
+#include <omouse.h>
+#include <omousecr.h>
+#include <ocoltbl.h>
+#include <ovgalock.h>
+#include <obitmap.h>
+#include <oblob.h>
+#include <obox.h>
+#include <oimgres.h>
+#include <ogame.h>
+#include <omusic.h>
+#include <ot_camp.h>
+#include <ot_unit.h>
 
 #define CURRENT_MAX_ROYAL_UNIT 5
 

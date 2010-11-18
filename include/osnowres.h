@@ -26,7 +26,7 @@
 #define __OSNOWRES_H
 
 #ifndef __ORESDB_H
-#include <ORESDB.H>
+#include <oresdb.h>
 #endif
 
 #define NULL 0

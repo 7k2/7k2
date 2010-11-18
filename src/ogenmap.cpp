@@ -26,19 +26,19 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include <ALL.H>
-#include <OGAME.H>
-#include <OVGA.H>
-#include <OTERRAIN.H>
-#include <OWORLD.H>
-#include <OPLASMA.H>
-#include <OCAMPGN.H>
-#include <OREGION.H>
-#include <OFIRMID.H>
-#include <OCONFIG.H>
-#include <OWORLDMT.H>
-#include <OVGALOCK.H>
-#include <OSYS.H>
+#include <all.h>
+#include <ogame.h>
+#include <ovga.h>
+#include <oterrain.h>
+#include <oworld.h>
+#include <oplasma.h>
+#include <ocampgn.h>
+#include <oregion.h>
+#include <ofirmid.h>
+#include <oconfig.h>
+#include <oworldmt.h>
+#include <ovgalock.h>
+#include <osys.h>
 
 
 //-------- Begin of function World::generate_map ----------//

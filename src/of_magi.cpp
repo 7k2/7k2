@@ -21,22 +21,22 @@
 // Filename    : OF_MAGI.CPP
 // Description : magic tower
 
-#include <OF_MAGI.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <OCONFIG.H>
-#include <OREMOTE.H>
-#include <OWORLD.H>
-#include <ONATION.H> 
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <OUNIT.H>
-#include <OBULLET.H>
-#include <ONEWS.H>
-#include <OSE.H>
-#include <OVOLUME.H>
-#include <OW_TRV.H>
-#include <OEFFECT.H>
+#include <of_magi.h>
+#include <all.h>
+#include <osys.h>
+#include <oconfig.h>
+#include <oremote.h>
+#include <oworld.h>
+#include <onation.h> 
+#include <otech.h>
+#include <otechres.h>
+#include <ounit.h>
+#include <obullet.h>
+#include <onews.h>
+#include <ose.h>
+#include <ovolume.h>
+#include <ow_trv.h>
+#include <oeffect.h>
 
 int FirmMagic::teleport_unit_recno;
 

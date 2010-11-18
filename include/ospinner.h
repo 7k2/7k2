@@ -24,7 +24,7 @@
 #ifndef __OSPINNER_H
 #define __OSPINNER_H
 
-#include <OINFO.H>
+#include <oinfo.h>
 
 class Font;
 

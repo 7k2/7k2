@@ -21,12 +21,12 @@
 //Filename    : OSLIDER.CPP
 //Description : Object slider
 
-#include <ALL.H>
-#include <OVGA.H>
-#include <OSYS.H>
-#include <OFONT.H>
-#include <OMOUSE.H>
-#include <OSLIDER.H>
+#include <all.h>
+#include <ovga.h>
+#include <osys.h>
+#include <ofont.h>
+#include <omouse.h>
+#include <oslider.h>
 
 //--------- Define macro constant -----------//
 

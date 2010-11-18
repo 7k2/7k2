@@ -21,11 +21,11 @@
 // Filename    : OTOWNDEF.CPP
 // Description : town defense
 
-#include <OTOWN.H>
-#include <ALL.H>
-#include <OF_CAMP.H>
-#include <OUNIT.H>
-#include <OREBEL.H>
+#include <otown.h>
+#include <all.h>
+#include <of_camp.h>
+#include <ounit.h>
+#include <orebel.h>
 
 //--------- Begin of function Town::mobilize_defender -------//
 //

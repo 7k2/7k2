@@ -24,8 +24,8 @@
 #ifndef __OPLACE_H
 #define __OPLACE_H
 
-#include <OBASEOBJ.H>
-#include <GAMEDEF.H>
+#include <obaseobj.h>
+#include <gamedef.h>
 
 //-------- Define class Place --------//
 

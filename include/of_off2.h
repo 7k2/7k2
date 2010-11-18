@@ -24,7 +24,7 @@
 #ifndef __OF_OFF2_H
 #define __OF_OFF2_H
 
-#include <OFIRM.H>
+#include <ofirm.h>
 
 //------ Define class FirmLair ------//
 #define OFFENSIVE2_BULLET_DAMAGE 100

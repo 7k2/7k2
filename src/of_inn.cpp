@@ -21,26 +21,26 @@
 //Filename    : OF_INN.CPP
 //Description : Firm Military Inn
 
-#include <OF_INN.H>
-#include <OINFO.H>
-#include <OMODEID.H>
-#include <OSYS.H>
-#include <OSTR.H>
-#include <OHELP.H>
-#include <OGAME.H>
-#include <OTOWN.H>
-#include <ONATION.H>
-#include <ORAWRES.H>
-#include <OHERORES.H>
-#include <ORACERES.H>
-#include <OITEMRES.H>
-#include <ITEMID.H>
-#include <OWORLD.H>
-#include <OSPY.H>
-#include <OREMOTE.H>
-#include <OSERES.H>
-#include <ORACERES.H>
-#include <OSITE.H>
+#include <of_inn.h>
+#include <oinfo.h>
+#include <omodeid.h>
+#include <osys.h>
+#include <ostr.h>
+#include <ohelp.h>
+#include <ogame.h>
+#include <otown.h>
+#include <onation.h>
+#include <orawres.h>
+#include <oherores.h>
+#include <oraceres.h>
+#include <oitemres.h>
+#include <itemid.h>
+#include <oworld.h>
+#include <ospy.h>
+#include <oremote.h>
+#include <oseres.h>
+#include <oraceres.h>
+#include <osite.h>
 
 
 //--------- Begin of function FirmInn::FirmInn ---------//

@@ -21,26 +21,26 @@
 // Filename    : OSEDIT_V.CPP
 // Description : Scenario editor, victory condition
 
-#include <OSEDITOR.H>
-#include <ALL.H>
-#include <OFONT.H>
-#include <ODATE.H>
-#include <OVBROWIF.H>
-#include <OBUTTON.H>
-#include <OMODEID.H>
-#include <OGAME.H>
-#include <OINFO.H>
-#include <OUNITRES.H>
-#include <OITEM.H>
-#include <OITEMRES.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <OSITE.H>
-#include <OUNIT.H>
-#include <OFIRM.H>
-#include <OTOWN.H>
-#include <ITEMID.H>
-#include <OT_SEDIT.H>
+#include <oseditor.h>
+#include <all.h>
+#include <ofont.h>
+#include <odate.h>
+#include <ovbrowif.h>
+#include <obutton.h>
+#include <omodeid.h>
+#include <ogame.h>
+#include <oinfo.h>
+#include <ounitres.h>
+#include <oitem.h>
+#include <oitemres.h>
+#include <otech.h>
+#include <otechres.h>
+#include <osite.h>
+#include <ounit.h>
+#include <ofirm.h>
+#include <otown.h>
+#include <itemid.h>
+#include <ot_sedit.h>
 
 
 // ----- enum for menu mode ------//

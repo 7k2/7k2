@@ -21,23 +21,23 @@
 //Filename    : OF_MARK.CPP
 //Description : Firm Market Place
 
-#include <OINFO.H>
-#include <OMODEID.H>
-#include <OSTR.H>
-#include <OCONFIG.H>
-#include <ORAWRES.H>
-#include <ORACERES.H>
-#include <OGODRES.H>
-#include <OTOWN.H>
-#include <ONATION.H>
-#include <OU_CARA.H>
-#include <OWORLDMT.H>
-#include <OSYS.H>
-#include <OF_FACT.H>
-#include <OF_MINE.H>
-#include <OF_MARK.H>
-#include <OREMOTE.H>
-#include <OSE.H>
+#include <oinfo.h>
+#include <omodeid.h>
+#include <ostr.h>
+#include <oconfig.h>
+#include <orawres.h>
+#include <oraceres.h>
+#include <ogodres.h>
+#include <otown.h>
+#include <onation.h>
+#include <ou_cara.h>
+#include <oworldmt.h>
+#include <osys.h>
+#include <of_fact.h>
+#include <of_mine.h>
+#include <of_mark.h>
+#include <oremote.h>
+#include <ose.h>
 
 
 //--------- Begin of function FirmMarket::FirmMarket ---------//

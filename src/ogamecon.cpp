@@ -21,11 +21,11 @@
 //Filename    : OGAMCON.CPP
 //Description : Game ending condition
 
-#include <ALL.H>
-#include <OINFO.H>
-#include <OGAME.H>
-#include <OCONFIG.H>
-#include <ODATE.H>
+#include <all.h>
+#include <oinfo.h>
+#include <ogame.h>
+#include <oconfig.h>
+#include <odate.h>
 
 //------ Begin of function Game::reset_win_condition -------//
 //

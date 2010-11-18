@@ -22,11 +22,11 @@
 // Description: class rain spot
 // Ownership  : Gilbert
 
-#include <ORAIN.H>
-#include <OVGABUF.H>
-#include <COLOR.H>
-// #include <OWORLDMT.H>
-#include <OMODEID.H>
+#include <orain.h>
+#include <ovgabuf.h>
+#include <color.h>
+// #include <oworldmt.h>
+#include <omodeid.h>
 
 
 // -------- Begin of function RainSpot::init -------//

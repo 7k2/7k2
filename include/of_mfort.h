@@ -24,7 +24,7 @@
 #ifndef __OF_MFORT_H
 #define __OF_MFORT_H
 
-#include <OFIRM.H>
+#include <ofirm.h>
 
 
 #define MAX_EXTRA_BUILDER 4

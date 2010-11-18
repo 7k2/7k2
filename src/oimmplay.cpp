@@ -23,9 +23,9 @@
 
 #if(defined(IMAGICMP))
 
-#include <OIMMPLAY.H>
-#include <OVGALOCK.H>
-#include <OT_GMENU.H>
+#include <oimmplay.h>
+#include <ovgalock.h>
+#include <ot_gmenu.h>
 
 
 // Define constant

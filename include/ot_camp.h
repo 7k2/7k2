@@ -26,7 +26,7 @@
 #define __OT_CAMP_H
 
 
-#include <OTXTRES.H>
+#include <otxtres.h>
 
 
 class TextResCampaign : public TextResource

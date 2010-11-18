@@ -25,12 +25,12 @@
 // Owner       : Gilbert
 
 
-#include <OSERES.H>
-#include <OSE.H>
-#include <OGAMESET.H>
-#include <OWORLD.H>
-#include <OWORLDMT.H>
-#include <OCONFIG.H>
+#include <oseres.h>
+#include <ose.h>
+#include <ogameset.h>
+#include <oworld.h>
+#include <oworldmt.h>
+#include <oconfig.h>
 #include <string.h>
 #include <stdlib.h>
 

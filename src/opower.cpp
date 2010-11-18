@@ -21,30 +21,30 @@
 //Filename	  : OPOWER.CPP
 //Description : Object Power
 
-#include <OPOWER.H>
-#include <OMOUSE.H>
-#include <OMOUSECR.H>
-#include <OBOX.H>
-#include <OUNIT.H>
-#include <OFIRM.H>
-#include <OF_MAGI.H>
-#include <OTOWN.H>
-#include <OSITE.H>
-#include <OSYS.H>
-#include <OWAYPNT.H>
-#include <ONATION.H>
-#include <OWORLD.H>
-#include <OWORLDMT.H>
-#include <OINFO.H>
-#include <OU_CARA.H>
-#include <OSERES.H>
-#include <OREMOTE.H> 
-#include <OF_MFORT.H>
-#include <OCONFIG.H>
-#include <OTUTOR.H>
-#include <OGAME.H>
-#include <OSE.H>
-#include <OSERES.H>
+#include <opower.h>
+#include <omouse.h>
+#include <omousecr.h>
+#include <obox.h>
+#include <ounit.h>
+#include <ofirm.h>
+#include <of_magi.h>
+#include <otown.h>
+#include <osite.h>
+#include <osys.h>
+#include <owaypnt.h>
+#include <onation.h>
+#include <oworld.h>
+#include <oworldmt.h>
+#include <oinfo.h>
+#include <ou_cara.h>
+#include <oseres.h>
+#include <oremote.h> 
+#include <of_mfort.h>
+#include <oconfig.h>
+#include <otutor.h>
+#include <ogame.h>
+#include <ose.h>
+#include <oseres.h>
 
 //----------- Begin of function Power::Power -----------//
 

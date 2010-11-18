@@ -21,21 +21,21 @@
 //Filename	 : OUN_INFO.CPP
 //Description: Unit functions related to basic information
 
-#include <OCONFIG.H>
-#include <OTRANSL.H>
-#include <OUNITRES.H>
-#include <ORACERES.H>
-#include <OMONSRES.H>
-#include <OGODRES.H>
-#include <OF_CAMP.H>
-#include <OHERORES.H>
-#include <OSPY.H>
-#include <ONATION.H>
-#include <OPOWER.H>
-#include <OUNIT.H>
-#include <ITEMID.H>
-#include <OGAME.H>
-#include <OT_UNIT.H>
+#include <oconfig.h>
+#include <otransl.h>
+#include <ounitres.h>
+#include <oraceres.h>
+#include <omonsres.h>
+#include <ogodres.h>
+#include <of_camp.h>
+#include <oherores.h>
+#include <ospy.h>
+#include <onation.h>
+#include <opower.h>
+#include <ounit.h>
+#include <itemid.h>
+#include <ogame.h>
+#include <ot_unit.h>
 
 
 //--------- Begin of function Unit::region_id ---------//

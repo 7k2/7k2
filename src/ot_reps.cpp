@@ -21,15 +21,15 @@
 // Filename    : OT_REPS.CPP
 // description : Text resource reports
 
-#include <OT_REPS.H>
-#include <ALL.H>
-#include <OSYS.H>
-#include <ALL.H>
-#include <OINFO.H>
-#include <OUNIT.H>
-#include <OT_UNIT.H>
-#include <ONATIONB.H>
-#include <OSPY.H>
+#include <ot_reps.h>
+#include <all.h>
+#include <osys.h>
+#include <all.h>
+#include <oinfo.h>
+#include <ounit.h>
+#include <ot_unit.h>
+#include <onationb.h>
+#include <ospy.h>
 
 
 void TextResReports::init()

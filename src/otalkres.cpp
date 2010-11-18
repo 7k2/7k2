@@ -21,24 +21,24 @@
 //Filename    : OTALKRES.CPP
 //Description : Object Talk
 
-#include <OTALKRES.H>
-#include <OMOUSE.H>
-#include <OSYS.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OINFO.H>
-#include <OFONT.H>
-#include <OTECH.H>
-#include <OTECHRES.H>
-#include <OGAMESET.H>
-#include <ONEWS.H>
-#include <ONATION.H>
-#include <OREMOTE.H>
-#include <OSE.H>
-// #include <OWORLDMT.H>
-#include <OT_UNIT.H>
-#include <OT_TALK.H>
-#include <OTUTOR.H>
+#include <otalkres.h>
+#include <omouse.h>
+#include <osys.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <oinfo.h>
+#include <ofont.h>
+#include <otech.h>
+#include <otechres.h>
+#include <ogameset.h>
+#include <onews.h>
+#include <onation.h>
+#include <oremote.h>
+#include <ose.h>
+// #include <oworldmt.h>
+#include <ot_unit.h>
+#include <ot_talk.h>
+#include <otutor.h>
 
 //---------- the subtitle area ----------//
 

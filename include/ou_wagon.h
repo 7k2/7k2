@@ -24,7 +24,7 @@
 #ifndef __OU_WAGON_H
 #define __OU_WAGON_H
 
-#include <OUNIT.H>
+#include <ounit.h>
 
 //--------- Define constant ------------//
 

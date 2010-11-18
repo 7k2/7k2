@@ -24,7 +24,7 @@
 #ifndef __OF_LISHORR_H
 #define __OF_LISHORR_H
 
-#include <OFIRM.H>
+#include <ofirm.h>
 
 //------ Define class FirmLair ------//
 #define LISHORR_BULLET_DAMAGE 12

@@ -25,11 +25,11 @@
 #define __OF_CAMP_H
 
 #ifndef __OSOLDIER_H
-#include <OSOLDIER.H>
+#include <osoldier.h>
 #endif
 
 #ifndef __OFIRM_H
-#include <OFIRM.H>
+#include <ofirm.h>
 #endif
 
 //-------- Define training parameters --------//

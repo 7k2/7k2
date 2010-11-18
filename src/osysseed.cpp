@@ -22,9 +22,9 @@
 //Description : class Sys - random seed related functions
 
 #ifdef DEBUG
-#include <OSYS.H>
-#include <ALL.H>
-#include <OMOUSE.H>
+#include <osys.h>
+#include <all.h>
+#include <omouse.h>
 
 #define	MAX_SEED_TABLE_SIZE	10 * 4000
 static long	random_seed_backup_table[MAX_SEED_TABLE_SIZE];

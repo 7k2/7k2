@@ -21,19 +21,19 @@
 //Filename    : OMATRIX.CPP
 //Description : Object road direction turn, derived by World, Chain class
 
-#include <ALL.H>
-#include <OVGA.H>
-#include <OMOUSE.H>
-#include <OSYS.H>
-#include <OSITE.H>
-#include <OFIRM.H>
-#include <OTERRAIN.H>
-#include <OPLANT.H>
-#include <OPOWER.H>
-#include <OUNIT.H>
-#include <OWORLD.H>
-#include <OHILLRES.H>
-#include <OBITMAPW.H>
+#include <all.h>
+#include <ovga.h>
+#include <omouse.h>
+#include <osys.h>
+#include <osite.h>
+#include <ofirm.h>
+#include <oterrain.h>
+#include <oplant.h>
+#include <opower.h>
+#include <ounit.h>
+#include <oworld.h>
+#include <ohillres.h>
+#include <obitmapw.h>
 
 //----------- Begin of function Matrix::init ----------//
 //

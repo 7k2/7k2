@@ -23,10 +23,10 @@
 // Owner       : Gilbert
 
 
-#include <OLOG.H>
-#include <STDIO.H>
-#include <OFILE.H>
-#include <ALL.H>
+#include <olog.h>
+#include <stdio.h>
+#include <ofile.h>
+#include <all.h>
 #include <windows.h>
 
 

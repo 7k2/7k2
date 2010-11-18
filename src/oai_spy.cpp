@@ -21,14 +21,14 @@
 //Filename   : OAI_SPY.CPP
 //Description: AI - Spy activities
 
-#include <ALL.H>
-#include <OFIRM.H>
-#include <OF_CAMP.H>
-#include <OF_SPY.H>
-#include <OTOWN.H>
-#include <OUNIT.H>
-#include <ONATION.H>
-#include <OSPY.H>
+#include <all.h>
+#include <ofirm.h>
+#include <of_camp.h>
+#include <of_spy.h>
+#include <otown.h>
+#include <ounit.h>
+#include <onation.h>
+#include <ospy.h>
 
 
 //--------- Begin of function Nation::ai_assign_spy_to_town --------//

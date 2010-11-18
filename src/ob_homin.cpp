@@ -22,11 +22,11 @@
 // Description : BulletHoming, Homing bullet
 
 #include <windows.h>
-#include <OB_HOMIN.H>
-#include <OWORLDMT.H>
-#include <OSPRTRES.H>
-#include <OSFRMRES.H>
-#include <OF_FORT.H>
+#include <ob_homin.h>
+#include <oworldmt.h>
+#include <osprtres.h>
+#include <osfrmres.h>
+#include <of_fort.h>
 
 
 // --------- begin of function BulletHoming::BulletHoming --------//

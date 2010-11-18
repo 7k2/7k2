@@ -21,30 +21,30 @@
 //Filename    : OTOWNDRW.CPP
 //Description : Town drawing routines
 
-#include <OTOWN.H>
-#include <OTWALRES.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OSYS.H>
-#include <OFONT.H>
-#include <OMOUSE.H>
-#include <OBUTTON.H>
-#include <OINFO.H>
-#include <OIMGRES.H>
-#include <OPOWER.H>
-#include <OWORLD.H>
-#include <OWORLDMT.H>
-#include <OGAME.H>
-#include <OREMOTE.H>
-#include <OANLINE.H>
-#include <OPLANT.H>
-#include <ONATION.H>
-#include <OF_LAIR.H>
-#include <OSE.H>
-#include <OCOLTBL.H>
-#include <OBITMAP.H>
-#include <OHELP.H>
-#include <OU_WAGON.H>
+#include <otown.h>
+#include <otwalres.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <osys.h>
+#include <ofont.h>
+#include <omouse.h>
+#include <obutton.h>
+#include <oinfo.h>
+#include <oimgres.h>
+#include <opower.h>
+#include <oworld.h>
+#include <oworldmt.h>
+#include <ogame.h>
+#include <oremote.h>
+#include <oanline.h>
+#include <oplant.h>
+#include <onation.h>
+#include <of_lair.h>
+#include <ose.h>
+#include <ocoltbl.h>
+#include <obitmap.h>
+#include <ohelp.h>
+#include <ou_wagon.h>
 
 // ------ define constant -------- //
 // x of bottom_left corner

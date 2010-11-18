@@ -21,21 +21,21 @@
 //Filename    : OF_BASE.CPP
 //Description : Firm Base
 
-#include <OF_BASE.H>
-#include <OMODEID.H>
-#include <OMOUSE.H>
-#include <OHELP.H>
-#include <OSTR.H>
-#include <OCONFIG.H>
-#include <OSYS.H>
-#include <OUNIT.H>
-#include <ONATION.H>
-#include <OGODRES.H>
-#include <OREMOTE.H> 
-#include <OSERES.H>
-#include <OSE.H>
-#include <OEFFECT.H>
-#include <ONEWS.H>
+#include <of_base.h>
+#include <omodeid.h>
+#include <omouse.h>
+#include <ohelp.h>
+#include <ostr.h>
+#include <oconfig.h>
+#include <osys.h>
+#include <ounit.h>
+#include <onation.h>
+#include <ogodres.h>
+#include <oremote.h> 
+#include <oseres.h>
+#include <ose.h>
+#include <oeffect.h>
+#include <onews.h>
 
 // -------- define static variable --------//
 

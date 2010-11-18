@@ -25,18 +25,18 @@
 #define __OFIRMRES_H
 
 #ifndef __GAMEDEF_H
-#include <GAMEDEF.H>
+#include <gamedef.h>
 #endif
 
 #ifndef __OFIRM_H
-#include <OFIRM.H>
+#include <ofirm.h>
 #endif
 
 #ifndef __ORESDB_H
-#include <ORESDB.H>
+#include <oresdb.h>
 #endif
 
-#include <OATTACK.H>
+#include <oattack.h>
 
 //------- Define constant ----------//
 

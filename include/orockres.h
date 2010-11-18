@@ -27,10 +27,10 @@
 #define __OROCKRES_H
 
 
-#include <GAMEDEF.H>
-#include <ORESDB.H>
-#include <ORESPAL.H>
-#include <OBITMAP.H>
+#include <gamedef.h>
+#include <oresdb.h>
+#include <orespal.h>
+#include <obitmap.h>
 
 // ----------- Define constant ----------//
 #define ROCK_BLOCKING_TYPE 'R'

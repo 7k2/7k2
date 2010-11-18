@@ -25,7 +25,7 @@
 #define __OREBEL_H
 
 #ifndef __ODYNARRB_H
-#include <ODYNARRB.H>
+#include <odynarrb.h>
 #endif
 
 

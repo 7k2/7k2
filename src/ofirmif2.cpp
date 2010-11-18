@@ -21,26 +21,26 @@
 //Filename    : OFIRMIF2.CPP
 //Description : Firm interface functions - part 2
 
-#include <OFIRM.H>
-#include <OINFO.H>
-#include <OVGA.H>
-#include <OMODEID.H>
-#include <OSYS.H>
-#include <OSPY.H>
-#include <OSTR.H>
-#include <OHELP.H>
-#include <OFONT.H>
-#include <OMOUSE.H>
-#include <OVBROWIF.H>
-#include <OGAME.H>
-#include <ONATION.H>
-#include <OBUTT3D.H>
-#include <OIMGRES.H>
-#include <ORAWRES.H>
-#include <ORACERES.H>
-// #include <OWORLD.H>
-#include <OUNIT.H>
-#include <OREMOTE.H>
+#include <ofirm.h>
+#include <oinfo.h>
+#include <ovga.h>
+#include <omodeid.h>
+#include <osys.h>
+#include <ospy.h>
+#include <ostr.h>
+#include <ohelp.h>
+#include <ofont.h>
+#include <omouse.h>
+#include <ovbrowif.h>
+#include <ogame.h>
+#include <onation.h>
+#include <obutt3d.h>
+#include <oimgres.h>
+#include <orawres.h>
+#include <oraceres.h>
+// #include <oworld.h>
+#include <ounit.h>
+#include <oremote.h>
 
 //------------- Define coordinations -----------//
 
