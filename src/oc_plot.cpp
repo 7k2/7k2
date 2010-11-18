@@ -31,60 +31,60 @@ enum { PLOT_A_COUNT = 7, PLOT_C_COUNT = 4, PLOT_D_COUNT = 5 };
 
 static CampaignEastWestFP plot_a_create_game_func_array[PLOT_A_COUNT] =
 {
-	CampaignEastWest::plot_a1_create_game,
-	CampaignEastWest::plot_a2_create_game,
-	CampaignEastWest::plot_a3_create_game,
-	CampaignEastWest::plot_a4_create_game,
-	CampaignEastWest::plot_a5_create_game,
-	CampaignEastWest::plot_a6_create_game,
-	CampaignEastWest::plot_a7_create_game,
+	&CampaignEastWest::plot_a1_create_game,
+	&CampaignEastWest::plot_a2_create_game,
+	&CampaignEastWest::plot_a3_create_game,
+	&CampaignEastWest::plot_a4_create_game,
+	&CampaignEastWest::plot_a5_create_game,
+	&CampaignEastWest::plot_a6_create_game,
+	&CampaignEastWest::plot_a7_create_game,
 };
 
 static CampaignEastWestFP plot_a_next_day_func_array[PLOT_A_COUNT] =
 {
-	CampaignEastWest::plot_a1_next_day,
-	CampaignEastWest::plot_a2_next_day,
-	CampaignEastWest::plot_a3_next_day,
-	CampaignEastWest::plot_a4_next_day,
-	CampaignEastWest::plot_a5_next_day,
-	CampaignEastWest::plot_a6_next_day,
-	CampaignEastWest::plot_a7_next_day,
+	&CampaignEastWest::plot_a1_next_day,
+	&CampaignEastWest::plot_a2_next_day,
+	&CampaignEastWest::plot_a3_next_day,
+	&CampaignEastWest::plot_a4_next_day,
+	&CampaignEastWest::plot_a5_next_day,
+	&CampaignEastWest::plot_a6_next_day,
+	&CampaignEastWest::plot_a7_next_day,
 };
 
 
 static CampaignEastWestFP plot_c_create_game_func_array[PLOT_C_COUNT] =
 {
-	CampaignEastWest::plot_c1_create_game,
-	CampaignEastWest::plot_c2_create_game,
-	CampaignEastWest::plot_c3_create_game,
-	CampaignEastWest::plot_c4_create_game,
+	&CampaignEastWest::plot_c1_create_game,
+	&CampaignEastWest::plot_c2_create_game,
+	&CampaignEastWest::plot_c3_create_game,
+	&CampaignEastWest::plot_c4_create_game,
 };
 
 static CampaignEastWestFP plot_c_next_day_func_array[PLOT_C_COUNT] =
 {
-	CampaignEastWest::plot_c1_next_day,
-	CampaignEastWest::plot_c2_next_day,
-	CampaignEastWest::plot_c3_next_day,
-	CampaignEastWest::plot_c4_next_day,
+	&CampaignEastWest::plot_c1_next_day,
+	&CampaignEastWest::plot_c2_next_day,
+	&CampaignEastWest::plot_c3_next_day,
+	&CampaignEastWest::plot_c4_next_day,
 };
 
 
 static CampaignEastWestFP plot_d_create_game_func_array[PLOT_D_COUNT] =
 {
-	CampaignEastWest::plot_d1_create_game,
-	CampaignEastWest::plot_d2_create_game,
-	CampaignEastWest::plot_d3_create_game,
-	CampaignEastWest::plot_d4_create_game,
-	CampaignEastWest::plot_d5_create_game,
+	&CampaignEastWest::plot_d1_create_game,
+	&CampaignEastWest::plot_d2_create_game,
+	&CampaignEastWest::plot_d3_create_game,
+	&CampaignEastWest::plot_d4_create_game,
+	&CampaignEastWest::plot_d5_create_game,
 };
 
 static CampaignEastWestFP plot_d_next_day_func_array[PLOT_D_COUNT] =
 {
-	CampaignEastWest::plot_d1_next_day,
-	CampaignEastWest::plot_d2_next_day,
-	CampaignEastWest::plot_d3_next_day,
-	CampaignEastWest::plot_d4_next_day,
-	CampaignEastWest::plot_d5_next_day,
+	&CampaignEastWest::plot_d1_next_day,
+	&CampaignEastWest::plot_d2_next_day,
+	&CampaignEastWest::plot_d3_next_day,
+	&CampaignEastWest::plot_d4_next_day,
+	&CampaignEastWest::plot_d5_next_day,
 };
 
 // ######## begin Gilbert 17/3 #########//
@@ -93,45 +93,45 @@ static CampaignEastWestFP plot_d_next_day_func_array[PLOT_D_COUNT] =
 
 CampaignEastWestFP CampaignEastWest::plot_create_game_FP_array[] =
 {
-	plot_null,
-	plot_a1_create_game,
-	plot_a2_create_game,
-	plot_a3_create_game,
-	plot_a4_create_game,
-	plot_a5_create_game,
-	plot_a6_create_game,
-	plot_a7_create_game,
-	plot_c1_create_game,
-	plot_c2_create_game,
-	plot_c3_create_game,
-	plot_c4_create_game,
-	plot_d1_create_game,
-	plot_d2_create_game,
-	plot_d3_create_game,
-	plot_d4_create_game,
-	plot_d5_create_game,
+	&CampaignEastWest::plot_null,
+	&CampaignEastWest::plot_a1_create_game,
+	&CampaignEastWest::plot_a2_create_game,
+	&CampaignEastWest::plot_a3_create_game,
+	&CampaignEastWest::plot_a4_create_game,
+	&CampaignEastWest::plot_a5_create_game,
+	&CampaignEastWest::plot_a6_create_game,
+	&CampaignEastWest::plot_a7_create_game,
+	&CampaignEastWest::plot_c1_create_game,
+	&CampaignEastWest::plot_c2_create_game,
+	&CampaignEastWest::plot_c3_create_game,
+	&CampaignEastWest::plot_c4_create_game,
+	&CampaignEastWest::plot_d1_create_game,
+	&CampaignEastWest::plot_d2_create_game,
+	&CampaignEastWest::plot_d3_create_game,
+	&CampaignEastWest::plot_d4_create_game,
+	&CampaignEastWest::plot_d5_create_game,
 	NULL			// keep it last
 };
 
 CampaignEastWestFP CampaignEastWest::plot_next_day_FP_array[] =
 {
-	plot_null,
-	plot_a1_next_day,
-	plot_a2_next_day,
-	plot_a3_next_day,
-	plot_a4_next_day,
-	plot_a5_next_day,
-	plot_a6_next_day,
-	plot_a7_next_day,
-	plot_c1_next_day,
-	plot_c2_next_day,
-	plot_c3_next_day,
-	plot_c4_next_day,
-	plot_d1_next_day,
-	plot_d2_next_day,
-	plot_d3_next_day,
-	plot_d4_next_day,
-	plot_d5_next_day,
+	&CampaignEastWest::plot_null,
+	&CampaignEastWest::plot_a1_next_day,
+	&CampaignEastWest::plot_a2_next_day,
+	&CampaignEastWest::plot_a3_next_day,
+	&CampaignEastWest::plot_a4_next_day,
+	&CampaignEastWest::plot_a5_next_day,
+	&CampaignEastWest::plot_a6_next_day,
+	&CampaignEastWest::plot_a7_next_day,
+	&CampaignEastWest::plot_c1_next_day,
+	&CampaignEastWest::plot_c2_next_day,
+	&CampaignEastWest::plot_c3_next_day,
+	&CampaignEastWest::plot_c4_next_day,
+	&CampaignEastWest::plot_d1_next_day,
+	&CampaignEastWest::plot_d2_next_day,
+	&CampaignEastWest::plot_d3_next_day,
+	&CampaignEastWest::plot_d4_next_day,
+	&CampaignEastWest::plot_d5_next_day,
 	NULL			// keep it last
 };
 // ######## end Gilbert 17/3 #########//
@@ -207,8 +207,8 @@ void CampaignEastWest::init_random_plot(char plotCategory)
 	if( m.random(7)==0 || funcCount==0 )		// 20% chance that this game does not have a plot
 	{
 		plot_id = 0;								// set to zero, in case the condition is changed
-		plot_create_game_FP = plot_null;		// there is a chance that the plot is null. That means there is no plot for the game.
-		plot_next_day_FP 	  = plot_null;
+		plot_create_game_FP = &CampaignEastWest::plot_null;		// there is a chance that the plot is null. That means there is no plot for the game.
+		plot_next_day_FP 	  = &CampaignEastWest::plot_null;
 	}
 	else		// 1 to funcCount
 	{
