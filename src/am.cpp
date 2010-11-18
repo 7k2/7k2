@@ -22,6 +22,8 @@
 //Description : Ambition Entry Program
 
 #include <all.h>
+#include <initguid.h>
+#include <dshow.h>
 #include <oanline.h>
 #include <oaudio.h>
 #include <obaseobj.h>
