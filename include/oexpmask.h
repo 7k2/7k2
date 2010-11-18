@@ -25,10 +25,11 @@
 #ifndef __OEXPMASK_H
 #define __OEXPMASK_H
 
+#include <win32_compat.h>
+
 struct Location;
 class ColorTable;
 
-typedef unsigned char BYTE;
 
 #define FULL_DARK_MASK_ID 0x00
 #define FULL_BRIGHT_MASK_ID 0xaa

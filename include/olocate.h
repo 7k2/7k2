@@ -24,9 +24,10 @@
 #ifndef __OLOCATE_H
 #define __OLOCATE_H
 
+#include <win32_compat.h>
+
 //-------- Define constants ---------//
 
-typedef unsigned long DWORD;
 
 //----- Define bit meanings Location::flag ------//
 #define 	LOCATE_WALK_LAND			0x01

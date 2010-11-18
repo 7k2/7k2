@@ -24,8 +24,7 @@
 #ifndef __OCOLTBL_H
 #define __OCOLTBL_H
 
-typedef unsigned char BYTE;
-typedef unsigned short WORD;
+#include <win32_compat.h>
 
 #define MAX_COLOUR_TABLE_SIZE 0x100
 

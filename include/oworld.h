@@ -61,8 +61,6 @@
 class MapMatrix;
 class ZoomMatrix;
 class File;
-typedef unsigned long DWORD;
-typedef unsigned char BYTE;
 class Weather;
 class Plasma;
 

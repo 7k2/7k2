@@ -24,11 +24,12 @@
 #ifndef __ORACERES_H
 #define __ORACERES_H
 
+#include <win32_compat.h>
+
 #ifndef __ORESDB_H
 #include <oresdb.h>
 #endif
 
-typedef unsigned short WORD;
 
 //------------ Define race id. -------------//
 

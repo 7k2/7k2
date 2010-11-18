@@ -25,6 +25,8 @@
 #ifndef __OREGION_H
 #define __OREGION_H
 
+#include <win32_compat.h>
+
 #ifndef DEBUG
 #include <oregions.h>
 #endif
@@ -35,7 +37,6 @@
 
 // -------- Define basic type ----------//
 
-typedef unsigned char BYTE;
 
 //------- Define enum RegionType -------//
 

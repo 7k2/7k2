@@ -24,6 +24,8 @@
 #ifndef __OMONSRES_H
 #define __OMONSRES_H
 
+#include <win32_compat.h>
+
 #ifndef __ORESDB_H
 #include <oresdb.h>
 #endif

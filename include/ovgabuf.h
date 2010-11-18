@@ -27,10 +27,6 @@
 #include <imgfun.h>
 // #include <ddraw.h>
 
-typedef unsigned char UCHAR;
-typedef unsigned short WORD;
-typedef unsigned long DWORD;
-typedef int BOOL;
 typedef void *LPVOID;
 
 //-------- Define class VgaBuf ----------------//

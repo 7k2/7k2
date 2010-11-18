@@ -24,6 +24,8 @@
 #ifndef __OGAME_H
 #define __OGAME_H
 
+#include <win32_compat.h>
+
 #ifndef __GAMEDEF_H
 #include <gamedef.h>
 #endif
@@ -58,7 +60,6 @@ enum { GAME_PREGAME=1,
 
 // -------- typedef ----------//
 
-typedef unsigned short WORD;
 
 //--------- Define struct ColorRemapMethod ----------//
 

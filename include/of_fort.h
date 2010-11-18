@@ -41,7 +41,6 @@
 #define FORT_BULLET_INIT_Z 32
 #define FORT_BULLET_RANGE 8
 
-typedef unsigned long DWORD;
 
 //-------- define class FirmFort --------//
 

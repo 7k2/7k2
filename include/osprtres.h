@@ -24,13 +24,13 @@
 #ifndef __OSPRTRES_H
 #define __OSPRTRES_H
 
+#include <win32_compat.h>
 #include <gamedef.h>
 #include <oresdb.h>
 // #include <osfrmres.h>
 
 // ------- declare basic type -----------//
 
-typedef unsigned char BYTE;
 
 //-------- Define struct SpriteRec ----------//
 

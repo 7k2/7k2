@@ -26,6 +26,7 @@
 
 //--------- Include other headers -------//
 
+#include <win32_compat.h>
 #include <omisc.h>
 #include <ostr.h>
 #include <ofile.h>
@@ -38,13 +39,7 @@
 #define NULL 0
 #endif
 
-typedef unsigned char UCHAR;
-typedef unsigned char BYTE;
 typedef unsigned short USHORT;
-typedef unsigned short WORD;
-typedef unsigned long ULONG;
-typedef unsigned long DWORD;
-typedef unsigned int UINT;
 typedef void *LPVOID;
 
 //-------- Define macro functions -------//

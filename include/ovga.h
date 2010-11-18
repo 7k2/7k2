@@ -54,7 +54,6 @@
 
 //-------- Define class Vga ----------------//
 
-typedef unsigned char BYTE;
 
 struct RGBColor;
 class ColorTable;

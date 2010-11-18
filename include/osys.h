@@ -24,10 +24,10 @@
 #ifndef __OSYS_H
 #define __OSYS_H
 
+#include <win32_compat.h>
+
 // ------- declare type --------//
 
-typedef unsigned long DWORD;
-typedef int BOOL;
 typedef void *HANDLE;
 
 #ifdef VC5 
@@ -36,8 +36,6 @@ typedef void *HANDLE;
 	typedef struct HWND__ *HWND;	// vc6
 #endif
 
-typedef unsigned int UINT;
-typedef unsigned int WPARAM;
 typedef long LPARAM;
 
 #define MAX_PATH 260

@@ -24,6 +24,8 @@
 #ifndef __OREGIONS_H
 #define __OREGIONS_H
 
+#include <win32_compat.h>
+
 #ifndef __OFIRMID_H
 #include <ofirmid.h>
 #endif
@@ -36,7 +38,6 @@
 
 #define MAX_REACHABLE_REGION_PER_STAT	10		// maximum reachable regions to be kept in RegionStat
 
-typedef unsigned char BYTE;
 
 //------- Define struct RegionPath -------//
 

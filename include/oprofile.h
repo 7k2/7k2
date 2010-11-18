@@ -25,11 +25,10 @@
 #ifndef __OPROFILE_H
 #define __OPROFILE_H
 
+#include <win32_compat.h>
 #include <oitem.h>
 #include <oskill.h>
 
-typedef unsigned short WORD;
-typedef unsigned char BYTE;
 
 
 class File;

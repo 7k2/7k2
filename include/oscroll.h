@@ -24,7 +24,7 @@
 #ifndef __OSCROLL_H
 #define __OSCROLL_H
 
-typedef unsigned long DWORD;
+#include <win32_compat.h>
 
 //--------- Define class ScrollBar --------//
 

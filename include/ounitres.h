@@ -24,12 +24,12 @@
 #ifndef __OUNITRES_H
 #define __OUNITRES_H
 
+#include <win32_compat.h>
 #include <unittype.h>
 #include <gamedef.h>
 #include <oresdb.h>
 #include <oattack.h>
 
-typedef unsigned char BYTE;
 
 #ifdef NO_DEBUG_UNIT
 #undef DEBUG

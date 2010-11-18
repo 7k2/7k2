@@ -25,7 +25,6 @@
 #ifndef __OPLASMA_H
 #define __OPLASMA_H
 
-typedef unsigned char BYTE;
 typedef unsigned short U16;
 typedef signed long S32;
 

@@ -24,6 +24,8 @@
 #ifndef __OWARPT_H
 #define __OWARPT_H
 
+#include <win32_compat.h>
+
 //--------- define constant -----------//
 
 #define WARPOINT_ZONE_SIZE 8
@@ -32,7 +34,6 @@
 
 //--------- struct Define WarPoint ----------//
 
-typedef unsigned long DWORD;
 
 struct WarPoint
 {
