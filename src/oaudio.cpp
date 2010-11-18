@@ -1447,8 +1447,8 @@ DsVolume Audio::get_loop_wav_volume(int ch)
 		return DsVolume(rel);
         }
 
-	long volume;
-	long pan;
+	LONG volume;
+	LONG pan;
 	LPDIRECTSOUNDBUFFER lpDsb= lp_loop_ch_dsb[chanNum];
 	if( lpDsb && lpDsb->GetVolume(&volume) == DS_OK &&
 		lpDsb->GetPan(&pan) == DS_OK )
@@ -1685,7 +1685,7 @@ void	Audio::yield()
 			if( loopwav_fade_rate[i] )
 			{
 				DWORD nextFadeTime = m.get_time();
-				long	volume;
+				LONG	volume;
 				if( DS_OK == (hr = lpDsb->GetVolume(&volume)) )
 				{
 					// calculate new volume
@@ -1979,7 +1979,7 @@ void Audio::set_wav_volume(int wavVolume)
 	if( !wav_init_flag )
 		return;
 
-	long dsVolume;
+	LONG dsVolume;
 	long dsVolDiff = (wavVolume - wav_volume) * 100;
 
 	// change volume for all channels
