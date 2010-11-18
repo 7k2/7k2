@@ -22,6 +22,9 @@
 // Description  : display jpeg image
 
 
+#define XMD_H
+#define HAVE_BOOLEAN
+#include <all.h>
 #include <stdio.h>
 extern "C"
 {
@@ -29,7 +32,6 @@ extern "C"
 }
 
 #include <ojpeg.h>
-#include <all.h>
 #include <ovga.h>
 #include <ocoltbl.h>
 #include <ovgabuf.h>
