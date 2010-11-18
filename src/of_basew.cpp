@@ -160,7 +160,7 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 	int viewX = -1;
 	int viewY = -1;
 
-	String resultStr = "";
+	String resultStr("");
 
 	switch(effectId)
 	{

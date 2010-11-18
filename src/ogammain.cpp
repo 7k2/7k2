@@ -318,7 +318,7 @@ void Game::disp_gen_game_status(int addStep)
 			{
 				File palFile;
 				{
-					String str = DIR_IMAGE;
+					String str(DIR_IMAGE);
 					str += "NEWWORLD.COL";
 					palFile.file_open(str);
 				}
@@ -340,7 +340,7 @@ void Game::disp_gen_game_status(int addStep)
 			}
 			
 			File imageFile;
-			String str = DIR_IMAGE;
+			String str(DIR_IMAGE);
 			str += "NEWWORLD.ICN";
 			imageFile.file_open(str);
 			backgroundBitmap = (char *)mem_add( imageFile.file_size() );

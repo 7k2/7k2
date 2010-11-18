@@ -332,7 +332,7 @@ int GameFileArray::menu(int actionMode, int *recno)
 
 	short colorRemapTable[0x100];
 	{
-		String str = DIR_IMAGE;
+		String str(DIR_IMAGE);
 		if( pre_game )
 			str += "CHOOSE.COL";
 		else
@@ -429,7 +429,7 @@ int GameFileArray::menu(int actionMode, int *recno)
 				// ------- display image --------//
 
 				File imageFile;
-				String str = DIR_IMAGE;
+				String str(DIR_IMAGE);
 				if( pre_game )
 				{
 					str += "CHOOSE.ICN";
@@ -1405,7 +1405,7 @@ int GameFileArray::auto_save()
 
 	// prepare new auto save game name
 
-	String str1 = save_default_dir;
+	String str1(save_default_dir);
 	if( save_default_dir[0] )
 		str1 += "\\";
 	str1 += "AUTO";
@@ -1413,7 +1413,7 @@ int GameFileArray::auto_save()
 
 	// prepare backup auto save game name
 
-	String str2 = save_default_dir;
+	String str2(save_default_dir);
 	if( save_default_dir[0] )
 		str2 += "\\";
 	str2 += "AUTO2";

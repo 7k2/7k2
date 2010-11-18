@@ -67,7 +67,7 @@ void ResTxt::init(char* resName, int alwaysOpenFlag)
 
    //------ Load Resource Text Index -------//
 
-   String str  = resName;
+   String str(resName);
    str        += ".RTI";
 
    File file;

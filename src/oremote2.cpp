@@ -488,7 +488,7 @@ void Remote::process_receive_queue()
 					if( processFlag )
 					{
 #if defined(ENABLE_LOG)
-						String logStr = "begin process remote message id:";
+						String logStr("begin process remote message id:");
 						logStr += (long) remoteMsgPtr->id;
 						logStr += " of nation ";
 						logStr += nation_processing;

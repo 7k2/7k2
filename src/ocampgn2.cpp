@@ -4529,7 +4529,7 @@ int      file_handle,                 // the file handle
          index;                       // looping index
 OFSTRUCT file_data;                   // the file data information
 
-String	str  = DIR_IMAGE;
+String	str(DIR_IMAGE);
 			str += filename;
 //			str += ".COL";
 

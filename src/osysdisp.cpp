@@ -762,7 +762,7 @@ int Sys::change_display_mode(int modeId)
 //
 void Sys::capture_screen()
 {
-   String str = "7K";
+   String str("7K");
 
    for( int i=0 ; i<=99 ; i++ )
    {

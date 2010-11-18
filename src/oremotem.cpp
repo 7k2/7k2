@@ -465,7 +465,7 @@ void RemoteMsg::tell_random_seed()
 	long remoteSeed = *(long *)p;
 
 #if defined(ENABLE_LOG)
-	String logLine = "remote random seed ";
+	String logLine("remote random seed ");
 	logLine += nationRecno;
 	logLine += ",";
 	logLine += remoteSeed;

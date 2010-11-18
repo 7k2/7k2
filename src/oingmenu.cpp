@@ -127,7 +127,7 @@ void InGameMenu::set_active()
 		{
 			File palFile;
 			{	// save stack space for str and palBuf
-				String str = DIR_IMAGE;
+				String str(DIR_IMAGE);
 				str += "CHOOSE3.COL";
 				palFile.file_open(str);
 			}
@@ -153,7 +153,7 @@ void InGameMenu::set_active()
 	if( !background_bitmap )
 	{
 		File imageFile;
-		String str = DIR_IMAGE;
+		String str(DIR_IMAGE);
 		str += "CHOOSE3.ICN";
 		imageFile.file_open(str);
 		background_bitmap = (char *)mem_add( imageFile.file_size() );
