@@ -635,7 +635,7 @@ int FirmMagic::process_delayed_magic(int magicId, int targetXLoc, int targetYLoc
 					}
 					else if( townPtr->hit_points >= effectHit )		// wall is stronger than damage
 					{
-						err_when( townPtr->max_hit_points == 0 );	// notice townPtr->hit_points may be 0 when no wall
+						err_when( townPtr->max_hit_points() == 0 );	// notice townPtr->hit_points may be 0 when no wall
 
 						townPtr->hit_points  -= effectHit;
 						effectCent = 0;				// people are safe
