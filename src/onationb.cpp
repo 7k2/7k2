@@ -634,10 +634,10 @@ void NationBase::set_king(int kingUnitRecno, int firstKing)
 			// ########## begin Gilbert 26/6 ########//
 			// use only the first word
 			char *nameStr = nation_array.get_custom_king_name(nation_recno);
-			char firstWord[Config.PLAYER_NAME_LEN+1];
+			char firstWord[config.PLAYER_NAME_LEN+1];
 			int i = 0;
 			for( ; *nameStr == ' '; ++nameStr );	// trim leading space
-			for( i = 0; *nameStr && *nameStr != ' ' && i < Config.PLAYER_NAME_LEN; ++i, ++nameStr )
+			for( i = 0; *nameStr && *nameStr != ' ' && i < config.PLAYER_NAME_LEN; ++i, ++nameStr )
 				firstWord[i] = *nameStr;
 			firstWord[i] = '\0';
 			// ########## end Gilbert 26/6 ########//
