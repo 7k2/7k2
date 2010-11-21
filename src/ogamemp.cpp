@@ -6666,7 +6666,7 @@ static int process_load_game_chat_command( char *cmdStr, DynArray *output )
 						info.get_rank_score( 5, i ),		// fryhtan battling
 						info.get_total_score( i ) );		// total score
 
-					MpStructChatMsg dispMsg( NULL, str.left(MpStructChatMsg.MSG_LENGTH) );
+					MpStructChatMsg dispMsg( NULL, str.left(MpStructChatMsg::MSG_LENGTH) );
 					output->linkin( &dispMsg );
 				}
 			}
