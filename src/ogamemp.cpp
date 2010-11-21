@@ -2882,7 +2882,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 							game.color_remap_array[playerColor[p]].main_color );
 						vga.active_buf->d3_panel_up( tickX[p]+nameTickWidth, tickY[p], tickX[p]+nameTickWidth*2-1, tickY[p]+nameTickHeight-1, 4, 0 );
 						PlayerDesc *dispPlayer = mp_obj.search_player(regPlayerId[p]);
-						int x2 = font_bld.put( tickX[p]+nameTickWidth*2+3, tickY[p]+0, dispPlayer?dispPlayer->friendly_name_str():"?anonymous?",
+						int x2 = font_bld.put( tickX[p]+nameTickWidth*2+3, tickY[p]+0, dispPlayer?dispPlayer->friendly_name_str():(char*)"?anonymous?",
 							0, tickX[p]+260 );
 #ifdef MAX_GEM_STONES
 						if( totalGemStones[p] )
@@ -5623,7 +5623,7 @@ int Game::mp_select_load_option(char *fileName)
 							game.color_remap_array[playerColor[p]].main_color );
 						vga.active_buf->d3_panel_up( tickX[p]+nameTickWidth, tickY[p], tickX[p]+nameTickWidth*2-1, tickY[p]+nameTickHeight-1, 4, 0 );
 						PlayerDesc *dispPlayer = mp_obj.search_player(regPlayerId[p]);
-						font_bld.put( tickX[p]+nameTickWidth*2+3, tickY[p]+0, dispPlayer?dispPlayer->friendly_name_str():"?anonymous?",
+						font_bld.put( tickX[p]+nameTickWidth*2+3, tickY[p]+0, dispPlayer?dispPlayer->friendly_name_str():(char*)"?anonymous?",
 							0, tickX[p]+260 );
 #ifdef MAX_GEM_STONES
 						if( totalGemStones[p] )
@@ -6512,7 +6512,7 @@ static void disp_service_button(ButtonCustom *button, int)
 	}
 
 	(button->pushed_flag ? font_bold_red : font_bold_black).put( 
-		button->x1+16, button->y1+6, servicePtr ? servicePtr->name_str() : "",
+		button->x1+16, button->y1+6, servicePtr ? servicePtr->name_str() : (char*)"",
 		1, button->x2-10 ); 
 
 	if( servicePtr && servicePtr->name_str_long() )
