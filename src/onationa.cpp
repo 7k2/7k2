@@ -1155,11 +1155,11 @@ void NationArray::set_custom_both_name(int nationRecno, char* nameStr)
 
 	Nation* nationPtr   = nation_array[nationRecno];
 
-	char str[Config.PLAYER_NAME_LEN+1];
-	int position = Config.PLAYER_NAME_LEN-1;
-	memcpy( str, nameStr, Config.PLAYER_NAME_LEN );
-	str[Config.PLAYER_NAME_LEN] = '\0';
-	if ( strlen(nameStr) >= Config.PLAYER_NAME_LEN )
+	char str[config.PLAYER_NAME_LEN+1];
+	int position = config.PLAYER_NAME_LEN-1;
+	memcpy( str, nameStr, config.PLAYER_NAME_LEN );
+	str[config.PLAYER_NAME_LEN] = '\0';
+	if ( strlen(nameStr) >= config.PLAYER_NAME_LEN )
 	{
 		while(position >= 0)
 		{
