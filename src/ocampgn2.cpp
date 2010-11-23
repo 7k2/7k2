@@ -70,7 +70,6 @@
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 
-#include <iostream.h>        // include C/C++ stuff
 #include <stdlib.h>
 #include <stdarg.h>
 #include <stdio.h>
