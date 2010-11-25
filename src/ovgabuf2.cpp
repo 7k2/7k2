@@ -1012,6 +1012,7 @@ void VgaBuf::blt_buf( VgaBuf *srcBuf, int x1, int y1 )
 	short *destPtr = cur_buf_ptr;
 	int destPitch = cur_pitch;
 
+#ifdef ASM_FOR_MSVC
 	_asm
 	{
 		mov	eax, y1
@@ -1037,6 +1038,7 @@ blt_buf_1:
 		add	esi, srcPitch
 		loop	blt_buf_1
 	}
+#endif
 }
 //------------- End of function VgaBuf::blt_buf ------------//
 

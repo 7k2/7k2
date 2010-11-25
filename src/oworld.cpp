@@ -2738,6 +2738,7 @@ void World::process_visibility()
 			// #### begin Gilbert 8/2 #######//
 			// unsigned char decVisitLevel = EXPLORED_VISIBILITY*2+1;
 			unsigned char decVisitLevel = EXPLORED_VISIBILITY;
+#ifdef ASM_FOR_MSVC
 			_asm
 			{
 				mov	ecx, count
@@ -2753,6 +2754,7 @@ process_visit_level2:
 				add	ebx, edx
 				loop	process_visit_level_1
 			}
+#endif
 
 #ifdef DEBUG
 			startTime = m.get_time() - startTime;

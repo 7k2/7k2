@@ -4347,6 +4347,7 @@ static void draw_cubic_plane(int zoomX, int zoomY, LocationCorners lc, UCHAR col
 		c30 * 8;
 #endif
 
+#ifdef ASM_FOR_MSVC
 	_asm
 	{
 		// init outer loop
@@ -4521,6 +4522,7 @@ draw_cubic_plane_2:
 		cmp	v, LOCATE_HEIGHT * UVMULTIPLIER
 		jb		draw_cubic_plane_1;
 	}
+#endif
 }
 
 

@@ -1163,6 +1163,7 @@ char *TerrainRes::mask_texture(char *maskPtr, char *tex1, char *tex2, char *outT
 	*(short *)outTex = 32;
 	*(1 + (short *)outTex) = 32;
 
+#ifdef ASM_FOR_MSVC
 	_asm 
 	{
 		mov	esi, maskPtr
@@ -1254,6 +1255,7 @@ mask_texture_l1:
 		dec	ecx
 		jne	mask_texture_l1
 	}
+#endif
 
 	return outTex;
 }

@@ -244,6 +244,7 @@ void LocationCorners::render(Blob2DW *blob, char *texturePtr, BYTE drawState)
 	#error
 #endif
 
+#ifdef ASM_FOR_MSVC
 	if( !(loc_ptr->loc_flag & LOCATE_SEA_COAST) )
 
 	_asm
@@ -724,6 +725,7 @@ location_render_sea_2bB:
 		jne	location_render_sea_1
 	}		// end _asm
 	}
+#endif // ASM_FOR_MSVC
 
 #undef bufTruePitch
 #undef bufTruePitchShift
@@ -829,6 +831,7 @@ void LocationCorners::render_special(Blob2DW *blob, int effectId,
 		usColor = vga.translate_color(color2);
 		color2 = ((unsigned long)usColor << 16) | usColor;
 
+#ifdef ASM_FOR_MSVC
 	_asm
 	{
 		; init outer loop
@@ -1039,6 +1042,7 @@ location_render_sp1_2bA:
 		dec	vCount
 		jne	location_render_sp1_1
 	}		// end _asm
+#endif
 	}		// end if(effectId == 1)
 	else
 	{
@@ -1142,6 +1146,7 @@ void LocationCorners::render(BitmapW *bitmapPtr, char *texturePtr, int offsetX, 
 	#error
 #endif
 
+#ifdef ASM_FOR_MSVC
 	if( !(loc_ptr->loc_flag & LOCATE_SEA_COAST) )
 
 	_asm
@@ -1628,6 +1633,7 @@ location_render_sea_2bB:
 		jne	location_render_sea_1
 	}		// end _asm
 	}
+#endif
 
 #undef MAX_BRIGHTNESS_SHIFT
 }
@@ -1720,6 +1726,7 @@ void LocationCorners::render_special(BitmapW *bitmapPtr, int effectId,
 		usColor = vga.translate_color(color2);
 		color2 = ((unsigned long)usColor << 16) | usColor;
 
+#ifdef ASM_FOR_MSVC
 	_asm
 	{
 		; init outer loop
@@ -1928,6 +1935,7 @@ location_render_sp1_2bA:
 		dec	vCount
 		jne	location_render_sp1_1
 	}		// end _asm
+#endif
 	}		// end if(effectId == 1)
 	else if( effectId == 2 )		// 1/2 halftone of color1
 	{
@@ -1935,6 +1943,7 @@ location_render_sp1_2bA:
 		usColor = vga.translate_color(color1);
 		color1 = ((unsigned long)usColor << 16) | usColor;
 
+#ifdef ASM_FOR_MSVC
 	_asm
 	{
 		; init outer loop
@@ -2050,6 +2059,7 @@ location_render_sp2_2aA:
 		dec	vCount
 		jne	location_render_sp2_1
 	}		// end _asm
+#endif
 	}
 	else
 	{
@@ -2123,6 +2133,7 @@ void LocationCorners::render_fog(BitmapW *bitmapPtr, char *texturePtr, int offse
 	#error
 #endif
 
+#ifdef ASM_FOR_MSVC
 	if( !(loc_ptr->loc_flag & LOCATE_SEA_COAST) )
 
 	_asm
@@ -2638,6 +2649,7 @@ location_render_sea_2bB:
 		jne	location_render_sea_1
 	}		// end _asm
 	}
+#endif
 
 #undef MAX_BRIGHTNESS_SHIFT
 }

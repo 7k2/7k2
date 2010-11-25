@@ -330,6 +330,7 @@ void MapMatrix::draw()
 		short *temp2 = save_image_buf +2;
 		int temp3 = vga_back.buf_true_pitch() -400;
 		short *temp6 = vga_back.buf_ptr(image_x1, image_y1);
+#ifdef ASM_FOR_MSVC
 		_asm
 		{
 			MOV AX , DS
@@ -345,6 +346,7 @@ PutLine:	MOV ECX, 100
 			DEC	EAX
 			JNZ	PutLine		        //; decrease the remain height and loop
 		}
+#endif
 		// #### end Ban 8/12 #######//
 		just_drawn_flag = 1;
 	}
@@ -375,6 +377,7 @@ void MapMatrix::draw_map()
 	// #### begin Ban 8/12 #######//
 	int temp3 = vga_back.buf_true_pitch() -2;
 	short *temp6 = vga_back.buf_ptr((image_x1 + image_x2)/2, image_y1);
+#ifdef ASM_FOR_MSVC
 	_asm
 	{
 		MOV AX , DS
@@ -414,6 +417,7 @@ PutLineLower:					// draw lower triangle
 		DEC	EBX					// decrease the remain height
 		JNZ	PutLineLower		// loop
 	}
+#endif
 	// #### end Ban 8/12 #######//
 //	{	// traversal of location in MapMatrix
 //		int pixelX = (image_x1 + image_x2 + 1) / 2;
@@ -671,6 +675,7 @@ void MapMatrix::disp()
 			short *temp2 = save_image_buf +101;
 			int temp3 = vga_back.buf_true_pitch() -2;
 			short *temp6 = vga_back.buf_ptr((image_x1 +image_x2)/2, image_y1);
+#ifdef ASM_FOR_MSVC
 		_asm
 		{
 			MOV AX , DS
@@ -718,6 +723,7 @@ PutLineLower:
 			DEC	EAX				// decrease the remain height
 			JNZ	PutLineLower	// loop
 		}
+#endif
 		// #### end Ban 8/12 #######//
 		}
 		else

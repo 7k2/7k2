@@ -498,6 +498,7 @@ short Magic::draw(short R, short G, short B, int mode)
 	short prev_r;
 	short prev_g;
 	short prev_b;
+#ifdef ASM_FOR_MSVC
 	_asm
 	{
 		mov ax, R  //R = R *31 /255;
@@ -520,6 +521,7 @@ MODE_ODD:
 		mov G, ax
 END:
 	}
+#endif
 	prev_r = R; 
 	prev_g = G; 
 	prev_b = B; 
@@ -672,6 +674,7 @@ void Magic::straight_light_beam(VgaBuf *vgabuf, int x1, int y1, int x2, int y2,
 	int	y_inc = (x2 - x1) > 0 ? 2 : -2;
 	int mode_offset = mode *12;
 	unsigned short *base = check_table;
+#ifdef ASM_FOR_MSVC
 	_asm
 	{
 		mov ax, R1  //R1 = R1 *31 /255;
@@ -708,6 +711,7 @@ END:	mov eax, thickness
 		sub eax, lightness
 		mov diff, eax
 	}
+#endif
 	if (diff <1)
 		diff =1;
 	if ((d_y == 0) && (d_x == 0))
@@ -738,6 +742,7 @@ END:	mov eax, thickness
 			temp_b = (B1 * ratio) >>4;
 			if ((k > - lightness) && (k < lightness))
 			{
+#ifdef ASM_FOR_MSVC
 				for (i = 0; i<= limit; i ++) //draw one line
 				_asm
 				{
@@ -776,9 +781,11 @@ END:	mov eax, thickness
 FINISH11:			add esi, x_inc			//point = point + x_inc;
 					mov point, esi
 				}
+#endif
 			}
 			else
 			{
+#ifdef ASM_FOR_MSVC
 				for (i = 0; i<= limit; i ++) //draw one line
 				_asm
 				{
@@ -837,6 +844,7 @@ END12:				mov ax, prev_r			//*point = prev_r | prev_g | prev_b;
 FINISH12:			add esi, x_inc			//point = point + x_inc;
 					mov point, esi
 				}
+#endif
 			}	
 		}
 	}
@@ -865,6 +873,7 @@ FINISH12:			add esi, x_inc			//point = point + x_inc;
 			temp_b = (B1 * ratio) >>4;
 			if ((k > - lightness) && (k < lightness))
 			{
+#ifdef ASM_FOR_MSVC
 				for (i = 0; i<= limit; i ++) //draw one line
 				_asm
 				{
@@ -903,9 +912,11 @@ FINISH12:			add esi, x_inc			//point = point + x_inc;
 FINISH21:			add esi, line			//point = point + line;
 					mov point, esi
 				}
+#endif
 			}
 			else
 			{
+#ifdef ASM_FOR_MSVC
 				for (i = 0; i<= limit; i ++) //draw one line
 				_asm
 				{
@@ -964,6 +975,7 @@ END22:				mov ax, prev_r			//*point = prev_r | prev_g | prev_b;
 FINISH22:			add esi, line			//point = point + line;
 					mov point, esi
 				}
+#endif
 			}
 		}
 	}
@@ -996,6 +1008,7 @@ void Magic::straight_light_beam2(VgaBuf *vgabuf, int x1, int y1, int x2, int y2,
 	int	y_inc = (x2 - x1) > 0 ? 2 : -2;
 	int mode_offset = mode *12;
 	unsigned short *base = check_table;
+#ifdef ASM_FOR_MSVC
 	_asm
 	{
 		mov ax, R1  //R1 = R1 *31 /255;
@@ -1032,6 +1045,7 @@ END:	mov eax, thickness
 		sub eax, lightness
 		mov diff, eax
 	}
+#endif
 	if (diff <1)
 		diff =1;
 	if ((d_y == 0) && (d_x == 0))
@@ -1156,6 +1170,7 @@ END:	mov eax, thickness
 			temp_b = (B1 * ratio) >>4;
 			if ((k > - lightness) && (k < lightness))
 			{
+#ifdef ASM_FOR_MSVC
 				for (i = 0; i<= limit; i ++) //draw one line
 				_asm
 				{
@@ -1194,9 +1209,11 @@ END:	mov eax, thickness
 FINISH11:			add esi, x_inc			//point = point + x_inc;
 					mov point, esi
 				}
+#endif
 			}
 			else
 			{
+#ifdef ASM_FOR_MSVC
 				for (i = 0; i<= limit; i ++) //draw one line
 				_asm
 				{
@@ -1255,6 +1272,7 @@ END12:				mov ax, prev_r			//*point = prev_r | prev_g | prev_b;
 FINISH12:			add esi, x_inc			//point = point + x_inc;
 					mov point, esi
 				}
+#endif
 			}	
 		}
 	}
@@ -1375,6 +1393,7 @@ FINISH12:			add esi, x_inc			//point = point + x_inc;
 			temp_b = (B1 * ratio) >>4;
 			if ((k > - lightness) && (k < lightness))
 			{
+#ifdef ASM_FOR_MSVC
 				for (i = 0; i<= limit; i ++) //draw one line
 				_asm
 				{
@@ -1413,9 +1432,11 @@ FINISH12:			add esi, x_inc			//point = point + x_inc;
 FINISH21:			add esi, line			//point = point + line;
 					mov point, esi
 				}
+#endif
 			}
 			else
 			{
+#ifdef ASM_FOR_MSVC
 				for (i = 0; i<= limit; i ++) //draw one line
 				_asm
 				{
@@ -1474,6 +1495,7 @@ END22:				mov ax, prev_r			//*point = prev_r | prev_g | prev_b;
 FINISH22:			add esi, line			//point = point + line;
 					mov point, esi
 				}
+#endif
 			}
 		}
 	}
@@ -1873,6 +1895,7 @@ void Magic::draw_circle(VgaBuf *vgabuf, int x1, int y1, int radius, char r_x, ch
 	unsigned short *base2 = color_table;
 	unsigned short *base3 = dist_table;
 	up_level = 	(radius * radius);
+#ifdef ASM_FOR_MSVC
 	_asm
 	{
 		mov ax, R1  //R1 = R1 *31 /255;
@@ -2056,6 +2079,7 @@ MODE_0:	shr eax, 1
 		mov [esi+40], bx
 FINISH:
 	}
+#endif
 	if (start_x == end_x || start_y == end_y)
 		return;
 	
@@ -2069,6 +2093,7 @@ FINISH:
 	{
 		mag = temp_mag;
 		point = temp_point;
+#ifdef ASM_FOR_MSVC
 		_asm
 		{
 		mov esi, temp_dis_state	//dis_state = temp_dis_state;
@@ -2188,6 +2213,7 @@ TD_MINS:dec edi				//	temp_dis_state --;
 		mov temp_dis_state, edi
 TD_PLUS:
 		}
+#endif
 	}
 }	
 // ----------- End of function Magic::draw_circle ----------//
@@ -2226,6 +2252,7 @@ void Magic::draw_circle2(VgaBuf *vgabuf, int x1, int y1, int radius, char r_x, c
 	if (r_y < 0)
 		r_y = 0;
 		
+#ifdef ASM_FOR_MSVC
 	_asm
 	{
 		mov ax, R1  //R1 = R1 *31 /255;
@@ -2409,6 +2436,7 @@ MODE_0:	shr eax, 1
 		mov [esi+40], bx
 FINISH:
 	}
+#endif
 	if (start_x == end_x || start_y == end_y)
 		return;
 	
@@ -2431,6 +2459,7 @@ FINISH:
 	{
 		mag = temp_mag;
 		point = temp_point;
+#ifdef ASM_FOR_MSVC
 		_asm
 		{
 		mov esi, temp_dis_state	//dis_state = temp_dis_state;
@@ -2558,6 +2587,7 @@ TD_MINS:dec edi				//	temp_dis_state --;
 		mov temp_dis_state, edi
 TD_PLUS:
 		}
+#endif
 	}
 /*
 	int mag1, mag2;
