@@ -239,9 +239,9 @@ void Flame::rise(short wind)
 {
 	// rise of each particle of frame
 	unsigned char *p;			// pointer to heat_map
-/*
+
 	short x,y;
-	
+/*
 	// 1st version, left to right, top to bottom
 	for( x=0; x < map_width; ++x)
 	{
@@ -262,7 +262,7 @@ void Flame::rise(short wind)
 			}
 		}
 	}
-	
+*/
 	 
 	// 2nd version top to bottom, left to center and right to center
 	for( y = map_height-2; y >= 0; --y)
@@ -302,8 +302,9 @@ void Flame::rise(short wind)
 		}
 
 	}
-*/
 
+
+#if 0
 
 	// 2nd version assembly version
 	const unsigned int BALANCE_PERIOD = 11;
@@ -462,6 +463,7 @@ void Flame::rise(short wind)
 	rise_4:
 		cld
 	}
+#endif
 }
 //-------------- End Function Flame::rise ----------//
 
@@ -531,29 +533,12 @@ void Flame::gen_bitmap(unsigned char shadeColor)
 
 	unsigned char *b = bitmap+2*sizeof(short);
 	unsigned char *p = heat_map+(map_height-1)*map_width;
-	short mapHeight = map_height;
-	short mapWidth = map_width;
-	_asm
-	{
-		mov	edi, b
-		mov	esi, p
-		cld
-		movzx	ecx, mapHeight
-		movzx	edx, mapWidth
-		lea	ebx, colorTable
-	gen_bitmap_loop2:
-		push	ecx
-		mov	ecx, edx
-	gen_bitmap_loop3:
-		lodsb
-		xlatb	[ebx]
-		stosb
-		loop	gen_bitmap_loop3
 
-		sub	esi, edx
-		sub	esi, edx
-		pop	ecx
-		loop	gen_bitmap_loop2
+	for(int i = 0; i < map_height; i++)
+	{
+		for(int j = 0; j < map_width; j++)
+			*b++ = colorTable[(unsigned int)*p++];
+		p -= 2 * map_width;
 	}
 }
 //-------------- End Function Flame::gen_bitmap ----------//
@@ -602,61 +587,25 @@ void Flame::mask_transparent()
 	if( map_width & 1)
 	{
 		// odd number
-		/*
 		for( short y = 0; y < map_height; ++y)
 			for( short x = y & 1; x < map_width; x += 2)
 		{
-			*b = 255;
+			*b = TRANSPARENT_CODE;
 			b += 2;
-		}
-		*/
-		int len = map_height * map_width /2;
-		_asm
-		{
-			mov	al, TRANSPARENT_CODE
-			mov	edi, b
-			mov	ecx, len
-			cld
-		mask_trans_loop1:
-			stosb
-			inc	edi
-			loop	mask_trans_loop1
 		}
 	}
 	else
 	{
 		// even number
-		/*
 		for( short y = 0; y < map_height; ++y)
 		{
 			b+= y & 1;		// shift one byte on odd line
 			for( short x = y & 1; x < map_width; x += 2)
 			{
-				*b = 255;
+				*b = TRANSPARENT_CODE;
 				b += 2;
 			}
 			b-= y & 1;		// shift back to even dot.
-		}
-		*/
-		int	mapHeight = map_height, mapWidth = map_width/2;
-		_asm
-		{
-			mov	ecx, mapHeight
-			mov	edi, b
-			mov	al, TRANSPARENT_CODE
-			mov	edx,0
-		mask_trans_loop2:
-			push	ecx
-			add	edi, edx
-			mov	ecx, mapWidth
-		mask_trans_loop3:
-			stosb
-			inc	edi
-			loop	mask_trans_loop3
-			sub	edi, edx
-			pop	ecx
-			xor	edx,1
-			loop	mask_trans_loop2
 		}
 	}
 }
