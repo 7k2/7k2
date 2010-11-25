@@ -21,15 +21,12 @@
 // Filename    : OFLC.CPP
 // Description : class Flc (animation format)
 
+// WARNING: THIS IS USED IN THE CAMPAIGN SEQUENCES. IT WILL LIKELY CAUSE A CRASH BECAUSE 
+// THE OLD FLC LIBRARY IS MISSING.
+
 #include <oflc.h>
 #include <all.h>
 
-extern "C"
-{
-	#include <topflc.h>
-	#include <tflib.h>
-	#include <tfanimat.h>
-}
 //#include <mem.h>
 
 
@@ -60,19 +57,11 @@ int Flc::open_file(char *filename)
 	deinit();
 
 	// --------- open flc file -------//
-	if((flc_handle = TFAnimation_NewFile(filename)) == NULL)
-		return 0;
 
 	// --------- allocate frame buffer and palette buffer -------//
-	if( TFAnimation_GetInfo(flc_handle, &flc_info) != TF_SUCCESS )
-	{
-		TFAnimation_Delete(flc_handle);
-		return 0;
-	}
 
 	frame_buffer = (unsigned char *) mem_add(width() * height());
 	palette_buffer = (unsigned char *) mem_add( 256*3 );
-	TFBuffers_Set( flc_handle, frame_buffer, palette_buffer);
 
 	init_flag = 1;
    return 1;
@@ -91,19 +80,11 @@ int Flc::open_mem(void *flcBuffer)
 	deinit();
 
 	// --------- open flc file -------//
-	if((flc_handle = TFAnimation_NewMem(flcBuffer)) == NULL)
-		return 0;
 
 	// --------- allocate frame buffer and palette buffer -------//
-	if( TFAnimation_GetInfo(flc_handle, &flc_info) != TF_SUCCESS )
-	{
-		TFAnimation_Delete(flc_handle);
-		return 0;
-	}
 
 	frame_buffer = (unsigned char *) mem_add(width() * height());
 	palette_buffer = (unsigned char *) mem_add( 256*3 );
-	TFBuffers_Set( flc_handle, frame_buffer, palette_buffer);
 
 	init_flag = 1;
    return 1;
@@ -116,7 +97,6 @@ void Flc::deinit()
 {
 	if(init_flag)
 	{
-		TFAnimation_Delete(flc_handle);
 		mem_del(frame_buffer);
 		mem_del(palette_buffer);
 		init_flag = 0;
@@ -127,13 +107,12 @@ void Flc::deinit()
 // ------------ begin of function Flc::set_error_handler -------- //
 void Flc::set_error_handler(void (*handler)(char *msg) )
 {
-	TFErrorHandler_Set(handler);
 }
 
 // ------------ begin of function Flc::advance -------- //
 int Flc::advance()
 {
-	return ( TFFrame_Decode(flc_handle) == TF_SUCCESS);
+	return 0;
 }
 // ------------ end of function Flc::advance -------- //
 
@@ -141,7 +120,7 @@ int Flc::advance()
 // ------------ begin of function Flc::rewind -------- //
 int Flc::rewind()
 {
-	return ( TFFrame_Reset(flc_handle) == TF_SUCCESS);
+	return 0;
 }
 // ------------ end of function Flc::rewind -------- //
 

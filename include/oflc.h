@@ -25,18 +25,12 @@
 #ifndef __OFLC_H
 #define __OFLC_H
 
-extern "C"
-{
-	#include <tfanimat.h>
-}
-
 class Flc
 {
 public:
-	TFAnimation*		flc_handle;
+	//TFAnimation*		flc_handle;
 	unsigned char*		frame_buffer;
 	unsigned char*		palette_buffer;
-	TFAnimationInfo	flc_info;
 	int					init_flag;
 
 public:
@@ -50,11 +44,11 @@ public:
 	static void set_error_handler( void (*handler)(char *msg) );
 
 	// -------- get info function -------//
-	short	width()		{ return flc_info.Width; }
-	short	height()		{ return flc_info.Height; }
-	short max_frame() { return flc_info.NumFrames; }
-	short cur_frame() { TFAnimation_GetInfo(flc_handle, &flc_info); return flc_info.CurFrame; }
-	unsigned char *get_palette() {TFAnimation_GetInfo(flc_handle, &flc_info); return (unsigned char *)flc_info.Palette; }
+	short	width()   { return 0; }
+	short	height()  { return 0; }
+	short max_frame() { return 0; }
+	short cur_frame() { return 0; }
+	unsigned char *get_palette() { return 0; }
 
 	int	advance();		// advance to next frame
 	int	rewind();		// rewind to the beginning
