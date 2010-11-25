@@ -669,7 +669,7 @@ void Sys::yield()
 
 	// ###### begin Gilbert 11/2 #######//
 #ifdef DEBUG
-	const remoteTimeGroup = 32;
+	const unsigned short remoteTimeGroup = 32;
 	static unsigned long remoteTimeFreq[remoteTimeGroup] = 
 	{ 
 		0, 0, 0, 0, 0, 0, 0, 0,	0, 0, 0, 0, 0, 0, 0, 0,
