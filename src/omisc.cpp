@@ -1496,6 +1496,7 @@ char* Misc::roman_number(int inNum)
 
 void Misc::memsetw(short *p, int w, size_t count)
 {
+#ifdef ASM_FOR_MSVC
 	_asm
 	{
 		mov	ax, word ptr w
@@ -1509,6 +1510,9 @@ void Misc::memsetw(short *p, int w, size_t count)
 		stosw						; // remaining last word
 memsetw_end:
 	}
+#else
+	memset(p, w, count * sizeof(short));
+#endif
 }
 //------- End of function Misc::memsetw -------//
 
