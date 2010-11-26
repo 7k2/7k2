@@ -24,6 +24,8 @@
 #ifndef __OVGA_H
 #define __OVGA_H
 
+#include <asmfun.h>
+
 #ifndef __OVGABUF_H
 #include <ovgabuf.h>
 #endif
@@ -148,7 +150,7 @@ private:
 extern Vga vga;
 extern "C"
 {
-	extern short transparent_code_w;
+	extern short transparent_code_w __asmsym__("_transparent_code_w");
 }
 
 //--------------------------------------------//

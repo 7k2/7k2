@@ -64,11 +64,6 @@ struct RGBColor
 //DEFINE_GUID( IID_IDirectDraw4,                  0x9c59509a,0x39bd,0x11d1,0x8c,0x4a,0x00,0xc0,0x4f,0xd9,0x30,0xc5 );
 
 //MACRO DEFINED BY SXM
-extern Vga vga;
-extern "C"
-{
-	extern short transparent_code_w;
-}
 
 #define		HZ_SHADOW(x)			(m_ChineseShadowColor)
 #define		HZ_FOREGROUND(x)		(m_ChineseForegroundColor)
