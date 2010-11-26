@@ -39,7 +39,6 @@ ib_wr.asm
 ib_wrm.asm
 ic.asm
 ij_tr.asm
-ip_td.asm
 );
 
 build_targets(\@targets);
