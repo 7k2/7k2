@@ -5715,6 +5715,7 @@ void Tutor::disp_objective_text(int objestiveRecNo)
 			strcpy(allow_detect_button_name, "BLESS");
 
 			// reset cur_text_block_id for the new objective
+			int i;
 			for (i = 0; i <text_block_count; i++)
 			{
 				TutorTextBlock* textBlock = text_block_array+i;
@@ -6999,7 +7000,8 @@ void Tutor::disp_objective_text(int objestiveRecNo)
 			reset_detect_variables();
 			
 			// reset cur_text_block_id for the new objective
-			for (int i = 0; i <text_block_count; i++)
+			int i;
+			for (i = 0; i <text_block_count; i++)
 			{
 				TutorTextBlock* textBlock = text_block_array+i;
 			

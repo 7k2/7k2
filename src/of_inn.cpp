@@ -660,7 +660,8 @@ int FirmInn::transfer_inn_unit(int recNo)
 	int anyOwnInn = 0;
 	int firmRecno = 1+m.random(firm_array.size());
 
-	for( int firmCount = firm_array.size(); firmCount > 0; --firmCount, ++firmRecno )
+	int firmCount;
+	for( firmCount = firm_array.size(); firmCount > 0; --firmCount, ++firmRecno )
 	{
 		if( firmRecno > firm_array.size() )
 			firmRecno -= firm_array.size();

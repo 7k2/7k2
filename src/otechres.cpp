@@ -193,7 +193,8 @@ void TechRes::load_tech_info()
 
 	memset( total_tech_level_array, 0, sizeof(total_tech_level_array) );
 
-	for( int i=0 ; i<tech_count ; i++ )
+	int i;
+	for( i=0 ; i<tech_count ; i++ )
 	{
 		techRec  = (TechRec*) dbTech->read(i+1);
 		techInfo = tech_info_array+i;
@@ -540,7 +541,8 @@ int TechInfo::can_research(int nationRecno, int checkLivePoint)
 	{
 		Nation* nationPtr = nation_array[nationRecno];
 
-		for( int i=0 ; i<nationPtr->ai_town_count ; i++ )
+		int i;
+		for( i=0 ; i<nationPtr->ai_town_count ; i++ )
 		{
 			Town* townPtr = town_array[ nationPtr->ai_town_array[i] ];
 

@@ -150,7 +150,8 @@ int FirmLair::think_repress_new_town()
 	else
 		maxOutstandingLair = 1;
 
-	for( int i=0 ; i<nationPtr->ai_camp_count ; i++ )
+	int i;
+	for( i=0 ; i<nationPtr->ai_camp_count ; i++ )
 	{
 		FirmLair* firmLair = firm_array[nationPtr->ai_camp_array[i]]->cast_to_FirmLair();
 

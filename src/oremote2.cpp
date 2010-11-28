@@ -252,7 +252,8 @@ void Remote::append_send_to_receive()
    if( send_queue[0].length() ==0 )
 		return;
 
-	for( int n = 0; n < RECEIVE_QUEUE_BACKUP; ++n)
+	int n;
+	for( n = 0; n < RECEIVE_QUEUE_BACKUP; ++n)
 	{
 		if( send_frame_count[0] == receive_frame_count[n])
 		{
@@ -354,7 +355,8 @@ int Remote::poll_msg()
 			// ##### begin Gilbert 27/4 ########//
 #ifdef DEBUG
 			int nationRecno = *(short *)(rMsg->data_buf + sizeof(DWORD));
-			for( int j = 1; j < LAST_FRAME_HISTORY; ++j )
+			int j;
+			for( j = 1; j < LAST_FRAME_HISTORY; ++j )
 			{
 				lastSendFrame[nationRecno][j-1] = lastSendFrame[nationRecno][j];
 			}
@@ -508,7 +510,8 @@ void Remote::process_receive_queue()
 	//---------- clear receive_queue[0] and shift from next queue ------//
 	rq.clear();
 
-	for( int n = 1; n < RECEIVE_QUEUE_BACKUP; ++n)
+	int n;
+	for( n = 1; n < RECEIVE_QUEUE_BACKUP; ++n)
 	{
 		receive_queue[n-1].swap(receive_queue[n]);
 		receive_frame_count[n-1] = receive_frame_count[n];

@@ -840,7 +840,8 @@ int Game::mp_select_service()
 
 	// ------ count button -----//
 
-	for( int b = 0; b < MAX_SERVICE_BUTTON && mp_obj.get_service_provider(b+1); ++b );
+	int b;
+	for( b = 0; b < MAX_SERVICE_BUTTON && mp_obj.get_service_provider(b+1); ++b );
 	int buttonCount = b;
 	if( buttonCount <= 0 )		// no service
 		return -1;
@@ -1606,7 +1607,8 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 #endif
 
 	mp_obj.poll_players();
-	for( int p = 1; p <= MAX_NATION && mp_obj.get_player(p); ++p )
+	int p;
+	for( p = 1; p <= MAX_NATION && mp_obj.get_player(p); ++p )
 	{
 		// host only identify himself
 		if( !remote.is_host || mp_obj.get_player(p)->pid() == mp_obj.my_player_id )
@@ -3075,7 +3077,8 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 
 								// assign initial race
 								int c = m.get_time() % MAX_RACE;
-								for( int t = 0; t < MAX_RACE; ++t, ++c )
+								int t;
+								for( t = 0; t < MAX_RACE; ++t, ++c )
 								{
 									c %= MAX_RACE;
 									if( raceAssigned_[c+1] == 0 )
@@ -3218,7 +3221,8 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 										break;
 								}
 							}
-							for( int p = 0; p < regPlayerCount && regPlayerId[p] != from; ++p );
+							int p;
+							for( p = 0; p < regPlayerCount && regPlayerId[p] != from; ++p );
 							if( cl <= MAX_RACE && p < regPlayerCount &&
 								(shareRace || raceAssigned_[cl] == 0 ) )		// more than one player can use the same race
 							{
@@ -3265,7 +3269,8 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 							{
 								for( cl = 1; cl <= MAX_COLOR_SCHEME && colorAssigned[cl-1]; ++cl);
 							}
-							for( int p = 0; p < regPlayerCount && regPlayerId[p] != from; ++p );
+							int p;
+							for( p = 0; p < regPlayerCount && regPlayerId[p] != from; ++p );
 							if( cl <= MAX_COLOR_SCHEME && !colorAssigned[cl-1] && p < regPlayerCount )
 							{
 								if( playerColor[p] > 0 )
@@ -3297,7 +3302,8 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 						}
 						{	// other player change color
 							err_when( remote.is_host );
-							for( int p = 0; p < regPlayerCount && regPlayerId[p] != ((MpStructAcceptColor *)recvPtr)->request_player_id; ++p );
+							int p;
+							for( p = 0; p < regPlayerCount && regPlayerId[p] != ((MpStructAcceptColor *)recvPtr)->request_player_id; ++p );
 							short cl = ((MpStructAcceptColor *)recvPtr)->color_scheme_id;
 							if( cl <= MAX_COLOR_SCHEME && p < regPlayerCount )
 							{
@@ -3365,6 +3371,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 								mp_obj.send_stream(BROADCAST_PID, &msgSetGemStones, sizeof(msgSetGemStones));
 
 								// update himself
+								int p;
 								for(p = 0; p < regPlayerCount && regPlayerId[p] != mp_obj.my_player_id; ++p);
 								if( p < regPlayerCount )
 								{
@@ -3485,7 +3492,8 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 
 						if( remote.is_host )
 						{
-							for( int p = 0; p < regPlayerCount && regPlayerId[p] != mp_obj.my_player_id ; ++p );
+							int p;
+							for( p = 0; p < regPlayerCount && regPlayerId[p] != mp_obj.my_player_id ; ++p );
 							if( r <= MAX_RACE && r >= -MAX_MONSTER_TYPE && p < regPlayerCount &&
 								(shareRace || raceAssigned_[r] == 0 ) )		// more than one player can use the same race
 							{
@@ -3515,7 +3523,8 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 						{
 							if( !colorAssigned[r-1] )
 							{
-								for( int p = 0; p < regPlayerCount && regPlayerId[p] != mp_obj.my_player_id; ++p );
+								int p;
+								for( p = 0; p < regPlayerCount && regPlayerId[p] != mp_obj.my_player_id; ++p );
 								if( r <= MAX_COLOR_SCHEME && !colorAssigned[r-1] && p < regPlayerCount )
 								{
 									// unmark current color
@@ -3945,7 +3954,8 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 			{
 				// see if all player is ready
 				short sumBalance = 0;
-				for( int q = 0; q < regPlayerCount && playerReadyFlag[q]; ++q)
+				int q;
+				for( q = 0; q < regPlayerCount && playerReadyFlag[q]; ++q)
 				{
 					err_when( playerBalance[q] == 0 );
 					sumBalance += playerBalance[q];
@@ -4439,6 +4449,7 @@ int Game::mp_select_load_option(char *fileName)
 	if( remote.is_host )
 	{
 		colorAssigned[tempConfig.player_nation_color-1] = 1;
+		int p;
 		for( p = 0; p < regPlayerCount && regPlayerId[p] != mp_obj.my_player_id; ++p );
 		if( p < regPlayerCount )
 		{
@@ -5603,6 +5614,7 @@ int Game::mp_select_load_option(char *fileName)
 				{
 					vga.use_back();
 					vga.active_buf->d3_panel_down( 126, 1, 665, 69 );
+					int p;
 					for( p = 0; p < regPlayerCount; ++p)
 					{
 						// put a tick if ready
@@ -5659,6 +5671,7 @@ int Game::mp_select_load_option(char *fileName)
 					vga.active_buf->d3_panel_down( 126, y1, 665, y2 );
 					int ny = y1 + 4;
 					int lineDisp = (y2-4 - ny + 1 ) / font_cara.max_font_height;
+					int p;
 					p = messageList.size() - lineDisp + 1;		// display 4 lines
 					if( p <= 0 )
 						p = 1;
@@ -5849,7 +5862,8 @@ int Game::mp_select_load_option(char *fileName)
 								mp_obj.send_stream( BROADCAST_PID, &msgAcceptColor, sizeof(msgAcceptColor) );
 
 								// send ready flag
-								for( int c = 0; c < regPlayerCount; ++c)
+								int c;
+								for( c = 0; c < regPlayerCount; ++c)
 								{
 									if( playerReadyFlag[c] )
 									{
@@ -5907,6 +5921,7 @@ int Game::mp_select_load_option(char *fileName)
 						if( regPlayerCount < MAX_NATION && ((MpStructAcceptNewPlayer *)recvPtr)->player_id != mp_obj.my_player_id )
 						{
 							// search if this player has existed
+							int p;
 							for( p=0; p < regPlayerCount && regPlayerId[p] != ((MpStructAcceptNewPlayer *)recvPtr)->player_id; ++p );
 							regPlayerId[p] = ((MpStructAcceptNewPlayer *)recvPtr)->player_id;
 							playerReadyFlag[p] = 0;
@@ -5937,7 +5952,8 @@ int Game::mp_select_load_option(char *fileName)
 					case MPMSG_ACCEPT_COLOR:
 						{	// other player change color
 							err_when( remote.is_host );
-							for( int p = 0; p < regPlayerCount && regPlayerId[p] != ((MpStructAcceptColor *)recvPtr)->request_player_id; ++p );
+							int p;
+							for( p = 0; p < regPlayerCount && regPlayerId[p] != ((MpStructAcceptColor *)recvPtr)->request_player_id; ++p );
 							short cl = ((MpStructAcceptColor *)recvPtr)->color_scheme_id;
 							if( cl <= MAX_COLOR_SCHEME && p < regPlayerCount )
 							{
@@ -6119,6 +6135,7 @@ int Game::mp_select_load_option(char *fileName)
 			// ########## begin Gilbert 7/4 ##########//
 			// --------- or click at the tick near name ---------//
 
+			int p;
 			for(p = 0; p < regPlayerCount && regPlayerId[p] != mp_obj.my_player_id; ++p);
 			if( p < regPlayerCount 
 				&& (mouse.any_click(BUTTON8_X1, BUTTON8_Y1, BUTTON8_X2, BUTTON8_Y2)
@@ -6147,7 +6164,8 @@ int Game::mp_select_load_option(char *fileName)
 			{
 				// see if all player is ready
 				short sumBalance = 0;
-				for( int q = 0; q < regPlayerCount && playerReadyFlag[q]; ++q)
+				int q;
+				for( q = 0; q < regPlayerCount && playerReadyFlag[q]; ++q)
 				{
 					err_when( playerBalance[q] == 0 );
 					sumBalance += playerBalance[q];
@@ -6255,6 +6273,7 @@ int Game::mp_select_load_option(char *fileName)
 			// ------- put nations -------//
 
 			playerCount = 0;
+			int p;
 			for( p = 0; p < regPlayerCount; ++p )
 			{
 				PID_TYPE playerId = regPlayerId[p];

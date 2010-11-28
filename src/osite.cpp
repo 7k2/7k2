@@ -287,7 +287,8 @@ void SiteArray::generate_raw_site(int rawGenCount)
 	Site* sitePtr;
 	int   existRawSiteCount=0;
 
-	for( int i=size() ; i>0 ; i-- )
+	int i;
+	for( i=size() ; i>0 ; i-- )
 	{
 		if( site_array.is_deleted(i) )
 			continue;
@@ -407,7 +408,8 @@ int SiteArray::create_raw_site(int regionId, int townRecno)
 
 	memset( rawCountArray, 0, sizeof(rawCountArray) );
 
-	for( int i=size(); i>0 ; i-- )
+	int i;
+	for( i=size(); i>0 ; i-- )
 	{
 		if( site_array.is_deleted(i) )
 			continue;
@@ -764,7 +766,8 @@ void SiteArray::go_to_a_raw_site()
 	int arraySize = size();
 	int i = selected_recno ? selected_recno : 0;
 
-	for( int j=1 ; j<=arraySize ; j++ )
+	int j;
+	for( j=1 ; j<=arraySize ; j++ )
 	{
 		if( ++i > arraySize)
 			i = 1;

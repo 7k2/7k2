@@ -78,7 +78,8 @@ void FirmIncubator::think_new_production()
 	int 		 weaponTypeCount=0, totalWeaponCount=0;
 	UnitInfo* unitInfo;
 
-	for( int i=0; i<MAX_INCUBATE_TYPE ; i++ )
+	int i;
+	for( i=0; i<MAX_INCUBATE_TYPE ; i++ )
 	{
 		unitInfo = unit_res[ incubate_unit_id[i] ];
 

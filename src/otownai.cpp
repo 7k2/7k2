@@ -774,7 +774,8 @@ int Town::think_build_fort()
 	Firm*		 firmPtr;
 	int		 fortCount=0;
 
-	for(int i=linked_firm_count-1; i>=0; --i)
+	int i;
+	for(i=linked_firm_count-1; i>=0; --i)
 	{
 		err_when(firm_array.is_deleted(linked_firm_array[i]));
 
@@ -1181,7 +1182,8 @@ int Town::think_build_base()
 
 	GodInfo* godInfo;
 
-	for( int i=1 ; i<=god_res.god_count ; i++ )
+	int i;
+	for( i=1 ; i<=god_res.god_count ; i++ )
 	{
 		godInfo = god_res[i];
 
@@ -1699,7 +1701,8 @@ int Town::new_base_town_status()
 
 	Town* townPtr;
 
-	for( int i=linked_town_count-1 ; i>=0 ; i-- )
+	int i;
+	for( i=linked_town_count-1 ; i>=0 ; i-- )
 	{
 		townPtr = town_array[ linked_town_array[i] ];
 

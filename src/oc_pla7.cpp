@@ -115,7 +115,8 @@ void CampaignEastWest::plot_a7_create_game()
 			FirmSpecial *firmSpecial = firmPtr->cast_to_FirmSpecial();
 
 			short bestTown[MAX_RACE];
-			for( int s = MAX_TRAINEE - 2 - m.random(2) ; s > 0 && firmSpecial->scan_best_recruitable_town(bestTown) > 0; --s )
+			int s;
+			for( s = MAX_TRAINEE - 2 - m.random(2) ; s > 0 && firmSpecial->scan_best_recruitable_town(bestTown) > 0; --s )
 			{
 				firmSpecial->recruit_trainee( bestTown[0], TRAIN_UNIT_SPECIAL, COMMAND_AUTO );
 			}

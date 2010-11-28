@@ -333,7 +333,8 @@ int NationMonster::think_acquire_live_points()
 	if( ai_camp_count==0 )
 		return 0;
 
-	for( int i=0 ; i<ai_camp_count ; i++ )
+	int i;
+	for( i=0 ; i<ai_camp_count ; i++ )
 	{
 		Firm* firmPtr = firm_array[ai_camp_array[i]];
 

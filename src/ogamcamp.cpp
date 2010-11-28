@@ -119,7 +119,8 @@ void Game::run_campaign()
 
 			//--- write the execution counters ----//
 
-			for( int i=0 ; i<cur_campaign->max_stage ; i++ )
+			int i;
+			for( i=0 ; i<cur_campaign->max_stage ; i++ )
 			{
 				game.debug_log->printf( "Stage %d: %d\n\r", i+1, cur_campaign->stage_run_count_array[i] );		// stage run counters
 				total_stage_run_count_array[i] += cur_campaign->stage_run_count_array[i];
@@ -159,7 +160,8 @@ void Game::run_campaign()
 
 		game.debug_log->printf( "TOTAL\n\r" );
 
-		for( int i=0 ; i<maxStage ; i++ )
+		int i;
+		for( i=0 ; i<maxStage ; i++ )
 			game.debug_log->printf( "Stage %d: %d\n\r", i+1, total_stage_run_count_array[i] );		// stage run counters
 
 		game.debug_log->printf( "\n\r" );

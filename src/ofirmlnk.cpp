@@ -564,7 +564,8 @@ int Firm::scan_best_recruitable_town(short *townRecnoArray, int raceId, int requ
 
 	//-------- adjust raceId ---------//
 
-	for( int i = linked_town_count-1; i >= 0; --i )
+	int i;
+	for( i = linked_town_count-1; i >= 0; --i )
 	{
 		err_when( town_array.is_deleted(linked_town_array[i]));
 

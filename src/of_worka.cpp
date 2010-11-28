@@ -58,7 +58,8 @@ int FirmWork::think_inc_worker_supply()
 	int  availableWorkforce=0, linkedTownCount=0;
 	Town *townPtr;
 
-	for( int i=0 ; i<linked_town_count ; i++ )
+	int i;
+	for( i=0 ; i<linked_town_count ; i++ )
 	{
 		if( linked_town_enable_array[i] != LINK_EE )
 			continue;
@@ -139,7 +140,8 @@ int FirmWork::most_jobless_race()
 
 	memset( joblessPopArray, 0, sizeof(joblessPopArray) );
 
-	for( int i=0 ; i<nationPtr->ai_town_count ; i++ )
+	int i;
+	for( i=0 ; i<nationPtr->ai_town_count ; i++ )
 	{
 		townPtr = town_array[nationPtr->ai_town_array[i]];
 

@@ -70,7 +70,8 @@ void FirmMonsterFortress::process_monster_firm()
 		if( archerPtr->remain_attack_delay > 0 )
 			continue;
 
-		for( int j = 0; j < target_count; ++j, ++i )
+		int j;
+		for( j = 0; j < target_count; ++j, ++i )
 		{
 			if( i >= target_count )
 				i = 0;
@@ -174,7 +175,8 @@ void FirmMonsterFortress::process_scan_target()
 
 		// --- if no archer can attack also remove -----//
 
-		for( int a = 0; a < archer_count && !unit_array[archer_unit_recno[a]]->can_attack_target(targetObj->base_obj_recno); ++a );
+		int a;
+		for( a = 0; a < archer_count && !unit_array[archer_unit_recno[a]]->can_attack_target(targetObj->base_obj_recno); ++a );
 		if( a >= archer_count )
 			continue;		// no archer can attack
 
@@ -246,11 +248,13 @@ void FirmMonsterFortress::process_scan_target()
 
 					// if in target list , skip
 
-					for( int i = 0; i < target_count && target_base_obj_recno[i] != unitPtr->base_obj_recno; ++i );
+					int i;
+					for( i = 0; i < target_count && target_base_obj_recno[i] != unitPtr->base_obj_recno; ++i );
 					if( i < target_count )
 						continue;		// inside the list
 
-					for( int a = 0; a < archer_count && !unit_array[archer_unit_recno[a]]->can_attack_target(unitPtr->base_obj_recno); ++a );
+					int a;
+					for( a = 0; a < archer_count && !unit_array[archer_unit_recno[a]]->can_attack_target(unitPtr->base_obj_recno); ++a );
 					if( a >= archer_count )
 						continue;		// no archer can attack
 

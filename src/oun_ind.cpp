@@ -158,7 +158,8 @@ void Unit::think_independent_hero()
 
 	//------------------------------------------------//
 
-	for( int i=nation_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=nation_array.size() ; i>0 ; i-- )
 	{
 		if( nation_array.is_deleted(i) )
 			continue;

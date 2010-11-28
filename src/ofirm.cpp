@@ -188,7 +188,8 @@ void Firm::init(int xLoc, int yLoc, int nationRecno, int firmId, char* buildCode
 				firstBitmap = firmBuild->first_bitmap(k+1);
 				bitmapCount = firmBuild->bitmap_count(k+1);
 
-				for ( int j=0; j <bitmapCount; j++ )
+				int j;
+				for ( j=0; j <bitmapCount; j++ )
 				{
 					firmBitmap = firm_res.get_bitmap(firstBitmap + j);
 					if( firmBitmap )
@@ -436,7 +437,8 @@ void Firm::init_name()
 
 	memset( usedInstanceArray, 0, sizeof(usedInstanceArray) );
 
-	for( int i=firm_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=firm_array.size() ; i>0 ; i-- )
 	{
 		if( firm_array.is_deleted(i) )
 			continue;
@@ -766,7 +768,8 @@ void Firm::process_animation()
 					firstBitmap = firmBuild->first_bitmap(k+1);
 					bitmapCount = firmBuild->bitmap_count(k+1);
 
-					for ( int j=0; j <bitmapCount; j++ )
+					int j;
+					for ( j=0; j <bitmapCount; j++ )
 					{
 						firmBitmap = firm_res.get_bitmap(firstBitmap + j);
 						if( firmBitmap )
@@ -826,7 +829,8 @@ void Firm::next_day()
 
 		lastLinkedTown = townPtr->town_recno;
 
-		for( int j=0; j<townPtr->linked_firm_count ; j++ )
+		int j;
+		for( j=0; j<townPtr->linked_firm_count ; j++ )
 		{
 			if( townPtr->linked_firm_array[j] == firm_recno )
 				break;

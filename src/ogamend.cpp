@@ -135,7 +135,8 @@ void Game::game_end(int winNationRecno, int playerDestroyed, int surrenderToNati
 		char isPlayerWin = 0;
 
 		// count number of non-ai winners
-		for( int i = 1; i <= MAX_NATION; ++i )
+		int i;
+		for( i = 1; i <= MAX_NATION; ++i )
 		{
 			if( !nation_array.is_deleted(i) && !nation_array[i]->is_ai() 
 				&& nation_array[i]->check_win(1) ) // 1-checking only

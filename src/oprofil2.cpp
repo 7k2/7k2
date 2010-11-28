@@ -317,7 +317,8 @@ int PlayerProfile::register_menu()
 				profileDir.read( "*.PRF", 1 );		// sort file name
 				profileBlock.resize( sizeof(PlayerProfile) * profileDir.size() );
 				profileArray = (PlayerProfile *) profileBlock.p();
-				for( int i = 1; i <= profileDir.size(); ++i )
+				int i;
+				for( i = 1; i <= profileDir.size(); ++i )
 				{
 					if( profileArray[profileCount].load(profileDir[i]->name) )
 					{
@@ -617,7 +618,8 @@ int PlayerProfile::register_menu()
 			{
 				// checking same profile exist
 
-				for( int i = 0; i < profileCount; ++i )
+				int i;
+				for( i = 0; i < profileCount; ++i )
 				{
 					if( stricmp( profileArray[i].player_name, keyinPlayerName ) == 0 )
 					{

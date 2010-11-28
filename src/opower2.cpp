@@ -858,7 +858,8 @@ int Power::choose_cursor_unit_group(short pointingUnitRecno)
 	err_when( !u2);
 
 	int s = unit_array.size();
-	for( int i=1; i <= s; ++i )
+	int i;
+	for( i=1; i <= s; ++i )
 	{
 		if( !unit_array.is_deleted(i) && unit_array[i]->selected_flag)
 		{

@@ -44,7 +44,8 @@ void RegionArray::init_region_stat()
 
 	RegionInfo* regionInfo;
 
-	for( int i=1 ; i<=region_info_count ; i++ )
+	int i;
+	for( i=1 ; i<=region_info_count ; i++ )
 	{
 		regionInfo = region_array[i];
 
@@ -165,7 +166,8 @@ void RegionStat::update_stat()
 
 	Firm* firmPtr;
 
-	for( int i=firm_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=firm_array.size() ; i>0 ; i-- )
 	{
 		if( firm_array.is_deleted(i) )
 			continue;

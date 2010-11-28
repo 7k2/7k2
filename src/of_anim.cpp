@@ -249,7 +249,8 @@ void FirmAnimal::add_animal_unit(int unitId, int animalLevel)
 	char slotOccupiedFlag[MAX_DISPLAY_SLOT];
 	memset( slotOccupiedFlag, 0, sizeof(slotOccupiedFlag) );
 
-	for( int i = 0; i < animal_unit_count; ++i )
+	int i;
+	for( i = 0; i < animal_unit_count; ++i )
 	{
 		err_when( animal_unit_array[i].display_slot_id >= MAX_DISPLAY_SLOT );
 		if( animal_unit_array[i].display_slot_id >= 0 )

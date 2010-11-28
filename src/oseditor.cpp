@@ -205,7 +205,8 @@ void ScenarioEditor::disp_menu_bar(int refreshFlag)
 //		int x0 = ZOOM_X1+20;
 		int x = x0;
 		int y = ZOOM_Y1+5;
-		for( int i = 0; i < button_edit_mode.button_num; ++i )
+		int i;
+		for( i = 0; i < button_edit_mode.button_num; ++i )
 		{
 			// ####### begin Gilbert 22/1 #####//
 //			button_edit_mode[i].set_font(&font_bld);

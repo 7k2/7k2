@@ -106,7 +106,8 @@ void GodRes::second_init()
 //	}
 
 	// ##### begin Gilbert 2/7 #########//
-	for( int i=1 ; i<=god_res.god_count ; i++ )
+	int i;
+	for( i=1 ; i<=god_res.god_count ; i++ )
 	{
 		god_res[i]->target_monster_id = 0; //(i-1) % MAX_MONSTER_TYPE +1;
 	}
@@ -319,7 +320,8 @@ GodInfo* GodRes::operator[](int godId)
 void GodRes::update_prayer_count()
 {
 	// initialize all prayer_count
-	for( int i=0 ; i<god_count ; i++ )
+	int i;
+	for( i=0 ; i<god_count ; i++ )
 	{
 		memset( god_info_array[i].prayer_count, 0, sizeof(god_info_array[i].prayer_count) ) ;
 	}

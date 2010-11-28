@@ -399,7 +399,8 @@ int InGameMenu::detect()
 //	int ySpacing = font_bold_black.max_font_height + 10;
 	int ySpacing = font_bold_black.max_font_height + 6;
 
-   for( int b = 0; b < GAME_OPTION_COUNT; ++b)
+   int b;
+   for( b = 0; b < GAME_OPTION_COUNT; ++b)
    {
       if( game_menu_option_flag[b] == 1 &&
          (menu_hot_key[b] && mouse.key_code == menu_hot_key[b] ||

@@ -104,7 +104,8 @@ void Unit::execute_move()
 
 		team_info->validate();
 
-		for( int i=0 ; i<team_info->member_count ; i++ )
+		int i;
+		for( i=0 ; i<team_info->member_count ; i++ )
 		{
 			int unitRecno = team_info->member_unit_array[i];		// the leader is a member in team_info->member_unit_array[]
 
@@ -704,7 +705,8 @@ void Unit::execute_go_cast_power()
 		{
 			//--- set the current attack mode to the cast spell attack mode (whose attack range must be 1) ---//
 
-			for( int i=0 ; i<attack_count ; i++ )
+			int i;
+			for( i=0 ; i<attack_count ; i++ )
 			{
 				if( attack_info_array[i].attack_range==1 )
 				{
@@ -829,7 +831,8 @@ void Unit::execute_transform_fortress()
 	if( FirmMonsterFortress::check_transform_from_units(sprite_recno, fortressXLoc, fortressYLoc, builderUnit) )
 	{
 		int otherBuilderFlag = 1;
-		for( int i = 0; i < MAX_EXTRA_BUILDER; ++i )
+		int i;
+		for( i = 0; i < MAX_EXTRA_BUILDER; ++i )
 		{
 			// other checking other than check_transform_from_units
 

@@ -593,7 +593,8 @@ void FirmMonsterFortress::free_all_people()
 
 	if( !sys.signal_exit_flag && hit_points > 0.0f )
 	{
-		for( int i = extra_builder_count; i > 0; --i )
+		int i;
+		for( i = extra_builder_count; i > 0; --i )
 		{
 			if( !mobilize_extra_builder(i) )
 				kill_extra_builder(i);
@@ -607,7 +608,8 @@ void FirmMonsterFortress::free_all_people()
 	}
 	else
 	{
-		for( int i = extra_builder_count; i > 0; --i )
+		int i;
+		for( i = extra_builder_count; i > 0; --i )
 		{
 			kill_extra_builder(i);
 		}
@@ -627,7 +629,8 @@ void FirmMonsterFortress::free_all_people()
 //
 int FirmMonsterFortress::kill_unit(int unitRecno)
 {
-	for( char i = 0; i < archer_count && unitRecno != archer_unit_recno[i]; ++i );
+	char i;
+	for( i = 0; i < archer_count && unitRecno != archer_unit_recno[i]; ++i );
 	if( i < archer_count && unitRecno == archer_unit_recno[i] )
 	{
 		kill_soldier(i+1);
@@ -685,7 +688,8 @@ void FirmMonsterFortress::change_nation(int newNationRecno)
 
 	//--- change the nation recno of the builders ---//
 
-	for( int i=0 ; i<extra_builder_count ; i++ )
+	int i;
+	for( i=0 ; i<extra_builder_count ; i++ )
 	{
 		unitPtr = unit_array[ extra_builder_recno[i] ];
 

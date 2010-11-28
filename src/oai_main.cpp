@@ -745,7 +745,8 @@ void Nation::think_new_research()
 
 	memset( racePopArray, 0, sizeof(racePopArray) );
 
-	for( int i=0 ; i<ai_town_count ; i++ )
+	int i;
+	for( i=0 ; i<ai_town_count ; i++ )
 	{
 		Town* townPtr = town_array[ ai_town_array[i] ];
 

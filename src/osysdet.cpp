@@ -2136,7 +2136,8 @@ static int filter_unit( FilterUnitFunc filterFunc, int para1, int negate )
 		return 0;
 
 	int unitCount = 0;
-	for(int i = unit_array.size(); i > 0; --i )
+	int i;
+	for(i = unit_array.size(); i > 0; --i )
 	{
 		if( unit_array.is_truly_deleted(i) )
 			continue;

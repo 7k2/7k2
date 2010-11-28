@@ -1824,7 +1824,8 @@ void Campaign::disp_text(int boxX1, int boxY1, int boxX2, int boxY2,
 
 	text_block_count = 0;
 
-	for( int i=0 ; i<MAX_TEXT_BLOCK ; i++ )
+	int i;
+	for( i=0 ; i<MAX_TEXT_BLOCK ; i++ )
 	{
 		textPtr = get_next_paragraph(textPtr);
 

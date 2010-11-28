@@ -417,7 +417,8 @@ int FirmLair::think_tech_to_buy(short* techIdArray, short* techPrefArray, int te
 
 	int totalTechLevel=0;
 
-	for( int i=0 ; i<techCount ; i++ )
+	int i;
+	for( i=0 ; i<techCount ; i++ )
 		totalTechLevel += tech_res[ techIdArray[i] ]->get_nation_tech_level(nation_recno);
 
 	//---- go over the tech list and see if there is any tech we should buy now ---//

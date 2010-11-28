@@ -857,7 +857,8 @@ void Font::center_put_paragraph(int x1, int y1, int x2, int y2, char* desStr,
 	int recordLenCount = 0;
 	int y;
 
-	for( int lenCount=0 ; lenCount <= textPtrLen ; lenCount++ )
+	int lenCount;
+	for( lenCount=0 ; lenCount <= textPtrLen ; lenCount++ )
 	{
 		if (lenCount == textPtrLen)
 			textChar = '\0';

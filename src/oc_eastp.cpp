@@ -43,7 +43,8 @@ int CampaignEastWest::player_pick_attack_target(int targetType)
 	int  selectableStateCount=0;
 	int  rc;
 
-	for( int i=state_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=state_array.size() ; i>0 ; i-- )
 	{
 		int stateNationRecno = state_array[i]->campaign_nation_recno;
 

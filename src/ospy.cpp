@@ -534,7 +534,8 @@ void Spy::next_day()
 		if( firm_array[spy_place_para]->cast_to_FirmCamp() )
 		{
 			FirmCamp *firmCamp = firm_array[spy_place_para]->cast_to_FirmCamp();
-			for( int i = 0; i < firmCamp->soldier_count; i++ )
+			int i;
+			for( i = 0; i < firmCamp->soldier_count; i++ )
 			{
 				if( firmCamp->soldier_array[i].spy_recno == spy_recno )
 					break;
@@ -564,7 +565,8 @@ void Spy::next_day()
 		{
 			FirmTrain *firmTrain = firm_array[spy_place_para]->cast_to_FirmTrain();
 
-			for( int i = 0; i < firmTrain->trainee_count; ++i )
+			int i;
+			for( i = 0; i < firmTrain->trainee_count; ++i )
 			{
 				if( firmTrain->trainee_array[i].spy_recno == spy_recno )
 					break;
@@ -574,7 +576,8 @@ void Spy::next_day()
 		else if( firm_array[spy_place_para]->cast_to_FirmInn() )
 		{
 			FirmInn *firmInn = firm_array[spy_place_para]->cast_to_FirmInn();
-			for( int i = 0; i < firmInn->inn_unit_count; ++i )
+			int i;
+			for( i = 0; i < firmInn->inn_unit_count; ++i )
 			{
 				if( firmInn->inn_unit_array[i].spy_recno == spy_recno )
 					break;
@@ -588,7 +591,8 @@ void Spy::next_day()
 			err_when( unit_array.is_truly_deleted(spy_place_para) );
 			UnitWagon *unitWagon = (UnitWagon *)unit_array[spy_place_para];
 
-			for( int i = 0; i < unitWagon->spy_count; ++i )
+			int i;
+			for( i = 0; i < unitWagon->spy_count; ++i )
 			{
 				if( unitWagon->spy_recno[i] == spy_recno )
 					break;
@@ -1507,7 +1511,8 @@ int Spy::mobilize_firm_spy()
 
 		if( !spyUnitRecno )
 		{
-			for( int i = firmCamp->soldier_count-1; i >= 0; --i )
+			int i;
+			for( i = firmCamp->soldier_count-1; i >= 0; --i )
 			{
 				if( firmCamp->soldier_array[i].spy_recno == spy_recno )
 				{
@@ -1523,7 +1528,8 @@ int Spy::mobilize_firm_spy()
 	{
 		FirmTrain *firmTrain = firmPtr->cast_to_FirmTrain();
 
-		for( int i = firmTrain->trainee_count-1; i >= 0; --i )
+		int i;
+		for( i = firmTrain->trainee_count-1; i >= 0; --i )
 		{
 			if( firmTrain->trainee_array[i].spy_recno == spy_recno )
 			{
@@ -1541,7 +1547,8 @@ int Spy::mobilize_firm_spy()
 	{
 		FirmInn *firmInn = firmPtr->cast_to_FirmInn();
 
-		for( int i = firmInn->inn_unit_count-1; i >= 0; --i )
+		int i;
+		for( i = firmInn->inn_unit_count-1; i >= 0; --i )
 		{
 			if( firmInn->inn_unit_array[i].spy_recno == spy_recno )
 			{
@@ -1978,7 +1985,8 @@ int Spy::get_assassinate_rating(int targetUnitRecno, int& attackRating, int& def
 	{
 		FirmCamp *firmCamp = firmPtr->cast_to_FirmCamp();
 
-		for( int i=0 ; i<firmCamp->soldier_count ; i++ )
+		int i;
+		for( i=0 ; i<firmCamp->soldier_count ; i++ )
 		{
 			if( firmCamp->soldier_array[i].spy_recno == spy_recno )
 			{

@@ -95,7 +95,8 @@ int WayPoint::process()
 {
 	//------- check the cur_unit_group -------//
 
-	for( int i=cur_unit_group.size() ; i>0 ; i-- )
+	int i;
+	for( i=cur_unit_group.size() ; i>0 ; i-- )
 	{
 		//--- if the unit is no longer valid, remove it from cur_unit_group ---//
 
@@ -283,7 +284,8 @@ void WayPointArray::add_point(int xLoc, int yLoc)
 
 	WayPoint* wayPoint;
 
-	for( int i=size() ; i>0 ; i-- )
+	int i;
+	for( i=size() ; i>0 ; i-- )
 	{
 		wayPoint = get(i);
 

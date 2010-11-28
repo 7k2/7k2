@@ -210,7 +210,8 @@ void Unit::next_day()
 
 		err_when( !leaderUnit->team_info );
 
-		for( int i=0 ; i<leaderUnit->team_info->member_count ; i++ )
+		int i;
+		for( i=0 ; i<leaderUnit->team_info->member_count ; i++ )
 		{
 			if( leaderUnit->team_info->member_unit_array[i] == sprite_recno )
 				break;
@@ -511,7 +512,8 @@ void Unit::king_die()
 
 	int raceId = m.random(MAX_RACE)+1;
 
-	for( int i=1 ; i<MAX_RACE ; i++ )
+	int i;
+	for( i=1 ; i<MAX_RACE ; i++ )
 	{
 		if( ++raceId > MAX_RACE )
 			raceId = 1;
@@ -1383,7 +1385,8 @@ void Unit::resign(int remoteAction)
 	// sharing between all other fryhtan kingdoms
 	{
 		int monsterKingdomsCount = 0;
-		for( int nationRecno = 1; nationRecno <= nation_array.size(); ++nationRecno )
+		int nationRecno;
+		for( nationRecno = 1; nationRecno <= nation_array.size(); ++nationRecno )
 		{
 			if( nationRecno != nation_recno
 				&& !nation_array.is_deleted(nationRecno)

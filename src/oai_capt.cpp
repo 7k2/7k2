@@ -111,7 +111,8 @@ int Nation::think_capture_independent(int hireCapturer)
 
 		//---- check if there are already camps linked to this town ----//
 
-		for( int i=townPtr->linked_firm_count-1 ; i>=0 ; i-- )
+		int i;
+		for( i=townPtr->linked_firm_count-1 ; i>=0 ; i-- )
 		{
 			FirmCamp* firmCamp = firm_array[ townPtr->linked_firm_array[i] ]->cast_to_FirmCamp();
 
@@ -183,7 +184,8 @@ int Nation::think_capture_independent(int hireCapturer)
 		{
 			Town* targetTown = town_array[ capture_town_array[i].town_recno ];
 
-			for( int i=0 ; i<ai_town_count ; i++ )
+			int j;
+			for( j=0 ; j<ai_town_count ; j++ )
 			{
 				Town* ownTown = town_array[ ai_town_array[i] ];
 
@@ -197,7 +199,7 @@ int Nation::think_capture_independent(int hireCapturer)
 				}
 			}
 
-			if( i==ai_town_count )
+			if( j==ai_town_count )
 				continue;
 		}
 
@@ -412,7 +414,8 @@ int Nation::find_best_capturer(int townRecno, int& bestTargetResistance)
 
 			//--- check if the unit currently in a command base trying to take over an independent town ---//
 
-			for( int j=firmPtr->linked_town_count-1 ; j>=0 ; j-- )
+			int j;
+			for( j=firmPtr->linked_town_count-1 ; j>=0 ; j-- )
 			{
 				Town* townPtr = town_array[ firmPtr->linked_town_array[j] ];
 

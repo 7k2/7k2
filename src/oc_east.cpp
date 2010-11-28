@@ -125,7 +125,8 @@ void CampaignEastWest::set_state_nation()
 
 	int stateRecno = m.random(state_array.size())+1;
 
-	for( int i=state_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=state_array.size() ; i>0 ; i-- )
 	{
 		if( ++stateRecno > state_array.size() )
 			stateRecno = 1;

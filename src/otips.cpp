@@ -323,7 +323,8 @@ void TipsRes::next()
 	{
 		// find next active class
 
-		for( int cc = tips_class_count; cc > 0; --cc )
+		int cc;
+		for( cc = tips_class_count; cc > 0; --cc )
 		{
 			if( ++currentClass > tips_class_count )
 				currentClass = 1;
@@ -362,7 +363,8 @@ void TipsRes::prev()
 	{
 		// find prev active class
 
-		for( int cc = tips_class_count; cc > 0; --cc )
+		int cc;
+		for( cc = tips_class_count; cc > 0; --cc )
 		{
 			if( --currentClass <= 0 )
 				currentClass = tips_class_count;

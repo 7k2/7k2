@@ -102,7 +102,8 @@ void SpriteFrameRes::load_info()
 
 		if( i == 0 || strcmp(spriteName, lastSpriteName) )
 		{
-			for( int j=1 ; 
+			int j;
+			for( j=1 ;
 				j<= sprite_res.sprite_info_count && strcmp(spriteName, sprite_res[j]->sprite_code);
 				j++ );
 			err_when( j > sprite_res.sprite_info_count );		// error when not found

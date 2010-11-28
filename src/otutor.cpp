@@ -553,7 +553,8 @@ void Tutor::run(int tutorId, int inGameCall)
 
 	////// Varables need to be save //////
 	// reset finised objectives flag for all objectives in this tutorial
-	for (int i = 0; i < MAX_TUTOR_OBJECTIVE+1; i++)
+	int i;
+	for (i = 0; i < MAX_TUTOR_OBJECTIVE+1; i++)
 		achieved_objective_array[i] = 0;
 
 	tutorial_type = 0;
@@ -767,7 +768,8 @@ int Tutor::detect()
 
 	if (close_box == 1)
 	{
-		for (int i = cur_text_block_id; i < text_block_count; i++)
+		int i;
+		for (i = cur_text_block_id; i < text_block_count; i++)
 		{
 			TutorTextBlock* textBlock = text_block_array+i;
 			if (textBlock->objective_no != current_objective)
@@ -1172,7 +1174,8 @@ void Tutor::disp_hints()
 
 	TutorTextBlock* tutorTextBlock2 = text_block_array+text_block_count+current_objective-1;
 
-	for (int i = 0; i < MAX_IN_GAME_BOX_PER_OBJECTIVE; i ++)
+	int i;
+	for (i = 0; i < MAX_IN_GAME_BOX_PER_OBJECTIVE; i ++)
 	{
 		int boxWidth = 110;
 		int pointerLength = 100;

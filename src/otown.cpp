@@ -743,7 +743,8 @@ void Town::pay_tribute_to_monster()
 	int   lairCount=0;
 	Firm* firmPtr;
 
-	for( int i=0 ; i<linked_firm_count ; i++ )
+	int i;
+	for( i=0 ; i<linked_firm_count ; i++ )
 	{
 		firmPtr = firm_array[linked_firm_array[i]];
 
@@ -821,7 +822,8 @@ int Town::total_tribute_to_monster(int nationRecno)
 	int   lairCount=0;
 	Firm* firmPtr;
 
-	for( int i=0 ; i<linked_firm_count ; i++ )
+	int i;
+	for( i=0 ; i<linked_firm_count ; i++ )
 	{
 		firmPtr = firm_array[linked_firm_array[i]];
 
@@ -1637,7 +1639,8 @@ void Town::think_rebel()
 
 	err_when(raceRebelCount+1 > MAX_TOWN_POPULATION); // plus 1 for the leader, cannot excess MAX_TOWN_POPULATION, consider the case these units settle immediately
 
-	for( int j=0 ; j<raceRebelCount ; j++ )		// no. of rebel units of this race
+	int j;
+	for( j=0 ; j<raceRebelCount ; j++ )		// no. of rebel units of this race
 	{
 		int unitRecno = create_rebel_unit(0);
 

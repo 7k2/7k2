@@ -284,7 +284,8 @@ void HSetRes::load_hill_set_info()
 		else
 		{
 			// ---------- search backward for previous one
-			for(int k = i-1; k >= 0; --k)
+			int k;
+			for(k = i-1; k >= 0; --k)
 			{
 				if( hill_set_info_array[k].set_id == hillSetInfo->set_id &&
 					hill_set_info_array[k].step == hillSetInfo->step -1)

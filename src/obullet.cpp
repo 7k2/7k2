@@ -587,7 +587,8 @@ int Bullet::check_hit()
 			if( !baseObjRecno)
 				continue;
 
-			for( short *baseObjHitPtr = baseObjHit+baseObjHitCount-1; baseObjHitPtr >= baseObjHit; --baseObjHitPtr )
+			short *baseObjHitPtr;
+			for( baseObjHitPtr = baseObjHit+baseObjHitCount-1; baseObjHitPtr >= baseObjHit; --baseObjHitPtr )
 			{
 				if( *baseObjHitPtr == baseObjRecno )
 					break;

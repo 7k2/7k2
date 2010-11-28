@@ -304,7 +304,8 @@ void Info::init_player_reply(int talkToNationRecno)
 
 	int nationCount = nation_filter();
 
-	for( int i=1 ; i<=nationCount ; i++ )
+	int i;
+	for( i=1 ; i<=nationCount ; i++ )
 	{
 		if( nation_filter(i) == talkToNationRecno )
 		{
@@ -1397,7 +1398,8 @@ void Info::player_reply_chat(int withNationRecno)
 
 	int nationCount = nation_filter();
 
-	for( int i=1 ; i<=nationCount ; i++ )
+	int i;
+	for( i=1 ; i<=nationCount ; i++ )
 	{
 		if( nation_filter(i) == withNationRecno )
 		{
@@ -1433,7 +1435,8 @@ int Info::append_chat( ChatInfo *chatInfo )
 	{
 		// case broken non-blank (e.g. 4,5,6,0*,0,0,0,1,2,3)  0* indicate the first blank
 		// all blank then all non-blank (e.g. 1,2,3,4,5,6,0*,0,0,0)
-		for( int i = 0; i < MAX_REMOTE_CHAT_STR && remote_chat_array[i].received_date != 0; ++i );
+		int i;
+		for( i = 0; i < MAX_REMOTE_CHAT_STR && remote_chat_array[i].received_date != 0; ++i );
 		err_when( i >= MAX_REMOTE_CHAT_STR );		 // no blank found
 		firstBlank = i;
 	}
@@ -1441,7 +1444,8 @@ int Info::append_chat( ChatInfo *chatInfo )
 	{
 		// case broken blank ( e.g. 0,0,1,2,3,4,5,6,0*,0 )	 0* indicate the first blank
 		// or empty case (e.g. 0,0,0,0,0,0,0,0,0,0 )
-		for( int i = MAX_REMOTE_CHAT_STR-1; i >= 0 && remote_chat_array[i].received_date == 0; --i );
+		int i;
+		for( i = MAX_REMOTE_CHAT_STR-1; i >= 0 && remote_chat_array[i].received_date == 0; --i );
 		firstBlank = i+1;			// if i is -1, firstBlank is 0
 	}
 	else
@@ -1505,13 +1509,15 @@ int Info::chat_msg_filter(int recno)
 	{
 		// case broken blank 0,0,1,2,3,4,5,6,0,0
 		// blank then non-blank 0,0,0,0,1,2,3,4,5,6
-		for( int i = 0; i < MAX_REMOTE_CHAT_STR && remote_chat_array[i].received_date == 0; ++i );
+		int i;
+		for( i = 0; i < MAX_REMOTE_CHAT_STR && remote_chat_array[i].received_date == 0; ++i );
 		firstNonBlank = i;
 	}
 	else if( remote_chat_array[MAX_REMOTE_CHAT_STR-1].received_date != 0 )
 	{
 		// case broken non-blank 4,5,6,0,0,0,0,1,2,3
-		for( int i = MAX_REMOTE_CHAT_STR-1; i >= 0 && remote_chat_array[i].received_date != 0; --i );
+		int i;
+		for( i = MAX_REMOTE_CHAT_STR-1; i >= 0 && remote_chat_array[i].received_date != 0; --i );
 		err_when( i < 0 );			// no blank found
 		firstNonBlank = i+1;			// if i is -1, firstBlank is 0
 	}

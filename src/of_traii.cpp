@@ -198,7 +198,8 @@ void FirmTrain::disp_firm_info(int dispY1, int refreshFlag )
 
 	if( is_own() )
 	{
-		for( int i = 0; i < trainee_count && trainee_array[i].is_under_training; ++i );
+		int i;
+		for( i = 0; i < trainee_count && trainee_array[i].is_under_training; ++i );
 		button_patrol.enable_flag = i < trainee_count;
 		button_patrol.paint();
 

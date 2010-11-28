@@ -362,7 +362,8 @@ void Campaign::init_new_campaign()
 
 	//------- init nations ----------//
 
-	for( int i = 0; i < MAX_NATION; ++i )
+	int i;
+	for( i = 0; i < MAX_NATION; ++i )
 	{
 		nation[i].init();
 	}
@@ -594,7 +595,8 @@ int Campaign::random_unused_race(bool isMonster)
 
 	//------ randomly pick one -------//
 
-	for( int raceId = 1; raceId <= MAX_RACE; ++raceId )
+	int raceId;
+	for( raceId = 1; raceId <= MAX_RACE; ++raceId )
 	{
 		if( raceUsed[raceId-1] == 0 )
 			++raceCount;
@@ -658,7 +660,8 @@ int Campaign::random_unused_color()
 
 	int colorCount = 0;
 
-	for( int colorId = 1; colorId <= MAX_COLOR_SCHEME; ++colorId )
+	int colorId;
+	for( colorId = 1; colorId <= MAX_COLOR_SCHEME; ++colorId )
 	{
 		if( colorUsed[colorId-1] == 0 )
 			++colorCount;
@@ -716,7 +719,8 @@ void Campaign::state_change_nation(int stateRecno, int newNationRecno)
 
 	//---- check if the nation still has any states left, if not, remove the nation ----//
 
-	for( int i=state_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=state_array.size() ; i>0 ; i-- )
 	{
 		if( state_array[i]->campaign_nation_recno == oldNationRecno )
 			break;
@@ -741,7 +745,8 @@ int Campaign::temp_state_change_nation(int stateRecno, int newNationRecno)
 
 	//---- check if the nation still has any states left, if not, remove the nation ----//
 
-	for( int i=state_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=state_array.size() ; i>0 ; i-- )
 	{
 		if( state_array[i]->campaign_nation_recno == oldNationRecno )
 			break;
@@ -862,7 +867,8 @@ int Campaign::random_pick_monster_campaign_nation(int excludedStateRecno, int ne
 	int monsterNationArray[MAX_NATION];
 	int monsterNationCount=0, anyMonsterNationCount=0;
 
-	for( int i=1 ; i<=MAX_NATION ; i++ )
+	int i;
+	for( i=1 ; i<=MAX_NATION ; i++ )
 	{
 		if( is_nation_deleted(i) )
 			continue;
@@ -932,7 +938,8 @@ int Campaign::random_pick_attack_state(int attackNationRecno, int targetNationRe
 
 	//-------- get a list of possible attacker states -------//
 
-	for( int i=1 ; i<=state_array.size() ; i++ )
+	int i;
+	for( i=1 ; i<=state_array.size() ; i++ )
 	{
 		StateInfo* stateInfo = state_array[i];
 

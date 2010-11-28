@@ -1060,7 +1060,8 @@ void Unit::disp_button(int refreshFlag)
 			|| unit_res[unit_id]->unit_class == UNIT_CLASS_MONSTER) )
 		{
 			button_build.enable_flag = 0;
-			for( int firmId=1; firmId<=MAX_FIRM_TYPE ; firmId++ )
+			int firmId;
+			for( firmId=1; firmId<=MAX_FIRM_TYPE ; firmId++ )
 			{
 				if( firm_res[firmId]->can_build(sprite_recno, 0) )		// 0-don't check cash
 					break;
@@ -1414,7 +1415,8 @@ void Unit::detect_button()
 			else
 			{
 				int totalRoyal = 0;
-				for( int i=1; i <= unit_array.size(); ++i )
+				int i;
+				for( i=1; i <= unit_array.size(); ++i )
 				{
 					if( unit_array.is_deleted(i) )
 						continue;
@@ -2234,7 +2236,8 @@ void Unit::detect_spy_menu()
 		return;
 
 	int addedCount =-1;
-	for( int i=0 ; i<=nation_array.size() ; i++ )
+	int i;
+	for( i=0 ; i<=nation_array.size() ; i++ )
 	{
 		nationRecno = i;
 		//---- Checking when to stop painting the cloak icons------//

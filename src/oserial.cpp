@@ -210,7 +210,8 @@ bool SerialRepository::is_exist(long num)
 	if( max_history <= 0 )
 		return 0;
 
-	for( register long i = cur_history_size-1; i >= 0 && history_array[i] != num; --i );
+	register long i;
+	for( i = cur_history_size-1; i >= 0 && history_array[i] != num; --i );
 
 	return i >= 0;
 }

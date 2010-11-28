@@ -58,7 +58,8 @@ void CampaignEastWest::plot_c1_create_game()
 	const int maxItemCount = 3;
 	int itemCreated = maxItemCount;
 
-	for( int i = 1; itemCreated > 0 && i <= unit_array.size(); ++i )
+	int i;
+	for( i = 1; itemCreated > 0 && i <= unit_array.size(); ++i )
 	{
 		if( unit_array.is_deleted(i) )
 			continue;

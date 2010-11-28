@@ -892,7 +892,8 @@ int FirmCamp::majority_race()
 	memset( raceCountArray, 0, sizeof(raceCountArray) );
 	memset( monsterRaceCountArray, 0, sizeof(monsterRaceCountArray) );
 
-	for( int i=0 ; i<soldier_count ; i++ )
+	int i;
+	for( i=0 ; i<soldier_count ; i++ )
 	{
 		if( soldier_array[i].is_human() )
 			raceCountArray[ soldier_array[i].race_id-1 ]++;

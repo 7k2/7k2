@@ -1393,7 +1393,8 @@ int Unit::ask_team_help_attack(BaseObj* attackerObj)
 		short suitUnitDistance[MAX_TEAM_MEMBER];
 		int	suitCount = 0;
 
-		for( int i=teamInfo->member_count-1 ; i>=0 ; i-- )
+		int i;
+		for( i=teamInfo->member_count-1 ; i>=0 ; i-- )
 		{
 			int unitRecno = teamInfo->member_unit_array[i];
 
@@ -2016,7 +2017,8 @@ int Unit::most_populated_nation_nearby(int scanRange)
 
 	memset( nationCountArray, 0, sizeof(nationCountArray) );
 
-	for( int i=2 ; i<scanRange*scanRange ; i++ )
+	int i;
+	for( i=2 ; i<scanRange*scanRange ; i++ )
 	{
 		m.cal_move_around_a_point(i, scanRange, scanRange, xOffset, yOffset);
 

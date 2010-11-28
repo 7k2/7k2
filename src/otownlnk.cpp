@@ -538,7 +538,8 @@ void Town::update_camp_link()
 
 	Firm* firmPtr;
 
-	for( int i=0 ; i<linked_firm_count ; i++ )
+	int i;
+	for( i=0 ; i<linked_firm_count ; i++ )
 	{
 		 firmPtr = firm_array[linked_firm_array[i]];
 

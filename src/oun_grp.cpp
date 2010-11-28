@@ -806,7 +806,8 @@ void UnitGroup::exe_assign(int destXLoc, int destYLoc, int targetMobileType, int
 	int destWidth = thePlace->obj_loc_width();
 	int destHeight = thePlace->obj_loc_height();
 
-	for(int i = 1; i<=size(); i++)
+	int i;
+	for(i = 1; i<=size(); i++)
 	{
 		unitPtr = get_unit(i);
 		unitPtr->set_no_longer_in_formation();
@@ -880,7 +881,8 @@ void UnitGroup::transform_mfort(int destXLoc, int destYLoc, char remoteAction)
 	int checkIndex = 0;
 	Unit *cmdUnit = get_unit(1);
 
-	for(int i = 1; i <= size() && checkIndex < MAX_EXTRA_BUILDER; i++)
+	int i;
+	for(i = 1; i <= size() && checkIndex < MAX_EXTRA_BUILDER; i++)
 	{
 		Unit *unitPtr = get_unit(i);
 
@@ -1097,7 +1099,7 @@ void UnitGroup::run_action(int destXLoc, int destYLoc, int orderId, int orderPar
 		cluster_units_for_path_reuse(max(0, destCenterX), max(0, destCenterY), centerXLoc, centerYLoc);
 		// ###### end Gilbert 15/5 ########//
 
-	for(i=1; i<=size(); i++)
+	for(int i=1; i<=size(); i++)
 	{
 		unitPtr = get_unit(i);
 
@@ -1345,7 +1347,8 @@ void UnitGroup::formation(int formationType, char remoteAction)
 {
 	//-- only form formation when there is a general in the group --//
 
-	for( int i=size() ; i>0 ; i-- )
+	int i;
+	for( i=size() ; i>0 ; i-- )
 	{
 		Unit* unitPtr = get_unit(i);
 
@@ -1460,7 +1463,8 @@ void UnitGroup::formation_turn(int direction, char remoteAction )
 	}
 
 		//-- only form formation when there is a general in the group --//
-	for( int i=size() ; i>0 ; i-- )
+	int i;
+	for( i=size() ; i>0 ; i-- )
 	{
 		Unit* unitPtr = get_unit(i);
 
@@ -1830,7 +1834,8 @@ void UnitGroup::cluster_units_for_attack(int targetRecno, int targetLocX, int ta
 		return;
 	}
 
-	for(int i = 1; i<=size(); i++)
+	int i;
+	for(i = 1; i<=size(); i++)
 	{
 		unitPtr = get_unit(i);
 		locX = unitPtr->next_x_loc();
@@ -1897,7 +1902,8 @@ int UnitGroup::form_team()
 	int 	highestRank=0;
 	Unit  *unitPtr, *leaderUnit=NULL;
 
-	for( int i=size() ; i>0 ; i-- )
+	int i;
+	for( i=size() ; i>0 ; i-- )
 	{
 		unitPtr = get_unit(i);
 

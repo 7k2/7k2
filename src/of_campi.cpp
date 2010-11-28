@@ -351,7 +351,8 @@ void FirmCamp::disp_camp_info(int dispY1, int refreshFlag)
 		}
 		else
 		{
-			for( int i = 0; i < soldier_count && soldier_array[i].is_under_training(); ++i );
+			int i;
+			for( i = 0; i < soldier_count && soldier_array[i].is_under_training(); ++i );
 			button_patrol.enable_flag = i < soldier_count;
 		}
 		

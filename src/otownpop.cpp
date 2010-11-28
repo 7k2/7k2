@@ -216,14 +216,16 @@ void Town::unjob_town_people()
 	FirmWork *firmWork, *bestFirm=NULL;
 	int		curRating, bestRating= -1;
 
-	for( int i=0 ; i<linked_firm_count ; i++ )
+	int i;
+	for( i=0 ; i<linked_firm_count ; i++ )
 	{
 		firmWork = firm_array[linked_firm_array[i]]->cast_to_FirmWork();
 
 		if( !firmWork )
 			continue;
 
-		for( int j=0 ; j<firmWork->worker_count ; j++ )
+		int j;
+		for( j=0 ; j<firmWork->worker_count ; j++ )
 		{
 			if( firmWork->worker_array[j].town_recno == town_recno )
 				break;
@@ -932,7 +934,8 @@ void Town::assign_unit(int unitRecno)
 
 	//-------- increase population -------//
 
-	for( int i=0 ; i<unitPopulation ; i++ )
+	int i;
+	for( i=0 ; i<unitPopulation ; i++ )
 		inc_pop(unitPtr->loyalty);
 
 	//---- free the unit's name from the name database ----//
@@ -1526,7 +1529,8 @@ void Town::evenly_distribute_worker()
 	int totalEmploymentRate=0, totalFirmWork=0;
 	FirmWork* firmWork;
 
-	for( int i=0 ; i<linked_firm_count ; i++ )
+	int i;
+	for( i=0 ; i<linked_firm_count ; i++ )
 	{
 		firmWork = firm_array[linked_firm_array[i]]->cast_to_FirmWork();
 

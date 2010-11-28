@@ -76,7 +76,8 @@ void CampaignEastWest::plot_c4_create_game()
 			// randomly select race of an enemy human kingdom
 			int nationRecnoArray[MAX_NATION];
 			int nationRecnoCount = 0;
-			for( int n = 1; n <= nation_array.size(); ++n )
+			int n;
+			for( n = 1; n <= nation_array.size(); ++n )
 			{
 				if( nation_array.is_deleted(n) 
 					|| n == nation_array.player_recno 

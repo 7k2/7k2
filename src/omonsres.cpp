@@ -170,7 +170,8 @@ void MonsterRes::second_init()
 
 	MonsterNamePart* nameArrayA = (MonsterNamePart*) mem_add( sizeof(MonsterNamePart) * nameACount );
 
-	for( int i=0 ; i<nameACount ; i++ )
+	int i;
+	for( i=0 ; i<nameACount ; i++ )
 	{
 		nameRec = (MonsterNameRec*) dbNameA->read( m.random(nameACount)+1 );
 		m.rtrim_fld( nameArrayA[i].name, nameRec->name, nameRec->NAME_LEN );
@@ -227,7 +228,8 @@ void MonsterRes::second_init()
 		int   strLen = (int) strlen(nameFormat);
 		char* namePtr;
 
-		for( int j=0 ; j<strLen ; j++ )
+		int j;
+		for( j=0 ; j<strLen ; j++ )
 		{
 			switch( nameFormat[j] )
 			{

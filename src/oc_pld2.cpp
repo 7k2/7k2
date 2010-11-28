@@ -50,7 +50,8 @@ prevent the state from falling into the hand of the invaders
 void CampaignEastWest::plot_d2_create_game()
 {
 	// find a non-own nation
-	for( int srcNation = nation_array.size(); srcNation > 0; --srcNation)
+	int srcNation;
+	for( srcNation = nation_array.size(); srcNation > 0; --srcNation)
 	{
 		if( !nation_array.is_deleted(srcNation)
 			&& !nation_array[srcNation]->is_own() )

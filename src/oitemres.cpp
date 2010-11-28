@@ -815,7 +815,8 @@ void ItemRes::use_manually( Item &item, int unitRecno, int targetBaseObjRecno, i
 				int summonUnitId = monster_res[m.random(MAX_MONSTER_TYPE) + 1]->unit_id;
 				SpriteInfo *summonSpriteInfo = sprite_res[unit_res[summonUnitId]->sprite_id];
 
-				for( int r = 0; r <= 2; ++r )
+				int r;
+				for( r = 0; r <= 2; ++r )
 				{
 					int xLoc1 = unitPtr->obj_loc_x1() - summonSpriteInfo->loc_width - r;
 					int yLoc1 = unitPtr->obj_loc_y1() - summonSpriteInfo->loc_height - r;

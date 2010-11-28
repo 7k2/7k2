@@ -329,7 +329,8 @@ void UnitCaravan::update_stop_list()
 	//----------------------------------------------------------------------//
 	CaravanStop *nodePtr = stop_array;
 	Firm			*firmPtr;
-	for(int i=0; i<MAX_STOP_FOR_CARAVAN; i++, nodePtr++)
+	int i;
+	for(i=0; i<MAX_STOP_FOR_CARAVAN; i++, nodePtr++)
 	{
 		if(!nodePtr->firm_recno)
 			continue;
@@ -438,7 +439,8 @@ void UnitCaravan::update_stop_list()
 		memset(stop_array+stop_defined_num, 0, sizeof(CaravanStop)*(MAX_STOP_FOR_CARAVAN-stop_defined_num));
 
 	#ifdef DEBUG
-		for(int debugCount=0; debugCount<stop_defined_num; debugCount++)
+		int debugCount;
+		for(debugCount=0; debugCount<stop_defined_num; debugCount++)
 			err_when(!stop_array[debugCount].firm_recno);
 
 		for(; debugCount<MAX_STOP_FOR_CARAVAN; debugCount++)

@@ -150,7 +150,8 @@ void HeroRes::generate_fictional_hero()
 
 		int heroCount=0;
 
-		for( int i=1 ; i<=hero_count ; i++ )
+		int i;
+		for( i=1 ; i<=hero_count ; i++ )
 		{
 			if( operator[](i)->race_id == raceId )
 				heroCount++;
@@ -218,7 +219,8 @@ void HeroRes::second_init()
 {
 	//------- randomize the for_hire flag ------//
 
-	for( int i=1 ; i<=hero_count ; i++ )
+	int i;
+	for( i=1 ; i<=hero_count ; i++ )
 	{
 		HeroInfo* heroInfo = operator[](i);
 
@@ -577,7 +579,8 @@ int HeroRes::generate_hero()
 	int   townRecno = m.random(town_array.size())+1;
 	Town* townPtr;
 
-	for( int i=town_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=town_array.size() ; i>0 ; i-- )
 	{
 		if( ++townRecno > town_array.size() )
 			townRecno = 1;

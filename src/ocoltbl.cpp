@@ -304,7 +304,8 @@ void ColorTable::generate_table(PalDesc &sPalD, PalDesc &palD)
 			dist[cc] = 3*0xff*0xff+1;
 		}
 		int dReservedIndex = 0;
-		for( int d=0; d < palSize; ++d)
+		int d;
+		for( d=0; d < palSize; ++d)
 		{
 			// ------- skip scanning reserved color ------//
 			if( palD.is_reserved(d, dReservedIndex) )

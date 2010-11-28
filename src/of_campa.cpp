@@ -1151,7 +1151,8 @@ int FirmCamp::think_employ_to_capture()
 
 		//----- if we already have towers of science linked to this town ----//
 
-		for( int j=0 ; j<townPtr->linked_firm_count ; j++ )
+		int j;
+		for( j=0 ; j<townPtr->linked_firm_count ; j++ )
 		{
 			Firm* firmPtr = firm_array[ townPtr->linked_firm_array[j] ];
 
@@ -1487,7 +1488,8 @@ int FirmCamp::think_assign_better_commander()
 
 	//--- locate for a soldier who has a higher leadership ---//
 
-	for( int i=ownNation->ai_camp_count-1 ; i>=0 ; i-- )
+	int i;
+	for( i=ownNation->ai_camp_count-1 ; i>=0 ; i-- )
 	{
 		firmCamp = firm_array[ ownNation->ai_camp_array[i] ]->cast_to_FirmCamp();
 

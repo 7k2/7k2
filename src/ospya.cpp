@@ -377,7 +377,8 @@ void SpyArray::disp_view_secret_menu(int spyRecno, int refreshFlag)
 
 	Spy* spyPtr = spy_array[spyRecno];
 
-	for( int i=0 ; i<SECRET_REPORT_COUNT ; i++ )
+	int i;
+	for( i=0 ; i<SECRET_REPORT_COUNT ; i++ )
 	{
 		if( refreshFlag == INFO_REPAINT )
 		{
@@ -734,7 +735,8 @@ int SpyArray::catch_spy(int spyPlace, int spyPlacePara)
 	if( nationRecno )
 		techLevel = tech_res[TECH_COUNTER_SPY]->get_nation_tech_level(nationRecno);
 
-	for( int i=size() ; i>0 ; i-- )
+	int i;
+	for( i=size() ; i>0 ; i-- )
 	{
 		if( is_deleted(i) )
 			continue;

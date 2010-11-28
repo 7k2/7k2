@@ -52,7 +52,8 @@ void CampaignEastWest::plot_a6_create_game()
 	int selectedTownCount = 0;
 	int townRecnoArray[maxSelectedTownCount];
 
-	for( int i = 1; i <= town_array.size(); ++i )
+	int i;
+	for( i = 1; i <= town_array.size(); ++i )
 	{
 		if( town_array.is_deleted(i) )
 			continue;
@@ -122,7 +123,8 @@ void CampaignEastWest::plot_a6_create_game()
 			// avoid too close with other itemX/Y
 
 			int minItemDist = MAX_WORLD_X_LOC + MAX_WORLD_Y_LOC;
-			for( int j = 0; j < itemToCreate; ++j )
+			int j;
+			for( j = 0; j < itemToCreate; ++j )
 			{
 				int itemDist = m.points_distance( xLoc, yLoc, itemX[j], itemY[j]);
 				if( itemDist < minItemDist )

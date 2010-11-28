@@ -525,7 +525,8 @@ int NationArray::random_unused_race()
 
 	memset( usedRaceArray, 0, sizeof(usedRaceArray) );
 
-	for( int i=1 ; i<=nation_array.size() ; i++ )
+	int i;
+	for( i=1 ; i<=nation_array.size() ; i++ )
 	{
 		if( nation_array.is_deleted(i) )
 			continue;
@@ -575,7 +576,8 @@ int NationArray::random_unused_monster_type()
 
 	memset( usedTypeArray, 0, sizeof(usedTypeArray) );
 
-	for( int i=1 ; i<=nation_array.size() ; i++ )
+	int i;
+	for( i=1 ; i<=nation_array.size() ; i++ )
 	{
 		if( nation_array.is_deleted(i) )
 			continue;
@@ -625,7 +627,8 @@ int NationArray::random_unused_color()
 
 	memset( usedColorArray, 0, sizeof(usedColorArray) );
 
-	for( int i=1 ; i<=nation_array.size() ; i++ )
+	int i;
+	for( i=1 ; i<=nation_array.size() ; i++ )
 	{
 		if( nation_array.is_deleted(i) )
 			continue;
@@ -893,7 +896,8 @@ void NationArray::update_military_rating()
 
 	Firm* firmPtr;
 
-	for( int i=firm_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=firm_array.size() ; i>0 ; i-- )
 	{
 		if( firm_array.is_deleted(i) )
 			continue;
@@ -1001,7 +1005,8 @@ void NationArray::update_total_human_count()
 
 	Firm* firmPtr;
 
-	for( int i=firm_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=firm_array.size() ; i>0 ; i-- )
 	{
 		if( firm_array.is_deleted(i) )
 			continue;
@@ -1086,7 +1091,8 @@ char* NationArray::get_custom_king_name(int nationRecno, int firstWordOnly)
 
 	if( firstWordOnly )
 	{
-		for( int i=0 ; i<CUSTOM_NAME_LEN && humanName[i] && humanName[i]!=' ' ; i++ )
+		int i;
+		for( i=0 ; i<CUSTOM_NAME_LEN && humanName[i] && humanName[i]!=' ' ; i++ )
 			humanNameOneWord[i] = humanName[i];
 
 		humanNameOneWord[i] = NULL;

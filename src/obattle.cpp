@@ -516,7 +516,8 @@ void Battle::create_ai_nation()
 
 	//------- add human nations -----------//
 
-	for( int i=0 ; i<aiHumanCount ; i++ )
+	int i;
+	for( i=0 ; i<aiHumanCount ; i++ )
 	{
 		if( config.random_start_up && !game.is_campaign_mode() )
 			raceId = m.random(MAX_RACE)+1;
@@ -608,7 +609,8 @@ int Battle::create_human_town_unit(Nation* nationPtr)
 	int 	townRecno, firmRecno;
 	Town* townPtr;
 
-	for( int i=10 ; i>0 ; i-- )		// try a maximum of 10 times
+	int i;
+	for( i=10 ; i>0 ; i-- )		// try a maximum of 10 times
 	{
 		townRecno = create_human_town(nationPtr);
 
@@ -782,7 +784,8 @@ int Battle::create_one_monster_asset(Nation* nationPtr)
 
 	int addCount = 300 / ((int)unit_res[unitId]->hit_points * 20 / 100);		// 20 is the startup combat level
 
-	for( int i=0 ; i<addCount ; i++ )
+	int i;
+	for( i=0 ; i<addCount ; i++ )
 	{
 		firmLair->recruit_soldier(COMMAND_AUTO);
 	}
@@ -815,7 +818,8 @@ void Battle::create_independent_town(int addCount)
 
 	memset( raceCountArray, 0, sizeof(raceCountArray) );
 
-	for( int i=nation_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=nation_array.size() ; i>0 ; i-- )
 	{
 		if( nation_array.is_deleted(i) )
 			continue;

@@ -171,7 +171,8 @@ void FirmOffensive2::process_monster_firm()
 				{
 					firstBitmap = firmBuild->first_bitmap(k+1);
 					bitmapCount = firmBuild->bitmap_count(k+1);
-						for ( int j=0; j <bitmapCount; j++ )
+						int j;
+						for ( j=0; j <bitmapCount; j++ )
 					{
 						firmBitmap = firm_res.get_bitmap(firstBitmap + j);
 						if( firmBitmap )
@@ -425,7 +426,8 @@ int FirmOffensive2::attack_target(BaseObj* targetObj)
 				firstBitmap = firmBuild->first_bitmap(k+1);
 				bitmapCount = firmBuild->bitmap_count(k+1);
 
-				for ( int j=0; j <bitmapCount; j++ )
+				int j;
+				for ( j=0; j <bitmapCount; j++ )
 				{
 					firmBitmap = firm_res.get_bitmap(firstBitmap + j);
 					if( firmBitmap )

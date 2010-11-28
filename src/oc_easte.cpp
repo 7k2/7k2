@@ -1558,7 +1558,8 @@ int CampaignEastWest::event_fryhtan_break_up()
 
 	//--- see if there is a Fryhtan kingdom with at least 2 states ---//
 
-	for( int i=nation_count() ; i>0 ; i-- )
+	int i;
+	for( i=nation_count() ; i>0 ; i-- )
 	{
 		if( is_nation_deleted(i) )
 			continue;
@@ -1713,7 +1714,8 @@ int CampaignEastWest::event_independent_surrender()
 
 	int stateRecno = m.random(state_array.size())+1;
 
-	for( int i=state_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=state_array.size() ; i>0 ; i-- )
 	{
 		if( ++stateRecno > state_array.size() )
 			stateRecno = 1;

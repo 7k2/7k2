@@ -38,7 +38,8 @@ void TradeStop::pick_up_set_manual()
 //	memset(pick_up_array, 0, sizeof(char)*MAX_PICK_UP_GOODS);		// so it can reserve 
 
 	// scan the first pickup
-	for( int i = 0; i < MAX_PICK_UP_GOODS && !pick_up_array[i]; ++i );
+	int i;
+	for( i = 0; i < MAX_PICK_UP_GOODS && !pick_up_array[i]; ++i );
 	if( i >= MAX_PICK_UP_GOODS )
 		pick_up_type = NO_PICK_UP;
 	else
@@ -67,7 +68,8 @@ void TradeStop::pick_up_toggle(int pos)
 		char firmId = firm_array[firm_recno]->firm_id;
 		if(firmId==FIRM_MARKET) //  || firmId==FIRM_HARBOR)
 		{
-			for(int i=0, allZero=1; i<MAX_PICK_UP_GOODS; ++i)
+			int i, allZero;
+			for(i=0, allZero=1; i<MAX_PICK_UP_GOODS; ++i)
 			{
 				if(pick_up_array[i])
 				{

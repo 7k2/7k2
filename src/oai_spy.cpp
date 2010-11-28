@@ -605,7 +605,8 @@ int Nation::train_spy(int raceId, int isCivilian, short destX, short destY)
 
 	//------ first try to select the spy college that is closest to the target ----//
 
-	for( int i=0 ; i<ai_spy_count ; i++ )
+	int i;
+	for( i=0 ; i<ai_spy_count ; i++ )
 	{
 		FirmSpy* firmSpy = firm_array[ai_spy_array[i]]->cast_to_FirmSpy();
 

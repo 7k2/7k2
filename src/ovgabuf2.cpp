@@ -329,7 +329,8 @@ void VgaBuf::indicator(int x1, int y1, int x2, int y2, float curValue,
 
 		LinearCounter brightness;
 		brightness.init( y1, 0, cutHeight, MAX_BRIGHTNESS_ADJUST_DEGREE-2 );		// glowing
-		for( int y=y1; y <= cutHeight; y++, brightness.inc() )
+		int y;
+		for( y=y1; y <= cutHeight; y++, brightness.inc() )
 		{
 			barW_fast( x1, y, cutPoint, y, vga.vga_color_table->get_table(brightness.y)[indiColor]);
 		}

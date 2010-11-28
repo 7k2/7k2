@@ -295,7 +295,8 @@ Unit* Nation::ai_find_unit_from_camp(int raceId, short destX, short destY)
 
 		err_when( !firmCamp );
 
-		for( int j=firmCamp->soldier_count-1 ; j>=0 ; j-- )
+		int j;
+		for( j=firmCamp->soldier_count-1 ; j>=0 ; j-- )
 		{
 			if( !firmCamp->soldier_array[j].is_under_training() &&
 				 firmCamp->soldier_array[j].race_id == raceId )
@@ -540,7 +541,8 @@ int Nation::recruit_in_firm_soldier(Firm* destFirmPtr, int preferedRaceId)
 	int			bestRating=0, curRating;
 	int			bestFirmSoldierId=0;
 
-	for( int i=0 ; i<ai_camp_count ; i++ )
+	int i;
+	for( i=0 ; i<ai_camp_count ; i++ )
 	{
 		firmCamp = firm_array[ai_camp_array[i]]->cast_to_FirmCamp();
 

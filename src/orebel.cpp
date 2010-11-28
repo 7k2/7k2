@@ -320,7 +320,8 @@ void Rebel::process_leader_quit()
 		int 	  maxReputation=0, bestNationRecno=0;
 		Nation* nationPtr;
 
-		for( int i=nation_array.size() ; i>0 ; i-- )
+		int i;
+		for( i=nation_array.size() ; i>0 ; i-- )
 		{
 			if( nation_array.is_deleted(i) )
 				continue;
@@ -372,7 +373,8 @@ int Rebel::select_new_leader()
 
 	Unit* unitPtr;
 
-	for( int i=unit_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=unit_array.size() ; i>0 ; i-- )
 	{
 		if( unit_array.is_deleted(i) )
 			continue;
@@ -510,7 +512,8 @@ void Rebel::think_cur_action()
 {
 	//---- if all rebels are stopped, cancel the current action ----//
 
-	for( int i=unit_array.size() ; i>=1 ; i-- )
+	int i;
+	for( i=unit_array.size() ; i>=1 ; i-- )
 	{
 		if( unit_array.is_deleted(i) )
 			continue;

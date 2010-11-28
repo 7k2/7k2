@@ -318,7 +318,8 @@ void Firm::draw_frame(char* firmCurFrame, int displayLayer)
 				firstBitmap = firmBuild->first_bitmap(k+1);
 				bitmapCount = firmBuild->bitmap_count(k+1);
 
-				for ( int j=0; j <bitmapCount; j++ )
+				int j;
+				for ( j=0; j <bitmapCount; j++ )
 				{
 					firmBitmap = firm_res.get_bitmap(firstBitmap + j);
 					if( firmBitmap )

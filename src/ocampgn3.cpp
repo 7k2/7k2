@@ -86,7 +86,8 @@ void Campaign::catch_nation_info()
 
 		//----------- copy tech info ------------//
 
-		for( int j=1 ; j<=tech_res.tech_count ; j++ )
+		int j;
+		for( j=1 ; j<=tech_res.tech_count ; j++ )
 		{
 			cNation->tech_level_array[j-1] 	     = tech_res[j]->nation_tech_level_array[i-1];
 			cNation->research_progress_array[j-1] = tech_res[j]->nation_research_progress_array[i-1];
@@ -144,7 +145,8 @@ void Campaign::fetch_nation_info()
 
 		//----------- copy tech info ------------//
 
-		for( int j=1 ; j<=tech_res.tech_count ; j++ )
+		int j;
+		for( j=1 ; j<=tech_res.tech_count ; j++ )
 		{
 			tech_res[j]->set_nation_tech_level( i, cNation->tech_level_array[j-1] );
 			tech_res[j]->nation_research_progress_array[i-1] = cNation->research_progress_array[j-1];

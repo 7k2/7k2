@@ -202,7 +202,8 @@ void MultiPlayerDP::init(GUID serviceProviderGUID)
 {
 	VgaFrontLock vlock;
 	DPServiceProvider *sp = NULL;
-	for( int i = 1; i <= service_providers.size(); ++i )
+	int i;
+	for( i = 1; i <= service_providers.size(); ++i )
 	{
 		sp = (DPServiceProvider *) service_providers.get(i);
 		if( memcmp(&sp->guid, &serviceProviderGUID, sizeof(GUID) ) == 0 )

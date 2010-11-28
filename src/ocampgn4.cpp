@@ -213,7 +213,8 @@ int Campaign::king_oversee_town_recno(int nationRecno)
 
 		Town* townPtr;
 
-		for( int i=town_array.size() ; i>0 ; i-- )
+		int i;
+		for( i=town_array.size() ; i>0 ; i-- )
 		{
 			if( town_array.is_deleted(i) )
 				continue;
@@ -414,7 +415,8 @@ int Campaign::create_nation_town(int nationRecno, int xLoc, int yLoc,
 	if(!soldierAddCount)
 		return 1;
 
-	for( int i=0 ; i<soldierAddCount ; i++ )
+	int i;
+	for( i=0 ; i<soldierAddCount ; i++ )
 		firmFort->recruit_soldier(townRecno, false, COMMAND_AUTO, 1);		// 1-create at no cost
 
 	Soldier* soldierPtr = firmFort->soldier_array;
@@ -543,7 +545,8 @@ int Campaign::create_monster_lair(int xLoc, int yLoc, int nationRecno, int soldi
 
 	//------ create Fryhtan soldiers in the fort ------//
 
-	for( int i=0 ; i<soldierCount ; i++ )
+	int i;
+	for( i=0 ; i<soldierCount ; i++ )
 		firmLair->recruit_soldier(COMMAND_AUTO, 1);		// 1-no cost
 
 	Soldier* soldierPtr = firmLair->soldier_array;
@@ -1380,7 +1383,8 @@ int Campaign::general_defect_form_new_nation(int nationRecno)
 	Unit*   unitPtr;
 	int 	  generalSeq = m.random(nationPtr->ai_general_count);
 
-	for( int i=0 ; i<nationPtr->ai_general_count ; i++ )
+	int i;
+	for( i=0 ; i<nationPtr->ai_general_count ; i++ )
 	{
 		if( ++generalSeq >=nationPtr->ai_general_count )
 			generalSeq=0;
@@ -1601,7 +1605,8 @@ void Campaign::monster_reinforcement_to_lair(int whichEdge)
 
 	FirmLair* firmLair;
 
-	for( int i=firm_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=firm_array.size() ; i>0 ; i-- )
 	{
 		if( firm_array.is_deleted(i) )
 			continue;
@@ -1687,7 +1692,8 @@ void Campaign::think_enemy_attack(int attackNationRecno, int targetNationRecno, 
 
 	Nation* attackNation = nation_array[attackNationRecno];
 
-	for( int i=attackNation->ai_camp_count-1 ; i>=0 ; i-- )
+	int i;
+	for( i=attackNation->ai_camp_count-1 ; i>=0 ; i-- )
 	{
 		if( !firm_array[ attackNation->ai_camp_array[i] ]->under_construction )
 			break;
@@ -1730,7 +1736,8 @@ void Campaign::think_enemy_attack2(int targetNationRecno, Unit* unitPtr)
 	Town* townPtr; 
 	int townRecno = m.random(town_array.size())+1;
 
-	for( int i=town_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=town_array.size() ; i>0 ; i-- )
 	{
 		if( ++townRecno > town_array.size() )
 			townRecno=1;
@@ -1806,7 +1813,8 @@ int Campaign::create_monster_special_firm(int firmRecno)
 
 		//---- set the tech level in tech_res ----//
 
-		for( int i=1 ; i<=tech_res.tech_count ; i++ )
+		int i;
+		for( i=1 ; i<=tech_res.tech_count ; i++ )
 		{
 			if( tech_res[i]->firm_id == firmId )
 			{
@@ -2029,7 +2037,8 @@ void Campaign::unveil_new_tech()
 
 	int unveiledTech=0;
 
-	for( int i=0 ; i<10 ; i++ )		// maximum 10 tries
+	int i;
+	for( i=0 ; i<10 ; i++ )		// maximum 10 tries
 	{
 		if( m.random(6) == 0 )		// 1/6 chance to unveil special units and special structures
 		{
@@ -2307,7 +2316,8 @@ void Campaign::rebel_form_nation()
 
 	int townRecno = m.random(town_array.size())+1;
 
-	for( int i=town_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=town_array.size() ; i>0 ; i-- )
 	{
 		if( ++townRecno > town_array.size() )
 			townRecno = 1;

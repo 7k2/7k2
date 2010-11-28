@@ -333,7 +333,8 @@ static void calc_firm_total()
 	int   thisIncome;
 	Firm* firmPtr;
 
-	for( int i=firm_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=firm_array.size() ; i>0 ; i-- )
 	{
 		if( firm_array.is_deleted(i) )
 			continue;

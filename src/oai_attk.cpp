@@ -325,7 +325,8 @@ int Nation::ai_attack_target(int targetXLoc, int targetYLoc, int targetCombatLev
       {
          //--- check if this camp has already been added to attack_camp_array ---//
 
-         for( int k=0 ; k<attack_camp_count ; k++ )
+         int k;
+         for( k=0 ; k<attack_camp_count ; k++ )
          {
             if( attack_camp_array[k].firm_recno == firmCamp->firm_recno )
                break;
@@ -442,7 +443,8 @@ int Nation::ai_attack_target(int targetXLoc, int targetYLoc, int targetCombatLev
                   {
 							//--- this camp can be linked to a town previously processed already (in this case, two towns linked to the same camp) ---//
 
-                     for( int k=0 ; k<attack_camp_count ; k++ )
+                     int k;
+                     for( k=0 ; k<attack_camp_count ; k++ )
                      {
                         if( attack_camp_array[k].firm_recno == townCampArray[j].firm_recno )
                            break;
@@ -586,7 +588,8 @@ void Nation::set_ai_attack_target(int targetXLoc, int targetYLoc, int defenseMod
 			{
 				//--- check if this has already been added to the list ---//
 
-				for( int j=0 ; j<ai_attack_target_count ; j++ )
+				int j;
+				for( j=0 ; j<ai_attack_target_count ; j++ )
 				{
 					if( baseObj->base_obj_recno ==
 						 world.get_loc( ai_attack_target_x_loc[j], ai_attack_target_y_loc[j] )->base_obj_recno('L') )
@@ -719,7 +722,8 @@ void Nation::ai_attack_target_sync()
 
    int maxDistance=0;
 
-   for( int i=0 ; i<attack_camp_count ; i++ )
+   int i;
+   for( i=0 ; i<attack_camp_count ; i++ )
    {
       err_when( attack_camp_array[i].distance < 0 );
 

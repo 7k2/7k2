@@ -173,7 +173,8 @@ short	UnitWagon::del_spy(short spyRecno)
 	}
 	else if( spyRecno > 0 )
 	{
-		for(int i=0; i < MAX_WAGON_POPULATION && spy_recno[i] != spyRecno; ++i);
+		int i;
+		for(i=0; i < MAX_WAGON_POPULATION && spy_recno[i] != spyRecno; ++i);
 		if( i >= MAX_WAGON_POPULATION )		// spy not found
 			return 0;
 		m.del_array_rec(spy_recno, MAX_WAGON_POPULATION, sizeof(spy_recno[0]), i+1);
@@ -264,7 +265,8 @@ short UnitWagon::mobilize_civilian( short spyRecno )
 	else
 	{
 		// check if the spy is inside
-		for( int i = 0; i < spy_count && spyRecno != spy_recno[i]; ++i );
+		int i;
+		for( i = 0; i < spy_count && spyRecno != spy_recno[i]; ++i );
 		if( i >= spy_count )		// spy not found
 			return 0;
 	}

@@ -683,7 +683,8 @@ int Nation::think_ally_against_big_enemy()
 	Nation* enemyNation = nation_array[enemyNationRecno];
 	int     incRelationLevel = (100-overall_rank_rating())/10;
 
-	for( int i=nation_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=nation_array.size() ; i>0 ; i-- )
 	{
 		if( nation_array.is_deleted(i) )
 			continue;
@@ -973,7 +974,8 @@ int Nation::think_against_mine_monopoly()
 	int mineCount, totalMineCount=0;
 	int curRating, bestRating=0, targetNationRecno=0;
 
-	for( int i=nation_array.size() ; i>0 ; i-- )
+	int i;
+	for( i=nation_array.size() ; i>0 ; i-- )
 	{
 		if( nation_array.is_deleted(i) )
 			continue;
