@@ -28,11 +28,13 @@
 
 //--------- Define structure ResIndex ----------//
 
+#pragma pack(1)
 struct ResIndex
 {
    char name[9];
    long pointer;
 };
+#pragma pack()
 
 //--------- Define class ResourceIdx ----------//
 
