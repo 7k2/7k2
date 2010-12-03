@@ -51,6 +51,7 @@
 
 //-------- Define struct FontHeader -------//
 
+#pragma pack(1)
 struct FontHeader
 {
 	unsigned	short	max_width;
@@ -59,9 +60,11 @@ struct FontHeader
 	unsigned short first_char;		// ascii code of the first character
 	unsigned	short last_char;		// ascii code of the last character
 };
+#pragma pack()
 
 //-------- Define struct FontInfo -------//
 
+#pragma pack(1)
 struct FontInfo	// info for each character
 {
 	char				offset_y;
@@ -69,6 +72,7 @@ struct FontInfo	// info for each character
 	unsigned char	height;
 	long				bitmap_offset;	// file offset relative to bitmap data
 };
+#pragma pack()
 
 //--------- Define macro constant ------------//
 
