@@ -496,7 +496,7 @@ ovgalock.cpp
 push (@defines, '__DDRAW_INCLUDED__');
 push (@obj_files, build_targets(\@targets, \@includes, \@defines));
 
-my $client_exe_name = '7kaa';
+my $client_exe_name = '7k2';
 unless ($disable_wine) {
   $client_exe_name .= '.exe';
 }
