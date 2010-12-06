@@ -369,8 +369,8 @@ void VgaBuf::indicator(int barType, int x1, int y1, float curValue, float maxVal
 	int barRightMargin = 15;
 	int barFluidMaxWidth = barWidth - barLeftMargin - barRightMargin;
 
-	char *emptyBitmapName = barType & 2 ? "MTR_00" : "MTR_B1";
-	char *fullBitmapName = barType & 2 ? "MTR_40" : "MTR_B4";
+	char *emptyBitmapName = barType & 2 ? (char*)"MTR_00" : (char*)"MTR_B1";
+	char *fullBitmapName = barType & 2 ? (char*)"MTR_40" : (char*)"MTR_B4";
 
 	int cutPoint;
 	if( curValue <= 0.0f )

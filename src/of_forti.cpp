@@ -333,7 +333,7 @@ void FirmFort::detect_train_menu()
 static void disp_tower_count(ButtonCustom *button, int repaintBody)
 {
 	vga.active_buf->put_bitmap( button->x1, button->y1, image_button.read(
-		button->pushed_flag ? "NUM-D" : "NUM-U" ) );
+		button->pushed_flag ? (char*)"NUM-D" : (char*)"NUM-U" ) );
 
 	font_bible.center_put( button->x1, button->y1, button->x2, button->y2, 
 		button->custom_para.ptr ? (char *)button->custom_para.ptr : m.format(button->custom_para.value) );

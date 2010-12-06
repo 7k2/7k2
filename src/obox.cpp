@@ -209,7 +209,7 @@ void Box::ok_button(int timeOut)
 {
 	Button button;
 
-	char* okStr = text_basic.is_inited() ? text_basic.str_box_ok() : "Ok";
+	char* okStr = text_basic.is_inited() ? text_basic.str_box_ok() : (char*)"Ok";
    button.paint_text( box_x1+(box_x2-box_x1+1)/2-10, box_y2-BOX_BUTTON_MARGIN, okStr );
 	
 //	if( sys.debug_session )

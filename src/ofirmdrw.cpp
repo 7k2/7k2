@@ -524,7 +524,7 @@ int Firm::draw_detect_link_line(int actionDetect)
 			bitmapPtr = power.get_link_icon( linked_town_enable_array[i], nation_recno==townPtr->nation_recno );
 		else if( can_set_active_link(linked_town_array[i]) )
 		{
-			bitmapPtr = image_icon.read( active_link_town_recno == linked_town_array[i] ? "LINK_ACT" : "LINK_DEA" );
+			bitmapPtr = image_icon.read( active_link_town_recno == linked_town_array[i] ? (char*)"LINK_ACT" : (char*)"LINK_DEA" );
 			help.set_help( townX-16, townY-16, townX+14, townY+14, "TOWNLOCK" );
 		}
 		else

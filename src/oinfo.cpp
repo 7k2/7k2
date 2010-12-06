@@ -915,9 +915,9 @@ void Info::disp_heading()
 		if( config.race_id > 0 )
 		{
 			if (current_display_mode.mode_id == MODE_ID_800x600x16)
-				thumbBmp = image_icon.get_ptr(changeAmt >= 0 ? "REPU_UP" : "REPU_DW" );
+				thumbBmp = image_icon.get_ptr(changeAmt >= 0 ? (char*)"REPU_UP" : (char*)"REPU_DW" );
 			else if (current_display_mode.mode_id == MODE_ID_1024x768x16)
-				thumbBmp = image_icon.get_ptr(changeAmt >= 0 ? "REUP1024" : "REDW1024" );
+				thumbBmp = image_icon.get_ptr(changeAmt >= 0 ? (char*)"REUP1024" : (char*)"REDW1024" );
 			else 
 				err_here();
 			vga.active_buf->put_bitmap(REPU_BUTTON_X1, REPU_BUTTON_Y1, thumbBmp);

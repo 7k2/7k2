@@ -868,12 +868,12 @@ void Unit::disp_hit_point()
 		char *bitmapLeft, *bitmapRight;
 		if( barType == 0 )
 		{
-			bitmapLeft = image_spict.read(ratio < 11 ? "MTR_B2" : ratio < 40 ? "MTR_B3" : "MTR_B4");
+			bitmapLeft = image_spict.read(ratio < 11 ? (char*)"MTR_B2" : ratio < 40 ? (char*)"MTR_B3" : (char*)"MTR_B4");
 			bitmapRight = image_spict.read("MTR_B1");
 		}
 		else
 		{
-			bitmapLeft = image_spict.read(ratio < 11 ? "MTR_10" : ratio < 40 ? "MTR_39" : "MTR_40");
+			bitmapLeft = image_spict.read(ratio < 11 ? (char*)"MTR_10" : ratio < 40 ? (char*)"MTR_39" : (char*)"MTR_40");
 			bitmapRight = image_spict.read("MTR_00");
 		}
 
@@ -1141,7 +1141,7 @@ void Unit::disp_button(int refreshFlag)
 		{
 			int notifyFlag = spy_array[spy_recno]->notify_cloaked_nation_flag;
 			button_spy_notify.visible_flag = 1;
-			button_spy_notify.update_bitmap( notifyFlag ? "SPYNOTI1" : "SPYNOTI0" );	// update_bitmap calls paint
+			button_spy_notify.update_bitmap( notifyFlag ? (char*)"SPYNOTI1" : (char*)"SPYNOTI0" );	// update_bitmap calls paint
 
 			button_spy_drop_identity.visible_flag = 1;
 			button_spy_drop_identity.paint();
@@ -1709,7 +1709,7 @@ static void group_change_spy_notify_flag()
 
 	//--------- update the spy bitmap ----------//
 
-	button_spy_notify.update_bitmap( newNotifyFlag ? "SPYNOTI1" : "SPYNOTI0" );
+	button_spy_notify.update_bitmap( newNotifyFlag ? (char*)"SPYNOTI1" : (char*)"SPYNOTI0" );
 
 	if( newNotifyFlag )
 		se_ctrl.immediate_sound("TURN_ON");

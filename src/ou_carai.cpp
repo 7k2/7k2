@@ -369,7 +369,7 @@ void UnitCaravan::detect_stop()
 			{
 				se_ctrl.immediate_sound(
 					button_select_array[i][b].elastic_flag || button_select_array[i][b].pushed_flag ?
-					"TURN_ON" : "TURN_OFF");
+					(char*)"TURN_ON" : (char*)"TURN_OFF");
 
 				set_stop_pick_up(i+1, b+FIRST_GOODS_SELECT_BUTTON, COMMAND_PLAYER); // b = 1 - MAX_PICK_UP_GOODS
 			}
@@ -392,8 +392,8 @@ static void i_button_go_stop(ButtonCustom *button, int repaintBody)
 	vga.active_buf->put_bitmap_remap( button->x1, button->y1, 
 
 		// button resource name
-		image_button.read( button->pushed_flag ? "CARA-STD" :
-			mouse.in_area(button->x1, button->y1, button->x2, button->y2) ? "CARA-STH" : "CARA-STU" ),
+		image_button.read( button->pushed_flag ? (char*)"CARA-STD" :
+			mouse.in_area(button->x1, button->y1, button->x2, button->y2) ? (char*)"CARA-STH" : (char*)"CARA-STU" ),
 
 		// remap table
 		game.get_color_remap_table( (!firmPtr ? 0 : firmPtr->nation_recno), 0) );
@@ -428,8 +428,8 @@ static void i_button_set_stop(ButtonCustom *button, int repaintBody)
 	vga.active_buf->put_bitmap( button->x1, button->y1, 
 
 		// button resource name
-		image_button.read( button->pushed_flag ? "CARA-SED" :
-			mouse.in_area(button->x1, button->y1, button->x2, button->y2) ? "CARA-SEH" : "CARA-SEU" ) );
+		image_button.read( button->pushed_flag ? (char*)"CARA-SED" :
+			mouse.in_area(button->x1, button->y1, button->x2, button->y2) ? (char*)"CARA-SEH" : (char*)"CARA-SEU" ) );
 }
 //--------- End of static function i_button_set_stop ---------//
 
@@ -441,8 +441,8 @@ static void i_button_cancel_stop(ButtonCustom *button, int repaintBody)
 	vga.active_buf->put_bitmap( button->x1, button->y1, 
 
 		// button resource name
-		image_button.read( button->pushed_flag ? "CARA-DED" :
-			mouse.in_area(button->x1, button->y1, button->x2, button->y2) ? "CARA-DEH" : "CARA-DEU" ) );
+		image_button.read( button->pushed_flag ? (char*)"CARA-DED" :
+			mouse.in_area(button->x1, button->y1, button->x2, button->y2) ? (char*)"CARA-DEH" : (char*)"CARA-DEU" ) );
 }
 //--------- End of static function i_button_cancel_stop ---------//
 
@@ -454,8 +454,8 @@ static void i_button_reset_stop(ButtonCustom *button, int repaintBody)
 	vga.active_buf->put_bitmap( button->x1, button->y1, 
 
 		// button resource name
-		image_button.read( button->pushed_flag ? "CARA-RSD" :
-			mouse.in_area(button->x1, button->y1, button->x2, button->y2) ? "CARA-RSH" : "CARA-RSU" ) );
+		image_button.read( button->pushed_flag ? (char*)"CARA-RSD" :
+			mouse.in_area(button->x1, button->y1, button->x2, button->y2) ? (char*)"CARA-RSH" : (char*)"CARA-RSU" ) );
 }
 //--------- End of static function i_button_reset_stop ---------//
 
@@ -466,7 +466,7 @@ static void i_disp_caravan_select_button(ButtonCustom *button, int repaintBody)
 {
 	int j = button->custom_para.value;
 //	char *bitmapPtr = image_button.read( button->enable_flag ? (button->pushed_flag ? "CARA-GDD" : "CARA-GDU") : "CARA-GDL" );
-	char *bitmapPtr = image_button.read( button->enable_flag ? (button->pushed_flag ? "CARA-GDD" : "CARA-GDL") : "CARA-GDL" );
+	char *bitmapPtr = image_button.read( button->enable_flag ? (button->pushed_flag ? (char*)"CARA-GDD" : (char*)"CARA-GDL") : (char*)"CARA-GDL" );
 	vga.active_buf->put_bitmap_area_trans( button->x1-carv_gdd_x[j], button->y1, bitmapPtr, 
 		carv_gdd_x[j], 0, carv_gdd_x[j+1]-1, ((Bitmap *)bitmapPtr)->get_height()-1 );
 }

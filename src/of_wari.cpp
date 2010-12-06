@@ -538,7 +538,7 @@ static void i_disp_queue_button(ButtonCustom *button, int repaintBody)
 	int x2 = button->x2;
 	int y2 = button->y2;
 
-	vga.active_buf->put_bitmap( x1, y1, image_button.read( button->pushed_flag ? "NUM-D" : "NUM-U" ) );
+	vga.active_buf->put_bitmap( x1, y1, image_button.read( button->pushed_flag ? (char*)"NUM-D" : (char*)"NUM-U" ) );
 	
 	//----- count the no. of units queued for this weapon ------//
 

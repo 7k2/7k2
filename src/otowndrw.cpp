@@ -423,7 +423,7 @@ int Town::draw_detect_link_line(int actionDetect)
 		if( can_toggle_firm_link(linked_firm_array[i]) )
 			bitmapPtr = power.get_link_icon( linked_firm_enable_array[i], nation_recno==firmPtr->nation_recno );
 		else if( firmPtr->can_set_active_link(town_recno) )
-			bitmapPtr = image_icon.read( firmPtr->active_link_town_recno == town_recno ? "LINK_ACT" : "LINK_DEA" );
+			bitmapPtr = image_icon.read( firmPtr->active_link_town_recno == town_recno ? (char*)"LINK_ACT" : (char*)"LINK_DEA" );
 		else
 			continue;
 

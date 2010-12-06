@@ -236,13 +236,13 @@ void Firm::disp_basic_info(int dispY1, int refreshFlag)
 			if( repair_flag && hit_points < max_hit_points() )
 			{
 				button_builder.pushed_flag = repair_flag;
-				button_builder.update_bitmap( ((sys.frame_count % 5) < 3) ? "REPAIRU" : "REPAIRD");
+				button_builder.update_bitmap( ((sys.frame_count % 5) < 3) ? (char*)"REPAIRU" : (char*)"REPAIRD");
 				button_builder.set_help_code( "REPAIRING" );
 			}
 			else
 			{
 				button_builder.pushed_flag = repair_flag;
-				button_builder.update_bitmap( repair_flag ? "REPAIRU" : "REPAIRD");
+				button_builder.update_bitmap( repair_flag ? (char*)"REPAIRU" : (char*)"REPAIRD");
 				button_builder.set_help_code( "REPAIR" );
 			}
 		}

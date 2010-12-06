@@ -566,12 +566,12 @@ if (population >0)
 					// set pushed_flag to 1 as although repair_flag will not reset after selecting 
 					// other things, pushed flag will do
 					button_builder.pushed_flag = repair_flag;
-					button_builder.update_bitmap( ((sys.frame_count % 5) < 3) ? "REPAIRU" : "REPAIRD");
+					button_builder.update_bitmap( ((sys.frame_count % 5) < 3) ? (char*)"REPAIRU" : (char*)"REPAIRD");
 				}
 				else
 				{
 					button_builder.pushed_flag = repair_flag;
-					button_builder.update_bitmap( repair_flag ? "REPAIRU" : "REPAIRD");
+					button_builder.update_bitmap( repair_flag ? (char*)"REPAIRU" : (char*)"REPAIRD");
 				}
 			}
 		

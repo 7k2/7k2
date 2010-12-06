@@ -847,7 +847,7 @@ void TalkRes::send_talk_msg_now(TalkMsg* talkMsgPtr)
 	{
 		case NATION_OWN:		// can be from both AI or a remote player
 			if( news_array.diplomacy( talk_msg_array.recno() ) )
-				se_ctrl.immediate_sound(talkMsgPtr->talk_id==TALK_DECLARE_WAR ? "DECL_WAR":"GONG");
+				se_ctrl.immediate_sound(talkMsgPtr->talk_id==TALK_DECLARE_WAR ? (char*)"DECL_WAR":(char*)"GONG");
 			break;
 
 		case NATION_AI:

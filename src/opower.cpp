@@ -674,9 +674,9 @@ int Power::detect_select(int selX1, int selY1, int selX2, int selY2, int recallG
 				if( se_res.mark_select_object_time() )
 				{
 					se_res.sound(firmPtr->center_x, firmPtr->center_y, 1,
-						'F', firmPtr->firm_id, firmPtr->under_construction ? "SELU" : "SEL" );
+						'F', firmPtr->firm_id, firmPtr->under_construction ? (char*)"SELU" : (char*)"SEL" );
 					se_res.sound(firmPtr->center_x, firmPtr->center_y, 1,
-						'B', firmPtr->firm_build_id, firmPtr->under_construction ? "SELU" : "SEL" );
+						'B', firmPtr->firm_build_id, firmPtr->under_construction ? (char*)"SELU" : (char*)"SEL" );
 				}
 			}
 

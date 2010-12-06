@@ -92,12 +92,12 @@ int CampaignEastWest::event_fryhtan_takeover()
 
 		int textId = random(2)+1;		// there are two different sets of text for this event. The program randomly picks one to display.
 
-		disp_narrative( res_event.read( textId==1 ? "1A" : "1A1" ),
+		disp_narrative( res_event.read( textId==1 ? (char*)"1A" : (char*)"1A1" ),
 			cNation->race_name(), cNation->nation_name() );
 
 		attack_state( attacker_state_recno, target_state_recno, 1, 1, 3 );
 
-		disp_letter( 0, res_event.read( textId==1 ? "1B" : "1B1" ), cNation->race_name(),
+		disp_letter( 0, res_event.read( textId==1 ? (char*)"1B" : (char*)"1B1" ), cNation->race_name(),
 			cNation->nation_name(), minister_name(MINISTER_OF_WAR) );
 	}
 	else	// if the current monster nation does not have a state next to the player's kingdom, randomly pick another monster nation
@@ -1613,7 +1613,7 @@ int CampaignEastWest::event_fryhtan_break_up()
 	int 	    attackResult = ( m.random(2)==0 ? 1 : -1 );
 	CampaignNation* attackerNation = get_nation( state_array[attackStateRecno]->campaign_nation_recno );
 
-	disp_narrative( res_event.read( attackResult==1 ? "18B" : "18C" ),
+	disp_narrative( res_event.read( attackResult==1 ? (char*)"18B" : (char*)"18C" ),
 		attackerNation->king_name() );
 
 	attack_state( attackStateRecno, stateRecno, attackResult, 1, 3 );

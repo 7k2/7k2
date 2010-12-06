@@ -335,9 +335,9 @@ void FirmCamp::disp_camp_info(int dispY1, int refreshFlag)
 				button_reward.create( INFO_X1+13, INFO_Y1+235, 'A', "F_REWARD" );				
 							
 			if (!is_monster())
-				button_defense.create( INFO_X1+13+2*BUTTON_DISTANCE, INFO_Y1+281, 'A', defense_flag ? "DEFENSE1" : "DEFENSE0" );
+				button_defense.create( INFO_X1+13+2*BUTTON_DISTANCE, INFO_Y1+281, 'A', defense_flag ? (char*)"DEFENSE1" : (char*)"DEFENSE0" );
 			else
-				button_defense.create( INFO_X1+13+2*BUTTON_DISTANCE, INFO_Y1+281, 'A', defense_flag ? "F_DEFEN1" : "F_DEFEN0" );
+				button_defense.create( INFO_X1+13+2*BUTTON_DISTANCE, INFO_Y1+281, 'A', defense_flag ? (char*)"F_DEFEN1" : (char*)"F_DEFEN0" );
 				
 			if (!is_monster())
 				button_promote.create( INFO_X1+13+2*BUTTON_DISTANCE , INFO_Y1+235, 'A', "PROMOTE" );
@@ -388,9 +388,9 @@ void FirmCamp::disp_camp_info(int dispY1, int refreshFlag)
 		button_reward.paint();
 
 		if (!is_monster())
-			button_defense.update_bitmap( defense_flag ? "DEFENSE1" : "DEFENSE0" );		// call paint
+			button_defense.update_bitmap( defense_flag ? (char*)"DEFENSE1" : (char*)"DEFENSE0" );		// call paint
 		else
-			button_defense.update_bitmap( defense_flag ? "F_DEFEN1" : "F_DEFEN0" );
+			button_defense.update_bitmap( defense_flag ? (char*)"F_DEFEN1" : (char*)"F_DEFEN0" );
 
 		if( (button_promote.visible_flag = !overseer_recno) )
 		{
@@ -483,7 +483,7 @@ void FirmCamp::detect_camp_info()
 
 		if( button_defense.detect() )
 		{
-			se_ctrl.immediate_sound( !defense_flag?"TURN_ON":"TURN_OFF");
+			se_ctrl.immediate_sound( !defense_flag?(char*)"TURN_ON":(char*)"TURN_OFF");
 
 			if( !remote.is_enable() )
 			{
