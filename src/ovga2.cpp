@@ -45,7 +45,7 @@ static RGBColor identity_color_function(RGBColor col, int, int)
 // [int]   x1, y1   - the top left display position of the image
 //							 (default: 0)
 //
-void Vga::disp_image_file(char* fileName, int x1, int y1)
+void Vga::disp_image_file(const char* fileName, int x1, int y1)
 {
 	String str;
 

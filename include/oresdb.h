@@ -57,7 +57,7 @@ public:
    char* read(int= -1);
    File* get_file();
 
-   void  init_imported(char*,int,int=0);
+   void  init_imported(const char*,int,int=0);
    char* read_imported(long);
 };
 

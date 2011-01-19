@@ -98,12 +98,12 @@ public:
 	static   char  last_read_success_flag;
 
 public:
-//	int   save_game(char* =NULL, char *desc = NULL);
-	int   save_game(char* path, char *fileName, char *desc);
-//	int   load_game(char* =NULL);
-	int   load_game(char* path, char *fileName);
+//	int   save_game(const char* =NULL, char *desc = NULL);
+	int   save_game(const char* path, const char *fileName, const char *desc);
+//	int   load_game(const char* =NULL);
+	int   load_game(const char* path, const char *fileName);
 
-   void  set_file_name(char *path, char *extension);
+   void  set_file_name(const char *path, const char *extension);
    void  disp_info(int x, int y);
    int   validate_header();
 	int	ask_desc();
@@ -150,7 +150,7 @@ public:
 public:
    GameFileArray();
 
-   void init(char *path, char *extension);
+   void init(const char *path, const char *extension);
    void deinit();
 
 	void reload();
@@ -160,8 +160,8 @@ public:
    int  load_game()    { return menu(2); }
 	int  auto_save();
 
-//   int save_new_game(char* =NULL); // save a new game immediately without prompting menu
-   int save_new_game(char *fileName); // save a new game immediately without prompting menu
+//   int save_new_game(const char* =NULL); // save a new game immediately without prompting menu
+   int save_new_game(const char *fileName); // save a new game immediately without prompting menu
 
    int  read_hall_of_fame();
    int  write_hall_of_fame();    // it may be called by group_res.gen_group() in writting default name
@@ -173,7 +173,7 @@ public:
 
 private:
    void disp_browse();
-   void load_all_game_header(char *path, char *extStr);
+   void load_all_game_header(const char *path, const char *extStr);
    int  process_action(int);
    void del_game();
 };

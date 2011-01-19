@@ -48,13 +48,13 @@ public:
 public:
 	Misc();
 
-   int   str_cut(char*,char*,int,int=-1);
-   int   str_chr(char*,char,int=1,int=-1);
-   int   str_str(char*,char*,int=1,int=-1);
-   int   str_cmp(char*,char*);
-   int   str_cmpx(char*,char*);
-   int   str_icmpx(char*,char*);
-   void  str_shorten(char*,char*,int);
+   int   str_cut(char*,const char*,int,int=-1);
+   int   str_chr(const char*,char,int=1,int=-1);
+   int   str_str(const char*,const char*,int=1,int=-1);
+   int   str_cmp(const char*,const char*);
+   int   str_cmpx(const char*,const char*);
+   int   str_icmpx(const char*,const char*);
+   void  str_shorten(char*,const char*,int);
 
 	int   upper(int);
 	int   lower(int);
@@ -111,9 +111,9 @@ public:
    int   random(int);
 	long	rand_long();
 
-   int   is_file_exist(char*);
-   void  change_file_ext(char*,char*,char*);
-	void  extract_file_name(char*, char*);
+   int   is_file_exist(const char*);
+   void  change_file_ext(char*,const char*,const char*);
+   void  extract_file_name(char*,const char*);
 
    void  put_text_scr(char*);
 	void  del_array_rec(void* arrayBody, int arraySize, int recSize, int delRecno);

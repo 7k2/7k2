@@ -61,7 +61,7 @@
 // [int]   useCommonBuf = whether use the common buffer to store the data or not
 //									(default:0)
 //
-void ResourceIdx::init(char* resName, int readAll, int useCommonBuf)
+void ResourceIdx::init(const char* resName, int readAll, int useCommonBuf)
 {
    long dataSize;
 
@@ -205,7 +205,7 @@ int ResourceIdx::read_into_user_buf(char* dataName, char* userBuf, int userBufSi
 // Return : <char*> data pointer
 //          NULL    if the record has not index to data
 //
-char* ResourceIdx::read(char* dataName)
+char* ResourceIdx::read(const char* dataName)
 {
 	err_when( !init_flag || !dataName );
 
@@ -248,7 +248,7 @@ int ResourceIdx::data_size(char* dataName)
 // Return : <int> index of the data in the resource file
 //          0     if the name is not found in the resource file
 //
-int ResourceIdx::get_index(char* dataName)
+int ResourceIdx::get_index(const char* dataName)
 {
 	err_when( !init_flag || !dataName );
 
@@ -398,7 +398,7 @@ char* ResourceIdx::get_data(int indexId)
 // Return : <FILE*> the file stream
 //          NULL    if the record has not index to data
 //
-File* ResourceIdx::get_file(char* dataName, int& dataSize)
+File* ResourceIdx::get_file(const char* dataName, int& dataSize)
 {
    err_when( !init_flag || !dataName || read_all);
 

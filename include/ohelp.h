@@ -142,7 +142,7 @@ public:
 	Help();
 	~Help();
 
-	void       init(char* resName);
+	void       init(const char* resName);
 	void       deinit();
 
 	void       load(char*);
@@ -151,7 +151,7 @@ public:
 	void		  pop_screen();
 	void		  set_screen(char* screenCode);
 
-	void		  set_help(int x1, int y1, int x2, int y2, char* helpCode);
+	void		  set_help(int x1, int y1, int x2, int y2, const char* helpCode);
 	void		  set_unit_help(int unitId, int rankId, int x1, int y1, int x2, int y2);
 	void		  set_custom_help(int x1, int y1, int x2, int y2, char* helpTitle, char* helpDetail=NULL);
 

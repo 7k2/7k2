@@ -47,7 +47,7 @@ public:
 
 public:
    String();                            // default ructor;
-   String( char *s);
+   String( const char *s);
    String( String& s);
 
    char*  upper();
@@ -66,11 +66,11 @@ public:
    operator char*() { return str_buf; }
 
    String& operator=( String&); // str1 = str
-   String& operator=( char*);   // str1 = char*
+   String& operator=( const char*);   // str1 = char*
    String& operator=( long );   // str1 = long
 
    String& operator+=( String&);        // str1 += str
-   String& operator+=( char*);  // str1 += char*
+   String& operator+=( const char*);  // str1 += char*
    String& operator+=( long );  // str1 += long
 
    String& operator*=(int n);   // str1 *= n
@@ -79,23 +79,23 @@ public:
    //----------- string comparsion functions ----------//
 
    friend int operator == ( String& s1, String& s2) { return strcmp(s1.str_buf,s2.str_buf)==0; }
-   friend int operator == ( String& s1, char*   s2) { return strcmp(s1.str_buf,s2)==0; }
-   friend int operator == ( char*   s1, String& s2) { return strcmp(s1,s2.str_buf)==0; }
+   friend int operator == ( String& s1, const char* s2) { return strcmp(s1.str_buf,s2)==0; }
+   friend int operator == ( const char* s1, String& s2) { return strcmp(s1,s2.str_buf)==0; }
    friend int operator != ( String& s1, String& s2) { return strcmp(s1.str_buf,s2.str_buf)!=0; }
-   friend int operator != ( String& s1, char*   s2) { return strcmp(s1.str_buf,s2)!=0; }
-   friend int operator != ( char*   s1, String& s2) { return strcmp(s1,s2.str_buf)!=0; }
+   friend int operator != ( String& s1, const char* s2) { return strcmp(s1.str_buf,s2)!=0; }
+   friend int operator != ( const char* s1, String& s2) { return strcmp(s1,s2.str_buf)!=0; }
    friend int operator <  ( String& s1, String& s2) { return strcmp(s1.str_buf,s2.str_buf)<0; }
-   friend int operator <  ( String& s1, char*   s2) { return strcmp(s1.str_buf,s2)<0; }
-   friend int operator <  ( char*   s1, String& s2) { return strcmp(s1,s2.str_buf)<0; }
+   friend int operator <  ( String& s1, const char* s2) { return strcmp(s1.str_buf,s2)<0; }
+   friend int operator <  ( const char* s1, String& s2) { return strcmp(s1,s2.str_buf)<0; }
    friend int operator >  ( String& s1, String& s2) { return strcmp(s1.str_buf,s2.str_buf)>0; }
-   friend int operator >  ( String& s1, char*   s2) { return strcmp(s1.str_buf,s2)>0; }
-   friend int operator >  ( char*   s1, String& s2) { return strcmp(s1,s2.str_buf)>0; }
+   friend int operator >  ( String& s1, const char* s2) { return strcmp(s1.str_buf,s2)>0; }
+   friend int operator >  ( const char* s1, String& s2) { return strcmp(s1,s2.str_buf)>0; }
    friend int operator <= ( String& s1, String& s2) { return strcmp(s1.str_buf,s2.str_buf)<=0; }
-   friend int operator <= ( String& s1, char*   s2) { return strcmp(s1.str_buf,s2)<=0; }
-   friend int operator <= ( char*   s1, String& s2) { return strcmp(s1,s2.str_buf)<=0; }
+   friend int operator <= ( String& s1, const char* s2) { return strcmp(s1.str_buf,s2)<=0; }
+   friend int operator <= ( const char* s1, String& s2) { return strcmp(s1,s2.str_buf)<=0; }
    friend int operator >= ( String& s1, String& s2) { return strcmp(s1.str_buf,s2.str_buf)>=0; }
-   friend int operator >= ( String& s1, char*   s2) { return strcmp(s1.str_buf,s2)>=0; }
-   friend int operator >= ( char*   s1, String& s2) { return strcmp(s1,s2.str_buf)>=0; }
+   friend int operator >= ( String& s1, const char* s2) { return strcmp(s1.str_buf,s2)>=0; }
+   friend int operator >= ( const char* s1, String& s2) { return strcmp(s1,s2.str_buf)>=0; }
 };
 
 //------------------------------------------------------//

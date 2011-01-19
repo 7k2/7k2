@@ -275,7 +275,7 @@ void Game::game_end(int winNationRecno, int playerDestroyed, int surrenderToNati
 	if( !retireFlag && !game.is_campaign_mode() &&
 			game.game_mode != GAME_TUTORIAL )		// don't display this when retire
 	{
-		char* fileName;
+		const char* fileName;
 
 		// ####### begin Gilbert 5/7 ########//
 		// if( winNationRecno && (winNationRecno == nation_array.player_recno) )

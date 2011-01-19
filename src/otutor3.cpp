@@ -7045,7 +7045,7 @@ void Tutor::disp_result_text(int objestiveRecNo)
 // ------- End of function Tutor::disp_result_text -----//
 
 // ------- Begin of function Tutor::detect_button -----//
-int Tutor::detect_button(short x1, short y1, short x2, short y2, char* buttonName, short buttonRc)
+int Tutor::detect_button(short x1, short y1, short x2, short y2, const char* buttonName, short buttonRc)
 {
 	if(
 		((x1 <= detect_button_x1) &&
@@ -7141,7 +7141,7 @@ int Tutor::allow_mouse_click(short x, short y, short pressOrRelease, short right
 // ------- End of function Tutor::allow_mouse_click -----//
 
 // ------- Begin of function Tutor::allow_button_click -----//
-int Tutor::allow_button_click(short x1, short y1, short x2, short y2, char* buttonName, short buttonRc)
+int Tutor::allow_button_click(short x1, short y1, short x2, short y2, const char* buttonName, short buttonRc)
 {
 	if (bypass_allow_button_click == 1)
 		return 1;	

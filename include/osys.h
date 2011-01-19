@@ -204,8 +204,8 @@ public:
 	void		mp_clear_request_save();
 
 	//-------------- single player syn. game testing functions --------------//
-	void		sp_open_seed_file(char *filename);
-	void		sp_create_seed_file(char *filename);
+	void		sp_open_seed_file(const char *filename);
+	void		sp_create_seed_file(const char *filename);
 	void		sp_close_seed_file();
 	void		sp_load_seed_file();
 	void		sp_record_match_seed();
@@ -218,7 +218,7 @@ public:
 	//---- for setting game directories ----//
 
 	void 		set_game_dir();
-	int 		set_one_dir( char* checkFileName, char* defaultDir, char* trueDir );
+	int 		set_one_dir( const char* checkFileName, const char* defaultDir, char* trueDir );
 	void 		get_cdrom_drive();
 
 	//-------- for load/save games --------//
@@ -265,7 +265,7 @@ private:
 	int 		detect_set_speed(unsigned scanCode, unsigned skeyState);
 	void		detect_campaign_cheat_key(unsigned scanCode, unsigned skeyState);
 
-	int 		detect_key_str(int keyStrId, char* keyStr);
+	int 		detect_key_str(int keyStrId, const char* keyStr);
 };
 
 extern Sys sys;

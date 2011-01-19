@@ -181,7 +181,7 @@ File* ResourceDb::get_file()
 // [int]   useCommonBuf = whether use the vga common buffer to store the data or not
 //                     (default:0)
 //
-void ResourceDb::init_imported(char* resName, int readAll, int useCommonBuf)
+void ResourceDb::init_imported(const char* resName, int readAll, int useCommonBuf)
 {
    deinit();
 

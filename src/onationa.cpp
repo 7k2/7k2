@@ -1111,7 +1111,7 @@ char* NationArray::get_custom_king_name(int nationRecno, int firstWordOnly)
 //
 // <int> nationRecno - nation recno
 //
-void NationArray::set_custom_king_name(int nationRecno, char* nameStr)
+void NationArray::set_custom_king_name(int nationRecno, const char* nameStr)
 {
 	err_when( nationRecno < 1 || nationRecno > MAX_NATION );
 
@@ -1141,7 +1141,7 @@ char* NationArray::get_custom_nation_name(int nationRecno)
 //
 // <int> nationRecno - nation recno
 //
-void NationArray::set_custom_nation_name(int nationRecno, char* nameStr)
+void NationArray::set_custom_nation_name(int nationRecno, const char* nameStr)
 {
 	err_when( nationRecno < 1 || nationRecno > MAX_NATION );
 

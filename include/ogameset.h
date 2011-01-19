@@ -82,10 +82,10 @@ public:
 	void	      open_set(int);
 	void	      close_set();
 
-	Database*   open_db(char*);
+	Database*   open_db(const char*);
 	Database*   get_db();
 
-	int         find_set(char*);
+	int         find_set(const char*);
 
 	SetInfo*    operator()()          { return set_info_array+cur_set_id-1; }
 	SetInfo*    operator[](int recNo) { return set_info_array+recNo-1; }

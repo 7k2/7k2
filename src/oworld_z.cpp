@@ -1883,7 +1883,7 @@ void ZoomMatrix::disp_text()
 // <char*> str  - the display string.
 // <char> black - using a transparent black blackground or not
 //
-void ZoomMatrix::put_center_text(int x, int y, int z, char* str, char black, Font* font_ptr)
+void ZoomMatrix::put_center_text(int x, int y, int z, const char* str, char black, Font* font_ptr)
 {
 	str = translate.process(str);
 

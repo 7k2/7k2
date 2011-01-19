@@ -37,7 +37,7 @@ public:
 	bool is_persistant() { return file_name[0] != '\0'; }	// save to file every update
 
 public:
-	SerialRepository( int maxHistorySize=0, char *fileName=0 );
+	SerialRepository( int maxHistorySize=0, const char *fileName=0 );
 	~SerialRepository();
 
 	void	init();

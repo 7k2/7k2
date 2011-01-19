@@ -76,7 +76,7 @@ void Misc::delay(float wait)
 // <int>    = max. no. of characters in the dest. string.
 //            ( destStr should be allocated as destStr[destLen+1] )
 //
-void Misc::str_shorten(char* destStr, char* srcStr, int destLen)
+void Misc::str_shorten(char* destStr, const char* srcStr, int destLen)
 {
    strncpy( destStr, srcStr, destLen );
 
@@ -129,7 +129,7 @@ void Misc::str_shorten(char* destStr, char* srcStr, int destLen)
 // <int>    = the no. of characters to copied.        (default:to the end of the string)
 //
 
-int Misc::str_cut(char* dstr, char* sstr, int schar, int charnum )
+int Misc::str_cut(char* dstr, const char* sstr, int schar, int charnum )
 {
    int si,di,forever;
 
@@ -161,7 +161,7 @@ int Misc::str_cut(char* dstr, char* sstr, int schar, int charnum )
 //          FAIL / NULL if not found
 //
 
-int Misc::str_chr( char* str, char chr, int spos, int epos )
+int Misc::str_chr( const char* str, char chr, int spos, int epos )
 {
    int i;
 
@@ -195,7 +195,7 @@ int Misc::str_chr( char* str, char chr, int spos, int epos )
 //          FAIL / NULL if not found
 //
 
-int Misc::str_str( char* str, char* fstr, int spos, int epos )
+int Misc::str_str( const char* str, const char* fstr, int spos, int epos )
 {
    int i,j,flen;
 
@@ -540,7 +540,7 @@ int Misc::valid_char( char ch )
 //     "ABCDE"    <> "ABCDEF"
 //     "ABCDE"    <> "ABCDE "
 
-int Misc::str_cmp( char* str1, char* str2 )
+int Misc::str_cmp( const char* str1, const char* str2 )
 {
    err_when( !str1 || !str2 );
 
@@ -568,7 +568,7 @@ int Misc::str_cmp( char* str1, char* str2 )
 //     "ABCDE"    <> "ABCDEF"
 //     "ABCDE"    <> "ABCDE "
 //
-int Misc::str_cmpx( char* str1, char* str2 )
+int Misc::str_cmpx( const char* str1, const char* str2 )
 {
    err_when( !str1 || !str2 );
 
@@ -596,7 +596,7 @@ int Misc::str_cmpx( char* str1, char* str2 )
 //     "ABCDE"    <> "ABCDEF"
 //     "ABCDE"    <> "ABCDE "
 
-int Misc::str_icmpx( char* str1, char* str2 )
+int Misc::str_icmpx( const char* str1, const char* str2 )
 {
    err_when( !str1 || !str2 );
 
@@ -1156,7 +1156,7 @@ float Misc::round_dec(float inNum)
 // return : <int> 1 - the file exists
 //                0 - doesn't exist
 //
-int Misc::is_file_exist(char* fileName)
+int Misc::is_file_exist(const char* fileName)
 {
 	WIN32_FIND_DATA	findData;
 
@@ -1183,7 +1183,7 @@ void DumpBin(char* s,int Length);
 void Dump(char* s);
 void Dump(int i);
 //SXM
-void Misc::change_file_ext(char* desFileName, char* srcFileName, char* newExt)
+void Misc::change_file_ext(char* desFileName, const char* srcFileName, const char* newExt)
 {
    int nameLen = m.str_chr(srcFileName, '.');	// include the '.' in the nameLen
 
@@ -1214,7 +1214,7 @@ void Misc::change_file_ext(char* desFileName, char* srcFileName, char* newExt)
 // <char*> desFileName = the destination buffer to be written
 // <char*> srcFileName = the source file name
 //
-void Misc::extract_file_name(char* desFileName, char* srcFileName)
+void Misc::extract_file_name(char* desFileName, const char* srcFileName)
 {
 	int i;
 	for( i=strlen(srcFileName) ; i>=0 ; i-- )
@@ -1465,7 +1465,7 @@ char* Misc::roman_number(int inNum)
 {
 	err_when( inNum<1 || inNum >= 1000 );
 
-	static char* roman_number_array[] =
+	static const char* roman_number_array[] =
 	{ "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X" };
 
 	static String str;

@@ -149,7 +149,7 @@ public:
 //		{ return rock_block_array + rockBlockRecno -1; }
 
 	// return rockId
-	short            search(char *rockTypes, short minWidth, short maxWidth, 
+	short            search(const char *rockTypes, short minWidth, short maxWidth, 
 		short minHeight, short maxHeight, int animatedFlag=-1, int findFirst=0,
 		char terrainType=0);
 	short            locate(char *rockName);

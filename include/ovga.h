@@ -113,7 +113,7 @@ public:
 
 		  BOOL	is_inited();
 
-		  BOOL   load_pal(char* fileName);
+		  BOOL   load_pal(const char* fileName);
 		  void	init_gray_remap_table();
 
 		  void   activate_pal(VgaBuf*);
@@ -133,7 +133,7 @@ public:
 		  BOOL   blt_buf(int x1, int y1, int x2, int y2, int putMouseCursor=1);
 		  void	flip();
 
-		  void 	disp_image_file(char* fileName,int x1=0, int y1=0);
+		  void 	disp_image_file(const char* fileName,int x1=0, int y1=0);
 		  void 	finish_disp_image_file();
 
 		  int		translate_color(unsigned char c)			// calc 8-bit color to 16-bit color // new for 16 bit

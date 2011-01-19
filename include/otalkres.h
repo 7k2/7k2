@@ -100,15 +100,15 @@ public:
 
 	void		process_accepted_reply();
 
-	void		propose_treaty(char*);
-	void     end_treaty(char*);
+	void     propose_treaty(const char*);
+	void     end_treaty(const char*);
 	void		request_military_aid();
 	void		request_trade_embargo();
 	void     request_cease_war();
 	void     request_declare_war();
 	void     request_buy_food();
 	void     declare_war();
-	void     give_tribute(char* tributeStr);
+	void     give_tribute(const char* tributeStr);
 	void     demand_tribute(int isAid);
 	void     exchange_tech();
 	void		request_surrender();
@@ -197,7 +197,7 @@ public:
 	int			read_file(File* filePtr);
 
 private:
-	void			add_talk_choice(char* talkStr, int talkPara, int talkPara2=0);
+	void			add_talk_choice(const char* talkStr, int talkPara, int talkPara2=0);
 
 	void			add_main_choices();
 	int			add_trade_embargo_choices();

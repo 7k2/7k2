@@ -37,7 +37,7 @@
 
 #ifdef DEMO
 
-static char *music_file[] =
+static const char *music_file[] =
 {
 	"DEMO.WAV",		// opening
 	"DEMO.WAV",
@@ -55,7 +55,7 @@ static char *music_file[] =
 
 #else
 
-static char *music_file[] =
+static const char *music_file[] =
 {
 	"CBRIEF.WAV",		// opening
 	"CFRYWIN.WAV",

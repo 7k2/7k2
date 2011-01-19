@@ -233,7 +233,7 @@ void SECtrl::request(int soundEffect, RelVolume relVolume)
 }
 
 
-void SECtrl::request(char *soundName, RelVolume relVolume)
+void SECtrl::request(const char *soundName, RelVolume relVolume)
 {
 	if( !audio_flag || !config.sound_effect_flag)
 		return;					// skip if audio cannot init wave device
@@ -396,7 +396,7 @@ char *SECtrl::get_effect_name(int j)
 //
 // <char *> effectName      the name of the effect name
 //
-int SECtrl::search_effect_id(char *effectName)
+int SECtrl::search_effect_id(const char *effectName)
 {
 	err_when(!init_flag);
 	if( !audio_flag )
@@ -422,7 +422,7 @@ int SECtrl::search_effect_id(char *effectName)
 // <char *> effectName      the name of the effect name
 // <int> len                the size of the effectName
 //
-int SECtrl::search_effect_id(char *effectName, int len)
+int SECtrl::search_effect_id(const char *effectName, int len)
 {
 	err_when(!init_flag);
 	if( !audio_flag)
@@ -516,7 +516,7 @@ long SECtrl::sound_pan(short locX, short locY, short drop)
 */
 
 // ------- Begin Function SECtrl::immediate_sound ------------//
-int SECtrl::immediate_sound(char *soundName, RelVolume relVolume)
+int SECtrl::immediate_sound(const char *soundName, RelVolume relVolume)
 {
 	if( !config.sound_effect_flag )
 		return 0;

@@ -64,10 +64,10 @@ public:
 
 public:
 	Flame();
-	Flame(short width, short height, short flameWidth, FlameType, char* fileName = "FIRE");
+	Flame(short width, short height, short flameWidth, FlameType, const char* fileName = "FIRE");
 	~Flame();
 
-	void init(short width, short height, short flameWidth, FlameType, char* fileName = "FIRE");
+	void init(short width, short height, short flameWidth, FlameType, const char* fileName = "FIRE");
 	void deinit();
 
 	Flame& operator= (Flame &);
@@ -78,7 +78,7 @@ public:
 	void mask_transparent();
 	void draw_step(short left, short bottom, VgaBuf *vgabuf, short wind); // coordinate of left and bottom
 	void flush_point(short x=-1, short y=-1);
-	void load_palette(char* fileName);
+	void load_palette(const char* fileName);
 
 private:
 	unsigned random(unsigned);

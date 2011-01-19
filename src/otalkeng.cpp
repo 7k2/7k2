@@ -152,7 +152,7 @@ char* TalkMsg::msg_str(int viewingNationRecno, int dispReply, int dispSecondLine
 //
 // talk_para1 - duration of the treaty (no. of years).
 //
-void TalkMsg::propose_treaty(char* treatyTypeStr)
+void TalkMsg::propose_treaty(const char* treatyTypeStr)
 {
 	//---------------------------------------------//
 	//
@@ -345,7 +345,7 @@ void TalkMsg::propose_treaty(char* treatyTypeStr)
 //
 // talk_para1 - treaty type, RELATION_FRIENDLY or RELATION_ALLIANCE.
 //
-void TalkMsg::end_treaty(char* treatyTypeStr)
+void TalkMsg::end_treaty(const char* treatyTypeStr)
 {
 	//---------------------------------------------//
 	//
@@ -774,7 +774,7 @@ void TalkMsg::declare_war()
 //
 // talk_para1 - amount of the tribute.
 //
-void TalkMsg::give_tribute(char* tributeStr)
+void TalkMsg::give_tribute(const char* tributeStr)
 {
 	//---------------------------------------------//
 	//

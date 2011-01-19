@@ -27,7 +27,7 @@
 
 // ------ begin of function SerialRepository::SerialRepository --------//
 //
-SerialRepository::SerialRepository( int maxHistorySize, char *fileName )
+SerialRepository::SerialRepository( int maxHistorySize, const char *fileName )
 {
 	last_serial_id = 0;
 	max_history = maxHistorySize;

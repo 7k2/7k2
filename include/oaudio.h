@@ -77,21 +77,21 @@ public:
 	int  	play_mid(char*);
 
 	// functions on short wave
-	int  	play_wav(char*, DsVolume);
+	int  	play_wav(const char*, DsVolume);
 	int  	play_wav(short resIdx, DsVolume);
-	int	play_resided_wav(char *, DsVolume);
+	int	play_resided_wav(const char *, DsVolume);
 	int	get_free_wav_ch();
 	int	stop_wav(int);
 	int	is_wav_playing(int);
 
 	// functions on long wave
-	int   play_long_wav(char*, DsVolume);
+	int	play_long_wav(const char*, DsVolume);
 	int	stop_long_wav(int);
 	int	is_long_wav_playing(int);
 	void	volume_long_wav(int ch, DsVolume);
 
 	// functions on loop wave
-	int	play_loop_wav(char *, int repeatOffset, DsVolume);	// return channel no.
+	int	play_loop_wav(const char *, int repeatOffset, DsVolume);	// return channel no.
 	void	stop_loop_wav(int ch);
 	void	volume_loop_wav(int ch, DsVolume);
 	void	fade_out_loop_wav(int ch, int fadeRate);

@@ -541,7 +541,7 @@ public:
 	void 				set_move(int destXLoc, int destYLoc, bool forceMoveFlag=false);
 	int 				set_settle_town(int townXLoc, int townYLoc);
 	int					set_go_cast_power(int castXLoc, int castYLoc, int targetBaseObjRecno );
-	void 				sound(char* soundCode);
+	void 				sound(const char* soundCode);
 	virtual void		die()         {;}
 	virtual void 		being_attack_hit(BaseObj* attackerObj, float damagePoint);
 	void				add_die_effect();

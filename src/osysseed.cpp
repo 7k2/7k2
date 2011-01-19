@@ -35,7 +35,7 @@ static char file_opened_flag = 0;
 static long	match_seed;
 
 //-------- Begin of function Sys::sp_open_seed_file --------//
-void Sys::sp_open_seed_file(char *filename)
+void Sys::sp_open_seed_file(const char *filename)
 {
 	//seedCompareFile.file_open(filename);
 	seedCompareFile.file_append(filename);
@@ -45,7 +45,7 @@ void Sys::sp_open_seed_file(char *filename)
 
 
 //-------- Begin of function Sys::sp_create_seed_file --------//
-void Sys::sp_create_seed_file(char *filename)
+void Sys::sp_create_seed_file(const char *filename)
 {
 	seedCompareFile.file_create(filename);
 	//debug_seed_status_flag = 2; // 1 for saving, 2 for comparing

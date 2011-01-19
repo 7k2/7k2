@@ -36,22 +36,22 @@ class ImageRes : public ResourceIdx
 {
 public:
 	ImageRes()	{;}
-	ImageRes(char* resFile, int readAll=0, int useVgaBuf=0);
+	ImageRes(const char* resFile, int readAll=0, int useVgaBuf=0);
 
-	void  put_front(int,int,char*, int compressFlag=0);
-	void  put_back(int,int,char*, int compressFlag=0);
+	void  put_front(int,int,const char*, int compressFlag=0);
+	void  put_back(int,int,const char*, int compressFlag=0);
 
 	void  put_front(int,int,int, int compressFlag=0);
 	void  put_back(int,int,int, int compressFlag=0);
 
-	void  put_join(int,int,char*);
+	void  put_join(int,int,const char*);
 
-	char* get_ptr(char* imageName)   { return ResourceIdx::read(imageName); }
+	char* get_ptr(const char* imageName)   { return ResourceIdx::read(imageName); }
 
-	void  put_large(VgaBuf*,int,int,char*);  // put a large image, over 64K
+	void  put_large(VgaBuf*,int,int,const char*);  // put a large image, over 64K
 	void  put_large(VgaBuf*,int,int,int);
 
-	void  put_to_buf(VgaBuf* vgaBufPtr, char* imageName);
+	void  put_to_buf(VgaBuf* vgaBufPtr, const char* imageName);
 	void  put_to_buf(VgaBuf* vgaBufPtr, int bitmapId);
 };
 

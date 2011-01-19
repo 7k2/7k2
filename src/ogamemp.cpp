@@ -4790,7 +4790,7 @@ int Game::mp_select_load_option(char *fileName)
 	// --------- initialize ai_aggressiveness -------//
 
 	// #### begin Gilbert 10/2 #########//
-	char *aggressiveStr[5] = { "Very Low", "Low", "Medium", "Great", "Very great" };
+	const char *aggressiveStr[5] = { "Very Low", "Low", "Medium", "Great", "Very great" };
 
 	ButtonCustomGroup aiAggressiveGroup(5);
 	cx = option3X;

@@ -50,7 +50,7 @@
 
 //----------- Define action mode string --------//
 
-static char* action_mode_str_array[] =
+static const char* action_mode_str_array[] =
 {
 	"Build firm",
 	"Assign overseer",

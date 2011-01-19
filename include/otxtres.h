@@ -52,11 +52,11 @@ public:
 	TextResource();
 	~TextResource();
 
-	void	init( char *fileName);
+	void	init( const char *fileName);
 	void	deinit();
 	int	is_inited() { return res_name[0]; }
 
-	char	*get_format_str(int textId, char *checkMark );
+	char	*get_format_str(int textId, const char *checkMark );
 
 	// see OTXTRES.H for detail descriptions
 	static char	*process( char *formatStr, ... );
@@ -74,7 +74,7 @@ public:
 	static char* roman_number(int);
 
 private:
-	void	load_res(char *fileName);
+	void	load_res(const char *fileName);
 };
 
 

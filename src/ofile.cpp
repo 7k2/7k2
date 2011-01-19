@@ -46,7 +46,7 @@ static char *path_array[] = { "" };	// multiple search path
 //
 // return : 1-success, 0-fail
 //
-int File::file_open(char* fileName, int handleError, int allowVarySize)
+int File::file_open(const char* fileName, int handleError, int allowVarySize)
 {
 	if( strlen(fileName) > MAX_PATH )
       err.run( "File : file name is too long." );
@@ -101,7 +101,7 @@ int File::file_open(char* fileName, int handleError, int allowVarySize)
 //
 // return : 1-success, 0-fail
 //
-int File::file_create(char* fileName, int handleError, int allowVarySize)
+int File::file_create(const char* fileName, int handleError, int allowVarySize)
 {
    if( strlen(fileName) > MAX_PATH )
       err.run( "File : file name is too long." );
@@ -144,7 +144,7 @@ int File::file_create(char* fileName, int handleError, int allowVarySize)
 //
 // return : 1-success, 0-fail
 //
-int File::file_append(char* fileName, int handleError, int allowVarySize)
+int File::file_append(const char* fileName, int handleError, int allowVarySize)
 {
 	if( strlen(fileName) > MAX_PATH )
       err.run( "File : file name is too long." );

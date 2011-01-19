@@ -64,7 +64,7 @@
 struct HyperField
 {
 	short x1, y1, x2, y2;
-	char* text_ptr;        // pointer to the hyper-field name in the text
+	const char* text_ptr;  // pointer to the hyper-field name in the text
 	short text_len;        // length of the hyper-field name
 };
 
@@ -88,7 +88,7 @@ class Font
 public:
 	char	  init_flag;
 
-	char*   next_text_ptr;      // these 3 vars are used for storing
+	const char* next_text_ptr;  // these 3 vars are used for storing
 	short   next_text_y;        // the result parameters after calling
 	short   line_count;         // put_paragraph(). Refer to put_paragraph()
 
@@ -112,10 +112,10 @@ public:
 //---------------------------------------//
 
 public:
-	Font(char* =NULL);
+	Font(const char* =NULL);
 	~Font();
 
-	void init(char* fontName, int interCharSpace=1, int italicShift=0);
+	void init(const char* fontName, int interCharSpace=1, int italicShift=0);
 	void deinit();
 
 	int  height()                    { return font_height; }
@@ -124,54 +124,54 @@ public:
 	void use_std_height()		{ font_height = std_font_height; }
 	void use_max_height()		{ font_height = max_font_height; }
 
-	int  text_width(char*, int= -1, int=0, int=0);
+	int  text_width(const char*, int= -1, int=0, int=0);
 	int  text_height(int=DEFAULT_LINE_SPACE);
 
-	int  put(int,int,char*,char=0,int=-1,int=0);
+	int  put(int,int,const char*,char=0,int=-1,int=0);
 
 	int  put(int x, int y, int value, char clearBack=0, int x2= -1)
 		  { return put( x, y, m.format(value), clearBack, x2 ); }
 
 	void put_char(int,int,unsigned short);
-	void right_put(int,int,char*, char clearBack=0, char cap=0);
+	void right_put(int,int,const char*, char clearBack=0, char cap=0);
 
-	int  d3_put(int,int,char*);
-	void d3_put(int,int,int,int,char*);
-	int  center_put(int,int,int,int,char*,char clearBack=0, int=0);
+	int  d3_put(int,int,const char*);
+	void d3_put(int,int,int,int,const char*);
+	int  center_put(int,int,int,int,const char*,char clearBack=0, int=0);
 
-	void put_paragraph(int,int,int,int,char*,int=DEFAULT_LINE_SPACE,int=1,char=1);
+	void put_paragraph(int,int,int,int,const char*,int=DEFAULT_LINE_SPACE,int=1,char=1);
 
-	void center_put_paragraph(int,int,int,int,char*,int=DEFAULT_LINE_SPACE,char clearBack=0,int=1);
+	void center_put_paragraph(int,int,int,int,const char*,int=DEFAULT_LINE_SPACE,char clearBack=0,int=1);
 
-	void count_line(int x1, int y1, int x2, int y2, char *text,
+	void count_line(int x1, int y1, int x2, int y2, const char *text,
 						 int lineSpace, int& totalLines, int& dispLines);
 
 	void put_char_to_buffer(char* dest, int destPitch, int x1, int y1, unsigned short text);
-	void put_to_buffer(char* dest, int destPitch, int x1, int y1, char *text);
-	void center_put_to_buffer(char* dest, int destPitch, int x1, int y1, int x2, int y2, char *text);
+	void put_to_buffer(char* dest, int destPitch, int x1, int y1, const char *text);
+	void center_put_to_buffer(char* dest, int destPitch, int x1, int y1, int x2, int y2, const char *text);
 
 	void put_char_to_bufferW(short* dest, int destPitch, int x1, int y1, unsigned short text);
-	void put_to_bufferW(short* dest, int destPitch, int x1, int y1, char *text);
-	void center_put_to_bufferW(short* dest, int destPitch, int x1, int y1, int x2, int y2, char *text);
+	void put_to_bufferW(short* dest, int destPitch, int x1, int y1, const char *text);
+	void center_put_to_bufferW(short* dest, int destPitch, int x1, int y1, int x2, int y2, const char *text);
 
 	short translate_german_char(short textChar);
 
 	//----------- <int> version -------------//
 
-	void put_field(int,int,char*,int,int,int=1);
+	void put_field(int,int,const char*,int,int,int=1);
 	void update_field(int,int,int,int,int);
-	void field(int,int,char*,int,int,int,int,int,char* helpCode=NULL);
+	void field(int,int,const char*,int,int,int,int,int,const char* helpCode=NULL);
 	int  disp(int,int,int,int,int);
 
 	//----- <short> version, call <int> version directly -----//
 
-	void put_field(int a,int b,char* c,int d,short e,int f=1)
+	void put_field(int a,int b,const char* c,int d,short e,int f=1)
 		  { put_field(a,b,c,d,(int)e,f); }
 
 	void update_field(int a,int b,short c,int d,int e)
 		  { update_field(a,b,(int)c,d,e); }
 
-	void field(int a,int b,char* c,int d,short e,int f,int g,int h,char* helpCode=NULL)
+	void field(int a,int b,const char* c,int d,short e,int f,int g,int h,const char* helpCode=NULL)
 		  { field(a,b,c,d,(int)e,f,g,h); }
 
 	int  disp(int a,int b,short c,int d,int e)
@@ -179,13 +179,13 @@ public:
 
 	//---- <long> version, call <int> version directly ------//
 
-	void put_field(int a,int b,char* c,int d,long e,int f=1)
+	void put_field(int a,int b,const char* c,int d,long e,int f=1)
 		  { put_field(a,b,c,d,(int)e,f); }
 
 	void update_field(int a,int b,long c,int d,int e)
 		  { update_field(a,b,(int)c,d,e); }
 
-	void field(int a,int b,char* c,int d,long e,int f,int g,int h,char* helpCode=NULL)
+	void field(int a,int b,const char* c,int d,long e,int f,int g,int h,const char* helpCode=NULL)
 		  { field(a,b,c,d,(int)e,f,g,h); }
 
 	int  disp(int a,int b,long c,int d,int e)
@@ -193,17 +193,17 @@ public:
 
 	//------------- <double> version ---------------//
 
-	void put_field(int,int,char*,int,double,int=1);
+	void put_field(int,int,const char*,int,double,int=1);
 	void update_field(int,int,double,int,int);
-	void field(int,int,char*,int,double,int,int,int,char* helpCode=NULL);
+	void field(int,int,const char*,int,double,int,int,int,const char* helpCode=NULL);
 	int  disp(int,int,double,int,int);
 
 	//-------------- <char*> version ---------------//
 
-	void put_field(int,int,char*,int,char*);
-	void update_field(int,int,char*,int);
-	void field(int,int,char*,int,char*,int,int,char* helpCode=NULL);
-	int  disp(int,int,char*,int,int=0);
+	void put_field(int,int,const char*,int,const char*);
+	void update_field(int,int,const char*,int);
+	void field(int,int,const char*,int,const char*,int,int,const char* helpCode=NULL);
+	int  disp(int,int,const char*,int,int=0);
 	short upper_case(short textChar);
 
 #if(defined(CHINESE))

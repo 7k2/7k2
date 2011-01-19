@@ -135,7 +135,7 @@ void Game::run_main_menu_option(int optionId)
 
 	if( optionId==6 )		// go to home page
 	{
-		char *shortcutFilename = "7k2home.url";
+		const char *shortcutFilename = "7k2home.url";
 
 		if( !m.is_file_exist(shortcutFilename) )
 		{

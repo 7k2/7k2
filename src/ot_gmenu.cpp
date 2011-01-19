@@ -35,7 +35,7 @@ void TextResGameMenu::init()
 
 // text id 1
 // [VERS]Version %1s
-char*	TextResGameMenu::str_version( char *versionStr )
+char*	TextResGameMenu::str_version( const char *versionStr )
 {
 	return process( get_format_str( 1, "VERS" ), versionStr );
 }

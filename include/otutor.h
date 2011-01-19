@@ -217,9 +217,9 @@ public:
 	void			disp_objective_text(int objestiveRecNo);
 	void			disp_result_text(int objestiveRecNo);
 	void			disp_msg(char dispFlag, char darkness, char* gameMsg, ...);
-	int			detect_button(short x1, short y1, short x2, short y2, char* buttonName, short buttonRc = -1);
+	int			detect_button(short x1, short y1, short x2, short y2, const char* buttonName, short buttonRc = -1);
 	int			allow_mouse_click(short x, short y, short pressOrRelease = -1, short rightOrLeft = -1);
-	int			allow_button_click(short x1, short y1, short x2, short y2, char* buttonName, short buttonRc = -1);
+	int			allow_button_click(short x1, short y1, short x2, short y2, const char* buttonName, short buttonRc = -1);
 	int			allow_unit_icon_click(short x1, short y1, UnitInfo *unitInfo, int lightness, short buttonRc = -1);
 	int			allow_this_hot_key(int hotKey);
 	void			reset_detect_variables();

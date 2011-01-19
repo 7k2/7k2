@@ -51,11 +51,11 @@ public:
 	~Log();
 	void mark_begin();
 	void mark_end();
-	void mark(char *msg, char *file, int line);
-	void mark(int n, char *file, int line);
+	void mark(const char *msg, const char *file, int line);
+	void mark(int n, const char *file, int line);
 	void dump();
 
-	static void debug_log( char *msg );
+	static void debug_log( const char *msg );
 	static void debug_log( int n );
 };
 

@@ -355,7 +355,7 @@ int TalkRes::add_buy_food_choices()
 	{
 		choice_question = text_talk.str_ask_buy_food(); //"How much food do you want to purchase?";
 
-		static char* qtyStrArray[] = { "500.", "1000.", "2000.", "4000." };
+		static const char* qtyStrArray[] = { "500.", "1000.", "2000.", "4000." };
 		static short qtyArray[] = { 500, 1000, 2000, 4000 };
 
 		for( int i=0 ; i<4 ; i++ )
@@ -370,7 +370,7 @@ int TalkRes::add_buy_food_choices()
 	{
 		choice_question = text_talk.str_ask_food_price(); // "How much do you offer for 10 units of food?";
 
-		static char* priceStrArray[] = { "$5.", "$10.", "$15.", "$20." };
+		static const char* priceStrArray[] = { "$5.", "$10.", "$15.", "$20." };
 		static short priceArray[] = { 5, 10, 15, 20 };
 
 		for( int i=0 ; i<4 ; i++ )
@@ -394,7 +394,7 @@ int TalkRes::add_tribute_choices()
 	if( cur_talk_msg.talk_para1 )
 		return 0;
 
-	static char* tributeStrArray[] = { "$500.", "$1000.", "$2000.", "$3000.", "$4000." };
+	static const char* tributeStrArray[] = { "$500.", "$1000.", "$2000.", "$3000.", "$4000." };
 	static short tributeAmtArray[] = { 500, 1000, 2000, 3000, 4000 };
 
 	for( int i=0 ; i<5 ; i++ )
@@ -499,7 +499,7 @@ int TalkRes::add_request_surrender_choices()
 
 	choice_question = text_talk.str_ask_surrender_price(); // "How much do you offer?";
 
-	static char* strArray[] = { "$5000.", "$10000.", "$20000.",
+	static const char* strArray[] = { "$5000.", "$10000.", "$20000.",
 		"$35000.", "$50000.", "$75000.", "$100000.", "$150000." };
 
 	static int amtArray[] = { 5000, 10000, 20000, 35000, 50000, 75000, 100000, 150000 };
@@ -662,7 +662,7 @@ int TalkRes::can_send_msg(int toNationRecno, int fromNationRecno, int talkId)
 // <int>   talkPara  - parameter for sending TalkMsg
 // [int]	  talkPara2 - parameter 2 for sending TalkMsg
 //
-void TalkRes::add_talk_choice(char* talkStr, int talkPara, int talkPara2)
+void TalkRes::add_talk_choice(const char* talkStr, int talkPara, int talkPara2)
 {
 	err_when( talk_choice_count >= MAX_TALK_CHOICE );
 

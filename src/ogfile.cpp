@@ -57,7 +57,7 @@
 //                0 - not saved.
 //
 // ###### begin Gilbert 26/5 ########//
-int GameFile::save_game(char *path, char* fileName, char *gameDesc)
+int GameFile::save_game(const char *path, const char* fileName, const char *gameDesc)
 // ###### end Gilbert 26/5 ########//
 {
 	File   file;
@@ -195,7 +195,7 @@ int GameFile::save_game(char *path, char* fileName, char *gameDesc)
 //                0 - not loaded.
 //               -1 - error and partially loaded
 //
-int GameFile::load_game(char *path, char* fileName)
+int GameFile::load_game(const char *path, const char* fileName)
 {
 	File file;
 	int  rc=0;
@@ -322,7 +322,7 @@ int GameFile::load_game(char *path, char* fileName)
 //
 // notice game_file_array should read save game header of the save path first
 //
-void GameFile::set_file_name(char *path, char *extension)
+void GameFile::set_file_name(const char *path, const char *extension)
 {
 	enum { NAME_PREFIX_LEN = 4,    // Maximum 4 characters in name prefix, e.g. "ENLI" for "Enlight Enterprise"
 			 NAME_NUMBER_LEN = 3  };

@@ -38,7 +38,7 @@
 short *VgaBuf::default_remap_table;
 short *VgaBuf::default_blend_table;
 
-char *dd_err_str( char *str, HRESULT rc);
+const char *dd_err_str( const char *str, HRESULT rc);
 
 
 
@@ -1053,10 +1053,10 @@ void VgaBuf::convert_gray(int x1, int y1, int x2, int y2)
 
 
 
-char *dd_err_str( char *s, HRESULT rc)
+const char *dd_err_str( const char *s, HRESULT rc)
 {
 	static char retStr[200];
-	char *errStr = NULL;
+	const char *errStr = NULL;
 
 	switch(rc)
 	{

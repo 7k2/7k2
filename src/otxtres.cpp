@@ -134,7 +134,7 @@ TextResource::~TextResource()
 
 // ------- begin of function TextResource::init -------//
 //
-void TextResource::init( char *fileName)
+void TextResource::init( const char *fileName)
 {
 	deinit();		// free memory
 
@@ -168,7 +168,7 @@ void TextResource::deinit()
 
 // ------- begin of function TextResource::load_res -------//
 //
-void TextResource::load_res(char *fileName)
+void TextResource::load_res(const char *fileName)
 {
 	// open and the whole file
 
@@ -216,7 +216,7 @@ void TextResource::load_res(char *fileName)
 
 // ------- begin of function TextResource::get_format_str --------//
 
-char *TextResource::get_format_str(int textId, char *checkMark )
+char *TextResource::get_format_str(int textId, const char *checkMark )
 {
 	err_when( !textId && !checkMark );		// cannot be both null
 	err_when( sizeof(long) != CHECK_MARK_STRLEN );	// else use strncmp instead
@@ -449,12 +449,12 @@ char* TextResource::roman_number(int inNum)
 
 	for( int i = 0; i < deciLen; ++i )
 	{
-		static char *unitDigitArray[10] = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
-		static char *tenDigitArray[10] = { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
-		static char *hundredDigitArray[10] = { "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" };
-		static char *thousandDigitArray[] = { "", "M", "MM", "MMM" };	// 5000? 
+		static const char *unitDigitArray[10] = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
+		static const char *tenDigitArray[10] = { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
+		static const char *hundredDigitArray[10] = { "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" };
+		static const char *thousandDigitArray[] = { "", "M", "MM", "MMM" };	// 5000? 
 
-		char *srcStr = "";	// empty string
+		const char *srcStr = "";	// empty string
 		switch( deciLen-i )
 		{
 		case 1:		// unit digit

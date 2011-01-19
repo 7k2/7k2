@@ -48,7 +48,7 @@
 
 //------- define campaign code --------//
 
-static char* campaign_code_array[] =
+static const char* campaign_code_array[] =
 {
 	"EAST",
 	"TUTORIAL",

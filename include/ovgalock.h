@@ -47,10 +47,10 @@ private:
 	void *backup_pal;
 
 public:
-	VgaCustomPalette( char * );
+	VgaCustomPalette( const char * );
 	~VgaCustomPalette();
 
-	static int set_custom_palette(char *);
+	static int set_custom_palette(const char *);
 
 private:
 	int save_palette();

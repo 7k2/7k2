@@ -69,7 +69,7 @@ Button3D::Button3D()
 //                       (default : 0)
 //
 void Button3D::create(int pX1, int pY1, char buttonStyle,
-							 char* buttonName, char elasticFlag, char defIsPushed)
+							 const char* buttonName, char elasticFlag, char defIsPushed)
 {
 	init_flag = 1;
 	//------ set button parameters -----//
@@ -100,8 +100,8 @@ void Button3D::create(int pX1, int pY1, char buttonStyle,
 //
 // Create BUTTON_TYPE_BITMAP button.
 //
-void Button3D::create(int pX1, int pY1, char* upButtonName,
-							 char* downButtonName, char elasticFlag, char defIsPushed)
+void Button3D::create(int pX1, int pY1, const char* upButtonName,
+							 const char* downButtonName, char elasticFlag, char defIsPushed)
 {
 	init_flag = 1;
 
@@ -140,7 +140,7 @@ void Button3D::create(int pX1, int pY1, char* upButtonName,
 //
 // Update the bitmap of the button and repaint the button.
 //
-void Button3D::update_bitmap(char* buttonName)
+void Button3D::update_bitmap(const char* buttonName)
 {
 	err_when( strlen(buttonName) > 8 );
 	strcpy( help_code, buttonName );
@@ -154,7 +154,7 @@ void Button3D::update_bitmap(char* buttonName)
 
 //-------- Begin of function Button3D::set_help_code -------//
 //
-void Button3D::set_help_code(char* helpCode)
+void Button3D::set_help_code(const char* helpCode)
 {
 	strncpy( help_code, helpCode, HELP_CODE_LEN );
 

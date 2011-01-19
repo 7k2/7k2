@@ -162,7 +162,7 @@ typedef struct pixel_colour
 
 static int curSpeechWavId = 0;
 static unsigned seed = 35;				// last random number
-static int load_bitmap_file(bitmap_file_ptr bitmap, char *filename);
+static int load_bitmap_file(bitmap_file_ptr bitmap, const char *filename);
 static int unload_bitmap_file(bitmap_file_ptr bitmap);
 static void build_tables(void);
 static unsigned rand_seed(void);
@@ -1206,7 +1206,7 @@ void Campaign::disp_final_victory()
 // <char*> str  - the display string.
 // <char> black - using a transparent black blackground or not
 //
-void Campaign::put_center_text(int x, int y, char* str, char black, Font* fontPtr, int darkness)
+void Campaign::put_center_text(int x, int y, const char* str, char black, Font* fontPtr, int darkness)
 {
 	int i, j;
 	int barWidth = 10;
@@ -4518,7 +4518,7 @@ static void build_tables(void)
 	}
 }
 
-static int load_bitmap_file(bitmap_file_ptr bitmap, char *filename)
+static int load_bitmap_file(bitmap_file_ptr bitmap, const char *filename)
 {
 // this function opens a bitmap file and loads the data into bitmap
 // this function will only work with non-compressed 8 bit palettized images
@@ -5383,7 +5383,7 @@ void Campaign::render_attackable_terrain(int par, char *selectableStateArray, in
 } // end Render_Terrain
 
 //----------- Begin of function Campaign::play_speech ------------//
-void Campaign::play_speech(char* fileName)
+void Campaign::play_speech(const char* fileName)
 {
 	if( curSpeechWavId  )
 		stop_speech();

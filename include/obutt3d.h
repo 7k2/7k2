@@ -73,25 +73,25 @@ public:
 	Button3D();
 
 	void create(int pX1, int pY1, char buttonStyle,
-					char* buttonName, char elasticFlag=1, char defIsPushed=0);
+					const char* buttonName, char elasticFlag=1, char defIsPushed=0);
 
-	void create(int pX1, int pY1, char* upButtonName,
-					char* downButtonName, char elasticFlag=1, char defIsPushed=0);
+	void create(int pX1, int pY1, const char* upButtonName,
+					const char* downButtonName, char elasticFlag=1, char defIsPushed=0);
 
 	void set_key(unsigned keyCode)       { button_key = keyCode; }
 
 	void paint(int pX1, int pY1, char buttonStyle,
-					char* buttonName, char elasticFlag=1, char defIsPushed=0)
+					const char* buttonName, char elasticFlag=1, char defIsPushed=0)
 		  { create( pX1, pY1, buttonStyle, buttonName, elasticFlag, defIsPushed ); paint(); }
 
-	void paint(int pX1, int pY1, char* upButtonName,
-					char* downButtonName, char elasticFlag=1, char defIsPushed=0)
+	void paint(int pX1, int pY1, const char* upButtonName,
+					const char* downButtonName, char elasticFlag=1, char defIsPushed=0)
 		  { create( pX1, pY1, upButtonName, downButtonName, elasticFlag, defIsPushed ); paint(); }
 
 	void paint(int defIsPushed= -1);
 
-	void set_help_code(char* helpCode);
-	void update_bitmap(char* buttonName);
+	void set_help_code(const char* helpCode);
+	void update_bitmap(const char* buttonName);
 
 	void reset()                         { init_flag=0; }
 	void hide();

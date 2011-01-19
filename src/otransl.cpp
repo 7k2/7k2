@@ -192,7 +192,7 @@ void Translate::deinit()
 // return : <char*> the translated text.
 //		    if not found, return the original text.
 //
-char* Translate::process(char* originalText)
+const char* Translate::process(const char* originalText)
 {
    if( !init_flag )
       return originalText;

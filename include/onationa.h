@@ -125,10 +125,10 @@ public:
 
 	//------- functions for setting custom names -------//
 
-	void		set_custom_king_name(int nationRecno, char* nameStr);
+	void		set_custom_king_name(int nationRecno, const char* nameStr);
 	char*		get_custom_king_name(int nationNameId, int firstWordOnly=0);
 
-	void		set_custom_nation_name(int nationRecno, char* nameStr);
+	void		set_custom_nation_name(int nationRecno, const char* nameStr);
 	char*		get_custom_nation_name(int nationNameId);
 
 	void		set_custom_both_name(int nationRecno, char* nameStr);

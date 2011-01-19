@@ -50,7 +50,7 @@ typedef void *LPVOID;
 //---------- Debug functions -------//
 
 #ifdef DEBUG
-void __cdecl debug_msg( char* fmt, ... );
+void __cdecl debug_msg( const char* fmt, ... );
 #endif
 
 //---------- define class Mem ----------//
@@ -68,13 +68,13 @@ public:
 	Mem();
 	~Mem();
 
-	char*		add(unsigned,char*,int);
-	char*		add_clear(unsigned,char*,int);
+	char*		add(unsigned,const char*,int);
+	char*		add_clear(unsigned,const char*,int);
 
-	char*		resize(void*,unsigned,char*,int);
-	char*		resize_keep_data(void *orgPtr, unsigned orgSize, unsigned newSize, char* fileName, int fileLine);
+	char*		resize(void*,unsigned,const char*,int);
+	char*		resize_keep_data(void *orgPtr, unsigned orgSize, unsigned newSize, const char* fileName, int fileLine);
 
-	void		del(void*,char*,int);
+	void		del(void*,const char*,int);
 
 	int		get_mem_size(void *memPtr);
 };
@@ -95,10 +95,10 @@ private:
 public:
 	Error();
 
-	void		internal(char*,char*,int);
+	void		internal(char*,const char*,int);
 	void		mem();
-	void		msg(char*,...);
-	void		run(char*,...);
+	void		msg(const char*,...);
+	void		run(const char*,...);
 
 	void		set_extra_handler(ExtraHandler extraHandler) { extra_handler = extraHandler; }
 };

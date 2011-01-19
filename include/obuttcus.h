@@ -77,7 +77,7 @@ public:
 		ButtonCustomPara funcPara, char elasticFlag=1, char defIsPushed=0)
 		{ create(pX1, pY1, pX2, pY2, funcPtr, funcPara, elasticFlag, defIsPushed); paint();}
 
-	void set_help_code(char* helpCode);
+	void set_help_code(const char* helpCode);
 
 	void paint(int defIsPushed= -1, int repaintBody=1);
 	void reset()                         { init_flag=0; }

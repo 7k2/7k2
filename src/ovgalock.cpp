@@ -67,7 +67,7 @@ VgaFrontReLock::~VgaFrontReLock()
 }
 
 
-VgaCustomPalette::VgaCustomPalette(char *fileName)
+VgaCustomPalette::VgaCustomPalette(const char *fileName)
 {
 	backup_pal = NULL;
 	if( save_palette() && fileName)
@@ -102,7 +102,7 @@ int VgaCustomPalette::save_palette()
 
 
 
-int VgaCustomPalette::set_custom_palette(char *fileName)
+int VgaCustomPalette::set_custom_palette(const char *fileName)
 {
 	PALETTEENTRY palEntry[256];
 	char palBuf[256][3];

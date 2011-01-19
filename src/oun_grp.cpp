@@ -33,7 +33,7 @@
 #include <ou_god.h>
 #include <of_mfort.h>
 
-static void put_profile(int y, char* dispDes, int dispValue);
+static void put_profile(int y, const char* dispDes, int dispValue);
 
 // define struct ClusterInfo for cluster_units_for_path_reuse
 
@@ -1781,7 +1781,7 @@ void UnitGroup::cluster_units_for_path_reuse(int destX, int destY, int centerX, 
 
 //--------- Begin of static function put_profile ---------//
 //
-static void put_profile(int y, char* dispDes, int dispValue)
+static void put_profile(int y, const char* dispDes, int dispValue)
 {
 	font_news.put( ZOOM_X1+10, y, dispDes );
 	font_news.put( ZOOM_X1+120, y, dispValue );

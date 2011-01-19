@@ -51,7 +51,7 @@
 // [int]   useCommonBuf = whether use the sys common buffer to store the data or not
 //                     (default:0)
 //
-ImageRes::ImageRes(char* resFile, int readAll, int useCommonBuf) :
+ImageRes::ImageRes(const char* resFile, int readAll, int useCommonBuf) :
 					  ResourceIdx(resFile, readAll, useCommonBuf)
 {
 }
@@ -65,7 +65,7 @@ ImageRes::ImageRes(char* resFile, int readAll, int useCommonBuf) :
 // [int] compressFlag = compress flag
 //								(default: 0)
 //
-void ImageRes::put_front(int x, int y, char* imageName, int compressFlag)
+void ImageRes::put_front(int x, int y, const char* imageName, int compressFlag)
 {
 	char* bitmapPtr = ResourceIdx::read(imageName);
 
@@ -91,7 +91,7 @@ void ImageRes::put_front(int x, int y, char* imageName, int compressFlag)
 // [int] compressFlag = compress flag
 //								(default: 0)
 //
-void ImageRes::put_back(int x, int y, char* imageName, int compressFlag)
+void ImageRes::put_back(int x, int y, const char* imageName, int compressFlag)
 {
 	char* bitmapPtr = ResourceIdx::read(imageName);
 
@@ -159,7 +159,7 @@ void ImageRes::put_back(int x, int y, int bitmapId, int compressFlag)
 // int 	x,y       = the location of the image
 // char* imageName = name of the image
 //
-void ImageRes::put_join(int x, int y, char* imageName)
+void ImageRes::put_join(int x, int y, const char* imageName)
 {
 	char* bitmapPtr = ResourceIdx::read(imageName);
 
@@ -188,7 +188,7 @@ void ImageRes::put_join(int x, int y, char* imageName)
 // <int>	    x,y       = the location of the image
 // <char*>   imageName = name of the image
 //
-void ImageRes::put_large(VgaBuf* vgaBuf, int x, int y, char* imageName)
+void ImageRes::put_large(VgaBuf* vgaBuf, int x, int y, const char* imageName)
 {
 	int dataSize;
 
@@ -224,7 +224,7 @@ void ImageRes::put_large(VgaBuf* vgaBuf, int x, int y, int bitmapId)
 // <VgaBuf*> vgaBufPtr = the pointer to the Vga buffer
 // <char*>	 imageName = name of the image
 //
-void ImageRes::put_to_buf(VgaBuf* vgaBufPtr, char* imageName)
+void ImageRes::put_to_buf(VgaBuf* vgaBufPtr, const char* imageName)
 {
 	if( read_all )
 	{

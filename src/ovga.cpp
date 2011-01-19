@@ -60,7 +60,7 @@ extern "C"
 
 RGBColor log_alpha_func(RGBColor, int, int);
 
-extern char *dd_err_str( char *str, HRESULT rc);
+extern const char *dd_err_str( const char *str, HRESULT rc);
 
 
 //-------- Begin of function Vga::Vga ----------//
@@ -99,7 +99,7 @@ BOOL Vga::init()
 	err_when( sizeof(dd_pal) > sizeof(vptr_dd_pal) );
 	err_when( sizeof(pal_entry_buf) > sizeof(dw_pal_entry_buf) );
 
-	char* warnStr = "Warning: Due to the low memory of your display card, "
+	const char* warnStr = "Warning: Due to the low memory of your display card, "
 						 "you may experience problems when you quit the game or "
 						 "switch tasks during the game. "
 						 "To avoid this problem, set your Windows display "
@@ -385,7 +385,7 @@ BOOL Vga::is_inited()
 //
 // Load the palette from a file and set it to the front buf.
 //
-BOOL Vga::load_pal(char* fileName)
+BOOL Vga::load_pal(const char* fileName)
 {
    char palBuf[256][3];
    File palFile;

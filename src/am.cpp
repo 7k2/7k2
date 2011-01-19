@@ -124,7 +124,7 @@
 
 //------- define game version constant --------//
 
-char *GAME_VERSION_STR = "1.20";
+const char *GAME_VERSION_STR = "1.20";
 const int GAME_VERSION = 120;	// Version 1.00, don't change major version unless the format of save game files has been changed
 
 //-------- System class ----------//
@@ -510,7 +510,7 @@ int PASCAL WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 #ifdef DEBUG
 
-void __cdecl debug_msg( char* fmt, ... )
+void __cdecl debug_msg( const char* fmt, ... )
 {
     char buff[256];
 

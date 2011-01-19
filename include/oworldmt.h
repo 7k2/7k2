@@ -180,7 +180,7 @@ public:
 	// reverse of calc_abs_x/y when z=0
 	static	int calc_cur_x(int absX, int absY, int curZ=0);
 	static	int calc_cur_y(int absX, int absY, int curZ=0);
-	void put_center_text(int curX, int curY, int curZ, char* str, char black = 1,
+	void put_center_text(int curX, int curY, int curZ, const char* str, char black = 1,
 		Font* font_ptr = &font_zoom);
 
 protected:

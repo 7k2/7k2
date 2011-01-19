@@ -32,7 +32,7 @@ public:
 	LongLog(char suffix);
 	~LongLog();
 
-	void printf(char*,...);
+	void printf(const char*,...);
 };
 
 #ifdef DEBUG

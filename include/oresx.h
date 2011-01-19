@@ -65,10 +65,10 @@ public:
 	ResourceIdx() 	{ init_flag=0; }
 	~ResourceIdx()	{ deinit(); }
 
-   ResourceIdx(char* resFile, int readAll, int useCommonBuf=0)
+   ResourceIdx(const char* resFile, int readAll, int useCommonBuf=0)
        { init_flag=0; init(resFile, readAll, useCommonBuf); }
 
-   void  init(char* resFile, int readAll, int useCommonBuf=0);
+   void  init(const char* resFile, int readAll, int useCommonBuf=0);
 	void  deinit();
 
 	int   is_inited() 	{ return init_flag; }
@@ -76,15 +76,15 @@ public:
 	void	set_user_buf(char* userDataBuf, int bufSize, int userStartReadPos=0);
 	void  reset_user_buf();
 
-	char* read(char*);
+   char* read(const char*);
 	int	read_into_user_buf(char* dataName, char* userDataBuf, int bufSize, int userStartReadPos=0);
 	int 	data_size(char* dataName);
 
-   int   get_index(char*);
+   int   get_index(const char*);
    char* get_data(int);
 	char	*data_name(int);
 
-   File* get_file(char*, int&);
+   File* get_file(const char*, int&);
    File* get_file(int, int&);
 
 	// ##### begin Gilbert 15/9 #######//

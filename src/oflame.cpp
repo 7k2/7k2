@@ -42,7 +42,7 @@ Flame::Flame()
 
 
 //-------------- Begin Function Flame::Flame ----------//
-Flame::Flame(short width, short height, short flameWidth, FlameType flameType, char* fileName)
+Flame::Flame(short width, short height, short flameWidth, FlameType flameType, const char* fileName)
 {
 	heat_map = 0;
 	bitmap = 0;
@@ -66,7 +66,7 @@ Flame::~Flame()
 // <short> flameWdith        length of flame source at base line
 // <FlameType> flameType     determine how flame source is generated at base line
 //
-void Flame::init(short width, short height, short flameWidth, FlameType flameType, char* fileName)
+void Flame::init(short width, short height, short flameWidth, FlameType flameType, const char* fileName)
 {
 	
 	load_palette(fileName);
@@ -687,7 +687,7 @@ static RGBColor identity_color_function(RGBColor col, int, int)
 }
 
 //-------------- Begin Function Flame::load_palette -------------- //
-void Flame::load_palette(char* fileName)
+void Flame::load_palette(const char* fileName)
 {
 	String str;
 	File palFile;

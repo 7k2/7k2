@@ -340,7 +340,7 @@ void Unit::draw_rank_icon()
 			NULL, 0, 0);
 	}*/
 
-	char* iconName = NULL;
+	const char* iconName = NULL;
 	if( is_own() )
 	{
 		switch( rank_id )

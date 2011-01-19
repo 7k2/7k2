@@ -34,7 +34,7 @@ public:
 	void	init();
 
 	// version
-	char*	str_version( char *verionStr );
+	char*	str_version( const char *verionStr );
 	char*	str_demo_version();
 	char*	str_beta_version();
 

@@ -251,7 +251,7 @@ public:
 		SpriteInfo* operator[](int recNo)   { return sprite_info_array+recNo-1; }
 	#endif
 
-	int	search_sprite(char *spriteName);
+	int	search_sprite(const char *spriteName);
 
 private:
 	void	load_sprite_info();

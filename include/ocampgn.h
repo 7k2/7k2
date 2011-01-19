@@ -355,7 +355,7 @@ public:
 
 	void				unveil_new_tech();
 
-	void				play_speech(char* fileName);
+	void				play_speech(const char* fileName);
 	void				stop_speech();
 
 	// -------- save game function ---------//
@@ -365,7 +365,7 @@ public:
 
 	// -------- text display function ---------//
 
-	static void		put_center_text(int x, int y, char* str, char black, Font* fontPtr, int darkness = 1);
+	static void		put_center_text(int x, int y, const char* str, char black, Font* fontPtr, int darkness = 1);
 
 protected:
 	virtual void	init_new_campaign_derived()		{;}

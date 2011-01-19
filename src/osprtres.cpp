@@ -468,7 +468,7 @@ short* SpriteInfo::get_color_remap_table(int nationRecno, int selectedFlag)
 // search certain sprite by name
 // better to store the result in static variable 
 //
-int SpriteRes::search_sprite(char *spriteName)
+int SpriteRes::search_sprite(const char *spriteName)
 {
 	for(int i = 0; i < sprite_info_count; ++i )
 	{

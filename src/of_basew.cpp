@@ -76,7 +76,7 @@ struct WishInfo
 {
 	short wish_id;
 	short rare;
-	char *desc;
+	const char *desc;
 };
 
 

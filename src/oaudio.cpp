@@ -68,11 +68,11 @@ static MCI_SET_PARMS  mci_set;
 //
 // find the "data" tag in a wave file
 //
-static char * wavefile_data(char *wavfile_buf)
+static const char * wavefile_data(const char *wavfile_buf)
 {
 	//----- position at WAVEfmt tag size ------//
 
-	char *p = wavfile_buf+0x10;
+	const char *p = wavfile_buf+0x10;
 	DWORD tagSize=*(DWORD *)p;
 
 	//-------- go to next tag field -----------//
@@ -419,7 +419,7 @@ void Audio::stop_mid()
 // return : <int> non-zero - wav loaded and is playing, return a serial no. to be referred in stop_wav and is_wav_playing
 //                0 - wav not played
 //
-int Audio::play_wav(char* wavName, DsVolume dsVolume)
+int Audio::play_wav(const char* wavName, DsVolume dsVolume)
 {
 /*
 	//---- redirect to play_long_wav -------//
@@ -470,7 +470,7 @@ int Audio::play_wav(char* wavName, DsVolume dsVolume)
 #endif
 
 	// determine the wave data offset and length
-	char * dataTag = wavefile_data(wav_buf);
+	const char * dataTag = wavefile_data(wav_buf);
 	if (!dataTag)
 	{
 		err_now("Invalid wave file format");
@@ -630,7 +630,7 @@ int Audio::play_wav(short resIdx, DsVolume dsVolume)
 #endif
 
 	// determine the wave data offset and length
-	char * dataTag = wavefile_data(wav_buf);
+	const char * dataTag = wavefile_data(wav_buf);
 	if (!dataTag)
 	{
 		err_now("Invalid wave file format");
@@ -756,7 +756,7 @@ int Audio::play_wav(short resIdx, DsVolume dsVolume)
 // return : <int> 1 - wav loaded and is playing
 //                0 - wav not played
 //
-int Audio::play_resided_wav(char* wavBuf, DsVolume dsVolume)
+int Audio::play_resided_wav(const char* wavBuf, DsVolume dsVolume)
 {
 	if( !wav_init_flag || !wav_flag )   // a initialized and workable midi device can be disabled by user setting
 		return 0;
@@ -765,7 +765,7 @@ int Audio::play_resided_wav(char* wavBuf, DsVolume dsVolume)
 	DWORD wavDataOffset, wavDataLength;
 
 	// determine the wave data offset and length
-	char * dataTag = wavefile_data(wavBuf);
+	const char * dataTag = wavefile_data(wavBuf);
 	if (!dataTag)
 	{
 		err_now("Invalid wave file format");
@@ -954,7 +954,7 @@ int Audio::is_wav_playing(int serial)
 // load wave file into one part. lwav_bank[c] record which part to be
 // filled next for channel c.
 
-int Audio::play_long_wav(char *wavName, DsVolume dsVolume)
+int Audio::play_long_wav(const char *wavName, DsVolume dsVolume)
 {
 	if( !wav_init_flag || !wav_flag )   // a initialized and workable midi device can be disabled by user setting
 		return 0;
@@ -994,7 +994,7 @@ int Audio::play_long_wav(char *wavName, DsVolume dsVolume)
 	}
 
 	// determine the wave data offset
-	char * dataTag = wavefile_data(wav_buf);
+	const char * dataTag = wavefile_data(wav_buf);
 	if (!dataTag)
 	{
 		err_now("Invalid wave file format");
@@ -1241,7 +1241,7 @@ int Audio::vol_divide(long dsVolume)
 // return : <int> channel number (1 - MAX_LOOP_WAV_CH)
 //          0     not played
 //
-int	Audio::play_loop_wav(char *wavName, int repeatOffset, DsVolume dsVolume)
+int	Audio::play_loop_wav(const char *wavName, int repeatOffset, DsVolume dsVolume)
 {
 	if( !wav_init_flag || !wav_flag )   // a initialized and workable midi device can be disabled by user setting
 		return 0;
@@ -1274,7 +1274,7 @@ int	Audio::play_loop_wav(char *wavName, int repeatOffset, DsVolume dsVolume)
 	}
 
 	// determine the wave data offset
-	char * dataTag = wavefile_data(wav_buf);
+	const char * dataTag = wavefile_data(wav_buf);
 	if (!dataTag)
 	{
 		err_now("Invalid wave file format");

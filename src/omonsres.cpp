@@ -207,7 +207,7 @@ void MonsterRes::second_init()
 
 	enum { MONSTER_NAME_COUNT_FORMAT = 6 };
 
-	static char* nameFormatArray[MONSTER_NAME_COUNT_FORMAT] =
+	static const char* nameFormatArray[MONSTER_NAME_COUNT_FORMAT] =
 	{
 		"ABABC",
 		"ABC",
@@ -224,9 +224,9 @@ void MonsterRes::second_init()
 
 	for( i=0 ; i<MONSTER_NAME_COUNT ; i++ )
 	{
-		char* nameFormat = nameFormatArray[ m.random(MONSTER_NAME_COUNT_FORMAT) ];
+		const char* nameFormat = nameFormatArray[ m.random(MONSTER_NAME_COUNT_FORMAT) ];
 		int   strLen = (int) strlen(nameFormat);
-		char* namePtr;
+		const char* namePtr;
 
 		int j;
 		for( j=0 ; j<strLen ; j++ )

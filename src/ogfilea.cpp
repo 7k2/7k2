@@ -126,7 +126,7 @@ GameFileArray::GameFileArray() : DynArray( sizeof(GameFile), 10 )
 // <char *>path - path of the save game, without '\\' at the end
 // <char *>extStr - extension of the save game
 //
-void GameFileArray::init(char *path, char *extStr)
+void GameFileArray::init(const char *path, const char *extStr)
 {
 	//------------- Read Hall of Fame ------------//
 
@@ -938,7 +938,7 @@ int GameFileArray::process_action(int saveNew)
 //       -1 - fail
 //
 // ###### begin Gilbert 20/1 ########//
-int GameFileArray::save_new_game(char* fileName)
+int GameFileArray::save_new_game(const char* fileName)
 {
 	GameFile  gameFile;
 	GameFile* gameFilePtr;
@@ -1121,7 +1121,7 @@ int GameFileArray::read_hall_of_fame()
 //
 // Load all headers of all saved game files in current directory.
 //
-void GameFileArray::load_all_game_header(char *path, char *extStr)
+void GameFileArray::load_all_game_header(const char *path, const char *extStr)
 {
 	int       i;
 	Directory gameDir;

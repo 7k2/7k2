@@ -37,7 +37,7 @@ String::String()
    str_buf[0] = NULL;
 }
 
-String::String( char *s )
+String::String( const char *s )
 {
    strncpy(str_buf, s, MAX_STR_LEN );
    str_buf[MAX_STR_LEN] = NULL;
@@ -139,7 +139,7 @@ String& String::operator=(String& s)
    return *this;
 }
 
-String& String::operator=(char *s)
+String& String::operator=(const char *s)
 {
    strncpy(str_buf, s, MAX_STR_LEN );
    str_buf[MAX_STR_LEN] = NULL;
@@ -166,7 +166,7 @@ String& String::operator+=(String& s)
 	return *this;
 }
 
-String& String::operator+=(char *s)
+String& String::operator+=(const char *s)
 {
 	strncat( str_buf, s, MAX_STR_LEN );
 	str_buf[MAX_STR_LEN] = NULL;

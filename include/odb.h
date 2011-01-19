@@ -78,10 +78,10 @@ private:
 
 public:
 
-   Database(char* =0, int bufferAll=0, int importRecSpec=0);
+   Database(const char* =0, int bufferAll=0, int importRecSpec=0);
    ~Database();
 
-   void  open(char*, int bufferAll=0, int importRecSpec=0);
+   void  open(const char*, int bufferAll=0, int importRecSpec=0);
    void  open_from_buf(char*, int importRecSpec=0);
 
 	char* read(long=0);

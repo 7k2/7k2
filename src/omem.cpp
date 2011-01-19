@@ -57,7 +57,7 @@ struct MemInfo
    void     *ptr;       // this pointer directly point to useable buffer
    unsigned size;       // bypassing the PRE_CHK_VAL
 
-   char     *file_name;
+   const char *file_name;
    int      file_line;
 };
 
@@ -83,7 +83,7 @@ Mem::Mem()
 // <char*>    fileName = file from which the client function calls
 // <int>      fileLine = line number of the client function in the file
 //
-char* Mem::add(unsigned memSize, char* fileName, int fileLine)
+char* Mem::add(unsigned memSize, const char* fileName, int fileLine)
 {
 	// ###### begin Gilbert 29/8 ######//
 	//err_when( memSize > 1000000 );		//**BUGHERE, for temporary debugging only
@@ -149,7 +149,7 @@ char* Mem::add(unsigned memSize, char* fileName, int fileLine)
 // <char*>    fileName = file from which the client function calls
 // <int>      fileLine = line number of the client function in the file
 //
-char* Mem::add_clear(unsigned memSize, char* fileName, int fileLine)
+char* Mem::add_clear(unsigned memSize, const char* fileName, int fileLine)
 {
 	//err_when( memSize > 1000000 );		//**BUGHERE, for temporary debugging only
 	err_when( memSize > 0x800000 );
@@ -222,7 +222,7 @@ char* Mem::add_clear(unsigned memSize, char* fileName, int fileLine)
 // Returns : NULL    - not enough memory
 //           <char*> - pointer to the allocated memory
 //
-char* Mem::resize_keep_data(void *orgPtr, unsigned orgSize, unsigned newSize, char* fileName, int fileLine)
+char* Mem::resize_keep_data(void *orgPtr, unsigned orgSize, unsigned newSize, const char* fileName, int fileLine)
 {
    if( orgPtr == NULL )
       return add( newSize, fileName, fileLine);
@@ -271,7 +271,7 @@ char* Mem::resize_keep_data(void *orgPtr, unsigned orgSize, unsigned newSize, ch
 //        and add(), because some clients want to keep the content on the
 //        existing buffer. (e.g. DynArray)
 //
-char* Mem::resize(void *orgPtr, unsigned memSize, char* fileName, int fileLine)
+char* Mem::resize(void *orgPtr, unsigned memSize, const char* fileName, int fileLine)
 {
 	//err_when( memSize > 1000000 );		//**BUGHERE, for temporary debugging only
 	err_when( memSize > 0x800000 );
@@ -325,7 +325,7 @@ char* Mem::resize(void *orgPtr, unsigned memSize, char* fileName, int fileLine)
 // <char*>    fileName  = file from which the client function calls
 // <int>      fileLine  = line number of the client function in the file
 //
-void Mem::del(void *freePtr, char* fileName, int fileLine)
+void Mem::del(void *freePtr, const char* fileName, int fileLine)
 {
    int   i ;
    char* truePtr;

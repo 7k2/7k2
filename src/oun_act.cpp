@@ -681,7 +681,7 @@ void Unit::set_die()
 
 //------------- Begin of function Unit::sound --------------//
 //
-void Unit::sound(char* soundCode)
+void Unit::sound(const char* soundCode)
 {
 	if( se_res.mark_command_time() )
 	{

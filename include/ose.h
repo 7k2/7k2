@@ -87,15 +87,15 @@ public:
 	void	deinit();
 
 	void	request( int soundEffect, RelVolume );
-	void	request( char *soundName, RelVolume );
+	void	request( const char *soundName, RelVolume );
 		// volume between 0 to 100; pan between -10,000=left, 10,000=right
 	void	flush();	// output sound effect to volume
 	void	clear();
 	char	*get_effect_name(int);
-	int	search_effect_id(char *);
-	int	search_effect_id(char *, int len);
+	int	search_effect_id(const char *);
+	int	search_effect_id(const char *, int len);
 
-	int	immediate_sound( char *soundName, RelVolume=DEF_REL_VOLUME);	// mainly for button sound, interface
+	int	immediate_sound(const char *soundName, RelVolume=DEF_REL_VOLUME);	// mainly for button sound, interface
 
 //	static long sound_volume(short locX, short locY);
 //	static long sound_volume(short locX, short locY, short limit, short drop);

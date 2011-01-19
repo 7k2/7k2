@@ -37,7 +37,7 @@ LongLog::~LongLog()
 	file_close();
 }
 
-void LongLog::printf(char *format, ...)
+void LongLog::printf(const char *format, ...)
 {
 	//---- translate the message and the arguments into one message ----//
 

@@ -88,7 +88,7 @@ static int text_line_count;     // used by text_width() & text_height() only
 
 //----------- Begin of function Font Constructor -------//
 
-Font::Font(char* fontName)
+Font::Font(const char* fontName)
 {
 	memset( this, 0, sizeof(Font) );
 
@@ -121,7 +121,7 @@ Font::~Font()
 // Return : 1 - succeed;
 //          0 - reading palette file error
 //
-void Font::init(char* fontName, int interCharSpace, int italicShift)
+void Font::init(const char* fontName, int interCharSpace, int italicShift)
 {
 	if( init_flag )
 		deinit();
@@ -233,7 +233,7 @@ void Font::deinit()
 //
 // Return : <int> lastX, the x coordination of the last pixel of last font
 //
-int Font::put(int x,int y,char* textPtr, char clearBack, int x2, int cap )
+int Font::put(int x,int y,const char* textPtr, char clearBack, int x2, int cap )
 {
 	err_when( x<0 || y<0 );
 
@@ -395,7 +395,7 @@ void Font::put_char(int x, int y, unsigned short textChar)
 //                   (default : 0)
 //	[int] cap		 = set all letter to Cap letter (default : 0)
 //
-void Font::right_put(int x, int y, char* textPtr, char clearBack, char cap)
+void Font::right_put(int x, int y, const char* textPtr, char clearBack, char cap)
 {
 	int textWidth = text_width(textPtr, -1, 0, cap);
 
@@ -419,7 +419,7 @@ void Font::right_put(int x, int y, char* textPtr, char clearBack, char cap)
 //
 // Return : <int> the screen width of the textPtr display using this font
 //
-int Font::text_width(char* textPtr, int textPtrLen, int maxDispWidth, int cap)
+int Font::text_width(const char* textPtr, int textPtrLen, int maxDispWidth, int cap)
 {
 	int   charWidth, x=0, lenCount, maxLen=0, wordWidth=0;
 	short textChar;
@@ -579,7 +579,7 @@ int Font::text_height(int lineSpace)
 //
 //-------------------------------------------------------//
 
-void Font::put_paragraph(int x1, int y1, int x2, int y2, char *textPtr,
+void Font::put_paragraph(int x1, int y1, int x2, int y2, const char *textPtr,
 								 int lineSpace, int startLine, char dispFlag)
 {
 	if( !init_flag || y1+font_height-1 > y2 )
@@ -592,7 +592,7 @@ void Font::put_paragraph(int x1, int y1, int x2, int y2, char *textPtr,
 	int   x,y,wordX;
 	int   newWord;
 	short textChar;
-	char *wordPtr;
+	const char *wordPtr;
 
    char  flag_under_line=0;     // attribute control flags
    char  flag_hyper_field=0;
@@ -840,7 +840,7 @@ void Font::put_paragraph(int x1, int y1, int x2, int y2, char *textPtr,
 //
 // but unlike the put_paragrapit has no out of bound checking
 
-void Font::center_put_paragraph(int x1, int y1, int x2, int y2, char* desStr, 
+void Font::center_put_paragraph(int x1, int y1, int x2, int y2, const char* desStr, 
 										  int lineSpace, char clearBack, int cap)
 {
 	int textPtrLen = strlen(desStr);
@@ -996,7 +996,7 @@ void Font::center_put_paragraph(int x1, int y1, int x2, int y2, char* desStr,
 // <int& dispLines>  = no. of lines can be displayed in the textPtr area
 // <int& totalLines> = total no. of lines of the textPtr
 //
-void Font::count_line(int x1, int y1, int x2, int y2, char *textPtr,
+void Font::count_line(int x1, int y1, int x2, int y2, const char *textPtr,
 							 int lineSpace , int& dispLines, int& totalLines)
 {
 	dispLines =0;
@@ -1025,7 +1025,7 @@ void Font::count_line(int x1, int y1, int x2, int y2, char *textPtr,
 //
 // Return : <int> lastX, the x coordination of the last pixel of last font
 //
-int Font::d3_put(int x1, int y1, char* desStr )
+int Font::d3_put(int x1, int y1, const char* desStr )
 {
 	int marginSpace = font_height/5;
 
@@ -1049,7 +1049,7 @@ int Font::d3_put(int x1, int y1, char* desStr )
 // <int>   x2,y2      =
 // <char*> desStr     = the spinner description
 //
-void Font::d3_put(int x1, int y1, int x2, int y2, char* desStr)
+void Font::d3_put(int x1, int y1, int x2, int y2, const char* desStr)
 {
 	int tx = x1 + ((x2-x1+1) - text_width(desStr))/2;
    int ty = y1 + ((y2-y1+1) - font_height)/2+1;
@@ -1077,7 +1077,7 @@ void Font::d3_put(int x1, int y1, int x2, int y2, char* desStr)
 //
 // Return : <int> lastX, the x coordination of the last pixel of last font
 //
-int Font::center_put(int x1, int y1, int x2, int y2, char* desStr, char clearBack, int cap)
+int Font::center_put(int x1, int y1, int x2, int y2, const char* desStr, char clearBack, int cap)
 {
 	int tx = x1 + ((x2-x1+1) - text_width(desStr, -1, 0, cap))/2;
 	int ty = y1 + ((y2-y1+1) - font_height)/2;
@@ -1109,7 +1109,7 @@ int Font::center_put(int x1, int y1, int x2, int y2, char* desStr, char clearBac
 //                  3 - 100% percentage
 //                  (default : 1 )
 //
-void Font::put_field(int x1, int y1, char* desStr, int x2, int value, int format )
+void Font::put_field(int x1, int y1, const char* desStr, int x2, int value, int format )
 {
 	vga.d3_panel_up( x1, y1, x2, y1+font_height+6 );
 
@@ -1164,8 +1164,8 @@ void Font::update_field(int x1, int y1, int value, int format, int x2)
 // <int> refreshFlag = refresh flag, either INFO_REPAINT or INFO_UPDATE
 // [char*] helpCode  = help code
 //
-void Font::field(int xDes, int y1, char* desStr, int xValue, int value,
-					  int format, int xEnd, int refreshFlag, char* helpCode)
+void Font::field(int xDes, int y1, const char* desStr, int xValue, int value,
+					  int format, int xEnd, int refreshFlag, const char* helpCode)
 {
 	int x2;
 
@@ -1205,7 +1205,7 @@ void Font::field(int xDes, int y1, char* desStr, int xValue, int value,
 //                   3 - 100% percentage
 //                   (default : 1 )
 //
-void Font::put_field(int x1, int y1, char* desStr, int x2, double value, int format)
+void Font::put_field(int x1, int y1, const char* desStr, int x2, double value, int format)
 {
 	vga.d3_panel_up( x1, y1, x2, y1+font_height+6 );
 
@@ -1262,8 +1262,8 @@ void Font::update_field(int x1, int y1, double value, int format, int x2)
 // <int> refreshFlag = refresh flag, either INFO_REPAINT or INFO_UPDATE
 // [char*] helpCode  = help code
 //
-void Font::field(int xDes, int y1, char* desStr, int xValue, double value,
-					  int format, int xEnd, int refreshFlag, char* helpCode )
+void Font::field(int xDes, int y1, const char* desStr, int xValue, double value,
+					  int format, int xEnd, int refreshFlag, const char* helpCode )
 {
 	int x2;
 
@@ -1298,7 +1298,7 @@ void Font::field(int xDes, int y1, char* desStr, int xValue, double value,
 // <int>   x2     = the coordination of the spinner variable
 // <char*> value  = value
 //
-void Font::put_field(int x1, int y1, char* desStr, int x2, char* value)
+void Font::put_field(int x1, int y1, const char* desStr, int x2, const char* value)
 {
 	vga.d3_panel_up( x1, y1, x2, y1+font_height+6 );
 
@@ -1319,7 +1319,7 @@ void Font::put_field(int x1, int y1, char* desStr, int x2, char* value)
 // <char*> value  = value
 // <int>   x2     = the x2 (right border) of the field
 //
-void Font::update_field(int x1, int y1, char* value, int x2)
+void Font::update_field(int x1, int y1, const char* value, int x2)
 {
 	if( x2<0 )
       x2 = x1+80;
@@ -1345,8 +1345,8 @@ void Font::update_field(int x1, int y1, char* value, int x2)
 // <int> refreshFlag = refresh flag, either INFO_REPAINT or INFO_UPDATE
 // [char*] helpCode  = help code
 //
-void Font::field(int xDes, int y1, char* desStr, int xValue, char* value,
-					  int xEnd, int refreshFlag, char* helpCode )
+void Font::field(int xDes, int y1, const char* desStr, int xValue, const char* value,
+					  int xEnd, int refreshFlag, const char* helpCode )
 {
 	int x2;
 
@@ -1436,7 +1436,7 @@ int Font::disp(int x1, int y1, double value, int format, int x2)
 //
 // Return : <int> lastX, the x coordination of the last pixel of last font
 //
-int Font::disp(int x1, int y1, char* textPtr, int x2, int cap)
+int Font::disp(int x1, int y1, const char* textPtr, int x2, int cap)
 {
 	if( x2<0 )
       x2 = x1+80;
@@ -1464,7 +1464,7 @@ void Font::put_char_to_buffer(char* dest, int destPitch, int x, int y, unsigned 
 
 
 //--------- Begin of function Font::put_to_buffer ---------//
-void Font::put_to_buffer(char* dest, int destPitch, int x1, int y1, char *text)
+void Font::put_to_buffer(char* dest, int destPitch, int x1, int y1, const char *text)
 {
 	int x2 = destPitch;			// width of buffer
 	while( *text != '\0' && x1 < x2)
@@ -1497,7 +1497,7 @@ void Font::put_to_buffer(char* dest, int destPitch, int x1, int y1, char *text)
 
 
 //--------- Begin of function Font::center_put_to_buffer ---------//
-void Font::center_put_to_buffer(char* dest, int destPitch, int x1, int y1, int x2, int y2, char *desStr)
+void Font::center_put_to_buffer(char* dest, int destPitch, int x1, int y1, int x2, int y2, const char *desStr)
 {
 	int tx = x1 + ((x2-x1) - text_width(desStr))/2;
    int ty = y1 + ((y2-y1) - font_height)/2;
@@ -1525,7 +1525,7 @@ void Font::put_char_to_bufferW(short* dest, int destTruePitch, int x, int y, uns
 
 
 //--------- Begin of function Font::put_to_bufferW ---------//
-void Font::put_to_bufferW(short* dest, int destTruePitch, int x1, int y1, char *text)
+void Font::put_to_bufferW(short* dest, int destTruePitch, int x1, int y1, const char *text)
 {
 	// ###### begin Gilbert 29/10 ######//
 	int x2 = destTruePitch/2;			// width of buffer
@@ -1553,7 +1553,7 @@ void Font::put_to_bufferW(short* dest, int destTruePitch, int x1, int y1, char *
 
 
 //--------- Begin of function Font::center_put_to_bufferW ---------//
-void Font::center_put_to_bufferW(short* dest, int destTruePitch, int x1, int y1, int x2, int y2, char *desStr)
+void Font::center_put_to_bufferW(short* dest, int destTruePitch, int x1, int y1, int x2, int y2, const char *desStr)
 {
 	int tx = x1 + ((x2-x1) - text_width(desStr))/2;
    int ty = y1 + ((y2-y1) - font_height)/2;
