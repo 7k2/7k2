@@ -16,6 +16,7 @@ ib_ahrdm.asm
 ib_ar.asm
 ib_arm.asm
 ib_at.asm
+ib_atk.asm
 ib_atr.asm
 ib_atrd.asm
 ib_atrdm.asm
@@ -29,6 +30,7 @@ ib_hrdm.asm
 ib_r.asm
 ib_rm.asm
 ib_t.asm
+ib_tk.asm
 ib_tr.asm
 ib_trd.asm
 ib_trdm.asm
