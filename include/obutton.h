@@ -76,6 +76,7 @@ public:
 	void set_font(Font*);
 	void set_key(unsigned keyCode)       { button_key = keyCode; }
 	void create(int,int,int,int,int,void*,char=1,char=0,char=0);
+	void create(int,int,int,int,int,const char*,char=1,char=0,char=0);
 	void set_body(void*);
 	void set_help_code(char* helpCode);
 

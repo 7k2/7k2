@@ -150,28 +150,30 @@ void Button::paint_text(int pX1, int pY1, char* textPtr, char pElastic, char def
 
 //-------- Begin of function Button::create -------//
 //
-// Syntax : create(<int>,<int>,<int>,<int>,<int>,<int>,<char>)
+// Syntax : create(<int>,<int>,<int>,<int>,<int>,<void*>,[char],[char],[char])
 //
 // <int>   buttonType = BUTTON_TEXT (1) - text button, BUTTON_BITMAP (2) - icon button
 // <int>   x1, y1     = coordination of the button
 // <int>   x2, y2     = coordination of the button
-// <void*> bodyPtr    = text or icon pointer or pointer to user defined function,
+// <void*> bodyPtr    = icon pointer or pointer to user defined function,
 //                      depended on the type of the button allow NULL icon
 //                      pointer, which no icon will be displayed
-// [int]   elastic    = Whether the button is elastic
+// [char]  elastic    = Whether the button is elastic
 //                      Elastic button will pop up immediately when button release
 //                      Non-elastic button will remain pushed until pop() is called
 //                      (default : 1)
-//
-// [int]   defIsPushed = default is_pushed : 1-Pushed, 0-Non-pushed
+// [char]  defIsPushed = default is_pushed : 1-Pushed, 0-Non-pushed
 //                       (default : 0)
+// [char]  textCentrePut = Center the text : 1-center, 0-not centered
+//                         (default : 0)
+//
 //
 // Note : it use the color setting in (vga) and (font_san)
 //
 void Button::create(int buttonType, int pX1, int pY1, int pX2, int pY2,
 						  void* bodyPtr, char pElastic, char defIsPushed, char textCentrePut)
 {
-	int strLen;
+	err_when(buttonType == BUTTON_TEXT);
 
 	init_flag = 1;
 
@@ -193,18 +195,67 @@ void Button::create(int buttonType, int pX1, int pY1, int pX2, int pY2,
 
 	//------------------------------------//
 
-	if( buttonType == BUTTON_TEXT )
-	{
-		strLen = strlen((char*)bodyPtr);  // copy the string to class member buffer
-												 // some string are temporary, we need it for repaint
-		if( strLen > STR_BUF_LEN )
-			strLen = STR_BUF_LEN;
+	body_ptr = bodyPtr;
+}
+//--------- End of function Button::create --------//
 
-		memcpy( str_buf, bodyPtr, strLen );
-		str_buf[strLen] = NULL;
-	}
-	else
-		body_ptr = bodyPtr;
+
+//-------- Begin of function Button::create -------//
+//
+// Syntax : create(<int>,<int>,<int>,<int>,<int>,<const char*>,[char],[char],[char])
+//
+// <int>   buttonType = BUTTON_TEXT (1) - text button, BUTTON_BITMAP (2) - icon button
+// <int>   x1, y1     = coordination of the button
+// <int>   x2, y2     = coordination of the button
+// <const char*> text = text of the button
+// [char]  elastic    = Whether the button is elastic
+//                      Elastic button will pop up immediately when button release
+//                      Non-elastic button will remain pushed until pop() is called
+//                      (default : 1)
+// [char]  defIsPushed = default is_pushed : 1-Pushed, 0-Non-pushed
+//                       (default : 0)
+// [char]  textCentrePut = Center the text : 1-center, 0-not centered
+//                         (default : 0)
+//
+//
+// Note : it use the color setting in (vga) and (font_san)
+//
+void Button::create(int buttonType, int pX1, int pY1, int pX2, int pY2,
+		    const char* text, char pElastic, char defIsPushed,
+		    char textCentrePut)
+{
+	int strLen;
+
+	err_when(buttonType != BUTTON_TEXT);
+
+	init_flag = 1;
+
+	button_type = buttonType;
+
+	x1 = pX1;
+	y1 = pY1;
+	x2 = pX2;
+	y2 = pY2;
+
+	text_centre_put = textCentrePut;
+	elastic = pElastic;
+	is_pushed = defIsPushed;
+	enable_flag = 1;
+	// ##### begin Gilbert 29/6 ######//
+	visible_flag = 1;
+	painted_flag = 0;
+	// ##### end Gilbert 29/6 ######//
+
+	//------------------------------------//
+
+	strLen = strlen(text);  // copy the string to class member buffer
+
+	// some string are temporary, we need it for repaint
+	if (strLen > STR_BUF_LEN)
+		strLen = STR_BUF_LEN;
+
+	memcpy(str_buf, text, strLen);
+	str_buf[strLen] = NULL;
 }
 //--------- End of function Button::create --------//
 
