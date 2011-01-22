@@ -34,7 +34,11 @@
 
 #include <windows.h>
 
+#ifdef ASM_FOR_MSVC
+#define __asmsym__(s)
+#else
 #define __asmsym__(s) __asm__(s)
+#endif
 #define IMGcall _stdcall
 
 #endif
