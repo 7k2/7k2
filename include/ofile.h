@@ -24,19 +24,7 @@
 #ifndef __OFILE_H
 #define __OFILE_H
 
-// #include <windows.h>
-
-// -------- define constant and types assemble to Windows' -------//
-// if definition is different from Windows, it will be reflected in compiling OFILE.CPP
-
-typedef void *HANDLE;
-
-#define MAX_PATH 260
-#define INVALID_HANDLE_VALUE (HANDLE)-1
-
-#define FILE_BEGIN   0
-#define FILE_CURRENT 1
-#define FILE_END     2
+#include <windows.h>
 
 //--------------------------------------//
 
