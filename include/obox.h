@@ -69,8 +69,8 @@ public:
 
    void calc_size(const char*,int,int= -1, int= -1);
 
-   int  ask_button(char* =NULL,char* =NULL,int=1);
-   void ask_button(Button&,Button&,char* =NULL,char* =NULL);
+   int  ask_button(const char* =NULL,const char* =NULL,int=1);
+   void ask_button(Button&,Button&,const char* =NULL,const char* =NULL);
    void ok_button(int=1);
 
    // arrow box

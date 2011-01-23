@@ -102,7 +102,7 @@ void Button::set_font(Font* fontPtr)
 // [int]  defIsPushed  = default is_pushed : 1-Pushed, 0-Non-pushed
 //                         (default : 0)
 //
-void Button::create_text(int pX1, int pY1, char* textPtr, char pElastic, char defIsPushed, char textCentrePut)
+void Button::create_text(int pX1, int pY1, const char* textPtr, char pElastic, char defIsPushed, char textCentrePut)
 {
    int pX2, pY2;
 

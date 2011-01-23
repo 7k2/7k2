@@ -88,7 +88,7 @@ public:
 	void paint_text(int x1,int y1,int x2,int y2,char* textPtr,char elastic=1,char defIsPushed=0, char textCentrePut=0)
 		  { create( BUTTON_TEXT,x1,y1,x2,y2,textPtr,elastic,defIsPushed,textCentrePut); paint(); }
 
-	void create_text(int x1,int y1,char* textPtr,char elastic=1,char defIsPushed=0, char textCentrePut=0);
+	void create_text(int x1,int y1,const char* textPtr,char elastic=1,char defIsPushed=0, char textCentrePut=0);
 
 	void paint_text(int x1,int y1,char* textPtr,char elastic=1,char defIsPushed=0, char textCentrePut=0);
 
