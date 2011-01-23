@@ -331,7 +331,7 @@ void ButtonCustom::disp_text_button_func(ButtonCustom *button, int repaintBody)
 	}
 
 	// put name
-	font_bible.center_put(x1, y1, x2, y2, (char *)button->custom_para.ptr );
+	font_bible.center_put(x1, y1, x2, y2, (const char *)button->custom_para.ptr );
 }
 //----------- End of function ButtonCustom::disp_text_button_func -------------//
 
@@ -366,7 +366,7 @@ void ButtonCustom::disp_text2_button_func(ButtonCustom *button, int repaintBody)
 	}
 
 	// put name
-	font_bible.center_put(x1, y1, x2, y2, (char *)button->custom_para.ptr );
+	font_bible.center_put(x1, y1, x2, y2, (const char *)button->custom_para.ptr );
 }
 //----------- End of function ButtonCustom::disp_text2_button_func -------------//
 

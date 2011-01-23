@@ -426,7 +426,7 @@ char* CampaignMember::unit_name(int nationRecno, int withTitle, int firstNameOnl
 	{
 		err_when( !race_res.init_flag );
 
-		char *baseName;
+		const char *baseName;
 		if( hero_id )
 		{
 			baseName = hero_res[hero_id]->name;
@@ -446,7 +446,7 @@ char* CampaignMember::unit_name(int nationRecno, int withTitle, int firstNameOnl
 	}
 	else if( is_monster() )
 	{
-		char *baseName;
+		const char *baseName;
 		if( rank_id == RANK_KING )		// use the player name
 			baseName = game.campaign()->get_nation(nationRecno)->king_name();
 		else

@@ -102,9 +102,9 @@ public:
 	char* str_difficulty_custom();
 	char* str_level_in_score();
 	char* str_terrain_set();		// "Terrain Type"
-	char* str_terrain_set(char terrainSet);	// "Fertile" or "Badlands"
+	const char* str_terrain_set(char terrainSet);	// "Fertile" or "Badlands"
 	char* str_building_set();		// "Building Size"
-	char* str_building_set(char buildingSet);	// "Large" or "Small"
+	const char* str_building_set(char buildingSet);	// "Large" or "Small"
 	char* str_kingdom_of();
 	char* str_king_name();
 
@@ -119,13 +119,13 @@ public:
 	char* str_random_kingdom();
 
 	char* str_off_on(char flag);		// 0 = off, 1 = on
-	char* str_treasure(char para);
-	char* str_aggressiveness(char para);
+	const char* str_treasure(char para);
+	const char* str_aggressiveness(char para);
 	char* str_need_research(char flag);
 	char* str_no_yes(char flag);
-	char* str_few_to_many(char para);
-	char* str_low_to_high(char para);
-	char* str_never_to_frequent(char para);
+	const char* str_few_to_many(char para);
+	const char* str_low_to_high(char para);
+	const char* str_never_to_frequent(char para);
 
 	// advanced setting 2
 	char* str_start_up_raw_site();
@@ -181,8 +181,8 @@ public:
 	char* str_mp_miss_reserved_3();
 	char* str_mp_miss_reserved_4();
 	char* str_mp_other_player_fail();
-	char* str_mp_service_provider_name(int);	// 1=IPX, 2=TCP/IP, 3=MODEM, 4=SERIAL, 5=IM online
-	char* str_mp_service_provider_long(int);	// ditto
+	const char* str_mp_service_provider_name(int);	// 1=IPX, 2=TCP/IP, 3=MODEM, 4=SERIAL, 5=IM online
+	const char* str_mp_service_provider_long(int);	// ditto
 	char* str_mp_confirm_quit();
 	char* str_mp_gem_stones_inst(int);
 
@@ -264,13 +264,13 @@ public:
 	char* str_inside_info();
 	char* str_scroll_method();
 
-	char* str_help_options(int i);
-	char* str_news_options(int i);
-	char* str_report_options(int i);
-	char* str_show_icon_options(int i);
-	char* str_show_path_options(int i);
-	char* str_inside_info_options(int i);
-	char* str_scroll_method_options(int i);
+	const char* str_help_options(int i);
+	const char* str_news_options(int i);
+	const char* str_report_options(int i);
+	const char* str_show_icon_options(int i);
+	const char* str_show_path_options(int i);
+	const char* str_inside_info_options(int i);
+	const char* str_scroll_method_options(int i);
 
 	char* str_return();
 
@@ -291,7 +291,7 @@ public:
 	// multi-player
 	char* str_mp_wait_player(char* nationStr, char* colorCodeStr );
 	char* str_mp_ranking( char *nationName, char colorScheme, int, int, int, int, int, int );
-	char* str_hash_help(int line);
+	const char* str_hash_help(int line);
 
 	// tips
 	char* str_tips_next();

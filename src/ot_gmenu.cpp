@@ -340,7 +340,7 @@ char* TextResGameMenu::str_terrain_set()
 // [TER1]Fertile
 // text id 45
 // [TER2]Badlands
-char* TextResGameMenu::str_terrain_set(char terrainSet)
+const char* TextResGameMenu::str_terrain_set(char terrainSet)
 {
 	switch( terrainSet )
 	{
@@ -365,7 +365,7 @@ char* TextResGameMenu::str_building_set()
 // [BLD1]Large
 // text id 48
 // [BLD2]Small
-char* TextResGameMenu::str_building_set(char buildingSet)
+const char* TextResGameMenu::str_building_set(char buildingSet)
 {
 	switch( buildingSet )
 	{
@@ -476,7 +476,7 @@ char* TextResGameMenu::str_off_on(char flag)
 // [SML3]Large
 // text id 66
 // [SML4]Huge
-char* TextResGameMenu::str_treasure(char para)
+const char* TextResGameMenu::str_treasure(char para)
 {
 	switch( para )
 	{
@@ -506,7 +506,7 @@ char* TextResGameMenu::str_treasure(char para)
 // [AGG3]Great
 // text id 71
 // [AGG4]Very Great
-char* TextResGameMenu::str_aggressiveness(char para)
+const char* TextResGameMenu::str_aggressiveness(char para)
 {
 	switch(para)
 	{
@@ -556,7 +556,7 @@ char* TextResGameMenu::str_no_yes(char flag)
 // [FEW2]More
 // text id 78
 // [FEW3]Many
-char* TextResGameMenu::str_few_to_many(char para)
+const char* TextResGameMenu::str_few_to_many(char para)
 {
 	switch(para)
 	{
@@ -579,7 +579,7 @@ char* TextResGameMenu::str_few_to_many(char para)
 // text id 81
 // [LOW3]High
 
-char* TextResGameMenu::str_low_to_high(char para)
+const char* TextResGameMenu::str_low_to_high(char para)
 {
 	switch(para)
 	{
@@ -603,7 +603,7 @@ char* TextResGameMenu::str_low_to_high(char para)
 // [FRQ2]Occasional
 // text id 85
 // [FRQ3]Frequent
-char* TextResGameMenu::str_never_to_frequent(char para)
+const char* TextResGameMenu::str_never_to_frequent(char para)
 {
 	switch( para)
 	{
@@ -1464,7 +1464,7 @@ char* TextResGameMenu::str_scroll_method()
 // [HLP0]None
 // [HLP1]Brief
 // [HLP2]Detailed
-char* TextResGameMenu::str_help_options(int i)
+const char* TextResGameMenu::str_help_options(int i)
 {
 	switch(i)
 	{
@@ -1482,7 +1482,7 @@ char* TextResGameMenu::str_help_options(int i)
 // text id 216 - 217
 // [NEW0]Major
 // [NEW1]All
-char* TextResGameMenu::str_news_options(int i)
+const char* TextResGameMenu::str_news_options(int i)
 {
 	switch(i)
 	{
@@ -1498,7 +1498,7 @@ char* TextResGameMenu::str_news_options(int i)
 // text id 218 - 219
 // [REP0]Transparent
 // [REP1]Opaque
-char* TextResGameMenu::str_report_options(int i)
+const char* TextResGameMenu::str_report_options(int i)
 {
 	switch(i)
 	{
@@ -1514,7 +1514,7 @@ char* TextResGameMenu::str_report_options(int i)
 // text id 220 - 221
 // [SUI0]Cursor
 // [SUI1]Always
-char* TextResGameMenu::str_show_icon_options(int i)
+const char* TextResGameMenu::str_show_icon_options(int i)
 {
 	switch(i)
 	{
@@ -1532,7 +1532,7 @@ char* TextResGameMenu::str_show_icon_options(int i)
 // [SUP1]Main Map
 // [SUP2]World Map
 // [SUP3]Both
-char* TextResGameMenu::str_show_path_options(int i)
+const char* TextResGameMenu::str_show_path_options(int i)
 {
 	switch(i)
 	{
@@ -1553,7 +1553,7 @@ char* TextResGameMenu::str_show_path_options(int i)
 // [IIF0]None
 // [IIF1]Cursor
 // [IIF2]Always
-char* TextResGameMenu::str_inside_info_options(int i)
+const char* TextResGameMenu::str_inside_info_options(int i)
 {
 	switch(i)
 	{
@@ -1571,7 +1571,7 @@ char* TextResGameMenu::str_inside_info_options(int i)
 // text id 229 - 230
 // [SMD0]Comfort
 // [SMD1]Speed
-char* TextResGameMenu::str_scroll_method_options(int i)
+const char* TextResGameMenu::str_scroll_method_options(int i)
 {
 	switch(i)
 	{
@@ -1729,7 +1729,7 @@ char* TextResGameMenu::str_brief_mode(int briefMode)
 // [MODS]Modem
 // [COMS]Serial
 // text id 281 - 285 reserved
-char* TextResGameMenu::str_mp_service_provider_name(int sp)
+const char* TextResGameMenu::str_mp_service_provider_name(int sp)
 {
 	switch( sp )
 	{
@@ -1754,7 +1754,7 @@ char* TextResGameMenu::str_mp_service_provider_name(int sp)
 // [MODL]Join with another player by Modem
 // [COML]Join with another player linked by serial cable
 // text id 290 - 294 reserved
-char* TextResGameMenu::str_mp_service_provider_long(int sp)
+const char* TextResGameMenu::str_mp_service_provider_long(int sp)
 {
 	switch( sp )
 	{
@@ -1816,7 +1816,7 @@ char* TextResGameMenu::str_mp_ranking( char *nationName, char colorScheme, int p
 // text id 300 - 301 (multiplayer load game #? help)
 // [#?L0]#r - ranking of players
 // [#?L1]#? - help
-char* TextResGameMenu::str_hash_help(int line)
+const char* TextResGameMenu::str_hash_help(int line)
 {
 	switch( line )
 	{

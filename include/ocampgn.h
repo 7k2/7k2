@@ -171,7 +171,7 @@ public:
 	char		custom_name[CUSTOM_NAME_LEN+1];	 // if custom_name[0] is not NULL, use custom name instead of the normal name
 
 	int 		king_name_id;
-   char* 	king_name(); 
+	const char* 	king_name(); 
 	char* 	nation_name()	{ return custom_name; }
 
 	char		race_id;
@@ -185,7 +185,7 @@ public:
 	char		nation_color;				// main color of the nation, based on from color_scheme_id
 
 	WORD		minister_name_array[MINISTER_COUNT];
-	char*		minister_name(int ministerId);
+	const char*	minister_name(int ministerId);
 
 	CampaignMember	king;
 	CampaignMember noble[MAX_NOBLE+MAX_ROYAL_UNIT];		// reserve space for royal added in battle
@@ -332,9 +332,9 @@ public:
 	virtual char*	goal_text();
 	char*				full_goal_text();
 
-	char*				king_name() 	{ return get_nation(CAMPAIGN_PLAYER_NATION_RECNO)->king_name(); }
+	const char*	king_name() 	{ return get_nation(CAMPAIGN_PLAYER_NATION_RECNO)->king_name(); }
 
-	char*				minister_name(int ministerId)
+	const char*	minister_name(int ministerId)
 						{ return get_nation(CAMPAIGN_PLAYER_NATION_RECNO)->minister_name(ministerId); }
 
 	unsigned long	random(unsigned long);

@@ -1986,7 +1986,7 @@ int News::is_loc_valid()
 
 //------ Begin of function News::get_unit_name -----//
 //
-char* News::get_unit_name(int raceId, int nameId)
+const char* News::get_unit_name(int raceId, int nameId)
 {
 //	if( nameId > 0 )
 //	{
@@ -2032,7 +2032,7 @@ char* News::get_unit_name(int raceId, int nameId)
 
 //------ Begin of function News::get_unit_single_name -----//
 //
-char* News::get_unit_single_name(int raceId, int nameId)
+const char* News::get_unit_single_name(int raceId, int nameId)
 {
 //	if( nameId > 0 )
 //	{

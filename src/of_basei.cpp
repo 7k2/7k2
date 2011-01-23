@@ -89,7 +89,7 @@ void FirmBase::disp_god_info(int dispY1, int refreshFlag)
 	font_snds.center_put( INFO_X1 +80 -13, INFO_Y1 +46 +48, INFO_X1 +187 -13, INFO_Y1 +63 +48, str );
 */
 
-	char *baseDesc;
+	const char *baseDesc;
 
 	if( should_show_info() && invoked_effect_text[0] )
 	{

@@ -34,7 +34,7 @@ public:
 	// date class text
 	char*	str_long_date(int day, int month, int year );
 	char*	str_short_date(int day, int month, int year );
-	char* str_month_string(int month);
+	const char* str_month_string(int month);
 
 	// box class text
 	char* str_box_ok();

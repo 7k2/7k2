@@ -120,7 +120,7 @@ char* CampaignNation::race_name()
 
 //-------- Begin of function CampaignNation::king_name ------//
 
-char* CampaignNation::king_name()
+const char* CampaignNation::king_name()
 {
 	if( is_monster() )
 		return monster_res.get_name(king_name_id);
@@ -132,7 +132,7 @@ char* CampaignNation::king_name()
 
 //-------- Begin of function CampaignNation::minister_name ------//
 
-char* CampaignNation::minister_name(int ministerId)
+const char* CampaignNation::minister_name(int ministerId)
 {
 	int ministerNameId = minister_name_array[ministerId-1];
 

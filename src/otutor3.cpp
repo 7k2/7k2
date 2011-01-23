@@ -553,7 +553,7 @@ int Tutor::select_learning_campaign_menu()
 
 	// --------- initialize building size --------//
 	ButtonCustomGroup buildingSizeGroup(2);
-	char *buildingSizeButtonStr[2] = 
+	const char *buildingSizeButtonStr[2] = 
 	{ 
 		text_game_menu.str_building_set(1),
 		text_game_menu.str_building_set(2),

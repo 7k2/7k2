@@ -106,7 +106,7 @@ struct NationRelation			// many-to-many relationships between nations
 	char	trade_treaty;			// whether allow trading with this nation
 
 	char  status;
-	char* status_str(); //		{ return relation_status_str_array[status]; }
+	const char* status_str(); // { return relation_status_str_array[status]; }
 
 	int	is_friendly()		{ return status >= RELATION_FRIENDLY && status <= RELATION_ALLIANCE; }
 
@@ -175,7 +175,7 @@ public:
 
 	char  nation_name_str[NATION_NAME_LEN+1];		// for nation_name()'s use
 	char* nation_name();
-	char* king_name(int firstWordOnly=0);
+	const char* king_name(int firstWordOnly=0);
 
 	DWORD player_id;				   // player id for multiplayer game
 

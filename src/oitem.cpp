@@ -38,7 +38,7 @@ void Item::next_day()
 
 
 // ------- begin of function Item::item_name -----//
-char *Item::item_name()
+const char *Item::item_name()
 {
 	return item_res.item_name( id, para );
 }
@@ -46,7 +46,7 @@ char *Item::item_name()
 
 
 // ------- begin of function Item::item_desc -----//
-char *Item::item_desc()
+const char *Item::item_desc()
 {
 	return item_res.item_desc( id, para );
 }

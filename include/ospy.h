@@ -79,7 +79,7 @@ public:
 	long	unique_id;
 
 	char  action_mode;
-	char* action_str();
+	const char* action_str();
 
 	unsigned char camouflage_count;			// >0 = invisible
 	unsigned char camouflage_power;			// store value of camouflag_count

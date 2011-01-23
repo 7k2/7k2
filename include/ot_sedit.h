@@ -51,7 +51,7 @@ public:
 	char* str_no_human();
 
 	// misc mode
-	char* str_misc_mode( int, int =-1 );
+	const char* str_misc_mode( int, int =-1 );
 
 	// player mode
 	char* str_player_treasure();
@@ -59,12 +59,12 @@ public:
 	char* str_player_reputation();
 	char* str_player_live_points();
 	char* str_king_name();
-	char* str_fine_coarse(int);
+	const char* str_fine_coarse(int);
 	char* str_player_disable();
 	char* str_adjustment();
 
 	// relation status
-	char* str_abbrev_relation_str(int);
+	const char* str_abbrev_relation_str(int);
 	char* str_abbrev_trade_treaty();
 	char* str_relation_inst();
 

@@ -36,7 +36,7 @@ void TextResCampaign::init()
 // [CAM2]reserved campaign
 // ...
 // [CAM9]reserved campaign
-char* TextResCampaign::str_campaign_name(int campaignId)
+const char* TextResCampaign::str_campaign_name(int campaignId)
 {
 	switch( campaignId )
 	{

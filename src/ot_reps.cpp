@@ -191,7 +191,7 @@ char* TextResReports::str_duration_hm( int hours, int minutes )
 
 // text id 30 - 38 name of report modes
 // [REP1] - [REP9]
-char* TextResReports::str_report_mode(int viewMode )
+const char* TextResReports::str_report_mode(int viewMode )
 {
 	switch( viewMode )
 	{
@@ -268,7 +268,7 @@ char* TextResReports::str_nat_trade_amount()
 // [RP12]Diplomacy
 // [RP13]Chat
 // [RP14]Diplomatic Log
-char* TextResReports::str_nat_sub_mode(int subMode)
+const char* TextResReports::str_nat_sub_mode(int subMode)
 {
 	switch(subMode)
 	{
@@ -380,7 +380,7 @@ char* TextResReports::str_enemy_peace_time(char* nationName)
 
 // text id 61
 // [NSTT]Duration of %1s Status
-char* TextResReports::str_enemy_status_duration(char* statusStr)
+char* TextResReports::str_enemy_status_duration(const char* statusStr)
 {
 	return process( get_format_str( 61, "NSTT" ),
 		statusStr );
@@ -388,7 +388,7 @@ char* TextResReports::str_enemy_status_duration(char* statusStr)
 
 // text id 62
 // [NAAT]Allow Your Units to Attack %1s
-char* TextResReports::str_enemy_allow_attack(char* nationName)
+char* TextResReports::str_enemy_allow_attack(const char* nationName)
 {
 	return process( get_format_str( 62, "NAAT" ),
 		nationName );
@@ -453,7 +453,7 @@ char* TextResReports::str_chat_inst()
 // [(Send to all allied human controlled kingdoms)CHR1]Allies
 // text id 72
 // [(Send to all human controlled kingdoms)CHR2]All
-char* TextResReports::str_chat_recipient(int i)
+const char* TextResReports::str_chat_recipient(int i)
 {
 	switch(i)
 	{
@@ -674,7 +674,7 @@ char* TextResReports::str_expense_desc(int expenseType, int isMonster )
 // [TST1]Stop 1
 // [TST2]Stop 2
 // [TST3]Stop 3
-char* TextResReports::str_trade_stop(int stopId)
+const char* TextResReports::str_trade_stop(int stopId)
 {
 	switch( stopId )
 	{
@@ -886,7 +886,7 @@ char* TextResReports::str_total_spy(int num)
 // text id 173, 174 (175-177 reserved)
 // [SLEP]Sleep
 // [AGIT]Agitate
-char* TextResReports::str_spy_action_mode( int spyActionMode )
+const char* TextResReports::str_spy_action_mode( int spyActionMode )
 {
 	switch( spyActionMode )
 	{

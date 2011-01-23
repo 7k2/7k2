@@ -300,7 +300,7 @@ char* DateInfo::date_str( long julianDate, int shortMonthStr)
 //
 // Return : <char*> the month string
 //
-char* DateInfo::month_str(int monthNo)
+const char* DateInfo::month_str(int monthNo)
 {
 #if(defined(USE_TEXT_RES))
 	return text_basic.str_month_string( monthNo );

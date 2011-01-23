@@ -395,7 +395,7 @@ struct MpStructChatMsg : public MpStructBase
 	enum { MSG_LENGTH = 60 };
 	char sender[MP_FRIENDLY_NAME_LEN+1];
 	char content[MSG_LENGTH+1];
-	MpStructChatMsg(char *fromName, char *message) : MpStructBase(MPMSG_SEND_CHAT_MSG)
+	MpStructChatMsg(char *fromName, const char *message) : MpStructBase(MPMSG_SEND_CHAT_MSG)
 	{
 		if( fromName )
 			strcpy(sender, fromName);

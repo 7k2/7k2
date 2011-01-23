@@ -32,8 +32,8 @@ class TextResItem : public TextResource
 public:
 	void	init();
 
-	char*	str_item_name(int itemId);
-	char*	str_item_desc(int itemId);
+	const char*	str_item_name(int itemId);
+	const char*	str_item_desc(int itemId);
 };
 
 extern TextResItem text_item;

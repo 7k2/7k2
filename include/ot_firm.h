@@ -36,19 +36,19 @@ public:
 
 	// firm base
 
-	char* str_base_prayer_effect( int godId );
+	const char* str_base_prayer_effect( int godId );
 	char* str_pray_points();
 
 	// firm camp
 
-	char* str_patrol_state( int patrolState);
+	const char* str_patrol_state( int patrolState);
 	char* str_bribe_chance( int chance ); // 0-100 to mean 0% to 100%
 	char* str_bribe_amount( int bribeAmount);  // $nnnnn
-	char* str_ask_bribe_unit( char *unitName );
+	char* str_ask_bribe_unit( const char *unitName );
 	char* str_bribe_success();
 	char* str_bribe_fail();
 	char* str_bribe_execute();
-	char* str_ask_assassin( char* title );
+	char* str_ask_assassin( const char* title );
 	char* str_assassin_chance( int chance );
 	char* str_yes();
 	char* str_no();
@@ -72,8 +72,8 @@ public:
 	char* str_no_commander();
 
 	// factory
-	char* str_factory_raw( int rawId);
-	char* str_factory_ware( int rawId );
+	const char* str_factory_raw( int rawId);
+	const char* str_factory_ware( int rawId );
 	char* str_monthly_production();
 	char* str_factory_auto();
 	char* str_factory_manual();
@@ -84,7 +84,7 @@ public:
 
 	// market
 	char* str_no_trade();
-	char* str_product_name( int rawId );
+	const char* str_product_name( int rawId );
 	char* str_yearly_income( int incomeAmount );
 
 	// mine
@@ -94,7 +94,7 @@ public:
 	char* str_mine_no_raw();
 
 	// offensive structure
-	char* str_cast_magic_instruct( int magicId );
+	const char* str_cast_magic_instruct( int magicId );
 	char* str_cast_teleport_source();
 	char* str_cast_cost_cash( int cost );
 	char* str_teleport_cost_cash( int cost);
@@ -120,7 +120,7 @@ public:
 	char* str_buy_lair_short_cash();
 
 	// alchemy 
-	char* str_alchemy_raw( int rawId );
+	const char* str_alchemy_raw( int rawId );
 	char* str_estimated_resource(int reservedQty);
 	char* str_alchemy_idle();
 	char* str_conversion( char* techName );

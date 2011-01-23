@@ -186,7 +186,7 @@ struct EndConditionInfo
 	char	para1_type;
 	char	para2_type;
 	char	time_limit_type;	// 0=no time limit 1=optional time limit 2=compulsory time limit
-	char* eng_name;			// remain for reduce modify, use name() instead
+	const char* eng_name;			// remain for reduce modify, use name() instead
 	char*	name();
 
 	static EndConditionInfo end_condition_info[END_CONDITION_COUNT];

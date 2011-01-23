@@ -109,8 +109,8 @@ public:
 	short special_unit_id;
 
 public:
-	char* get_name(WORD nameId, int nameType=0);
-	char* get_single_name(WORD nameId);
+	const char* get_name(WORD nameId, int nameType=0);
+	const char* get_single_name(WORD nameId);
 
 	WORD	get_new_name_id();
 	void	free_name_id(WORD nameId);

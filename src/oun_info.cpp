@@ -275,7 +275,7 @@ void Unit::set_spy(int spyRecno)
 // [int] firstNameOnly - whether return the first word of the name only
 //							(default: 0)
 //
-char* Unit::unit_name(int withTitle, int firstNameOnly)
+const char* Unit::unit_name(int withTitle, int firstNameOnly)
 {
 //	static String str;
 
@@ -285,7 +285,7 @@ char* Unit::unit_name(int withTitle, int firstNameOnly)
 
 	if( race_id && unit_id != UNIT_WAGON )
 	{
-		char *baseName;
+		const char *baseName;
 		if( hero_id )
 			baseName = hero_res[hero_id]->name;
 		else if( rank_id == RANK_KING )		// use the player name

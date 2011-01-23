@@ -388,7 +388,7 @@ public:
 
 	static char	mobile_type_to_mask(int mobileType);
 
-	char *unit_name(int flags, int unitId, int nameId, int heroId, int rankId, char unitMode );
+	const char *unit_name(int flags, int unitId, int nameId, int heroId, int rankId, char unitMode );
 
 private:
 	void	load_class_info();

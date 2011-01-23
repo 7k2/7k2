@@ -601,13 +601,13 @@ void NationBase::set_king(int kingUnitRecno, int firstKing)
 
 	//---------- king related vars ----------//
 
-	char* kingName = nation_array.get_custom_king_name(nation_recno);
+	const char* kingName = nation_array.get_custom_king_name(nation_recno);
 								 
 	//-- if the custom king name hasn't been set or the first king has died and now there is a new king succeeding the throne, set a new custom king name --//
 
 	if( !kingName || !firstKing )
 	{
-		char* kingName;
+		const char* kingName;
 
 		if( kingUnit->is_human() )
 			kingName = race_res[kingUnit->race_id]->get_name(kingUnit->name_id);
@@ -705,9 +705,9 @@ char* NationBase::nation_name()
 // [int] firstWordOnly - whether only get the first word of the name.
 //								 (default: 0)
 //
-char* NationBase::king_name(int firstWordOnly)
+const char* NationBase::king_name(int firstWordOnly)
 {
-	char* kingName = nation_array.get_custom_king_name(nation_recno, firstWordOnly);
+	const char* kingName = nation_array.get_custom_king_name(nation_recno, firstWordOnly);
 
 	if( kingName )
 		return kingName;
@@ -3120,7 +3120,7 @@ void NationBase::set_research_progress(float newProgress)
 
 // ---------- begin of function NationRelation::status_str ----------//
 //
-char* NationRelation::status_str()
+const char* NationRelation::status_str()
 {
 	return text_talk.str_relation_status( status );
 }

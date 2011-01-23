@@ -285,7 +285,7 @@ void Game::main_loop_all(int isLoadedGame)
 int Game::select_campaign_menu()
 {
 	// static char *campaignList[] = { "Occidental Heroes" };	//, "Human Learning Campaign", "Fryhtan Campaign", "Fryhtan Learning Campaign", };
-	static char *campaignList[] = 
+	static const char *campaignList[] = 
 	{
 		text_campaign.str_campaign_name(CAMPAIGN_EAST_WEST),
 	};
@@ -433,7 +433,7 @@ int Game::select_campaign_menu()
 	// --------- initialize building size --------//
 
 	ButtonCustomGroup buildingSizeGroup(2);
-	char *buildingSizeButtonStr[2] =
+	const char *buildingSizeButtonStr[2] =
 	{
 		text_game_menu.str_building_set(1),
 		text_game_menu.str_building_set(2),
@@ -483,7 +483,7 @@ int Game::select_campaign_menu()
 */
 	// --------- initialize random_event_frequency button group --------//
 
-	char *randomEventStr[4] =
+	const char *randomEventStr[4] =
 	{
 		text_game_menu.str_never_to_frequent(OPTION_NONE),
 		text_game_menu.str_never_to_frequent(OPTION_LOW),

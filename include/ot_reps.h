@@ -55,7 +55,7 @@ public:
 
 	// report names
 
-	char* str_report_mode(int viewMode);
+	const char* str_report_mode(int viewMode);
 
 	// kingdom report
 	char* str_nat_kingdom();
@@ -64,7 +64,7 @@ public:
 	char* str_nat_allow_attack();
 	char* str_nat_trade_treaty();
 	char* str_nat_trade_amount();
-	char* str_nat_sub_mode(int subMode);
+	const char* str_nat_sub_mode(int subMode);
 	char* str_no_yes(char flag);
 	char* str_disconnect();
 
@@ -78,8 +78,8 @@ public:
 	char* str_enemy_import_from(char* nationName);
 	char* str_enemy_export_to(char* nationName);
 	char* str_enemy_peace_time(char* nationName);
-	char* str_enemy_status_duration(char* statusStr);
-	char* str_enemy_allow_attack(char* nationName);
+	char* str_enemy_status_duration(const char* statusStr);
+	char* str_enemy_allow_attack(const char* nationName);
 	char* str_ally_cash(char* nationName);
 	char* str_ally_food(char* nationName);
 	char* str_enemy_relation(char *nationName);
@@ -89,7 +89,7 @@ public:
 	char* str_on_date(char* dateStr);
 
 	char* str_chat_inst();
-	char* str_chat_recipient(int);
+	const char* str_chat_recipient(int);
 	char* str_hide_nation_detail();
 
 	// town report
@@ -119,7 +119,7 @@ public:
 	char* str_expense_desc(int expenseType, int isMonster ); 
 
 	// trade report
-	char* str_trade_stop(int);
+	const char* str_trade_stop(int);
 	char* str_goods_carried();
 	char* str_total_caravan(int count);
 
@@ -149,7 +149,7 @@ public:
 	char* str_skill();
 	char* str_spy_action();
 	char* str_total_spy(int);
-	char* str_spy_action_mode( int spyActionMode );
+	const char* str_spy_action_mode( int spyActionMode );
 	char* str_counter_spy_action_mode();
 
 	// ranking report

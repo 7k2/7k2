@@ -36,7 +36,7 @@ public:
 
 	// select campaign menu
 
-	char* str_campaign_name(int campaignId);
+	const char* str_campaign_name(int campaignId);
 	char* str_intro_1();
 	char* str_intro_2();
 	char* str_intro_3();

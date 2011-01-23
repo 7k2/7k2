@@ -411,7 +411,7 @@ void RaceInfo::use_name_id(WORD nameId)
 // <WORD> nameId - higher byte - first name id, lower byte - last name id.
 // [int]  nameType - 0-full name, 1-first name only, 2-last name only
 //
-char* RaceInfo::get_name(WORD nameId, int nameType)
+const char* RaceInfo::get_name(WORD nameId, int nameType)
 {
 	static String str;
 
@@ -485,7 +485,7 @@ char* RaceInfo::get_name(WORD nameId, int nameType)
 //
 // <WORD> nameId - higher byte - first name id, lower byte - last name id.
 //
-char* RaceInfo::get_single_name(WORD nameId)
+const char* RaceInfo::get_single_name(WORD nameId)
 {
 	switch( race_id )
 	{

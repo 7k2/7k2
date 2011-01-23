@@ -32,7 +32,7 @@ class TextResTalk : public TextResource
 public:
 	void	init();
 
-	char*	str_relation_status(char status );
+	const char* str_relation_status(char status );
 	char* str_trade_treaty();
 
 	char* str_too_many_msg();

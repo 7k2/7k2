@@ -905,7 +905,7 @@ void Spy::get_killed(int dispNews)
 
 //--------- Begin of function Spy::action_str ----------//
 //
-char* Spy::action_str()
+const char* Spy::action_str()
 {
 	if( action_mode == SPY_IDLE && cloaked_nation_recno == true_nation_recno )
 	{

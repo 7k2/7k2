@@ -45,7 +45,7 @@ void TextResUnit::init()
 // [FG_N]Ordo %1s
 // text id 6
 // [FS_N]Croul %1s
-char* TextResUnit::str_unit_titled(int raceId, char *baseName, int rankId )
+const char* TextResUnit::str_unit_titled(int raceId, const char *baseName, int rankId )
 {
 	if( raceId == 0 )
 		return baseName;		// no rank
@@ -93,7 +93,7 @@ char* TextResUnit::str_unit_titled(int raceId, char *baseName, int rankId )
 // [FG__]Ordo
 // text id 12
 // [FS__]Croul
-char* TextResUnit::str_title(int raceId, int rankId )
+const char* TextResUnit::str_title(int raceId, int rankId )
 {
 	if( raceId >= 0 )
 	{
@@ -127,7 +127,7 @@ char* TextResUnit::str_title(int raceId, int rankId )
 // [RG_N]Rebel Leader %1s
 // text id 14
 // [RS_N]Rebel %1s
-char* TextResUnit::str_rebel_unit_titled(int raceId, char *baseName, int rankId )
+const char* TextResUnit::str_rebel_unit_titled(int raceId, const char *baseName, int rankId )
 {
 	switch( rankId )
 	{
@@ -144,7 +144,7 @@ char* TextResUnit::str_rebel_unit_titled(int raceId, char *baseName, int rankId 
 // [RG__]Rebel Leader
 // text id 16
 // [RS__]Rebel
-char* TextResUnit::str_rebel_title(int raceId, int rankId )
+const char* TextResUnit::str_rebel_title(int raceId, int rankId )
 {
 	switch( rankId )
 	{
@@ -161,7 +161,7 @@ char* TextResUnit::str_rebel_title(int raceId, int rankId )
 // [HN_N]%1s's Kingdom
 // text id 18
 // [FN_N]%1s's Kwyzan
-char* TextResUnit::str_unit_nation(int raceId, char *kingBaseName )
+char* TextResUnit::str_unit_nation(int raceId, const char *kingBaseName )
 {
 	if( raceId >= 0 )
 		return process( get_format_str( 17, "HN_N" ), kingBaseName );
@@ -232,7 +232,7 @@ char* TextResUnit::str_race_hero( char *raceAdj )
 
 // text id 28
 // [CIVT]Civilian %1s
-char* TextResUnit::str_civilian_titled(char *baseName)
+char* TextResUnit::str_civilian_titled(const char *baseName)
 {
 	return process( get_format_str( 28, "CIVT" ), baseName );
 }
@@ -273,7 +273,7 @@ char* TextResUnit::str_god_desc( int godId )
 // [REL2]
 // [REL3]Friendly
 // [REL4]Allied
-char* TextResUnit::str_unit_relation( int nationStatus )
+const char* TextResUnit::str_unit_relation( int nationStatus )
 {
 	switch( nationStatus )
 	{
@@ -346,7 +346,7 @@ char* TextResUnit::str_race_civilian(int raceId, char *raceAdj )
 
 // text id 70
 // [<relation><unit description>UNRD]%1s %2s
-char* TextResUnit::str_unit_desc( char* relationStr, char* descStr )
+const char* TextResUnit::str_unit_desc(const char* relationStr, const char* descStr)
 {
 	if( relationStr && relationStr[0] )
 		return process( get_format_str( 70, "UNRD"),
@@ -357,7 +357,7 @@ char* TextResUnit::str_unit_desc( char* relationStr, char* descStr )
 
 // text id 71
 // [<king name><unit name>KUNM]%1s's %2s
-char* TextResUnit::str_king_s_unit(char* kingName, char* unitName )
+const char* TextResUnit::str_king_s_unit(const char* kingName, const char* unitName)
 {
 	return process( get_format_str( 71, "KUNM" ),
 		kingName, unitName );
@@ -446,7 +446,7 @@ char* TextResUnit::str_disable_auto()
 
 // text id 83
 // [HIRH]%1s will take your color for %2,2d. Hire him now?
-char* TextResUnit::str_ask_hire( char* name, int price )
+char* TextResUnit::str_ask_hire( const char* name, int price )
 {
 	return process( get_format_str( 83, "HIRH" ),
 		name, price );
@@ -517,7 +517,7 @@ char* TextResUnit::str_right_dec()
 
 // text id 93
 // [e.g. King Jaguar 3 or Catapult III 6 NRNM]%4?{King |}%1s%2?{ |}%2r%3?{ |}%3z
-char* TextResUnit::str_non_race_unit_name( char* unitName, int version, int serial, int kingAnimal )
+char* TextResUnit::str_non_race_unit_name( const char* unitName, int version, int serial, int kingAnimal )
 {
 	if( version == 1 )
 		version = 0;	// suppress if version 1
@@ -529,7 +529,7 @@ char* TextResUnit::str_non_race_unit_name( char* unitName, int version, int seri
 
 // text id 94
 // [<hero name>HERU]Hero %1s
-char* TextResUnit::str_hero_titled( int raceId, char *baseName )
+char* TextResUnit::str_hero_titled( int raceId, const char *baseName )
 {
 	return process( get_format_str( 94, "HERU" ),
 		baseName );

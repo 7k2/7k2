@@ -294,7 +294,7 @@ public:
 	char     	rank_id;
 
 	WORD     	name_id;          // id. of the unit's name in RaceRes::first_name_array;
-	virtual char* unit_name(int withTitle=1, int firstNameOnly=0);
+	virtual const char* unit_name(int withTitle=1, int firstNameOnly=0);
 
 	short			hero_id;				// >0 if this is a hero
 	char			is_royal;

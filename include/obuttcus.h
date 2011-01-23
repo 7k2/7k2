@@ -35,10 +35,10 @@ typedef void (*ButtonCustomFP)(ButtonCustom *, int repaintBody);
 
 struct ButtonCustomPara
 {
-	void*	ptr;
+	const void*	ptr;
 	int	value;
 
-	ButtonCustomPara( void *p, int v) : ptr(p), value(v) {} 
+	ButtonCustomPara( const void *p, int v) : ptr(p), value(v) {} 
 };
 
 //------- Define class ButtonCustom -------//

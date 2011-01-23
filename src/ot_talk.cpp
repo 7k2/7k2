@@ -39,7 +39,7 @@ void TextResTalk::init()
 // [REL2]Neutral
 // [REL3]Friendly
 // [REL4]Alliance
-char* TextResTalk::str_relation_status(char status)
+const char* TextResTalk::str_relation_status(char status)
 {
 	switch( status )
 	{

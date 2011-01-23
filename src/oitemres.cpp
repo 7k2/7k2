@@ -173,11 +173,11 @@ void ItemRes::deinit()
 
 //-------- begin of function ItemRes::item_name ----------//
 //
-char *ItemRes::item_name( short itemId, int itemPara )
+const char *ItemRes::item_name( short itemId, int itemPara )
 {
 	err_when( itemId < 0 || itemId > ITEM_TYPE_COUNT );
 
-	char* formatStr = text_item.str_item_name( itemId );
+	const char* formatStr = text_item.str_item_name( itemId );
 //	switch( itemId )
 //	{
 //	case 0:
@@ -191,11 +191,11 @@ char *ItemRes::item_name( short itemId, int itemPara )
 
 //-------- begin of function ItemRes::item_desc ----------//
 //
-char *ItemRes::item_desc( short itemId, int itemPara )
+const char *ItemRes::item_desc( short itemId, int itemPara )
 {
 	err_when( itemId < 0 || itemId > ITEM_TYPE_COUNT );
 
-	char* formatStr = text_item.str_item_desc( itemId );
+	const char* formatStr = text_item.str_item_desc( itemId );
 //	switch( itemId )
 //	{
 //	case 0:

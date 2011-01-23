@@ -130,7 +130,7 @@ char* TextResEditor::str_no_human()
 // [MI02]Flat Rock
 // [MI03]Lake
 // 
-char* TextResEditor::str_misc_mode( int miscMode, int miscSubMode )
+const char* TextResEditor::str_misc_mode( int miscMode, int miscSubMode )
 {
 	switch( miscMode )
 	{
@@ -193,7 +193,7 @@ char* TextResEditor::str_king_name()
 // [FINE]Fine
 // [MEDF]Medium
 // [COAR]Coarse
-char* TextResEditor::str_fine_coarse(int i)
+const char* TextResEditor::str_fine_coarse(int i)
 {
 	switch(i)
 	{
@@ -359,7 +359,7 @@ char* TextResEditor::str_adjustment()
 // [REL2]N
 // [REL3]F
 // [REL4]A
-char* TextResEditor::str_abbrev_relation_str(int r)
+const char* TextResEditor::str_abbrev_relation_str(int r)
 {
 	switch(r)
 	{

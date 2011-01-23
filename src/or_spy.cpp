@@ -257,7 +257,7 @@ static void put_spy_rec(int recNo, int x, int y, int refreshFlag)
 
 	err_when( spyPtr->race_id <= 0 );	// only human spy so far
 
-	char *titledName;
+	const char *titledName;
 	if( spyPtr->is_civilian )
 		titledName = text_unit.str_civilian_titled( 
 			race_res[spyPtr->race_id]->get_name(spyPtr->name_id) );
@@ -287,7 +287,7 @@ static void put_spy_rec(int recNo, int x, int y, int refreshFlag)
 
 	//---------- display other info ----------//
 
-	char* placeStr;
+	const char* placeStr;
 	switch( spyPtr->spy_place )
 	{
 		case SPY_FIRM:

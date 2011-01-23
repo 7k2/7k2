@@ -45,8 +45,8 @@ public:
 
 	void	next_day();
 
-	char *item_name();
-	char *item_desc();
+	const char *item_name();
+	const char *item_desc();
 	int	cost();
 
 	int	ability(int itemAbilityId);

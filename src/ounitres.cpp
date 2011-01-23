@@ -665,7 +665,7 @@ char *UnitInfo::get_small_icon_ptr(char rankId)
 // int flags : bit 0 = short name (human) or without serial number
 //             bit 1 = title for general or king, rebel leader, ordo, all high
 //             bit 2 = title for civilian, soldier, and which defined for bit 1 (detailed title)
-char *UnitRes::unit_name(int flags, int unitId, int nameId, int heroId, int rankId, char unitMode )
+const char *UnitRes::unit_name(int flags, int unitId, int nameId, int heroId, int rankId, char unitMode )
 {
 	static String str;
 	str = "";
@@ -683,7 +683,7 @@ char *UnitRes::unit_name(int flags, int unitId, int nameId, int heroId, int rank
 
 	if( raceId && unitInfo->unit_class != UNIT_CLASS_WAGON )
 	{
-		char *baseName;
+		const char *baseName;
 		if( heroId )
 			baseName = hero_res[heroId]->name;
 		else if( rankId == RANK_KING )		// use the player name

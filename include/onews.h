@@ -166,8 +166,8 @@ public:
 	void 	set_loc(int xLoc, int yLoc, int locType, int locTypePara=0, int locTypePara2=0);
 	int	is_loc_valid();
 
-	char* get_unit_name(int raceId, int nameId);
-	char* get_unit_single_name(int raceId, int nameId);
+	const char* get_unit_name(int raceId, int nameId);
+	const char* get_unit_single_name(int raceId, int nameId);
 
 	//---- functions for return news string ----//
 

@@ -40,9 +40,9 @@
 // [int] firstNameOnly - whether return the first word of the name only
 //							(default: 0)
 //
-char* UnitMonster::unit_name(int withTitle, int firstNameOnly)
+const char* UnitMonster::unit_name(int withTitle, int firstNameOnly)
 {
-	char* monsterName;
+	const char* monsterName;
 
 	if( rank_id == RANK_KING )		// use the player name
 		monsterName = nation_array[nation_recno]->king_name();

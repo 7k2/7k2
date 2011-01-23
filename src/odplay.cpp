@@ -479,7 +479,7 @@ static BOOL FAR PASCAL enumConnectionsCallBack( LPCGUID lpguidSP,
 
 #if(defined(USE_TEXT_RES))
 		// recognize by GUID
-		char *longDescPtr = NULL;
+		const char *longDescPtr = NULL;
 		if( memcmp( lpguidSP, &DPSPGUID_IPX, sizeof(GUID) ) == 0 )
 			longDescPtr = text_game_menu.str_mp_service_provider_long(1);
 		else if( memcmp( lpguidSP, &DPSPGUID_TCPIP, sizeof(GUID) ) == 0 )

@@ -45,7 +45,7 @@ char*	TextResBasic::str_short_date(int day, int month, int year )
 
 // text id 3 - 14
 // [MON1] - [MON9], [MONA], [MONB], [MONC]
-char* TextResBasic::str_month_string(int month)
+const char* TextResBasic::str_month_string(int month)
 {
 	switch( month )
 	{

@@ -1333,7 +1333,7 @@ int CampaignEastWest::event_random_point_4()
 				disp_strategic_screen();
 				attack_state( attacker_state_recno, target_state_recno, winFlag, 1, 3 );		// 50% chance win and 50% chance lose
 
-				char* kingName = get_nation(new_kingdom_nation_recno)->king_name();
+				const char* kingName = get_nation(new_kingdom_nation_recno)->king_name();
 
 				if( winFlag )
 				{

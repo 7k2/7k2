@@ -48,7 +48,7 @@ void TextResFirm::init()
 // [BAGB]When other Kingdoms break treaties with you, they will suffer twice the normal penalties.
 // [BAGC]Your research projects will now be completed in 30% less time.
 
-char* TextResFirm::str_base_prayer_effect( int godId )
+const char* TextResFirm::str_base_prayer_effect( int godId )
 {
 	switch( godId )
 	{
@@ -93,7 +93,7 @@ char* TextResFirm::str_base_prayer_effect( int godId )
 // text id 45, 46
 // [CMP1]Sortie No Leader
 // [CMP2]Sortie No Injured
-char* TextResFirm::str_patrol_state( int patrolState)
+const char* TextResFirm::str_patrol_state( int patrolState)
 {
 	switch( patrolState )
 	{
@@ -122,7 +122,7 @@ char* TextResFirm::str_bribe_amount( int bribeAmount)
 
 // text id 49
 // [CMB?]Bribe %1s ?
-char* TextResFirm::str_ask_bribe_unit( char *unitName )
+char* TextResFirm::str_ask_bribe_unit( const char *unitName )
 {
 	return process( get_format_str( 49, "CMB?" ), unitName );
 }
@@ -150,7 +150,7 @@ char* TextResFirm::str_bribe_execute()
 
 // text id 53
 // [CMAA]Will you really attempt to assassinate the %1s?
-char* TextResFirm::str_ask_assassin( char* title )
+char* TextResFirm::str_ask_assassin( const char* title )
 {
 	return process( get_format_str( 53, "CMAA" ), title );
 }
@@ -296,7 +296,7 @@ char* TextResFirm::str_incident_execute()
 // [FAR1]Raw Clay
 // [FAR2]Raw Copper
 // [FAR3]Raw Iron
-char* TextResFirm::str_factory_raw( int rawId )
+const char* TextResFirm::str_factory_raw( int rawId )
 {
 	switch( rawId )
 	{
@@ -315,7 +315,7 @@ char* TextResFirm::str_factory_raw( int rawId )
 // [FAW1]Pottery
 // [FAW2]Copper Ware
 // [FAW3]Iron Ware
-char* TextResFirm::str_factory_ware( int rawId )
+const char* TextResFirm::str_factory_ware( int rawId )
 {
 	switch( rawId )
 	{
@@ -372,7 +372,7 @@ char* TextResFirm::str_no_trade()
 // [MAP1]Clay Products
 // [MAP2]Copper Products
 // [MAP3]Iron Products
-char* TextResFirm::str_product_name(int rawId )
+const char* TextResFirm::str_product_name(int rawId )
 {
 	switch( rawId )
 	{
@@ -418,7 +418,7 @@ char* TextResFirm::str_mined_raw()
 // [OFM7]Not used
 // [OFM8]Reserved
 // [OFM9]Reserved
-char* TextResFirm::str_cast_magic_instruct( int magicId )
+const char* TextResFirm::str_cast_magic_instruct( int magicId )
 {
 	switch( magicId )
 	{
@@ -531,7 +531,7 @@ char* TextResFirm::str_lair_research(int livePoints)
 // [ALR2]Copper Deposit
 // text id 121
 // [ALR3]Iron Deposit
-char* TextResFirm::str_alchemy_raw(int rawId )
+const char* TextResFirm::str_alchemy_raw(int rawId )
 {
 	switch( rawId )
 	{

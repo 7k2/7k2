@@ -565,7 +565,7 @@ void FirmCamp::disp_bribe_unit(int dispY1)
 	//------- get the info of the bribe target ---------//
 
 	int 	raceId, unitLoyalty, unitId, rankId;
-	char* unitName;
+	const char* unitName;
 
 	if( action_target_recno )
 	{

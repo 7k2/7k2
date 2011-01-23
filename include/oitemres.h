@@ -43,7 +43,7 @@ struct ItemInfo
 	enum { ITEM_NAME_LEN = 25 };
 
 	short item_id;
-	char	item_name[ITEM_NAME_LEN+1];
+	const char	item_name[ITEM_NAME_LEN+1];
 
 	char	rare;				// 0=ordinary, 1+ rare
 	long	cost;				// cost added to inn hire cost
@@ -61,12 +61,12 @@ struct ItemInfo
 	int	init_para_const;
 	int	init_para_random;
 
-	char	*bitmap_name;
+	const char	*bitmap_name;
 	int	bitmap_idx;
 	int	icon_idx;
 	int	interface_idx;
 	int	unit_interface_idx;
-	char	*item_desc;
+	const char	*item_desc;
 };
 
 struct Item;
@@ -95,8 +95,8 @@ public:
 
 	// -------- functions on each item --------//
 
-	char *item_name( short itemId, int itemPara );
-	char *item_desc( short itemId, int itemPara );
+	const char *item_name( short itemId, int itemPara );
+	const char *item_desc( short itemId, int itemPara );
 	int	item_cost( short itemId, int itemPara );
 
 	int	ability( Item &, int itemAbilityId);

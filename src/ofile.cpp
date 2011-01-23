@@ -29,7 +29,7 @@
 
 //--------- Define static variables -----------//
 
-static char *path_array[] = { "" };	// multiple search path
+static const char *path_array[] = { "" };	// multiple search path
 
 //-------- Begin of function File::file_open ----------//
 //

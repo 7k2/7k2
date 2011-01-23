@@ -31,7 +31,7 @@ void TextResItem::init()
 }
 
 
-char*	TextResItem::str_item_name(int itemId)
+const char* TextResItem::str_item_name(int itemId)
 {
 	if( !itemId )
 		return "";
@@ -43,7 +43,7 @@ char*	TextResItem::str_item_name(int itemId)
 	return get_format_str( 0+itemId, checkMark );
 }
 
-char*	TextResItem::str_item_desc(int itemId)
+const char* TextResItem::str_item_desc(int itemId)
 {
 	if( !itemId )
 		return "";

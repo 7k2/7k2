@@ -555,7 +555,7 @@ void Unit::disp_unit_profile(int dispY1, int refreshFlag)
 	if( unit_res[unit_id]->unit_class != UNIT_CLASS_GOD )
 	{
 		String str;
-		char *relationStr, *unitNameStr;
+		const char *relationStr, *unitNameStr;
 		relationStr = unitNameStr = "";
 			
 		if( nation_recno && nation_array.player_recno && 

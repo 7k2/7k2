@@ -33,7 +33,7 @@
 class UnitMonster : public Unit
 {
 public:
-	char* unit_name(int withTitle=1, int firstNameOnly=0);
+	const char* unit_name(int withTitle=1, int firstNameOnly=0);
 
 	//---------- multiplayer checking codes ---------//
 
