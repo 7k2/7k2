@@ -44,8 +44,6 @@
 #include <opfind.h>
 #include <oun_grp.h>
 
-#include <ogf_v1.h>
-
 //------- declare static functions -------//
 
 static char* create_monster_func();
