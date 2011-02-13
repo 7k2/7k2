@@ -1,7 +1,11 @@
 my @obj_files;
+my @defines;
 
 ## compiler flags ##
-@defines = qw( );
+if ($platform =~ /win32/) {
+  # flipping chain doesn't work in Wine
+  push (@defines, 'USE_FLIP');
+}
 if (defined($debug) && $debug) {
   push (@defines, "DEBUG");
 }
