@@ -187,7 +187,7 @@ int Nation::think_capture_independent(int hireCapturer)
 			int j;
 			for( j=0 ; j<ai_town_count ; j++ )
 			{
-				Town* ownTown = town_array[ ai_town_array[i] ];
+				Town* ownTown = town_array[ ai_town_array[j] ];
 
 				int townDistance = m.points_distance(targetTown->center_x, targetTown->center_y,
 										 ownTown->center_x, ownTown->center_y);
