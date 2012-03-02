@@ -1264,6 +1264,11 @@ mask_texture_l1:
 		dec	ecx
 		jne	mask_texture_l1
 	}
+#else
+	for( int i = 4; i < 32 * 32; ++i )
+	{
+		outTex[i] = (maskPtr[i] == 0x00) ? tex1[i] : tex2[i];
+	}
 #endif
 
 	return outTex;
