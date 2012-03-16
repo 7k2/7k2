@@ -33,6 +33,7 @@
 #include <all.h>
 #include <ostr.h>
 #include <omisc.h>
+#include <odir.h>
 
 #define	MOVE_AROUND_TABLE_SIZE	900
 
@@ -1158,11 +1159,8 @@ float Misc::round_dec(float inNum)
 //
 int Misc::is_file_exist(const char* fileName)
 {
-	WIN32_FIND_DATA	findData;
-
-   HANDLE findHandle = FindFirstFile( fileName, &findData );
-
-   return findHandle!=INVALID_HANDLE_VALUE;
+   Directory dir;
+   return dir.read(fileName, 0) == 1;
 }
 //---------- End of function Misc::is_file_exist ---------//
 
