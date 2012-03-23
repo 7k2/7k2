@@ -104,6 +104,7 @@ unsigned GetA::detect_key()
 		autoRepeatCount = last_auto_repeat_count = 1;
 		shiftPressed = mouse.event_skey_state & SHIFT_KEY_MASK;
 	}
+#ifdef ENABLE_KEY_REPEAT
 	else if( (autoRepeatCount = mouse.key_auto_repeat_count()) > last_auto_repeat_count )
 		// detect auto repeat
 	{
@@ -111,6 +112,7 @@ unsigned GetA::detect_key()
 		last_auto_repeat_count++;
 		shiftPressed = mouse.skey_state & SHIFT_KEY_MASK;
 	}
+#endif
 
 	if( keyCode )
 	{
