@@ -346,6 +346,18 @@ PutLine:	MOV ECX, 100
 			DEC	EAX
 			JNZ	PutLine		        //; decrease the remain height and loop
 		}
+#else
+		const int lineDiff = temp3 / 2;
+		for ( int i = 0; i < 200; ++i )
+		{
+			for ( int j = 0; j < 200; ++j )
+			{
+				*temp2 = *temp6;
+				++temp2;
+				++temp6;
+			}
+			temp6 += lineDiff;
+		}
 #endif
 		// #### end Ban 8/12 #######//
 		just_drawn_flag = 1;
