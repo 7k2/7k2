@@ -429,6 +429,34 @@ PutLineLower:					// draw lower triangle
 		DEC	EBX					// decrease the remain height
 		JNZ	PutLineLower		// loop
 	}
+#else
+		int lineDiff = temp3 / 2;
+		int lineLength = 2;
+		// Blacken upper half of minimap.
+		for ( int i = 0; i < 100; ++i )
+		{
+			for ( int j = 0; j < lineLength; ++j )
+			{
+				*temp6 = UNEXPLORED_COLOR;
+				++temp6;
+			}
+			temp6 += lineDiff - lineLength;
+			lineLength += 2;
+		}
+		// Blacken lower half of minimap.
+		lineLength = 99 * 2;
+		lineDiff += 2;
+		temp6 += 2;
+		for ( int i = 0; i < 99; ++i )
+		{
+			for ( int j = 0; j < lineLength; ++j )
+			{
+				*temp6 = UNEXPLORED_COLOR;
+				++temp6;
+			}
+			temp6 += lineDiff - lineLength;
+			lineLength -= 2;
+		}
 #endif
 	// #### end Ban 8/12 #######//
 //	{	// traversal of location in MapMatrix
