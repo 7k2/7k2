@@ -763,6 +763,39 @@ PutLineLower:
 			DEC	EAX				// decrease the remain height
 			JNZ	PutLineLower	// loop
 		}
+#else
+			int lineDiff = temp3 / 2;
+			int lineLength = 2;
+			// Draw upper half of minimap.
+			for ( int i = 0; i < 100; ++i )
+			{
+				for ( int j = 0; j < lineLength; ++j )
+				{
+					*temp6 = *temp2;
+					++temp6;
+					++temp2;
+				}
+				temp6 += lineDiff - lineLength;
+				temp2 += 199 - lineLength;
+				lineLength += 2;
+			}
+			// Draw lower half of minimap.
+			lineLength = 99 * 2;
+			lineDiff += 2;
+			temp6 += 2;
+			temp2 += 2;
+			for ( int i = 0; i < 99; ++i )
+			{
+				for ( int j = 0; j < lineLength; ++j )
+				{
+					*temp6 = *temp2;
+					++temp6;
+					++temp2;
+				}
+				temp6 += lineDiff - lineLength;
+				temp2 += 201 - lineLength;
+				lineLength -= 2;
+			}
 #endif
 		// #### end Ban 8/12 #######//
 		}
