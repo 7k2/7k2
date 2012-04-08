@@ -1510,7 +1510,11 @@ void Misc::memsetw(short *p, int w, size_t count)
 memsetw_end:
 	}
 #else
-	memset(p, w, count * sizeof(short));
+	for ( size_t i = 0; i < count; ++i )
+	{
+		*p = w;
+		++p;
+	}
 #endif
 }
 //------- End of function Misc::memsetw -------//
