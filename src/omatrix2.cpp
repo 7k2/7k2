@@ -141,6 +141,22 @@ static short seaAltitude;
 static long seaColor;
 
 
+// Source of rotl and rotr functions:
+//   http://en.wikipedia.org/wiki/Circular_shift
+unsigned int rotl(const unsigned int value, int shift)
+{
+	if( (shift &= sizeof(value) * 8 - 1) == 0 )
+		return value;
+	return (value << shift) | (value >> (sizeof(value) * 8 - shift));
+}
+
+unsigned int rotr(const unsigned int value, int shift)
+{
+	if( (shift &= sizeof(value) * 8 - 1) == 0 )
+		return value;
+	return (value >> shift) | (value << (sizeof(value) * 8 - shift));
+}
+
 long Location::evaluate_z(short x, short y)
 {
 	long z = ((c30 * x + c20) * x + c10) * x;
@@ -1632,6 +1648,103 @@ location_render_sea_2bB:
 		dec	vCount
 		jne	location_render_sea_1
 	}		// end _asm
+	}
+#else
+	if( !(loc_ptr->loc_flag & LOCATE_SEA_COAST) )
+	{
+		short *tmpBufPtr = bufPtr - 1;
+		texturePtr += 4;
+
+		for( vCount = 0; vCount < LOCATE_HEIGHT / 2; ++vCount )
+		{
+			aZ = rowaZ;
+			aDuZM2 = rowaDuZM2;
+			aDuuZM2 = rowaDuuZM2;
+			int eax = rowaZ;
+
+			for( uCount = 0; uCount < LOCATE_WIDTH / 2; ++uCount )
+			{
+				int ebx = aDuZM2 >> (C_MULTIPLIER_SHIFT - MAX_BRIGHTNESS_SHIFT + 1);
+				ebx = slope_brightness_table[MAX_BRIGHTNESS_ADJUST_DEGREE * 2  + ebx];
+
+				eax = (eax & 0xFFFF0000) | *(reinterpret_cast<unsigned short *>(texturePtr));
+				ebx = (ebx & 0xFFFFFF00) | *(reinterpret_cast<unsigned char *>(texturePtr) + 1);
+				eax = rotr(eax, 16);
+				eax = (eax & 0xFFFF0000) | *(remapTables + ebx);
+				eax = rotl(eax, 16);
+				ebx = (ebx & 0xFFFFFF00) | *(reinterpret_cast<unsigned char *>(texturePtr));
+
+				int edx = aZ >> C_MULTIPLIER_SHIFT;
+				edx *= negBufTruePitch / 2;
+				eax = (eax & 0xFFFF0000) | *(remapTables + ebx);
+				*(reinterpret_cast<int *>(tmpBufPtr + edx)) = eax;
+				edx -= negBufTruePitch / 2;
+				*(reinterpret_cast<int *>(tmpBufPtr + edx)) = eax;
+
+				texturePtr += 2;
+
+				aZ += aDuZM2 + aDuuZM2 + DuuuZM4D3;
+				eax = aZ;
+				aDuZM2 += 2 * aDuuZM2 + 3 * DuuuZM4D3;
+				aDuuZM2 += 3 * DuuuZM4D3;
+
+				tmpBufPtr += bufTruePitchPlusTwoPixels / 2;
+			}
+
+			bufPtr += bufTruePitch / 2;
+			tmpBufPtr = bufPtr - 1;
+
+			bZ = rowbZ;
+			bDuZM2 = rowbDuZM2;
+			bDuuZM2 = rowbDuuZM2;
+			eax = rowbZ;
+
+			for( uCount = 0; uCount < LOCATE_WIDTH / 2; ++uCount )
+			{
+				int ebx = bDuZM2 >> (C_MULTIPLIER_SHIFT - MAX_BRIGHTNESS_SHIFT + 1);
+				ebx = slope_brightness_table[MAX_BRIGHTNESS_ADJUST_DEGREE * 2  + ebx];
+
+				eax = (eax & 0xFFFF0000) | *(reinterpret_cast<unsigned short *>(texturePtr));
+				ebx = (ebx & 0xFFFFFF00) | *(reinterpret_cast<unsigned char *>(texturePtr) + 1);
+				eax = rotr(eax, 16);
+				eax = (eax & 0xFFFF0000) | *(remapTables + ebx);
+				eax = rotl(eax, 16);
+				ebx = (ebx & 0xFFFFFF00) | *(reinterpret_cast<unsigned char *>(texturePtr));
+
+				int edx = bZ >> C_MULTIPLIER_SHIFT;
+				edx *= negBufTruePitch / 2;
+				eax = (eax & 0xFFFF0000) | *(remapTables + ebx);
+				*(reinterpret_cast<int *>(tmpBufPtr + edx)) = eax;
+				edx -= negBufTruePitch / 2;
+				*(reinterpret_cast<int *>(tmpBufPtr + edx)) = eax;
+
+				texturePtr += 2;
+
+				bZ += bDuZM2 + bDuuZM2 + DuuuZM4D3;
+				eax = bZ;
+				bDuZM2 += 2 * bDuuZM2 + 3 * DuuuZM4D3;
+				bDuuZM2 += 3 * DuuuZM4D3;
+
+				tmpBufPtr += bufTruePitchPlusTwoPixels / 2;
+			}
+
+			rowaZ += rowaDvZM2 + rowaDvvZM2 + DvvvZM4D3;
+			rowaDvZM2 += 2 * rowaDvvZM2 + 3 * DvvvZM4D3;
+			rowaDvvZM2 += 3 * DvvvZM4D3;
+			rowaDuZM2 += rowaDuvZM4 + DuvvZM4;
+			rowaDuvZM4 += 2 * DuvvZM4;
+			rowaDuuZM2 += DuuvZM4;
+
+			rowbZ += rowbDvZM2 + rowbDvvZM2 + DvvvZM4D3;
+			rowbDvZM2 += 2 * rowbDvvZM2 + 3 * DvvvZM4D3;
+			rowbDvvZM2 += 3 * DvvvZM4D3;
+			rowbDuZM2 += rowbDuvZM4 + DuvvZM4;
+			rowbDuvZM4 += 2 * DuvvZM4;
+			rowbDuuZM2 += DuuvZM4;
+
+			bufPtr -= 2;
+			tmpBufPtr = bufPtr - 1;
+		}
 	}
 #endif
 
