@@ -2120,6 +2120,80 @@ location_render_sp1_2bA:
 		dec	vCount
 		jne	location_render_sp1_1
 	}		// end _asm
+#else
+		short *tmpBufPtr = bufPtr - 1;
+		for( vCount = 0; vCount < LOCATE_HEIGHT / 2; ++vCount )
+		{
+			aZ = rowaZ;
+			aDuZM2 = rowaDuZM2;
+			aDuuZM2 = rowaDuuZM2;
+			int eax = rowaZ;
+
+			for( uCount = 0; uCount < LOCATE_WIDTH / 2; ++uCount )
+			{
+				int edx = aZ >> C_MULTIPLIER_SHIFT;
+				if( static_cast<unsigned short>(edx) <= seaAltitude )
+				{
+					edx = seaAltitude;
+				}
+				edx *= negBufTruePitch / 2;
+				*(reinterpret_cast<int *>(tmpBufPtr + edx)) = color1;
+				edx -= negBufTruePitch / 2;
+				*(reinterpret_cast<int *>(tmpBufPtr + edx)) = color1;
+
+				aZ += aDuZM2 + aDuuZM2 + DuuuZM4D3;
+				eax = aZ;
+				aDuZM2 += 2 * aDuuZM2 + 3 * DuuuZM4D3;
+				aDuuZM2 += 3 * DuuuZM4D3;
+
+				tmpBufPtr += bufTruePitchPlusTwoPixels / 2;
+			}
+
+			bufPtr += bufTruePitch / 2;
+			tmpBufPtr = bufPtr - 1;
+
+			bZ = rowbZ;
+			bDuZM2 = rowbDuZM2;
+			bDuuZM2 = rowbDuuZM2;
+			eax = rowbZ;
+
+			for( uCount = 0; uCount < LOCATE_WIDTH / 2; ++uCount )
+			{
+				int edx = bZ >> C_MULTIPLIER_SHIFT;
+				if( static_cast<unsigned short>(edx) <= seaAltitude )
+				{
+					edx = seaAltitude;
+				}
+				edx *= negBufTruePitch / 2;
+				*(reinterpret_cast<int *>(tmpBufPtr + edx)) = color2;
+				edx -= negBufTruePitch / 2;
+				*(reinterpret_cast<int *>(tmpBufPtr + edx)) = color2;
+
+				bZ += bDuZM2 + bDuuZM2 + DuuuZM4D3;
+				eax = bZ;
+				bDuZM2 += 2 * bDuuZM2 + 3 * DuuuZM4D3;
+				bDuuZM2 += 3 * DuuuZM4D3;
+
+				tmpBufPtr += bufTruePitchPlusTwoPixels / 2;
+			}
+
+			rowaZ += rowaDvZM2 + rowaDvvZM2 + DvvvZM4D3;
+			rowaDvZM2 += 2 * rowaDvvZM2 + 3 * DvvvZM4D3;
+			rowaDvvZM2 += 3 * DvvvZM4D3;
+			rowaDuZM2 += rowaDuvZM4 + DuvvZM4;
+			rowaDuvZM4 += 2 * DuvvZM4;
+			rowaDuuZM2 += DuuvZM4;
+
+			rowbZ += rowbDvZM2 + rowbDvvZM2 + DvvvZM4D3;
+			rowbDvZM2 += 2 * rowbDvvZM2 + 3 * DvvvZM4D3;
+			rowbDvvZM2 += 3 * DvvvZM4D3;
+			rowbDuZM2 += rowbDuvZM4 + DuvvZM4;
+			rowbDuvZM4 += 2 * DuvvZM4;
+			rowbDuuZM2 += DuuvZM4;
+
+			bufPtr -= 2;
+			tmpBufPtr = bufPtr - 1;
+		}
 #endif
 	}		// end if(effectId == 1)
 	else if( effectId == 2 )		// 1/2 halftone of color1
