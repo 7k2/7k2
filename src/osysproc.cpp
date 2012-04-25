@@ -679,6 +679,9 @@ void Sys::yield()
 #endif
 	// ###### end Gilbert 11/2 #######//
 
+#ifdef ENABLE_WINE_HACKS
+   GetInputState();
+#endif
    mouse.poll_event();
 
    audio.yield();
