@@ -711,6 +711,22 @@ END:	mov eax, thickness
 		sub eax, lightness
 		mov diff, eax
 	}
+#else
+	R1 >>= 3;
+	R2 >>= 3;
+	B1 >>= 3;
+	B2 >>= 3;
+	if (mode == 1 || mode == 3)
+	{
+		G1 >>= 2;
+		G2 >>= 2;
+	}
+	else
+	{
+		G1 >>= 3;
+		G2 >>= 3;
+	}
+	diff = thickness - lightness;
 #endif
 	if (diff <1)
 		diff =1;
@@ -742,8 +758,8 @@ END:	mov eax, thickness
 			temp_b = (B1 * ratio) >>4;
 			if ((k > - lightness) && (k < lightness))
 			{
-#ifdef ASM_FOR_MSVC
 				for (i = 0; i<= limit; i ++) //draw one line
+#ifdef ASM_FOR_MSVC
 				_asm
 				{
 					mov edi, base
@@ -781,12 +797,29 @@ END:	mov eax, thickness
 FINISH11:			add esi, x_inc			//point = point + x_inc;
 					mov point, esi
 				}
+#else
+				{
+					unsigned short *edi = base + (mode_offset / 2);
+					unsigned char cl = *(edi + 4);
+					prev_r = R2 << cl;
+					prev_g = G2 << 5;
+					cl = *(edi + 5);
+					prev_b = B2 << cl;
+					*point = prev_r | prev_g | prev_b;
+					y_count += y_inc;
+					if (y_count > (y << 8))
+					{
+						point += line / 2;
+						++y;
+					}
+					point += x_inc / 2;
+				}
 #endif
 			}
 			else
 			{
-#ifdef ASM_FOR_MSVC
 				for (i = 0; i<= limit; i ++) //draw one line
+#ifdef ASM_FOR_MSVC
 				_asm
 				{
 					mov edi, base
@@ -844,6 +877,38 @@ END12:				mov ax, prev_r			//*point = prev_r | prev_g | prev_b;
 FINISH12:			add esi, x_inc			//point = point + x_inc;
 					mov point, esi
 				}
+#else
+				{
+					unsigned short *edi = base + (mode_offset / 2);
+					unsigned char cl = *(edi + 4);
+					prev_r = *edi;
+					short ax = (static_cast<unsigned short>(*point & prev_r) >> cl) + temp_r;
+					if (!(ax > 0x1F))
+					{
+						prev_r = ax << cl;
+					}
+					prev_g = *(edi + 1);
+					ax = (static_cast<unsigned short>(*point & prev_g) >> 5) + temp_g;
+					if (!(ax > *(edi + 3)))
+					{
+						prev_g = ax << 5;
+					}
+					cl = *(edi + 5);
+					prev_b = *(edi + 2);
+					ax = (static_cast<unsigned short>(*point & prev_b) >> cl) + temp_b;
+					if (!(ax > 0x1F))
+					{
+						prev_b = ax << cl;
+					}
+					*point = prev_r | prev_g | prev_b;
+					y_count += y_inc;
+					if (y_count > (y << 8))
+					{
+						point += line / 2;
+						++y;
+					}
+					point += x_inc / 2;
+				}
 #endif
 			}	
 		}
@@ -873,8 +938,8 @@ FINISH12:			add esi, x_inc			//point = point + x_inc;
 			temp_b = (B1 * ratio) >>4;
 			if ((k > - lightness) && (k < lightness))
 			{
-#ifdef ASM_FOR_MSVC
 				for (i = 0; i<= limit; i ++) //draw one line
+#ifdef ASM_FOR_MSVC
 				_asm
 				{
 					mov edi, base
@@ -912,12 +977,29 @@ FINISH12:			add esi, x_inc			//point = point + x_inc;
 FINISH21:			add esi, line			//point = point + line;
 					mov point, esi
 				}
+#else
+				{
+					unsigned short *edi = base + (mode_offset / 2);
+					unsigned char cl = *(edi + 4);
+					prev_r = R2 << cl;
+					prev_g = G2 << 5;
+					cl = *(edi + 5);
+					prev_b = B2 << cl;
+					*point = prev_r | prev_g | prev_b;
+					x_count += x_inc;
+					if (x_count > (x << 8))
+					{
+						point += y_inc / 2;
+						++x;
+					}
+					point += line / 2;
+				}
 #endif
 			}
 			else
 			{
-#ifdef ASM_FOR_MSVC
 				for (i = 0; i<= limit; i ++) //draw one line
+#ifdef ASM_FOR_MSVC
 				_asm
 				{
 					mov edi, base
@@ -974,6 +1056,38 @@ END22:				mov ax, prev_r			//*point = prev_r | prev_g | prev_b;
 					mov x, ecx
 FINISH22:			add esi, line			//point = point + line;
 					mov point, esi
+				}
+#else
+				{
+					unsigned short *edi = base + (mode_offset / 2);
+					unsigned char cl = *(edi + 4);
+					prev_r = *edi;
+					short ax = (static_cast<unsigned short>(*point & prev_r) >> cl) + temp_r;
+					if (!(ax > 0x1F))
+					{
+						prev_r = ax << cl;
+					}
+					prev_g = *(edi + 1);
+					ax = (static_cast<unsigned short>(*point & prev_g) >> 5) + temp_g;
+					if (!(ax > *(edi + 3)))
+					{
+						prev_g = ax << 5;
+					}
+					cl = *(edi + 5);
+					prev_b = *(edi + 2);
+					ax = (static_cast<unsigned short>(*point & prev_b) >> cl) + temp_b;
+					if (!(ax > 0x1F))
+					{
+						prev_b = ax << cl;
+					}
+					*point = prev_r | prev_g | prev_b;
+					x_count += x_inc;
+					if (x_count > (x << 8))
+					{
+						point += y_inc / 2;
+						++x;
+					}
+					point += line / 2;
 				}
 #endif
 			}
