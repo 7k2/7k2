@@ -2193,6 +2193,129 @@ MODE_0:	shr eax, 1
 		mov [esi+40], bx
 FINISH:
 	}
+#else
+	R1 >>= 3;
+	B1 >>= 3;
+	if (mode == 1 || mode == 3)
+	{
+		G1 >>= 2;
+	}
+	else
+	{
+		G1 >>= 3;
+	}
+	int eax = x1 - radius;
+	if (eax <= bound_x1)
+	{
+		eax = bound_x1;
+	}
+	if (eax >= bound_x2)
+	{
+		eax = bound_x2;
+	}
+	start_x = eax - x1;
+	eax = x1 + radius;
+	if (eax <= bound_x1)
+	{
+		eax = bound_x1;
+	}
+	if (eax >= bound_x2)
+	{
+		eax = bound_x2;
+	}
+	end_x = eax - x1;
+	eax = y1 - radius;
+	if (eax <= bound_y1)
+	{
+		eax = bound_y1;
+	}
+	if (eax >= bound_y2)
+	{
+		eax = bound_y2;
+	}
+	start_y = eax - y1;
+	eax = y1 + radius;
+	if (eax <= bound_y1)
+	{
+		eax = bound_y1;
+	}
+	if (eax >= bound_y2)
+	{
+		eax = bound_y2;
+	}
+	end_y = eax - y1;
+	eax = up_level + 1;
+	eax <<= 1;
+	*(reinterpret_cast<unsigned int *>(base3 + 12)) = eax;
+	eax >>= 1;
+	*(reinterpret_cast<unsigned int *>(base3 + 10)) = eax;
+	if (dir == 0)
+	{
+		for (int i = 8; i > 0; i -= 2)
+		{
+			eax >>= 1;
+			*(reinterpret_cast<unsigned int *>(base3 + i)) = eax;
+		}
+		*(reinterpret_cast<unsigned int *>(base3)) = 0;
+		*base2 = 0;
+		short ax = R1;
+		for (int i = 1; i <= 5; ++i)
+		{
+			*(base2 + i) = ax;
+			ax >>= 1;
+		}
+		*(base2 + 6) = 0;
+		*(base2 + 7) = 0;
+		ax = G1;
+		for (int i = 8; i <= 12; ++i)
+		{
+			*(base2 + i) = ax;
+			ax >>= 1;
+		}
+		*(base2 + 13) = 0;
+		*(base2 + 14) = 0;
+		ax = B1;
+		for (int i = 15; i <= 19; ++i)
+		{
+			*(base2 + i) = ax;
+			ax >>= 1;
+		}
+		*(base2 + 20) = 0;
+	}
+	else
+	{
+		int ecx = up_level;
+		for (int i = 2; i <= 8; i += 2)
+		{
+			ecx >>= 1;
+			*(reinterpret_cast<unsigned int *>(base3 + i)) = eax - ecx;
+		}
+		*(reinterpret_cast<unsigned int *>(base3)) = 0;
+		short ax = R1;
+		*(base2 + 6) = 0;
+		for (int i = 5; i >= 1; --i)
+		{
+			*(base2 + i) = ax;
+			ax >>= 1;
+		}
+		*base2 = 0;
+		ax = G1;
+		*(base2 + 13) = 0;
+		for (int i = 12; i >= 8; --i)
+		{
+			*(base2 + i) = ax;
+			ax >>= 1;
+		}
+		*(base2 + 7) = 0;
+		ax = B1;
+		*(base2 + 20) = 0;
+		for (int i = 19; i >= 15; --i)
+		{
+			*(base2 + i) = ax;
+			ax >>= 1;
+		}
+		*(base2 + 14) = 0;
+	}
 #endif
 	if (start_x == end_x || start_y == end_y)
 		return;
@@ -2221,7 +2344,14 @@ FINISH:
 		mov ax, [esi+30]		//temp_b = *(color_table +21 +dis_state +1);
 		mov temp_b, ax
 		}
+#else
+		dis_state = temp_dis_state;
+		temp_r = *(base2 + ((temp_dis_state << 1) / 2) + 1);
+		temp_g = *(base2 + ((temp_dis_state << 1) / 2) + 8);
+		temp_b = *(base2 + ((temp_dis_state << 1) / 2) + 15);
+#endif
 		for (j = start_x; j <= end_x; j++)
+#ifdef ASM_FOR_MSVC
 		_asm
 		{
 			mov edi, base1
@@ -2302,6 +2432,60 @@ D_MINS:
 			mov dis_state, edi			
 D_PLUS:	
 		}
+#else
+		{
+			unsigned short *edi = base1 + (mode_offset / 2);
+			unsigned char cl = *(edi + 4);
+			prev_r = *edi;
+			short ax = (static_cast<unsigned short>(*point & prev_r) >> cl) + temp_r;
+			if (!(ax > 0x1F))
+			{
+				prev_r = ax << cl;
+			}
+			prev_g = *(edi + 1);
+			ax = (static_cast<unsigned short>(*point & prev_g) >> 5) + temp_g;
+			if (!(ax > *(edi + 3)))
+			{
+				prev_g = ax << 5;
+			}
+			cl = *(edi + 5);
+			prev_b = *(edi + 2);
+			ax = (static_cast<unsigned short>(*point & prev_b) >> cl) + temp_b;
+			if (!(ax > 0x1F))
+			{
+				prev_b = ax << cl;
+			}
+			*point = prev_r | prev_g | prev_b;
+			++point;
+			mag += (j << r_x) + 1;
+			int tmp_ds = dis_state << 2;
+			unsigned short *ebx = base3 + (tmp_ds / 2);
+			tmp_ds >>= 1;
+			unsigned short *esi = base2 + (tmp_ds / 2);
+			tmp_ds >>= 1;
+			if (mag >= *(reinterpret_cast<unsigned int *>(ebx)))
+			{
+				if (mag > *(reinterpret_cast<unsigned int *>(ebx + 2)))
+				{
+					esi += 2;
+					tmp_ds += 2;
+				}
+				else
+				{
+					goto D_PLUS;
+				}
+			}
+			--esi;
+			--tmp_ds;
+			temp_r = *(esi + 1);
+			temp_g = *(esi + 8);
+			temp_b = *(esi + 15);
+			dis_state = tmp_ds;
+D_PLUS:
+			;  // Empty.
+		}
+#endif
+#ifdef ASM_FOR_MSVC
 		_asm
 		{
 		mov eax, line			//temp_point = temp_point +line;
@@ -2327,6 +2511,27 @@ TD_MINS:dec edi				//	temp_dis_state --;
 		mov temp_dis_state, edi
 TD_PLUS:
 		}
+#else
+		temp_point += line / 2;
+		temp_mag += (i << r_y) + 1;
+		int edi = temp_dis_state << 2;
+		unsigned short *ebx = base3 + (edi / 2);
+		edi >>= 2;
+		if (temp_mag >= *(reinterpret_cast<unsigned int *>(ebx)))
+		{
+			if (temp_mag > *(reinterpret_cast<unsigned int *>(ebx + 2)))
+			{
+				edi += 2;
+			}
+			else
+			{
+				goto TD_PLUS;
+			}
+		}
+		--edi;
+		temp_dis_state = edi;
+TD_PLUS:
+		;  // Empty.
 #endif
 	}
 }	
