@@ -521,6 +521,17 @@ MODE_ODD:
 		mov G, ax
 END:
 	}
+#else
+	R >>= 3;
+	B >>= 3;
+	if (mode == 1 || mode == 3)
+	{
+		G >>= 2;
+	}
+	else
+	{
+		G >>= 3;
+	}
 #endif
 	prev_r = R; 
 	prev_g = G; 
