@@ -26,6 +26,7 @@
 
 #include <obullet.h>
 
+#pragma pack(1)
 class Projectile : public Bullet
 {
 public:
@@ -53,5 +54,6 @@ public:
 	virtual	UCHAR crc8();
 	virtual	void	clear_ptr();
 };
+#pragma pack()
 
 #endif

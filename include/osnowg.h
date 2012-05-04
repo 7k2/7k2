@@ -56,6 +56,7 @@ public:
 #define HEIGHT_IN_ZONE ((MAX_MAP_HEIGHT+SNOW_ZONE_SIZE-1)/SNOW_ZONE_SIZE)
 */
 
+#pragma pack(1)
 class SnowGroundArray
 {
 private:
@@ -78,6 +79,7 @@ public:
 private:
 	unsigned rand_seed();
 };
+#pragma pack()
 
 extern SnowGroundArray snow_ground_array;
 

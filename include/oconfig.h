@@ -47,6 +47,7 @@ enum { SMALL_STARTUP_RESOURCE  = 4000,
 
 //---------- Define class Config -----------//
 
+#pragma pack(1)
 class Config
 {
 public:
@@ -247,6 +248,7 @@ public:
 
 	int			display_mode_id;			// see OMODEID.H
 };
+#pragma pack()
 
 //------------------------------------------//
 

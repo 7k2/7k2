@@ -38,6 +38,7 @@ struct Soldier;
   
 // -------- define struct hero ---------//
 
+#pragma pack(1)
 class ProfileHero
 {
 public:
@@ -80,10 +81,12 @@ public:
 	void		update_unit(Soldier *, Spy *, int firmRecno);
 	int		create_unit(int nationRecno, int xLoc, int yLoc );
 };
+#pragma pack()
 
 
 // -------- define class PlayerProfile --------//
 
+#pragma pack(1)
 class PlayerProfile
 {
 public:
@@ -201,6 +204,7 @@ private:
 
 	void			default_save_name( char *saveName, char *playerName );
 };
+#pragma pack()
 
 extern PlayerProfile player_profile;
 

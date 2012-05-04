@@ -44,6 +44,7 @@ class Town;
 class Place;
 class Nation;
 
+#pragma pack(1)
 class BaseObj
 {
 public:
@@ -133,6 +134,7 @@ public:
 
 	virtual void	change_nation(int newNationRecno);
 };
+#pragma pack()
 
 //------- define class BaseObjArray --------//
 

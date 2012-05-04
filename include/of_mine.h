@@ -38,6 +38,7 @@
 
 //------- Define class FirmMine --------//
 
+#pragma pack(1)
 class FirmMine : public FirmWork
 {
 public:
@@ -105,6 +106,7 @@ private:
 	void		disp_firm_info(int dispY1, int refreshFlag);
 	void		detect_firm_info();
 };
+#pragma pack()
 
 //--------------------------------------//
 

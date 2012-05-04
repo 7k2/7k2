@@ -44,6 +44,7 @@ enum
 
 //------ Define class FirmLair ------//
 
+#pragma pack(1)
 class FirmLair : public FirmCamp
 {
 public:
@@ -147,6 +148,7 @@ private:
 			  int 	think_grokken_buy_tech();
 			  int 	think_minotauros_buy_tech();
 };
+#pragma pack()
 
 //-----------------------------------------------//
 

@@ -32,6 +32,7 @@
 
 //-------- Define class UnitWagon --------//
 
+#pragma pack(1)
 class UnitWagon : public Unit
 {
 public:
@@ -71,6 +72,7 @@ public:
 
 	UnitWagon*	cast_to_UnitWagon()	{ return this; }
 };
+#pragma pack()
 
 
 #endif

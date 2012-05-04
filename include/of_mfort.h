@@ -34,6 +34,7 @@
 
 class Unit;
 
+#pragma pack(1)
 class FirmMonsterFortress : public Firm
 {
 public:
@@ -151,5 +152,6 @@ protected:
 	
 	virtual  int is_visible(int nationRecno);
 };
+#pragma pack()
 
 #endif

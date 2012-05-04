@@ -44,6 +44,7 @@
 
 //------- define struct InnUnit ---------//
 
+#pragma pack(1)
 struct InnUnit
 {
 public:
@@ -72,9 +73,11 @@ public:
 	int	is_own_spy();
 	int	true_nation_recno();
 };
+#pragma pack()
 
 //------- Define class FirmInn --------//
 
+#pragma pack(1)
 class FirmInn : public Firm
 {
 public:
@@ -152,6 +155,7 @@ private:
 	int 		think_hire_general();
 	int 		think_assign_general_to(int raceId, int innUnitRecno);
 };
+#pragma pack()
 
 //--------------------------------------//
 

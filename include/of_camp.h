@@ -63,17 +63,20 @@ enum	{	INSIDE_CAMP=0,
 
 //-------- Define struct DefenseUnit ----------//
 
+#pragma pack(1)
 struct DefenseUnit
 {
 	short	unit_recno;
 	char	status;	// inside / outside the camp
 };
+#pragma pack()
 
 //------- Define class FirmCamp --------//
 
 class Town;
 class Unit;
 
+#pragma pack(1)
 class FirmCamp : public Firm
 {
 public:
@@ -330,6 +333,7 @@ protected:
 	int 		best_commander_race();
 	int 		think_upgrade_to_fort();
 };
+#pragma pack()
 
 //--------------------------------------//
 

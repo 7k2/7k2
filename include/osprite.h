@@ -64,6 +64,7 @@ struct SpriteFrame;
 
 //---------- Define class Sprite -----------//
 
+#pragma pack(1)
 class Sprite : public BaseObj
 {
 public:
@@ -184,6 +185,7 @@ public:
 private:
 	virtual  void  cycle_eqv_attack()	{;}
 };
+#pragma pack()
 
 //------- Define class SpriteArray ---------//
 

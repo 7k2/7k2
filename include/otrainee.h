@@ -28,6 +28,7 @@
 
 //------- define struct Trainee ---------//
 
+#pragma pack(1)
 struct Trainee
 {
 	char  train_type;
@@ -77,6 +78,7 @@ public:
 	void  change_loyalty(int loyaltyChange);
 	void	change_unit_id(int unitId, int nationRecno);
 };
+#pragma pack()
 
 //-------------------------------------//
 

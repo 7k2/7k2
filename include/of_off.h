@@ -28,6 +28,7 @@
 #include <ofirm.h>
 #include <of_magi.h>
 
+#pragma pack(1)
 class FirmOffensive : public FirmMagic
 {
 
@@ -55,5 +56,6 @@ protected:
 	void	detect_magic_menu();
 	
 };
+#pragma pack()
 
 #endif

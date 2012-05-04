@@ -45,6 +45,7 @@ enum { SITE_RAW=1,
 
 //--------- Define class Site ----------//
 
+#pragma pack(1)
 class Site
 {
 public:
@@ -89,9 +90,11 @@ public:
 	UCHAR crc8();
 	void	clear_ptr();
 };
+#pragma pack()
 
 //--------- Define class SiteArray ----------//
 
+#pragma pack(1)
 class SiteArray : public DynArrayB
 {
 public:
@@ -138,6 +141,7 @@ public:
 		Site* operator[](int recNo)  { return (Site*) get(recNo); }
 	#endif
 };
+#pragma pack()
 
 extern SiteArray site_array;
 

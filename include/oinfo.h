@@ -88,12 +88,14 @@ enum { CHAT_RECEIVER_CURRENT=1,
 
 //--------- Define struct ChatInfo ----------//
 
+#pragma pack(1)
 struct ChatInfo
 {
 	int   received_date;
 	char	from_nation_recno;
 	char	chat_str[CHAT_STR_LEN+1];
 };
+#pragma pack()
 
 //--------- Define struct TalkMsgDisp --------//
 
@@ -106,6 +108,7 @@ struct TalkMsgDisp
 
 //----------- Define class Info -------------//
 
+#pragma pack(1)
 class Info
 {
 public:
@@ -274,6 +277,7 @@ public:
 	int 	write_file(File* filePtr);
 	int	read_file(File* filePtr);
 };
+#pragma pack()
 
 extern Info info;
 

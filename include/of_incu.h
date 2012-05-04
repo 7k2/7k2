@@ -33,6 +33,7 @@
 #define MAX_BUILD_QUEUE 	20
 
 
+#pragma pack(1)
 class FirmIncubator : public Firm
 {
 public:
@@ -102,5 +103,6 @@ protected:
 	int 		should_build_new_weapon();
 	int		think_del();
 };
+#pragma pack()
 
 #endif

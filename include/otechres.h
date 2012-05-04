@@ -74,6 +74,7 @@ struct TechRec
 
 //-------- define struct TechClass ----------//
 
+#pragma pack(1)
 class TechClass
 {
 public:
@@ -92,9 +93,11 @@ public:
 public:
 	void 	random_init(int nationRecno, int minTechCount, int maxTechCount);
 };
+#pragma pack()
 
 //-------- define struct TechInfo ----------//
 
+#pragma pack(1)
 class TechInfo
 {
 public:
@@ -141,6 +144,7 @@ public:
 	int 	 is_useful_to_nation(int nationRecno);
 	void 	 enable_parent_tech(int nationRecno);
 };
+#pragma pack()
 
 //------ define class TechRes ----------//
 

@@ -95,6 +95,7 @@ class  FirmWork;
 class  FirmCamp;
 struct InnUnit;
 
+#pragma pack(1)
 class Town : public Place
 {
 public:
@@ -527,6 +528,7 @@ private:
 	void  disp_spy_menu(int refreshFlag);
 	void  detect_spy_menu();
 };
+#pragma pack()
 
 //-------- Begin of class TownArray ------------//
 

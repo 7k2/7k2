@@ -42,6 +42,7 @@ enum { REBEL_IDLE=1,
 
 class BaseObj;
 
+#pragma pack(1)
 class Rebel
 {
 public:
@@ -94,6 +95,7 @@ public:
 	void	clear_ptr();
 	// #### patch end Gilbert 20/1 ######//
 };
+#pragma pack()
 
 //-------- Define class RebelArray -------//
 

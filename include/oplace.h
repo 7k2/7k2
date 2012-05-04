@@ -29,6 +29,7 @@
 
 //-------- Define class Place --------//
 
+#pragma pack(1)
 class Place : public BaseObj
 {
 public:
@@ -134,6 +135,7 @@ protected:
 	int 	can_create_unit(int unitId, int xLoc, int yLoc);
 	int 	create_unit_locate_space(int unitId, int& xLoc, int& yLoc);
 };
+#pragma pack()
 
 //------------------------------------//
 

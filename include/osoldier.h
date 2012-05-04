@@ -30,6 +30,7 @@
 
 //------------- Define struct Soldier ------------//
 
+#pragma pack(1)
 struct Soldier
 {
 public:
@@ -98,6 +99,7 @@ public:
 
 	void	complete_training() 	{ remain_build_days=0; }
 };
+#pragma pack()
 
 //--------------------------------------//
 

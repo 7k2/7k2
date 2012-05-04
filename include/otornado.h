@@ -42,6 +42,7 @@
 
 //----------- Define class Tornado -----------//
 
+#pragma pack(1)
 class Tornado : public Sprite
 {
 public:
@@ -72,6 +73,7 @@ public:
 	int 	write_file(File* filePtr);
 	int	read_file(File* filePtr);
 };
+#pragma pack()
 
 //------- Define class TornadoArray ---------//
 

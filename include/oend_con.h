@@ -92,6 +92,7 @@ enum
 
 // ------ define struct EndCondition --------//
 
+#pragma pack(1)
 struct EndCondition
 {
 public:
@@ -127,6 +128,7 @@ private:
 	void	set_condition_str( char *, int loseCond );
 	void	set_result_str( char *, int loseCond );
 };
+#pragma pack()
 
 // ------- define enum of win_or_lose -------//
 

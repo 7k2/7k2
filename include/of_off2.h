@@ -31,6 +31,7 @@
 #define OFFENSIVE2_BULLET_SPEED 16
 #define OFFENSIVE2_BULLET_INIT_Z 32
 
+#pragma pack(1)
 class FirmOffensive2 : public Firm
 {
 public:
@@ -97,6 +98,7 @@ public:
 	virtual  FirmOffensive2*		cast_to_FirmOffensive2()		{ return this; }
 
 };
+#pragma pack()
 
 //-----------------------------------------------//
 

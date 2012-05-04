@@ -71,6 +71,7 @@ struct ColorRemapMethod
 
 //--------- Define struct ColorRemap ----------//
 
+#pragma pack(1)
 struct ColorRemap
 {
 public:
@@ -83,6 +84,7 @@ public:
 	void	set_remap_color(ColorRemapMethod*);
    void	load(short*);
 };
+#pragma pack()
 
 //----- define struct ScenInfo -------//
 
@@ -104,6 +106,7 @@ struct NewNationPara;
 class File;
 class Campaign;
 
+#pragma pack(1)
 class Game
 {
 public:
@@ -235,6 +238,7 @@ private:
 
 //	void			scenario_editor();
 };
+#pragma pack()
 
 extern Game game;
 extern char game_demo_mode, game_design_mode;

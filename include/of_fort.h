@@ -44,6 +44,7 @@
 
 //-------- define class FirmFort --------//
 
+#pragma pack(1)
 class FirmFort : public FirmCamp
 {
 public:
@@ -131,6 +132,7 @@ private:
 
 	int 		think_train_archer();
 };
+#pragma pack()
 
 //-------------------------------------------//
 

@@ -53,6 +53,7 @@ enum
 
 //------- define class FirmTrain --------//
 
+#pragma pack(1)
 class FirmTrain : public Firm
 {
 public:
@@ -145,6 +146,7 @@ protected:
 	virtual void	disp_spy_menu(int refreshFlag);
 	virtual void	detect_spy_menu();
 };
+#pragma pack()
 
 //--------------------------------------------------//
 

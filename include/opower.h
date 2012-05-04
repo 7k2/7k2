@@ -79,6 +79,7 @@ struct Location;
 
 class File;
 
+#pragma pack(1)
 class Power
 {
 public:
@@ -131,6 +132,7 @@ public:
 	int 		 	detect_select(int selX1, int selY1, int selX2, int selY2, int recallGroup, int shiftSelect);
 	int			execute_command(int mouseX, int mouseY);
 };
+#pragma pack()
 
 extern Power power;
 

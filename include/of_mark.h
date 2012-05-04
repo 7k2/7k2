@@ -51,6 +51,7 @@
 
 //------- Define class MarketInfo --------//
 
+#pragma pack(1)
 struct MarketGoods
 {
 	char		raw_id;
@@ -74,9 +75,11 @@ struct MarketGoods
 	float		sales_365days()		{ return last_year_sales*(365-info.year_day)/365 +
 											  cur_year_sales; }
 };
+#pragma pack()
 
 //------- Define class FirmMarket --------//
 
+#pragma pack(1)
 class FirmMarket : public Firm
 {
 public:
@@ -169,6 +172,7 @@ private:
 	void 		think_market_build_factory();
 	int		ai_create_new_trade(Firm* firmPtr, int stop1PickUpType, int stop2PickUpType);
 };
+#pragma pack()
 
 //--------------------------------------//
 

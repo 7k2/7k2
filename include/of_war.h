@@ -34,6 +34,7 @@
 
 //------- Define class FirmWar --------//
 
+#pragma pack(1)
 class FirmWar : public FirmWork
 {
 public:
@@ -101,6 +102,7 @@ protected:
 	int	think_del();
 	virtual int think_adjust_workforce();
 };
+#pragma pack()
 
 //--------------------------------------//
 

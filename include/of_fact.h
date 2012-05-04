@@ -33,6 +33,7 @@
 
 //------- Define class FirmFactory --------//
 
+#pragma pack(1)
 class FirmFactory : public FirmWork
 {
 public:
@@ -111,6 +112,7 @@ protected:
 	void	disp_firm_info(int dispY1, int refreshFlag);
 	void	detect_firm_info();
 };
+#pragma pack()
 
 //--------------------------------------//
 

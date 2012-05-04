@@ -28,6 +28,7 @@
 
 //------- Define class FirmSpecial -------//
 
+#pragma pack(1)
 class FirmSpecial : public FirmTrain
 {
 public:
@@ -69,6 +70,7 @@ protected:
 	int		think_del();
 	int 		think_transfer_unit();
 };
+#pragma pack()
 
 //---------------------------------------//
 

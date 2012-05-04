@@ -27,6 +27,7 @@
 
 #include <of_train.h>
 
+#pragma pack(1)
 class FirmSpy : public FirmTrain
 {
 public:
@@ -82,5 +83,6 @@ protected:
 	int 		has_spy(int raceId, int isCivilian);
 	void 		think_spy_action();
 };
+#pragma pack()
 
 #endif

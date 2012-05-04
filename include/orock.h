@@ -32,6 +32,7 @@
 struct RockInfo;
 struct RockBitmapInfo;
 
+#pragma pack(1)
 class Rock
 {
 public:
@@ -63,6 +64,7 @@ public:
 private:
 	unsigned random(unsigned);
 };
+#pragma pack()
 
 
 

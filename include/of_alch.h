@@ -28,6 +28,7 @@
 #include <ofirm.h>
 
 
+#pragma pack(1)
 class FirmMonsterAlchemy : public Firm
 {
 public:
@@ -87,5 +88,6 @@ private:
 	int		think_del();
 	void 		think_change_conversion();
 };
+#pragma pack()
 
 #endif

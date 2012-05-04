@@ -40,6 +40,7 @@ struct NewNationPara;
 
 //---------- Define class NationArray -----------//
 
+#pragma pack(1)
 class NationArray : public DynArrayB
 {
 public:
@@ -152,6 +153,7 @@ public:
 	Nation*	get_campaign_nation(int campaignNationRecno);
 	// ###### end Gilbert 15/3 #######//
 };
+#pragma pack()
 
   
 // --------- define struct NewNationPara ----------//

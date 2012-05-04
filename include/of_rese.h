@@ -31,6 +31,7 @@
 
 //------- Define class FirmResearch --------//
 
+#pragma pack(1)
 class FirmResearch : public FirmWork
 {
 public:
@@ -83,6 +84,7 @@ private:
 	int		think_del();
 	int 		think_adjust_workforce();
 };
+#pragma pack()
 
 //--------------------------------------//
 

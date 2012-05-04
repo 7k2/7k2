@@ -121,15 +121,18 @@ enum	{	ACTION_AI_BUILD_FIRM=1,		// define ActionNode action_type
 
 //--------- define AIRegion ---------//
 
+#pragma pack(1)
 struct AIRegion
 {
 	BYTE	region_id;
 	char  town_count;
 	char  base_town_count;
 };
+#pragma pack()
 
 //-------- define ActionNode structure -------//
 
+#pragma pack(1)
 struct ActionNode
 {
 	enum { MAX_ACTION_GROUP_UNIT = 9 };
@@ -158,12 +161,14 @@ struct ActionNode
 
 	long  next_retry_date; 				// continue processing this action after this date, this is used when training a unit for construction
 };
+#pragma pack()
 
 //------- Define struct AttackCamp --------//
 
 #define MAX_SUITABLE_ATTACK_CAMP    30    // total no. of useful camps
 #define MAX_AI_ATTACK_TARGET			10		// attacking more than one target in an attack mission
 
+#pragma pack(1)
 struct AttackCamp
 {
 	short firm_recno;
@@ -171,6 +176,7 @@ struct AttackCamp
 	short distance;
 	int   patrol_date;
 };
+#pragma pack()
 
 //--------- Define class Nation ---------//
 
@@ -179,6 +185,7 @@ class  Town;
 class  Spy;
 struct TalkMsg;
 
+#pragma pack(1)
 class Nation : public NationBase
 {
 public:
@@ -634,6 +641,7 @@ public:
 	int 			write_file(File* filePtr);
 	int			read_file(File* filePtr);
 };
+#pragma pack()
 
 #ifndef __ONATIONA_H
 #include <onationa.h>

@@ -98,6 +98,7 @@ enum { EXPENSE_GENERAL,
 
 //----- Define struct NationRelation -------//
 
+#pragma pack(1)
 struct NationRelation			// many-to-many relationships between nations
 {
 	char  has_contact;			// whether this nation has been contacted or not
@@ -145,6 +146,7 @@ struct NationRelation			// many-to-many relationships between nations
 
 //	static char* relation_status_str_array[5];
 };
+#pragma pack()
 
 //---------- Define class Nation -----------//
 
@@ -152,6 +154,7 @@ class BaseObj;
 class Unit;
 class Firm;
 
+#pragma pack(1)
 class NationBase
 {
 public:
@@ -506,6 +509,7 @@ public:
 	virtual	UCHAR crc8();
 	virtual	void	clear_ptr();
 };
+#pragma pack()
 
 //--------------------------------------//
 

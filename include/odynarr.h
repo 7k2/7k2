@@ -48,6 +48,7 @@ enum { SORT_INT=1,
 
 //-------- BEGIN OF CLASS DynArrary ---------//
 
+#pragma pack(1)
 class DynArray
 {
 public :
@@ -121,6 +122,7 @@ public :
    int   write_file(File*);    // Write current dynamic array to file
    int   read_file(File*);     // Read dynamic array from file
 };
+#pragma pack()
 
 //--------- END OF CLASS DynArray ---------//
 

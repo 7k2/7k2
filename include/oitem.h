@@ -29,6 +29,7 @@
 
 class Skill;
 
+#pragma pack(1)
 struct Item
 {
 public:
@@ -62,6 +63,7 @@ public:
 	void 	init_random( int lowRare, int highRare, int unitId=0, Skill* =0);
 	void	random_para();
 };
+#pragma pack()
 
 //-------------------------------------//
 

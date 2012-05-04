@@ -38,13 +38,16 @@
 
 //------- Define struct Worker -------//
 
+#pragma pack(1)
 struct Worker
 {
 	short	town_recno;
 };
+#pragma pack()
 
 //------- Define class FirmWork -------//
 
+#pragma pack(1)
 class FirmWork : public Firm
 {
 public:
@@ -121,6 +124,7 @@ protected:
 	int 		most_jobless_town(int raceId, int excludedTownRecno);
 	int 		is_worker_already_coming();
 };
+#pragma pack()
 
 //--------------------------------------//
 

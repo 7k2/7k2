@@ -30,6 +30,7 @@
 
 //----------- Define class Monster -----------//
 
+#pragma pack(1)
 class UnitMonster : public Unit
 {
 public:
@@ -44,6 +45,7 @@ public:
 
 	UnitMonster*	cast_to_UnitMonster()	{ return this; }
 };
+#pragma pack()
 
 //--------------------------------------------//
 

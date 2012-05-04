@@ -56,6 +56,7 @@ enum
 };
 
 
+#pragma pack(1)
 struct MagicInfo
 {
 	int magic_id;
@@ -70,8 +71,10 @@ struct MagicInfo
 	int live_point_extra_range;		// if cast outside cast_range, cost on min_live_point per distance
 	int cost_extra_range;				// if cast outside cast_range, cost on min_live_point per distance
 };
+#pragma pack()
 
 
+#pragma pack(1)
 class FirmMagic : public Firm
 {
 public:
@@ -176,5 +179,6 @@ protected:
 	void 		think_cast_to_area(int magicId);
 	void		think_cast_to_top(int magicId);
 };
+#pragma pack()
 
 #endif

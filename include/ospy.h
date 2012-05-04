@@ -57,6 +57,7 @@ enum { SPY_IDLE,
 
 class BaseObj;
 
+#pragma pack(1)
 class Spy
 {
 public:
@@ -171,6 +172,7 @@ public:
 	UCHAR crc8();
 	void	clear_ptr();
 };
+#pragma pack()
 
 //-------- Define class SpyArray -------//
 

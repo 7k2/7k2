@@ -43,6 +43,7 @@
 
 //------- Define class FirmBase --------//
 
+#pragma pack(1)
 class FirmBase : public FirmWork
 {
 public:
@@ -102,6 +103,7 @@ private:
 	void 		think_invoke_god();
 	int 		think_adjust_workforce();
 };
+#pragma pack()
 
 //--------------------------------------//
 

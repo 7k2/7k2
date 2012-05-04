@@ -123,6 +123,7 @@ enum { NEWS_DIPLOMACY=1,
 
 //------- Define struct News ---------//
 
+#pragma pack(1)
 struct News
 {
 public:
@@ -228,6 +229,7 @@ public:
 	void  multi_save_game();
 	void  multi_connection_lost();
 };
+#pragma pack()
 
 //-------- Define class NewsArray ----------//
 

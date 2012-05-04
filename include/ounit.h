@@ -104,6 +104,7 @@ enum { UNIT_AGGRESSIVE=1,
 
 //------- define struct UnitOrder -----//
 
+#pragma pack(1)
 struct UnitOrder
 {
 public:
@@ -121,10 +122,12 @@ public:
 	int 		place_loc_x2();
 	int 		place_loc_y2();
 };
+#pragma pack()
 
 
 //----------- Define TeamInfo -------------//
 
+#pragma pack(1)
 struct TeamInfo
 {
 public:
@@ -142,12 +145,14 @@ public:
 	void 	validate();
 	void	reset();
 };
+#pragma pack()
 
 //----------- Define class Unit -----------//
 
 struct PathResult;
 class File;
 
+#pragma pack(1)
 class UnitB : public Sprite
 {
 friend class PathReuse;
@@ -271,6 +276,7 @@ private:
 	void 			set_cur_path_result_id(short count) {cur_path_result_id = count;}
 	void  		set_steps_remaining(int remainSteps) {steps_remaining = remainSteps;}
 };
+#pragma pack()
 
 //----------- Define class Unit -----------//
 
@@ -282,6 +288,7 @@ class  UnitWagon;
 class  UnitExpCart;
 class  UnitMonster;
 
+#pragma pack(1)
 class Unit : public UnitB
 {
 friend class UnitArray;
@@ -742,6 +749,7 @@ protected:
 	int 				is_next_to_order_place();
 	int 				is_in_order_place(int extraLoc=0);
 };
+#pragma pack()
 
 //------- Define class UnitArray ---------//
 

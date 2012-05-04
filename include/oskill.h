@@ -45,6 +45,7 @@ enum { BASIC_COMBAT_TRAIN = 20,		// combat level of a unit that has completed ba
 
 //-------- Define struct Skill ----------//
 
+#pragma pack(1)
 class Skill		// currently leadership is only one skill type in the game
 {
 public:
@@ -77,6 +78,7 @@ public:
 
 	void				set_unit_id( int unitId );
 };
+#pragma pack()
 
 //---------------------------------------//
 

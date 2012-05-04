@@ -107,6 +107,7 @@ class FirmOffensive2;
 
 //----------- Define class Firm ------------//
 
+#pragma pack(1)
 class Firm: public Place
 {
 public:
@@ -377,6 +378,7 @@ public:
 
 	virtual int		is_visible(int nationRecno) { return 1; }
 };
+#pragma pack()
 
 //------------------------------------------//
 

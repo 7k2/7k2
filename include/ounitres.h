@@ -310,6 +310,7 @@ public:
 
 //--------- Define struct AttackInfo ----------//
 
+#pragma pack(1)
 struct AttackInfo
 {
 	BYTE  combat_level;
@@ -339,6 +340,7 @@ struct AttackInfo
 	AttackAttribute attack_attribute;
 	char	die_after_attack;
 };
+#pragma pack()
 
 //---------- Define class UnitRes ------------//
 

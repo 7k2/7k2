@@ -94,6 +94,7 @@
 
 //------- Define structure Location -------//
 
+#pragma pack(1)
 struct Location
 {
 public:
@@ -338,6 +339,7 @@ public:
 	//----------- evaluate z ----------//
 	long	evaluate_z(short subX, short subY);
 };
+#pragma pack()
 
 
 //------------ Define class Corner ------------//

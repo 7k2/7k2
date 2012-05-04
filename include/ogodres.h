@@ -79,6 +79,7 @@ struct GodRec
  
 //------------- Define struct GodInfo --------------//
 
+#pragma pack(1)
 struct GodInfo
 {
 	enum { OUT_EFFECT_CODE_LEN = 8};
@@ -114,6 +115,7 @@ public:
 	void	enable_know(int nationRecno);
 	void	disable_know(int nationRecno);
 };
+#pragma pack()
 
 //----------- Define class GodRes ---------------//
 

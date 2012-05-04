@@ -38,6 +38,7 @@ enum { DO_CAST_POWER_RANGE = 3 };
 
 //----------- Define class God -----------//
 
+#pragma pack(1)
 class UnitGod : public Unit
 {
 public:
@@ -144,6 +145,7 @@ protected:
 #endif
 	*/
 };
+#pragma pack()
 
 //--------------------------------------------//
 

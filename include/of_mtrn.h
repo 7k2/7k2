@@ -45,6 +45,7 @@ enum
 
 //------- Define struct MonsterTrainee ----/
 
+#pragma pack(1)
 struct MonsterTrainee
 {
 public:
@@ -59,9 +60,11 @@ public:
 	int   skill_level()		{ return skill.actual_skill_level(); }
 	int   max_hit_points()	{ return skill.actual_max_hit_points(); }
 };
+#pragma pack()
 
 //------- Define class FirmMonsterTrain -------//
 
+#pragma pack(1)
 class FirmMonsterTrain : public Firm
 {
 public:
@@ -138,6 +141,7 @@ protected:
 	int		think_del();
 	int 		think_transfer_unit();
 };
+#pragma pack()
 
 //---------------------------------------//
 

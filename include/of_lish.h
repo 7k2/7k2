@@ -31,6 +31,7 @@
 #define LISHORR_BULLET_SPEED 16
 #define LISHORR_BULLET_INIT_Z 32
 
+#pragma pack(1)
 class FirmLishorr : public Firm
 {
 public:
@@ -101,6 +102,7 @@ public:
 	virtual  int		is_visible(int nationRecno);
 
 };
+#pragma pack()
 
 //-----------------------------------------------//
 

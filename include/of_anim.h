@@ -34,6 +34,7 @@
 
 // ------- define struct AnimalUnit --------/
 
+#pragma pack(1)
 struct AnimalUnit
 {
 	short unit_id;
@@ -54,10 +55,12 @@ struct AnimalUnit
 public:
 	void	set_hire_cost();
 };
+#pragma pack()
 
 
 // ------- define class FirmAnimal --------/
 
+#pragma pack(1)
 class FirmAnimal : public Firm
 {
 public:
@@ -130,5 +133,6 @@ private:
 	void		think_hire_new();
 	int		think_del();
 };
+#pragma pack()
 
 #endif

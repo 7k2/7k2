@@ -26,6 +26,7 @@
 
 #include <ounit.h>
 
+#pragma pack(1)
 class UnitExpCart : public Unit
 {
 public:
@@ -49,5 +50,6 @@ public:
 
 	UnitExpCart*	cast_to_UnitExpCart()	{ return this; }
 };
+#pragma pack()
 
 #endif
