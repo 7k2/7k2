@@ -47,6 +47,7 @@
 //
 FirmInn::FirmInn()
 {
+	init_derived();
 }
 //----------- End of function FirmInn::FirmInn -----------//
 
