@@ -34,6 +34,7 @@
 //
 UnitWagon::UnitWagon()
 {
+	init_derived();
 }
 // ------ end of function UnitWagon::UnitWagon --------//
 
