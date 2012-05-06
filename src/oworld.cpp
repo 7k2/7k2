@@ -2723,22 +2723,13 @@ void World::process_visibility()
 #ifdef DEBUG
 			unsigned long startTime = m.get_time();
 #endif
-//			for( int y = 0; y < max_y_loc; ++y)
-//			{
-//				Location *locPtr = get_loc(0,y);
-//				for( int x = 0; x < max_x_loc; ++x, ++locPtr)
-//				{
-//					locPtr->dec_visibility();
-//				}
-//			}
-
+#ifdef ASM_FOR_MSVC
 			int count = max_x_loc * max_y_loc;
 			const int sizeOfLoc = sizeof(Location);
 			unsigned char *locVisitLevel = &get_loc(0,0)->visit_level;
 			// #### begin Gilbert 8/2 #######//
 			// unsigned char decVisitLevel = EXPLORED_VISIBILITY*2+1;
 			unsigned char decVisitLevel = EXPLORED_VISIBILITY;
-#ifdef ASM_FOR_MSVC
 			_asm
 			{
 				mov	ecx, count
@@ -2753,6 +2744,15 @@ process_visit_level_1:
 process_visit_level2:
 				add	ebx, edx
 				loop	process_visit_level_1
+			}
+#else
+			for( int y = 0; y < max_y_loc; ++y)
+			{
+				Location *locPtr = get_loc(0,y);
+				for( int x = 0; x < max_x_loc; ++x, ++locPtr)
+				{
+					locPtr->dec_visibility();
+				}
 			}
 #endif
 
