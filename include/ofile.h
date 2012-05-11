@@ -24,46 +24,47 @@
 #ifndef __OFILE_H
 #define __OFILE_H
 
-#include <windows.h>
+#include <win32_compat.h>
+#include <stdio.h>
+#include <stdint.h>
 
 //--------------------------------------//
 
 class File
 {
 public:
-   char file_name[MAX_PATH+1];
 
-   HANDLE file_handle;
-   int    handle_error;
+	enum  FileType { FLAT = 0, STRUCTURED = 1 };
 
-   char   allow_vary_size;    // allow the writing size and the read size to be different
+	char     file_name[MAX_PATH+1];
+	FILE*    file_handle;
+	int      handle_error;
+	FileType file_type;
 
 public:
-   File()     { file_handle=INVALID_HANDLE_VALUE; }
-   ~File();
 
-   int   file_open(const char*, int=1, int=0);
-   int   file_create(const char*, int=1, int=0);
-   int   file_append(const char*, int=1, int=0);
-   void  file_close();
+	File(): file_handle(NULL) {}
+	~File();
 
-   long  file_size();
-   long  file_seek(long, int= -1);
-   long  file_pos();
+	int   file_open(const char*, int=1, int=0);
+	int   file_create(const char*, int=1, int=0);
+	void  file_close();
 
-   int   file_read(void*, unsigned);
-   int   file_write(void*, unsigned);
+	long  file_size();
+	long  file_seek(long, int = SEEK_SET);
+	long  file_pos();
 
-   short file_get_short();
-   int   file_put_short(short);
+	int   file_read(void*, unsigned);
+	int   file_write(void*, unsigned);
 
-   unsigned short file_get_unsigned_short();
-   int   file_put_unsigned_short(unsigned short);
+	int     file_put_short(int16_t);
+	int16_t file_get_short();
 
-   long  file_get_long();
-   int   file_put_long(long);
+	int      file_put_unsigned_short(uint16_t);
+	uint16_t file_get_unsigned_short();
+
+	int     file_put_long(int32_t);
+	int32_t file_get_long();
 };
 
 #endif
-
-

@@ -274,7 +274,7 @@ long Rle::expand( unsigned char *inPtr, unsigned char *outPtr, unsigned char rle
 //
 long Rle::compress( unsigned char *inPtr, long inByteLen, File *outFile, unsigned char rleKey)
 {
-	err_when( outFile->allow_vary_size );	// not support
+	err_when( outFile->file_type == File::STRUCTURED );	// not support
 	register unsigned char *p = inPtr;
 	register long c = inByteLen;
 
@@ -390,7 +390,7 @@ long Rle::compress( unsigned char *inPtr, long inByteLen, File *outFile, unsigne
 //
 long Rle::expand( File *inFile, unsigned char *outPtr, unsigned char rleKey )
 {
-	err_when( inFile->allow_vary_size );	// not support
+	err_when( inFile->file_type == File::STRUCTURED );	// not support
 	long outCount = 0;
 
 	unsigned char p[3];

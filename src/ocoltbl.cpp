@@ -624,7 +624,7 @@ PalDescFile::PalDescFile(char *fileName, int headerSize, int pitch, int size, in
 {
 	File palFile;
 	palFile.file_open( fileName );
-	palFile.file_seek( headerSize, FILE_CURRENT );
+	palFile.file_seek( headerSize, SEEK_CUR );
 	palFile.file_read( pal, pitch*size );
 }
 // -------- end of function PalDescFile::PalDescFile ------//

@@ -128,7 +128,7 @@ void DumpBin(char* FileName,char* s,int Length)
 	{
 		return;
 	}
-	SetFilePointer(hFile,0,NULL,FILE_END);
+	SetFilePointer(hFile,0,NULL,SEEK_END);
 	DWORD Dummy;
 	WriteFile(hFile,s,Length,&Dummy,NULL);
 	CloseHandle(hFile);

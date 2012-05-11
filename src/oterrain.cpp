@@ -1068,7 +1068,7 @@ void TerrainRes::load_pal()
 
 	File palFile;
 	palFile.file_open(str);
-	palFile.file_seek(8, FILE_CURRENT);		// skip header
+	palFile.file_seek(8, SEEK_CUR);		// skip header
 	palFile.file_read(&palSrc, sizeof(palSrc));
 
 	BYTE reservedColorArray[] = { 0xff };
