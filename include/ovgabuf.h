@@ -107,7 +107,6 @@ public:
 	BOOL		restore_buf();
 
 	void		activate_pal(LPVOID ddPalPtr);	// LPDIRECTDRAWPALETTE ddPalPtr
-	DWORD 	color_match(DWORD rgb);		// COLORREF rgb
 
 	void		lock_buf();
 	void		unlock_buf();
