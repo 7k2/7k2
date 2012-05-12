@@ -38,6 +38,9 @@
 #include <olog.h>
 #include <ovgalock.h>
 #include <omodeid.h>
+#include <dbglog.h>
+
+DBGLOG_DEFAULT_CHANNEL(Vga);
 
 //-------- Define constant --------//
 
@@ -172,9 +175,7 @@ BOOL Vga::init_dd()
 
    if( rc != DD_OK )
    {
-#ifdef DEBUG
-      debug_msg("DirectDrawCreate failed err=%d", rc);
-#endif
+      ERR("DirectDrawCreate failed err=%d", rc);
 		err.run( dd_err_str("DirectDrawCreate failed!", rc) );
       return FALSE;
    }
@@ -186,9 +187,7 @@ BOOL Vga::init_dd()
    DEBUG_LOG("Query DirectDraw2 finish");
    if( rc != DD_OK )
    {
-#ifdef DEBUG
-      debug_msg("Query DirectDraw4 failed err=%d", rc);
-#endif
+      ERR("Query DirectDraw4 failed err=%d", rc);
 		err.run( dd_err_str("Query DirectDraw4(DirectX6) failed", rc) );
       dd1Obj->Release();
       return FALSE;
@@ -219,9 +218,7 @@ BOOL Vga::init_dd()
 
    if( rc != DD_OK )
    {
-#ifdef DEBUG
-      debug_msg("SetCooperativeLevel failed err=%d", rc);
-#endif
+      ERR("SetCooperativeLevel failed err=%d", rc);
 		err.run( dd_err_str("SetCooperativeLevel failed", rc) );
       return FALSE;
    }
@@ -246,9 +243,7 @@ BOOL Vga::set_mode(int w, int h)
 
    if( rc != DD_OK )
    {
-#ifdef DEBUG
-      debug_msg("SetMode failed err=%d", rc);
-#endif
+      ERR("SetMode failed err=%d", rc);
 		// ######## begin Gilbert 2/6 ########//
 		// err.run( dd_err_str("SetMode failed ", rc) );
 		err.msg( dd_err_str("SetMode failed ", rc) );

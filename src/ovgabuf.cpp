@@ -34,6 +34,9 @@
 #include <obitmapw.h>
 #include <ocoltbl.h>
 #include <stdio.h>
+#include <dbglog.h>
+
+DBGLOG_DEFAULT_CHANNEL(VgaBuf);
 
 short *VgaBuf::default_remap_table;
 short *VgaBuf::default_blend_table;
@@ -255,10 +258,8 @@ void VgaBuf::activate_pal(LPVOID vddPalPtr)
 		rc = dd_buf->SetPalette(ddPalPtr);
 	}
 
-#ifdef DEBUG
 	if( rc != DD_OK )
-		debug_msg( "VgaBuf::activate_pal(), failed activating the palette" );
-#endif
+		ERR( "VgaBuf::activate_pal(), failed activating the palette" );
 }
 //--------- End of function VgaBuf::activate_pal ----------//
 
@@ -280,9 +281,7 @@ BOOL VgaBuf::restore_buf()
 {
 	if( dd_buf == NULL || dd_buf->Restore() != DD_OK )
 	{
-#ifdef DEBUG
-		 debug_msg("Error restoring direct draw buffer");
-#endif
+		 ERR("Error restoring direct draw buffer");
 		 return FALSE;
 	}
 
@@ -317,10 +316,6 @@ void VgaBuf::lock_buf()
 			err_now( dd_err_str("VgaBuf::lock_buf() locking front buffer failed.", rc) );
 		else
 			err_now( dd_err_str("VgaBuf::lock_buf() locking back buffer failed.", rc) );
-
-#ifdef DEBUG
-		debug_msg( "Failed to lock the buffer." );
-#endif
 	}
 }
 //--------------- End of function VgaBuf::lock_buf --------------//
@@ -346,10 +341,6 @@ void VgaBuf::unlock_buf()
 			err_now( dd_err_str("VgaBuf::unlock_buf() unlocking front buffer failed.", rc) );
 		else
 			err_now( dd_err_str("VgaBuf::unlock_buf() unlocking back buffer failed.", rc) );
-
-#ifdef DEBUG
-		debug_msg( "Failed to unlock the buffer." );
-#endif
 	}
 }
 //--------------- End of function VgaBuf::unlock_buf --------------//
