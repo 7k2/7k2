@@ -48,11 +48,6 @@
 
 static DWORD click_threshold = (LONG)(0.3 * 1000);
 
-//------- Define static functions -----------//
-
-LRESULT CALLBACK key_hook_proc(int nCode, WORD wParam, LONG lParam);
-// static unsigned translate_key(unsigned scanCode, unsigned short skeyState);
-
 //------- define constant --------//
 
 #define MOUSE_BUFFER_SIZE 200
@@ -102,21 +97,6 @@ void Mouse::init(HINSTANCE hinst, HWND hwnd, LPDIRECTINPUT createdDirectInput)
 	cur_x = pt.x;
 	cur_y = pt.y;
 
-/*
-	//------ install keyboard hook ---------//
-
-	key_hook_handle = SetWindowsHookEx(WH_KEYBOARD, (HOOKPROC) key_hook_proc, sys.app_hinstance, NULL);
-
-	if( !key_hook_handle )
-		err.run( "Failed installing keyboard hook." );
-*/
-	//-------- initialize DirectInput Mouse device--------//
-/*
-	direct_mouse_handle = DMouseOpen();
-
-	if( !direct_mouse_handle )
-		err.run( "Failed installing direct mouse." );
-*/
 	HRESULT hr;
 	if( createdDirectInput )
 	{
@@ -230,9 +210,6 @@ void Mouse::deinit()
 {
 	if( init_flag )
 	{
-		// UnhookWindowsHookEx(key_hook_handle);
-
-		// DMouseClose(direct_mouse_handle);
 		init_flag = 0;
 	}
 
@@ -1082,18 +1059,6 @@ int Mouse::release_click(int buttonId)
    return 0;
 }
 //--------- End of Mouse::release_click --------------//
-
-
-//------- Begin of function key_hook_proc --------//
-
-LRESULT CALLBACK key_hook_proc(int nCode, WORD wParam, LONG lParam)
-{
-	if (nCode >= 0)
-		mouse.add_key_event(wParam, m.get_time());
-
-	return CallNextHookEx(mouse.key_hook_handle, nCode, wParam, lParam);
-}
-//-------- End of function key_hook_proc --------//
 
 
 //--------- Begin of Mouse::poll_event ----------//

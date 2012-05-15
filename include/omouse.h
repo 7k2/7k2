@@ -133,8 +133,6 @@ public:
 
 	short*  vga_update_buf;
 
-	HHOOK  key_hook_handle;
-	// HANDLE direct_mouse_handle;
 	LPDIRECTINPUT direct_input;
 	LPDIRECTINPUTDEVICE di_mouse_device, di_keyb_device;
 
