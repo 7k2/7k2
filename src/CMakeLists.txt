@@ -431,7 +431,6 @@ set(7k2_SOURCES
   ovgabuf.cpp
   ovgabuf2.cpp
   ovgalock.cpp
-  ovideo.cpp
   ovolume.cpp
   ovqueue.cpp
   ow_fire.cpp
@@ -456,6 +455,7 @@ if(UNIX)
     msvcrt
     winmm
     gdi32
+    dxguid
     ddraw
     dinput
     dplayx

@@ -59,8 +59,6 @@
 // define the macro to disable single player menu
 //#define DISABLE_SINGLE_PLAYER
 
-extern void play_video( HINSTANCE, int );
-
 //----------- Define structure ---------//
 
 struct OptionInfo
@@ -661,13 +659,6 @@ void Game::main_menu()
 				run_main_menu_option(0);		// profile
 				refreshFlag = MMOPTION_ALL;
 			}
-#ifdef DEBUG
-			else if( mouse.single_click(BUTTON7_X1, BUTTON7_Y1, BUTTON7_X2, BUTTON7_Y2) )
-			{
-				play_video( (HINSTANCE) sys.app_hinstance, 0 );
-				refreshFlag = MMOPTION_ALL;
-			}
-#endif
 			else if( mouse.single_click( BUTTON8_X1, BUTTON8_Y1, BUTTON8_X2, BUTTON8_Y2) )
 			{
 				// quit

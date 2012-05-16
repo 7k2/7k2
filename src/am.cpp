@@ -22,8 +22,6 @@
 //Description : Ambition Entry Program
 
 #include <all.h>
-#include <initguid.h>
-#include <dshow.h>
 #include <oanline.h>
 #include <oaudio.h>
 #include <obaseobj.h>
@@ -72,7 +70,6 @@
 #include <otransl.h>
 #include <ounit.h>
 #include <ovga.h>
-#include <ovideo.h>
 #include <owallres.h>
 #include <oworld.h>
 #include <oweather.h>
@@ -144,7 +141,6 @@ Misc              m, m2;
 DateInfo          date;
 Config            config;
 SerialRepository  serial_repository( 1000, "GAMESERL.DAT" );
-Video             video;
 Log               msg_log;
 #ifdef DEBUG
 LongLog *			long_log;
@@ -374,8 +370,6 @@ unsigned long	last_unit_transform_fortress_profile_time = 0L;
 #endif
 
 
-void play_video(HINSTANCE hInstance, int videoId);
-
 //------- Define static functions --------//
 
 static void extra_error_handler();
@@ -439,20 +433,6 @@ int PASCAL WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	static char lobbyLaunchCmdLine[] = "-!lobby!";
 #endif
 
-//	if( !sys.init(hInstance) )
-//		return FALSE;
-
-	//----------- play movie ---------------//
-
-	sys.set_game_dir();
-	if( strstr(lpCmdLine, lobbyLaunchCmdLine) == NULL )	// skip if launch from lobby
-	{
-		if( !m.is_file_exist("SKIPAVI.SYS") )
-		{
-			play_video(hInstance, 0);
-		}
-	}
-
 	if( !sys.init(hInstance) )
 		return FALSE;
 
@@ -513,42 +493,3 @@ static void extra_error_handler()
 //	box.msg( "Error encountered. The game has been saved to ERROR.SAV" );
 }
 //----------- End of function extra_error_handler -------------//
-
-
-void play_video(HINSTANCE hInstance, int videoId)
-{
-	String movieFileStr;
-	movieFileStr = DIR_MOVIE;
-	if( videoId == 0 )
-	{
-		movieFileStr += "INTRO.MPG";
-	}
-	else
-	{
-		movieFileStr += "MOVIE";
-		movieFileStr += videoId;
-		movieFileStr += ".AVI";
-	}
-
-	video.set_skip_on_fail();
-
-	if( m.is_file_exist(movieFileStr) )
-	{
-		//---------- play the movie now ---------//
-
-		video.init();
-
-		if( video.init_success )
-		{
-			video.play_until_end( movieFileStr, hInstance, 60 );
-		}
-		else
-		{
-			// display a message box (note:sys.main_hwnd is not valid)
-			// MessageBox( NULL, "Cannot initialize ActiveMovie",
-			//   "Seven Kingdoms", MB_OK | MB_ICONWARNING | MB_DEFBUTTON1 | MB_TASKMODAL );
-		}
-
-		video.deinit();
-	}
-}
