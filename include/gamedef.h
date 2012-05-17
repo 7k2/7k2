@@ -46,10 +46,7 @@ extern const int GAME_VERSION;
 #define DIR_SOUND       "SOUND\\"
 #define DIR_SAVE        "SAVE\\"
 #define DIR_IMAGE       sys.dir_image
-#define DIR_ENCYC       sys.dir_encyc
-#define DIR_ENCYC2		sys.dir_encyc2
 #define DIR_MUSIC       sys.dir_music
-#define DIR_MOVIE       sys.dir_movie
 #define DIR_TUTORIAL		sys.dir_tutorial
 #define DIR_SCENARIO		sys.dir_scenario
 #define DIR_CAMPAIGN		sys.dir_campaign

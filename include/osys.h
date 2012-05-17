@@ -151,10 +151,7 @@ public:
 	char  	cdrom_drive;
 
 	char  	dir_image[MAX_PATH+1];
-	char  	dir_encyc[MAX_PATH+1];
-	char  	dir_encyc2[MAX_PATH+1];
 	char  	dir_music[MAX_PATH+1];
-	char  	dir_movie[MAX_PATH+1];
 	char  	dir_tutorial[MAX_PATH+1];
 	char		dir_campaign[MAX_PATH+1];
 
@@ -217,8 +214,6 @@ public:
 	//---- for setting game directories ----//
 
 	void 		set_game_dir();
-	int 		set_one_dir( const char* checkFileName, const char* defaultDir, char* trueDir );
-	void 		get_cdrom_drive();
 
 	//-------- for load/save games --------//
 
