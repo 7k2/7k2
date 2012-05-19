@@ -593,7 +593,8 @@ void Tutor::run(int tutorId, int inGameCall)
 		}
 		else
 		{
-			str = "TUTORIAL\\STANDARD.TUT";
+			str = DIR_TUTORIAL;
+			str += "STANDARD.TUT";
 		//	str = "SAVE\\BANT_001\\AUTO.SAV";
 		//	str = "SAVE\\BANTHEGR\\AUTO.SAV";
 			if( m.is_file_exist(str) )
