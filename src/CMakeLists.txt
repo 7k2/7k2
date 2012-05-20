@@ -1,5 +1,4 @@
 set(7k2_SOURCES
-  EnglishToChinese.cpp
   dbglog.cpp
   oai_act.cpp
   oai_act2.cpp
