@@ -117,7 +117,6 @@
 #include <ot_talk.h>
 #include <ot_news.h>
 #include <ot_sedit.h>
-#include <windows.h>
 
 //------- define game version constant --------//
 

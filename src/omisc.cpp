@@ -21,7 +21,7 @@
 //Filename    : OMISC.CPP
 //Description : Object of Misc useful functions
 
-#include <windows.h>
+#include <all.h>
 #include <windowsx.h>
 #include <mmsystem.h>
 
@@ -30,7 +30,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include <all.h>
 #include <ostr.h>
 #include <omisc.h>
 #include <odir.h>

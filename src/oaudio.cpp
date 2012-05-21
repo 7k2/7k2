@@ -29,7 +29,6 @@
 #include <obox.h>
 #include <ovgalock.h>
 
-#include <windows.h>
 #include <windowsx.h>
 #include <commdlg.h>
 #include <string.h>

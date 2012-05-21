@@ -25,7 +25,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdarg.h>
-#include <windows.h>
 
 #include <osys.h>
 #include <obox.h>

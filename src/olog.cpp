@@ -27,7 +27,6 @@
 #include <stdio.h>
 #include <ofile.h>
 #include <all.h>
-#include <windows.h>
 
 
 // -------- begin of function Log::Log ----------//

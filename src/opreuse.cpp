@@ -22,7 +22,6 @@
 //Description	:	Implementation of class PathReuse
 //Owner			:	Juliet
  
-#include "windows.h"
 #include "all.h"
 #include "oterrain.h"
 #include "opreuse.h"

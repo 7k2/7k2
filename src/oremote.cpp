@@ -21,11 +21,10 @@
 //Filename    : OREMOTE.CPP
 //Description : Object Remote
 
-#include <windows.h>
+#include <all.h>
 #include <windowsx.h>
 #include <mmsystem.h>
 
-#include <all.h>
 #include <obox.h>
 #include <ovga.h>
 #include <ostr.h>
