@@ -108,7 +108,9 @@ void Error::internal(char* errMsg,const char* fileName,int lineNum)
 
 	//-------- display error message -------//
 
+#ifdef __WIN32_
 	OutputDebugString( strBuf );
+#endif
 
 	//if( vga.is_inited() )
 	//	box.msg( strBuf, 0 );
@@ -155,7 +157,9 @@ void Error::mem()
 
 	//-------- display error message -------//
 
+#ifdef __WIN32_
 	OutputDebugString( strBuf );
+#endif
 
 	//if( vga.is_inited() )
 	//	box.msg( strBuf, 0 );
@@ -208,7 +212,9 @@ void Error::msg( const char *format, ... )
 
 	//-------- display error message -------//
 
+#ifdef __WIN32_
 	OutputDebugString( strBuf );
+#endif
 
 	//if( vga.is_inited() )
 	//	box.msg( strBuf, 0 );
@@ -263,7 +269,9 @@ void Error::run( const char *format, ... )
 
 	//-------- display error message -------//
 
+#ifdef __WIN32_
 	OutputDebugString( strBuf );
+#endif
 
 	// if( vga.is_inited() )
 	//	box.msg( strBuf, 0 );
