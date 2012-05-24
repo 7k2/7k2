@@ -27,6 +27,9 @@
 #include <stdio.h>
 #include <ofile.h>
 #include <all.h>
+#include <dbglog.h>
+
+DBGLOG_DEFAULT_CHANNEL(Log);
 
 
 // -------- begin of function Log::Log ----------//
@@ -114,18 +117,24 @@ void Log::dump()
 // -------- begin of function Log::debug_log ----------//
 void Log::debug_log(const char *msg)
 {
+#ifdef WIN32
 	String s;
 	s = msg; 
 	s += "\r\n"; 
 	OutputDebugString(s);
+#endif
+	MSG("%s\n", msg);
 }
 
 
 void Log::debug_log(int n)
 {
+#ifdef WIN32
 	String s;
 	s = n; 
 	s += "\r\n"; 
 	OutputDebugString(s);
+#endif
+	MSG("%d\n", n);
 }
 // -------- end of function Log::debug_log ----------//
