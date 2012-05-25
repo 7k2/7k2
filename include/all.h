@@ -130,6 +130,8 @@ extern Error err;
 	#define mem_resize_keep_data(orgPtr, orgSize, newSize) \
 								  mem.resize_keep_data(orgPtr, orgSize, newSize, __FILE__, __LINE__)
 #else
+	#include <stdlib.h>
+
 	#define mem_add(memSize)            ((char*)malloc(memSize))
 	#define mem_add_clear(memSize)      ((char*)calloc(1,memSize))
 	#define mem_resize(orgPtr, newSize) ((char*)realloc(orgPtr,newSize))
