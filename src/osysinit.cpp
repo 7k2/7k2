@@ -270,14 +270,6 @@ int Sys::init_win()
 //
 int Sys::init_directx()
 {
-   DEBUG_LOG("Attempt audio.init()");
-   audio.init();
-   DEBUG_LOG(audio.wav_init_flag);
-   music.init();
-   se_ctrl.init();
-
-   //---------------------------------------//
-
    ShowCursor(FALSE);
 
 	DisplayModeInfo::set_current_display_mode(MODE_ID_DEFAULT);
@@ -332,6 +324,14 @@ int Sys::init_directx()
    vga_back.lock_buf();
    DEBUG_LOG("vga_back.lock_buf() finish");
 
+   //---------- Initialize Audio ----------//
+
+   DEBUG_LOG("Attempt audio.init()");
+   audio.init();
+   DEBUG_LOG(audio.wav_init_flag);
+   music.init();
+   se_ctrl.init();
+
    return TRUE;
 }
 //-------- End of function Sys::init_directx --------//
@@ -341,6 +341,14 @@ int Sys::init_directx()
 //
 void Sys::deinit_directx()
 {
+   se_ctrl.deinit();
+   music.deinit();
+   DEBUG_LOG("Attempt audio.deinit()");
+   audio.deinit();
+   DEBUG_LOG("audio.deinit() finish");
+
+   //------------------------------//
+
    if( vga_back.dd_buf && vga_back.buf_locked )
    {
       DEBUG_LOG("Attempt vga_back.unlock_buf()");
@@ -377,14 +385,6 @@ void Sys::deinit_directx()
    DEBUG_LOG("Attempt vga.deinit()");
    vga.deinit();
    DEBUG_LOG("vga.deinit() finish");
-
-   //------------------------------//
-
-   se_ctrl.deinit();
-   music.deinit();
-   DEBUG_LOG("Attempt audio.deinit()");
-   audio.deinit();
-   DEBUG_LOG("audio.deinit() finish");
 }
 //--------- End of function Sys::deinit_directx ---------//
 
