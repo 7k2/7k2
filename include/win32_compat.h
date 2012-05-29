@@ -72,6 +72,7 @@ inline char *ltoa(long num, char *str, int radix)
 }
 
 #define strcmpi(s1,s2) strcasecmp(s1,s2)
+#define stricmp(s1,s2) strcasecmp(s1,s2)
 #define strnicmp(s1,s2,len) strncasecmp(s1,s2,len)
 
 #define _rotr(value,shift) (value<<shift)|(value>>(32-shift))
