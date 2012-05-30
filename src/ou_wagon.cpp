@@ -132,7 +132,7 @@ void UnitWagon::set_pop(int p)
 	int oldMaxHitPoints = max_hit_points();
 	max_hit_points = unitInfo->hit_points * p / MAX_WAGON_POPULATION;
 	hit_points = hit_points * max_hit_points / oldMaxHitPoints;
-	hit_points = min(hit_points, max_hit_points);
+	hit_points = MIN(hit_points, max_hit_points);
 */
 }
 // ------ end of function UnitWagon::set_pop --------//

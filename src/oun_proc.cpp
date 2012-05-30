@@ -412,16 +412,16 @@ void Unit::update_loyalty()
 		if( nation_contribution > total_reward*2 )
 		{
 			int decLoyalty = (nation_contribution - total_reward*2)/2;
-			targetLoyalty -= min(50, decLoyalty);		// this affect 50 points at maximum
+			targetLoyalty -= MIN(50, decLoyalty);		// this affect 50 points at maximum
 		}
 
-		targetLoyalty = min( targetLoyalty, 100 );
-		target_loyalty = max( targetLoyalty, 0 );
+		targetLoyalty = MIN( targetLoyalty, 100 );
+		target_loyalty = MAX( targetLoyalty, 0 );
 
 		//----- if this unit is a spy, set its fake loyalty ------//
 
 		if( spy_recno )		// it should never go below the rebel level
-			target_loyalty = max( 30+sprite_recno%10, target_loyalty );
+			target_loyalty = MAX( 30+sprite_recno%10, target_loyalty );
 	}
 
 	//-------- if this is a soldier ---------//
@@ -470,8 +470,8 @@ void Unit::update_loyalty()
 			if( targetLoyalty < 0 )
 				targetLoyalty = 0;
 
-			targetLoyalty = min( targetLoyalty, 100 );
-			target_loyalty = max( targetLoyalty, 0 );
+			targetLoyalty = MIN( targetLoyalty, 100 );
+			target_loyalty = MAX( targetLoyalty, 0 );
 		}
 		else
 		{
@@ -487,7 +487,7 @@ void Unit::update_loyalty()
 	{
 		int incValue = (target_loyalty - loyalty)/10;
 
-		int newLoyalty = (int) loyalty + max(1, incValue);
+		int newLoyalty = (int) loyalty + MAX(1, incValue);
 
 		if( newLoyalty > target_loyalty )
 			newLoyalty = target_loyalty;
@@ -1147,9 +1147,9 @@ void Unit::change_loyalty(int changeAmt)
 {
    int newLoyalty = loyalty + changeAmt;
 
-   newLoyalty = max(0, newLoyalty);
+   newLoyalty = MAX(0, newLoyalty);
 
-   loyalty = min(100, newLoyalty);
+   loyalty = MIN(100, newLoyalty);
 }
 //----------- End of function Unit::change_loyalty -----------//
 
@@ -1281,10 +1281,10 @@ int Unit::can_spy_change_nation()
 	int xLoc1=cur_x_loc()-SPY_ENEMY_RANGE, yLoc1=cur_y_loc()-SPY_ENEMY_RANGE;
 	int xLoc2=cur_x_loc()+SPY_ENEMY_RANGE, yLoc2=cur_y_loc()+SPY_ENEMY_RANGE;
 
-	xLoc1 = max(0, xLoc1);
-	yLoc1 = max(0, yLoc1);
-	xLoc2 = min(MAX_WORLD_X_LOC-1, xLoc2);
-	yLoc2 = min(MAX_WORLD_Y_LOC-1, yLoc2);
+	xLoc1 = MAX(0, xLoc1);
+	yLoc1 = MAX(0, yLoc1);
+	xLoc2 = MIN(MAX_WORLD_X_LOC-1, xLoc2);
+	yLoc2 = MIN(MAX_WORLD_Y_LOC-1, yLoc2);
 
 	int       xLoc, yLoc;
 	int       unitRecno, trueNationRecno = true_nation_recno();
@@ -1460,10 +1460,10 @@ void Unit::explore_on_move(int curNextXLoc, int curNextYLoc, int newNextXLoc, in
 			int scoutRange = item.ability(ITEM_ABILITY_SCOUT_RANGE);
 			// do not call item.use_now()
 
-			int xLoc1 = max(0,newNextXLoc-EXPLORE_RANGE-scoutRange);
-			int yLoc1 = max(0,newNextYLoc-EXPLORE_RANGE-scoutRange);
-			int xLoc2 = min(MAX_WORLD_X_LOC-1, newNextXLoc+EXPLORE_RANGE+scoutRange);
-			int yLoc2 = min(MAX_WORLD_Y_LOC-1, newNextYLoc+EXPLORE_RANGE+scoutRange);
+			int xLoc1 = MAX(0,newNextXLoc-EXPLORE_RANGE-scoutRange);
+			int yLoc1 = MAX(0,newNextYLoc-EXPLORE_RANGE-scoutRange);
+			int xLoc2 = MIN(MAX_WORLD_X_LOC-1, newNextXLoc+EXPLORE_RANGE+scoutRange);
+			int yLoc2 = MIN(MAX_WORLD_Y_LOC-1, newNextYLoc+EXPLORE_RANGE+scoutRange);
 			int exploreWidth = scoutRange;
 
 			if( newNextYLoc < curNextYLoc )			// if move upwards, explore upper area
@@ -1486,10 +1486,10 @@ void Unit::explore_on_move(int curNextXLoc, int curNextYLoc, int newNextXLoc, in
 			&& !base_obj_array.is_deleted(cur_order.para)
 			&& base_obj_array[cur_order.para]->nation_recno == nation_array.player_recno )
 		{
-			int xLoc1 = max(0,newNextXLoc-2);
-			int yLoc1 = max(0,newNextYLoc-2);
-			int xLoc2 = min(MAX_WORLD_X_LOC-1, newNextXLoc+2);
-			int yLoc2 = min(MAX_WORLD_Y_LOC-1, newNextYLoc+2);
+			int xLoc1 = MAX(0,newNextXLoc-2);
+			int yLoc1 = MAX(0,newNextYLoc-2);
+			int xLoc2 = MIN(MAX_WORLD_X_LOC-1, newNextXLoc+2);
+			int yLoc2 = MIN(MAX_WORLD_Y_LOC-1, newNextYLoc+2);
 
 			int exploreWidth = 2;
 

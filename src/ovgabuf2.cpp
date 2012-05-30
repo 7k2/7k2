@@ -424,7 +424,7 @@ void VgaBuf::v_indicator(int x1, int y1, int x2, int y2, float curValue,
       int barHeight = (int) ((float)(y2-y1) * curValue / maxValue);
 
       int halfWidth = (x2-x1+1)/2-1;
-		int ty1        = max(y2-barHeight,y1); // when curValue>0, even the actual bar width < 1, one pixel will also be painted
+		int ty1        = MAX(y2-barHeight,y1); // when curValue>0, even the actual bar width < 1, one pixel will also be painted
 		int x;
 
 		indiColor+=halfWidth;

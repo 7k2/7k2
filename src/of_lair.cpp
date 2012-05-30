@@ -398,7 +398,7 @@ int FirmLair::grant_to_non_own_lair_cost()
 {
 	int grantCost = 1000 + obj_power() * 5;
 
-	return max(2000, grantCost);
+	return MAX(2000, grantCost);
 }
 //------ End of function FirmLair::grant_to_non_own_lair_cost -----//
 

@@ -144,7 +144,7 @@ int FirmMine::think_adjust_workforce()
 	{
 		int decCount = (needed_worker_count-optimizedWorker)/3;
 
-		set_needed_worker_count( needed_worker_count - max(1, decCount), COMMAND_AI );
+		set_needed_worker_count( needed_worker_count - MAX(1, decCount), COMMAND_AI );
 		return 1;
 	}
 

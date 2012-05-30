@@ -6676,10 +6676,10 @@ void UnitGroup::sandwich_formation(int direction)
 				temperoryY = tempOldY2;
 			}
 			//to fix those irritating bugs !!
-			temperoryX = max(0, temperoryX);
-			temperoryX = min(temperoryX, MAX_WORLD_X_LOC -1);
-			temperoryY = max(0, temperoryY);
-			temperoryY = min(temperoryY, MAX_WORLD_Y_LOC -1);
+			temperoryX = MAX(0, temperoryX);
+			temperoryX = MIN(temperoryX, MAX_WORLD_X_LOC -1);
+			temperoryY = MAX(0, temperoryY);
+			temperoryY = MIN(temperoryY, MAX_WORLD_Y_LOC -1);
 			rangeAttackUnits[ir]->move(temperoryX, temperoryY);	
 		}
 	}
@@ -6740,10 +6740,10 @@ void UnitGroup::sandwich_formation(int direction)
 				tempOldY2 += maximumSizeY;
 			}
 			//to fix those irritating bugs !
-			temperoryX = max(0, temperoryX);
-			temperoryX = min(temperoryX, MAX_WORLD_X_LOC -1);
-			temperoryY = max(0, temperoryY);
-			temperoryY = min(temperoryY, MAX_WORLD_Y_LOC -1);
+			temperoryX = MAX(0, temperoryX);
+			temperoryX = MIN(temperoryX, MAX_WORLD_X_LOC -1);
+			temperoryY = MAX(0, temperoryY);
+			temperoryY = MIN(temperoryY, MAX_WORLD_Y_LOC -1);
 			rangeAttackUnits[ir]->move(temperoryX, temperoryY);	
 		}
 	}

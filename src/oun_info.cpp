@@ -77,7 +77,7 @@ void Unit::set_combat_level(int combatLevel)
 	skill.set_combat_level(combatLevel);		// it will affect max_hit_points()
 
 	hit_points = hit_points * max_hit_points() / oldMaxHitPoints;
-	hit_points = min(hit_points, max_hit_points());
+	hit_points = MIN(hit_points, max_hit_points());
 
 	// --------- update can_guard_flag -------//
 
@@ -111,7 +111,7 @@ void Unit::set_combat_level(int combatLevel)
 	}
 	// ###### patch end Gilbert 17/2 #####//
 
-	cur_power = min(cur_power, max_power);
+	cur_power = MIN(cur_power, max_power);
 }
 //-------- End of function Unit::set_combat_level -----------//
 

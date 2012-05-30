@@ -522,10 +522,10 @@ int Nation::find_best_place_loc(short buildFirmId, short refXLoc, short refYLoc,
 
 	refX1 -= placeLocWidth/2;		// since we use loc_x1 as the building reference, we need to shift it so it will match the use of center_x in effective distance
 	refY1 -= placeLocHeight/2;
-	refX1 = max(0, refX1);
-	refY1 = max(0, refY1);
-	refX2 = min(MAX_WORLD_X_LOC-1, refX2);
-	refY2 = min(MAX_WORLD_Y_LOC-1, refY2);
+	refX1 = MAX(0, refX1);
+	refY1 = MAX(0, refY1);
+	refX2 = MIN(MAX_WORLD_X_LOC-1, refX2);
+	refY2 = MIN(MAX_WORLD_Y_LOC-1, refY2);
 
 	//-------- build a matrix on the refective area ---------//
 
@@ -556,7 +556,7 @@ int Nation::find_best_place_loc(short buildFirmId, short refXLoc, short refYLoc,
 			}
 			else
 			{
-				*refMatrixPtr = 10-max(t1, t2);		// it's negative value, and the value is lower for the outer ones
+				*refMatrixPtr = 10-MAX(t1, t2);		// it's negative value, and the value is lower for the outer ones
 			}
 		}
 	}
@@ -676,12 +676,12 @@ int Nation::find_best_place_loc(short buildFirmId, short refXLoc, short refYLoc,
 
 			if( weightAdd )
 			{
-				for( yLocB=max(refY1,refBY1) ; yLocB<=min(refY2,refBY2) ; yLocB++ )
+				for( yLocB=MAX(refY1,refBY1) ; yLocB<=MIN(refY2,refBY2) ; yLocB++ )
 				{
-					xLocB = max(refX1,refBX1);
+					xLocB = MAX(refX1,refBX1);
 					refMatrixPtr = refMatrix + (yLocB-refY1)*refWidth + (xLocB-refX1);
 
-					for( ; xLocB<=min(refX2,refBX2) ; xLocB++ )
+					for( ; xLocB<=MIN(refX2,refBX2) ; xLocB++ )
 					{
 						*refMatrixPtr++ += weightAdd;
 					}
@@ -692,12 +692,12 @@ int Nation::find_best_place_loc(short buildFirmId, short refXLoc, short refYLoc,
 
 			if( weightReduce )
 			{
-				for( yLocB=max(refY1,refCY1) ; yLocB<=min(refY2,refCY2) ; yLocB++ )
+				for( yLocB=MAX(refY1,refCY1) ; yLocB<=MIN(refY2,refCY2) ; yLocB++ )
 				{
-					xLocB = max(refX1,refCX1);
+					xLocB = MAX(refX1,refCX1);
 					refMatrixPtr = refMatrix + (yLocB-refY1)*refWidth + (xLocB-refX1);
 
-					for( ; xLocB<=min(refX2,refCX2) ; xLocB++ )
+					for( ; xLocB<=MIN(refX2,refCX2) ; xLocB++ )
 					{
 						*refMatrixPtr++ -= weightReduce;
 					}

@@ -45,16 +45,16 @@ BYTE min4( BYTE a, BYTE b, BYTE c, BYTE d)
 	if( a <= b )
 	{
 		if( c <= d )
-			return min( a, c );
+			return MIN( a, c );
 		else
-			return min( a, d );
+			return MIN( a, d );
 	}
 	else
 	{
 		if( c <= d )
-			return min( b, c );
+			return MIN( b, c );
 		else
-			return min( b, d );
+			return MIN( b, d );
 	}
 }
 
@@ -114,7 +114,7 @@ BYTE ExploredMask::make_mask_id( BYTE nwVisitLevel, BYTE nVisitLevel, BYTE neVis
 
 	// compare nw, n, w and c
 	// compare nw with c; n with w
-	// finally min(nw,c) and min(c,w)
+	// finally MIN(nw,c) and MIN(c,w)
 
 	// use nwVisitLevel to store the final result
 	if( cVisitLevel < nwVisitLevel )
@@ -226,8 +226,8 @@ BYTE ExploredMask::make_mask_id( int xLoc, int yLoc )
 			BYTE seVisitLevel = (sLocPtr+1)->visit_level;
 
 			nwMin = cVisitLevel;
-			neMin = min(cVisitLevel, eVisitLevel );
-			swMin = min(cVisitLevel, sVisitLevel );
+			neMin = MIN(cVisitLevel, eVisitLevel );
+			swMin = MIN(cVisitLevel, sVisitLevel );
 			seMin = min4(cVisitLevel, seVisitLevel, sVisitLevel, eVisitLevel);
 
 		}
@@ -236,10 +236,10 @@ BYTE ExploredMask::make_mask_id( int xLoc, int yLoc )
 			BYTE wVisitLevel = (cLocPtr-1)->visit_level;
 			BYTE swVisitLevel = (sLocPtr-1)->visit_level;
 
-			nwMin = min( cVisitLevel, wVisitLevel );
+			nwMin = MIN( cVisitLevel, wVisitLevel );
 			neMin = cVisitLevel;
 			swMin = min4( cVisitLevel, swVisitLevel, sVisitLevel, wVisitLevel );
-			seMin = min( cVisitLevel, sVisitLevel );
+			seMin = MIN( cVisitLevel, sVisitLevel );
 		}
 		else
 		{
@@ -248,8 +248,8 @@ BYTE ExploredMask::make_mask_id( int xLoc, int yLoc )
 			BYTE swVisitLevel = (sLocPtr-1)->visit_level;
 			BYTE seVisitLevel = (sLocPtr+1)->visit_level;
 
-			nwMin = min( cVisitLevel, wVisitLevel );
-			neMin = min( cVisitLevel, eVisitLevel );
+			nwMin = MIN( cVisitLevel, wVisitLevel );
+			neMin = MIN( cVisitLevel, eVisitLevel );
 			swMin = min4( cVisitLevel, swVisitLevel, sVisitLevel, wVisitLevel );
 			seMin = min4(cVisitLevel, seVisitLevel, sVisitLevel, eVisitLevel);
 		}
@@ -264,10 +264,10 @@ BYTE ExploredMask::make_mask_id( int xLoc, int yLoc )
 			BYTE neVisitLevel = (nLocPtr+1)->visit_level;
 			BYTE eVisitLevel = (cLocPtr+1)->visit_level;
 
-			nwMin = min( cVisitLevel, nVisitLevel );
+			nwMin = MIN( cVisitLevel, nVisitLevel );
 			neMin = min4( cVisitLevel, neVisitLevel, nVisitLevel, eVisitLevel );
 			swMin = cVisitLevel;
-			seMin = min( cVisitLevel, eVisitLevel );
+			seMin = MIN( cVisitLevel, eVisitLevel );
 		}
 		else if( xLoc >= MAX_WORLD_X_LOC-1 )
 		{
@@ -275,8 +275,8 @@ BYTE ExploredMask::make_mask_id( int xLoc, int yLoc )
 			BYTE wVisitLevel = (cLocPtr-1)->visit_level;
 
 			nwMin = min4( cVisitLevel, nwVisitLevel, nVisitLevel, wVisitLevel );
-			neMin = min( cVisitLevel, nVisitLevel );
-			swMin = min( cVisitLevel, wVisitLevel );
+			neMin = MIN( cVisitLevel, nVisitLevel );
+			swMin = MIN( cVisitLevel, wVisitLevel );
 			seMin = cVisitLevel;
 		}
 		else
@@ -288,8 +288,8 @@ BYTE ExploredMask::make_mask_id( int xLoc, int yLoc )
 
 			nwMin = min4( cVisitLevel, nwVisitLevel, nVisitLevel, wVisitLevel );
 			neMin = min4( cVisitLevel, neVisitLevel, nVisitLevel, eVisitLevel);
-			swMin = min( cVisitLevel, wVisitLevel );
-			seMin = min( cVisitLevel, eVisitLevel );
+			swMin = MIN( cVisitLevel, wVisitLevel );
+			seMin = MIN( cVisitLevel, eVisitLevel );
 		}
 	}
 	else
@@ -306,9 +306,9 @@ BYTE ExploredMask::make_mask_id( int xLoc, int yLoc )
 			BYTE eVisitLevel = (cLocPtr+1)->visit_level;
 			BYTE seVisitLevel = (sLocPtr+1)->visit_level;
 
-			nwMin = min( cVisitLevel, nVisitLevel );
+			nwMin = MIN( cVisitLevel, nVisitLevel );
 			neMin = min4( cVisitLevel, neVisitLevel, nVisitLevel, eVisitLevel );
-			swMin = min( cVisitLevel, sVisitLevel );
+			swMin = MIN( cVisitLevel, sVisitLevel );
 			seMin = min4( cVisitLevel, seVisitLevel, sVisitLevel, eVisitLevel );
 		}
 		else if( xLoc >= MAX_WORLD_X_LOC-1 )
@@ -318,9 +318,9 @@ BYTE ExploredMask::make_mask_id( int xLoc, int yLoc )
 			BYTE swVisitLevel = (sLocPtr-1)->visit_level;
 
 			nwMin = min4( cVisitLevel, nwVisitLevel, nVisitLevel, wVisitLevel );
-			neMin = min( cVisitLevel, nVisitLevel );
+			neMin = MIN( cVisitLevel, nVisitLevel );
 			swMin = min4( cVisitLevel, swVisitLevel, sVisitLevel, wVisitLevel );
-			seMin = min( cVisitLevel, sVisitLevel );
+			seMin = MIN( cVisitLevel, sVisitLevel );
 		}
 		else
 		{

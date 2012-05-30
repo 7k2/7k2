@@ -544,7 +544,7 @@ int Town::draw_detect_link_line(int actionDetect)
 					int movePop = 1;
 					if( rc == 2 )			// right click
 					{
-						movePop = min(population,MAX_WAGON_POPULATION);		// move 10 as if moving wagon
+						movePop = MIN(population,MAX_WAGON_POPULATION);		// move 10 as if moving wagon
 						if( movePop > MAX_TOWN_POPULATION - town_array[townRecno]->population )
 							movePop = MAX_TOWN_POPULATION - town_array[townRecno]->population;
 					}

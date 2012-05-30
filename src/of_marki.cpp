@@ -282,8 +282,8 @@ void FirmMarket::disp_market_info(int dispY1, int refreshFlag)
 			{
 				int coinCount = yearSales / COIN_PER_SALES;
 
-				coinCount = max( 1, coinCount );
-				coinCount = min( MAX_COIN, coinCount );
+				coinCount = MAX( 1, coinCount );
+				coinCount = MIN( MAX_COIN, coinCount );
 
 				char bitmapName[] = "DOLLAR00";
 				bitmapName[6] = '0' + coinCount / 10;
@@ -578,7 +578,7 @@ void FirmMarket::draw(int displayLayer)
 			//------- draw cargo on the firm bitmap buffer --------//
 
 			cargoCount = MAX_CARGO * (int)marketGoods->stock_qty/(int)max_stock_qty;
-			cargoCount = (marketGoods->stock_qty > 0) ? max(1, cargoCount) : 0;
+			cargoCount = (marketGoods->stock_qty > 0) ? MAX(1, cargoCount) : 0;
 
 			x = loc_x1*LOCATE_WIDTH + section_point_array[sectionId].x;
 			y = loc_y1*LOCATE_HEIGHT + section_point_array[sectionId].y;

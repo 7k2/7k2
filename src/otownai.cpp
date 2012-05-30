@@ -289,7 +289,7 @@ void Town::think_defense()
 
 		if( unitPtr->nation_recno == nation_recno )
 		{
-			curDis = max( abs(unitPtr->cur_x_loc()-enemyXLoc), abs(unitPtr->cur_y_loc()-enemyYLoc) );
+			curDis = MAX( abs(unitPtr->cur_x_loc()-enemyXLoc), abs(unitPtr->cur_y_loc()-enemyYLoc) );
 
 			if( curDis < minDis )
 			{
@@ -318,10 +318,10 @@ int Town::detect_enemy(int alertNum)
 {
 	//------ check if any enemies have entered in the city -----//
 
-	int xLoc1 = max(0, loc_x1-WALL_SPACE_LOC);
-	int yLoc1 = max(0, loc_y1-WALL_SPACE_LOC);
-	int xLoc2 = min(MAX_WORLD_X_LOC-1, loc_x2+WALL_SPACE_LOC);
-	int yLoc2 = min(MAX_WORLD_Y_LOC-1, loc_y2+WALL_SPACE_LOC);
+	int xLoc1 = MAX(0, loc_x1-WALL_SPACE_LOC);
+	int yLoc1 = MAX(0, loc_y1-WALL_SPACE_LOC);
+	int xLoc2 = MIN(MAX_WORLD_X_LOC-1, loc_x2+WALL_SPACE_LOC);
+	int yLoc2 = MIN(MAX_WORLD_Y_LOC-1, loc_y2+WALL_SPACE_LOC);
 	int xLoc, yLoc, unitRecno;
 	int enemyCount=0;
 	Location* locPtr;
@@ -423,7 +423,7 @@ void Town::think_collect_tax()
 	if( yearProfit < 0 )								// we are losing money now
 		minLoyalty -= (-yearProfit) / 100;		// more aggressive in collecting tax if we are losing a lot of money
 
-	minLoyalty = max( 55, minLoyalty );
+	minLoyalty = MAX( 55, minLoyalty );
 
 	//---------------------------------------------//
 
@@ -529,7 +529,7 @@ int Town::think_ai_migrate()
 
 	int migrateCount = ((int)loyalty - MIN_RECRUIT_LOYALTY) / 5;
 
-	migrateCount = min( migrateCount, jobless_population );
+	migrateCount = MIN( migrateCount, jobless_population );
 
 	if( migrateCount <= 0 )
 		return 0;
@@ -933,7 +933,7 @@ int Town::think_build_research()
 	int workerPercent = 50 + nationPtr->pref_inc_pop_by_growth;
 
 	if( nationPtr->ai_research_count==0 )		// if we haven't had any towers of science yet 
-		workerPercent = min(workerPercent, 100);
+		workerPercent = MIN(workerPercent, 100);
 
 	if( jobless_population < MAX_WORKER * workerPercent / 200 ||
 		 nationPtr->total_jobless_population < MAX_WORKER * 2 * workerPercent / 200 )
@@ -970,7 +970,7 @@ int Town::think_build_research()
 
 	int maxResearch = 2 * (50+nationPtr->pref_use_weapon) / 50;
 
-	maxResearch = min(nationPtr->ai_town_count, maxResearch);
+	maxResearch = MIN(nationPtr->ai_town_count, maxResearch);
 
 	if( nationPtr->ai_research_count >= maxResearch )
 		return 0;
@@ -1120,7 +1120,7 @@ int Town::think_build_war_factory()
 
 	int maxWarFactory = (1+totalWeaponTechLevel) * nationPtr->pref_use_weapon / 100;
 
-	maxWarFactory = min(nationPtr->ai_town_count, maxWarFactory);
+	maxWarFactory = MIN(nationPtr->ai_town_count, maxWarFactory);
 
 	if( nationPtr->ai_war_count >= maxWarFactory )
 		return 0;
@@ -1422,10 +1422,10 @@ int Town::think_attack_nearby_enemy()
 	int xLoc2 = loc_x2 + SCAN_X_RANGE;
 	int yLoc2 = loc_y2 + SCAN_Y_RANGE;
 
-	xLoc1 = max( xLoc1, 0 );
-	yLoc1 = max( yLoc1, 0 );
-	xLoc2 = min( xLoc2, MAX_WORLD_X_LOC-1 );
-	yLoc2 = min( yLoc2, MAX_WORLD_Y_LOC-1 );
+	xLoc1 = MAX( xLoc1, 0 );
+	yLoc1 = MAX( yLoc1, 0 );
+	xLoc2 = MIN( xLoc2, MAX_WORLD_X_LOC-1 );
+	yLoc2 = MIN( yLoc2, MAX_WORLD_Y_LOC-1 );
 
 	//------------------------------------------//
 
@@ -1488,7 +1488,7 @@ int Town::think_attack_nearby_enemy()
 
 					int firmCombatLevel = firmPtr->total_combat_level();
 
-					enemyCombatLevel += max(50, firmCombatLevel);		// minimum 50 points for each firm 
+					enemyCombatLevel += MAX(50, firmCombatLevel);		// minimum 50 points for each firm
 
 					if( enemyXLoc == -1 || m.random(5)==0 )
 					{
@@ -1762,11 +1762,11 @@ int Town::think_scout()
 	else
 		destY = center_y - 50 - m.random(50);
 
-	destX = max(0, destX);
-	destX = min(MAX_WORLD_X_LOC-1, destX);
+	destX = MAX(0, destX);
+	destX = MIN(MAX_WORLD_X_LOC-1, destX);
 
-	destY = max(0, destY);
-	destY = min(MAX_WORLD_Y_LOC-1, destY);
+	destY = MAX(0, destY);
+	destY = MIN(MAX_WORLD_Y_LOC-1, destY);
 
 	ownNation->add_action( destX, destY, loc_x1, loc_y1, ACTION_AI_SCOUT, 0);
 

@@ -110,18 +110,18 @@ void FirmOffensive2::put_info(int refreshFlag)
 		y1 += firmBitmap->offset_y;
 		int x2 = x1 + bitmapPtr->get_width() -1;
 		int y2 = y1 + bitmapPtr->get_height() -1;
-		int srcX1 = max(x1, INFO_X1+15)-x1;
+		int srcX1 = MAX(x1, INFO_X1+15)-x1;
 		int srcY1 = 0;
 
 		if (config.building_size == 1)	
 		{
-			srcX2 = min(x2, INFO_X2)-x1;
-			srcY2 = min(y2, INFO_Y1+227)-y1;
+			srcX2 = MIN(x2, INFO_X2)-x1;
+			srcY2 = MIN(y2, INFO_Y1+227)-y1;
 		}
 		else
 		{
-			srcX2 = min(x2, INFO_X2)-x1;
-			srcY2 = min(y2, INFO_Y2)-y1;
+			srcX2 = MIN(x2, INFO_X2)-x1;
+			srcY2 = MIN(y2, INFO_Y2)-y1;
 		}
 
 		vga.active_buf->put_bitmap_area_trans_remap_decompress(x1, y1, (char *) bitmapPtr, srcX1, srcY1, srcX2, srcY2, colorRemapTable);
@@ -139,10 +139,10 @@ void FirmOffensive2::put_info(int refreshFlag)
 		int y1 = INFO_Y1 +142 +firmBitmap->offset_y;
 		int x2 = x1 + bitmapPtr->get_width() -1;
 		int y2 = y1 + bitmapPtr->get_height() -1;
-		int srcX1 = max(x1, INFO_X1+15)-x1;
+		int srcX1 = MAX(x1, INFO_X1+15)-x1;
 		int srcY1 = 0;
-		int srcX2 = min(x2, INFO_X2)-x1;
-		int srcY2 = min(y2, INFO_Y2)-y1;
+		int srcX2 = MIN(x2, INFO_X2)-x1;
+		int srcY2 = MIN(y2, INFO_Y2)-y1;
 
 		vga.active_buf->put_bitmap_area_trans_remap_decompress(x1, y1, (char *) bitmapPtr, srcX1, srcY1, srcX2, srcY2, colorRemapTable);
 

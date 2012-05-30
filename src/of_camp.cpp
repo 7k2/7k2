@@ -489,7 +489,7 @@ void FirmCamp::advanced_train()
 		if( soldierPtr->combat_level() < overseerSkill
 			&& soldierPtr->combat_level() < MAX_COMBAT_TRAIN )
 		{
-			incValue = max(20, overseerSkill - (int)soldierPtr->combat_level())
+			incValue = MAX(20, overseerSkill - (int)soldierPtr->combat_level())
 						  * soldierPtr->hit_points / soldierPtr->max_hit_points()
 						  * (100+soldierPtr->skill.skill_potential*2+overseerUnit->item.ability(ITEM_ABILITY_TRAIN)) / 100;
 
@@ -528,7 +528,7 @@ void FirmCamp::advanced_train()
 		if( soldierPtr->skill.skill_potential > 0
 			 && soldierPtr->skill_level() < MAX_SKILL_TRAIN )
 		{
-			incValue = (int) max(50, overseerSkill-soldierPtr->skill_level())
+			incValue = (int) MAX(50, overseerSkill-soldierPtr->skill_level())
 						  * soldierPtr->hit_points / soldierPtr->max_hit_points()
 						  * soldierPtr->skill.skill_potential*2 / 100;
 
@@ -1011,7 +1011,7 @@ void FirmCamp::update_loyalty()
 		{
 			int incValue = (targetLoyalty - soldierPtr->loyalty)/10;
 
-			int newLoyalty = (int) soldierPtr->loyalty + max(1, incValue);
+			int newLoyalty = (int) soldierPtr->loyalty + MAX(1, incValue);
 
 			if( newLoyalty > targetLoyalty )
 				newLoyalty = targetLoyalty;

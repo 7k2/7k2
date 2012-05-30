@@ -1283,10 +1283,10 @@ bool FirmMonsterFortress::can_build_fortress( int unitRecno, int xLoc1, int yLoc
 		return 0;
 
 	int xLoc3, yLoc3, xLoc4, yLoc4;
-	xLoc3 = max( xLoc1-INTER_PLACE_SPACE, 0 );
-	yLoc3 = max( yLoc1-INTER_PLACE_SPACE, 0 );
-	xLoc4 = min( xLoc2+INTER_PLACE_SPACE, MAX_WORLD_X_LOC-1 );
-	yLoc4 = min( yLoc2+INTER_PLACE_SPACE, MAX_WORLD_Y_LOC-1 );
+	xLoc3 = MAX( xLoc1-INTER_PLACE_SPACE, 0 );
+	yLoc3 = MAX( yLoc1-INTER_PLACE_SPACE, 0 );
+	xLoc4 = MIN( xLoc2+INTER_PLACE_SPACE, MAX_WORLD_X_LOC-1 );
+	yLoc4 = MIN( yLoc2+INTER_PLACE_SPACE, MAX_WORLD_Y_LOC-1 );
 
 	//-----------------------------------------//
 

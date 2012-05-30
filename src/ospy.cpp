@@ -1029,7 +1029,7 @@ void Spy::update_loyalty()
 	if( race_id == ownNation->race_id )
 		targetLoyalty += 20;
 
-	targetLoyalty = min( targetLoyalty, 100 );
+	targetLoyalty = MIN( targetLoyalty, 100 );
 
 	if( spy_loyalty > targetLoyalty )		
 		spy_loyalty--;
@@ -1046,9 +1046,9 @@ void Spy::change_loyalty(int changeAmt)
 {
 	int newLoyalty = spy_loyalty + changeAmt;
 
-	newLoyalty = max(0, newLoyalty);
+	newLoyalty = MAX(0, newLoyalty);
 
-	spy_loyalty = min(100, newLoyalty);
+	spy_loyalty = MIN(100, newLoyalty);
 }
 //---------- End of function Spy::change_loyalty ----------//
 
@@ -1353,7 +1353,7 @@ int Spy::capture_firm()
 				//--- if the soldier obey, update its loyalty ---//
 
 				if( obeyFlag )
-					soldierPtr->loyalty = max(UNIT_BETRAY_LOYALTY, obeyChance/2);
+					soldierPtr->loyalty = MAX(UNIT_BETRAY_LOYALTY, obeyChance/2);
 
 				//--- if the soldier does not obey, it is mobilized and attack the base ---//
 
@@ -2124,7 +2124,7 @@ void Spy::stop_camouflage(char remoteAction)
 	int maxCamouflagePower = MAX_CAMOUFLAGE_POWER(spy_skill);
 
 	camouflage_power += camouflage_count;		// recharge unused camouflage_count
-	camouflage_power = min(camouflage_power, maxCamouflagePower);
+	camouflage_power = MIN(camouflage_power, maxCamouflagePower);
 	camouflage_count = 0;
 
 	// ------ explore area if mobile ---------//
@@ -2295,7 +2295,7 @@ int Spy::get_steal_rating(int targetNationRecno)
 			if( otherSpy->true_nation_recno == targetNationRecno )
 			{
 				sumResist += otherSpy->spy_skill;
-				maxResist = max( otherSpy->spy_skill, maxResist );
+				maxResist = MAX( otherSpy->spy_skill, maxResist );
 				++resistCount;
 			}
 			if( otherSpy->true_nation_recno == true_nation_recno )
@@ -2322,8 +2322,8 @@ int Spy::get_steal_rating(int targetNationRecno)
 		chance -= 16 + sumResist / 8 + maxResist / 8 - sumAssist / 10;
 	// ##### patch end Gilbert 13/10 ######//
 
-	chance = max(chance, 0);
-	chance = min(chance, 100);
+	chance = MAX(chance, 0);
+	chance = MIN(chance, 100);
 	return chance;
 }
 // -------- end of function Spy::get_steal_rating --------//
@@ -2447,7 +2447,7 @@ int Spy::get_incident_rating(int targetNationRecno, int involvedNationRecno)
 				|| otherSpy->true_nation_recno == involvedNationRecno )
 			{
 				sumResist += otherSpy->spy_skill;
-				maxResist = max( otherSpy->spy_skill, maxResist );
+				maxResist = MAX( otherSpy->spy_skill, maxResist );
 				++resistCount;
 			}
 			if( otherSpy->true_nation_recno == true_nation_recno )
@@ -2474,8 +2474,8 @@ int Spy::get_incident_rating(int targetNationRecno, int involvedNationRecno)
 		chance -= 16 + sumResist / 8 + maxResist / 8 - sumAssist / 10;
 	// ##### patch end Gilbert 13/10 ######//
 
-	chance = max(chance, 0);
-	chance = min(chance, 100);
+	chance = MAX(chance, 0);
+	chance = MIN(chance, 100);
 	return chance;
 }
 // -------- end of function Spy::get_incident_rating --------//

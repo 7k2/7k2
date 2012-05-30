@@ -212,8 +212,8 @@ int FirmAnimal::hire(short recNo)
 //	if( race_res.is_same_race(unitPtr->race_id, nationPtr->race_id) )
 //		unitLoyalty += 20;
 
-	unitLoyalty = max( 40, unitLoyalty );
-	unitLoyalty = min( 100, unitLoyalty );
+	unitLoyalty = MAX( 40, unitLoyalty );
+	unitLoyalty = MIN( 100, unitLoyalty );
 
 	unitPtr->loyalty = unitLoyalty;
 
@@ -353,7 +353,7 @@ void FirmAnimal::update_add_hire_list()
 	{
 		if( tech_res[ animalTechIdArray[i] ]->get_nation_tech_level(nation_recno) )
 		{
-			if( m.random( min(animal_unit_count,3) )==0 )
+			if( m.random( MIN(animal_unit_count,3) )==0 )
 			{
 				add_animal_unit( animal_unit_id[i] );
 				// ###### begin Gilbert 29/12 ####//
@@ -406,7 +406,7 @@ void FirmAnimal::update_add_hire_list()
 			else					// 25/31 to get a level 1
 				addAnimalLevel = 1;
 
-			addAnimalLevel = min( addAnimalLevel, maxTechLevel );
+			addAnimalLevel = MIN( addAnimalLevel, maxTechLevel );
 		}
 
 		add_animal_unit( addUnitId, addAnimalLevel );

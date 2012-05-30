@@ -282,9 +282,9 @@ void Town::set_world_matrix()
 	
 	// ------ clear obstacle -------//
 
-	for( yLoc=max(loc_y1-INTER_PLACE_SPACE, 0); yLoc<=loc_y2+INTER_PLACE_SPACE && yLoc<world.max_y_loc; yLoc ++ )
+	for( yLoc=MAX(loc_y1-INTER_PLACE_SPACE, 0); yLoc<=loc_y2+INTER_PLACE_SPACE && yLoc<world.max_y_loc; yLoc ++ )
 	{
-		for( xLoc=max(loc_x1-INTER_PLACE_SPACE, 0); xLoc<=loc_x2+INTER_PLACE_SPACE && xLoc<world.max_x_loc; xLoc ++ )
+		for( xLoc=MAX(loc_x1-INTER_PLACE_SPACE, 0); xLoc<=loc_x2+INTER_PLACE_SPACE && xLoc<world.max_x_loc; xLoc ++ )
 		{
 			world.get_loc(xLoc, yLoc)->clear_obstacle();
 		}
@@ -797,7 +797,7 @@ float Town::tribute_to_lair(int firmRecno, int lairCount)
 		int commanderSkill = unit_array[firmPtr->cast_to_FirmLair()->overseer_recno]->skill_level();
 
 		return (float) population * MONSTER_TOWN_TRIBUTE_PER_UNIT / lairCount *
-				 (100 + min(commanderSkill,100)) / 200;
+				 (100 + MIN(commanderSkill,100)) / 200;
 	}
 
 	return 0;
@@ -1269,7 +1269,7 @@ int Town::camp_influence(int nationRecno, int raceId, int skillLevel)
 	if( raceId <= 0 )		// only human commanders have influence
 		return 0;
 
-	int thisInfluence = min(100,skillLevel) / 2;			// 50% of the leadership, the maximum effective skill is 100
+	int thisInfluence = MIN(100,skillLevel) / 2;			// 50% of the leadership, the maximum effective skill is 100
 
 	if( race_res.is_same_race(race_id, raceId) )
 		thisInfluence += thisInfluence/3;		// 33% bonus if commander's race is the same as the town's.
@@ -1278,9 +1278,9 @@ int Town::camp_influence(int nationRecno, int raceId, int skillLevel)
 
 	thisInfluence += (int) nationPtr->reputation/2;
 
-	thisInfluence = min(100, thisInfluence);
+	thisInfluence = MIN(100, thisInfluence);
 
-	return max(0, thisInfluence);
+	return MAX(0, thisInfluence);
 }
 //------- End of function Town::camp_influence ------//
 
@@ -1360,7 +1360,7 @@ void Town::collect_tax(char remoteAction)
 
 	int loyaltyDecrease = COLLECT_TAX_LOYALTY_DECREASE + accumulated_collect_tax_penalty/5;
 
-	loyaltyDecrease = min(loyaltyDecrease, 20);
+	loyaltyDecrease = MIN(loyaltyDecrease, 20);
 
 	// ###### begin Gilbert 19/11 #######//
 	// ---- effect of god -------//
@@ -1429,7 +1429,7 @@ void Town::reward(char remoteAction)
 
 	int loyaltyIncrease = TOWN_REWARD_LOYALTY_INCREASE - accumulated_reward_penalty/5;
 
-	loyaltyIncrease = max(3, loyaltyIncrease);
+	loyaltyIncrease = MAX(3, loyaltyIncrease);
 
 	accumulated_reward_penalty += 10;
 
@@ -1721,8 +1721,8 @@ int Town::create_rebel_unit(int isLeader)
 		int combatLevel 	  = 10 + population*2 + m.random(10);		// the higher the population is, the higher the combat level will be
 		int leadershipLevel = 10 + population   + m.random(10);		// the higher the population is, the higher the combat level will be
 
-		unitPtr->set_combat_level( min(combatLevel, 100) );
-		unitPtr->skill.set_skill_level( min(leadershipLevel, 100) );
+		unitPtr->set_combat_level( MIN(combatLevel, 100) );
+		unitPtr->skill.set_skill_level( MIN(leadershipLevel, 100) );
 	}
 	else
 	{
@@ -1860,7 +1860,7 @@ void Town::being_attack_hit(BaseObj* attackerObj, float damagePoint)
 				else
 					loyaltyDec = (float) 10 / population;
 
-				loyaltyDec = min( loyaltyDec, (float) 1 );
+				loyaltyDec = MIN( loyaltyDec, (float) 1 );
 
 				change_loyalty( -loyaltyDec * damagePoint / (20/ATTACK_SLOW_DOWN) );
 
@@ -1892,7 +1892,7 @@ void Town::being_attack_hit(BaseObj* attackerObj, float damagePoint)
 				//---- decrease resistance of all races in the town ----//
 
 				loyaltyDec = (float) 10 / population;		// decrease faster for independent towns than towns belonging to nations
-				loyaltyDec = min( loyaltyDec, (float) 1 );
+				loyaltyDec = MIN( loyaltyDec, (float) 1 );
 
 				resistance_array[attackerNationRecno-1] -= loyaltyDec * damagePoint / (20/ATTACK_SLOW_DOWN);
 
@@ -2077,7 +2077,7 @@ void Town::distribute_demand()
 				{
 					//--- towns always try to buy goods from their own markets first ---//
 
-					ownShareDemand = min(townDemand, marketGoodsInfo->total_own_supply);
+					ownShareDemand = MIN(townDemand, marketGoodsInfo->total_own_supply);
 
 					if( firmMarket->nation_recno == nation_recno )
 					{
@@ -2241,7 +2241,7 @@ int Town::grant_to_non_own_town(int grantNationRecno, int remoteAction)
 
 	int resistanceDec = IND_TOWN_GRANT_RESISTANCE_DECREASE - accumulated_enemy_grant_penalty/5;
 
-	resistanceDec = max(3, resistanceDec);
+	resistanceDec = MAX(3, resistanceDec);
 
 	accumulated_enemy_grant_penalty += 10;
 

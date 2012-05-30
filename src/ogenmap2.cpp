@@ -111,7 +111,7 @@ static void plasma(int genMethod, int grainFactor, int randomSeed)
       {
          k = k * 2;
 
-         if (k  >(int)max(MAX_WORLD_X_LOC-1,MAX_WORLD_Y_LOC-1))
+         if (k  >(int)MAX(MAX_WORLD_X_LOC-1,MAX_WORLD_Y_LOC-1))
             break;
 
          i++;
@@ -216,7 +216,7 @@ static int new_sub_divide(int x1,int y1,int x2,int y2, int recur)
          ny   = suby.v[suby.t-2];
          suby.r[suby.t] = suby.r[suby.t-1];
          y    = suby.v[suby.t-1]   = (ny1 + ny) >> 1;
-         suby.r[suby.t-1]   = (int)max(suby.r[suby.t], suby.r[suby.t-2])+1;
+         suby.r[suby.t-1]   = (int)MAX(suby.r[suby.t], suby.r[suby.t-2])+1;
       }
 
       subx.t = 2;
@@ -235,7 +235,7 @@ static int new_sub_divide(int x1,int y1,int x2,int y2, int recur)
             nx   = subx.v[subx.t-2];
             subx.r[subx.t] = subx.r[subx.t-1];
             x    = subx.v[subx.t-1]   = (nx1 + nx) >> 1;
-            subx.r[subx.t-1]   = (int)max(subx.r[subx.t],
+            subx.r[subx.t-1]   = (int)MAX(subx.r[subx.t],
                 subx.r[subx.t-2])+1;
          }
 

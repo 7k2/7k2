@@ -150,10 +150,10 @@ void Blob2D::resize(short destLeft, short destTop, short destWidth, short destHe
 		// general resize, new another buffer
 		// copy range, intersection of two area :
 		short copyLeft, copyTop, copyWidth, copyHeight;
-		copyLeft = max(destLeft, left_edge);
-		copyTop = max(destTop, top_edge);
-		copyWidth = min(destLeft + destWidth, left_edge + width) - copyLeft;
-		copyHeight = min(destTop + destHeight, top_edge + height) - copyTop;
+		copyLeft = MAX(destLeft, left_edge);
+		copyTop = MAX(destTop, top_edge);
+		copyWidth = MIN(destLeft + destWidth, left_edge + width) - copyLeft;
+		copyHeight = MIN(destTop + destHeight, top_edge + height) - copyTop;
 
 		{
 			size_t siz = Bitmap::size(destWidth, destHeight);

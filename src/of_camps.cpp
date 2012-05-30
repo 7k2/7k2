@@ -397,8 +397,8 @@ void FirmCamp::detect_spy_menu()
 				if( !config.show_debug_info )		// to show the actual value, not bounded to [0,100]
 				{
 					// ###### begin Gilbert 27/1 ######//
-					spy_action_chance = max( spy_action_chance, 0 );
-					spy_action_chance = min( spy_action_chance, 100 );
+					spy_action_chance = MAX( spy_action_chance, 0 );
+					spy_action_chance = MIN( spy_action_chance, 100 );
 					// ###### end Gilbert 27/1 ######//
 				}
 				se_ctrl.immediate_sound("TURN_ON");

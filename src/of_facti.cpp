@@ -161,7 +161,7 @@ void FirmFactory::draw(int displayLayer)
 	{
 		int cargoCount = MAX_CARGO * (int)stock_qty / (int)max_stock_qty;
 
-		// draw_cargo( max(1,cargoCount), raw_res.small_product_icon(product_raw_id) );
+		// draw_cargo( MAX(1,cargoCount), raw_res.small_product_icon(product_raw_id) );
 	}
 }
 //--------- End of function FirmFactory::draw -----------//

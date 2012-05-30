@@ -2338,7 +2338,7 @@ int World::read_file(File* filePtr)
 		{
 			// verify loc_matrix and corner_matrix
 
-			Blob tempLoc( max(max_x_loc*max_y_loc*sizeof(Location), (max_x_loc+1)*(max_y_loc+1)*sizeof(Corner)) );
+			Blob tempLoc( MAX(max_x_loc*max_y_loc*sizeof(Location), (max_x_loc+1)*(max_y_loc+1)*sizeof(Corner)) );
 			// save for comparision
 			if( filePtr->file_read(tempLoc.p(), max_x_loc*max_y_loc*sizeof(Location)) )
 			{

@@ -355,12 +355,12 @@ int Campaign::create_nation_town(int nationRecno, int xLoc, int yLoc,
 	if( has_situation )
 	{
 		initLoyalty = cur_situation.town_loyalty_level + m.random(20);
-		initLoyalty = min(100, initLoyalty);
+		initLoyalty = MIN(100, initLoyalty);
 
 		initPop = MAX_TOWN_POPULATION * cur_situation.population_level / 100 + m.random(20) - 10;
 
-		initPop = max( initPop, 10 );
-		initPop = min( initPop, MAX_TOWN_POPULATION );
+		initPop = MAX( initPop, 10 );
+		initPop = MIN( initPop, MAX_TOWN_POPULATION );
 	}
 	else
 	{
@@ -402,7 +402,7 @@ int Campaign::create_nation_town(int nationRecno, int xLoc, int yLoc,
 	{
 		int newLoyalty = cur_situation.unit_loyalty_level + m.random(30);
 		int maxLoyalty = 90 + m.random(10);		// don't set to 100 too often
-		unit_array[unitRecno]->loyalty = min( newLoyalty, maxLoyalty );
+		unit_array[unitRecno]->loyalty = MIN( newLoyalty, maxLoyalty );
 	}
 
 	if( !nationPtr->king_unit_recno )
@@ -429,8 +429,8 @@ int Campaign::create_nation_town(int nationRecno, int xLoc, int yLoc,
 		{
 			thisCombatLevel = combatLevel + m.random(20) - 10;
 
-			thisCombatLevel = min(thisCombatLevel, 100);
-			thisCombatLevel = max(thisCombatLevel, 0);
+			thisCombatLevel = MIN(thisCombatLevel, 100);
+			thisCombatLevel = MAX(thisCombatLevel, 0);
 		}
 		else
 		{
@@ -445,7 +445,7 @@ int Campaign::create_nation_town(int nationRecno, int xLoc, int yLoc,
 		if( has_situation )
 		{
 			int newLoyalty = cur_situation.unit_loyalty_level + m.random(20);
-			soldierPtr->loyalty = min( newLoyalty, 100 );
+			soldierPtr->loyalty = MIN( newLoyalty, 100 );
 		}
 	}
 
@@ -524,7 +524,7 @@ int Campaign::create_monster_lair(int xLoc, int yLoc, int nationRecno, int soldi
 	if( has_situation )
 	{
 		int newLoyalty = cur_situation.unit_loyalty_level + m.random(30);
-		unit_array[unitRecno]->loyalty = min( newLoyalty, 100 );
+		unit_array[unitRecno]->loyalty = MIN( newLoyalty, 100 );
 	}
 
 	if( !nationPtr->king_unit_recno )
@@ -540,8 +540,8 @@ int Campaign::create_monster_lair(int xLoc, int yLoc, int nationRecno, int soldi
 
 	soldierCount = soldierCount * stdMonsterHitPoint / unitInfo->hit_points;
 
-	soldierCount = min(soldierCount, MAX_SOLDIER);
-	soldierCount = max(soldierCount, 1);
+	soldierCount = MIN(soldierCount, MAX_SOLDIER);
+	soldierCount = MAX(soldierCount, 1);
 
 	//------ create Fryhtan soldiers in the fort ------//
 
@@ -555,13 +555,13 @@ int Campaign::create_monster_lair(int xLoc, int yLoc, int nationRecno, int soldi
 	{
 		int combatLevel = avgCombatLevel + m.random(30) - 15;
 
-		combatLevel = min( combatLevel, 100 );
-		combatLevel = max( combatLevel, 20  );
+		combatLevel = MIN( combatLevel, 100 );
+		combatLevel = MAX( combatLevel, 20  );
 
 		int skillLevel = avgCombatLevel + m.random(20) - 10;
 
-		skillLevel = min( skillLevel, 100 );
-		skillLevel = max( skillLevel, 20  );
+		skillLevel = MIN( skillLevel, 100 );
+		skillLevel = MAX( skillLevel, 20  );
 
 		soldierPtr->skill.set_combat_level( combatLevel );
 		soldierPtr->skill.set_skill_level( skillLevel );
@@ -571,7 +571,7 @@ int Campaign::create_monster_lair(int xLoc, int yLoc, int nationRecno, int soldi
 		if( has_situation )
 		{
 			int newLoyalty = cur_situation.unit_loyalty_level + m.random(20);
-			soldierPtr->loyalty = min( newLoyalty, 100 );
+			soldierPtr->loyalty = MIN( newLoyalty, 100 );
 		}
 	}
 
@@ -1008,13 +1008,13 @@ void Campaign::create_troop2(int nationRecno, int totalUnit, int avgCombatLevel,
 		if( xLoc==2 || xLoc==MAX_WORLD_X_LOC-3 )
 		{
 			yLoc += 5;
-			yLoc = min( MAX_WORLD_Y_LOC-1, yLoc );
+			yLoc = MIN( MAX_WORLD_Y_LOC-1, yLoc );
 		}
 
 		if( yLoc==2 || yLoc==MAX_WORLD_Y_LOC-3 )
 		{
 			xLoc += 5;
-			xLoc = min( MAX_WORLD_X_LOC-1, xLoc );
+			xLoc = MIN( MAX_WORLD_X_LOC-1, xLoc );
 		}
 	}
 
@@ -1052,8 +1052,8 @@ void Campaign::create_troop2(int nationRecno, int totalUnit, int avgCombatLevel,
 
 			//----------------------------------//
 
-			combatLevel = min(combatLevel, 100);
-			combatLevel = max(combatLevel, 20);
+			combatLevel = MIN(combatLevel, 100);
+			combatLevel = MAX(combatLevel, 20);
 
 			unitPtr->set_combat_level(combatLevel);
 		}
@@ -1109,13 +1109,13 @@ void Campaign::create_wagon(int nationRecno, int totalPop, char useLastLocation)
 		if( xLoc==2 || xLoc==MAX_WORLD_X_LOC-3 )
 		{
 			yLoc += 2;
-			yLoc = min( MAX_WORLD_Y_LOC-1, yLoc );
+			yLoc = MIN( MAX_WORLD_Y_LOC-1, yLoc );
 		}
 
 		if( yLoc==2 || yLoc==MAX_WORLD_Y_LOC-3 )
 		{
 			xLoc += 2;
-			xLoc = min( MAX_WORLD_X_LOC-1, xLoc );
+			xLoc = MIN( MAX_WORLD_X_LOC-1, xLoc );
 		}
 	}
 
@@ -1147,7 +1147,7 @@ void Campaign::create_wagon(int nationRecno, int totalPop, char useLastLocation)
 int Campaign::create_unit_group(int nationRecno, int addCount, int unitId,
 										  int adjustCount, int whichEdge, int xLoc, int yLoc)
 {
-	addCount = min( addCount, MAX_TEAM_MEMBER );
+	addCount = MIN( addCount, MAX_TEAM_MEMBER );
 
 	//-------- determine the unit type to be created --------//
 
@@ -1172,8 +1172,8 @@ int Campaign::create_unit_group(int nationRecno, int addCount, int unitId,
 		if( unitInfo->is_monster() )
 			addCount = addCount * stdMonsterHitPoint / unitInfo->hit_points;
 
-		addCount = min(addCount, MAX_TEAM_MEMBER);
-		addCount = max(addCount, 1);
+		addCount = MIN(addCount, MAX_TEAM_MEMBER);
+		addCount = MAX(addCount, 1);
 	}
 
 	//--- determine which edge of the map the reinforcement comes from ---//
@@ -1572,7 +1572,7 @@ void Campaign::monster_reinforcement(int nationRecno, int whichEdge)
 
 	int createCount = 3 + campaign_difficulty*3 + m.random(5);
 
-	createCount = min(createCount, monster_reinforcement_count);
+	createCount = MIN(createCount, monster_reinforcement_count);
 
 	int createdCount = create_unit_group( nationRecno, createCount, 0, 0, whichEdge );
 
@@ -1631,7 +1631,7 @@ void Campaign::monster_reinforcement_to_lair(int whichEdge)
 
 	int createCount = MAX_SOLDIER - firmLair->soldier_count - m.random(5);
 
-	createCount = min(createCount, monster_reinforcement_count);
+	createCount = MIN(createCount, monster_reinforcement_count);
 
 	int createdCount = create_unit_group( firmLair->nation_recno, createCount,
 							 0, 0, whichEdge );
@@ -1807,7 +1807,7 @@ int Campaign::create_monster_special_firm(int firmRecno)
 		//---- set the tech level first -------//
 
 		int curTechLevel = firmInfo->get_nation_tech_level(nationRecno);
-		int newTechLevel = max(1, curTechLevel);
+		int newTechLevel = MAX(1, curTechLevel);
 
 		firmInfo->set_nation_tech_level( nationRecno, newTechLevel );
 
@@ -1970,8 +1970,8 @@ int Campaign::create_lair(int campaignNationRecno, int nationRecno,
 			int const stdMonsterHitPoint = 300;
 
 			thisCombatLevel = thisCombatLevel * stdMonsterHitPoint / unitInfo->hit_points;
-			thisCombatLevel = min( 100, thisCombatLevel );
-			thisCombatLevel = max( 20, thisCombatLevel );
+			thisCombatLevel = MIN( 100, thisCombatLevel );
+			thisCombatLevel = MAX( 20, thisCombatLevel );
 
 			//---------------------------------------------//
 
@@ -2098,7 +2098,7 @@ void Campaign::unveil_new_tech()
 	{
 		TechInfo* techInfo = tech_res[win_to_unveil_tech_id];
 
-		techInfo->available_level = max(techInfo->available_level, 1);
+		techInfo->available_level = MAX(techInfo->available_level, 1);
 
 		win_to_unveil_tech_id = 0;
 	}
@@ -2408,7 +2408,7 @@ void Campaign::create_royal_units(int campaignNationRecno)
 				}
 			
 				if( world.locate_space(xLoc, yLoc, 
-					min(kingXLoc+r, world.max_x_loc-1), min(kingYLoc +r, world.max_y_loc-1),
+					MIN(kingXLoc+r, world.max_x_loc-1), MIN(kingYLoc +r, world.max_y_loc-1),
 					 spriteInfo->loc_width, spriteInfo->loc_height, unitInfo->mobile_type) )
 				{
 					spaceFlag = 1;

@@ -895,7 +895,7 @@ void Tutor::disp_msg(char dispFlag, char darkness, char* gameMsg, ...)
 
 		int textHeight = font_mid.text_height()+50;
 
-		textHeight = min( textHeight, MAX_END_GAME_BOX_HEIGHT );
+		textHeight = MIN( textHeight, MAX_END_GAME_BOX_HEIGHT );
 
 		int x1 = ZOOM_X1 + (ZOOM_WIDTH-END_GAME_BOX_WIDTH) / 2 -10;
 		int x2 = x1 + END_GAME_BOX_WIDTH - 1 +10;

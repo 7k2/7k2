@@ -144,11 +144,11 @@ int SiteArray::add_site(int xLoc, int yLoc, int siteType, int objectId, int rese
 			xLoc = curXLoc + xOffset;
 			yLoc = curYLoc + yOffset;
 
-			xLoc = max(0, xLoc);
-			xLoc = min(MAX_WORLD_X_LOC-siteWidth, xLoc);
+			xLoc = MAX(0, xLoc);
+			xLoc = MIN(MAX_WORLD_X_LOC-siteWidth, xLoc);
 
-			yLoc = max(0, yLoc);
-			yLoc = min(MAX_WORLD_Y_LOC-siteHeight, yLoc);
+			yLoc = MAX(0, yLoc);
+			yLoc = MIN(MAX_WORLD_Y_LOC-siteHeight, yLoc);
 
 			locPtr = world.get_loc(xLoc, yLoc);
 
@@ -307,7 +307,7 @@ void SiteArray::generate_raw_site(int rawGenCount)
 
 	//----- check which regions are valid for raw sites -----//
 
-	int regionCount = min( MAX_RAW_REGION, region_array.region_info_count );
+	int regionCount = MIN( MAX_RAW_REGION, region_array.region_info_count );
 	int validRegionCount, totalValidSize=0;
 	RegionInfo* regionInfo;
 
@@ -353,7 +353,7 @@ void SiteArray::generate_raw_site(int rawGenCount)
 
 	//--------- generate raw sites now ----------//
 
-	int avgValidSize = min( 10000, totalValidSize / std_raw_site_count );
+	int avgValidSize = MIN( 10000, totalValidSize / std_raw_site_count );
 	int j, createCount;
 
 	err_when( validRegionCount > region_array.region_info_count || validRegionCount > MAX_RAW_REGION );
@@ -371,7 +371,7 @@ void SiteArray::generate_raw_site(int rawGenCount)
 				break;
 
 			createCount = regionInfo->region_size / avgValidSize;
-			createCount = max(1, createCount);
+			createCount = MAX(1, createCount);
 
 			//--------- create now --------//
 
@@ -690,7 +690,7 @@ int Site::ai_get_site_object()
 
 	int		 notifyGetRange = 10 + (info.game_date-info.game_start_date) / 60;		// it takes over 3 years to reach the maximum range 30
 
-	notifyGetRange = min(notifyGetRange, MAX_NOTIFY_GET_RANGE);
+	notifyGetRange = MIN(notifyGetRange, MAX_NOTIFY_GET_RANGE);
 
 	if( site_type == SITE_SCROLL )
 		siteRaceId = god_res[object_id]->race_id;
@@ -702,11 +702,11 @@ int Site::ai_get_site_object()
 		xLoc = map_x_loc + xOffset;
 		yLoc = map_y_loc + yOffset;
 
-		xLoc = max(0, xLoc);
-		xLoc = min(MAX_WORLD_X_LOC-1, xLoc);
+		xLoc = MAX(0, xLoc);
+		xLoc = MIN(MAX_WORLD_X_LOC-1, xLoc);
 
-		yLoc = max(0, yLoc);
-		yLoc = min(MAX_WORLD_Y_LOC-1, yLoc);
+		yLoc = MAX(0, yLoc);
+		yLoc = MIN(MAX_WORLD_Y_LOC-1, yLoc);
 
 		locPtr = world.get_loc(xLoc, yLoc);
 

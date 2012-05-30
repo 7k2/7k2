@@ -140,7 +140,7 @@ SpriteFrame* Sprite::cur_sprite_frame(int *needMirror)
 			{
 				SpriteGuardStop *guardStopAction = sprite_info->guard_stop_array + curDir;
 				return sprite_frame_res[guardStopAction->first_frame_recno+
-					min(guard_count,guardStopAction->frame_count)-1];
+					MIN(guard_count,guardStopAction->frame_count)-1];
 			}
 			else
 				return sprite_frame_res[sprite_info->attack_array[cur_attack][curDir].first_frame_recno+cur_frame-1];
@@ -162,7 +162,7 @@ SpriteFrame* Sprite::cur_sprite_frame(int *needMirror)
 
 					SpriteGuardStop *guardStopAction = sprite_info->guard_stop_array + curDir;
 					return sprite_frame_res[guardStopAction->first_frame_recno+
-						min(guard_count,guardStopAction->frame_count)-1];
+						MIN(guard_count,guardStopAction->frame_count)-1];
 				}
 				else
 				{

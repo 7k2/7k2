@@ -855,7 +855,7 @@ int Nation::not_enough_food_index()
 
 	int rc = int( 100 * -yearly_food_change() / food );
 
-	return min(rc, 100);
+	return MIN(rc, 100);
 }
 //------ End of function Nation::not_enough_food_index ------//
 

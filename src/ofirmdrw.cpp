@@ -663,25 +663,25 @@ void Firm::draw_selected()
 		//------- Only draw_selected the portion within the zoom window area ----//
 
 		if( y1 >= ZOOM_Y1 )		// square top
-			vga_back.bar( max(x1,ZOOM_X1), y1, min(x2,ZOOM_X2), y1, frameColor );
+			vga_back.bar( MAX(x1,ZOOM_X1), y1, MIN(x2,ZOOM_X2), y1, frameColor );
 
 		if( y2 <= ZOOM_Y2 )		// square bottom
-			vga_back.bar( max(x1,ZOOM_X1), y2, min(x2,ZOOM_X2), y2, frameColor );
+			vga_back.bar( MAX(x1,ZOOM_X1), y2, MIN(x2,ZOOM_X2), y2, frameColor );
 
 		if( x1 >= ZOOM_X1 )		// square left
-			vga_back.bar( x1, max(y1,ZOOM_Y1), x1, min(y2,ZOOM_Y2), frameColor );
+			vga_back.bar( x1, MAX(y1,ZOOM_Y1), x1, MIN(y2,ZOOM_Y2), frameColor );
 
 		if( y1 <= ZOOM_X2 )		// square left
-			vga_back.bar( x2, max(y1,ZOOM_Y1), x2, min(y2,ZOOM_Y2), frameColor );
+			vga_back.bar( x2, MAX(y1,ZOOM_Y1), x2, MIN(y2,ZOOM_Y2), frameColor );
 
       //------------ display hit point bar -----------//
 
 		if( firm_res[firm_id]->buildable )
 		{
 			x1 = x1+1;
-			y1 = max( y2-4, ZOOM_Y1 );
+			y1 = MAX( y2-4, ZOOM_Y1 );
 			x2 = x2-1;
-			y2 = min( y2-1, ZOOM_Y2 );
+			y2 = MIN( y2-1, ZOOM_Y2 );
 
 			if( x1<=ZOOM_X2 && x2>=ZOOM_X1 && y1<=ZOOM_Y2 && y2>=ZOOM_Y1 )
 			{
@@ -689,8 +689,8 @@ void Firm::draw_selected()
 
 				if( hit_points > 0 && x1+barWidth-1 >= ZOOM_X1)
 				{
-					vga_back.bar( max(x1,ZOOM_X1), y1  , min(x1+barWidth-1,ZOOM_X2), y1, frameColor );
-					vga_back.bar( max(x1,ZOOM_X1), y1+1, min(x1+barWidth-1,ZOOM_X2), y2, V_GREEN );
+					vga_back.bar( MAX(x1,ZOOM_X1), y1  , MIN(x1+barWidth-1,ZOOM_X2), y1, frameColor );
+					vga_back.bar( MAX(x1,ZOOM_X1), y1+1, MIN(x1+barWidth-1,ZOOM_X2), y2, V_GREEN );
 				}
 			}
 		}

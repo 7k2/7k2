@@ -757,7 +757,7 @@ int GameFileArray::menu(int actionMode, int *recno)
 void GameFileArray::disp_browse()
 {
 /*
-	int lastRec = min(browse_top_recno+MAX_BROWSE_DISP_REC-1, size());
+	int lastRec = MIN(browse_top_recno+MAX_BROWSE_DISP_REC-1, size());
 
 	int x = menu_x1 + BROWSE_X1;
 	int y = menu_y1 + BROWSE_Y1;

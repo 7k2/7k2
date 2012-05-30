@@ -843,13 +843,13 @@ int RandomEvent::create_boundary_unit( int unitId, int nationRecno )
 		err_when( y < 0 || y > yMax );
 
 		int outerX1 = x - 4;
-		outerX1 = max( outerX1, 0 );
+		outerX1 = MAX( outerX1, 0 );
 		int outerY1 = y - 4;
-		outerY1 = max( outerY1, 0 );
+		outerY1 = MAX( outerY1, 0 );
 		int outerX2 = x + 5;
-		outerX2 = min( outerX2, MAX_WORLD_X_LOC-1 );
+		outerX2 = MIN( outerX2, MAX_WORLD_X_LOC-1 );
 		int outerY2 = y + 5;
-		outerY2 = min( outerY2, MAX_WORLD_Y_LOC-1 );
+		outerY2 = MIN( outerY2, MAX_WORLD_Y_LOC-1 );
 
 		int unitRecno;
 		if( world.check_unit_space( outerX1, outerY1, outerX2, outerY2, unitInfo->mobile_type) 

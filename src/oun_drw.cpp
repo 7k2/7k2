@@ -163,7 +163,7 @@ void Unit::draw_selected()
 		if( maxHitPoints <= hit_bar_max_array[i] || i==HIT_BAR_TYPE_COUNT-1 )
 		{
 			hitBarColor = hit_bar_color_array[i];
-			hitBarMax   = max( maxHitPoints, hit_bar_max_array[i] );
+			hitBarMax   = MAX( maxHitPoints, hit_bar_max_array[i] );
 			break;
 		}
 	}
@@ -239,7 +239,7 @@ void Unit::draw_selected()
 	else
 		IMGbar( dataPtr, truePitch, curBarWidth-1, 1, curBarWidth-1, 1, vga_back.translate_color(NO_BAR_DARK_BORDER) );				// right -without hit
 
-	IMGbar( dataPtr, truePitch, 1, 1, min(pointX,curBarWidth-2), 1, vga_back.translate_color(hitBarColor+HIT_BAR_BODY) );	// bar body
+	IMGbar( dataPtr, truePitch, 1, 1, MIN(pointX,curBarWidth-2), 1, vga_back.translate_color(hitBarColor+HIT_BAR_BODY) );	// bar body
 
 	if( pointX < curBarWidth - 2 )
 		IMGbar( dataPtr, truePitch, pointX+1, 1, curBarWidth-2, 1, vga_back.translate_color(NO_BAR_BODY) );	// bar body

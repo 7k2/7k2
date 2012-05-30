@@ -108,9 +108,9 @@ void Slider::refresh()
 
 			//--- use bar_color for the area < std_value ---//
 
-			err_when( slider_x1+2 > slider_x1+1+min(barWidth,stdBarWidth) );
+			err_when( slider_x1+2 > slider_x1+1+MIN(barWidth,stdBarWidth) );
 
-			Vga::active_buf->bar( slider_x1+2, slider_y1+2, slider_x1+1+min(barWidth,stdBarWidth),
+			Vga::active_buf->bar( slider_x1+2, slider_y1+2, slider_x1+1+MIN(barWidth,stdBarWidth),
 				 slider_y2-2, bar_color );
 
 			//--- use bar_color2 for the area > std_value ---//
@@ -257,7 +257,7 @@ int SliderGroup::detect()
 		{
 			for( j=0 ; j<slider_num-1 && deltaValue>0 ; j++ )
 			{
-				decValue = min( *(slider_array[j].var_ptr), deltaValue );
+				decValue = MIN( *(slider_array[j].var_ptr), deltaValue );
 
 				*(slider_array[j].var_ptr) -= decValue;
 				deltaValue		       -= decValue;
@@ -282,7 +282,7 @@ int SliderGroup::detect()
 			{
 				if( j != i )	// don't pull from itself
 				{
-					decValue = min( *(slider_array[j].var_ptr), deltaValue );
+					decValue = MIN( *(slider_array[j].var_ptr), deltaValue );
 
 					*(slider_array[j].var_ptr) -= decValue;
 					deltaValue		  -= decValue;

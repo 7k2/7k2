@@ -107,7 +107,7 @@ void WorldScanTraverser::init( int xLoc, int yLoc, int locSize, int radius)
 				err_when( unitPtr->loc_width == 1 && unitPtr->loc_height > 1 );
 
 				if( unitPtr->loc_width == 1 
-					|| x == max(unitPtr->obj_loc_x1(),x1) && y == max(unitPtr->obj_loc_y1(),y1) )	// add once
+					|| x == MAX(unitPtr->obj_loc_x1(),x1) && y == MAX(unitPtr->obj_loc_y1(),y1) )	// add once
 				{
 					append(unitRecno);
 				}
@@ -123,7 +123,7 @@ void WorldScanTraverser::init( int xLoc, int yLoc, int locSize, int radius)
 				err_when( unitPtr->loc_width == 1 && unitPtr->loc_height > 1 );
 
 				if( unitPtr->loc_width == 1 
-					|| x == max(unitPtr->obj_loc_x1(),x1) && y == max(unitPtr->obj_loc_y1(),y1) )
+					|| x == MAX(unitPtr->obj_loc_x1(),x1) && y == MAX(unitPtr->obj_loc_y1(),y1) )
 				{
 					append(unitRecno);
 				}
@@ -139,7 +139,7 @@ void WorldScanTraverser::init( int xLoc, int yLoc, int locSize, int radius)
 				err_when( unitPtr->loc_width == 1 && unitPtr->loc_height > 1 );
 
 				if( unitPtr->loc_width == 1 
-					|| x == max(unitPtr->obj_loc_x1(),x1) && y == max(unitPtr->obj_loc_y1(),y1) )
+					|| x == MAX(unitPtr->obj_loc_x1(),x1) && y == MAX(unitPtr->obj_loc_y1(),y1) )
 				{
 					append(unitRecno);
 				}

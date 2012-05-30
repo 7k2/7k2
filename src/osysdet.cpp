@@ -1022,7 +1022,7 @@ void Sys::detect_cheat_key(unsigned scanCode, unsigned skeyState)
 			{
 				Unit* unitPtr = unit_array[unit_array.selected_recno];
 
-				unitPtr->set_combat_level( min(100, unitPtr->combat_level()+20) );
+				unitPtr->set_combat_level( MIN(100, unitPtr->combat_level()+20) );
 			}
 			break;
 
@@ -1034,7 +1034,7 @@ void Sys::detect_cheat_key(unsigned scanCode, unsigned skeyState)
 				Unit* unitPtr = unit_array[unit_array.selected_recno];
 
 				if( unitPtr->skill_level() )
-					unitPtr->skill.set_skill_level( min(MAX_SKILL_TRAIN, unitPtr->skill_level()+20) );
+					unitPtr->skill.set_skill_level( MIN(MAX_SKILL_TRAIN, unitPtr->skill_level()+20) );
 			}
 			break;
 
@@ -1049,7 +1049,7 @@ void Sys::detect_cheat_key(unsigned scanCode, unsigned skeyState)
 				{
 					Spy* spyPtr = spy_array[unitPtr->spy_recno];
 
-					spyPtr->spy_skill = min(100, spyPtr->spy_skill+20);
+					spyPtr->spy_skill = MIN(100, spyPtr->spy_skill+20);
 				}
 			}
 			break;
@@ -1097,7 +1097,7 @@ void Sys::detect_campaign_cheat_key(unsigned scanCode, unsigned skeyState)
 		//--- shift 1 to 5 - win a campaign game instantly ---//
 
 		else if( keyCode >= '1' &&
-			 keyCode <= min( '5', '1'+game.win_condition_count-1 ) )
+			 keyCode <= MIN( '5', '1'+game.win_condition_count-1 ) )
 		{
 			game.result_win_condition_recno = keyCode - '1';
 			game.result_win_condition_id = game.win_condition[game.result_win_condition_recno].condition_id;
@@ -1107,7 +1107,7 @@ void Sys::detect_campaign_cheat_key(unsigned scanCode, unsigned skeyState)
 		//--- shift 6 to 9 - lose a campaign game instantly ---//
 
 		if( keyCode >= '6' &&
-			 keyCode <= min( '9', '6'+game.lose_condition_count-1 ) )
+			 keyCode <= MIN( '9', '6'+game.lose_condition_count-1 ) )
 		{
 			game.result_lose_condition_recno = keyCode - '6';
 			game.result_lose_condition_id = game.lose_condition[game.result_lose_condition_recno].condition_id;

@@ -451,7 +451,7 @@ int TalkRes::add_exchange_tech_choices()
 
 
 		// ###### begin Gilbert 24/12 #######//
-		int maxTechLevel = max( techInfo->max_tech_level(fromNationRecno), techInfo->max_tech_level(toNationRecno) );
+		int maxTechLevel = MAX( techInfo->max_tech_level(fromNationRecno), techInfo->max_tech_level(toNationRecno) );
 //		for( j=1 ; j<=techInfo->max_tech_level ; j++ )
 		for( j=1 ; j<=maxTechLevel ; j++ )
 		// ###### end Gilbert 24/12 #######//

@@ -699,10 +699,10 @@ void World::unveil(int xLoc1, int yLoc1, int xLoc2, int yLoc2)
 	if( config.explore_whole_map )
 		return;
 
-	xLoc1 = max( 0, xLoc1 - EXPLORE_RANGE);
-	yLoc1 = max( 0, yLoc1 - EXPLORE_RANGE);
-	xLoc2 = min( MAX_WORLD_X_LOC-1, xLoc2 + EXPLORE_RANGE);
-	yLoc2 = min( MAX_WORLD_Y_LOC-1, yLoc2 + EXPLORE_RANGE);
+	xLoc1 = MAX( 0, xLoc1 - EXPLORE_RANGE);
+	yLoc1 = MAX( 0, yLoc1 - EXPLORE_RANGE);
+	xLoc2 = MIN( MAX_WORLD_X_LOC-1, xLoc2 + EXPLORE_RANGE);
+	yLoc2 = MIN( MAX_WORLD_Y_LOC-1, yLoc2 + EXPLORE_RANGE);
 
 	explore( xLoc1, yLoc1, xLoc2, yLoc2 );
 }
@@ -1134,11 +1134,11 @@ inline int World::check_unit_space(int xLoc1, int yLoc1, int xLoc2, int yLoc2, i
 	{
 		enum { CHECK_SURROUNDING_RANGE = 2 };
 
-		int tyLoc1 = max( 0, yLoc1-CHECK_SURROUNDING_RANGE );
-		int tyLoc2 = min( MAX_WORLD_Y_LOC-1, yLoc2+CHECK_SURROUNDING_RANGE );
+		int tyLoc1 = MAX( 0, yLoc1-CHECK_SURROUNDING_RANGE );
+		int tyLoc2 = MIN( MAX_WORLD_Y_LOC-1, yLoc2+CHECK_SURROUNDING_RANGE );
 
-		int txLoc1 = max( 0, xLoc1-CHECK_SURROUNDING_RANGE );
-		int txLoc2 = min( MAX_WORLD_X_LOC-1, xLoc2+CHECK_SURROUNDING_RANGE );
+		int txLoc1 = MAX( 0, xLoc1-CHECK_SURROUNDING_RANGE );
+		int txLoc2 = MIN( MAX_WORLD_X_LOC-1, xLoc2+CHECK_SURROUNDING_RANGE );
 
 		for(y=tyLoc1; y<=tyLoc2; y++)
 		{
@@ -1576,10 +1576,10 @@ int World::can_build_firm(int xLoc1, int yLoc1, int firmId, short unitRecno)
 		return 0;
 
 	int xLoc3, yLoc3, xLoc4, yLoc4;
-	xLoc3 = max( xLoc1-INTER_PLACE_SPACE, 0 );
-	yLoc3 = max( yLoc1-INTER_PLACE_SPACE, 0 );
-	xLoc4 = min( xLoc2+INTER_PLACE_SPACE, max_x_loc-1 );
-	yLoc4 = min( yLoc2+INTER_PLACE_SPACE, max_y_loc-1 );
+	xLoc3 = MAX( xLoc1-INTER_PLACE_SPACE, 0 );
+	yLoc3 = MAX( yLoc1-INTER_PLACE_SPACE, 0 );
+	xLoc4 = MIN( xLoc2+INTER_PLACE_SPACE, max_x_loc-1 );
+	yLoc4 = MIN( yLoc2+INTER_PLACE_SPACE, max_y_loc-1 );
 
 	//-----------------------------------------//
 
@@ -1762,10 +1762,10 @@ int World::can_build_town(int xLoc1, int yLoc1, short unitRecno)
 	// scan two space wider
 
 	int xLoc3, yLoc3, xLoc4, yLoc4;
-	xLoc3 = max( xLoc1-INTER_PLACE_SPACE, 0 );
-	yLoc3 = max( yLoc1-INTER_PLACE_SPACE, 0 );
-	xLoc4 = min( xLoc2+INTER_PLACE_SPACE, max_x_loc-1 );
-	yLoc4 = min( yLoc2+INTER_PLACE_SPACE, max_y_loc-1 );
+	xLoc3 = MAX( xLoc1-INTER_PLACE_SPACE, 0 );
+	yLoc3 = MAX( yLoc1-INTER_PLACE_SPACE, 0 );
+	xLoc4 = MIN( xLoc2+INTER_PLACE_SPACE, max_x_loc-1 );
+	yLoc4 = MIN( yLoc2+INTER_PLACE_SPACE, max_y_loc-1 );
 
 	for( yLoc=yLoc3 ; yLoc<=yLoc4 ; yLoc++ )
 	{
@@ -1817,10 +1817,10 @@ int World::can_build_site(int xLoc1, int yLoc1, int siteWidth, int siteHeight, i
 	if( outerSpace > 0 )
 	{
 		int xLoc3, yLoc3, xLoc4, yLoc4;
-		xLoc3 = max( xLoc1-outerSpace, 0 );
-		yLoc3 = max( yLoc1-outerSpace, 0 );
-		xLoc4 = min( xLoc2+outerSpace, max_x_loc-1 );
-		yLoc4 = min( yLoc2+outerSpace, max_y_loc-1 );
+		xLoc3 = MAX( xLoc1-outerSpace, 0 );
+		yLoc3 = MAX( yLoc1-outerSpace, 0 );
+		xLoc4 = MIN( xLoc2+outerSpace, max_x_loc-1 );
+		yLoc4 = MIN( yLoc2+outerSpace, max_y_loc-1 );
 
 		for( yLoc=yLoc3 ; yLoc<=yLoc4 ; ++yLoc )
 		{
@@ -2110,10 +2110,10 @@ void World::set_power(int xLoc1, int yLoc1, int xLoc2, int yLoc2, int nationRecn
 	int   	 xLoc, yLoc, centerY, t;
 	Location* locPtr = loc_matrix;
 
-	xLoc1 = max( 0, xLoc1 - EFFECTIVE_POWER_DISTANCE+1);
-	yLoc1 = max( 0, yLoc1 - EFFECTIVE_POWER_DISTANCE+1);
-	xLoc2 = min( MAX_WORLD_X_LOC-1, xLoc2 + EFFECTIVE_POWER_DISTANCE-1);
-	yLoc2 = min( MAX_WORLD_Y_LOC-1, yLoc2 + EFFECTIVE_POWER_DISTANCE-1);
+	xLoc1 = MAX( 0, xLoc1 - EFFECTIVE_POWER_DISTANCE+1);
+	yLoc1 = MAX( 0, yLoc1 - EFFECTIVE_POWER_DISTANCE+1);
+	xLoc2 = MIN( MAX_WORLD_X_LOC-1, xLoc2 + EFFECTIVE_POWER_DISTANCE-1);
+	yLoc2 = MIN( MAX_WORLD_Y_LOC-1, yLoc2 + EFFECTIVE_POWER_DISTANCE-1);
 
 	centerY = (yLoc1+yLoc2) / 2;
 
@@ -2173,10 +2173,10 @@ void World::restore_power(int xLoc1, int yLoc1, int xLoc2, int yLoc2, int townRe
 	int   	 xLoc, yLoc, centerY, t;
 	Location* locPtr = loc_matrix;
 
-	xLoc1 = max( 0, xLoc1 - EFFECTIVE_POWER_DISTANCE+1);
-	yLoc1 = max( 0, yLoc1 - EFFECTIVE_POWER_DISTANCE+1);
-	xLoc2 = min( MAX_WORLD_X_LOC-1, xLoc2 + EFFECTIVE_POWER_DISTANCE-1);
-	yLoc2 = min( MAX_WORLD_Y_LOC-1, yLoc2 + EFFECTIVE_POWER_DISTANCE-1);
+	xLoc1 = MAX( 0, xLoc1 - EFFECTIVE_POWER_DISTANCE+1);
+	yLoc1 = MAX( 0, yLoc1 - EFFECTIVE_POWER_DISTANCE+1);
+	xLoc2 = MIN( MAX_WORLD_X_LOC-1, xLoc2 + EFFECTIVE_POWER_DISTANCE-1);
+	yLoc2 = MIN( MAX_WORLD_Y_LOC-1, yLoc2 + EFFECTIVE_POWER_DISTANCE-1);
 
 	centerY = (yLoc1+yLoc2) / 2;
 
@@ -2607,10 +2607,10 @@ void World::visit(int xLoc1, int yLoc1, int xLoc2, int yLoc2, int range, int ext
 		// ##### end Gilbert 18/5 #########//
 
 		// ##### begin Gilbert 18/5 #########//
-		//int left   = max( 0, xLoc1 - range);
-		//int top    = max( 0, yLoc1 - range);
-		//int right  = min( MAX_WORLD_X_LOC-1, xLoc2 + range);
-		//int bottom = min( MAX_WORLD_Y_LOC-1, yLoc2 + range);
+		//int left   = MAX( 0, xLoc1 - range);
+		//int top    = MAX( 0, yLoc1 - range);
+		//int right  = MIN( MAX_WORLD_X_LOC-1, xLoc2 + range);
+		//int bottom = MIN( MAX_WORLD_Y_LOC-1, yLoc2 + range);
 		int left   = xLoc1 - range;
 		int top    = yLoc1 - range;
 		int right  = xLoc2 + range;
@@ -2664,10 +2664,10 @@ void World::visit(int xLoc1, int yLoc1, int xLoc2, int yLoc2, int range, int ext
 // set specific visit_level on the surrounding unit, town and firm
 void World::visit_shell(int xLoc1, int yLoc1, int xLoc2, int yLoc2, int visitLevel)
 {
-	int left   = max( 0, xLoc1 );
-	int top    = max( 0, yLoc1 );
-	int right  = min( MAX_WORLD_X_LOC-1, xLoc2);
-	int bottom = min( MAX_WORLD_Y_LOC-1, yLoc2);
+	int left   = MAX( 0, xLoc1 );
+	int top    = MAX( 0, yLoc1 );
+	int right  = MIN( MAX_WORLD_X_LOC-1, xLoc2);
+	int bottom = MIN( MAX_WORLD_Y_LOC-1, yLoc2);
 
 	// ------- top side ---------//
 	if( yLoc1 >= 0)
@@ -3388,10 +3388,10 @@ int World::net_attacker_power_in_area(int targetXLoc, int targetYLoc, int attack
 	int xLoc2 = targetXLoc + scanRange;
 	int yLoc2 = targetYLoc + scanRange;
 
-	xLoc1 = max( xLoc1, 0 );
-	yLoc1 = max( yLoc1, 0 );
-	xLoc2 = min( xLoc2, MAX_WORLD_X_LOC-1 );
-	yLoc2 = min( yLoc2, MAX_WORLD_Y_LOC-1 );
+	xLoc1 = MAX( xLoc1, 0 );
+	yLoc1 = MAX( yLoc1, 0 );
+	xLoc2 = MIN( xLoc2, MAX_WORLD_X_LOC-1 );
+	yLoc2 = MIN( yLoc2, MAX_WORLD_Y_LOC-1 );
 
 	//------------------------------------------//
 
@@ -3427,7 +3427,7 @@ int World::net_attacker_power_in_area(int targetXLoc, int targetYLoc, int attack
 					if( unitPtr->nation_recno == attackerNationRecno )
 						hasWar = 2;
 					else
-						hasWar = max(hasWar, 1);		// if hasWar is already 2, it stays as 2
+						hasWar = MAX(hasWar, 1);		// if hasWar is already 2, it stays as 2
 				}
 
 				//-- only count when the unit's order is moving or attacking. Assigning and other actions are not counted ---//

@@ -969,7 +969,7 @@ PathResult* PathReuse::retrieve(int& pathCount, int& totalSteps, int i)
 
 		err_when( abs(diffX) > 0 && abs(diffY) > 0 && abs(diffX) != abs(diffY) );
 
-		totalSteps += max(abs(diffX), abs(diffY));
+		totalSteps += MAX(abs(diffX), abs(diffY));
 
 		oldX = node->x;
 		oldY = node->y;

@@ -162,7 +162,7 @@ void Trainee::advanced_train(int firmRecno)
 		int incValue = (MAX_SKILL_TRAIN - (int)spy_skill)
 			* train_spy_potential / 100;
 
-		incValue = max(20,incValue);
+		incValue = MAX(20,incValue);
 
 		spy_skill += (float) incValue / 100;
 
@@ -177,7 +177,7 @@ void Trainee::advanced_train(int firmRecno)
 		int incValue = (MAX_COMBAT_TRAIN - (int)combat_level() )
 			* train_combat_potential / 100;
 
-		incValue = max(20,incValue);
+		incValue = MAX(20,incValue);
 
 		// ###### patch begin Gilbert 16/2 #######//
 		// ------ effect of god ----------//
@@ -276,8 +276,8 @@ void Trainee::change_loyalty(int loyaltyChange)
 
 	int newLoyalty = loyalty + loyaltyChange;
 
-	newLoyalty 		 = min( 100, newLoyalty );
-	loyalty = max( 0, newLoyalty );
+	newLoyalty 		 = MIN( 100, newLoyalty );
+	loyalty = MAX( 0, newLoyalty );
 }
 //---------- End of function Trainee::change_loyalty --------//
 

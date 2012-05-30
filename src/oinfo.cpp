@@ -1526,10 +1526,10 @@ int Info::draw_unit_icon( int x, int y, int unitId, int nationRecno,
 	else
 	{
 		// partially inside
-		int srcX1 = max(x1, windowX1)-x1;
-		int srcY1 = max(y1, windowY1)-y1;
-		int srcX2 = min(x2, windowX2)-x1;
-		int srcY2 = min(y2, windowY2)-y1;
+		int srcX1 = MAX(x1, windowX1)-x1;
+		int srcY1 = MAX(y1, windowY1)-y1;
+		int srcX2 = MIN(x2, windowX2)-x1;
+		int srcY2 = MIN(y2, windowY2)-y1;
 
 		if( para & 1 )
 		{

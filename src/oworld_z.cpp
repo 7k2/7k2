@@ -1411,7 +1411,7 @@ void ZoomMatrix::draw_build_marker()
 		// ##### end Gilbert 10/9 ######//
 
 	// ###### begin Gilbert 3/11 #####//
-	// vga_back.pixelize( x1, y1, min(x2,ZOOM_X2), min(y2,ZOOM_Y2), pixelColor );
+	// vga_back.pixelize( x1, y1, MIN(x2,ZOOM_X2), MIN(y2,ZOOM_Y2), pixelColor );
 	for( yLoc = locY1; yLoc <= locY2; ++yLoc )
 	{
 		for( xLoc = locX1; xLoc <= locX2; ++xLoc )
@@ -1496,7 +1496,7 @@ void ZoomMatrix::draw_god_cast_range()
 				x2 = ZOOM_X1 + (xLoc+1) * ZOOM_LOC_WIDTH -1;
 				y2 = ZOOM_Y1 + (yLoc+1) * ZOOM_LOC_HEIGHT-1;
 
-				vga_back.pixelize( x1, y1, min(x2,ZOOM_X2), min(y2,ZOOM_Y2), GOD_CAST_RANGE_COLOR );
+				vga_back.pixelize( x1, y1, MIN(x2,ZOOM_X2), MIN(y2,ZOOM_Y2), GOD_CAST_RANGE_COLOR );
 			}
 		}
 	}
@@ -1911,10 +1911,10 @@ void ZoomMatrix::put_center_text(int x, int y, int z, const char* str, char blac
 	if( scrnX1 <= image_x2 && scrnX2 >= image_x1 && scrnY1 <= image_y2 && scrnY2 >= image_y1 )
 	{
 		// clip
-		scrnX1 = max( image_x1, scrnX1 );
-		scrnY1 = max( image_y1, scrnY1 );
-		scrnX2 = min( image_x2, scrnX2 );
-		scrnY2 = min( image_y2, scrnY2 );
+		scrnX1 = MAX( image_x1, scrnX1 );
+		scrnY1 = MAX( image_y1, scrnY1 );
+		scrnX2 = MIN( image_x2, scrnX2 );
+		scrnY2 = MIN( image_y2, scrnY2 );
 
 		if (black)
 			vga_back.bar_alpha( scrnX1, scrnY1, scrnX2, scrnY2, 1, V_BLACK );
@@ -2100,18 +2100,18 @@ void ZoomMatrix::blacken_fog_of_war()
 				unsigned char midNorthRow[3];
 				unsigned char midThisRow[3];
 				unsigned char midSouthRow[3];
-				midThisRow[2] = min( thisRow[2], thisRow[1]);
-				midThisRow[0] = min( thisRow[0], thisRow[1]);
-				midNorthRow[2] = min( min(northRow[2], northRow[1]), midThisRow[2] );
-				midNorthRow[1] = min( northRow[1], thisRow[1]);
-				midNorthRow[0] = min( min(northRow[0], northRow[1]), midThisRow[0] );
-				midSouthRow[2] = min( min(southRow[2], southRow[1]), midThisRow[2] );
-				midSouthRow[1] = min( southRow[1], thisRow[1]);
-				midSouthRow[0] = min( min(southRow[0], southRow[1]), midThisRow[0] );
+				midThisRow[2] = MIN( thisRow[2], thisRow[1]);
+				midThisRow[0] = MIN( thisRow[0], thisRow[1]);
+				midNorthRow[2] = MIN( MIN(northRow[2], northRow[1]), midThisRow[2] );
+				midNorthRow[1] = MIN( northRow[1], thisRow[1]);
+				midNorthRow[0] = MIN( MIN(northRow[0], northRow[1]), midThisRow[0] );
+				midSouthRow[2] = MIN( MIN(southRow[2], southRow[1]), midThisRow[2] );
+				midSouthRow[1] = MIN( southRow[1], thisRow[1]);
+				midSouthRow[0] = MIN( MIN(southRow[0], southRow[1]), midThisRow[0] );
 				unsigned char midMean = ((int) thisRow[0] + thisRow[2] +
 					northRow[0] + northRow[1] + northRow[2] +
 					southRow[0] + southRow[1] + southRow[2] ) /8;
-				midThisRow[1] = min(thisRow[1], midMean );
+				midThisRow[1] = MIN(thisRow[1], midMean );
 
 				vga_back.fog_remap(scrnX, scrnY, (char **)explored_mask.brightness_table->get_table_array(),
 					midNorthRow, midThisRow, midSouthRow);
@@ -2383,8 +2383,8 @@ void ZoomMatrix::draw_objects()
 							wallInfo->bitmap_height() -1;
 						displaySort.x_loc = xLoc + wallInfo->loc_off_x;
 						displaySort.y_loc = yLoc + wallInfo->loc_off_y;
-						if( xLoc == max( displaySort.x_loc, zoomXLoc1) &&
-							 yLoc == max( displaySort.y_loc, zoomYLoc1) )
+						if( xLoc == MAX( displaySort.x_loc, zoomXLoc1) &&
+							 yLoc == MAX( displaySort.y_loc, zoomYLoc1) )
 						{
 							displaySort.x_loc = xLoc * ZOOM_LOC_WIDTH + wallInfo->offset_x;
 							displaySort.y_loc = yLoc * ZOOM_LOC_HEIGHT + wallInfo->offset_y;
@@ -3223,12 +3223,12 @@ void ZoomMatrix::put_bitmap_clip(int x, int y, char* bitmapPtr, int compressedFl
 		if( compressedFlag )
 		{
 			vga_back.put_bitmap_area_trans_decompress( x, y, bitmapPtr,
-				max(ZOOM_X1,x)-x, max(ZOOM_Y1,y)-y, min(ZOOM_X2,x2)-x, min(ZOOM_Y2,y2)-y );
+				MAX(ZOOM_X1,x)-x, MAX(ZOOM_Y1,y)-y, MIN(ZOOM_X2,x2)-x, MIN(ZOOM_Y2,y2)-y );
 		}
 		else
 		{
 			vga_back.put_bitmap_area_trans( x, y, bitmapPtr,
-				max(ZOOM_X1,x)-x, max(ZOOM_Y1,y)-y, min(ZOOM_X2,x2)-x, min(ZOOM_Y2,y2)-y );
+				MAX(ZOOM_X1,x)-x, MAX(ZOOM_Y1,y)-y, MIN(ZOOM_X2,x2)-x, MIN(ZOOM_Y2,y2)-y );
 		}
 	}
 
@@ -3263,9 +3263,9 @@ int ZoomMatrix::detect_bitmap_clip(int x, int y, char* bitmapPtr)
 
 	//---- only portion of the sprite is inside the view area ------//
 
-	// return mouse.single_click( max(ZOOM_X1,x), max(ZOOM_Y1,y), min(ZOOM_X2,x2), min(ZOOM_Y2,y2), 2 );
-	return mouse.any_click( max(ZOOM_X1,x), max(ZOOM_Y1,y), min(ZOOM_X2,x2), min(ZOOM_Y2,y2), 0 ) ? 1 :
-	mouse.any_click( max(ZOOM_X1,x), max(ZOOM_Y1,y), min(ZOOM_X2,x2), min(ZOOM_Y2,y2), 1 ) ? 2 : 0;
+	// return mouse.single_click( MAX(ZOOM_X1,x), MAX(ZOOM_Y1,y), MIN(ZOOM_X2,x2), MIN(ZOOM_Y2,y2), 2 );
+	return mouse.any_click( MAX(ZOOM_X1,x), MAX(ZOOM_Y1,y), MIN(ZOOM_X2,x2), MIN(ZOOM_Y2,y2), 0 ) ? 1 :
+	mouse.any_click( MAX(ZOOM_X1,x), MAX(ZOOM_Y1,y), MIN(ZOOM_X2,x2), MIN(ZOOM_Y2,y2), 1 ) ? 2 : 0;
 }
 //--------- End of function ZoomMatrix::detect_bitmap_clip ---------//
 
@@ -3297,12 +3297,12 @@ void ZoomMatrix::put_bitmap_remap_clip(int x, int y, char* bitmapPtr, short* col
 			if( colorRemapTable )
 			{
 				vga_back.put_bitmap_area_trans_remap_decompress( x, y, bitmapPtr,
-					max(ZOOM_X1,x)-x, max(ZOOM_Y1,y)-y, min(ZOOM_X2,x2)-x, min(ZOOM_Y2,y2)-y, colorRemapTable );
+					MAX(ZOOM_X1,x)-x, MAX(ZOOM_Y1,y)-y, MIN(ZOOM_X2,x2)-x, MIN(ZOOM_Y2,y2)-y, colorRemapTable );
 			}
 			else
 			{
 				vga_back.put_bitmap_area_trans_decompress( x, y, bitmapPtr,
-					max(ZOOM_X1,x)-x, max(ZOOM_Y1,y)-y, min(ZOOM_X2,x2)-x, min(ZOOM_Y2,y2)-y );
+					MAX(ZOOM_X1,x)-x, MAX(ZOOM_Y1,y)-y, MIN(ZOOM_X2,x2)-x, MIN(ZOOM_Y2,y2)-y );
 			}
 		}
 		else
@@ -3310,12 +3310,12 @@ void ZoomMatrix::put_bitmap_remap_clip(int x, int y, char* bitmapPtr, short* col
 			if( colorRemapTable )
 			{
 				vga_back.put_bitmap_area_trans_remap( x, y, bitmapPtr,
-					max(ZOOM_X1,x)-x, max(ZOOM_Y1,y)-y, min(ZOOM_X2,x2)-x, min(ZOOM_Y2,y2)-y, colorRemapTable );
+					MAX(ZOOM_X1,x)-x, MAX(ZOOM_Y1,y)-y, MIN(ZOOM_X2,x2)-x, MIN(ZOOM_Y2,y2)-y, colorRemapTable );
 			}
 			else
 			{
 				vga_back.put_bitmap_area_trans( x, y, bitmapPtr,
-					max(ZOOM_X1,x)-x, max(ZOOM_Y1,y)-y, min(ZOOM_X2,x2)-x, min(ZOOM_Y2,y2)-y );
+					MAX(ZOOM_X1,x)-x, MAX(ZOOM_Y1,y)-y, MIN(ZOOM_X2,x2)-x, MIN(ZOOM_Y2,y2)-y );
 			}
 		}
 	}

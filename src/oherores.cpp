@@ -452,7 +452,7 @@ int HeroRes::create_powerful_unit(int xLoc, int yLoc, int nationRecno, int unitI
 		//---- historic heroes have higher than usual power ----//
 
 		if( historicHero==1 )
-			heroPower = max( heroPower, 70 );		// at least 70
+			heroPower = MAX( heroPower, 70 );		// at least 70
 	}
 
 	//------ set the item the hero carries ------//
@@ -477,14 +477,14 @@ int HeroRes::create_powerful_unit(int xLoc, int yLoc, int nationRecno, int unitI
 	skillLevel  = skillLevel * heroPower / 100;
 	// ######## end Gilbert 13/4 #### //
 
-	combatLevel = max( BASIC_COMBAT_TRAIN, combatLevel );
-	skillLevel  = max( BASIC_SKILL_TRAIN , skillLevel );
+	combatLevel = MAX( BASIC_COMBAT_TRAIN, combatLevel );
+	skillLevel  = MAX( BASIC_SKILL_TRAIN , skillLevel );
 
 	int maxCombatLevel = combatLevel * (100+m.random(30)) / 100;
-	maxCombatLevel = max( MAX_COMBAT_BATTLE, maxCombatLevel );
+	maxCombatLevel = MAX( MAX_COMBAT_BATTLE, maxCombatLevel );
 
 	int maxSkillLevel = skillLevel * (100+m.random(30)) / 100;
-	maxSkillLevel = max( MAX_SKILL_TRAIN, maxSkillLevel );
+	maxSkillLevel = MAX( MAX_SKILL_TRAIN, maxSkillLevel );
 
 	unitPtr->skill.set_max_skill_level( maxSkillLevel );
 	unitPtr->skill.set_skill_level( skillLevel );

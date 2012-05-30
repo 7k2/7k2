@@ -80,11 +80,11 @@ void Unit::drop_item(char remoteAction)
 	{
 		for( int r = 1; r <= 6; ++r )
 		{
-			int xMin = max(xLoc-r,0);
+			int xMin = MAX(xLoc-r,0);
 			int xMax = xLoc+loc_width-1+r;
 			if( xMax >= MAX_WORLD_X_LOC )
 				xMax = MAX_WORLD_X_LOC-1;
-			int yMin = max(yLoc-r,0);
+			int yMin = MAX(yLoc-r,0);
 			int yMax = yLoc+loc_height-1+r;
 			if( yMax >= MAX_WORLD_Y_LOC )
 				yMax = MAX_WORLD_Y_LOC-1;

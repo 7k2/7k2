@@ -373,12 +373,12 @@ int Nation::find_best_capturer(int townRecno, int& bestTargetResistance)
 	if( targetTown->nation_recno==0 )
 	{
 		bestTargetResistance = (int) targetTown->resistance(nation_recno) - MIN_CAPTURE_RESISTANCE_DEC;
-		bestTargetResistance = max(bestTargetResistance, SURRENDER_RESISTANCE);
+		bestTargetResistance = MAX(bestTargetResistance, SURRENDER_RESISTANCE);
 	}
 	else
 	{
 		bestTargetResistance = (int) targetTown->loyalty - MIN_CAPTURE_RESISTANCE_DEC;
-		bestTargetResistance = max(bestTargetResistance, SURRENDER_LOYALTY);
+		bestTargetResistance = MAX(bestTargetResistance, SURRENDER_LOYALTY);
 	}
 
 	//-----------------------------------------------------//

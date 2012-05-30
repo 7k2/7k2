@@ -53,10 +53,10 @@ int World::can_add_rock(short x1, short y1, short x2, short y2)
 //				return 0;
 
 	// ######## begin Gilbert 30/1 #######//
-	int outerX1 = max( x1-INTER_PLACE_SPACE*2, 0);
-	int outerY1 = max( y1-INTER_PLACE_SPACE*2, 0);
-	int outerX2 = min( x2+INTER_PLACE_SPACE*2, max_x_loc-1);
-	int outerY2 = min( y2+INTER_PLACE_SPACE*2, max_y_loc-1);
+	int outerX1 = MAX( x1-INTER_PLACE_SPACE*2, 0);
+	int outerY1 = MAX( y1-INTER_PLACE_SPACE*2, 0);
+	int outerX2 = MIN( x2+INTER_PLACE_SPACE*2, max_x_loc-1);
+	int outerY2 = MIN( y2+INTER_PLACE_SPACE*2, max_y_loc-1);
 
 	for( y = outerY1; y <= outerY2; ++y )
 	{
@@ -317,10 +317,10 @@ int World::can_add_dirt(short x1, short y1, short x2, short y2)
 //			if( !get_loc(x,y)->can_add_dirt() )
 //				return 0;
 
-	int outerX1 = max( x1-INTER_PLACE_SPACE*2, 0);
-	int outerY1 = max( y1-INTER_PLACE_SPACE*2, 0);
-	int outerX2 = min( x2+INTER_PLACE_SPACE*2, max_x_loc-1);
-	int outerY2 = min( y2+INTER_PLACE_SPACE*2, max_y_loc-1);
+	int outerX1 = MAX( x1-INTER_PLACE_SPACE*2, 0);
+	int outerY1 = MAX( y1-INTER_PLACE_SPACE*2, 0);
+	int outerX2 = MIN( x2+INTER_PLACE_SPACE*2, max_x_loc-1);
+	int outerY2 = MIN( y2+INTER_PLACE_SPACE*2, max_y_loc-1);
 
 	for( y = outerY1; y <= outerY2; ++y )
 	{

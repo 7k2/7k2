@@ -552,13 +552,13 @@ int EndCondition::is_condition_true(int nationRecno)
 				if( unitPtr->unique_id == para1_unique_id && unitPtr->is_visible() )
 				{
 					int scanX1 = unitPtr->obj_loc_x1() - MEET_UNIT_RANGE;
-					scanX1 = max(scanX1, 0);
+					scanX1 = MAX(scanX1, 0);
 					int scanY1 = unitPtr->obj_loc_y1() - MEET_UNIT_RANGE;
-					scanY1 = max(scanY1, 0);
+					scanY1 = MAX(scanY1, 0);
 					int scanX2 = unitPtr->obj_loc_x2() + MEET_UNIT_RANGE;
-					scanX2 = min(scanX2, MAX_WORLD_X_LOC-1);
+					scanX2 = MIN(scanX2, MAX_WORLD_X_LOC-1);
 					int scanY2 = unitPtr->obj_loc_y2() + MEET_UNIT_RANGE;
-					scanY2 = min(scanY2, MAX_WORLD_Y_LOC-1);
+					scanY2 = MIN(scanY2, MAX_WORLD_Y_LOC-1);
 
 					for( int y = scanY1; y <= scanY2; ++y )
 					{

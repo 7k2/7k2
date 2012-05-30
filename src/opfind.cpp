@@ -143,7 +143,7 @@ static int pfind_dist( int srcX, int srcY)
 		dy = -dy;
 
 	// square distance
-//	return max( dx, dy );
+//	return MAX( dx, dy );
 
 // octagon distance
 //	if( dx > dy )
@@ -168,7 +168,7 @@ static int pfind_close_dist( int srcX, int srcY)
 		dy = -dy;
 
 	// square distance
-	return max( dx, dy );
+	return MAX( dx, dy );
 
 	// rhombus distance
 	// return dx + dy;
@@ -778,7 +778,7 @@ PathResult* PathFinder::retrieve(int& pathCount, int& totalSteps)
 
 		err_when( abs(diffX) > 0 && abs(diffY) > 0 && abs(diffX) != abs(diffY) );
 
-		totalSteps += max(abs(diffX), abs(diffY));
+		totalSteps += MAX(abs(diffX), abs(diffY));
 
 		oldX = node->x;
 		oldY = node->y;
@@ -1288,7 +1288,7 @@ void PathFinder::gen_child(PathNode* n, int x, int y)
 
 		succ->parent = n;
 		// succ->g = g;
-		//succ->h = max(abs(x-dest_x), abs(y-dest_y));
+		//succ->h = MAX(abs(x-dest_x), abs(y-dest_y));
 		// succ->h =(x-dest_x)*(x-dest_x)+(y-dest_y)*(y-dest_y);
 		// succ->h = pfind_dist( x, y );
 		succ->f = (succ->g = g) + (succ->h = pfind_dist(x, y));

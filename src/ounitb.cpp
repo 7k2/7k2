@@ -74,10 +74,10 @@ void UnitB::move_to(int destXLoc, int destYLoc, bool raiseDest)
 	// ###### end Gilbert 22/3 #######//
 
 //	err_when(destXLoc < 0 || destXLoc >= MAX_WORLD_X_LOC || destYLoc < 0 || destYLoc >= MAX_WORLD_Y_LOC);
-	destXLoc = min(destXLoc, MAX_WORLD_X_LOC-1);
-	destXLoc = max(destXLoc, 0);
-	destYLoc = min(destYLoc, MAX_WORLD_Y_LOC-1);
-	destYLoc = max(destYLoc, 0);
+	destXLoc = MIN(destXLoc, MAX_WORLD_X_LOC-1);
+	destXLoc = MAX(destXLoc, 0);
+	destYLoc = MIN(destYLoc, MAX_WORLD_Y_LOC-1);
+	destYLoc = MAX(destYLoc, 0);
 
 	stop_move();
 
@@ -878,7 +878,7 @@ void UnitB::get_object_range(int objXLoc, int objYLoc, int &rangeX1, int &rangeY
 			else
 				tmpRangeY2 = objYLoc;
 
-			rangeY1 = min(tmpRangeY1, tmpRangeY2);
+			rangeY1 = MIN(tmpRangeY1, tmpRangeY2);
 		}
 		//scan down//
 		if(objCargoRecnoBL == objCargoRecnoBR && objLocFlagBL == objLocFlagBR )
@@ -931,7 +931,7 @@ void UnitB::get_object_range(int objXLoc, int objYLoc, int &rangeX1, int &rangeY
 			else
 				tmpRangeY2 = objYLoc+loc_height-1;
 
-			rangeY2 = max(tmpRangeY1, tmpRangeY2);
+			rangeY2 = MAX(tmpRangeY1, tmpRangeY2);
 		}
 		//scan left//
 		if(objCargoRecnoTL == objCargoRecnoBL && objLocFlagTL == objLocFlagBL )
@@ -984,7 +984,7 @@ void UnitB::get_object_range(int objXLoc, int objYLoc, int &rangeX1, int &rangeY
 			else
 				tmpRangeX2 = objXLoc;
 
-			rangeX1 = min(tmpRangeX1, tmpRangeX2);
+			rangeX1 = MIN(tmpRangeX1, tmpRangeX2);
 		}
 		//scan right//
 		if(objCargoRecnoTR == objCargoRecnoBR && objLocFlagTR == objLocFlagBR ) 
@@ -1037,14 +1037,14 @@ void UnitB::get_object_range(int objXLoc, int objYLoc, int &rangeX1, int &rangeY
 			else
 				tmpRangeX2 = objXLoc+loc_width-1;
 
-			rangeX2 = max(tmpRangeX1, tmpRangeX2);
+			rangeX2 = MAX(tmpRangeX1, tmpRangeX2);
 		}
 	}
 
-	rangeX1=max(rangeX1, 0);
-	rangeY1=max(rangeY1, 0);
-	rangeX2=min(rangeX2, MAX_WORLD_X_LOC-1);
-	rangeY2=min(rangeY2, MAX_WORLD_Y_LOC-1);
+	rangeX1=MAX(rangeX1, 0);
+	rangeY1=MAX(rangeY1, 0);
+	rangeX2=MIN(rangeX2, MAX_WORLD_X_LOC-1);
+	rangeY2=MIN(rangeY2, MAX_WORLD_Y_LOC-1);
 
 	err_when((rangeX2-rangeX1+1) > 30);
 	err_when((rangeY2-rangeY1+1) > 30);

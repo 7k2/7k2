@@ -530,7 +530,7 @@ short Weather::quake_rate(short x, short y)
 	if( dist <= radius )
 	{
 		short damage = 100 - dist / 2;
-		return max( damage, 0 );
+		return MAX( damage, 0 );
 	}
 	else
 	{

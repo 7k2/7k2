@@ -125,8 +125,8 @@ int Town::mobilize_defender(int attackerNationRecno)
 
 	int combatLevel = town_combat_level + m.random(20) - 10;		// -10 to +10 random difference
 
-	combatLevel = min(combatLevel, 100);
-	combatLevel = max(combatLevel, 10);
+	combatLevel = MIN(combatLevel, 100);
+	combatLevel = MAX(combatLevel, 10);
 
 	unitPtr->set_combat_level(combatLevel);
 

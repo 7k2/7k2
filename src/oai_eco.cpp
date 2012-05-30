@@ -89,7 +89,7 @@ int Nation::ai_should_spend(int importanceRating, float spendAmt, float spendLiv
 		return 0;
 
 	float fixedExpense = fixed_expense_365days();
-	float stdCashLevel = max(fixedExpense,2000) * (150+pref_cash_reserve) / 100;
+	float stdCashLevel = MAX(fixedExpense,2000) * (150+pref_cash_reserve) / 100;
 	float trueProfit   = true_profit_365days();
 
 	if( is_monster() )		// the standard cash level for monster is lower
@@ -102,7 +102,7 @@ int Nation::ai_should_spend(int importanceRating, float spendAmt, float spendLiv
 		int curRating1 = int( 100 * (-trueProfit) / fixedExpense );
 		int curRating2 = int( 200 * (-trueProfit) / cash );
 
-		if( min(curRating1, curRating2) > importanceRating )
+		if( MIN(curRating1, curRating2) > importanceRating )
 			return 0;
 	}
 

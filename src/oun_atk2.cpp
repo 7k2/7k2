@@ -204,7 +204,7 @@ int Unit::cal_distance(int targetXLoc, int targetYLoc, int targetWidth, int targ
 
 	err_when(dispY<0 || dispY>=MAX_WORLD_Y_LOC);
 
-	return max(dispX,dispY);
+	return MAX(dispX,dispY);
 }
 //----------- End of function Unit::cal_distance -----------//
 
@@ -338,11 +338,11 @@ float Unit::actual_damage()
 	attackDamage += m.random(3);
 	if( 100 == MAX_COMBAT_TRAIN )
 	{
-		deciDamage += attackInfo->pierce_damage * m.random( 1+min(combatLevel, MAX_COMBAT_TRAIN) );
+		deciDamage += attackInfo->pierce_damage * m.random( 1+MIN(combatLevel, MAX_COMBAT_TRAIN) );
 	}
 	else
 	{
-		deciDamage += attackInfo->pierce_damage * m.random( 1+min(combatLevel, MAX_COMBAT_TRAIN) )
+		deciDamage += attackInfo->pierce_damage * m.random( 1+MIN(combatLevel, MAX_COMBAT_TRAIN) )
 			* 100 / MAX_COMBAT_TRAIN;
 	}
 
@@ -423,12 +423,12 @@ float Unit::actual_damage()
 				// ##### begin Gilbert 17/6 #####//
 				// deciDamage += attackDamage * leaderUnit->skill_level();
 				int leaderBonus = attackDamage * leaderUnit->skill_level();
-				deciDamage += min( leaderBonus, 1000 );	// 10 damage, avoid cannon or catapult too strong
+				deciDamage += MIN( leaderBonus, 1000 );	// 10 damage, avoid cannon or catapult too strong
 				// ##### end Gilbert 17/6 #####//
 				// ##### begin Gilbert 29/3 ######//
 				if( leaderUnit->race_id == RACE_CELTIC && unit_id == UNIT_CELTIC_SPU )
 				{
-					deciDamage += min( leaderBonus, 1000 );	// 10 damage, avoid cannon or catapult too strong
+					deciDamage += MIN( leaderBonus, 1000 );	// 10 damage, avoid cannon or catapult too strong
 				}
 				// ##### end Gilbert 29/3 ######//
 			}

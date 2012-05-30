@@ -516,9 +516,9 @@ int Unit::process_attack()
 	if((unit_id == UNIT_JAGUAR || unit_id == UNIT_GORILLA) && attackInfo->consume_power)  //frighten people 
 	{
 		Location* locPtr;
-		for(locX = max(0, next_x_loc()-panicRange); locX<=min(MAX_WORLD_X_LOC-1, next_x_loc()+panicRange); locX++)
+		for(locX = MAX(0, next_x_loc()-panicRange); locX<=MIN(MAX_WORLD_X_LOC-1, next_x_loc()+panicRange); locX++)
 		{
-			for(locY = max(0, next_y_loc()-panicRange); locY<= min(MAX_WORLD_Y_LOC-1, next_y_loc()+panicRange); locY++)
+			for(locY = MAX(0, next_y_loc()-panicRange); locY<= MIN(MAX_WORLD_Y_LOC-1, next_y_loc()+panicRange); locY++)
 			{
 				if(locX == next_x_loc() && locY == next_y_loc() )
 					continue;
@@ -541,10 +541,10 @@ int Unit::process_attack()
 
 						if(unitPtr->cur_order.mode == UNIT_ATTACK || unitPtr->cur_action == SPRITE_ATTACK)
 							unitPtr->stop_order();   //stop attacking at once and escape
-						int escapeLocX = max(0, locX+panicShiftX);
-						escapeLocX = min(MAX_WORLD_X_LOC-1, escapeLocX);
-						int escapeLocY = max(0, locY+panicShiftY);
-						escapeLocY = min(MAX_WORLD_Y_LOC-1, escapeLocY);
+						int escapeLocX = MAX(0, locX+panicShiftX);
+						escapeLocX = MIN(MAX_WORLD_X_LOC-1, escapeLocX);
+						int escapeLocY = MAX(0, locY+panicShiftY);
+						escapeLocY = MIN(MAX_WORLD_Y_LOC-1, escapeLocY);
 
 						unitPtr->move_to(escapeLocX, escapeLocY);
 					}
@@ -746,10 +746,10 @@ int Unit::process_attack()
 
 								if(unitPtr->cur_order.mode == UNIT_ATTACK || unitPtr->cur_action == SPRITE_ATTACK)
 									unitPtr->stop_order();   //stop attacking at once and escape
-								int escapeLocX = max(0, locX+panicShiftX);
-								escapeLocX = min(MAX_WORLD_X_LOC-1, escapeLocX);
-								int escapeLocY = max(0, locY+panicShiftY);
-								escapeLocY = min(MAX_WORLD_Y_LOC-1, escapeLocY);
+								int escapeLocX = MAX(0, locX+panicShiftX);
+								escapeLocX = MIN(MAX_WORLD_X_LOC-1, escapeLocX);
+								int escapeLocY = MAX(0, locY+panicShiftY);
+								escapeLocY = MIN(MAX_WORLD_Y_LOC-1, escapeLocY);
 
 								unitPtr->move_to(escapeLocX, escapeLocY);
 							}
@@ -2025,11 +2025,11 @@ int Unit::most_populated_nation_nearby(int scanRange)
 		xLoc = curXLoc + xOffset;
 		yLoc = curYLoc + yOffset;
 
-		xLoc = max(0, xLoc);
-		xLoc = min(MAX_WORLD_X_LOC-1, xLoc);
+		xLoc = MAX(0, xLoc);
+		xLoc = MIN(MAX_WORLD_X_LOC-1, xLoc);
 
-		yLoc = max(0, yLoc);
-		yLoc = min(MAX_WORLD_Y_LOC-1, yLoc);
+		yLoc = MAX(0, yLoc);
+		yLoc = MIN(MAX_WORLD_Y_LOC-1, yLoc);
 
 		locPtr = world.get_loc(xLoc, yLoc);
 
@@ -2441,10 +2441,10 @@ void Unit::find_new_position_for_range_attack(BaseObj* targetObj)
 
 	err_when(targetXLoc<0 || targetXLoc>=MAX_WORLD_X_LOC || targetYLoc<0 || targetYLoc>=MAX_WORLD_Y_LOC);
 
-	int xLoc1 = max(targetXLoc-attackRange, 0);
-	int yLoc1 = max(targetYLoc-attackRange, 0);
-	int xLoc2 = min(targetXLoc+targetWidth-1+attackRange, MAX_WORLD_X_LOC-1);
-	int yLoc2 = min(targetYLoc+targetHeight-1+attackRange, MAX_WORLD_Y_LOC-1);
+	int xLoc1 = MAX(targetXLoc-attackRange, 0);
+	int yLoc1 = MAX(targetYLoc-attackRange, 0);
+	int xLoc2 = MIN(targetXLoc+targetWidth-1+attackRange, MAX_WORLD_X_LOC-1);
+	int yLoc2 = MIN(targetYLoc+targetHeight-1+attackRange, MAX_WORLD_Y_LOC-1);
 	int checkXLoc, checkYLoc;
 
 	// #### begin Gilbert 4/11 ######//
@@ -2638,11 +2638,11 @@ int Unit::ai_attack_next_target()
 		xLoc = curXLoc + xOffset;
 		yLoc = curYLoc + yOffset;
 
-		xLoc = max(0, xLoc);
-		xLoc = min(MAX_WORLD_X_LOC-1, xLoc);
+		xLoc = MAX(0, xLoc);
+		xLoc = MIN(MAX_WORLD_X_LOC-1, xLoc);
 
-		yLoc = max(0, yLoc);
-		yLoc = min(MAX_WORLD_Y_LOC-1, yLoc);
+		yLoc = MAX(0, yLoc);
+		yLoc = MIN(MAX_WORLD_Y_LOC-1, yLoc);
 
 		Location* locPtr = world.get_loc(xLoc, yLoc);
 

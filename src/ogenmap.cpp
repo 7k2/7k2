@@ -892,21 +892,21 @@ void World::smooth_altitude( Plasma &plasma )
 				long sum = coeff[0] * h0;
 				short w = coeff[0];
 
-				short minXD = min(x,d);
+				short minXD = MIN(x,d);
 				for( short dx = minXD; dx > 0; --dx )
 				{
 					sum += coeff[dx] * plasma.get_pix( x-dx, y );
 					w += coeff[dx];
 				}
 
-				short minYD = min(y,d);
+				short minYD = MIN(y,d);
 				for( short dy = minYD; dy > 0; --dy )
 				{
 					sum += coeff[dy] * plasma.get_pix( x, y-dy );
 					w += coeff[dy];
 				}
 
-				short minXYD = min( minXD, minYD );
+				short minXYD = MIN( minXD, minYD );
 				for( short dxy = minXYD; dxy > 0; --dxy )
 				{
 					sum += coeff[dxy] * plasma.get_pix( x-dxy, y-dxy );

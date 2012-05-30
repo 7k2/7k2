@@ -533,9 +533,9 @@ void Firm::set_world_matrix()
 	
 	// ------ clear obstacle -------//
 
-	for( yLoc=max(loc_y1-INTER_PLACE_SPACE, 0); yLoc<=loc_y2+INTER_PLACE_SPACE && yLoc<world.max_y_loc; yLoc ++ )
+	for( yLoc=MAX(loc_y1-INTER_PLACE_SPACE, 0); yLoc<=loc_y2+INTER_PLACE_SPACE && yLoc<world.max_y_loc; yLoc ++ )
 	{
-		for( xLoc=max(loc_x1-INTER_PLACE_SPACE, 0); xLoc<=loc_x2+INTER_PLACE_SPACE && xLoc<world.max_x_loc; xLoc ++ )
+		for( xLoc=MAX(loc_x1-INTER_PLACE_SPACE, 0); xLoc<=loc_x2+INTER_PLACE_SPACE && xLoc<world.max_x_loc; xLoc ++ )
 		{
 			world.get_loc(xLoc, yLoc)->clear_obstacle();
 		}

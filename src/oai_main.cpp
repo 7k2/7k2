@@ -266,8 +266,8 @@ void Nation::init_personalty()
 	pref_spy                  = m.random(101);
 	pref_counter_spy          = m.random(101);
 
-	pref_spy = min(60, pref_spy);   							// if the pref is too high, the AI will use it like crazy and will introduce weird strategies
-	pref_counter_spy = min(60, pref_counter_spy);
+	pref_spy = MIN(60, pref_spy);   							// if the pref is too high, the AI will use it like crazy and will introduce weird strategies
+	pref_counter_spy = MIN(60, pref_counter_spy);
 
    pref_cash_reserve         = m.random(101);
    pref_food_reserve         = m.random(101);

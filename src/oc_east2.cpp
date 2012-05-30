@@ -101,10 +101,10 @@ void CampaignEastWest::stage_2_init_vars()
 {
 	//------ init stage 1 vars -------//
 
-	rebel_count = max(1, campaign_difficulty-1);
+	rebel_count = MAX(1, campaign_difficulty-1);
 	next_rebel_date = info.game_date + 30 + m.random(30);
 
-	general_defect_count = max(1, campaign_difficulty/2);
+	general_defect_count = MAX(1, campaign_difficulty/2);
 	next_general_defect_date = info.game_date + 30 + m.random(30);
 
 	//----- init monster reinforcement settings -----//

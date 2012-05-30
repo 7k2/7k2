@@ -292,7 +292,7 @@ void FirmFactory::production()
 
 	float produceQty = (float) 20 * productivity / 100;
 
-//	produceQty = min( produceQty, max_stock_qty-stock_qty );
+//	produceQty = MIN( produceQty, max_stock_qty-stock_qty );
 
 	manufacture(produceQty);
 }
@@ -336,10 +336,10 @@ void FirmFactory::input_raw()
 			if( firmMine->next_output_firm_recno == firm_recno &&
 				 firmMine->raw_id==product_raw_id && firmMine->stock_qty > 0 )
 			{
-				inputQty = min( firmMine->stock_qty, max_raw_stock_qty - raw_stock_qty );
+				inputQty = MIN( firmMine->stock_qty, max_raw_stock_qty - raw_stock_qty );
 
 				if( firmMine->nation_recno != nation_recno )			// make sure it has the cash to pay for the raw materials
-					inputQty = min( inputQty, nationPtr->cash/RAW_PRICE );
+					inputQty = MIN( inputQty, nationPtr->cash/RAW_PRICE );
 
 				if( inputQty > 0 )
 				{
@@ -371,10 +371,10 @@ void FirmFactory::input_raw()
 					if( marketGoods->raw_id == product_raw_id &&
 						 marketGoods->stock_qty > 0 )
 					{
-						inputQty = min( marketGoods->stock_qty, max_raw_stock_qty - raw_stock_qty );
+						inputQty = MIN( marketGoods->stock_qty, max_raw_stock_qty - raw_stock_qty );
 
 						if( firmMarket->nation_recno != nation_recno )			// make sure it has the cash to pay for the raw materials
-							inputQty = min( inputQty, nationPtr->cash/RAW_PRICE );
+							inputQty = MIN( inputQty, nationPtr->cash/RAW_PRICE );
 
 						if( inputQty > 0 )
 						{

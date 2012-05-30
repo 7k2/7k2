@@ -812,7 +812,7 @@ short TechInfo::max_tech_level(int nationRecno)
 	// steal or exchange tech can bring non-advantage nation to exceed common_max_tech_level
 
 	if( nationRecno && advantage_race_id && nation_array[nationRecno]->race_id == advantage_race_id )
-		return max( common_max_tech_level+1, get_nation_tech_level(nationRecno) );
+		return MAX( common_max_tech_level+1, get_nation_tech_level(nationRecno) );
 	else
 		return common_max_tech_level;
 

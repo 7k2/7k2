@@ -254,7 +254,7 @@ int Font::put(int x,int y,const char* textPtr, char clearBack, int x2, int cap )
 	if( x2 < 0 ) // default
 		x2 = x+max_font_width*textPtrLen;
 
-	x2 = min( x2, VGA_WIDTH-1 );
+	x2 = MIN( x2, VGA_WIDTH-1 );
 
 	if( !Vga::use_back_buf )
 		mouse.hide_area( x, y, x2, y+font_height );
@@ -513,7 +513,7 @@ int Font::text_width(const char* textPtr, int textPtrLen, int maxDispWidth, int 
 	if( textPtr[-1] == '\n' )       // if last character is line feed, don't count double
 		text_line_count--;
 
-	return max(maxLen,x);
+	return MAX(maxLen,x);
 }
 //----------- End of function Font::text_width ----//
 

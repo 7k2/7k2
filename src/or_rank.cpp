@@ -370,7 +370,7 @@ static int disp_goal(int refreshFlag)
 		}
 		else
 		{
-			y = min( NATION_GOAL_Y1 + textHeight + font_bld.height() +6, NATION_GOAL_Y2 );
+			y = MIN( NATION_GOAL_Y1 + textHeight + font_bld.height() +6, NATION_GOAL_Y2 );
 
 			vga.d3_panel_down( NATION_GOAL_X1, NATION_GOAL_Y1, NATION_GOAL_X2, y);		// one line space
 			font_bld.put_paragraph( NATION_GOAL_X1+6, NATION_GOAL_Y1+6,
@@ -744,7 +744,7 @@ int Info::get_rank_score(int rankType, int nationRecno)
 
 	int rankScore = 100 * nation_rank_data_array[rankType-1][nationRecno-1] / maxValue;
 
-	return max(0, rankScore);
+	return MAX(0, rankScore);
 }
 //----------- End of function Info::get_rank_score -----------//
 

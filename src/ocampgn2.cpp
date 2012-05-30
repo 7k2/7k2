@@ -1256,7 +1256,7 @@ void Campaign::put_center_text(int x, int y, const char* str, char black, Font* 
 		fontPtr->text_width( str, -1, 440 );
 		int textHeight = fontPtr->text_height()+5;
 
-	//	textHeight = min( textHeight, 560 );
+	//	textHeight = MIN( textHeight, 560 );
 
 		int barWidth = 15;
 		int x1 = x + (ZOOM_WIDTH-460) / 2 -10;
@@ -1264,8 +1264,8 @@ void Campaign::put_center_text(int x, int y, const char* str, char black, Font* 
 		int y1 = y + (ZOOM_HEIGHT-textHeight) / 2;
 		int y2 = y1 + textHeight - 1;
 
-		y1 = max (ZOOM_Y1+barWidth, y1);
-		y2 = min (ZOOM_Y2-barWidth, y2);
+		y1 = MAX (ZOOM_Y1+barWidth, y1);
+		y2 = MIN (ZOOM_Y2-barWidth, y2);
 
 		vga.active_buf->bar_alpha( x1, y1, x2, y2, darkness, V_BLACK );
 		
@@ -1545,7 +1545,7 @@ void Campaign::disp_in_game_msg(char* gameMsg, ...)
 
 	int textHeight = font_mid.text_height()+50;
 
-	textHeight = min( textHeight, MAX_END_GAME_BOX_HEIGHT );
+	textHeight = MIN( textHeight, MAX_END_GAME_BOX_HEIGHT );
 
 	int x1 = ZOOM_X1 + (ZOOM_WIDTH-END_GAME_BOX_WIDTH) / 2 -10;
 	int x2 = x1 + END_GAME_BOX_WIDTH - 1 +10;

@@ -403,7 +403,7 @@ int FirmCamp::ai_recruit(int recruitCount)
 	if( soldier_count + patrol_unit_count >= MAX_SOLDIER || recruitCount==0 )
 		return 0;
 
-	recruitCount = min( recruitCount, MAX_SOLDIER-soldier_count-patrol_unit_count );
+	recruitCount = MIN( recruitCount, MAX_SOLDIER-soldier_count-patrol_unit_count );
 
 	err_when( recruitCount < 0 );
 
@@ -450,7 +450,7 @@ int FirmCamp::ai_combat_level_needed()
 	//--- if the overseer is the king, increase its combat level needed ---//
 
 	if( overseer_recno && unit_array[overseer_recno]->rank_id == RANK_KING )
-		combatNeeded = max(400, combatNeeded);
+		combatNeeded = MAX(400, combatNeeded);
 
 	//---------------------------------------//
 
@@ -1019,7 +1019,7 @@ int FirmCamp::think_capture_use_spy2(Town* targetTown, int raceId, int curSpyLev
 		targetResistance = targetTown->target_resistance(nation_recno);
 	}
 
-	int minResistance = min(curResistance, targetResistance);
+	int minResistance = MIN(curResistance, targetResistance);
 
 	//----- if the resistance is low enough, don't have to use spies -----//
 
@@ -1280,10 +1280,10 @@ int FirmCamp::think_attack_invader()
 	int xLoc2 = loc_x2 + scanRange;
 	int yLoc2 = loc_y2 + scanRange;
 
-	xLoc1 = max( xLoc1, 0 );
-	yLoc1 = max( yLoc1, 0 );
-	xLoc2 = min( xLoc2, MAX_WORLD_X_LOC-1 );
-	yLoc2 = min( yLoc2, MAX_WORLD_Y_LOC-1 );
+	xLoc1 = MAX( xLoc1, 0 );
+	yLoc1 = MAX( yLoc1, 0 );
+	xLoc2 = MIN( xLoc2, MAX_WORLD_X_LOC-1 );
+	yLoc2 = MIN( yLoc2, MAX_WORLD_Y_LOC-1 );
 
 	//------------------------------------------//
 
@@ -1369,10 +1369,10 @@ int FirmCamp::think_attack_nearby_enemy()
 	int xLoc2 = loc_x2 + scanRange;
 	int yLoc2 = loc_y2 + scanRange;
 
-	xLoc1 = max( xLoc1, 0 );
-	yLoc1 = max( yLoc1, 0 );
-	xLoc2 = min( xLoc2, MAX_WORLD_X_LOC-1 );
-	yLoc2 = min( yLoc2, MAX_WORLD_Y_LOC-1 );
+	xLoc1 = MAX( xLoc1, 0 );
+	yLoc1 = MAX( yLoc1, 0 );
+	xLoc2 = MIN( xLoc2, MAX_WORLD_X_LOC-1 );
+	yLoc2 = MIN( yLoc2, MAX_WORLD_Y_LOC-1 );
 
 	//------------------------------------------//
 

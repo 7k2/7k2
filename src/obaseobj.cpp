@@ -314,11 +314,11 @@ float BaseObj::calc_live_points_bonus()
 
 	// ####### patch begin Gilbert 28/3 #####//
 	// float incBonus = (float) (info.game_date-info.game_start_date) / (365*20);		// life points will double in 20 years.
-	// incBonus = min(incBonus, 100);
+	// incBonus = MIN(incBonus, 100);
 	// gainedLivePoints += gainedLivePoints * incBonus;
 
 	float incBonus = (float) (info.game_date-info.game_start_date) / (365*5);		// life points will double in 5 years.
-	incBonus = min(incBonus, 4);
+	incBonus = MIN(incBonus, 4);
 	gainedLivePoints += gainedLivePoints * incBonus;
 	// ####### patch end Gilbert 28/3 #####//
 

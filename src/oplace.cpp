@@ -359,11 +359,11 @@ int Place::create_unit_locate_space(int unitId, int& xLoc, int& yLoc)
 
 	for (int r = 0; r <= 20; r++)
 	{
-		xLoc= max(loc_x1 -r, 0);
-		yLoc= max(loc_y1 -r, 0);     // xLoc & yLoc are used for returning results
+		xLoc= MAX(loc_x1 -r, 0);
+		yLoc= MAX(loc_y1 -r, 0);     // xLoc & yLoc are used for returning results
 	
 		if( locate_space(is_being_deleted, xLoc, yLoc, 
-			min(loc_x2 +r, world.max_x_loc-1), min(loc_y2 +r, world.max_y_loc-1),
+			MIN(loc_x2 +r, world.max_x_loc-1), MIN(loc_y2 +r, world.max_y_loc-1),
 			 spriteInfo->loc_width, spriteInfo->loc_height, unitInfo->mobile_type) )
 		{
 			return 1;

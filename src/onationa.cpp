@@ -644,7 +644,7 @@ int NationArray::random_unused_color()
 //	int pickedInstance = m.random(MAX_COLOR_SCHEME-usedCount)+1;
 
 	int pickedInstance = m.random(4)+1;		// always try to pick the first 4 which are more distinct whereas the last 3 colors are very hard to distinguish
-	pickedInstance = min( pickedInstance, MAX_COLOR_SCHEME-usedCount );
+	pickedInstance = MIN( pickedInstance, MAX_COLOR_SCHEME-usedCount );
 	int usedId=0;
 
 	for( i=0 ; i<MAX_COLOR_SCHEME ; i++ )

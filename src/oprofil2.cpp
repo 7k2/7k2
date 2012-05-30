@@ -381,7 +381,7 @@ int PlayerProfile::register_menu()
 
 				if( refreshFlag & PPOPTION_SCROLL_BAR )
 				{
-					int columns = min( profileColumnCount, SCROLL_MAX_COLUMN );
+					int columns = MIN( profileColumnCount, SCROLL_MAX_COLUMN );
 					if( columns > 0 )
 					{
 						int columnWidth = (BROWSE_X2 - BROWSE_X1 + 1) / columns;	// column width
@@ -495,7 +495,7 @@ int PlayerProfile::register_menu()
 			{		
 				// ------ detect player name list ------//
 
-				int columns = min( profileColumnCount, SCROLL_MAX_COLUMN );
+				int columns = MIN( profileColumnCount, SCROLL_MAX_COLUMN );
 				if( columns > 0 )
 				{
 					int columnWidth = (BROWSE_X2 - BROWSE_X1 + 1) / columns;	// column width

@@ -245,7 +245,7 @@ int Nation::ai_assign_soldier(ActionNode* actionNode)
 	if( MAX_SOLDIER - firmCamp->soldier_count < actionNode->instance_count )		// if the firm now has more soldiers, reduce the number needed to be assigned to the firm
 	{
 		err_when( actionNode->processing_instance_count >= actionNode->instance_count );
-		actionNode->instance_count = max( actionNode->processing_instance_count+1, MAX_SOLDIER - firmCamp->soldier_count );
+		actionNode->instance_count = MAX( actionNode->processing_instance_count+1, MAX_SOLDIER - firmCamp->soldier_count );
 	}
 
 	//---------------------------------------------------------------------------//
@@ -363,7 +363,7 @@ int Nation::ai_settle_town(ActionNode* actionNode)
 	if( actionNode->instance_count - actionNode->processing_instance_count > 1 )
 	{
 		recruitCount = actionNode->instance_count - actionNode->processing_instance_count;
-		recruitCount = min( recruitCount, MAX_WAGON_POPULATION );
+		recruitCount = MIN( recruitCount, MAX_WAGON_POPULATION );
 
 		recruitWagon = true;
 	}
@@ -387,7 +387,7 @@ int Nation::ai_settle_town(ActionNode* actionNode)
 		err_when( unitPtr->nation_recno==0 );
 
 		if( recruitCount > 1 )
-			actionNode->instance_count = max( actionNode->processing_instance_count+1, actionNode->instance_count-recruitCount+1 );
+			actionNode->instance_count = MAX( actionNode->processing_instance_count+1, actionNode->instance_count-recruitCount+1 );
 
 		return 1;
 	}

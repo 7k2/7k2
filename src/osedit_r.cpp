@@ -125,7 +125,7 @@ void ScenarioEditor::disp_diplomacy_main(int refreshFlag)
 	{
 		// charStr[0] = text_talk.str_relation_status(p)[0];
 		font_zoom.put( x, y, text_editor.str_abbrev_relation_str(p) );
-		font_zoom.put( x+17, y, text_talk.str_relation_status(p), 0, min(x+108,INFO_X2-5) );
+		font_zoom.put( x+17, y, text_talk.str_relation_status(p), 0, MIN(x+108,INFO_X2-5) );
 		if( col < 1 )		// 2 column
 		{
 			x += 110;
@@ -142,7 +142,7 @@ void ScenarioEditor::disp_diplomacy_main(int refreshFlag)
 	// put trade treaty status
 	{
 		font_zoom.put( x, y, text_editor.str_abbrev_trade_treaty() );
-		font_zoom.put( x+17, y, text_talk.str_trade_treaty(), 0, min(x+108,INFO_X2-5) );
+		font_zoom.put( x+17, y, text_talk.str_trade_treaty(), 0, MIN(x+108,INFO_X2-5) );
 	}
 
 	// display instruction 

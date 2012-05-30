@@ -568,11 +568,11 @@ void Nation::set_ai_attack_target(int targetXLoc, int targetYLoc, int defenseMod
 		xLoc = targetXLoc + xOffset;
 		yLoc = targetYLoc + yOffset;
 
-		xLoc = max(0, xLoc);
-		xLoc = min(MAX_WORLD_X_LOC-1, xLoc);
+		xLoc = MAX(0, xLoc);
+		xLoc = MIN(MAX_WORLD_X_LOC-1, xLoc);
 
-		yLoc = max(0, yLoc);
-		yLoc = min(MAX_WORLD_Y_LOC-1, yLoc);
+		yLoc = MAX(0, yLoc);
+		yLoc = MIN(MAX_WORLD_Y_LOC-1, yLoc);
 
 		Location* locPtr = world.get_loc(xLoc, yLoc);
 
@@ -644,11 +644,11 @@ int Nation::ai_attack_order_nearby_mobile(int targetXLoc, int targetYLoc, int ta
       xLoc = targetXLoc + xOffset;
       yLoc = targetYLoc + yOffset;
 
-      xLoc = max(0, xLoc);
-      xLoc = min(MAX_WORLD_X_LOC-1, xLoc);
+      xLoc = MAX(0, xLoc);
+      xLoc = MIN(MAX_WORLD_X_LOC-1, xLoc);
 
-      yLoc = max(0, yLoc);
-      yLoc = min(MAX_WORLD_Y_LOC-1, yLoc);
+      yLoc = MAX(0, yLoc);
+      yLoc = MIN(MAX_WORLD_Y_LOC-1, yLoc);
 
       locPtr = world.get_loc(xLoc, yLoc);
 

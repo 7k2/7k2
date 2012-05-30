@@ -103,7 +103,7 @@ int Unit::think_aggressive_attack(int extendedRange, int fullDetect)
 
 	int attackRange = max_attack_range();
 	// old version attackScanRange is diammeter, but new version is radius
-	int attackScanRange = max( attackRange, 8 ) + extendedRange + 4;
+	int attackScanRange = MAX( attackRange, 8 ) + extendedRange + 4;
 
 	//-- the attack scanning range of town and camp defenders is larger --//
 
@@ -236,7 +236,7 @@ int Unit::think_aggressive_attack(int extendedRange, int fullDetect)
 	/*
 	//----------------------------------------------//
 
-	int attackRange	  = max(attack_range(), 8);
+	int attackRange	  = MAX(attack_range(), 8);
 	int attackScanRange = attackRange*2+1;
 
 	attackScanRange += extendedRange;
@@ -289,11 +289,11 @@ int Unit::think_aggressive_attack(int extendedRange, int fullDetect)
 		xLoc = curXLoc + xOffset;
 		yLoc = curYLoc + yOffset;
 
-		xLoc = max(0, xLoc);
-		xLoc = min(MAX_WORLD_X_LOC-1, xLoc);
+		xLoc = MAX(0, xLoc);
+		xLoc = MIN(MAX_WORLD_X_LOC-1, xLoc);
 
-		yLoc = max(0, yLoc);
-		yLoc = min(MAX_WORLD_Y_LOC-1, yLoc);
+		yLoc = MAX(0, yLoc);
+		yLoc = MIN(MAX_WORLD_Y_LOC-1, yLoc);
 
 		locPtr = world.get_loc(xLoc, yLoc);
 

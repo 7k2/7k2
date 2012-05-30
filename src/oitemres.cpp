@@ -836,7 +836,7 @@ void ItemRes::use_manually( Item &item, int unitRecno, int targetBaseObjRecno, i
 							int monsterLevel = monster_res[summonUnit->monster_id()]->level;
 							err_when( monsterLevel < 3 || monsterLevel > 9 );	// tuned for level between 3 and 9
 							int combatSkill = (7 * MAX_COMBAT_TRAIN + m.random(MAX_COMBAT_TRAIN)) / (5 + monster_res[summonUnit->monster_id()]->level);
-							combatSkill = min( combatSkill, MAX_COMBAT_TRAIN);
+							combatSkill = MIN( combatSkill, MAX_COMBAT_TRAIN);
 							summonUnit->set_combat_level( combatSkill );
 							summonUnit->skill.set_skill_level(CITIZEN_SKILL_LEVEL);
 							// ####### end Gilbert 19/2 #########//

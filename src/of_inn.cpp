@@ -242,8 +242,8 @@ int FirmInn::hire(short recNo, int spyEscape, short exitFirmRecno)
 	if( race_res.is_same_race(unitPtr->race_id, nationPtr->race_id) )
 		unitLoyalty += 20;
 
-	unitLoyalty = max( 40, unitLoyalty );
-	unitLoyalty = min( 100, unitLoyalty );
+	unitLoyalty = MAX( 40, unitLoyalty );
+	unitLoyalty = MIN( 100, unitLoyalty );
 
 	unitPtr->loyalty = unitLoyalty;
 	// ######## begin Gilbert 24/2 #######//

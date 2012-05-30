@@ -974,7 +974,7 @@ int Misc::points_distance(int x1, int y1, int x2, int y2)
 	int x = abs(x1-x2);
 	int y = abs(y1-y2);
 
-	return max(x, y);
+	return MAX(x, y);
 }
 //---------- End of function Misc::points_distance ---------//
 
@@ -1625,7 +1625,7 @@ int Misc::area_distance(int x1a, int y1a, int x2a, int y2a,
 	}
 
 	err_when( dx < 0 || dy < 0 );
-	return max( dx, dy );
+	return MAX( dx, dy );
 }
 //---------- End of function Misc::area_distance -----------//
 

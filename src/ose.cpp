@@ -462,7 +462,7 @@ const default_vol_limit = 20;
 const default_vol_drop = 100;
 long SECtrl::sound_volume(short locX, short locY)
 {
-	short dist = max( locX >= 0? locX : -locX, locY >= 0? locY:-locY);
+	short dist = MAX( locX >= 0? locX : -locX, locY >= 0? locY:-locY);
 	err_when( default_vol_drop <= default_vol_limit);
 
 	if( dist > default_vol_limit)
@@ -474,7 +474,7 @@ long SECtrl::sound_volume(short locX, short locY)
 
 long SECtrl::sound_volume(short locX, short locY, short limit, short drop)
 {
-	short dist = max( locX >= 0? locX : -locX, locY >= 0? locY:-locY);
+	short dist = MAX( locX >= 0? locX : -locX, locY >= 0? locY:-locY);
 	err_when( drop <= limit);
 
 	if( dist > limit)

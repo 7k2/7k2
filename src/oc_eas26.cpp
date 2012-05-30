@@ -102,7 +102,7 @@ void CampaignEastWest::stage_26_init_vars()
 {
 	//------ set game event vars -------//
 
-	rebel_count = max(1, campaign_difficulty-1);
+	rebel_count = MAX(1, campaign_difficulty-1);
 	next_rebel_date = info.game_date + 30 + m.random(30);
 
 	general_defect_count = 5;

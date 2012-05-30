@@ -60,8 +60,8 @@ void Soldier::change_loyalty(int loyaltyChange)
 
 	int newLoyalty = loyalty + loyaltyChange;
 
-	newLoyalty 		 = min( 100, newLoyalty );
-	loyalty = max( 0, newLoyalty );
+	newLoyalty 		 = MIN( 100, newLoyalty );
+	loyalty = MAX( 0, newLoyalty );
 }
 //---------- End of function Soldier::change_loyalty --------//
 
@@ -75,8 +75,8 @@ void Soldier::change_hit_points(int changePoints)
 	int newHitPoints = hit_points + changePoints;
 	int maxHitPoints = max_hit_points();
 
-	newHitPoints = min( maxHitPoints, newHitPoints );
-	hit_points   = max( 0, newHitPoints );
+	newHitPoints = MIN( maxHitPoints, newHitPoints );
+	hit_points   = MAX( 0, newHitPoints );
 }
 //---------- End of function Soldier::change_hit_points --------//
 

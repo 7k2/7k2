@@ -153,7 +153,7 @@ int FirmCamp::spy_bribe(int bribeAmount, short briberSpyRecno, short soldierId)
 
 		newSpy->spy_skill = 10;
 		newSpy->action_mode = SPY_IDLE;
-		newSpy->spy_loyalty = min( 100, max(30,succeedChance) );		// within the 30-100 range
+		newSpy->spy_loyalty = MIN( 100, MAX(30,succeedChance) );		// within the 30-100 range
 
 		newSpy->true_nation_recno    = spyPtr->true_nation_recno;
 		newSpy->cloaked_nation_recno = spyPtr->cloaked_nation_recno;
@@ -389,8 +389,8 @@ void FirmCamp::disp_bribe_menu(int refreshFlag)
 				action_spy_recno, action_target_recno);
 			if( !config.show_debug_info )
 			{
-				spy_action_chance = min( spy_action_chance, 0 );
-				spy_action_chance = max( spy_action_chance, 100 );
+				spy_action_chance = MIN( spy_action_chance, 0 );
+				spy_action_chance = MAX( spy_action_chance, 100 );
 			}
 		}
 		button_bribe_amount.paint();
@@ -479,8 +479,8 @@ void FirmCamp::detect_bribe_menu()
 				action_spy_recno, action_target_recno);
 			if( !config.show_debug_info )
 			{
-				spy_action_chance = min( spy_action_chance, 0 );
-				spy_action_chance = max( spy_action_chance, 100 );
+				spy_action_chance = MIN( spy_action_chance, 0 );
+				spy_action_chance = MAX( spy_action_chance, 100 );
 			}
 			se_ctrl.immediate_sound("TURN_ON");
 		}

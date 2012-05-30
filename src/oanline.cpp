@@ -245,14 +245,14 @@ void AnimLine::draw_line(VgaBuf *vgabuf, short x1, short y1, short x2, short y2,
 					}
 					else
 					{
-						initPhase = max( abs(x1-x1b), abs(y1-y1b) );
+						initPhase = MAX( abs(x1-x1b), abs(y1-y1b) );
 						x1 = x1b;
 						y1 = y1b;
 					}	
 				}
 				else
 				{
-					initPhase = max( abs(x1-x1a), abs(y1-y1a) );
+					initPhase = MAX( abs(x1-x1a), abs(y1-y1a) );
 					x1 = x1a;
 					y1 = y1a;
 				}

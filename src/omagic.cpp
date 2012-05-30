@@ -4156,10 +4156,10 @@ void Magic::draw_magic_twelve(VgaBuf *vgabuf, int x1, int y1, int mode, int curS
 		if (locx1 <= bound_x2 && locx2 >= bound_x1 &&
 			locy1 <= bound_y2 && locy2 >= bound_y1 )
 		{
-			int srcX1 = max(locx1, bound_x1)-locx1;
-			int srcY1 = max(locy1, bound_y1)-locy1;
-			int srcX2 = min(locx2, bound_x2)-locx1;
-			int srcY2 = min(locy2, bound_y2)-locy1;
+			int srcX1 = MAX(locx1, bound_x1)-locx1;
+			int srcY1 = MAX(locy1, bound_y1)-locy1;
+			int srcX2 = MIN(locx2, bound_x2)-locx1;
+			int srcY2 = MIN(locy2, bound_y2)-locy1;
 		
 			short *colorRemapTable = game.get_color_remap_table(nationRecno, 1);
 			vgabuf->put_bitmap_area_trans_remap_decompress(locx1, locy1, (char *) bitmapPtr, srcX1, srcY1, srcX2, srcY2, colorRemapTable);
@@ -4263,10 +4263,10 @@ void Magic::draw_magic_twelve_die(VgaBuf *vgabuf, int x1, int y1, int mode, int 
 		if (locx1 <= bound_x2 && locx2 >= bound_x1 &&
 			locy1 <= bound_y2 && locy2 >= bound_y1 )
 		{
-			int srcX1 = max(locx1, bound_x1)-locx1;
-			int srcY1 = max(locy1, bound_y1)-locy1;
-			int srcX2 = min(locx2, bound_x2)-locx1;
-			int srcY2 = min(locy2, bound_y2)-locy1;
+			int srcX1 = MAX(locx1, bound_x1)-locx1;
+			int srcY1 = MAX(locy1, bound_y1)-locy1;
+			int srcX2 = MIN(locx2, bound_x2)-locx1;
+			int srcY2 = MIN(locy2, bound_y2)-locy1;
 		
 			short *colorRemapTable = game.get_color_remap_table(nationRecno, 1);
 			vgabuf->put_bitmap_area_trans_remap_decompress(locx1, locy1, (char *) bitmapPtr, srcX1, srcY1, srcX2, srcY2, colorRemapTable);

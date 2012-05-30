@@ -468,10 +468,10 @@ void UnitGroup::exe_attack(int targetObjRecno)
 	//----- assign a good location for the units to undergo range attack -----//
 	if(rangeAttack)
 	{
-		int xLoc1 = max(targetLocX-minAttackRange, 0);
-		int yLoc1 = max(targetLocY-minAttackRange, 0);
-		int xLoc2 = min(targetLocX+targetWidth-1+minAttackRange, MAX_WORLD_X_LOC-1);
-		int yLoc2 = min(targetLocY+targetHeight-1+minAttackRange, MAX_WORLD_Y_LOC-1);
+		int xLoc1 = MAX(targetLocX-minAttackRange, 0);
+		int yLoc1 = MAX(targetLocY-minAttackRange, 0);
+		int xLoc2 = MIN(targetLocX+targetWidth-1+minAttackRange, MAX_WORLD_X_LOC-1);
+		int yLoc2 = MIN(targetLocY+targetHeight-1+minAttackRange, MAX_WORLD_Y_LOC-1);
 		int checkXLoc, checkYLoc;
 		unitIndex = 0;
 		unitPtr = arrayForRangeAttack[unitIndex];
@@ -1061,10 +1061,10 @@ void UnitGroup::run_action(int destXLoc, int destYLoc, int orderId, int orderPar
 		thisDestXLoc = unitPtr->obj_loc_x1() + moveOffsetX;
 		thisDestYLoc = unitPtr->obj_loc_y1() + moveOffsetY;
 
-		thisDestXLoc = max( 0, thisDestXLoc );
-		thisDestYLoc = max( 0, thisDestYLoc );
-		thisDestXLoc = min( MAX_WORLD_X_LOC-unitPtr->obj_loc_width(), thisDestXLoc );
-		thisDestYLoc = min( MAX_WORLD_Y_LOC-unitPtr->obj_loc_height(), thisDestYLoc );
+		thisDestXLoc = MAX( 0, thisDestXLoc );
+		thisDestYLoc = MAX( 0, thisDestYLoc );
+		thisDestXLoc = MIN( MAX_WORLD_X_LOC-unitPtr->obj_loc_width(), thisDestXLoc );
+		thisDestYLoc = MIN( MAX_WORLD_Y_LOC-unitPtr->obj_loc_height(), thisDestYLoc );
 
 		unitPtr->pre_move(thisDestXLoc, thisDestYLoc);
 	}
@@ -1095,8 +1095,8 @@ void UnitGroup::run_action(int destXLoc, int destYLoc, int orderId, int orderPar
 	}
 	else
 		// ###### begin Gilbert 15/5 ########//
-		// cluster_units_for_path_reuse(max(0, destXLoc), max(0, destYLoc), centerXLoc, centerYLoc);
-		cluster_units_for_path_reuse(max(0, destCenterX), max(0, destCenterY), centerXLoc, centerYLoc);
+		// cluster_units_for_path_reuse(MAX(0, destXLoc), MAX(0, destYLoc), centerXLoc, centerYLoc);
+		cluster_units_for_path_reuse(MAX(0, destCenterX), MAX(0, destCenterY), centerXLoc, centerYLoc);
 		// ###### end Gilbert 15/5 ########//
 
 	for(int i=1; i<=size(); i++)

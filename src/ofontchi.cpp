@@ -741,8 +741,8 @@ void Font::init(char* fontName, int interCharSpace, int italicShift)
 //	for(i=0;i<256;i++)
 //	{
 //		unsigned char p=code[i],p1=bc,p2=fc;
-//		bc=max(p,p1,p2);
-//		fc=p1+p2+p-max(p,p1,p2)-min(p,p1,p2);
+//		bc=MAX(p,p1,p2);
+//		fc=p1+p2+p-MAX(p,p1,p2)-MIN(p,p1,p2);
 //	}
 	bc = 255;		// always 255 for transparent
 	// choose foreground color as the most frequent color
@@ -1003,7 +1003,7 @@ int Font::put(int x,int y,char* textPtr, char clearBack, int x2, int cap )
 	if( x2 < 0 ) // default
 		x2 = x+max_font_width*textPtrLen;
 
-	x2 = min( x2, VGA_WIDTH-1 );
+	x2 = MIN( x2, VGA_WIDTH-1 );
 
 	if( !Vga::use_back_buf )
 		mouse.hide_area( x, y, x2, y+font_height );
@@ -1436,7 +1436,7 @@ int Font::text_width(char* textPtr, int textPtrLen, int maxDispWidth, int cap)
 	if( textPtr[-1] == '\n' )       // if last character is line feed, don't count double
 		text_line_count--;
 
-	return max(maxLen,x);
+	return MAX(maxLen,x);
 }
 //----------- End of function Font::text_width ----//
 

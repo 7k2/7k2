@@ -389,7 +389,7 @@ void FirmAnimal::draw(int displayLayer)
 
 		// slot 1,2,3 display each animal
 
-		for( i = 0; i < min(ANIMAL_TYPE_COUNT,unitIconCount) ; ++i )
+		for( i = 0; i < MIN(ANIMAL_TYPE_COUNT,unitIconCount) ; ++i )
 		{
 			if( animalCount[i] > 0 )
 			{

@@ -109,8 +109,8 @@ int FirmFort::ai_recruit(int recruitCount)
 
 	//-- just train 2 units at maximum at a time, to avoid holding up human resources --//
 
-	recruitCount = min( recruitCount, MAX_SOLDIER-soldier_count-patrol_unit_count );
-	recruitCount = min( 2, recruitCount );
+	recruitCount = MIN( recruitCount, MAX_SOLDIER-soldier_count-patrol_unit_count );
+	recruitCount = MIN( 2, recruitCount );
 
 	//------ first try to train soldiers in the fort -----//
 

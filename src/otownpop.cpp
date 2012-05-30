@@ -58,7 +58,7 @@ void Town::init_pop(int addPop, int addLoyalty, int hasJob, int firstInit)
 	if(population>=MAX_TOWN_POPULATION)
 		return;
 
-	int addPopulation = min(addPop, MAX_TOWN_POPULATION-population);
+	int addPopulation = MIN(addPop, MAX_TOWN_POPULATION-population);
 
 	//-------- update population ---------//
 
@@ -523,7 +523,7 @@ void Town::update_loyalty()
 
 		// ###### patch begin Gilbert 23/12 ######//
 		//loyaltyInc = (target_loyalty-loyalty) / 30;
-		// change_loyalty( max(loyaltyInc, (float)0.5) );
+		// change_loyalty( MAX(loyaltyInc, (float)0.5) );
 
 		// add penalty for egyptain god
 		loyaltyInc = (target_loyalty-loyalty) / 30;
@@ -538,7 +538,7 @@ void Town::update_loyalty()
 	{
 		loyaltyDec = (loyalty-target_loyalty) / 30;
 
-		change_loyalty( -max(loyaltyDec, (float)0.5) );
+		change_loyalty( -MAX(loyaltyDec, (float)0.5) );
 	}
 }
 //------- End of function Town::update_loyalty ------//
@@ -552,8 +552,8 @@ void Town::change_loyalty(float loyaltyChange)
 {
 	loyalty += loyaltyChange;
 
-	loyalty = min( 100, loyalty );
-	loyalty = max(   0, loyalty );
+	loyalty = MIN( 100, loyalty );
+	loyalty = MAX(   0, loyalty );
 }
 //------- End of function Town::change_loyalty ------//
 
@@ -569,8 +569,8 @@ void Town::change_resistance(int nationRecno, float resistanceChange)
 
 	float newResistance = resistance_array[nationRecno-1] + resistanceChange;
 
-	newResistance = min( 100, newResistance );
-	newResistance = max(   0, newResistance );
+	newResistance = MIN( 100, newResistance );
+	newResistance = MAX(   0, newResistance );
 
 	resistance_array[nationRecno-1] = newResistance;
 }
@@ -648,7 +648,7 @@ void Town::update_target_resistance()
 			newValue -= 20;
 		// ###### end Gilbert 19/11 ######//
 
-		newValue = max(newValue, 0);
+		newValue = MAX(newValue, 0);
 
 		// -------- take the minimum target resistance -------- //
 
@@ -693,7 +693,7 @@ void Town::update_resistance()
 				if( config.independent_town_resistance == OPTION_HIGH )
 					decValue = decValue / 3;			// 33% of the original
 
-				resistance_array[j] -= max(1, decValue);
+				resistance_array[j] -= MAX(1, decValue);
 
 				if(resistance_array[j] < targetResistance) // avoid resistance oscillate between taregtLoyalty-1 and taregtLoyalty+1
 					resistance_array[j] = (float)targetResistance;
@@ -989,7 +989,7 @@ void Town::assign_unit(int unitRecno)
 					// ###### patch end Gilbert 29/3 ######//
 					{
 						float newResistance = resistance_array[i] + loyaltyInc + RESISTANCE_INCREASE;
-						resistance_array[i] = min(newResistance, 100);
+						resistance_array[i] = MIN(newResistance, 100);
 					}
 				}
 			}
@@ -1104,7 +1104,7 @@ int Town::mobilize_wagon(int decPop, int wagonPopulation, short spyArrayCount, s
 
 	int peopleFreed = recruitable_pop(1);
 
-	peopleFreed = min( peopleFreed, wagonPopulation );
+	peopleFreed = MIN( peopleFreed, wagonPopulation );
 
 	//----look for an empty location for the unit to stand ----//
 	//--- scan for the 5 rows right below the building ---//
@@ -1296,9 +1296,9 @@ int Town::recruit(bool recruitWagon, char remoteAction)
 	int recruitCount = recruitable_pop(1);		// 1-also recruit spy. Don't exclude them from recruitment
 
 	if( recruitWagon )
-		recruitCount = min( recruitCount, MAX_WAGON_POPULATION );
+		recruitCount = MIN( recruitCount, MAX_WAGON_POPULATION );
 	else
-		recruitCount = min( recruitCount, 1 );
+		recruitCount = MIN( recruitCount, 1 );
 
 	if( recruitCount==1 )    // if only one unit is recruited, never recruit a wagon
 		recruitWagon = 0;
@@ -1455,7 +1455,7 @@ int Town::recruit_dec_loyalty(int recruitCount, int decNow)
 	float loyaltyDec;
 
 	if( population > 0 )
-		loyaltyDec = min( 5, (float) MAX_TOWN_POPULATION / population );
+		loyaltyDec = MIN( 5, (float) MAX_TOWN_POPULATION / population );
 	else
 		loyaltyDec = 0;
 
@@ -1464,7 +1464,7 @@ int Town::recruit_dec_loyalty(int recruitCount, int decNow)
 	if( decNow )
 	{
 		loyaltyDec += accumulated_recruit_penalty/5;
-		loyaltyDec = min(loyaltyDec, 10);
+		loyaltyDec = MIN(loyaltyDec, 10);
 
 		accumulated_recruit_penalty += 5;
 

@@ -714,11 +714,11 @@ void Unit::disp_unit_profile(int dispY1, int refreshFlag)
 		int x2 = x1 + bitmapPtr->get_width() -1;
 		int y2 = y1 + bitmapPtr->get_height() -1;
 
-		int srcX1 = max(x1, INFO_X1+15)-x1;
-	//	int srcY1 = max(y1, INFO_Y1)-y1;
+		int srcX1 = MAX(x1, INFO_X1+15)-x1;
+	//	int srcY1 = MAX(y1, INFO_Y1)-y1;
 		int srcY1 = 0;
-		int srcX2 = min(x2, INFO_X2)-x1;
-		int srcY2 = min(y2, INFO_Y2)-y1;
+		int srcX2 = MIN(x2, INFO_X2)-x1;
+		int srcY2 = MIN(y2, INFO_Y2)-y1;
 
 		vga.active_buf->put_bitmap_area_trans_remap_decompress(x1, y1, (char *) bitmapPtr, srcX1, srcY1, srcX2, srcY2, colorRemapTable);
 		sprite_info->free_bitmap_res();

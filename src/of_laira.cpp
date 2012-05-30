@@ -355,7 +355,7 @@ void FirmLair::think_recruit(int combatLevelDiff)
 	Nation* nationPtr = nation_array[nation_recno];
 
 	int importanceRating = 70 * (MAX_SOLDIER-soldier_count) / MAX_SOLDIER
-								  + max(combatLevelDiff,0)/5;
+								  + MAX(combatLevelDiff,0)/5;
 
 	//----------------------------------------------//
 	//
@@ -651,7 +651,7 @@ int FirmLair::ai_combat_level_needed()
 	//--- if the overseer is the king, increase its combat level needed ---//
 
 	if( overseer_recno && unit_array[overseer_recno]->rank_id == RANK_KING )
-		combatNeeded = max(400, combatNeeded);
+		combatNeeded = MAX(400, combatNeeded);
 
 	//---------------------------------------//
 
