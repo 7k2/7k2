@@ -9,6 +9,7 @@ Requirements
 * Wine 1.3.15 or later
 * CMake 2.8.0 or later
 * libjpeg 6b or later
+* OpenAL 1.13 or later
 
 Building the game
 -----------------

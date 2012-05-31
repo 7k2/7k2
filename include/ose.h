@@ -25,6 +25,7 @@
 #ifndef __OSE_H
 #define __OSE_H
 
+#include <oaudio.h>
 #include <oresx.h>
 #include <ovolume.h>
 
@@ -57,8 +58,6 @@ struct SERequest
 };
 
 // ------ Define Class SECtrl -------//
-
-class Audio;
 
 class SECtrl
 {

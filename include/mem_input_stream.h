@@ -17,17 +17,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
+#ifndef MEM_INPUT_STREAM_H
+#define MEM_INPUT_STREAM_H
 
-#ifndef OAUDIO_H
-#define OAUDIO_H
+#include <input_stream.h>
 
-#define USE_OPENAL
-#if defined(USE_OPENAL)
-#include <openal_audio.h>
-#else
-#error "You need to define an audio backend, such as OpenAL or Win32"
-#endif
+class MemInputStream: public InputStream
+{
+private:
+   uint8_t *data;
+   size_t length;
+   size_t pos;
+   bool own_data;
 
-extern Audio audio;
+public:
+   MemInputStream();
+   ~MemInputStream();
+   void open(void *data, size_t length, bool own_data = true);
+   long read(void *buffer, long length);
+   bool seek(long offset, int whence);
+   long tell();
+   void close();
+};
 
 #endif

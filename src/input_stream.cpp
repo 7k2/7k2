@@ -17,17 +17,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
+#include <input_stream.h>
 
-#ifndef OAUDIO_H
-#define OAUDIO_H
+/*
+ * Reads a non-integer little-endian value of the same size as the integer
+ * type AliasT.
+ */
+template <typename T, typename AliasT>
+bool read_le_alias(InputStream *is, T *valp)
+{
+   union { T val; AliasT al; } u;
 
-#define USE_OPENAL
-#if defined(USE_OPENAL)
-#include <openal_audio.h>
-#else
-#error "You need to define an audio backend, such as OpenAL or Win32"
-#endif
+   if (!read_le_integer<AliasT>(is, &u.al))
+      return false;
 
-extern Audio audio;
+   *valp = u.val;
+   return true;
+}
 
-#endif
+template <>
+bool read_le<float>(InputStream *is, float *valp)
+{
+   return read_le_alias<float, uint32_t>(is, valp);
+}
+
+template <>
+bool read_le<double>(InputStream *is, double *valp)
+{
+   return read_le_alias<double, uint64_t>(is, valp);
+}

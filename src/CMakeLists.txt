@@ -1,5 +1,9 @@
 set(7k2_SOURCES
   dbglog.cpp
+  file_input_stream.cpp
+  file_util.cpp
+  input_stream.cpp
+  mem_input_stream.cpp
   oai_act.cpp
   oai_act2.cpp
   oai_attk.cpp
@@ -20,7 +24,6 @@ set(7k2_SOURCES
   oai_unit.cpp
   oanline.cpp
   oattack.cpp
-  oaudio.cpp
   ob_flame.cpp
   ob_homin.cpp
   ob_prog.cpp
@@ -266,6 +269,7 @@ set(7k2_SOURCES
   onewsger.cpp
   onewsspa.cpp
   ooptmenu.cpp
+  openal_audio.cpp
   opfind.cpp
   oplace.cpp
   oplant.cpp
@@ -444,7 +448,8 @@ set(7k2_SOURCES
   oweather.cpp
   oworld.cpp
   oworld_m.cpp
-  oworld_z.cpp)
+  oworld_z.cpp
+  wav_stream.cpp)
 
 if(UNIX)
   find_package(Wine REQUIRED)
@@ -458,7 +463,6 @@ if(UNIX)
     ddraw
     dinput
     dplayx
-    dsound
     winmm
     shell32)
   set(EXTRA_LIBS ${WINE_LIBS})
@@ -468,8 +472,9 @@ endif(UNIX)
 
 set_source_files_properties(${7k2_SOURCES} PROPERTIES COMPILE_DEFINITIONS_DEBUG "DEBUG")
 include_directories(SYSTEM ${JPEG_INCLUDE_DIR})
+include_directories(SYSTEM ${OPENAL_INCLUDE_DIR})
 include_directories(${7K2_SOURCE_DIR}/include)
 add_library(7k2_lib STATIC ${7k2_SOURCES})
 add_executable(7k2 am.cpp)
-target_link_libraries(7k2 7k2_lib imgfun ${EXTRA_LIBS} ${JPEG_LIBRARIES})
+target_link_libraries(7k2 7k2_lib imgfun ${EXTRA_LIBS} ${JPEG_LIBRARIES} ${OPENAL_LIBRARY})
 set_target_properties(7k2 PROPERTIES COMPILE_DEFINITIONS_DEBUG "DEBUG")

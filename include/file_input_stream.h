@@ -17,17 +17,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
+#ifndef FILE_INPUT_STREAM_H
+#define FILE_INPUT_STREAM_H
 
-#ifndef OAUDIO_H
-#define OAUDIO_H
+#include <ofile.h>
+#include <input_stream.h>
 
-#define USE_OPENAL
-#if defined(USE_OPENAL)
-#include <openal_audio.h>
-#else
-#error "You need to define an audio backend, such as OpenAL or Win32"
-#endif
+class FileInputStream: public InputStream
+{
+private:
+   File *file;
+   bool own_file;
 
-extern Audio audio;
+public:
+   FileInputStream();
+   ~FileInputStream();
+   bool open(File *file, bool own_file = true);
+   bool open(const char *file_name);
+   long read(void *buffer, long length);
+   bool seek(long offset, int whence);
+   long tell();
+   void close();
+};
 
+/* vim: set ts=8 sw=3: */
 #endif

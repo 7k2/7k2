@@ -17,17 +17,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
+#include <stdio.h>
+#include <stdlib.h>
 
-#ifndef OAUDIO_H
-#define OAUDIO_H
+#include <file_util.h>
 
-#define USE_OPENAL
-#if defined(USE_OPENAL)
-#include <openal_audio.h>
-#else
-#error "You need to define an audio backend, such as OpenAL or Win32"
-#endif
+bool seek(File *file, long off, int whence)
+{
+   long target;
+   long pos;
 
-extern Audio audio;
+   switch (whence)
+   {
+      case SEEK_SET: target = off; break;
+      case SEEK_CUR: target = file->file_pos() + off; break;
+      case SEEK_END: target = file->file_size() + off; break;
+      default: abort();
+   }
 
-#endif
+   pos = file->file_seek(off, whence);
+   return (pos == target);
+}

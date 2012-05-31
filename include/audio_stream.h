@@ -1,5 +1,6 @@
 /*
  * Seven Kingdoms 2: The Fryhtan War
+ * AudioStream
  *
  * Copyright 2010 Unavowed <unavowed@vexillium.org>
  *
@@ -18,16 +19,26 @@
  *
  */
 
-#ifndef OAUDIO_H
-#define OAUDIO_H
+#include <stddef.h>
+#include <stdint.h>
 
-#define USE_OPENAL
-#if defined(USE_OPENAL)
-#include <openal_audio.h>
-#else
-#error "You need to define an audio backend, such as OpenAL or Win32"
-#endif
+#ifndef AUDIO_STREAM_H
+#define AUDIO_STREAM_H
 
-extern Audio audio;
+class AudioStream
+{
+public:
+	virtual ~AudioStream() {};
+	virtual long read(void *buffer, size_t frame_count) = 0;
+	virtual bool seek(size_t frame_no) = 0;
+	virtual int32_t frame_rate() const = 0; /* in PCM frames per sec */
+	virtual int channels() const = 0;
+	virtual int sample_size() const = 0;    /* in bytes */
+
+	int frame_size() const
+	{
+		return (this->channels() * this->sample_size());
+	}
+};
 
 #endif

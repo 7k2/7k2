@@ -7,5 +7,6 @@ if(UNIX)
 endif(UNIX)
 
 find_package(JPEG REQUIRED)
+find_package(OpenAL REQUIRED)
 add_subdirectory(src/asm)
 add_subdirectory(src)
