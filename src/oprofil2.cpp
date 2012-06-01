@@ -45,7 +45,7 @@
 #include <oraceres.h>
 #include <ot_gmenu.h>
 
-#include <io.h>
+#include <stdio.h>
 
 
 #define PPOPTION_PAGE          0x40000000
@@ -756,7 +756,7 @@ int PlayerProfile::register_menu()
 				String str;
 				str = profileArray[selectedProfile-1].file_name;
 				str += ".PRF";
-				unlink(str);   // unlink() is a C standard function in io.h, for delete file
+				remove(str);
 
 				// BUGHERE : delete file inside the directory 
 

@@ -21,7 +21,7 @@
 //Filename    : OGFILEA.CPP
 //Description : Game File Array
 
-#include <io.h>
+#include <stdio.h>
 #include <key.h>
 #include <odir.h>
 #include <osys.h>
@@ -1044,7 +1044,7 @@ void GameFileArray::del_game()
 
 	//---------------------------------------------------//
 
-	unlink(game_file_array[recNo]->file_name);   // unlink() is a C standard function in io.h, for delete file
+	remove(game_file_array[recNo]->file_name);
 
 	go(recNo);
 	linkout();
