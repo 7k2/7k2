@@ -95,13 +95,13 @@ Sys::~Sys()
 
 //------------ Begin of function Sys::init ----------//
 //
-int Sys::init( HANDLE hInstance )
+int Sys::init()
 {
    err_when( init_flag );
 
    //------- initialize basic vars --------//
 
-   app_hinstance = hInstance;
+   app_hinstance = (HINSTANCE)GetModuleHandle(NULL);
 
 	#ifdef BETA
 		debug_session       = m.is_file_exist("DEBUG.SYS");

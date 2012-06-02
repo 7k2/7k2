@@ -174,7 +174,7 @@ public:
 	Sys();
 	~Sys();
 
-	int		init(HANDLE hInstance);
+	int		init();
 	int		change_display_mode(int modeId);		// see omodeid.h for modeId
 	void		deinit();
 	void		deinit_directx();
