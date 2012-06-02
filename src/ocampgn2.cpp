@@ -65,6 +65,7 @@
 #include <omousecr.h>
 #include <ot_camp.h>
 #include <ot_talk.h>
+#include <ofile.h>
 
 ///////////////////////////////////////////
 ///////////////////////////////////////////
@@ -4525,27 +4526,26 @@ static int load_bitmap_file(bitmap_file_ptr bitmap, const char *filename)
 // it uses file handles instead of streams just for a change, no reason
 
 #define BITMAP_ID        0x4D42       // this is the universal id for a bitmap
-int      file_handle,                 // the file handle
-         index;                       // looping index
-OFSTRUCT file_data;                   // the file data information
+File     bitmap_file;
+int      index;                       // looping index
 
 String	str(DIR_IMAGE);
 			str += filename;
 //			str += ".COL";
 
 // open the file if it exists
-	if ((file_handle = OpenFile(str, &file_data,OF_READ))==-1)
-		return(0);
+	if (bitmap_file.file_open(str) != 1)
+		return 0;
  
 // now load the bitmap file header
-	_lread(file_handle, &bitmap->bitmapfileheader,sizeof(BITMAPFILEHEADER));
+	bitmap_file.file_read(&bitmap->bitmapfileheader, sizeof(BITMAPFILEHEADER));
 
 // test if this is a bitmap file
 	if (bitmap->bitmapfileheader.bfType!=BITMAP_ID)
    {
 		// close the file
-	   _lclose(file_handle);
- 
+	   bitmap_file.file_close();
+
 	   // return error
 		return(0);
    } // end if
@@ -4553,10 +4553,10 @@ String	str(DIR_IMAGE);
 // we know this is a bitmap, so read in all the sections
 
 // load the bitmap file header
-	_lread(file_handle, &bitmap->bitmapinfoheader,sizeof(BITMAPINFOHEADER));
+	bitmap_file.file_read(&bitmap->bitmapinfoheader, sizeof(BITMAPINFOHEADER));
 
 // now the palette
-	_lread(file_handle, &bitmap->palette,256*sizeof(PALETTEENTRY));
+	bitmap_file.file_read(&bitmap->palette, 256*sizeof(PALETTEENTRY));
 
 // now set all the flags in the palette correctly and fix the reverse BGR
 	for (index=0; index<256; index++)
@@ -4568,13 +4568,13 @@ String	str(DIR_IMAGE);
     } // end for index
 
 // finally the image data itself
-	_lseek(file_handle,-(int)(bitmap->bitmapinfoheader.biSizeImage),SEEK_END);
+	bitmap_file.file_seek(-(int)(bitmap->bitmapinfoheader.biSizeImage), SEEK_END);
 
 // allocate the memory for the image
 	if (!(bitmap->buffer = new UCHAR [bitmap->bitmapinfoheader.biSizeImage]))
    {
    // close the file
-		_lclose(file_handle);
+		bitmap_file.file_close();
 
    // return error
 		return(0);
@@ -4582,7 +4582,7 @@ String	str(DIR_IMAGE);
    } // end if
 
 // now read it in
-	_lread(file_handle,bitmap->buffer,bitmap->bitmapinfoheader.biSizeImage);
+	bitmap_file.file_read(bitmap->buffer, bitmap->bitmapinfoheader.biSizeImage);
 
 // bitmaps are usually upside down, so flip the image
 int biWidth  = bitmap->bitmapinfoheader.biWidth,
@@ -4602,7 +4602,7 @@ for (index=0; index<biHeight; index++)
 delete [] flip_buffer;
 
 // close the file
-_lclose(file_handle);
+bitmap_file.file_close();
 
 // return success
 return(1);
