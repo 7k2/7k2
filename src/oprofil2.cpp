@@ -720,7 +720,7 @@ int PlayerProfile::register_menu()
 					if( !save() )
 					{
 						if( dirCreated )
-							RemoveDirectory( str);	// clear the directory created
+							remove( str);	// clear the directory created
 						// box.msg( "Error creating profile" );
 						box.msg( text_game_menu.str_profile_error_create() );
 					}
@@ -763,7 +763,7 @@ int PlayerProfile::register_menu()
 				// ###### patch begin Gilbert 12/4 #######//
 				str = DIR_SAVE;
 				str += profileArray[selectedProfile-1].save_dir;
-				RemoveDirectory( str );
+				remove( str );
 				// ###### patch end Gilbert 12/4 #######//
 
 				if(stricmp( file_name, profileArray[selectedProfile-1].file_name) == 0)
