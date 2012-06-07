@@ -71,7 +71,7 @@ VgaCustomPalette::VgaCustomPalette(const char *fileName)
 {
 	backup_pal = NULL;
 	if( save_palette() && fileName)
-		set_custom_palette(fileName);
+		vga.set_custom_palette(fileName);
 }
 
 VgaCustomPalette::~VgaCustomPalette()
@@ -98,30 +98,6 @@ int VgaCustomPalette::save_palette()
 	}
 	else
 		return 1;
-}
-
-
-
-int VgaCustomPalette::set_custom_palette(const char *fileName)
-{
-	PALETTEENTRY palEntry[256];
-	char palBuf[256][3];
-	File palFile;
-
-	palFile.file_open(fileName);
-	palFile.file_seek(8);     				// bypass the header info
-	palFile.file_read(palBuf, 256*3);
-	palFile.file_close();
-
-	for(int i=0; i<256; i++)
-	{
-		palEntry[i].peRed   = palBuf[i][0];
-		palEntry[i].peGreen = palBuf[i][1];
-		palEntry[i].peBlue  = palBuf[i][2];
-		palEntry[i].peFlags = 0;
-	}
-
-	return !vga.dd_pal->SetEntries(0, 0, 256, palEntry);
 }
 
 

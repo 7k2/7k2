@@ -50,8 +50,6 @@ public:
 	VgaCustomPalette( const char * );
 	~VgaCustomPalette();
 
-	static int set_custom_palette(const char *);
-
 private:
 	int save_palette();
 	int restore_palette();
