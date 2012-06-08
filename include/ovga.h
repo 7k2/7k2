@@ -113,7 +113,7 @@ public:
 
 		  BOOL	is_inited();
 
-		  BOOL   load_pal(const char* fileName);
+		  BOOL  init_pal(const char* fileName);
 		  void	init_gray_remap_table();
 
 		  void   activate_pal(VgaBuf*);

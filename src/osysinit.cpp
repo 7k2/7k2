@@ -281,9 +281,9 @@ int Sys::init_directx()
       return FALSE;
    DEBUG_LOG("vga.init() ok");
 
-   DEBUG_LOG("Attempt vga.load_pal()");
-   vga.load_pal(DIR_RES"PAL_STD.RES");
-   DEBUG_LOG("vga.load_pal() finish");
+   DEBUG_LOG("Attempt vga.init_pal()");
+   vga.init_pal(DIR_RES"PAL_STD.RES");
+   DEBUG_LOG("vga.init_pal() finish");
 
 	// update Sys::deinit and Sys::change_display_mode
 

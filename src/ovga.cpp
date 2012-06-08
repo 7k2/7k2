@@ -376,11 +376,11 @@ BOOL Vga::is_inited()
 // ------- end of function Vga::is_inited --------//
 
 
-//--------- Start of function Vga::load_pal ----------//
+//--------- Start of function Vga::init_pal ----------//
 //
 // Load the palette from a file and set it to the front buf.
 //
-BOOL Vga::load_pal(const char* fileName)
+BOOL Vga::init_pal(const char* fileName)
 {
    char palBuf[256][3];
    File palFile;
@@ -415,7 +415,7 @@ BOOL Vga::load_pal(const char* fileName)
 
    return TRUE;
 }
-//----------- End of function Vga::load_pal ----------//
+//----------- End of function Vga::init_pal ----------//
 
 
 //--------- Start of function Vga::init_color_table ----------//
