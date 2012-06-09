@@ -391,7 +391,7 @@ int Sys::init_objects()
 #ifdef VC5 
    mouse.init( app_hinstance, main_hwnd, NULL);
 #else
-   mouse.init( (HINSTANCE__ *)app_hinstance, main_hwnd, NULL);
+   mouse.init();
 #endif 
 	SetFocus( main_hwnd );
 

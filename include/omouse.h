@@ -194,7 +194,7 @@ public:
 	Mouse();
 	~Mouse();
 
-	void	init(HINSTANCE, HWND, LPDIRECTINPUT createdDirectInput=0);
+	void	init();
 	void	deinit();
 
 	void 	add_event(MouseEvent *);

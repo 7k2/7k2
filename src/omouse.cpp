@@ -86,7 +86,7 @@ Mouse::~Mouse()
 
 //------------ Start of Mouse::init ------------//
 //
-void Mouse::init(HINSTANCE hinst, HWND hwnd, LPDIRECTINPUT createdDirectInput)
+void Mouse::init()
 {
 	//-------- set starting position ---------//
 
@@ -98,15 +98,7 @@ void Mouse::init(HINSTANCE hinst, HWND hwnd, LPDIRECTINPUT createdDirectInput)
 	cur_y = pt.y;
 
 	HRESULT hr;
-	if( createdDirectInput )
-	{
-		direct_input = createdDirectInput;
-		hr = direct_input->AddRef();
-	}
-	else
-	{
-		hr = DirectInputCreate(hinst, DIRECTINPUT_VERSION, &direct_input, NULL);
-	}
+	hr = DirectInputCreate((HINSTANCE)GetModuleHandle(NULL), DIRECTINPUT_VERSION, &direct_input, NULL);
 	if(hr)
 		err.run( "Failed creating DirectInput");
 
@@ -119,7 +111,7 @@ void Mouse::init(HINSTANCE hinst, HWND hwnd, LPDIRECTINPUT createdDirectInput)
 		err.run( "Failed creating mouse interface from DirectInput");
 
 	// ------- set cooperative level --------//
-	hr = di_mouse_device->SetCooperativeLevel(hwnd, DISCL_FOREGROUND | DISCL_EXCLUSIVE);
+	hr = di_mouse_device->SetCooperativeLevel(sys.main_hwnd, DISCL_FOREGROUND | DISCL_EXCLUSIVE);
 
 	// ------- set data format ---------//
 	if(!hr)
@@ -164,7 +156,7 @@ void Mouse::init(HINSTANCE hinst, HWND hwnd, LPDIRECTINPUT createdDirectInput)
 		err.run( "Failed creating keyboard interface from DirectInput");
 
 	// ------- set cooperative level --------//
-	hr = di_keyb_device->SetCooperativeLevel(hwnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
+	hr = di_keyb_device->SetCooperativeLevel(sys.main_hwnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
 
 	// ------- set data format ---------//
 	if(!hr)
