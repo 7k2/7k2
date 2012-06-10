@@ -499,18 +499,7 @@ void Sys::blt_virtual_buf_area(int x1, int y1, int x2, int y2)
 
 	vga_front.temp_unlock();
 
-	RECT bltRect;
-
-	bltRect.left   = x1;
-	bltRect.top    = y1;
-	bltRect.right  = x2+1;
-	bltRect.bottom = y2+1;
-
-	int rc = vga_true_front.dd_buf->BltFast(
-						 x1, y1,
-						 vga_front.dd_buf,        // src surface
-						 &bltRect,               // src rect (all of it)
-						 DDBLTFAST_WAIT );
+	vga_true_front.blt_virtual_buf_area( &vga_front, x1, y1, x2, y2 );
 
 	vga_front.temp_restore_lock();
 }

@@ -366,6 +366,8 @@ public:
 
 	void		blt_virtual_buf( VgaBuf *srcBuf );
 
+	void		blt_virtual_buf_area( VgaBuf *srcBuf, int x1, int y1, int x2, int y2 );
+
 	void		blt_buf_fast( VgaBuf *srcBuf, int srcX1, int srcY1, int srcX2, int srcY2)
 				{ IMGcopyW( cur_buf_ptr, cur_pitch, srcBuf->cur_buf_ptr, srcBuf->cur_pitch, srcX1, srcY1, srcX2, srcY2); }
 	// cut (srcX1,srcY1)-(srcX2,srcY2) of srcBuf and put at (srcX1,srcY1) of this VgaBuf
