@@ -27,9 +27,8 @@
 
 #ifndef IMAGICMP
 
-#include <dplay.h>
-#include <dplobby.h>
 #include <odynarrb.h>
+#include <mptypes.h>
 
 extern GUID GAME_GUID;
 extern HANDLE PLAYER_MESSAGE_HANDLE;
@@ -40,6 +39,11 @@ extern HANDLE PLAYER_MESSAGE_HANDLE;
 #define MP_FRIENDLY_NAME_LEN 20
 #define MP_FORMAL_NAME_LEN 64
 #define MP_RECV_BUFFER_SIZE 0x2000
+
+typedef struct
+{
+	GUID guidInstance;
+} DPLCONNECTION, DPSESSIONDESC2, *LPDIRECTPLAY4A, *LPDIRECTPLAYLOBBY3A;
 
 struct DPServiceProvider
 {
@@ -58,12 +62,12 @@ struct DPSessionDesc : public DPSESSIONDESC2
 	char session_name[MP_SESSION_NAME_LEN+1];
 	char pass_word[MP_SESSION_NAME_LEN+1];
 
-	DPSessionDesc();
-	DPSessionDesc(const DPSESSIONDESC2 &);
-	DPSessionDesc(const DPSessionDesc &);
-	DPSessionDesc& operator= (const DPSessionDesc &);
-	void after_copy();
-	DPSessionDesc *before_use();
+	DPSessionDesc() {};
+	DPSessionDesc(const DPSESSIONDESC2 &) {};
+	DPSessionDesc(const DPSessionDesc &) {};
+	DPSessionDesc& operator= (const DPSessionDesc &) {};
+	void after_copy() {};
+	DPSessionDesc *before_use() { return NULL; }
 
 	char *name_str() { return session_name; };
 	GUID session_id() { return guidInstance; }
@@ -105,72 +109,74 @@ public:
 	DWORD						recv_buffer_size;
 
 public:
-	MultiPlayerDP();
-	~MultiPlayerDP();
-	void pre_init();
-	void init(GUID serviceProviderGuid);
-	void deinit();
+	MultiPlayerDP() : service_providers(sizeof(DPServiceProvider), 10 ),
+			  current_sessions(sizeof(DPSessionDesc), 10 ),
+			  player_pool(sizeof(DPPlayer), 8 ),
+			  init_flag(0) {};
+	~MultiPlayerDP() {};
+	void pre_init() {};
+	void init(GUID serviceProviderGuid) {};
+	void deinit() {};
 
 	// ------- functions on DirectPlayLobby -------- //
-	void	init_lobbied(int maxPlayers, char *cmdLine);
-	int	is_lobbied();		// return 0=not lobbied, 1=auto create, 2=auto join, 4=selectable
-	char *get_lobbied_name();			// return 0 if not available
-	int	send_lobby(LPVOID lpData, DWORD dataSize);
-	char *receive_lobby(LPDWORD recvLen);
+	void	init_lobbied(int maxPlayers, char *cmdLine) {};
+	int	is_lobbied() { return 0; }		// return 0=not lobbied, 1=auto create, 2=auto join, 4=selectable
+	char *get_lobbied_name() { return NULL;	}		// return 0 if not available
+	int	send_lobby(LPVOID lpData, DWORD dataSize) { return 0; }
+	char *receive_lobby(LPDWORD recvLen) { return NULL; }
 
 	// ------- functions on service provider ------ //
-	void	poll_service_providers();								// can be called before init
-	DPServiceProvider *get_service_provider(int i);		// can be called before init
+	void	poll_service_providers() {};								// can be called before init
+	DPServiceProvider *get_service_provider(int i) { return NULL; }		// can be called before init
 
 	// ------- functions on session --------//
-	int	poll_sessions();
-	void	sort_sessions(int sortType);
-	DPSessionDesc *get_session(int i);
-	int	create_session(char *sessionName, int maxPlayers);
-	int	join_session(DPSessionDesc* sessionDesc);
-	int	join_session(int currentSessionIndex );
-	void	close_session();
-	void	disable_join_session();		// so that new player cannot join
+	int	poll_sessions() { return 0; }
+	void	sort_sessions(int sortType) {};
+	DPSessionDesc *get_session(int i) { return NULL; }
+	int	create_session(char *sessionName, int maxPlayers) { return 0; }
+	int	join_session(DPSessionDesc* sessionDesc) { return 0; }
+	int	join_session(int currentSessionIndex ) { return 0; }
+	void	close_session() {};
+	void	disable_join_session() {};		// so that new player cannot join
 
 	// -------- functions on player management -------//
 	int	create_player(char *friendlyName, char *formalName,
-		LPVOID lpData=NULL, DWORD dataSize=0, DWORD flags=0);
-	void	destroy_player( DPID playerId );
-	void	poll_players();
-	DPPlayer *get_player(int i);
-	DPPlayer *search_player(DPID player_id);
-	DPPlayer *search_player(char *name);
-	int	is_host(DPID playerId);
-	int	am_I_host();
-	int	is_player_connecting(DPID playerId);
+		LPVOID lpData=NULL, DWORD dataSize=0, DWORD flags=0) { return 0; }
+	void	destroy_player( DPID playerId ) {};
+	void	poll_players() {};
+	DPPlayer *get_player(int i) { return NULL; }
+	DPPlayer *search_player(DPID player_id) { return NULL; }
+	DPPlayer *search_player(char *name) { return NULL; }
+	int	is_host(DPID playerId) { return 0; }
+	int	am_I_host() { return 0; }
+	int	is_player_connecting(DPID playerId) { return 0; }
 
 	// ------- functions on data management ------//
 	// remote data (public) : each player has one data to the public
-	int	update_public_data(DPID, LPVOID, DWORD );
-	int	retrieve_public_data(DPID, LPVOID, LPDWORD);
+	int	update_public_data(DPID, LPVOID, DWORD ) { return 0; }
+	int	retrieve_public_data(DPID, LPVOID, LPDWORD) { return 0; }
 	// local data (private) : each player keeps a data on each other player
-	int	update_private_data(DPID, LPVOID, DWORD);
-	int	retrieve_private_data(DPID, LPVOID, LPDWORD);
+	int	update_private_data(DPID, LPVOID, DWORD) { return 0; }
+	int	retrieve_private_data(DPID, LPVOID, LPDWORD) { return 0; }
 
 	// ------- functions on message passing ------//
-	int	send(DPID toId, LPVOID lpData, DWORD dataSize);
-	void	begin_stream(DPID toID);
-	int	send_stream(DPID toId, LPVOID lpData, DWORD dataSize);
-	void	end_stream(DPID toID);
-	int	get_msg_count();
-	char *receive(LPDPID from, LPDPID to, LPDWORD recvLen, int *sysMsgCount=0);
+	int	send(DPID toId, LPVOID lpData, DWORD dataSize) { return 0; }
+	void	begin_stream(DPID toID) {};
+	int	send_stream(DPID toId, LPVOID lpData, DWORD dataSize) { return 0; }
+	void	end_stream(DPID toID) {};
+	int	get_msg_count() { return 0; }
+	char *receive(LPDPID from, LPDPID to, LPDWORD recvLen, int *sysMsgCount=0) { return NULL; }
 
 	void	before_receive()		{} // dummy function to compatible with IMMPLAY, call before receive
 	void	after_send()			{}	// dummy function to compatible with IMMPLAY, call after send
 
 protected:
-	void	handle_system_msg(LPVOID, DWORD );
-	void	handle_lobby_system_msg(LPVOID, DWORD);
+	void	handle_system_msg(LPVOID, DWORD ) {};
+	void	handle_lobby_system_msg(LPVOID, DWORD) {};
 };
 
 extern MultiPlayerDP mp_dp;
-
-#include <mptypes.h>
+#define mp_obj mp_dp
 
 #endif	// IMAGICMP
 #endif	// __ODPLAY_H

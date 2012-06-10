@@ -42,11 +42,9 @@
 #include <ogammenu.h>
 #include <obox.h>
 #include <odplay.h>
-#include <oimmplay.h>
 #include <ot_gmenu.h>
 #include <ocoltbl.h>
 
-#undef DISABLE_MULTI_PLAYER
 #undef DISABLE_SINGLE_PLAYER_NEW_GAME
 #undef DISABLE_SCENARIO_EDITOR
 

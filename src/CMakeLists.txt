@@ -101,7 +101,6 @@ set(7k2_SOURCES
   odate.cpp
   odb.cpp
   odir.cpp
-  odplay.cpp
   odynarr.cpp
   odynarrb.cpp
   oeffect.cpp
@@ -226,7 +225,6 @@ set(7k2_SOURCES
   ohillres.cpp
   ohsetres.cpp
   oimgres.cpp
-  oimmplay.cpp
   oinfo.cpp
   oingmenu.cpp
   oisoarea.cpp
@@ -462,11 +460,11 @@ if(UNIX)
     dxguid
     ddraw
     dinput
-    dplayx
     winmm
     shell32)
   set(EXTRA_LIBS ${WINE_LIBS})
   set(CMAKE_CXX_COMPILER ${WINEG++_EXECUTABLE})
+  set_source_files_properties(ogammain.cpp PROPERTIES COMPILE_DEFINITIONS "DISABLE_MULTI_PLAYER")
   set_source_files_properties(osysproc.cpp PROPERTIES COMPILE_DEFINITIONS "ENABLE_WINE_HACKS")
 endif(UNIX)
 

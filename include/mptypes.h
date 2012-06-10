@@ -25,6 +25,8 @@
 #ifndef __MPTYPES_H
 #define __MPTYPES_H
 
+#include <win32_compat.h>
+
 #ifdef IMAGICMP
 	#define MultiPlayerType MultiPlayerIM
 	#define mp_obj mp_im
@@ -37,8 +39,9 @@
 	#define PlayerDesc IMPlayer
 #else
 	#define MultiPlayerType MultiPlayerDP
-	#define mp_obj mp_dp
+	#define DPID_ALLPLAYERS 0
 	#define BROADCAST_PID DPID_ALLPLAYERS
+	typedef DWORD DPID, *LPDPID, *LPDWORD;
 	#define PID_TYPE DPID
 	#define ServiceProviderDesc DPServiceProvider
 	#define ServiceIdType GUID
