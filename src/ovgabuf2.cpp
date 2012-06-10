@@ -1044,6 +1044,29 @@ blt_buf_1:
 //------------- End of function VgaBuf::blt_buf ------------//
 
 
+//-------- Begin of function VgaBuf::blt_virtual_buf --------//
+//
+// Blit entire source surface to local destination surface.
+//
+void VgaBuf::blt_virtual_buf( VgaBuf *srcBuf )
+{
+	RECT bltRect;
+
+	bltRect.left   = 0;
+	bltRect.top    = 0;
+	// ##### begin Gilbert 29/1 #######//
+	bltRect.right  = VGA_WIDTH;
+	bltRect.bottom = VGA_HEIGHT;
+	// ##### end Gilbert 29/1 #######//
+
+	dd_buf->BltFast( 0, 0,
+			 srcBuf->dd_buf,        // src surface
+			 &bltRect,              // src rect (all of it)
+			 DDBLTFAST_WAIT );
+}
+//--------- End of function VgaBuf::blt_virtual_buf ---------//
+
+
 //------------- Begin of function VgaBuf::bar_alpha --------------//
 //
 // Draw a bar with alpha-blendinig
