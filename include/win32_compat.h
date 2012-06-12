@@ -28,6 +28,7 @@
 #include <ctype.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <time.h>
 
 typedef uint8_t  BYTE;
 typedef uint8_t  UCHAR;
@@ -95,6 +96,12 @@ inline char *strlwr(char *str)
 		str++;
 	}
 	return str;
+}
+
+inline void Sleep(long milliseconds)
+{
+	struct timespec ts = {0, milliseconds * 1000000};
+	nanosleep(&ts, NULL);
 }
 
 #else // WINE || WIN32
