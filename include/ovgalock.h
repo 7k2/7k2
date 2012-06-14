@@ -41,21 +41,6 @@ public:
 };
 
 
-class VgaCustomPalette
-{
-private:
-	void *backup_pal;
-
-public:
-	VgaCustomPalette( const char * );
-	~VgaCustomPalette();
-
-private:
-	int save_palette();
-	int restore_palette();
-};
-
-
 class MouseDispCount
 {
 private:

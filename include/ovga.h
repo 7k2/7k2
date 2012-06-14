@@ -59,7 +59,6 @@
 
 struct RGBColor;
 class ColorTable;
-class VgaCustomPalette;
 
 class Vga
 {
@@ -95,8 +94,6 @@ public:
 		  int							pixel_format_flag;				// see IMGFUN.H	// new for 16-bit
 		  short *					default_remap_table;				// new for 16-bit
 		  short *					default_blend_table;				// new for 16-bit
-
-		  VgaCustomPalette*		back_up_pal;
 
 		  static VgaBuf*			active_buf;
 		  static char				use_back_buf;

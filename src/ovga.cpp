@@ -86,8 +86,6 @@ Vga::~Vga()
 
 	delete vga_blend_table;
    delete vga_color_table;
-
-   err_when( back_up_pal );      // this must be free up immediately after its use
 }
 //-------- End of function Vga::~Vga ----------//
 
