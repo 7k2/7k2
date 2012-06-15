@@ -24,7 +24,7 @@
 #ifndef __MISC_H
 #define __MISC_H
 
-#include <win32_compat.h>
+#include <stddef.h>
 
 //-------- Define macro constant ---------//
 
@@ -112,6 +112,7 @@ public:
 	long	rand_long();
 
    int   is_file_exist(const char*);
+   int   mkpath(char *abs_path);
    void  change_file_ext(char*,const char*,const char*);
    void  extract_file_name(char*,const char*);
 

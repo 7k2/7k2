@@ -129,7 +129,7 @@ int GameFile::save_game(const char *path, const char* fileName, const char *game
 			char backupChar = *lastSlash;
 			err_when( backupChar != '\\' );
 			*lastSlash = '\0';		// truncate to and not including the last '\\'
-			CreateDirectory( file_name, NULL );
+			m.mkpath( file_name );
 			*lastSlash = backupChar;		// res
 		}
 	}

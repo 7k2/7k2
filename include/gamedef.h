@@ -39,6 +39,12 @@ extern const int GAME_VERSION;
 
 //------- Data sub-directories -------//
 
+#ifdef NO_WINDOWS
+#define PATH_DELIM "/"
+#else // WINDOWS
+#define PATH_DELIM "\\"
+#endif
+
 #define DIR_RES         "RESOURCE\\"
 #define DIR_SPRITE      "SPRITE\\"
 #define DIR_FIRM			"FIRM\\"

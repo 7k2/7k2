@@ -644,7 +644,7 @@ int PlayerProfile::register_menu()
 					// remove backslash at the end
 					if( !m.is_file_exist(str) )
 					{
-						if( !CreateDirectory( str, NULL ) )
+						if( !m.mkpath( str ) )
 						{
 							// box.msg( "Error creating SAVE directory" );
 							box.msg( text_game_menu.str_profile_error_dir(str) );
@@ -716,7 +716,7 @@ int PlayerProfile::register_menu()
 
 					// ------ create directory -------//
 
-					BOOL dirCreated = CreateDirectory( str, NULL );
+					int dirCreated = m.mkpath( str );
 					if( !save() )
 					{
 						if( dirCreated )
@@ -828,7 +828,7 @@ int PlayerProfile::re_create_directory()
 		if( searchPtr != beginPtr				// if path is "\SAVE\GILBERT", searchPtr == beginPtr
 			&& !m.is_file_exist(pathName) )	// not beginPtr, eg "SAVE\GILBERT'
 		{
-			if( !CreateDirectory( pathName, NULL ) )
+			if( !m.mkpath( pathName ) )
 			{
 				//String str = "Error creating ";
 				//str += pathName;
