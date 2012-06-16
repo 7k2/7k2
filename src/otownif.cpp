@@ -25,6 +25,7 @@
 #include <oinfo.h>
 #include <obox.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <osys.h>
 #include <ohelp.h>
@@ -1114,7 +1115,7 @@ static void disp_auto_menu_button(ButtonCustom *button, int)
 	if ( button->pushed_flag )
 	{
 		vga.active_buf->put_bitmap( button->x1, button->y1, image_icon.read("BUILDDW3") );
-//		vga.blt_buf(button->x1, button->y1, button->x2, button->y2, 0);
+//		vga_util.blt_buf(button->x1, button->y1, button->x2, button->y2, 0);
 		font_bld.center_put(button->x1+1, button->y1, button->x2+1, button->y2, str );
 	}
 	else
@@ -1148,7 +1149,7 @@ static void disp_man_power_button(ButtonCustom *button, int)
 	if ( button->pushed_flag )
 	{
 		vga.active_buf->put_bitmap( button->x1, button->y1, image_icon.read("BUILDDWN") );
-//		vga.blt_buf(button->x1, button->y1, button->x2, button->y2, 0);
+//		vga_util.blt_buf(button->x1, button->y1, button->x2, button->y2, 0);
 		font_snds.center_put(button->x1+1, button->y1+2, button->x2+1, button->y2+2, 
 			text_firm.str_no_of_worker(paintInfo) );
 	}
@@ -1426,7 +1427,7 @@ static void put_spy_rec(int recNo, int x, int y, int refreshFlag)
 
 	//------ display the action mode of the spy ------//
 
-//	vga.blt_buf( x+95, y+6, x2, y+5+font_san.height(), 0 );
+//	vga_util.blt_buf( x+95, y+6, x2, y+5+font_san.height(), 0 );
 
 	font_whbl.center_put( x+115, y+6, INFO_X2, y+20, spyPtr->action_str() );
 }

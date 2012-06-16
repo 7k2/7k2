@@ -25,6 +25,7 @@
 #include <of_off.h>
 #include <of_magi.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <omouse.h>
 #include <ofont.h>
@@ -319,7 +320,7 @@ static void disp_magic_button(ButtonCustom *button, int)
 	else if ( button->pushed_flag )
 	{
 		vga.active_buf->put_bitmap(  button->x1, button->y1, image_icon.read("BUILDDWN") );
-//		vga.blt_buf(button->x1, button->y1, button->x2, button->y2, 0);
+//		vga_util.blt_buf(button->x1, button->y1, button->x2, button->y2, 0);
 		font_bld.center_put(button->x1+1, button->y1-1, button->x2+1, button->y2-1, magicName );
 	}
 	else if (mouse.in_area(button->x1, button->y1, button->x2, button->y2))

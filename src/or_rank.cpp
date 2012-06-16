@@ -32,6 +32,7 @@
 #include <onation.h>
 #include <odate.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h> 
 #include <ot_reps.h>
 
@@ -174,7 +175,7 @@ static void disp_score()
 //	{ "Population Score", "Military Score", "Economic Score",
 //	  "Reputation Score", "Fryhtan Battling Score" };
 
-	vga.d3_panel_down( NATION_SCORE_X1, NATION_SCORE_Y1, NATION_SCORE_X2, NATION_SCORE_Y2 );
+	vga_util.d3_panel_down( NATION_SCORE_X1, NATION_SCORE_Y1, NATION_SCORE_X2, NATION_SCORE_Y2 );
 
 	//------ display individual scores ---------//
 
@@ -348,7 +349,7 @@ static int disp_goal(int refreshFlag)
 
 		if (NATION_GOAL_Y1 + textHeight + 6 > NATION_GOAL_Y2)
 		{
-		//	vga.d3_panel_down( NATION_GOAL_X1, NATION_GOAL_Y1, NATION_GOAL_X2, NATION_GOAL_Y1 + textHeight +6 );
+		//	vga_util.d3_panel_down( NATION_GOAL_X1, NATION_GOAL_Y1, NATION_GOAL_X2, NATION_GOAL_Y1 + textHeight +6 );
 		//		font_bld.put_paragraph( NATION_GOAL_X1+6, NATION_GOAL_Y1+6,
 		//	 	NATION_GOAL_X2-6, NATION_GOAL_Y2 - 6, game.campaign()->full_goal_text() );
 
@@ -372,7 +373,7 @@ static int disp_goal(int refreshFlag)
 		{
 			y = MIN( NATION_GOAL_Y1 + textHeight + font_bld.height() +6, NATION_GOAL_Y2 );
 
-			vga.d3_panel_down( NATION_GOAL_X1, NATION_GOAL_Y1, NATION_GOAL_X2, y);		// one line space
+			vga_util.d3_panel_down( NATION_GOAL_X1, NATION_GOAL_Y1, NATION_GOAL_X2, y);		// one line space
 			font_bld.put_paragraph( NATION_GOAL_X1+6, NATION_GOAL_Y1+6,
 				NATION_GOAL_X2-6, NATION_GOAL_Y1 + textHeight, game.campaign()->full_goal_text() );
 		}
@@ -413,7 +414,7 @@ static int disp_goal(int refreshFlag)
 		if( lineCount <= 0 )
 			return y;
 
-		vga.d3_panel_down( NATION_GOAL_X1, NATION_GOAL_Y1, NATION_GOAL_X2, 
+		vga_util.d3_panel_down( NATION_GOAL_X1, NATION_GOAL_Y1, NATION_GOAL_X2,
 			y + (lineCount-1) * lineSpacing + 12 + 8);
 
 		if( game.win_condition_count > 1 || game.win_deadline )
@@ -490,7 +491,7 @@ static void disp_play_time(int y1)
 	if( y1+24 > ZOOM_Y2 )		// no space to display
 		return;
 
-	vga.d3_panel_down( PLAY_TIME_X1, y1, PLAY_TIME_X2, y1+24 );
+	vga_util.d3_panel_down( PLAY_TIME_X1, y1, PLAY_TIME_X2, y1+24 );
 
 	String str;
 

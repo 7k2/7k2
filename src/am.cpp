@@ -70,6 +70,7 @@
 #include <otransl.h>
 #include <ounit.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <owallres.h>
 #include <oworld.h>
 #include <oweather.h>
@@ -151,6 +152,7 @@ Music             music;
 SECtrl            se_ctrl(&audio);
 DisplayModeInfo	current_display_mode;
 Vga               vga;
+VgaUtil           vga_util;
 VgaBuf            vga_front, vga_back, vga_true_front;
 
 //--------- objects initalized in Sys::init_objects --------//
@@ -467,9 +469,9 @@ int PASCAL WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 #ifdef DEMO
 	if (vga.is_inited())
 	{
-		vga.disp_image_file("FEATURE1");
+		vga_util.disp_image_file("FEATURE1");
 		mouse.wait_press(60);
-		vga.disp_image_file("FEATURE2");
+		vga_util.disp_image_file("FEATURE2");
 		mouse.wait_press(60);
 	}
 #endif

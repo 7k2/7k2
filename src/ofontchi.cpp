@@ -29,6 +29,7 @@
 #include <all.h>
 #include <imgfun.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <ostr.h>
 #include <osys.h>
@@ -1045,7 +1046,7 @@ int Font::put(int x,int y,char* textPtr, char clearBack, int x2, int cap )
 				break;
 
 			if( clearBack && !Vga::use_back_buf )	// copy texture from the back buffer as the background color
-				vga.blt_buf( x, y, x+space_width-1, y+font_height-1, 0 );
+				vga_util.blt_buf( x, y, x+space_width-1, y+font_height-1, 0 );
 
 			x += space_width;
 		}
@@ -1205,7 +1206,7 @@ int Font::put(int x,int y,char* textPtr, char clearBack, int x2, int cap )
 		//--------- inter-character space ---------//
 
 		if( clearBack && !Vga::use_back_buf )	// copy texture from the back buffer as the background color
-			vga.blt_buf( x, y, x+inter_char_space-1, y+font_height-1, 0 );
+			vga_util.blt_buf( x, y, x+inter_char_space-1, y+font_height-1, 0 );
 	
 		x+=inter_char_space;
 	}
@@ -1213,7 +1214,7 @@ int Font::put(int x,int y,char* textPtr, char clearBack, int x2, int cap )
 	//------ clear remaining area -------//
 
 	if( clearBack && !Vga::use_back_buf )	// copy texture from the back buffer as the background color
-		vga.blt_buf( x, y, x2, y+font_height-1, 0 );
+		vga_util.blt_buf( x, y, x2, y+font_height-1, 0 );
 
 	if( !Vga::use_back_buf )
 		mouse.show_area();
@@ -2151,7 +2152,7 @@ int Font::d3_put(int x1, int y1, const char* desStr )
 
 	int x2 = x1+text_width(desStr)+marginSpace*2-1;
 
-	vga.d3_panel_up( x1, y1, x2, y1+font_height+marginSpace*2-1 );
+	vga_util.d3_panel_up( x1, y1, x2, y1+font_height+marginSpace*2-1 );
 
    put( x1+marginSpace, y1+marginSpace, desStr);
 
@@ -2174,7 +2175,7 @@ void Font::d3_put(int x1, int y1, int x2, int y2, const char* desStr)
 	int tx = x1 + ((x2-x1+1) - text_width(desStr))/2;
    int ty = y1 + ((y2-y1+1) - font_height)/2+1;
 
-	vga.d3_panel_up( x1, y1, x2, y2);
+	vga_util.d3_panel_up( x1, y1, x2, y2);
 
    if( tx<x1+4 )
       tx=x1+4;
@@ -2206,7 +2207,7 @@ int Font::center_put(int x1, int y1, int x2, int y2, char* desStr, char clearBac
 		tx=0;
 
 	if( clearBack && !Vga::use_back_buf && tx>x1 )	// copy texture from the back buffer as the background color
-		vga.blt_buf( x1, y1, tx-1, y2, 0 );
+		vga_util.blt_buf( x1, y1, tx-1, y2, 0 );
 
 /*	Dump(desStr);
 	Dump(" &&x1==");
@@ -2329,7 +2330,7 @@ int Font::center_put(int x1, int y1, int x2, int y2, char* desStr, char clearBac
 //
 void Font::put_field(int x1, int y1, char* desStr, int x2, int value, int format )
 {
-	vga.d3_panel_up( x1, y1, x2, y1+font_height+6 );
+	vga_util.d3_panel_up( x1, y1, x2, y1+font_height+6 );
 
 	put( x1+4, y1+2, desStr);
 	put( x2+4, y1+2, m.format(value,format) );
@@ -2389,7 +2390,7 @@ void Font::field(int xDes, int y1, char* desStr, int xValue, int value,
 
 	if( refreshFlag == INFO_REPAINT )
 	{
-		vga.d3_panel_up( xDes, y1, xValue, y1+font_height+6 );
+		vga_util.d3_panel_up( xDes, y1, xValue, y1+font_height+6 );
 
 		// ####### begin Gilbert 10/2 ########//
 		put( xDes+4  , y1+2, desStr, 0, xValue-4);
@@ -2425,7 +2426,7 @@ void Font::field(int xDes, int y1, char* desStr, int xValue, int value,
 //
 void Font::put_field(int x1, int y1, char* desStr, int x2, double value, int format)
 {
-	vga.d3_panel_up( x1, y1, x2, y1+font_height+6 );
+	vga_util.d3_panel_up( x1, y1, x2, y1+font_height+6 );
 
 	// ####### begin Gilbert 10/2 ########//
 	put( x1+4, y1+2, desStr, 0, x2-4 );
@@ -2487,7 +2488,7 @@ void Font::field(int xDes, int y1, char* desStr, int xValue, double value,
 
    if( refreshFlag == INFO_REPAINT )
    {
-		vga.d3_panel_up( xDes, y1, xValue, y1+font_height+6 );
+		vga_util.d3_panel_up( xDes, y1, xValue, y1+font_height+6 );
 
 		// ####### begin Gilbert 10/2 ########//
       put( xDes+4  , y1+2, desStr, 0, xValue-4);
@@ -2518,7 +2519,7 @@ void Font::field(int xDes, int y1, char* desStr, int xValue, double value,
 //
 void Font::put_field(int x1, int y1, char* desStr, int x2, char* value)
 {
-	vga.d3_panel_up( x1, y1, x2, y1+font_height+6 );
+	vga_util.d3_panel_up( x1, y1, x2, y1+font_height+6 );
 
 	// ####### begin Gilbert 10/2 ########//
    put( x1+4, y1+2, desStr, 0, x2-4);
@@ -2570,7 +2571,7 @@ void Font::field(int xDes, int y1, char* desStr, int xValue, char* value,
 
 	if( refreshFlag == INFO_REPAINT )
 	{
-		vga.d3_panel_up( xDes, y1, xValue, y1+font_height+6 );
+		vga_util.d3_panel_up( xDes, y1, xValue, y1+font_height+6 );
 
 		// ####### begin Gilbert 10/2 ########//
 		put( xDes+4  , y1+2, desStr, 0, xValue-4);

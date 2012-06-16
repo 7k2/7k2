@@ -29,6 +29,7 @@
 #include <oprofile.h>
 #include <obitmap.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <ovgalock.h>
 #include <ocoltbl.h>
@@ -568,7 +569,7 @@ int Game::select_campaign_menu()
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 
 						// ------- display option Mode ------//
 
@@ -590,7 +591,7 @@ int Game::select_campaign_menu()
 							text_game_menu.str_cancel() );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 
 					if( refreshFlag & SGOPTION_CAMPAIGN )
@@ -604,7 +605,7 @@ int Game::select_campaign_menu()
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 						// BUGHERE : option menu column and finger
 
 						font_bold_black.right_put( playerNameField.x, playerNameField.y,
@@ -634,7 +635,7 @@ int Game::select_campaign_menu()
 							text_game_menu.str_cancel() );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 
 					if( refreshFlag & SGOPTION_RACE )
@@ -652,7 +653,7 @@ int Game::select_campaign_menu()
 
 						vga.use_front();
 
-						vga.blt_buf( colorButtonFrameX, colorButtonFrameY,
+						vga_util.blt_buf( colorButtonFrameX, colorButtonFrameY,
 							colorButtonFrameX + ((Bitmap *)bitmapPtr)->get_width() - 1,
 							colorButtonFrameY + ((Bitmap *)bitmapPtr)->get_height() - 1, 0 );
 					}
@@ -670,7 +671,7 @@ int Game::select_campaign_menu()
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 
 						font_bold_black.put_paragraph( 126, 173, option3X-10, 213-1,
 							text_game_menu.str_fog_of_war() );
@@ -701,7 +702,7 @@ int Game::select_campaign_menu()
 							text_game_menu.str_cancel() );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 					if( refreshFlag & SGOPTION_FOG )
 						fogGroup.paint(tempConfig.fog_of_war);
@@ -838,7 +839,7 @@ int Game::select_campaign_menu()
 static void i_disp_text_button(ButtonCustom *button, int repaintBody)
 {
 	if( !vga.use_back_buf )
-		vga.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
+		vga_util.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
 	Font *fontPtr = button->pushed_flag ? &font_bold_red : &font_thin_black;
 	// top center align
 	fontPtr->center_put( button->x1, button->y1, button->x2, button->y1+fontPtr->font_height-1,
@@ -855,7 +856,7 @@ static void i_disp_race_button(ButtonCustom *button, int repaintBody)
 {
 	int raceId = button->custom_para.value;
 	if( !vga.use_back_buf )
-		vga.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
+		vga_util.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
 	Font *fontPtr = button->pushed_flag ? &font_bold_red : &font_thin_black;
 	// top center align
 	fontPtr->center_put( button->x1, button->y1, button->x2, button->y1+fontPtr->font_height-1,

@@ -23,6 +23,7 @@
 
 #include <all.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <osys.h>
 #include <ofont.h>
 #include <omouse.h>
@@ -78,7 +79,7 @@ void Slider::init( int x1, int y1, int barWidth, int sliderHeight, int barColor,
 //
 void Slider::paint()
 {
-	vga.d3_panel_down( slider_x1, slider_y1, slider_x2, slider_y2 );
+	vga_util.d3_panel_down( slider_x1, slider_y1, slider_x2, slider_y2 );
 
 	refresh();
 }

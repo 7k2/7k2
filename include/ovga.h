@@ -116,22 +116,12 @@ public:
 		  void   activate_pal(VgaBuf*);
 		  void   release_pal();
 
-		  void 	d3_panel_up(int x1,int y1,int x2,int y2,int vgaFrontOnly=0,int drawBorderOnly=0);
-		  void 	d3_panel_down(int x1,int y1,int x2,int y2,int vgaFrontOnly=0,int drawBorderOnly=0);
-		  void	d3_panel2_up(int x1,int y1,int x2,int y2,int vgaFrontOnly=0,int drawBorderOnly=0);
-		  void	d3_panel2_down(int x1,int y1,int x2,int y2,int vgaFrontOnly=0,int drawBorderOnly=0);
-		  void 	separator(int x1, int y1, int x2, int y2);
-
 		  void	adjust_brightness(int changeValue);
 
 		  void 	use_front()	{ use_back_buf=0; active_buf = &vga_front; }
 		  void 	use_back()	{ use_back_buf=1; active_buf = &vga_back;  }
 
-		  BOOL   blt_buf(int x1, int y1, int x2, int y2, int putMouseCursor=1);
 		  void	flip();
-
-		  void 	disp_image_file(const char* fileName,int x1=0, int y1=0);
-		  void 	finish_disp_image_file();
 
 		  int		translate_color(unsigned char c)			// calc 8-bit color to 16-bit color // new for 16 bit
 					{ return default_remap_table[c]; }

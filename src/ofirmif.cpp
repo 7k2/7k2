@@ -25,6 +25,7 @@
 #include <ostr.h>
 #include <key.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <ohelp.h>
 #include <omouse.h>
@@ -352,7 +353,7 @@ void Firm::disp_worker_list(int dispY1, int refreshFlag)
 	//---------------- paint the panel --------------//
 
 	if( refreshFlag == INFO_REPAINT )
-		vga.d3_panel_up( INFO_X1, dispY1, INFO_X2, dispY1+60 );
+		vga_util.d3_panel_up( INFO_X1, dispY1, INFO_X2, dispY1+60 );
 
 	//----------- display populatin distribution ---------//
 
@@ -438,8 +439,8 @@ void Firm::disp_worker_list(int dispY1, int refreshFlag)
 			if( spyIconName )
 			{
 				vga_front.put_bitmap( x+30, y+6, image_icon.get_ptr(spyIconName) );
-				vga.blt_buf( x+40, y+6, x+49, y+15, 0 );
-				vga.blt_buf( x+30, y+16, x+49, y+26, 0 );
+				vga_util.blt_buf( x+40, y+6, x+49, y+15, 0 );
+				vga_util.blt_buf( x+30, y+16, x+49, y+26, 0 );
 			}
 			else
 			{
@@ -461,7 +462,7 @@ void Firm::disp_worker_list(int dispY1, int refreshFlag)
 		{
 			if( last_race_id_array[i] != 0 || last_unit_id_array[i] != 0 )
 			{
-				vga.blt_buf( x, y, x+49, y+27, 0 );
+				vga_util.blt_buf( x, y, x+49, y+27, 0 );
 				last_race_id_array[i] = 0;
 				last_unit_id_array[i] = 0;
 			}
@@ -542,7 +543,7 @@ static void disp_worker_hit_points(int x1, int y1, int x2, int hitPoints, int ma
 	vga_front.bar( x1, y1, x1+barWidth-1, y1+1, hitBarColor + HIT_BAR_BODY );
 
 	if( x1+barWidth <= x2 )
-		vga.blt_buf( x1+barWidth, y1, x2, y1+1, 0 );
+		vga_util.blt_buf( x1+barWidth, y1, x2, y1+1, 0 );
 
 	y1+=2;
 
@@ -550,14 +551,14 @@ static void disp_worker_hit_points(int x1, int y1, int x2, int hitPoints, int ma
 	vga_front.bar( x1+barWidth, y1, x1+barWidth, y1, V_BLACK );
 
 	if( x1+barWidth+1 <= x2 )
-		vga.blt_buf( x1+barWidth+1, y1, x2, y1, 0 );
+		vga_util.blt_buf( x1+barWidth+1, y1, x2, y1, 0 );
 
 	y1++;
 
 	vga_front.bar( x1+1, y1, x1+barWidth, y1, V_BLACK );
 
 	if( x1+barWidth+1 <= x2 )
-		vga.blt_buf( x1+barWidth+1, y1, x2, y1, 0 );
+		vga_util.blt_buf( x1+barWidth+1, y1, x2, y1, 0 );
 }
 //----------- End of function disp_worker_hit_points -----------//
 
@@ -591,9 +592,9 @@ void Firm::disp_worker_info(int dispY1, int refreshFlag)
 	if( refreshFlag == INFO_REPAINT )
 	{
 		if( firm_id == FIRM_CAMP )		// the command base has one more field
-			vga.d3_panel_up( INFO_X1, dispY1, INFO_X2, dispY1+71 );
+			vga_util.d3_panel_up( INFO_X1, dispY1, INFO_X2, dispY1+71 );
 		else
-			vga.d3_panel_up( INFO_X1, dispY1, INFO_X2, dispY1+55 );
+			vga_util.d3_panel_up( INFO_X1, dispY1, INFO_X2, dispY1+55 );
 	}
 
 	if( selected_worker_id > 0 )
@@ -668,9 +669,9 @@ void Firm::disp_overseer_info(int dispY1, int refreshFlag)
 	if( refreshFlag == INFO_REPAINT )
 	{
 		if( firm_id == FIRM_CAMP )
-			vga.d3_panel_up( INFO_X1, dispY1, INFO_X2, dispY1+71 );
+			vga_util.d3_panel_up( INFO_X1, dispY1, INFO_X2, dispY1+71 );
 		else
-			vga.d3_panel_up( INFO_X1, dispY1, INFO_X2, dispY1+55 );
+			vga_util.d3_panel_up( INFO_X1, dispY1, INFO_X2, dispY1+55 );
 	}
 
 	if( !overseer_recno )

@@ -23,6 +23,7 @@
 
 #include <otutor.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <osys.h>
 #include <oaudio.h>
@@ -998,7 +999,7 @@ void Tutor::disp_msg(char dispFlag, char darkness, char* gameMsg, ...)
 			}
 		}
 		
-	//	vga.d3_panel_down( TUTOR_X1, TUTOR_Y1, TUTOR_X2, TUTOR_Y1+10+textHeight );
+	//	vga_util.d3_panel_down( TUTOR_X1, TUTOR_Y1, TUTOR_X2, TUTOR_Y1+10+textHeight );
 		font_mid.center_put_paragraph( TUTOR_X1+10, TUTOR_Y1+5, TUTOR_X2-10, TUTOR_Y1+5+textHeight,
 			strBuf, 4, 0, 0);
 	}		
@@ -1061,7 +1062,7 @@ void Tutor::disp_guideline()
 			}
 		}
 	/*	Vga::opaque_flag = config.opaque_report;
-		vga.d3_panel_down( TUTOR_X1, TUTOR_Y1, TUTOR_X2, TUTOR_Y2 );
+		vga_util.d3_panel_down( TUTOR_X1, TUTOR_Y1, TUTOR_X2, TUTOR_Y2 );
 		Vga::opaque_flag = 0;*/
 
 		tutorTextBlock = text_block_array+cur_text_block_id-1;
@@ -1090,7 +1091,7 @@ void Tutor::disp_guideline()
 	font_bld.text_width( text_tutorial.str_guidelines(), -1, TUTOR_X2 -20 -TUTOR_X1);
 	int textHeight = font_bld.text_height() +10;
 	
-	vga.d3_panel_down( TUTOR_X1, y1, TUTOR_X2, y1 + textHeight);
+	vga_util.d3_panel_down( TUTOR_X1, y1, TUTOR_X2, y1 + textHeight);
 	minize_detect_area_x1 = TUTOR_X1;
 	minize_detect_area_y1 = y1;
 	minize_detect_area_x2 = TUTOR_X2;
@@ -1306,7 +1307,7 @@ void Tutor::disp_hints()
 			font_bld.text_width( tutorTextBlock->title_code, -1, TUTOR_X2 -20 -TUTOR_X1);
 			textHeight = font_bld.text_height() +20;
 	
-			vga.d3_panel_down( TUTOR_X1, y1, TUTOR_X2, y1 + textHeight + 20 );
+			vga_util.d3_panel_down( TUTOR_X1, y1, TUTOR_X2, y1 + textHeight + 20 );
 
 			minize_detect_area_x1 = TUTOR_X1;
 			minize_detect_area_y1 = y1;
@@ -1384,7 +1385,7 @@ void Tutor::disp_hints()
 		if( tutorTextBlock->button_code[0] )
 			textHeight += 50;
 
-		vga.d3_panel_down( TUTOR_X1, y1, TUTOR_X2, y1+10+textHeight );
+		vga_util.d3_panel_down( TUTOR_X1, y1, TUTOR_X2, y1+10+textHeight );
 		if( tutorTextBlock->button_code[0] )
 			textHeight -= 50;
 

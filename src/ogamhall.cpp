@@ -22,6 +22,7 @@
 //Description : Hall of Fame
 
 #include <ovga.h>
+#include <vga_util.h>
 #include <ovgalock.h>
 #include <odate.h>
 #include <ostr.h>
@@ -57,12 +58,12 @@ void GameFileArray::disp_hall_of_fame(int type)
 	int y = 116, offset = 76;
 	if (type)
 	{
-		vga.disp_image_file("HALFAME2");
+		vga_util.disp_image_file("HALFAME2");
 		y += 76;
 		offset -= 20;
 	}
 	else
-		vga.disp_image_file("HALFAME1");
+		vga_util.disp_image_file("HALFAME1");
 
 	//---------- display hall of fame records ------------//
 
@@ -76,7 +77,7 @@ void GameFileArray::disp_hall_of_fame(int type)
 
 	mouse.wait_press(60);		// 60 seconds to time out
 
-	vga.finish_disp_image_file();
+	vga_util.finish_disp_image_file();
 }
 //------- End of function GameFileArray::disp_hall_of_fame -----//
 

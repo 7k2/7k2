@@ -28,6 +28,7 @@
 #include <osys.h>
 #include <omouse.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <oimgres.h>
 #include <obutton.h>
 #include <otutor.h>
@@ -363,7 +364,7 @@ void Button::paint(int defIsPushed, int repaintBody)
 		if( !is_pushed )
 		{
 			if( use_texture_flag )
-				vga.d3_panel_up( x1, y1, x2, y2 );
+				vga_util.d3_panel_up( x1, y1, x2, y2 );
 			else
 			{
 				// ##### begin Gilbert 19/10 ######//
@@ -376,7 +377,7 @@ void Button::paint(int defIsPushed, int repaintBody)
 		{
 			if( use_texture_flag )
 			{
-				vga.d3_panel_down( x1, y1, x2, y2 );
+				vga_util.d3_panel_down( x1, y1, x2, y2 );
 			}
 			else
 			{

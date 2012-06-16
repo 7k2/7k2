@@ -23,6 +23,7 @@
 
 #include <ogame.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <oimgres.h>
 #include <osys.h>
@@ -488,7 +489,7 @@ void Game::main_menu()
 				if( refreshFlag & MMOPTION_PAGE )
 				{
 					vga.use_back();
-					vga.disp_image_file("M_MAIN");
+					vga_util.disp_image_file("M_MAIN");
 
 				//	// ------ display copyright message --------//
 
@@ -528,7 +529,7 @@ void Game::main_menu()
 					font_thin_black.center_put_paragraph(
 						BUTTONA_X1, BUTTONA_Y1, BUTTONA_X2, BUTTONA_Y2, 
 						text_game_menu.str_web_site(), 0);
-					vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+					vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					vga.use_front();
 
 					disp_version();
@@ -545,7 +546,7 @@ void Game::main_menu()
 					resStr += "X";
 					resStr += DisplayModeInfo::get_display_info(config.display_mode_id)->screen_height;
 
-					vga.blt_buf( BUTTON9_X1, BUTTON9_Y1, BUTTON9_X2, BUTTON9_Y2, 0);
+					vga_util.blt_buf( BUTTON9_X1, BUTTON9_Y1, BUTTON9_X2, BUTTON9_Y2, 0);
 					font_thin_black.center_put( BUTTON9_X1, BUTTON9_Y1, BUTTON9_X2, BUTTON9_Y2, resStr );
 
 					disp_version();
@@ -688,9 +689,9 @@ void Game::main_menu()
 //		demo_disp_ad_page();
 //	#else
 //		//---- display game end advertising page ----//
-//		vga.disp_image_file("MAINMENU");
+//		vga_util.disp_image_file("MAINMENU");
 //		mouse.wait_press(60);
-//		vga.finish_disp_image_file();
+//		vga_util.finish_disp_image_file();
 //	#endif
 }
 
@@ -757,7 +758,7 @@ void Game::single_player_menu()
 				if( refreshFlag & SPOPTION_PAGE )
 				{
 					vga.use_back();
-					vga.disp_image_file("M_MAIN");
+					vga_util.disp_image_file("M_MAIN");
 
 					// ------ display button ------//
 
@@ -785,7 +786,7 @@ void Game::single_player_menu()
 						BUTTON8_X1, BUTTON8_Y1, BUTTON8_X2, BUTTON8_Y2, 
 						text_game_menu.str_cancel(), 0 );
 
-					vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+					vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					vga.use_front();
 				}
 
@@ -923,7 +924,7 @@ void Game::scenario_editor_menu()
 				if( refreshFlag & SPOPTION_PAGE )
 				{
 					vga.use_back();
-					vga.disp_image_file("M_MAIN");
+					vga_util.disp_image_file("M_MAIN");
 
 					// ------ display button ------//
 
@@ -937,7 +938,7 @@ void Game::scenario_editor_menu()
 						BUTTON8_X1, BUTTON8_Y1, BUTTON8_X2, BUTTON8_Y2, 
 						text_game_menu.str_cancel(), 0 );
 
-					vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+					vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					vga.use_front();
 				}
 
@@ -1134,7 +1135,7 @@ void Game::multi_player_menu(char *cmdLine)
 				if( refreshFlag & SPOPTION_PAGE )
 				{
 					vga.use_back();
-					vga.disp_image_file("M_MAIN");
+					vga_util.disp_image_file("M_MAIN");
 
 					// ------ display button ------//
 
@@ -1162,7 +1163,7 @@ void Game::multi_player_menu(char *cmdLine)
 						!launchMode ? text_game_menu.str_cancel() : text_game_menu.str_quit(),
 						0 );
 
-					vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+					vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					vga.use_front();
 				}
 

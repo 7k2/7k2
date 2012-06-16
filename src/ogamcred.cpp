@@ -23,6 +23,7 @@
 
 #include <osys.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <ovgalock.h>
 #include <ofont.h>
 #include <omouse.h>
@@ -48,7 +49,7 @@ static ResourceIdx res_credit;
 void Game::view_credits()
 {
 	//----- display the first page ------//
-	vga.disp_image_file("CREDITS1");
+	vga_util.disp_image_file("CREDITS1");
 
 	String str;
 	str  = DIR_RES;
@@ -84,12 +85,12 @@ void Game::view_credits()
 	if( mouse.wait_press(60)==2 )		// return 2 if pressed ESC or right mouse click
 	{
 		res_credit.deinit();
-		vga.finish_disp_image_file();
+		vga_util.finish_disp_image_file();
 		return;								// 60 seconds to time out
 	}
 	
 	//----- display the 2nd page ------//
-	vga.disp_image_file("CREDITS1");
+	vga_util.disp_image_file("CREDITS1");
 
 	credit_buf = NULL;
 	credit_buf_size = 0;
@@ -119,12 +120,12 @@ void Game::view_credits()
 	if( mouse.wait_press(60)==2 )		// return 2 if pressed ESC or right mouse click
 	{
 		res_credit.deinit();
-		vga.finish_disp_image_file();
+		vga_util.finish_disp_image_file();
 		return;								// 60 seconds to time out
 	}
 
 	//----- display the 3nd page ------//
-	vga.disp_image_file("CREDITS1");
+	vga_util.disp_image_file("CREDITS1");
 
 	credit_buf = NULL;
 	credit_buf_size = 0;
@@ -154,12 +155,12 @@ void Game::view_credits()
 	if( mouse.wait_press(60)==2 )		// return 2 if pressed ESC or right mouse click
 	{
 		res_credit.deinit();
-		vga.finish_disp_image_file();
+		vga_util.finish_disp_image_file();
 		return;								// 60 seconds to time out
 	}
 
 	//----- display the 4th page ------//
-	vga.disp_image_file("CREDITS1");
+	vga_util.disp_image_file("CREDITS1");
 
 	credit_buf = NULL;
 	credit_buf_size = 0;
@@ -189,14 +190,14 @@ void Game::view_credits()
 	if( mouse.wait_press(60)==2 )		// return 2 if pressed ESC or right mouse click
 	{
 		res_credit.deinit();
-		vga.finish_disp_image_file();
+		vga_util.finish_disp_image_file();
 		return;								// 60 seconds to time out
 	}
 
 #if(defined(CHINESE))
 	//SXM:Credits
 	//----- display the 5th page ------//
-	vga.disp_image_file("CREDITS1");
+	vga_util.disp_image_file("CREDITS1");
 
 	credit_buf = NULL;
 	credit_buf_size = 0;
@@ -226,7 +227,7 @@ void Game::view_credits()
 	if( mouse.wait_press(60)==2 )		// return 2 if pressed ESC or right mouse click
 	{
 		res_credit.deinit();
-		vga.finish_disp_image_file();
+		vga_util.finish_disp_image_file();
 		return;								// 60 seconds to time out
 	}
 	//SXM
@@ -235,16 +236,16 @@ void Game::view_credits()
 #if(defined(FRENCH))
 	//------ display the 5th page -----//
 
-	vga.disp_image_file("CREDITS5");
+	vga_util.disp_image_file("CREDITS5");
 
 	if( mouse.wait_press(60)==2 )		// return 2 if pressed ESC or right mouse click
 	{
-		vga.finish_disp_image_file();
+		vga_util.finish_disp_image_file();
 		return;								// 60 seconds to time out
 	}
 #endif*/
 
-	vga.finish_disp_image_file();
+	vga_util.finish_disp_image_file();
 	res_credit.deinit();
 }
 //------ End of function Game::view_credits ------//

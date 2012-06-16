@@ -24,6 +24,7 @@
 
 #include <of_mfort.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <oimgres.h>
 #include <omouse.h>
@@ -641,7 +642,7 @@ static void disp_soldier_hit_points(int x1, int y1, int x2, int hitPoints, int m
 	vga.active_buf->bar( x1, y1, x1+barWidth-1, y1+1, hitBarColor + HIT_BAR_BODY );
 
 //	if( x1+barWidth <= x2 )
-//		vga.blt_buf( x1+barWidth, y1, x2, y1+1, 0 );
+//		vga_util.blt_buf( x1+barWidth, y1, x2, y1+1, 0 );
 
 	y1+=2;
 
@@ -649,14 +650,14 @@ static void disp_soldier_hit_points(int x1, int y1, int x2, int hitPoints, int m
 	vga.active_buf->bar( x1+barWidth, y1, x1+barWidth, y1, V_BLACK );
 
 //	if( x1+barWidth+1 <= x2 )
-//		vga.blt_buf( x1+barWidth+1, y1, x2, y1, 0 );
+//		vga_util.blt_buf( x1+barWidth+1, y1, x2, y1, 0 );
 
 	y1++;
 
 	vga.active_buf->bar( x1+1, y1, x1+barWidth, y1, V_BLACK );
 
 //	if( x1+barWidth+1 <= x2 )
-//		vga.blt_buf( x1+barWidth+1, y1, x2, y1, 0 );
+//		vga_util.blt_buf( x1+barWidth+1, y1, x2, y1, 0 );
 }
 //----------- End of function disp_soldier_hit_points -----------//
 

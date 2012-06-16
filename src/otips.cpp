@@ -27,6 +27,7 @@
 #include <ofiletxt.h>
 #include <ovqueue.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <ofont.h>
 #include <oimgres.h>
 #include <omouse.h>
@@ -416,7 +417,7 @@ void TipsRes::disp(int x, int y )
 
 	vga.use_back();
 	Vga::opaque_flag = config.opaque_report;
-	vga.d3_panel_down( x, y, x+TIPS_TEXT_WIDTH-1, y+boxHeight-1);
+	vga_util.d3_panel_down( x, y, x+TIPS_TEXT_WIDTH-1, y+boxHeight-1);
 
 	font_cara_w.put_paragraph( x+TIPS_BORDER_WIDTH, y+TIPS_BORDER_HEIGHT,
 		x+TIPS_TEXT_WIDTH-TIPS_BORDER_WIDTH-1, y+boxHeight-TIPS_BORDER_HEIGHT+1,		// reserve higher
@@ -430,9 +431,9 @@ void TipsRes::disp(int x, int y )
 	int yb = y;
 
 	if( mouse.any_click( xb, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1) )
-		vga.d3_panel_down( xb, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1 );
+		vga_util.d3_panel_down( xb, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1 );
 	else
-		vga.d3_panel_up( xb, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1 );
+		vga_util.d3_panel_up( xb, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1 );
 	font_bld.center_put( xb, yb-4, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1, 
 		text_game_menu.str_tips_next() ); //"Next Tip" );
 
@@ -440,9 +441,9 @@ void TipsRes::disp(int x, int y )
 
 	yb += TIPS_BUTTON_HEIGHT;
 	if( mouse.any_click( xb, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1) )
-		vga.d3_panel_down( xb, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1 );
+		vga_util.d3_panel_down( xb, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1 );
 	else
-		vga.d3_panel_up( xb, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1 );
+		vga_util.d3_panel_up( xb, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1 );
 	font_bld.center_put( xb, yb-4, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1,
 		text_game_menu.str_tips_prev() ); // "Previous Tip" );
 
@@ -450,9 +451,9 @@ void TipsRes::disp(int x, int y )
 
 	yb += TIPS_BUTTON_HEIGHT;
 	if( mouse.any_click( xb, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1) )
-		vga.d3_panel_down( xb+TICK_WIDTH, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1 );
+		vga_util.d3_panel_down( xb+TICK_WIDTH, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1 );
 	else
-		vga.d3_panel_up( xb+TICK_WIDTH, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1 );
+		vga_util.d3_panel_up( xb+TICK_WIDTH, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1 );
 
 	if( !player_profile.hide_tips )
 	{
@@ -470,9 +471,9 @@ void TipsRes::disp(int x, int y )
 	// put close
 	yb += TIPS_BUTTON_HEIGHT;
 	if( mouse.any_click( xb, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1) )
-		vga.d3_panel_down( xb, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1 );
+		vga_util.d3_panel_down( xb, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1 );
 	else
-		vga.d3_panel_up( xb, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1 );
+		vga_util.d3_panel_up( xb, yb, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1 );
 	font_bld.center_put( xb, yb-4, xb+TIPS_BUTTON_WIDTH-1, yb+TIPS_BUTTON_HEIGHT-1,
 		text_game_menu.str_tips_close() ); // "Close" );
 

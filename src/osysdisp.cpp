@@ -24,6 +24,7 @@
 #include <ddraw.h>
 #include <osys.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <oinfo.h>
 #include <obox.h>
 #include <omodeid.h>
@@ -198,7 +199,7 @@ void Sys::disp_frame(int dispCampaignMsg)
 
 			//------------ blt buffer --------------//
 
-			vga.blt_buf(0,0, VGA_WIDTH-1, VGA_HEIGHT-1, 0);
+			vga_util.blt_buf(0,0, VGA_WIDTH-1, VGA_HEIGHT-1, 0);
 
 			//------ if this is a campaign game -------//
 
@@ -358,7 +359,7 @@ void Sys::disp_map()
 	//------- blt the map area to the front screen --------//
 
 #if(!defined(USE_FLIP))
-	vga.blt_buf( MAP_X1, MAP_Y1 , MAP_X2 , MAP_Y2);
+	vga_util.blt_buf( MAP_X1, MAP_Y1 , MAP_X2 , MAP_Y2);
 #endif
 }
 //-------- End of function Sys::disp_map --------//

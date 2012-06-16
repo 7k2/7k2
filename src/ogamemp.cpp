@@ -26,6 +26,7 @@
 #include <omousecr.h>
 #include <obox.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <ovgalock.h>
 #include <ofont.h> 
 #include <obutton.h>
@@ -906,7 +907,7 @@ int Game::mp_select_service()
 					//--------- display interface screen -------//
 
 					vga.use_back();
-					vga.disp_image_file("CHOOSE");
+					vga_util.disp_image_file("CHOOSE");
 
 					// -------- display title -------//
 
@@ -918,7 +919,7 @@ int Game::mp_select_service()
 					font_thin_black.center_put( BUTTON4_X1, BUTTON4_Y1, BUTTON4_X2, BUTTON4_Y2, text_game_menu.str_cancel() ); // "Cancel" );
 
 					vga.use_front();
-					vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+					vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 				}
 
 				// --------- refresh service button -------//
@@ -1088,7 +1089,7 @@ int Game::mp_select_mode(char *defSaveFileName)
 				//--------- display interface screen -------//
 
 				vga.use_back();
-				vga.disp_image_file("CHOOSE");
+				vga_util.disp_image_file("CHOOSE");
 
 				// -------- display title -------//
 
@@ -1107,7 +1108,7 @@ int Game::mp_select_mode(char *defSaveFileName)
 				font_thin_black.center_put( BUTTON4_X1, BUTTON4_Y1, BUTTON4_X2, BUTTON4_Y2, text_game_menu.str_cancel()); // "Cancel" );
 
 				vga.use_front();
-				vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+				vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 			}
 
 			if( refreshFlag & SMOPTION_GETA_ALL )
@@ -1285,7 +1286,7 @@ int Game::mp_select_session()
 			if( refreshFlag & SSOPTION_PAGE )
 			{
 				vga.use_back();
-				vga.disp_image_file("CHOOSE", 0, 0 );
+				vga_util.disp_image_file("CHOOSE", 0, 0 );
 
 				// --------- display title ----------//
 
@@ -1297,7 +1298,7 @@ int Game::mp_select_session()
 				font_thin_black.center_put( BUTTON4_X1, BUTTON4_Y1, BUTTON4_X2, BUTTON4_Y2, text_game_menu.str_cancel()); // "Cancel" );
 
 				vga.use_front();
-				vga.blt_buf(0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0);
+				vga_util.blt_buf(0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0);
 			}
 
 			if( refreshFlag & SSOPTION_POLL_SESSION )
@@ -1352,7 +1353,7 @@ int Game::mp_select_session()
 					int x2 = sx2;
 					int y1 = sy1 + ySpacing * b;
 					int y2 = y1 + ySpacing - 4;
-					vga.blt_buf( x1, y1, x2, y2, 0 );
+					vga_util.blt_buf( x1, y1, x2, y2, 0 );
 
 					if( mp_obj.get_session(s) )
 					{
@@ -1389,7 +1390,7 @@ int Game::mp_select_session()
 				}
 				else
 				{
-					vga.blt_buf( arrowX1, arrowY1, arrowX2, arrowY2, 0 );
+					vga_util.blt_buf( arrowX1, arrowY1, arrowX2, arrowY2, 0 );
 				}
 
 				// centering
@@ -1403,7 +1404,7 @@ int Game::mp_select_session()
 				}
 				else
 				{
-					vga.blt_buf( arrowX1, arrowY1, arrowX2, arrowY2, 0 );
+					vga_util.blt_buf( arrowX1, arrowY1, arrowX2, arrowY2, 0 );
 				}
 			}
 
@@ -1415,7 +1416,7 @@ int Game::mp_select_session()
 		if( choice > 0 && flashingJoin != 0 )
 			font_thin_black.center_put( BUTTON2_X1, BUTTON2_Y1, BUTTON2_X2, BUTTON2_Y2, text_game_menu.str_join()); // "Join" );
 		else
-			vga.blt_buf( BUTTON2_X1, BUTTON2_Y1, BUTTON2_X2, BUTTON2_Y2, 0 );
+			vga_util.blt_buf( BUTTON2_X1, BUTTON2_Y1, BUTTON2_X2, BUTTON2_Y2, 0 );
 		if( ++flashingJoin > 4 )
 			flashingJoin = 0;
 
@@ -2315,7 +2316,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 
 						// ------- draw frame for multiplayers -------//
 
@@ -2376,7 +2377,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 							text_game_menu.str_cancel() ); // "Cancel" );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 					if( refreshFlag & SGOPTION_RACE )
 						speciesGroup.paint( tempConfig.race_id < 0 );
@@ -2408,7 +2409,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 						// BUGHERE : option menu column and finger
 
 						// ------- draw frame for multiplayers -------//
@@ -2463,7 +2464,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 							text_game_menu.str_cancel() ); // "Cancel" );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 					if( refreshFlag & SGOPTION_RACE )
 					{
@@ -2523,7 +2524,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 
 						vga.use_front();
 
-						vga.blt_buf( colorButtonFrameX, colorButtonFrameY,
+						vga_util.blt_buf( colorButtonFrameX, colorButtonFrameY,
 							colorButtonFrameX + ((Bitmap *)bitmapPtr)->get_width() - 1,
 							colorButtonFrameY + ((Bitmap *)bitmapPtr)->get_height() - 1, 0 );
 					}
@@ -2557,7 +2558,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 
 						// ------- draw frame for multiplayers -------//
 
@@ -2611,7 +2612,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 							text_game_menu.str_cancel() ); // "Cancel" );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 					if( refreshFlag & SGOPTION_EXPLORED )
 						exploreGroup.paint(tempConfig.explore_whole_map);
@@ -2637,7 +2638,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 
 						// ------- draw frame for multiplayers -------//
 
@@ -2685,7 +2686,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 							text_game_menu.str_cancel() ); // "Cancel" );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 					if( refreshFlag & SGOPTION_RAW )
 						rawSiteGroup.paint(tempConfig.start_up_raw_site-1);
@@ -2712,7 +2713,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 
 						// ------- draw frame for multiplayers -------//
 
@@ -2762,7 +2763,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 							text_game_menu.str_cancel() ); // "Cancel" );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 
 					font_bold_black.use_max_height();
@@ -2817,7 +2818,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 
 						// ------- draw frame for multiplayers -------//
 
@@ -2850,7 +2851,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 							text_game_menu.str_cancel() ); // "Cancel" );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 
 					font_bold_black.use_max_height();
@@ -2899,7 +2900,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 						}
 #endif
 					}
-					vga.blt_buf( 126, 1, 665, 69, 0 );
+					vga_util.blt_buf( 126, 1, 665, 69, 0 );
 					vga.use_front();
 				}
 
@@ -2932,7 +2933,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 						}
 						nx = font_cara.put( nx, ny, ((MpStructChatMsg *)messageList.get(p))->content, 0, 661 );
 					}
-					vga.blt_buf( 126, y1, 665, y2, 0 );
+					vga_util.blt_buf( 126, y1, 665, y2, 0 );
 					vga.use_front();
 
 					// display button
@@ -5061,7 +5062,7 @@ int Game::mp_select_load_option(char *fileName)
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 
 						// ------- draw frame for multiplayers -------//
 
@@ -5131,7 +5132,7 @@ int Game::mp_select_load_option(char *fileName)
 							text_game_menu.str_cancel() ); // "Cancel" );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 					if( refreshFlag & SGOPTION_RACE )
 						speciesGroup.paint( tempConfig.race_id < 0 );
@@ -5159,7 +5160,7 @@ int Game::mp_select_load_option(char *fileName)
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 						// BUGHERE : option menu column and finger
 
 						// ------- draw frame for multiplayers -------//
@@ -5214,7 +5215,7 @@ int Game::mp_select_load_option(char *fileName)
 							text_game_menu.str_cancel() ); // "Cancel" );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 					if( refreshFlag & SGOPTION_RACE )
 					{
@@ -5274,7 +5275,7 @@ int Game::mp_select_load_option(char *fileName)
 
 						vga.use_front();
 
-						vga.blt_buf( colorButtonFrameX, colorButtonFrameY,
+						vga_util.blt_buf( colorButtonFrameX, colorButtonFrameY,
 							colorButtonFrameX + ((Bitmap *)bitmapPtr)->get_width() - 1,
 							colorButtonFrameY + ((Bitmap *)bitmapPtr)->get_height() - 1, 0 );
 					}
@@ -5308,7 +5309,7 @@ int Game::mp_select_load_option(char *fileName)
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 
 						// ------- draw frame for multiplayers -------//
 
@@ -5362,7 +5363,7 @@ int Game::mp_select_load_option(char *fileName)
 							text_game_menu.str_cancel() ); // "Cancel" );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 					if( refreshFlag & SGOPTION_EXPLORED )
 						exploreGroup.paint(tempConfig.explore_whole_map);
@@ -5388,7 +5389,7 @@ int Game::mp_select_load_option(char *fileName)
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 
 						// ------- draw frame for multiplayers -------//
 
@@ -5436,7 +5437,7 @@ int Game::mp_select_load_option(char *fileName)
 							text_game_menu.str_cancel() ); // "Cancel" );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 					if( refreshFlag & SGOPTION_RAW )
 						rawSiteGroup.paint(tempConfig.start_up_raw_site-1);
@@ -5463,7 +5464,7 @@ int Game::mp_select_load_option(char *fileName)
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 
 						// ------- draw frame for multiplayers -------//
 
@@ -5513,7 +5514,7 @@ int Game::mp_select_load_option(char *fileName)
 							text_game_menu.str_cancel() ); // "Cancel" );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 
 					font_bold_black.use_max_height();
@@ -5567,7 +5568,7 @@ int Game::mp_select_load_option(char *fileName)
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 
 						// ------- draw frame for multiplayers -------//
 
@@ -5600,7 +5601,7 @@ int Game::mp_select_load_option(char *fileName)
 							text_game_menu.str_cancel() ); // "Cancel" );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 
 					font_bold_black.use_max_height();
@@ -5650,7 +5651,7 @@ int Game::mp_select_load_option(char *fileName)
 						}
 #endif
 					}
-					vga.blt_buf( 126, 1, 665, 69, 0 );
+					vga_util.blt_buf( 126, 1, 665, 69, 0 );
 					vga.use_front();
 				}
 
@@ -5684,7 +5685,7 @@ int Game::mp_select_load_option(char *fileName)
 						}
 						nx = font_cara.put( nx, ny, ((MpStructChatMsg *)messageList.get(p))->content, 0, 661 );
 					}
-					vga.blt_buf( 126, y1, 665, y2, 0 );
+					vga_util.blt_buf( 126, y1, 665, y2, 0 );
 					vga.use_front();
 
 					// display button
@@ -6526,7 +6527,7 @@ static void disp_service_button(ButtonCustom *button, int)
 
 	if( !button->pushed_flag )
 	{
-		vga.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
+		vga_util.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
 	}
 
 	(button->pushed_flag ? font_bold_red : font_bold_black).put( 
@@ -6556,7 +6557,7 @@ static void disp_service_button(ButtonCustom *button, int)
 static void i_disp_text_button(ButtonCustom *button, int repaintBody)
 {
 	if( !vga.use_back_buf )
-		vga.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
+		vga_util.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
 	Font *fontPtr = button->pushed_flag ? &font_bold_red : &font_thin_black;
 //	fontPtr->space_width -= 8;	
 	// top center align
@@ -6575,7 +6576,7 @@ static void i_disp_race_button(ButtonCustom *button, int repaintBody)
 {
 	int raceId = button->custom_para.value;
 	if( !vga.use_back_buf )
-		vga.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
+		vga_util.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
 	Font *fontPtr = button->pushed_flag ? &font_bold_red : &font_thin_black;
 	// top center align
 	fontPtr->center_put( button->x1, button->y1, button->x2, button->y1+fontPtr->font_height-1,
@@ -6591,7 +6592,7 @@ static void i_disp_race_button(ButtonCustom *button, int repaintBody)
 static void i_disp_int_button(ButtonCustom *button, int repaintBody)
 {
 	if( !vga.use_back_buf )
-		vga.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
+		vga_util.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
 	Font *fontPtr = button->pushed_flag ? &font_bold_red : &font_thin_black;
 	// top center align
 	fontPtr->center_put( button->x1, button->y1, button->x2, button->y1+fontPtr->font_height-1,

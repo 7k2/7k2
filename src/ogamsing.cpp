@@ -24,6 +24,7 @@
 #include <ogame.h>
 #include <obitmap.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <ocoltbl.h>
 #include <ovgalock.h>
@@ -654,7 +655,7 @@ static int select_option2()
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 
 						// ------- display option Mode ------//
 
@@ -698,7 +699,7 @@ static int select_option2()
 							text_game_menu.str_cancel() );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 					if( refreshFlag & SGOPTION_RACE )
 						speciesGroup.paint( tempConfig.race_id < 0 );
@@ -712,7 +713,7 @@ static int select_option2()
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 						// BUGHERE : option menu column and finger
 
 						font_bold_black.right_put( playerNameField.x, playerNameField.y,
@@ -752,7 +753,7 @@ static int select_option2()
 							text_game_menu.str_cancel() );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 
 					if( refreshFlag & SGOPTION_RACE )
@@ -803,7 +804,7 @@ static int select_option2()
 
 						vga.use_front();
 
-						vga.blt_buf( colorButtonFrameX, colorButtonFrameY,
+						vga_util.blt_buf( colorButtonFrameX, colorButtonFrameY,
 							colorButtonFrameX + ((Bitmap *)bitmapPtr)->get_width() - 1,
 							colorButtonFrameY + ((Bitmap *)bitmapPtr)->get_height() - 1, 0 );
 					}
@@ -833,7 +834,7 @@ static int select_option2()
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 
 						font_bold_black.put_paragraph( 126, 99, option3X-10, 143-1,
 							text_game_menu.str_world_map()); // "World Map" );
@@ -876,7 +877,7 @@ static int select_option2()
 							text_game_menu.str_cancel() );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 					if( refreshFlag & SGOPTION_EXPLORED )
 						exploreGroup.paint(tempConfig.explore_whole_map);
@@ -902,7 +903,7 @@ static int select_option2()
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 
 						font_bold_black.put_paragraph( 126, 100, option4X-10, 152-1,
 							text_game_menu.str_start_up_raw_site()); // "Natural Resources at Start" );
@@ -939,7 +940,7 @@ static int select_option2()
 							text_game_menu.str_cancel() );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 					if( refreshFlag & SGOPTION_RAW )
 						rawSiteGroup.paint(tempConfig.start_up_raw_site-1);
@@ -966,7 +967,7 @@ static int select_option2()
 					if( refreshFlag & SGOPTION_PAGE )
 					{
 						vga.use_back();
-						vga.disp_image_file("CHOOSE");
+						vga_util.disp_image_file("CHOOSE");
 
 						font_bold_black.put( option5X, 112, text_game_menu.str_goal() );	// You will be victorious when you have:
 
@@ -1005,7 +1006,7 @@ static int select_option2()
 							text_game_menu.str_cancel() );
 
 						vga.use_front();
-						vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+						vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 					}
 
 					font_bold_black.use_max_height();
@@ -1474,7 +1475,7 @@ static int select_option2()
 static void i_disp_text_button(ButtonCustom *button, int repaintBody)
 {
 	if( !vga.use_back_buf )
-		vga.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
+		vga_util.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
 	Font *fontPtr = button->pushed_flag ? &font_bold_red : &font_thin_black;
 //	fontPtr->space_width -= 8;	
 	// top center align
@@ -1493,7 +1494,7 @@ static void i_disp_race_button(ButtonCustom *button, int repaintBody)
 {
 	int raceId = button->custom_para.value;
 	if( !vga.use_back_buf )
-		vga.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
+		vga_util.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
 	Font *fontPtr = button->pushed_flag ? &font_bold_red : &font_thin_black;
 	// top center align
 	fontPtr->center_put( button->x1, button->y1, button->x2, button->y1+fontPtr->font_height-1,
@@ -1509,7 +1510,7 @@ static void i_disp_race_button(ButtonCustom *button, int repaintBody)
 static void i_disp_int_button(ButtonCustom *button, int repaintBody)
 {
 	if( !vga.use_back_buf )
-		vga.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
+		vga_util.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
 	Font *fontPtr = button->pushed_flag ? &font_bold_red : &font_thin_black;
 	// top center align
 	fontPtr->center_put( button->x1, button->y1, button->x2, button->y1+fontPtr->font_height-1,

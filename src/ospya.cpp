@@ -39,6 +39,7 @@
 #include <onation.h>
 #include <oraceres.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <osys.h>
 #include <otechres.h>
@@ -363,7 +364,7 @@ void SpyArray::disp_view_secret_menu(int spyRecno, int refreshFlag)
 	vga.active_buf->put_bitmap( INFO_X1, INFO_Y1, image_gameif.read("MISSBASE") );
 	//------------------------------------//
 
-//	vga.d3_panel_up( INFO_X1, INFO_Y1, INFO_X2, INFO_Y1+42 );
+//	vga_util.d3_panel_up( INFO_X1, INFO_Y1, INFO_X2, INFO_Y1+42 );
 //	font_san.put_paragraph( INFO_X1+7, INFO_Y1+5, INFO_X2-7, INFO_Y2-5,
 //									"Steal which type of secrets?" );
 	font_whbl.put_paragraph( INFO_X1+18, INFO_Y1+12, INFO_X2-14, INFO_Y1+72, 

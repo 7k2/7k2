@@ -24,6 +24,7 @@
 #include <ospinner.h>
 #include <oinfo.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <ofont.h>
 #include <oimgres.h>
 #include <omouse.h>
@@ -103,7 +104,7 @@ void Spinner::disp(int refreshFlag)
 
 		font_ptr->put( x1, y1+2, spinner_des );
 
-		vga.d3_panel_down( x2+3, y1, x3, y2 );
+		vga_util.d3_panel_down( x2+3, y1, x3, y2 );
 
 		vga_front.put_bitmap( x3+5, y1, spinner_icon );
 	}

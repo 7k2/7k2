@@ -23,6 +23,7 @@
 
 #include <oinfo.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <omouse.h>
 #include <ostr.h>
@@ -116,7 +117,7 @@ void FirmMine::disp_mine_info(int dispY1, int refreshFlag)
 	//---------------- paint the panel --------------//
 
 	if( refreshFlag == INFO_REPAINT )
-		vga.d3_panel_up( INFO_X1, dispY1, INFO_X2, dispY1+70);
+		vga_util.d3_panel_up( INFO_X1, dispY1, INFO_X2, dispY1+70);
 
 	//------ if there is no natural resource on this location ------//
 

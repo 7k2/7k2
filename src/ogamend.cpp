@@ -23,6 +23,7 @@
 
 #include <ogame.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <ovgalock.h>
 #include <odate.h>
@@ -296,7 +297,7 @@ void Game::game_end(int winNationRecno, int playerDestroyed, int surrenderToNati
 			else
 				fileName = "LOSEGAM2";
 		}
-		vga.disp_image_file(fileName);		//BUGHERE
+		vga_util.disp_image_file(fileName);		//BUGHERE
 
 		music.play(songId, sys.cdrom_drive ? MUSIC_CD_THEN_WAV : 0);
 		mouse.wait_press(60);		// 60 seconds to time out
@@ -308,7 +309,7 @@ void Game::game_end(int winNationRecno, int playerDestroyed, int surrenderToNati
 
 	//------- display the statistic -------//
 
-	vga.disp_image_file("RESULTS");
+	vga_util.disp_image_file("RESULTS");
 
 	int headingShown=0;
 
@@ -342,7 +343,7 @@ void Game::game_end(int winNationRecno, int playerDestroyed, int surrenderToNati
 
 	if( !game.is_campaign_mode() )
 	{
-		vga.disp_image_file("RESULTS");
+		vga_util.disp_image_file("RESULTS");
 
 		info.set_rank_data(0);		// count all nations, not only those that have contact with the player
 
@@ -358,11 +359,11 @@ void Game::game_end(int winNationRecno, int playerDestroyed, int surrenderToNati
 	if( !game.is_campaign_mode() && !game_has_ended && game.game_mode != GAME_TUTORIAL )
 	{
 		if( !game_file_array.add_hall_of_fame(totalScore, (config.race_id < 0) ) )
-			vga.finish_disp_image_file();		// if add_hall_of_fame() has displayed the bitmap, it should have called vga.finish_disp_image_file() already
+			vga_util.finish_disp_image_file();		// if add_hall_of_fame() has displayed the bitmap, it should have called vga.finish_disp_image_file() already
 	}
 	else
 	{
-		vga.finish_disp_image_file();
+		vga_util.finish_disp_image_file();
 	}
 
 	//--------- set game_has_ended to 1 --------//

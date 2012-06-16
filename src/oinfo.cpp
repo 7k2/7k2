@@ -23,6 +23,7 @@
 
 #include <oinfo.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <oimgres.h>
 #include <ospy.h>
@@ -453,7 +454,7 @@ void Info::disp()
 	// ####### end Gilbert 23/2 ########//
 
 #ifdef USE_FLIP
-	vga.blt_buf(INFO_X1, INFO_Y1-125, INFO_X2, INFO_Y2, 0);
+	vga_util.blt_buf(INFO_X1, INFO_Y1-125, INFO_X2, INFO_Y2, 0);
 #endif
 
 	// ######## begin Gilbert 23/12 #######//

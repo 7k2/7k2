@@ -27,6 +27,7 @@
 #include <oblob.h>
 #include <osys.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <ovgabuf.h>
 #include <ovgalock.h>
@@ -367,7 +368,7 @@ int PlayerProfile::register_menu()
 				if( refreshFlag & PPOPTION_PAGE )
 				{
 					vga.use_back();
-					vga.disp_image_file("CHOOSE");
+					vga_util.disp_image_file("CHOOSE");
 					fontBlack.center_put( 119, 95, 678, 118, text_game_menu.str_profile_s1() );
 					// fontBlack.center_put( 113, 392, 663, 414, "If your name is not here, click on \"New Player\" below");
 					fontBlack.center_put_paragraph( 113, 392, 688, 414, text_game_menu.str_profile_s2() );
@@ -376,7 +377,7 @@ int PlayerProfile::register_menu()
 					fontThin.center_put( BUTTON4_X1, BUTTON4_Y1, BUTTON4_X2, BUTTON4_Y2, text_game_menu.str_delete_profile() );		// delete button
 					fontThin.center_put( BUTTON9_X1, BUTTON9_Y1, BUTTON9_X2, BUTTON9_Y2, text_game_menu.str_cancel() );		// cancel button
 					vga.use_front();
-					vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+					vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 				}
 
 				if( refreshFlag & PPOPTION_SCROLL_BAR )
@@ -395,7 +396,7 @@ int PlayerProfile::register_menu()
 								int rec = (scrollBar.view_recno + c) * SCROLL_LINE_COUNT + i + 1;
 
 								// copy blank from back buffer
-								vga.blt_buf( x1, y, x1+columnWidth-1, y+SCROLL_LINE_HEIGHT-1, 0 );
+								vga_util.blt_buf( x1, y, x1+columnWidth-1, y+SCROLL_LINE_HEIGHT-1, 0 );
 
 								if( rec > 0 && rec <= profileCount )
 								{
@@ -422,7 +423,7 @@ int PlayerProfile::register_menu()
 					}
 					else
 					{
-						vga.blt_buf( BROWSE_X1, SCROLL_BAR_Y1, BROWSE_X2, SCROLL_BAR_Y2, 0 );
+						vga_util.blt_buf( BROWSE_X1, SCROLL_BAR_Y1, BROWSE_X2, SCROLL_BAR_Y2, 0 );
 					}
 				}
 				break;
@@ -431,12 +432,12 @@ int PlayerProfile::register_menu()
 				if( refreshFlag & PPOPTION_PAGE )
 				{
 					vga.use_back();
-					vga.disp_image_file("CHOOSE");
+					vga_util.disp_image_file("CHOOSE");
 					fontBlack.center_put( 136, 187, 672, 217, text_game_menu.str_profile_new() );
 					fontThin.center_put( BUTTON2_X1, BUTTON2_Y1, BUTTON2_X2, BUTTON2_Y2, text_game_menu.str_finish_select_profile() );
 					fontThin.center_put( BUTTON4_X1, BUTTON4_Y1, BUTTON4_X2, BUTTON4_Y2, text_game_menu.str_cancel() );
 					vga.use_front();
-					vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+					vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 				}
 
 				if( refreshFlag & PPOPTION_GET_FIELDS )
@@ -467,7 +468,7 @@ int PlayerProfile::register_menu()
 				if( refreshFlag & PPOPTION_PAGE )
 				{
 					vga.use_back();
-					vga.disp_image_file("CHOOSE");
+					vga_util.disp_image_file("CHOOSE");
 					fontBlack.center_put_paragraph( 136, 187, 672, 287, text_game_menu.str_profile_del() );
 					if( profileArray[selectedProfile-1].login_name[0] )
 					{
@@ -476,7 +477,7 @@ int PlayerProfile::register_menu()
 					fontThin.center_put( BUTTON2_X1, BUTTON2_Y1, BUTTON2_X2, BUTTON2_Y2, text_game_menu.str_profile_del_yes() );
 					fontThin.center_put( BUTTON4_X1, BUTTON4_Y1, BUTTON4_X2, BUTTON4_Y2, text_game_menu.str_profile_del_no() );
 					vga.use_front();
-					vga.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
+					vga_util.blt_buf( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, 0 );
 				}
 				break;
 			default:

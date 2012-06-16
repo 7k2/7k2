@@ -22,6 +22,7 @@
 //Description : class Sys - view report functions
 
 #include <ovga.h>
+#include <vga_util.h>
 #include <osys.h>
 #include <oinfo.h>
 #include <omodeid.h>
@@ -168,7 +169,7 @@ void Sys::disp_view_mode(int observeMode)
 	mouse.hide();		// hide before help.short_front_buf.hide_area();
 	help.short_front_buf.hide_area(SCROLL_MENU_X1, SCROLL_MENU_Y1, SCROLL_MENU_X2, SCROLL_MENU_Y2);
 
-	vga.blt_buf(SCROLL_MENU_X1, SCROLL_MENU_Y1, SCROLL_MENU_X2, SCROLL_MENU_Y2, 0);
+	vga_util.blt_buf(SCROLL_MENU_X1, SCROLL_MENU_Y1, SCROLL_MENU_X2, SCROLL_MENU_Y2, 0);
 
 	help.short_front_buf.show_area();
 	help.short_back_buf.show_area();
@@ -320,7 +321,7 @@ void Sys::update_view()
 		//------------------------------------//
 
 #if(!defined(USE_FLIP))
-		vga.blt_buf(ZOOM_X1, ZOOM_Y1, ZOOM_X2, ZOOM_Y2);
+		vga_util.blt_buf(ZOOM_X1, ZOOM_Y1, ZOOM_X2, ZOOM_Y2);
 #endif
 	}
 	else
@@ -394,7 +395,7 @@ void Sys::update_view()
 			Vga::opaque_flag = 0;
 
 #if(!defined(USE_FLIP))
-			vga.blt_buf(ZOOM_X1, ZOOM_Y1, ZOOM_X2, ZOOM_Y2);
+			vga_util.blt_buf(ZOOM_X1, ZOOM_Y1, ZOOM_X2, ZOOM_Y2);
 #endif
 			
 			report_disp_frame_no = 0;

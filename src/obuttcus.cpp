@@ -23,6 +23,7 @@
 
 #include <osys.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omouse.h>
 #include <oimgres.h>
 #include <obuttcus.h>
@@ -263,7 +264,7 @@ void ButtonCustom::hide()
 	if( !init_flag )
 		return;
 
-	vga.blt_buf( x1, y1, x2, y2, 0 );
+	vga_util.blt_buf( x1, y1, x2, y2, 0 );
 
 	// #### begin Gilbert 11/9 ######//
 	// enable_flag = 0;
@@ -319,13 +320,13 @@ void ButtonCustom::disp_text_button_func(ButtonCustom *button, int repaintBody)
 	// modify x1,y1, x2,y2 to the button body
 	if( button->pushed_flag )
 	{
-		vga.d3_panel2_down(x1, y1, x2, y2);
+		vga_util.d3_panel2_down(x1, y1, x2, y2);
 		x1++;
 		y1++;
 	}
 	else
 	{
-		vga.d3_panel2_up(x1, y1, x2, y2);
+		vga_util.d3_panel2_up(x1, y1, x2, y2);
 		x2--;
 		y2--;
 	}

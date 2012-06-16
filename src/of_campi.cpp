@@ -22,6 +22,7 @@
 //Description: Interface for Camp
 
 #include <ovga.h>
+#include <vga_util.h>
 #include <of_camp.h> 
 #include <all.h>
 #include <oraceres.h>
@@ -717,10 +718,10 @@ void FirmCamp::disp_soldier_list(int dispY1, int refreshFlag, int dispSpyMenu)
 		}
 		else
 		{
-			vga.blt_buf( x-2, y-2, x+UNIT_LARGE_ICON_WIDTH+1, y-1, 0 );
-			vga.blt_buf( x-2, y+UNIT_LARGE_ICON_HEIGHT+1, x+UNIT_LARGE_ICON_WIDTH+1, y+UNIT_LARGE_ICON_HEIGHT+2, 0 );
-			vga.blt_buf( x-2, y-2, x-1, y+UNIT_LARGE_ICON_HEIGHT+2, 0 );
-			vga.blt_buf( x+UNIT_LARGE_ICON_WIDTH, y-2, x+UNIT_LARGE_ICON_WIDTH+1, y+UNIT_LARGE_ICON_HEIGHT+2, 0 );
+			vga_util.blt_buf( x-2, y-2, x+UNIT_LARGE_ICON_WIDTH+1, y-1, 0 );
+			vga_util.blt_buf( x-2, y+UNIT_LARGE_ICON_HEIGHT+1, x+UNIT_LARGE_ICON_WIDTH+1, y+UNIT_LARGE_ICON_HEIGHT+2, 0 );
+			vga_util.blt_buf( x-2, y-2, x-1, y+UNIT_LARGE_ICON_HEIGHT+2, 0 );
+			vga_util.blt_buf( x+UNIT_LARGE_ICON_WIDTH, y-2, x+UNIT_LARGE_ICON_WIDTH+1, y+UNIT_LARGE_ICON_HEIGHT+2, 0 );
 		}
 
 		//-------------------------------------//
@@ -780,7 +781,7 @@ void FirmCamp::disp_soldier_list(int dispY1, int refreshFlag, int dispSpyMenu)
 				}
 			}
 
-			vga.blt_buf( x2, y-1, INFO_X2-2, dispY1+44, 0 );
+			vga_util.blt_buf( x2, y-1, INFO_X2-2, dispY1+44, 0 );
 		}
 	}
 
@@ -789,7 +790,7 @@ void FirmCamp::disp_soldier_list(int dispY1, int refreshFlag, int dispSpyMenu)
 	//---------------- paint the panel --------------//
 
 	if( refreshFlag == INFO_REPAINT )
-		vga.d3_panel_up( INFO_X1, dispY1, INFO_X2, dispY1+60 );
+		vga_util.d3_panel_up( INFO_X1, dispY1, INFO_X2, dispY1+60 );
 
 	//----------- display populatin distribution ---------//
 
@@ -875,8 +876,8 @@ void FirmCamp::disp_soldier_list(int dispY1, int refreshFlag, int dispSpyMenu)
 			if( spyIconName )
 			{
 				vga_front.put_bitmap( x+30, y+6, image_icon.get_ptr(spyIconName) );
-				vga.blt_buf( x+40, y+6, x+49, y+15, 0 );
-				vga.blt_buf( x+30, y+16, x+49, y+26, 0 );
+				vga_util.blt_buf( x+40, y+6, x+49, y+15, 0 );
+				vga_util.blt_buf( x+30, y+16, x+49, y+26, 0 );
 			}
 			else
 			{
@@ -895,7 +896,7 @@ void FirmCamp::disp_soldier_list(int dispY1, int refreshFlag, int dispSpyMenu)
 		{
 			if( last_race_id_array[i] != 0 || last_unit_id_array[i] != 0 )
 			{
-				vga.blt_buf( x, y, x+49, y+27, 0 );
+				vga_util.blt_buf( x, y, x+49, y+27, 0 );
 				last_race_id_array[i] = 0;
 				last_unit_id_array[i] = 0;
 			}
@@ -1158,7 +1159,7 @@ static void disp_soldier_hit_points(int x1, int y1, int x2, int hitPoints, int m
 	vga.active_buf->bar( x1, y1, x1+barWidth-1, y1+1, hitBarColor + HIT_BAR_BODY );
 
 //	if( x1+barWidth <= x2 )
-//		vga.blt_buf( x1+barWidth, y1, x2, y1+1, 0 );
+//		vga_util.blt_buf( x1+barWidth, y1, x2, y1+1, 0 );
 
 	y1+=2;
 
@@ -1166,14 +1167,14 @@ static void disp_soldier_hit_points(int x1, int y1, int x2, int hitPoints, int m
 	vga.active_buf->bar( x1+barWidth, y1, x1+barWidth, y1, V_BLACK );
 
 //	if( x1+barWidth+1 <= x2 )
-//		vga.blt_buf( x1+barWidth+1, y1, x2, y1, 0 );
+//		vga_util.blt_buf( x1+barWidth+1, y1, x2, y1, 0 );
 
 	y1++;
 
 	vga.active_buf->bar( x1+1, y1, x1+barWidth, y1, V_BLACK );
 
 //	if( x1+barWidth+1 <= x2 )
-//		vga.blt_buf( x1+barWidth+1, y1, x2, y1, 0 );
+//		vga_util.blt_buf( x1+barWidth+1, y1, x2, y1, 0 );
 }
 //----------- End of function disp_soldier_hit_points -----------//
 
@@ -1196,7 +1197,7 @@ static void disp_training_bar(int x1, int y1, int x2, int hitPoints, int maxHitP
 	vga.active_buf->bar( x1, y1, x1+barWidth-1, y1+1, hitBarColor + HIT_BAR_BODY );
 
 //	if( x1+barWidth <= x2 )
-//		vga.blt_buf( x1+barWidth, y1, x2, y1+1, 0 );
+//		vga_util.blt_buf( x1+barWidth, y1, x2, y1+1, 0 );
 
 	y1+=2;
 
@@ -1204,14 +1205,14 @@ static void disp_training_bar(int x1, int y1, int x2, int hitPoints, int maxHitP
 	vga.active_buf->bar( x1+barWidth, y1, x1+barWidth, y1, V_BLACK );
 
 //	if( x1+barWidth+1 <= x2 )
-//		vga.blt_buf( x1+barWidth+1, y1, x2, y1, 0 );
+//		vga_util.blt_buf( x1+barWidth+1, y1, x2, y1, 0 );
 
 	y1++;
 
 	vga.active_buf->bar( x1+1, y1, x1+barWidth, y1, V_BLACK );
 
 //	if( x1+barWidth+1 <= x2 )
-//		vga.blt_buf( x1+barWidth+1, y1, x2, y1, 0 );
+//		vga_util.blt_buf( x1+barWidth+1, y1, x2, y1, 0 );
 }
 //----------- End of function disp_training_bar -----------//
 
@@ -1550,7 +1551,7 @@ void FirmCamp::detect_train_menu()
 static void disp_debug_info(FirmCamp* firmPtr, int refreshFlag)
 {
 	if( refreshFlag == INFO_REPAINT )
-		vga.d3_panel_up( INFO_X1, INFO_Y2-40, INFO_X2, INFO_Y2 );
+		vga_util.d3_panel_up( INFO_X1, INFO_Y2-40, INFO_X2, INFO_Y2 );
 
 	int x=INFO_X1+3, y=INFO_Y2-37, x2=x+120;
 

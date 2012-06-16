@@ -23,6 +23,7 @@
 
 #include <of_lair.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <omonsres.h>
 #include <onation.h>
@@ -336,7 +337,7 @@ void i_disp_research_button(ButtonCustom *button, int repaintBody)
 	{
 		// vga.active_buf->put_bitmap(  button->x1, button->y1, image_icon.read("BUILDDWN") );
 		vga.active_buf->d3_panel_down( button->x1, button->y1, button->x2, button->y2 );
-//		vga.blt_buf(button->x1, button->y1, button->x2, button->y2, 0);
+//		vga_util.blt_buf(button->x1, button->y1, button->x2, button->y2, 0);
 		font_bld.center_put(button->x1, button->y1+2, button->x2, midY, str );
 		font_bld.center_put(button->x1, midY, button->x2, button->y2-2,
 			text_firm.str_lair_research(techInfo->live_points_cost()) );

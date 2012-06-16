@@ -23,6 +23,7 @@
 
 #include <ogeta.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <ofont.h>
 #include <omouse.h>
 #include <key.h>
@@ -354,7 +355,7 @@ void GetA::paint(int paintCursor)
 			if( !back_ground_bitmap )
 			{
 				if( x+textWidth <= x_limit )		// fill right
-					vga.blt_buf( x+textWidth, y, x_limit, y + font_ptr->max_font_height-1, 0);
+					vga_util.blt_buf( x+textWidth, y, x_limit, y + font_ptr->max_font_height-1, 0);
 				Vga::active_buf->put_bitmapW( x, y, bitmap );
 			}
 			else
@@ -374,11 +375,11 @@ void GetA::paint(int paintCursor)
 				int l = x + (x_limit - x + 1 - textWidth ) / 2;
 				if( x < l )
 				{
-					vga.blt_buf( x, y, l-1, y + font_ptr->max_font_height-1, 0);
+					vga_util.blt_buf( x, y, l-1, y + font_ptr->max_font_height-1, 0);
 				}
 				if( l+textWidth <= x_limit )
 				{
-					vga.blt_buf( l+textWidth, y, x_limit, y + font_ptr->max_font_height-1, 0);
+					vga_util.blt_buf( l+textWidth, y, x_limit, y + font_ptr->max_font_height-1, 0);
 				}
 				Vga::active_buf->put_bitmapW( l, y, bitmap );
 			}
@@ -406,7 +407,7 @@ void GetA::paint(int paintCursor)
 			{
 				int l = x_limit - textWidth + 1;
 				if( x < l )		// fill left
-					vga.blt_buf( x, y, l-1, y + font_ptr->max_font_height-1, 0);
+					vga_util.blt_buf( x, y, l-1, y + font_ptr->max_font_height-1, 0);
 				Vga::active_buf->put_bitmapW( l, y, bitmap );
 			}
 			else

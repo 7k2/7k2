@@ -27,6 +27,7 @@
 #include <oraceres.h>
 #include <omonsres.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <ofont.h>
 #include <ostr.h>
@@ -462,9 +463,9 @@ static void disp_button()
 		//-----------------------------------------//
 
 		if( info.nation_report_mode == i )
-			vga.d3_panel_down( x, REPORT_BUTTON_Y1, x+REPORT_BUTTON_WIDTH-1, REPORT_BUTTON_Y2 );
+			vga_util.d3_panel_down( x, REPORT_BUTTON_Y1, x+REPORT_BUTTON_WIDTH-1, REPORT_BUTTON_Y2 );
 		else
-			vga.d3_panel_up( x, REPORT_BUTTON_Y1, x+REPORT_BUTTON_WIDTH-1, REPORT_BUTTON_Y2 );
+			vga_util.d3_panel_up( x, REPORT_BUTTON_Y1, x+REPORT_BUTTON_WIDTH-1, REPORT_BUTTON_Y2 );
 
 		font_bld.center_put( x, REPORT_BUTTON_Y1, x+REPORT_BUTTON_WIDTH-1, REPORT_BUTTON_Y2, 
 			text_reports.str_nat_sub_mode(i) ); // report_mode_str_array[i-1] );
@@ -588,7 +589,7 @@ static void detect_detail()
 //
 static void disp_nation_info()
 {
-	vga.d3_panel_down( REPORT_DET_X1, REPORT_DET_Y1, REPORT_DET_X2, REPORT_DET_Y2 );
+	vga_util.d3_panel_down( REPORT_DET_X1, REPORT_DET_Y1, REPORT_DET_X2, REPORT_DET_Y2 );
 
 	//----------- display info ------------//
 
@@ -754,7 +755,7 @@ static void detect_nation_info()
 //
 static void disp_debug_info()
 {
-	vga.d3_panel_down( REPORT_DET_X1, REPORT_DET_Y1, REPORT_DET_X2, REPORT_DET_Y2 );
+	vga_util.d3_panel_down( REPORT_DET_X1, REPORT_DET_Y1, REPORT_DET_X2, REPORT_DET_Y2 );
 
 	//----------- display info ------------//
 
@@ -825,7 +826,7 @@ static void disp_nation_talk()
 	if( nationRecno != info.viewing_nation_recno &&
 		 info.viewing_nation_recno == nation_array.player_recno )
 	{
-		vga.d3_panel_down( REPORT_DET_X1, REPORT_DET_Y1, REPORT_DET_X2, REPORT_TALK_Y2 );
+		vga_util.d3_panel_down( REPORT_DET_X1, REPORT_DET_Y1, REPORT_DET_X2, REPORT_TALK_Y2 );
 
 		if( info.last_talk_nation_recno != nationRecno && !info.player_reply_mode )
 			talk_res.init_conversion(nationRecno);
@@ -1031,7 +1032,7 @@ static void disp_nation_chat(int refreshFlag)
 
 	//-------- display the chat get control -------//
 
-	vga.d3_panel_down( REPORT_DET_X1, REPORT_DET_Y1, REPORT_DET_X2, REPORT_TALK_Y2 );
+	vga_util.d3_panel_down( REPORT_DET_X1, REPORT_DET_Y1, REPORT_DET_X2, REPORT_TALK_Y2 );
 
 	font_bld.put( REPORT_DET_X1+10, REPORT_DET_Y1+10,
 					  // "Please enter your chat message and press <Enter> to send." );
@@ -1066,9 +1067,9 @@ static void disp_nation_chat(int refreshFlag)
 	for( int i=1 ; i<=MAX_CHAT_RECEIVER_TYPE ; i++, y+=22 )
 	{
 		if( info.chat_receiver_type == i )
-			vga.d3_panel_down( REPORT_DET_X1+10, y, REPORT_DET_X2-10, y+20 );
+			vga_util.d3_panel_down( REPORT_DET_X1+10, y, REPORT_DET_X2-10, y+20 );
 		else
-			vga.d3_panel_up( REPORT_DET_X1+10, y, REPORT_DET_X2-10, y+20 );
+			vga_util.d3_panel_up( REPORT_DET_X1+10, y, REPORT_DET_X2-10, y+20 );
 
 		// font_bld.center_put( REPORT_DET_X1+10, y, REPORT_DET_X2-10, y+20, chat_receiver_str_array[i-1] );
 		font_bld.center_put( REPORT_DET_X1+10, y, REPORT_DET_X2-10, y+20, 
@@ -1091,7 +1092,7 @@ static void disp_nation_chat(int refreshFlag)
 	}
 
 	// disp frame
-	vga.d3_panel_down( REPORT_DET_X1, REPORT_DET_Y1, REPORT_DET_X2, REPORT_TALK_Y2 );
+	vga_util.d3_panel_down( REPORT_DET_X1, REPORT_DET_Y1, REPORT_DET_X2, REPORT_TALK_Y2 );
 
 	font_bld.put( REPORT_DET_X1+10, REPORT_TALK_Y2 - 66,
 					  // "Please enter your chat message and press <Enter> to send." );
@@ -1106,24 +1107,24 @@ static void disp_nation_chat(int refreshFlag)
 
 	if( info.chat_receiver_type == CHAT_RECEIVER_ALL_HUMAN )
 	{
-		vga.d3_panel_down( x, y1, x+68, y2 );
+		vga_util.d3_panel_down( x, y1, x+68, y2 );
 		font_bld.center_put( x, y1+2, x+68, y2-1, text_reports.str_chat_recipient(CHAT_RECEIVER_ALL_HUMAN) );
 	}
 	else
 	{
-		vga.d3_panel_up( x, y1, x+68, y2, 0, 1 );
+		vga_util.d3_panel_up( x, y1, x+68, y2, 0, 1 );
 		font_bld.center_put( x, y1+1, x+68, y2-2, text_reports.str_chat_recipient(CHAT_RECEIVER_ALL_HUMAN) );
 	}
 	x += 70;
 
 	if( info.chat_receiver_type == CHAT_RECEIVER_ALL_ALLY )
 	{
-		vga.d3_panel_down( x, y1, x+68, y2 );
+		vga_util.d3_panel_down( x, y1, x+68, y2 );
 		font_bld.center_put( x, y1+2, x+68, y2-1, text_reports.str_chat_recipient(CHAT_RECEIVER_ALL_ALLY) );
 	}
 	else
 	{
-		vga.d3_panel_up( x, y1, x+68, y2, 0, 1 );
+		vga_util.d3_panel_up( x, y1, x+68, y2, 0, 1 );
 		font_bld.center_put( x, y1+1, x+68, y2-2, text_reports.str_chat_recipient(CHAT_RECEIVER_ALL_ALLY) );
 	}
 	x += 70;
@@ -1143,12 +1144,12 @@ static void disp_nation_chat(int refreshFlag)
 		{
 			if( nationRecno == n )
 			{
-				vga.d3_panel_down( x, y1, x+24, y2 );
+				vga_util.d3_panel_down( x, y1, x+24, y2 );
 				vga.active_buf->bar( x+7, y1+7, x+18, y2-5, nation_array[n]->nation_color );
 			}
 			else
 			{
-				vga.d3_panel_up( x, y1, x+24, y2, 0 ,1 );
+				vga_util.d3_panel_up( x, y1, x+24, y2, 0 ,1 );
 				vga.active_buf->bar( x+6, y1+6, x+17, y2-6, nation_array[n]->nation_color );
 			}
 			x += 26;
@@ -1160,12 +1161,12 @@ static void disp_nation_chat(int refreshFlag)
 	x = REPORT_DET_X2 - 200 - 8 ;
 	if( hide_nation_browse )
 	{
-		vga.d3_panel_down( x, y1, x+200-1, y2 );
+		vga_util.d3_panel_down( x, y1, x+200-1, y2 );
 		font_bld.center_put( x, y1+2, x+200-1, y2-1, text_reports.str_hide_nation_detail() );
 	}
 	else
 	{
-		vga.d3_panel_up( x, y1, x+200-1, y2, 0, 1 );
+		vga_util.d3_panel_up( x, y1, x+200-1, y2, 0, 1 );
 		font_bld.center_put( x, y1+1, x+200-1, y2-2, text_reports.str_hide_nation_detail() );
 	}
 

@@ -23,6 +23,7 @@
 
 #include <osys.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <omodeid.h>
 #include <ovgalock.h>
 #include <omouse.h>
@@ -34,20 +35,20 @@ void Game::demo_disp_ad_page()
 {
 	//----- display the first page ------//
 
-	vga.disp_image_file("DEMOPG1");
+	vga_util.disp_image_file("DEMOPG1");
 	mouse.wait_press(60);
 
 	//------ display the 2nd page -----//
 
-	vga.disp_image_file("DEMOPG2");
+	vga_util.disp_image_file("DEMOPG2");
 	mouse.wait_press(60);
 
 	//------ display the 3rd page -----//
 
-	vga.disp_image_file("DEMOPG3");
+	vga_util.disp_image_file("DEMOPG3");
 	mouse.wait_press(60);
 
-	vga.finish_disp_image_file();
+	vga_util.finish_disp_image_file();
 }
 //------ End of function Game::demo_disp_ad_page ------//
 
@@ -58,28 +59,28 @@ void Game::demo_disp_logo()
 {
 	//----- display the first page ------//
 
-	vga.disp_image_file("O-IMAGIC", 180, 190);
+	vga_util.disp_image_file("O-IMAGIC", 180, 190);
 	mouse.wait_press(10);
 
 	//------ display the 2nd page -----//
 
 	vga_back.bar( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, V_BLACK );
-	vga.disp_image_file("O-ENLIGH", 220, 104);
+	vga_util.disp_image_file("O-ENLIGH", 220, 104);
 	mouse.wait_press(10);
 
 	//------ display the 3rd page -----//
 
 	vga_back.bar( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, V_BLACK );
-	vga.disp_image_file("O-GAMEBY", 248, 230);
+	vga_util.disp_image_file("O-GAMEBY", 248, 230);
 	mouse.wait_press(10);
 
 	//------ display the 4th page -----//
 
 	vga_back.bar( 0, 0, VGA_WIDTH-1, VGA_HEIGHT-1, V_BLACK );
-	vga.disp_image_file("DEMOQUO");
+	vga_util.disp_image_file("DEMOQUO");
 	mouse.wait_press(60);
 
-	vga.finish_disp_image_file();
+	vga_util.finish_disp_image_file();
 }
 //------ End of function Game::demo_disp_logo ------//
 

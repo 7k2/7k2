@@ -30,6 +30,7 @@
 #include <key.h>
 #include <osys.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <ofont.h>
 #include <omouse.h>
 #include <oget.h>
@@ -77,11 +78,11 @@ void Get::field(int desX, int y1, char* fldDes, int fldX1, char* dataPtr,
 
 	init( 1, 0 );        // one field only for this get, 1-no updown exit
 
-	vga.d3_panel_up( desX, fld_y1, fld_x1, fld_y2, 1 );	 // field description
+	vga_util.d3_panel_up( desX, fld_y1, fld_x1, fld_y2, 1 );	 // field description
 
 	font_ptr->put( desX+3, fld_y1+3, fldDes );
 
-	vga.d3_panel_down( fld_x1+4, fld_y1, fld_x2, fld_y2 );  // field content
+	vga_util.d3_panel_down( fld_x1+4, fld_y1, fld_x2, fld_y2 );  // field content
 
 	add  ( fld_x1+8, fld_y1+4, dataPtr, 'C', fld_x2-3 );
 	width( dataWidth, dataWidth );
@@ -115,7 +116,7 @@ void Get::field(int x1, int y1, char* dataPtr, int dataWidth, int x2)
 
 	init( 1, 0 );        // one field only for this get, 1-no updown exit
 
-	vga.d3_panel_down( fld_x1, fld_y1, fld_x2, fld_y2 );  // field content
+	vga_util.d3_panel_down( fld_x1, fld_y1, fld_x2, fld_y2 );  // field content
 
 	add  ( fld_x1+4, fld_y1+4, dataPtr, 'C', fld_x2-3 );
 	width( dataWidth, dataWidth );

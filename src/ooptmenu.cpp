@@ -23,6 +23,7 @@
 
 #include <ooptmenu.h>
 #include <ovga.h>
+#include <vga_util.h>
 #include <ovgabuf.h>
 #include <omodeid.h>
 #include <oinfo.h>
@@ -435,7 +436,7 @@ void OptionMenu::disp(int needRepaint)
 
 			vga.use_front();
 
-			vga.blt_buf(0,0,VGA_WIDTH-1,VGA_HEIGHT-1,0);
+			vga_util.blt_buf(0,0,VGA_WIDTH-1,VGA_HEIGHT-1,0);
 		}
 
 		if( refresh_flag & IGOPTION_SE_VOL )
@@ -691,7 +692,7 @@ static void disp_text_button(ButtonCustom *button, int)
 	Font *fontPtr = button->pushed_flag ? &font_bold_red : &font_thin_black;
 //	fontPtr->space_width -= 8;	
 	if( !vga.use_back_buf )
-		vga.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
+		vga_util.blt_buf( button->x1, button->y1, button->x2, button->y2, 0 );
 	fontPtr->put( button->x1, button->y1, (char *)button->custom_para.ptr, 1, button->x2 );
 //	fontPtr->space_width += 8;	
 }
