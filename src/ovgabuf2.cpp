@@ -1044,6 +1044,27 @@ blt_buf_1:
 //------------- End of function VgaBuf::blt_buf ------------//
 
 
+//-------- Begin of function VgaBuf::blt_buf_area --------//
+//
+// Blit an area of the source surface to local destination surface.
+//
+void VgaBuf::blt_buf_area( VgaBuf *srcBuf, int x1, int y1, int x2, int y2 )
+{
+	RECT bltRect;
+
+	bltRect.left   = x1;
+	bltRect.top    = y1;
+	bltRect.right  = x2;
+	bltRect.bottom = y2;
+
+	dd_buf->BltFast( x1, y1,
+			 srcBuf->dd_buf,        // src surface
+			 &bltRect,              // src rect (all of it)
+			 DDBLTFAST_NOCOLORKEY );
+}
+//--------- End of function VgaBuf::blt_buf_area ---------//
+
+
 //-------- Begin of function VgaBuf::blt_virtual_buf --------//
 //
 // Blit entire source surface to local destination surface.

@@ -22,7 +22,6 @@
 //Description : VGA drawing and display big image functions
 
 #include <vga_util.h>
-#include <ddraw.h>
 #include <all.h>
 #include <ocoltbl.h>
 #include <ofile.h>
@@ -98,8 +97,7 @@ void VgaUtil::blt_buf(int x1, int y1, int x2, int y2, int putBackCursor)
 	// use directx blt function
 	vga_front.temp_unlock();
 	vga_back.temp_unlock();
-	RECT rect = { x1, y1, x2+1, y2+1 };
-	vga_front.dd_buf->BltFast( x1, y1, vga_back.dd_buf, &rect, DDBLTFAST_NOCOLORKEY );
+	vga_front.blt_buf_area( &vga_back, x1, y1, x2+1, y2+1 );
 	vga_back.temp_restore_lock();
 	vga_front.temp_restore_lock();
 	// ###### end Gilbert 12/10 #######//

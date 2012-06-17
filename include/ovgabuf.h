@@ -364,6 +364,8 @@ public:
 	void		blt_buf( VgaBuf *srcBuf, int x1, int y1 );
 	// put whole srcBuf at (x1, y1) of this Vgabuf
 
+	void		blt_buf_area( VgaBuf *srcBuf, int x1, int y1, int x2, int y2 );
+
 	void		blt_virtual_buf( VgaBuf *srcBuf );
 
 	void		blt_virtual_buf_area( VgaBuf *srcBuf, int x1, int y1, int x2, int y2 );
