@@ -111,7 +111,7 @@ void Mouse::init()
 		err.run( "Failed creating mouse interface from DirectInput");
 
 	// ------- set cooperative level --------//
-	hr = di_mouse_device->SetCooperativeLevel(sys.main_hwnd, DISCL_FOREGROUND | DISCL_EXCLUSIVE);
+	hr = di_mouse_device->SetCooperativeLevel(vga.main_hwnd, DISCL_FOREGROUND | DISCL_EXCLUSIVE);
 
 	// ------- set data format ---------//
 	if(!hr)
@@ -156,7 +156,7 @@ void Mouse::init()
 		err.run( "Failed creating keyboard interface from DirectInput");
 
 	// ------- set cooperative level --------//
-	hr = di_keyb_device->SetCooperativeLevel(sys.main_hwnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
+	hr = di_keyb_device->SetCooperativeLevel(vga.main_hwnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
 
 	// ------- set data format ---------//
 	if(!hr)

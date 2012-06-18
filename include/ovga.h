@@ -24,6 +24,8 @@
 #ifndef __OVGA_H
 #define __OVGA_H
 
+#include <windows.h>
+#include <ddraw.h>
 #include <asmfun.h>
 
 #ifndef __OVGABUF_H
@@ -59,6 +61,8 @@
 
 struct RGBColor;
 class ColorTable;
+
+typedef struct HWND__ *HWND;	// vc6
 
 class Vga
 {
@@ -99,6 +103,9 @@ public:
 		  static char				use_back_buf;
 		  static char				opaque_flag;
 
+		  HANDLE	app_hinstance;			// handle of the application running
+		  HWND		main_hwnd;
+
 public:
 		  Vga();
 		  ~Vga();
@@ -132,6 +139,8 @@ public:
 
 private:
 		  void	init_color_table();
+		  int	create_window();
+		  void	destroy_window();
 };
 
 extern Vga vga;

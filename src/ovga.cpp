@@ -24,7 +24,6 @@
 #define DEBUG_LOG_LOCAL 1
 
 #include <windowsx.h>
-#include <ddraw.h>
 // include ddraw before ovga.h such that dd_buf is translated
 #include <all.h>
 #include <imgfun.h>
@@ -33,6 +32,7 @@
 #include <omousecr.h>
 #include <ocoltbl.h>
 #include <ofile.h>
+#include <resource.h>
 #include <osys.h>
 #include <ovga.h>
 #include <olog.h>
@@ -65,6 +65,7 @@ RGBColor log_alpha_func(RGBColor, int, int);
 
 extern const char *dd_err_str( const char *str, HRESULT rc);
 
+long FAR PASCAL main_win_proc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
 //-------- Begin of function Vga::Vga ----------//
 
@@ -74,6 +75,10 @@ Vga::Vga()
 
    vga_color_table = new ColorTable;
 	vga_blend_table = new ColorTable;
+
+   // window related
+   main_hwnd = NULL;
+   app_hinstance = NULL;
 }
 //-------- End of function Vga::Vga ----------//
 
@@ -88,6 +93,88 @@ Vga::~Vga()
    delete vga_color_table;
 }
 //-------- End of function Vga::~Vga ----------//
+
+
+//-------- Begin of function Vga::create_window --------//
+//
+int Vga::create_window()
+{
+   app_hinstance = (HINSTANCE)GetModuleHandle(NULL);
+
+   //--------- register window class --------//
+
+   WNDCLASS    wc;
+   BOOL        rc;
+
+   wc.style          = CS_DBLCLKS;
+   wc.lpfnWndProc    = main_win_proc;
+   wc.cbClsExtra     = 0;
+   wc.cbWndExtra     = 0;
+   wc.hInstance      = (HINSTANCE__ *) app_hinstance;
+   wc.hIcon          = LoadIcon( (HINSTANCE__ *) app_hinstance, MAKEINTATOM(IDI_ICON1));
+   wc.hbrBackground  = (HBRUSH__ *) GetStockObject(BLACK_BRUSH);
+   wc.hCursor        = LoadCursor( NULL, IDC_ARROW );
+   wc.lpszMenuName   = NULL;
+   wc.lpszClassName  = WIN_CLASS_NAME;
+
+   rc = RegisterClass( &wc );
+
+   if( !rc )
+      return FALSE;
+
+   //--------- create window -----------//
+
+   main_hwnd = CreateWindowEx(
+       WS_EX_APPWINDOW | WS_EX_TOPMOST,
+       WIN_CLASS_NAME,
+       WIN_TITLE,
+       WS_VISIBLE |    // so we dont have to call ShowWindow
+       WS_POPUP,
+       0,
+       0,
+       GetSystemMetrics(SM_CXSCREEN),
+       GetSystemMetrics(SM_CYSCREEN),
+       NULL,
+       NULL,
+       (HINSTANCE__ *) app_hinstance,
+       NULL );
+
+   if( !main_hwnd )
+      return FALSE;
+
+   UpdateWindow( main_hwnd );
+   SetFocus( main_hwnd );
+
+   return TRUE;
+}
+//-------- End of function Vga::init_window --------//
+
+
+//-------- Begin of function Vga::destroy_window --------//
+//
+void Vga::destroy_window()
+{
+   // ####### begin Gilbert 19/2 ######//
+   if( main_hwnd )
+   {
+      PostMessage(main_hwnd, WM_CLOSE, 0, 0);
+   }
+
+   sys.init_flag = 0;
+
+   MSG msg;
+
+   if( main_hwnd )		// different from while( main_hwnd && GetMessage(...)) as wnd_proc may clear main_hwnd
+   {
+      while( GetMessage(&msg, NULL, 0, 0) )
+      {
+         TranslateMessage(&msg);
+         DispatchMessage(&msg);
+      }
+   }
+   // ####### end Gilbert 19/2 ######//
+}
+//-------- End of function Vga::destroy_window --------//
 
 
 //-------- Begin of function Vga::init ----------//
@@ -105,6 +192,9 @@ BOOL Vga::init()
 						 "switch tasks during the game. "
 						 "To avoid this problem, set your Windows display "
 						 "to 800x600 16-bit color mode before running the game.";
+
+   if( !create_window() )
+      return 0;
 
    //--------- Initialize DirectDraw object --------//
 
@@ -139,7 +229,7 @@ BOOL Vga::init()
 
 			if( new_config_dat_flag )
 			{
-				MessageBox(sys.main_hwnd, warnStr,
+				MessageBox(main_hwnd, warnStr,
 					WIN_TITLE, MB_OK | MB_ICONWARNING | MB_SETFOREGROUND );
 			}
 
@@ -198,10 +288,10 @@ BOOL Vga::init_dd()
    //-----------------------------------------------------------//
 
    DWORD   dwStyle;
-   dwStyle = GetWindowStyle(sys.main_hwnd);
+   dwStyle = GetWindowStyle(main_hwnd);
    dwStyle |= WS_POPUP;
    dwStyle &= ~(WS_OVERLAPPED | WS_CAPTION | WS_THICKFRAME | WS_MINIMIZEBOX);
-   SetWindowLong(sys.main_hwnd, GWL_STYLE, dwStyle);
+   SetWindowLong(main_hwnd, GWL_STYLE, dwStyle);
 
    //-----------------------------------------------------------//
    // grab exclusive mode if we are going to run as fullscreen
@@ -209,7 +299,7 @@ BOOL Vga::init_dd()
    //-----------------------------------------------------------//
 
    DEBUG_LOG("Attempt DirectDraw SetCooperativeLevel");
-   rc = dd_obj->SetCooperativeLevel( sys.main_hwnd,
+   rc = dd_obj->SetCooperativeLevel( main_hwnd,
                         DDSCL_EXCLUSIVE |
                         DDSCL_FULLSCREEN );
    DEBUG_LOG("DirectDraw SetCooperativeLevel finish");
@@ -324,7 +414,7 @@ BOOL Vga::set_mode(int w, int h)
 
 	if( pixel_format_flag == -1 )
 	{
-		MessageBox(sys.main_hwnd, "Cannot determine the pixel format of this display mode.",
+		MessageBox(main_hwnd, "Cannot determine the pixel format of this display mode.",
 			WIN_TITLE, MB_OK | MB_ICONWARNING | MB_SETFOREGROUND );
 
 		pixel_format_flag = PIXFORM_BGR_565;
@@ -361,6 +451,8 @@ void Vga::deinit()
       DEBUG_LOG("vga.dd_obj->Release() finish");
       dd_obj = NULL;
    }
+
+   destroy_window();
 }
 //-------- End of function Vga::deinit ----------//
 
@@ -604,3 +696,54 @@ RGBColor log_alpha_func(RGBColor i, int scale, int absScale)
 
 	return r;
 }
+
+
+//-------- Begin of static function main_win_proc --------//
+//
+// Callback for all Windows messages
+//
+long FAR PASCAL main_win_proc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+   switch( message )
+   {
+      case WM_CREATE:
+         vga.main_hwnd = hWnd;
+         break;
+
+      case WM_ACTIVATEAPP:
+         sys.active_flag = (BOOL)wParam && !IsIconic(hWnd);
+
+         //--------------------------------------------------------------//
+         // while we were not-active something bad happened that caused us
+         // to pause, like a surface restore failing or we got a palette
+         // changed, now that we are active try to fix things
+         //--------------------------------------------------------------//
+
+         if( sys.active_flag )
+         {
+            sys.unpause();
+            sys.need_redraw_flag = 1;      // for Sys::disp_frame to redraw the screen
+         }
+         else
+            sys.pause();
+         break;
+
+      // ##### begin Gilbert 31/10 #####//
+      case WM_PAINT:
+         sys.need_redraw_flag = 1;
+         break;
+      // ##### end Gilbert 31/10 #####//
+
+      case WM_DESTROY:
+         vga.main_hwnd = NULL;
+         sys.deinit_directx();
+         PostQuitMessage( 0 );
+         break;
+
+      default:
+         break;
+   }
+
+   return DefWindowProc(hWnd, message, wParam, lParam);
+}
+//--------- End of static function main_win_proc ---------//

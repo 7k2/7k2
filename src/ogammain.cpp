@@ -148,7 +148,7 @@ void Game::run_main_menu_option(int optionId)
 
 		if( m.is_file_exist("7k2home.url") )
 		{
-			HINSTANCE hinst = ShellExecute( sys.main_hwnd, "open", shortcutFilename, NULL, "", SW_SHOWNORMAL );
+			HINSTANCE hinst = ShellExecute( vga.main_hwnd, "open", shortcutFilename, NULL, "", SW_SHOWNORMAL );
 		}
 	}
 

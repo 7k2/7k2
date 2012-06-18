@@ -21,10 +21,7 @@
 //Filename    : OSYSINIT.CPP
 //Description : class Sys - initialization functions
 
-#include <ddraw.h>
-#include <resource.h>
 #include <osys.h>
-#include <omodeid.h>
 #include <oconfig.h> 
 #include <omouse.h>
 #include <omousecr.h>
@@ -66,10 +63,6 @@
 
 #define USE_TRUE_FRONT_BUFFER 1
 
-//--------- Define static functions ---------//
-
-static long FAR PASCAL static_main_win_proc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-
 //----------- Begin of function Sys::Sys -----------//
 
 Sys::Sys()
@@ -101,8 +94,6 @@ int Sys::init()
 
    //------- initialize basic vars --------//
 
-   app_hinstance = (HINSTANCE)GetModuleHandle(NULL);
-
 	#ifdef BETA
 		debug_session       = m.is_file_exist("DEBUG.SYS");
 		testing_session     = m.is_file_exist("TESTING.SYS");
@@ -126,9 +117,6 @@ int Sys::init()
 	set_game_dir();      // set game directories names and game version
 
    //------- initialize more stuff ---------//
-
-   if( !init_win() )
-      return FALSE;
 
    if( !init_directx() )
       return FALSE;
@@ -165,105 +153,8 @@ void Sys::deinit()
 
    if( vga_front.buf_locked )
       vga_front.unlock_buf();
-
-   //-------------------------------------//
-/*
-   extern char low_video_memory_flag;
-
-   if( low_video_memory_flag )
-   {
-      ShowWindow(sys.main_hwnd, SW_MINIMIZE );
-
-      unsigned curTime = m.get_time();
-      while( m.get_time() < curTime + 4000 );
-   }
-*/
-   //---------------------------------------//
-
-	// ####### begin Gilbert 19/2 ######//
-	if( main_hwnd )
-	{
-	   PostMessage(main_hwnd, WM_CLOSE, 0, 0);
-	}
-
-   init_flag = 0;
-
-   MSG msg;
-
-	if( main_hwnd )		// different from while( main_hwnd && GetMessage(...)) as wnd_proc may clear main_hwnd
-	{
-		while( GetMessage(&msg, NULL, 0, 0) )
-		{
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
-		}
-	}
-	// ####### end Gilbert 19/2 ######//
 }
 //--------- End of function Sys::deinit ---------//
-
-
-//-------- Begin of function Sys::init_win --------//
-//
-int Sys::init_win()
-{
-   //--------- register window class --------//
-
-   WNDCLASS    wc;
-   BOOL        rc;
-
-   wc.style          = CS_DBLCLKS;
-   wc.lpfnWndProc    = static_main_win_proc;
-   wc.cbClsExtra     = 0;
-   wc.cbWndExtra     = 0;
-#ifdef VC5
-   wc.hInstance      = app_hinstance;
-   wc.hIcon          = LoadIcon( app_hinstance, MAKEINTATOM(IDI_ICON1));
-   wc.hbrBackground  = GetStockObject(BLACK_BRUSH);
-#else
-   wc.hInstance      = (HINSTANCE__ *) app_hinstance;
-   wc.hIcon          = LoadIcon( (HINSTANCE__ *) app_hinstance, MAKEINTATOM(IDI_ICON1));
-   wc.hbrBackground  = (HBRUSH__ *) GetStockObject(BLACK_BRUSH);
-#endif
-   wc.hCursor        = LoadCursor( NULL, IDC_ARROW );
-   wc.lpszMenuName   = NULL;
-   wc.lpszClassName  = WIN_CLASS_NAME;
-
-   rc = RegisterClass( &wc );
-
-   if( !rc )
-      return FALSE;
-
-   //--------- create window -----------//
-
-   main_hwnd = CreateWindowEx(
-       WS_EX_APPWINDOW | WS_EX_TOPMOST,
-       WIN_CLASS_NAME,
-       WIN_TITLE,
-       WS_VISIBLE |    // so we dont have to call ShowWindow
-       WS_POPUP,
-       0,
-       0,
-       GetSystemMetrics(SM_CXSCREEN),
-       GetSystemMetrics(SM_CYSCREEN),
-       NULL,
-       NULL,
-#ifdef VC5
-		 app_hinstance,
-#else
-       (HINSTANCE__ *) app_hinstance,
-#endif
-       NULL );
-
-   if( !main_hwnd )
-      return FALSE;
-
-   UpdateWindow( main_hwnd );
-   SetFocus( main_hwnd );
-
-   return TRUE;
-}
-//-------- End of function Sys::init_win --------//
 
 
 //-------- Begin of function Sys::init_directx --------//
@@ -393,7 +284,7 @@ int Sys::init_objects()
 #else
    mouse.init();
 #endif 
-	SetFocus( main_hwnd );
+	SetFocus( vga.main_hwnd );
 
    //------- init resource class ----------//
 
@@ -673,15 +564,3 @@ void Sys::set_game_dir()
    #endif
 }
 //----------- End of function Sys::set_game_dir ----------//
-
-
-//--------- Begin of static function static_main_win_proc --------//
-//
-// Callback for all Windows messages
-//
-static long FAR PASCAL static_main_win_proc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-   return sys.main_win_proc(hWnd, message, wParam, lParam);
-}
-//--------- End of static function static_main_win_proc --------//
-

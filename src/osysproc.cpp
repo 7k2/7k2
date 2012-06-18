@@ -576,7 +576,7 @@ void Sys::pause()
    if( paused_flag )
       return;
 
-   InvalidateRect(main_hwnd, NULL, TRUE);
+   InvalidateRect(vga.main_hwnd, NULL, TRUE);
 
    paused_flag = TRUE;
 }
@@ -998,55 +998,6 @@ int Sys::should_next_frame()
    return 1;
 }
 //--------- End of function Sys::should_next_frame ---------//
-
-
-//-------- Begin of function Sys::main_win_proc --------//
-//
-long Sys::main_win_proc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-   switch( message )
-   {
-      case WM_CREATE:
-         sys.main_hwnd = hWnd;
-         break;
-
-      case WM_ACTIVATEAPP:
-			active_flag = (BOOL)wParam && !IsIconic(hWnd);
-
-         //--------------------------------------------------------------//
-         // while we were not-active something bad happened that caused us
-         // to pause, like a surface restore failing or we got a palette
-         // changed, now that we are active try to fix things
-         //--------------------------------------------------------------//
-
-         if( active_flag )
-         {
-            unpause();
-            need_redraw_flag = 1;      // for Sys::disp_frame to redraw the screen
-         }
-         else
-            pause();
-         break;
-
-			// ##### begin Gilbert 31/10 #####//
-		case WM_PAINT:
-			need_redraw_flag = 1;
-			break;
-			// ##### end Gilbert 31/10 #####//
-
-       case WM_DESTROY:
-          main_hwnd = NULL;
-			 deinit_directx();
-			 PostQuitMessage( 0 );
-			 break;
-
-		 default:
-			 break;
-	}
-
-	return DefWindowProc(hWnd, message, wParam, lParam);
-}
-//--------- End of function Sys::main_win_proc ---------//
 
 
 //-------- Begin of function Sys::process --------//

@@ -124,13 +124,13 @@ void Error::internal(char* errMsg,const char* fileName,int lineNum)
 		VgaFrontLock vgaLock;
 
 		ShowCursor(TRUE);
-		MessageBox(sys.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
+		MessageBox(vga.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
 		ShowCursor(FALSE);
 	}
 	else
 	{
 		ShowCursor(TRUE);
-		MessageBox(sys.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
+		MessageBox(vga.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
 		ShowCursor(FALSE);
 	}
 
@@ -174,13 +174,13 @@ void Error::mem()
 		VgaFrontLock vgaLock;
 
 		ShowCursor(TRUE);
-		MessageBox(sys.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
+		MessageBox(vga.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
 		ShowCursor(FALSE);
 	}
 	else
 	{
 		ShowCursor(TRUE);
-		MessageBox(sys.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
+		MessageBox(vga.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
 		ShowCursor(FALSE);
 	}
 
@@ -230,13 +230,13 @@ void Error::msg( const char *format, ... )
 		VgaFrontLock vgaLock;
 
 		ShowCursor(TRUE);
-		MessageBox(sys.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
+		MessageBox(vga.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
 		ShowCursor(FALSE);
 	}
 	else
 	{
 		ShowCursor(TRUE);
-		MessageBox(sys.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
+		MessageBox(vga.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
 		ShowCursor(FALSE);
 	}
 
@@ -288,13 +288,13 @@ void Error::run( const char *format, ... )
 		VgaFrontLock vgaLock;
 
 		ShowCursor(TRUE);
-		MessageBox(sys.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
+		MessageBox(vga.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
 		ShowCursor(FALSE);
 	}
 	else
 	{
 		ShowCursor(TRUE);
-		MessageBox(sys.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
+		MessageBox(vga.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
 		ShowCursor(FALSE);
 	}
 
