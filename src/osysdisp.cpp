@@ -562,6 +562,8 @@ void Sys::disp_frames_per_second()
 
 int Sys::change_display_mode(int modeId)
 {
+	return 0;
+#if 0
 	if( modeId == current_display_mode.mode_id )
 		return 0;
 	
@@ -730,6 +732,7 @@ int Sys::change_display_mode(int modeId)
 	// ##### end Gilbert 30/10 #######//
 
 	return rc;
+#endif
 }
 //-------- End of function Sys::change_mode --------//
 
