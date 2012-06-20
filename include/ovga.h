@@ -117,11 +117,7 @@ public:
 
 		  BOOL	is_inited();
 
-		  BOOL  init_pal(const char* fileName);
 		  void	init_gray_remap_table();
-
-		  void   activate_pal(VgaBuf*);
-		  void   release_pal();
 
 		  void	adjust_brightness(int changeValue);
 
@@ -139,6 +135,9 @@ public:
 
 private:
 		  void	init_color_table();
+		  BOOL  init_pal(const char* fileName);
+		  void  activate_pal(VgaBuf*);
+		  void  release_pal();
 		  int	create_window();
 		  void	destroy_window();
 };

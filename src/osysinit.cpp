@@ -172,49 +172,6 @@ int Sys::init_directx()
       return FALSE;
    DEBUG_LOG("vga.init() ok");
 
-   DEBUG_LOG("Attempt vga.init_pal()");
-   vga.init_pal(DIR_RES"PAL_STD.RES");
-   DEBUG_LOG("vga.init_pal() finish");
-
-	// update Sys::deinit and Sys::change_display_mode
-
-//   if( sys.debug_session )                // if we are currently in a debug session, don't lock the front buffer otherwise the system will hang up
-   if( use_true_front )                // if we are currently in triple buffer mode, don't lock the front buffer otherwise the system will hang up
-   {
-      DEBUG_LOG("Attempt vga_true_front.init_front()");
-      vga_true_front.init_front( vga.dd_obj );
-      DEBUG_LOG("Attempt vga_front.init_back()");
-      vga_front.init_back( vga.dd_obj);		// create in video memory
-      vga_front.is_front = 1;       // set it to 1, overriding the setting in init_back()
-      DEBUG_LOG("Attempt vga.activate_pal()");
-      vga.activate_pal(&vga_true_front);
-		DEBUG_LOG("Attempt vga_back.init_back()");
-		vga_back.init_back( vga.dd_obj );
-		DEBUG_LOG("vga_back.init_back() finish");
-   }
-   else
-   {
-      vga_front.init_front( vga.dd_obj );
-      vga.activate_pal(&vga_front);
-#if(!defined(USE_FLIP))
-		vga_back.init_back( vga.dd_obj );		// create in system memory
-#else
-		vga_back.init_back( vga.dd_obj, 0, 0, 1 );		// create in video memory
-#endif
-   }
-
-#if(defined(USE_FLIP))
-	vga_front.attach_surface( &vga_back );
-#endif
-
-   DEBUG_LOG("Attempt vga_front.lock_buf()");
-   vga_front.lock_buf();
-   DEBUG_LOG("vga_front.lock_buf() finish");
-
-   DEBUG_LOG("Attempt vga_back.lock_buf()");
-   vga_back.lock_buf();
-   DEBUG_LOG("vga_back.lock_buf() finish");
-
    //---------- Initialize Audio ----------//
 
    DEBUG_LOG("Attempt audio.init()");
@@ -237,27 +194,6 @@ void Sys::deinit_directx()
    DEBUG_LOG("Attempt audio.deinit()");
    audio.deinit();
    DEBUG_LOG("audio.deinit() finish");
-
-   //------------------------------//
-
-	// usually get surface lost error
-	//vga_front.detach_surface( &vga_back );
-
-   DEBUG_LOG("Attempt vga_back.deinit()");
-   vga_back.deinit();
-   DEBUG_LOG("vga_back.deinit() finish");
-
-//   if( sys.debug_session )
-   if( use_true_front )
-   {
-      DEBUG_LOG("Attempt vga_true_front.deinit()");
-      vga_true_front.deinit();
-      DEBUG_LOG("vga_true_front.deinit() finish");
-   }
-
-   DEBUG_LOG("Attempt vga_front.deinit()");
-   vga_front.deinit();
-   DEBUG_LOG("Attempt vga_front.deinit() finish");
 
    DEBUG_LOG("Attempt vga.deinit()");
    vga.deinit();
