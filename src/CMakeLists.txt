@@ -427,7 +427,6 @@ set(7k2_SOURCES
   ovbrowi2.cpp
   ovbrowif.cpp
   ovbrowse.cpp
-  ovga.cpp
   ovgabuf.cpp
   ovgabuf2.cpp
   ovgalock.cpp
@@ -446,6 +445,7 @@ set(7k2_SOURCES
   oworld.cpp
   oworld_m.cpp
   oworld_z.cpp
+  vga_ddraw.cpp
   vga_util.cpp
   wav_stream.cpp)
 

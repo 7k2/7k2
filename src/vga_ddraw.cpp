@@ -2,6 +2,7 @@
  * Seven Kingdoms 2: The Fryhtan War
  *
  * Copyright 1999 Enlight Software Ltd.
+ * Copyright 2010 Jesse Allen
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +19,7 @@
  *
  */
 
-//Filename    : OVGA.CPP
+//Filename    : vga_ddraw.cpp
 //Description : VGA manipulation functions (Direct Draw version)
 
 #define DEBUG_LOG_LOCAL 1
@@ -49,9 +50,9 @@ DBGLOG_DEFAULT_CHANNEL(Vga);
 
 //------ Define static class member vars ---------//
 
-char    Vga::use_back_buf = 0;
-char    Vga::opaque_flag  = 0;
-VgaBuf* Vga::active_buf   = &vga_front;      // default: front buffer
+char    VgaBase::use_back_buf = 0;
+char    VgaBase::opaque_flag  = 0;
+VgaBuf* VgaBase::active_buf   = &vga_front;      // default: front buffer
 
 char    low_video_memory_flag = 0;
 extern "C"
@@ -67,9 +68,9 @@ extern const char *dd_err_str( const char *str, HRESULT rc);
 
 long FAR PASCAL main_win_proc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
-//-------- Begin of function Vga::Vga ----------//
+//-------- Begin of function VgaDDraw::VgaDDraw ----------//
 
-Vga::Vga()
+VgaDDraw::VgaDDraw()
 {
 	memset( this, 0, sizeof(Vga) );
 
@@ -80,24 +81,24 @@ Vga::Vga()
    main_hwnd = NULL;
    app_hinstance = NULL;
 }
-//-------- End of function Vga::Vga ----------//
+//-------- End of function VgaDDraw::VgaDDraw ----------//
 
 
-//-------- Begin of function Vga::~Vga ----------//
+//-------- Begin of function VgaDDraw::~VgaDDraw ----------//
 
-Vga::~Vga()
+VgaDDraw::~VgaDDraw()
 {
    deinit();      // 1-is final
 
 	delete vga_blend_table;
    delete vga_color_table;
 }
-//-------- End of function Vga::~Vga ----------//
+//-------- End of function VgaDDraw::~VgaDDraw ----------//
 
 
-//-------- Begin of function Vga::create_window --------//
+//-------- Begin of function VgaDDraw::create_window --------//
 //
-int Vga::create_window()
+int VgaDDraw::create_window()
 {
    app_hinstance = (HINSTANCE)GetModuleHandle(NULL);
 
@@ -120,7 +121,7 @@ int Vga::create_window()
    rc = RegisterClass( &wc );
 
    if( !rc )
-      return FALSE;
+      return 0;
 
    //--------- create window -----------//
 
@@ -140,19 +141,19 @@ int Vga::create_window()
        NULL );
 
    if( !main_hwnd )
-      return FALSE;
+      return 0;
 
    UpdateWindow( main_hwnd );
    SetFocus( main_hwnd );
 
-   return TRUE;
+   return 1;
 }
-//-------- End of function Vga::init_window --------//
+//-------- End of function VgaDDraw::init_window --------//
 
 
-//-------- Begin of function Vga::destroy_window --------//
+//-------- Begin of function VgaDDraw::destroy_window --------//
 //
-void Vga::destroy_window()
+void VgaDDraw::destroy_window()
 {
    // ####### begin Gilbert 19/2 ######//
    if( main_hwnd )
@@ -174,12 +175,12 @@ void Vga::destroy_window()
    }
    // ####### end Gilbert 19/2 ######//
 }
-//-------- End of function Vga::destroy_window --------//
+//-------- End of function VgaDDraw::destroy_window --------//
 
 
-//-------- Begin of function Vga::init ----------//
+//-------- Begin of function VgaDDraw::init ----------//
 
-BOOL Vga::init()
+int VgaDDraw::init()
 {
 	// size check
 
@@ -199,7 +200,7 @@ BOOL Vga::init()
    //--------- Initialize DirectDraw object --------//
 
    if( !init_dd() )
-      return FALSE;
+      return 0;
 
 
 //	suspected cause of hang in dx6
@@ -240,7 +241,7 @@ BOOL Vga::init()
 	}
 
    if( !set_mode(VGA_WIDTH, VGA_HEIGHT) )
-      return FALSE;
+      return 0;
 
    DEBUG_LOG("Attempt init_pal()");
    init_pal(DIR_RES"PAL_STD.RES");
@@ -284,17 +285,17 @@ BOOL Vga::init()
    vga_back.lock_buf();
    DEBUG_LOG("vga_back.lock_buf() finish");
 
-   return TRUE;
+   return 1;
 }
-//-------- End of function Vga::init ----------//
+//-------- End of function VgaDDraw::init ----------//
 
 
-//-------- Begin of function Vga::init_dd ----------//
+//-------- Begin of function VgaDDraw::init_dd ----------//
 
-BOOL Vga::init_dd()
+int VgaDDraw::init_dd()
 {
    if(dd_obj)        // the Direct Draw object has been initialized already
-      return TRUE;
+      return 1;
 
    //--------- Create direct draw object --------//
 
@@ -307,7 +308,7 @@ BOOL Vga::init_dd()
    {
       ERR("DirectDrawCreate failed err=%d", rc);
 		err.run( dd_err_str("DirectDrawCreate failed!", rc) );
-      return FALSE;
+      return 0;
    }
 
    //-------- Query DirectDraw4 interface --------//
@@ -320,7 +321,7 @@ BOOL Vga::init_dd()
       ERR("Query DirectDraw4 failed err=%d", rc);
 		err.run( dd_err_str("Query DirectDraw4(DirectX6) failed", rc) );
       dd1Obj->Release();
-      return FALSE;
+      return 0;
    }
 
    dd1Obj->Release();
@@ -350,17 +351,17 @@ BOOL Vga::init_dd()
    {
       ERR("SetCooperativeLevel failed err=%d", rc);
 		err.run( dd_err_str("SetCooperativeLevel failed", rc) );
-      return FALSE;
+      return 0;
    }
 
-   return TRUE;
+   return 1;
 }
-//-------- End of function Vga::init_dd ----------//
+//-------- End of function VgaDDraw::init_dd ----------//
 
 
-//-------- Begin of function Vga::set_mode ----------//
+//-------- Begin of function VgaDDraw::set_mode ----------//
 
-BOOL Vga::set_mode(int w, int h)
+int VgaDDraw::set_mode(int w, int h)
 {
    HRESULT rc;
 
@@ -378,7 +379,7 @@ BOOL Vga::set_mode(int w, int h)
 		// err.run( dd_err_str("SetMode failed ", rc) );
 		err.msg( dd_err_str("SetMode failed ", rc) );
 		// ######## end Gilbert 2/6 ########//
-      return FALSE;
+      return 0;
    }
 
 	//----------- get the pixel format flag -----------//
@@ -391,7 +392,7 @@ BOOL Vga::set_mode(int w, int h)
 
 	if( dd_obj->GetDisplayMode(&ddsd) == DD_OK && ddsd.dwFlags & DDSD_PIXELFORMAT )
 	{
-		if( ddsd.ddpfPixelFormat.dwFlags & DDPF_RGB 
+		if( ddsd.ddpfPixelFormat.dwFlags & DDPF_RGB
 			&& ddsd.ddpfPixelFormat.dwRGBBitCount == (DWORD)VGA_BPP )
 		{
 			if( ddsd.ddpfPixelFormat.dwRBitMask == 0x001fL
@@ -420,7 +421,7 @@ BOOL Vga::set_mode(int w, int h)
 			}
 		}
 	}
-	
+
 	// allow forcing display mode
 
 	if( m.is_file_exist( "PIXMODE.SYS" ) )
@@ -471,14 +472,14 @@ BOOL Vga::set_mode(int w, int h)
 
    SetCursor(NULL);
 
-   return TRUE;
+   return 1;
 }
-//-------- End of function Vga::set_mode ----------//
+//-------- End of function VgaDDraw::set_mode ----------//
 
 
-//-------- Begin of function Vga::deinit ----------//
+//-------- Begin of function VgaDDraw::deinit ----------//
 
-void Vga::deinit()
+void VgaDDraw::deinit()
 {
    DEBUG_LOG("Attempt vga_back.deinit()");
    vga_back.deinit();
@@ -511,23 +512,23 @@ void Vga::deinit()
 
    destroy_window();
 }
-//-------- End of function Vga::deinit ----------//
+//-------- End of function VgaDDraw::deinit ----------//
 
 
-// ------- begin of function Vga::is_inited --------//
+// ------- begin of function VgaDDraw::is_inited --------//
 //
-BOOL Vga::is_inited()
+bool VgaDDraw::is_inited()
 {
 	return vptr_dd_obj != NULL;
 }
-// ------- end of function Vga::is_inited --------//
+// ------- end of function VgaDDraw::is_inited --------//
 
 
-//--------- Start of function Vga::init_pal ----------//
+//--------- Start of function VgaDDraw::init_pal ----------//
 //
 // Load the palette from a file and set it to the front buf.
 //
-BOOL Vga::init_pal(const char* fileName)
+int VgaDDraw::init_pal(const char* fileName)
 {
    char palBuf[256][3];
    File palFile;
@@ -551,7 +552,7 @@ BOOL Vga::init_pal(const char* fileName)
       HRESULT rc = dd_obj->CreatePalette( DDPCAPS_8BIT, pal_entry_buf, &dd_pal, NULL );
 
       if( rc != DD_OK )
-         return FALSE;
+         return 0;
    }
 
    init_color_table();
@@ -560,14 +561,14 @@ BOOL Vga::init_pal(const char* fileName)
 	// set global variable
 	transparent_code_w = translate_color(TRANSPARENT_CODE);
 
-   return TRUE;
+   return 1;
 }
-//----------- End of function Vga::init_pal ----------//
+//----------- End of function VgaDDraw::init_pal ----------//
 
 
-//--------- Start of function Vga::init_color_table ----------//
+//--------- Start of function VgaDDraw::init_color_table ----------//
 
-void Vga::init_color_table()
+void VgaDDraw::init_color_table()
 {
    //----- initialize interface color table -----//
 
@@ -581,12 +582,12 @@ void Vga::init_color_table()
 	vga_blend_table->generate_table_fast( 8, palDesc, log_alpha_func );
 	default_blend_table = (short *)vga_blend_table->get_table(0);
 }
-//----------- End of function Vga::init_color_table ----------//
+//----------- End of function VgaDDraw::init_color_table ----------//
 
 
-//--------- Start of function Vga::release_pal ----------//
+//--------- Start of function VgaDDraw::release_pal ----------//
 
-void Vga::release_pal()
+void VgaDDraw::release_pal()
 {
    // ##### begin Gilbert 16/9 #######//
    if( dd_pal )
@@ -596,21 +597,21 @@ void Vga::release_pal()
    }
    // ##### end Gilbert 16/9 #######//
 }
-//----------- End of function Vga::release_pal ----------//
+//----------- End of function VgaDDraw::release_pal ----------//
 
 
-//-------- Begin of function Vga::activate_pal ----------//
+//-------- Begin of function VgaDDraw::activate_pal ----------//
 //
 // we are getting the palette focus, select our palette
 //
-void Vga::activate_pal(VgaBuf* vgaBufPtr)
+void VgaDDraw::activate_pal(VgaBuf* vgaBufPtr)
 {
    vgaBufPtr->activate_pal(dd_pal);
 }
-//--------- End of function Vga::activate_pal ----------//
+//--------- End of function VgaDDraw::activate_pal ----------//
 
 
-//-------- Begin of function Vga::adjust_brightness ----------//
+//-------- Begin of function VgaDDraw::adjust_brightness ----------//
 //
 // <int> changeValue - the value to add to the RGB values of
 //                     all the colors in the palette.
@@ -618,7 +619,7 @@ void Vga::activate_pal(VgaBuf* vgaBufPtr)
 //
 // <int> preserveContrast - whether preserve the constrast or not
 //
-void Vga::adjust_brightness(int changeValue)
+void VgaDDraw::adjust_brightness(int changeValue)
 {
    //---- find out the maximum rgb value can change without affecting the contrast ---//
 
@@ -647,11 +648,11 @@ void Vga::adjust_brightness(int changeValue)
 
    vga_front.temp_restore_lock();
 }
-//--------- End of function Vga::adjust_brightness ----------//
+//--------- End of function VgaDDraw::adjust_brightness ----------//
 
 
-//----------- Begin of function Vga::flip ----------//
-void Vga::flip()
+//----------- Begin of function VgaDDraw::flip ----------//
+void VgaDDraw::flip()
 {
 #if(defined(USE_FLIP))
 
@@ -668,14 +669,14 @@ void Vga::flip()
 	mouse_cursor.after_flip();
 #endif
 }
-//----------- End of function Vga::flip ----------//
+//----------- End of function VgaDDraw::flip ----------//
 
 
-//----------- Begin of function Vga::init_gray_remap_table ----------//
+//----------- Begin of function VgaDDraw::init_gray_remap_table ----------//
 //
 // Initialize a gray remap table for VgaBuf::convert_gray to use.
 //
-void Vga::init_gray_remap_table()
+void VgaDDraw::init_gray_remap_table()
 {
    //------ create a color to gray-scale remap table ------//
 
@@ -706,24 +707,24 @@ void Vga::init_gray_remap_table()
       gray_remap_table[i] = FIRST_GRAY_COLOR + grayIndex;
    }
 }
-//--------- End of function Vga::init_gray_remap_table -----------//
+//--------- End of function VgaDDraw::init_gray_remap_table -----------//
 
 
-int Vga::make_pixel(BYTE red, BYTE green, BYTE blue)
+int VgaDDraw::make_pixel(BYTE red, BYTE green, BYTE blue)
 {
 	// ##### begin Gilbert 19/10 #######//
 	return IMGmakePixel( (blue << 16) + (green << 8) + red);
 	// ##### end Gilbert 19/10 #######//
 }
 
-int Vga::make_pixel(RGBColor *rgb)
+int VgaDDraw::make_pixel(RGBColor *rgb)
 {
 	int u;
 	memcpy(&u, rgb, sizeof(RGBColor));
 	return IMGmakePixel(u);
 }
 
-void Vga::decode_pixel(int p, RGBColor *rgb)
+void VgaDDraw::decode_pixel(int p, RGBColor *rgb)
 {
 	int u = IMGdecodePixel(p);
 	memcpy(rgb, &u, sizeof(RGBColor));
