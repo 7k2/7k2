@@ -102,6 +102,7 @@ public:
 	void		attach_surface(VgaBuf *);
 	void		detach_surface(VgaBuf *);
 	void		deinit();
+	bool		is_inited() { return vptr_dd_buf != NULL; }
 
 	BOOL		is_buf_lost();
 	BOOL		restore_buf();

@@ -279,7 +279,7 @@ void Game::deinit(int loadGameCall)
 
 	int oldCursor = mouse_cursor.get_icon();
 	// ####### begin Gilbert 19/2 ########//
-	if( vga_front.vptr_dd_buf )		// if quit by alt-f4, surface destroyed
+	if( vga_front.is_inited() )		// if quit by alt-f4, surface destroyed
 		mouse_cursor.set_icon(CURSOR_WAITING);
 	// ####### end Gilbert 19/2 ########//
 
@@ -335,7 +335,7 @@ void Game::deinit(int loadGameCall)
 	tips_res.deinit();
 
 	// ####### begin Gilbert 19/2 ########//
-	if( vga_front.vptr_dd_buf )		// if quit by alt-f4, surface destroyed
+	if( vga_front.is_inited() )		// if quit by alt-f4, surface destroyed
 	{
 		//----- restore from waiting cursor -------- //
 

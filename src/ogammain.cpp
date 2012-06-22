@@ -293,7 +293,7 @@ void Game::disp_gen_game_status(int addStep)
 
 	int hasLocked=0;
 
-	if( vga_front.vptr_dd_buf )
+	if( vga_front.is_inited() )
 	{
 		if (game.is_campaign_mode())
 		{

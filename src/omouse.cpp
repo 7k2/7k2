@@ -702,7 +702,7 @@ void Mouse::set_boundary(int x1, int y1, int x2, int y2, int boundType)
 		err_here();
 	}
 
-	if( vga_front.vptr_dd_buf			// front buffer inited
+	if( vga_front.is_inited()			// front buffer inited
 		&& (oldCurX != cur_x || oldCurY != cur_y) )
 	{
 		mouse_cursor.process(cur_x, cur_y);     // repaint mouse cursor

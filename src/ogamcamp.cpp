@@ -252,7 +252,7 @@ void Game::main_loop_all(int isLoadedGame)
 {
 	// ##### begin Gilbert 10/4 #######//
 	// press alt-f4 during game
-	if( sys.signal_exit_flag && !vga_front.vptr_dd_buf )
+	if( sys.signal_exit_flag && !vga_front.is_inited() )
 		return;
 	// ##### end Gilbert 10/4 #######//
 

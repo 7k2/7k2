@@ -119,7 +119,7 @@ void Error::internal(char* errMsg,const char* fileName,int lineNum)
 
 	//if( vga.is_inited() )
 	//	box.msg( strBuf, 0 );
-	if( vga_front.vptr_dd_buf )
+	if( vga_front.is_inited() )
 	{
 		VgaFrontLock vgaLock;
 
@@ -169,7 +169,7 @@ void Error::mem()
 
 	//if( vga.is_inited() )
 	//	box.msg( strBuf, 0 );
-	if( vga_front.vptr_dd_buf )
+	if( vga_front.is_inited() )
 	{
 		VgaFrontLock vgaLock;
 
@@ -225,7 +225,7 @@ void Error::msg( const char *format, ... )
 
 	//if( vga.is_inited() )
 	//	box.msg( strBuf, 0 );
-	if( vga_front.vptr_dd_buf )
+	if( vga_front.is_inited() )
 	{
 		VgaFrontLock vgaLock;
 
@@ -283,7 +283,7 @@ void Error::run( const char *format, ... )
 
 	// if( vga.is_inited() )
 	//	box.msg( strBuf, 0 );
-	if( vga_front.vptr_dd_buf )
+	if( vga_front.is_inited() )
 	{
 		VgaFrontLock vgaLock;
 
