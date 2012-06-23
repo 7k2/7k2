@@ -106,7 +106,6 @@ private:
 		  void	init_gray_remap_table();
 		  void	init_color_table();
 		  int   init_pal(const char* fileName);
-		  void  activate_pal(VgaBuf*);
 		  void  release_pal();
 		  int	create_window();
 		  void	destroy_window();

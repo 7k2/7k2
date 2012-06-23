@@ -107,8 +107,6 @@ public:
 	BOOL		is_buf_lost();
 	BOOL		restore_buf();
 
-	void		activate_pal(LPVOID ddPalPtr);	// LPDIRECTDRAWPALETTE ddPalPtr
-
 	void		lock_buf();
 	void		unlock_buf();
 

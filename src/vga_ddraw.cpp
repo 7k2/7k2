@@ -256,8 +256,6 @@ int VgaDDraw::init()
       DEBUG_LOG("Attempt vga_front.init_back()");
       vga_front.init_back( dd_obj);		// create in video memory
       vga_front.is_front = 1;       // set it to 1, overriding the setting in init_back()
-      DEBUG_LOG("Attempt activate_pal()");
-      activate_pal(&vga_true_front);
 		DEBUG_LOG("Attempt vga_back.init_back()");
 		vga_back.init_back( dd_obj );
 		DEBUG_LOG("vga_back.init_back() finish");
@@ -265,7 +263,6 @@ int VgaDDraw::init()
    else
    {
       vga_front.init_front( dd_obj );
-      activate_pal(&vga_front);
 #if(!defined(USE_FLIP))
 		vga_back.init_back( dd_obj );		// create in system memory
 #else
@@ -598,17 +595,6 @@ void VgaDDraw::release_pal()
    // ##### end Gilbert 16/9 #######//
 }
 //----------- End of function VgaDDraw::release_pal ----------//
-
-
-//-------- Begin of function VgaDDraw::activate_pal ----------//
-//
-// we are getting the palette focus, select our palette
-//
-void VgaDDraw::activate_pal(VgaBuf* vgaBufPtr)
-{
-   vgaBufPtr->activate_pal(dd_pal);
-}
-//--------- End of function VgaDDraw::activate_pal ----------//
 
 
 //-------- Begin of function VgaDDraw::adjust_brightness ----------//

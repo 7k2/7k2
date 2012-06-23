@@ -661,10 +661,6 @@ int Sys::change_display_mode(int modeId)
       DEBUG_LOG("Attempt vga_true_front.init_front()");
 		vga_true_front.init_front( vga.dd_obj );
 
-      DEBUG_LOG("Attempt vga.activate_pal()");
-      vga.activate_pal(&vga_true_front);
-      DEBUG_LOG("vga.activate_pal() finish");
-
       DEBUG_LOG("Attempt vga_front.init_back()");
       vga_front.init_back( vga.dd_obj );
       vga_front.is_front = 1;       // set it to 1, overriding the setting in init_back()
@@ -677,7 +673,6 @@ int Sys::change_display_mode(int modeId)
    else
    {
       vga_front.init_front( vga.dd_obj );
-      vga.activate_pal(&vga_front);
 #if(!defined(USE_FLIP))
 		vga_back.init_back( vga.dd_obj );		// create in system memory
 #else

@@ -241,32 +241,6 @@ void VgaBuf::deinit()
 //-------- End of function VgaBuf::deinit ----------//
 
 
-//-------- Begin of function VgaBuf::activate_pal ----------//
-//
-// Activate a palette to the current direct draw surface buffer.
-//
-void VgaBuf::activate_pal(LPVOID vddPalPtr)
-{
-	LPDIRECTDRAWPALETTE ddPalPtr = (LPDIRECTDRAWPALETTE) vddPalPtr;
-
-	return;			// no need for 16-bit
-
-	err_when(!ddPalPtr || !dd_buf);
-
-	HRESULT rc = dd_buf->SetPalette(ddPalPtr);
-
-	if( rc == DDERR_SURFACELOST )
-	{
-		dd_buf->Restore();
-		rc = dd_buf->SetPalette(ddPalPtr);
-	}
-
-	if( rc != DD_OK )
-		ERR( "VgaBuf::activate_pal(), failed activating the palette" );
-}
-//--------- End of function VgaBuf::activate_pal ----------//
-
-
 //-------- Begin of function VgaBuf::is_buf_lost ----------//
 //
 BOOL VgaBuf::is_buf_lost()
