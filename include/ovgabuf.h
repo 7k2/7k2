@@ -97,8 +97,8 @@ public:
 
 	//---------- system functions ----------//
 
-	void 		init_front(LPVOID dd4Ptr);		// LPDIRECTDRAW4 dd4Ptr
-	void 		init_back(LPVOID ddPtr, DWORD =0, DWORD =0, int videoMemoryFlag=0 );	// LPDIRECTDRAW4 dd4Ptr
+	void 		init_front();		// LPDIRECTDRAW4 dd4Ptr
+	void 		init_back(DWORD =0, DWORD =0, int videoMemoryFlag=0 );	// LPDIRECTDRAW4 dd4Ptr
 	void		attach_surface(VgaBuf *);
 	void		detach_surface(VgaBuf *);
 	void		deinit();

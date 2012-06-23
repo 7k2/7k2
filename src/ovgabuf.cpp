@@ -75,14 +75,9 @@ VgaBuf::~VgaBuf()
 //
 // Create a direct draw front buffer.
 //
-// <LPVOID> vdd4Ptr     LPDIRECTDRAW4 of vga
-//
-void VgaBuf::init_front(LPVOID vdd4Ptr)
+void VgaBuf::init_front()
 {
-	LPDIRECTDRAW4 ddPtr = (LPDIRECTDRAW4) vdd4Ptr;
-
 	DDSURFACEDESC2       ddsd;
-	HRESULT             rc;
 
 	// check size of union structure
 	err_when( sizeof(dd_buf) > sizeof(vptr_dd_buf) );
@@ -111,10 +106,10 @@ void VgaBuf::init_front(LPVOID vdd4Ptr)
 //	LPDIRECTDRAWSURFACE dd1Buf;
 //	rc = ddPtr->CreateSurface( &ddsd, &dd1Buf, NULL );
 	// no createSurface can direct create direct draw surface 4 interface
-	rc = ddPtr->CreateSurface( &ddsd, &dd_buf, NULL );
-	if( rc != DD_OK )
+	dd_buf = vga.create_surface( &ddsd );
+	if( !dd_buf )
 	{
-		err.run( dd_err_str("Error creating Direct Draw front surface!" ,rc) );
+		err.run( "Error creating Direct Draw front surface!" );
 	}
 
 //	rc = dd1Buf->QueryInterface(IID_IDirectDrawSurface2, (void **)&dd_buf);
@@ -140,17 +135,13 @@ void VgaBuf::init_front(LPVOID vdd4Ptr)
 //
 // Create a direct draw back buffer.
 //
-// <LPVOID> vdd4Ptr     LPDIRECTDRAW4 of vga
 // [DWORD] w      : width of the surface [default 0 : VGA_WIDTH]
 // [DWORD] h      : height of the surface [default 0 : VGA_HEIGHT]
 // [int] videoMemoryFlag : 1 for create surface in video memory [default 0 : in system memory]
 //
-void VgaBuf::init_back( LPVOID vdd4Ptr, DWORD w, DWORD h, int videoMemoryFlag )
+void VgaBuf::init_back( DWORD w, DWORD h, int videoMemoryFlag )
 {
-	LPDIRECTDRAW4 ddPtr = (LPDIRECTDRAW4) vdd4Ptr;
-
 	DDSURFACEDESC2       ddsd;
-	HRESULT             rc;
 
 	// check size of union structure
 	err_when( sizeof(dd_buf) > sizeof(vptr_dd_buf) );
@@ -175,9 +166,9 @@ void VgaBuf::init_back( LPVOID vdd4Ptr, DWORD w, DWORD h, int videoMemoryFlag )
 //	LPDIRECTDRAWSURFACE dd1Buf;
 //	rc = ddPtr->CreateSurface( &ddsd, &dd1Buf, NULL );
 	// CreateSurface can now create DIRECTDRAWSURFACE4
-	rc = ddPtr->CreateSurface( &ddsd, &dd_buf, NULL );
-	if( rc != DD_OK )
-		err.run( dd_err_str("Error creating direct draw back surface!", rc) );
+	dd_buf = vga.create_surface( &ddsd );
+	if( !dd_buf )
+		err.run( "Error creating direct draw back surface!" );
 
 //	rc = dd1Buf->QueryInterface(IID_IDirectDrawSurface2, (void **)&dd_buf);
 //	if( rc != DD_OK )

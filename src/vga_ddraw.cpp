@@ -252,21 +252,21 @@ int VgaDDraw::init()
    if( sys.use_true_front )                // if we are currently in triple buffer mode, don't lock the front buffer otherwise the system will hang up
    {
       DEBUG_LOG("Attempt vga_true_front.init_front()");
-      vga_true_front.init_front( dd_obj );
+      vga_true_front.init_front();
       DEBUG_LOG("Attempt vga_front.init_back()");
-      vga_front.init_back( dd_obj);		// create in video memory
+      vga_front.init_back();		// create in video memory
       vga_front.is_front = 1;       // set it to 1, overriding the setting in init_back()
 		DEBUG_LOG("Attempt vga_back.init_back()");
-		vga_back.init_back( dd_obj );
+		vga_back.init_back();
 		DEBUG_LOG("vga_back.init_back() finish");
    }
    else
    {
-      vga_front.init_front( dd_obj );
+      vga_front.init_front();
 #if(!defined(USE_FLIP))
-		vga_back.init_back( dd_obj );		// create in system memory
+		vga_back.init_back();		// create in system memory
 #else
-		vga_back.init_back( dd_obj, 0, 0, 1 );		// create in video memory
+		vga_back.init_back(0, 0, 1 );		// create in video memory
 #endif
    }
 
@@ -694,6 +694,29 @@ void VgaDDraw::init_gray_remap_table()
    }
 }
 //--------- End of function VgaDDraw::init_gray_remap_table -----------//
+
+
+//----------- Begin of function VgaDDraw::create_surface ----------//
+//
+// Create a DirectDraw Surface
+//
+// On success, the pointer to the surface is returned. The caller is
+// responsible for releasing the surface when done.
+//
+// On failure, the return is NULL.
+//
+LPDIRECTDRAWSURFACE4 VgaDDraw::create_surface(LPDDSURFACEDESC2 ddsd)
+{
+   LPDIRECTDRAWSURFACE4 dd_buf;
+   HRESULT rc;
+
+   rc = dd_obj->CreateSurface( ddsd, &dd_buf, NULL );
+   if( rc != DD_OK )
+      return NULL;
+
+   return dd_buf;
+}
+//--------- End of function VgaDDraw::create_surface -----------//
 
 
 int VgaDDraw::make_pixel(BYTE red, BYTE green, BYTE blue)

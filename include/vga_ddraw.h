@@ -101,6 +101,8 @@ public:
 		  int		make_pixel(RGBColor *);
 		  void	decode_pixel(int, RGBColor *);
 
+		  LPDIRECTDRAWSURFACE4 create_surface(LPDDSURFACEDESC2 ddsd);
+
 private:
 		  int   init_dd();
 		  void	init_gray_remap_table();
