@@ -101,10 +101,12 @@ public:
 		  int		make_pixel(RGBColor *);
 		  void	decode_pixel(int, RGBColor *);
 
-		  LPDIRECTDRAWSURFACE4 create_surface(LPDDSURFACEDESC2 ddsd);
+		  Surface* create_surface(LPDDSURFACEDESC2 ddsd);
 
 private:
 		  int   init_dd();
+		  int   init_front(VgaBuf*);		// LPDIRECTDRAW4 dd4Ptr
+		  int   init_back(VgaBuf*, DWORD =0, DWORD =0, int videoMemoryFlag=0 );	// LPDIRECTDRAW4 dd4Ptr
 		  void	init_gray_remap_table();
 		  void	init_color_table();
 		  int   init_pal(const char* fileName);

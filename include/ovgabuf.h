@@ -25,9 +25,7 @@
 #define __VGABUF_H
 
 #include <imgfun.h>
-// #include <ddraw.h>
-
-typedef void *LPVOID;
+#include <surface.h>
 
 //-------- Define class VgaBuf ----------------//
 
@@ -37,25 +35,12 @@ class BitmapW;
 
 class VgaBuf
 {
+protected:
+	Surface *surface;
+
 public:
-	union
-	{
-#ifdef __DDRAW_INCLUDED__
-		LPDIRECTDRAWSURFACE4  dd_buf;
-#endif
-		LPVOID					vptr_dd_buf;
-	};
-
-	union
-	{
-#ifdef __DDRAW_INCLUDED__
-		DDSURFACEDESC2			buf_des;
-#endif
-		char					c_buf_des[0x100];
-	};
-
 	BOOL						buf_locked;			// whether the and back buffers have been locked or not.
-   short*					cur_buf_ptr;
+	short*						cur_buf_ptr;
 	long						cur_pitch;			// buf_des.lPitch
 	char						is_front;			// whether it's the front buffer or not
 
@@ -66,18 +51,18 @@ public:
 
 	//--------- back buffer ----------//
 
-	short* buf_ptr()					{ return cur_buf_ptr; }
-	short* buf_ptr(int x, int y)	{ return (short *)((char *)cur_buf_ptr + cur_pitch*y) + x; }
+	short* buf_ptr()		{ return surface->buf_ptr(); }
+	short* buf_ptr(int x, int y)	{ return surface->buf_ptr(x,y); }
 
 	// pitch in pixel
-	int 	buf_pitch()					{ return cur_pitch >> 1; }		// in no. of pixel
+	int 	buf_pitch()		{ return surface->buf_pitch(); }		// in no. of pixel
 
 	// pitch in byte
-	int 	buf_true_pitch()			{ return cur_pitch; }
+	int 	buf_true_pitch()	{ return surface->buf_true_pitch(); }
 
-	int	buf_size();
-	int   buf_width();
-	int   buf_height();
+	int	buf_size()		{ return surface->buf_size(); }
+	int	buf_width()		{ return surface->buf_width(); }
+	int	buf_height()		{ return surface->buf_height(); }
 
 	//---- GUI colors -----//
 
@@ -97,15 +82,13 @@ public:
 
 	//---------- system functions ----------//
 
-	void 		init_front();		// LPDIRECTDRAW4 dd4Ptr
-	void 		init_back(DWORD =0, DWORD =0, int videoMemoryFlag=0 );	// LPDIRECTDRAW4 dd4Ptr
+	void		init(Surface *s, char front);
 	void		attach_surface(VgaBuf *);
 	void		detach_surface(VgaBuf *);
 	void		deinit();
-	bool		is_inited() { return vptr_dd_buf != NULL; }
-
-	BOOL		is_buf_lost();
-	BOOL		restore_buf();
+	BOOL		is_buf_lost() { return surface->is_buf_lost(); }
+	BOOL		restore_buf() { return surface->restore_buf(); }
+	bool		is_inited() { return surface->is_inited(); }
 
 	void		lock_buf();
 	void		unlock_buf();
@@ -115,10 +98,10 @@ public:
 	void		temp_lock();
 	void		temp_restore_unlock();
 
-	void		set_buf_ptr(short* bufPtr, long pitch)	{ cur_buf_ptr = bufPtr; cur_pitch = pitch; }
-	void		set_default_buf_ptr();
+	void		set_buf_ptr(short* bufPtr, long pitch)	{ surface->set_buf_ptr(bufPtr, pitch); }
+	void		set_default_buf_ptr()			{ surface->set_default_buf_ptr(); }
 
-	int 		write_bmp_file(char* fileName);
+	int 		write_bmp_file(char* fileName)		{ return surface->write_bmp_file(fileName); }
 
 	//---------- painting functions ----------//
 
@@ -363,11 +346,11 @@ public:
 	void		blt_buf( VgaBuf *srcBuf, int x1, int y1 );
 	// put whole srcBuf at (x1, y1) of this Vgabuf
 
-	void		blt_buf_area( VgaBuf *srcBuf, int x1, int y1, int x2, int y2 );
+	void		blt_buf_area( VgaBuf *srcBuf, int x1, int y1, int x2, int y2 ) { surface->blt_buf_area(srcBuf->surface, x1, y1, x2, y2); }
 
-	void		blt_virtual_buf( VgaBuf *srcBuf );
+	void		blt_virtual_buf( VgaBuf *srcBuf ) { surface->blt_virtual_buf(srcBuf->surface); }
 
-	void		blt_virtual_buf_area( VgaBuf *srcBuf, int x1, int y1, int x2, int y2 );
+	void		blt_virtual_buf_area( VgaBuf *srcBuf, int x1, int y1, int x2, int y2 ) { surface->blt_virtual_buf_area(srcBuf->surface, x1, y1, x2, y2); }
 
 	void		blt_buf_fast( VgaBuf *srcBuf, int srcX1, int srcY1, int srcX2, int srcY2)
 				{ IMGcopyW( cur_buf_ptr, cur_pitch, srcBuf->cur_buf_ptr, srcBuf->cur_pitch, srcX1, srcY1, srcX2, srcY2); }

@@ -45,14 +45,6 @@ const char *dd_err_str( const char *str, HRESULT rc);
 
 
 
-// ------- pass inline function ------//
-
-int VgaBuf::buf_size()					{ return buf_des.dwWidth * buf_des.dwHeight * sizeof(short); }
-int VgaBuf::buf_width()					{ return buf_des.dwWidth; }
-int VgaBuf::buf_height()            { return buf_des.dwHeight; }
-void VgaBuf::set_default_buf_ptr()	{ cur_buf_ptr = (short*)buf_des.lpSurface; cur_pitch = buf_des.lPitch; }
-
-
 //-------- Begin of function VgaBuf::VgaBuf ----------//
 
 VgaBuf::VgaBuf()
@@ -71,124 +63,19 @@ VgaBuf::~VgaBuf()
 //-------- End of function VgaBuf::~VgaBuf ----------//
 
 
-//-------- Begin of function VgaBuf::init_front ----------//
-//
-// Create a direct draw front buffer.
-//
-void VgaBuf::init_front()
+//------ Begin of function VgaBuf::init --------//
+
+void VgaBuf::init(Surface *s, char front)
 {
-	DDSURFACEDESC2       ddsd;
-
-	// check size of union structure
-	err_when( sizeof(dd_buf) > sizeof(vptr_dd_buf) );
-	err_when( sizeof(buf_des) > sizeof(c_buf_des) );
-
-	// ##### begin Gilbert 4/11 ######//
-	//------ Get Direct Draw capacity info --------//
-//	DDCAPS              ddcaps;
-//	ZeroMemory( &ddcaps, 0, sizeof(ddcaps) );
-//	ddcaps.dwSize = sizeof( ddcaps );
-//	if( ddPtr->GetCaps( &ddcaps, NULL ) != DD_OK )
-//		err.run( "Error creating Direct Draw front surface!" );
-	// ##### end Gilbert 4/11 ######//
-
-	//---------------------------------------------//
-	// Create the Front Buffer
-	//---------------------------------------------//
-
-	ZeroMemory( &ddsd, sizeof(ddsd) );
-	ddsd.dwSize = sizeof( ddsd );
-
-	ddsd.dwFlags = DDSD_CAPS;
-	ddsd.ddsCaps.dwCaps = DDSCAPS_PRIMARYSURFACE;
-//	ddsd.ddsCaps.dwCaps = DDSCAPS_PRIMARYSURFACE | DDSCAPS_VIDEOMEMORY;
-
-//	LPDIRECTDRAWSURFACE dd1Buf;
-//	rc = ddPtr->CreateSurface( &ddsd, &dd1Buf, NULL );
-	// no createSurface can direct create direct draw surface 4 interface
-	dd_buf = vga.create_surface( &ddsd );
-	if( !dd_buf )
-	{
-		err.run( "Error creating Direct Draw front surface!" );
-	}
-
-//	rc = dd1Buf->QueryInterface(IID_IDirectDrawSurface2, (void **)&dd_buf);
-//	if( rc != DD_OK )
-//	{
-//		dd1Buf->Release();
-//		err.run ( dd_err_str("Error creating Direct Draw front surface!!", rc) );
-//	}
-//	dd1Buf->Release();
-
-	lock_bit_stack = 0;
-	lock_stack_count = 0;
-
-	default_remap_table = vga.default_remap_table;	// new for 16-bit
-	default_blend_table = vga.default_blend_table;	// new for 16-bit
-
-	is_front = 1;
+	surface = s;
+	is_front = front;
 }
-//-------- End of function VgaBuf::init_front ----------//
-
-
-//-------- Begin of function VgaBuf::init_back ----------//
-//
-// Create a direct draw back buffer.
-//
-// [DWORD] w      : width of the surface [default 0 : VGA_WIDTH]
-// [DWORD] h      : height of the surface [default 0 : VGA_HEIGHT]
-// [int] videoMemoryFlag : 1 for create surface in video memory [default 0 : in system memory]
-//
-void VgaBuf::init_back( DWORD w, DWORD h, int videoMemoryFlag )
-{
-	DDSURFACEDESC2       ddsd;
-
-	// check size of union structure
-	err_when( sizeof(dd_buf) > sizeof(vptr_dd_buf) );
-	err_when( sizeof(buf_des) > sizeof(c_buf_des) );
-
-	//--------- fill in surface desc -----------//
-
-	memset( &ddsd, 0, sizeof( ddsd ) );
-	ddsd.dwSize = sizeof( ddsd );
-	ddsd.dwFlags = DDSD_CAPS | DDSD_HEIGHT |DDSD_WIDTH;
-
-	// create back buffer
-	if( videoMemoryFlag & 1)
-		ddsd.ddsCaps.dwCaps = 0; 
-	//	ddsd.ddsCaps.dwCaps = DDSCAPS_VIDEOMEMORY;
-	else
-		ddsd.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN | DDSCAPS_SYSTEMMEMORY;
-
-	ddsd.dwWidth  = w ? w : VGA_WIDTH;
-	ddsd.dwHeight = h ? h : VGA_HEIGHT;
-
-//	LPDIRECTDRAWSURFACE dd1Buf;
-//	rc = ddPtr->CreateSurface( &ddsd, &dd1Buf, NULL );
-	// CreateSurface can now create DIRECTDRAWSURFACE4
-	dd_buf = vga.create_surface( &ddsd );
-	if( !dd_buf )
-		err.run( "Error creating direct draw back surface!" );
-
-//	rc = dd1Buf->QueryInterface(IID_IDirectDrawSurface2, (void **)&dd_buf);
-//	if( rc != DD_OK )
-//	{
-//		dd1Buf->Release();
-//		err.run( dd_err_str("Error creating direct draw back surface!!", rc) );
-//	}
-//	dd1Buf->Release();
-
-	lock_bit_stack = 0;
-	lock_stack_count = 0;
-
-	default_remap_table = vga.default_remap_table;	// new for 16-bit
-}
-//-------- End of function VgaBuf::init_back ----------//
-
+//-------- End of function VgaBuf::init ----------//
 
 //------ Begin of function VgaBuf::attach_surface --------//
 void VgaBuf::attach_surface(VgaBuf *backBuf)
 {
+#ifdef USE_FLIP
 	HRESULT rc;
 	if( dd_buf && backBuf->dd_buf )
 	{
@@ -199,6 +86,7 @@ void VgaBuf::attach_surface(VgaBuf *backBuf)
 			err.run( dd_err_str("Cannot attach flipping surface", rc) );
 		// ##### end Gilbert 4/11 #####//
 	}
+#endif
 }
 //------ End of function VgaBuf::attach_surface --------//
 
@@ -206,12 +94,14 @@ void VgaBuf::attach_surface(VgaBuf *backBuf)
 //------ Begin of function VgaBuf::detach_surface --------//
 void VgaBuf::detach_surface(VgaBuf *backBuf)
 {
+#ifdef USE_FLIP
 	HRESULT rc;
 	if( dd_buf && backBuf->dd_buf )
 	{
 		rc = dd_buf->DeleteAttachedSurface(0, backBuf->dd_buf);
 		err_when( rc != DD_OK );
 	}
+#endif
 }
 //------ End of function VgaBuf::detach_surface --------//
 
@@ -220,42 +110,13 @@ void VgaBuf::detach_surface(VgaBuf *backBuf)
 
 void VgaBuf::deinit()
 {
-	if( dd_buf )
+	if( surface )
 	{
-		if( buf_locked )
-			unlock_buf();
-
-		dd_buf->Release();
-		dd_buf = NULL;
+		delete surface;
+		surface = NULL;
 	}
 }
 //-------- End of function VgaBuf::deinit ----------//
-
-
-//-------- Begin of function VgaBuf::is_buf_lost ----------//
-//
-BOOL VgaBuf::is_buf_lost()
-{
-	return dd_buf && dd_buf->IsLost() == DDERR_SURFACELOST;
-}
-//--------- End of function VgaBuf::is_buf_lost ----------//
-
-
-//-------- Begin of function VgaBuf::restore_buf ----------//
-//
-// Restore buffers that have been lost.
-//
-BOOL VgaBuf::restore_buf()
-{
-	if( dd_buf == NULL || dd_buf->Restore() != DD_OK )
-	{
-		 ERR("Error restoring direct draw buffer");
-		 return FALSE;
-	}
-
-	return TRUE;
-}
-//--------- End of function VgaBuf::restore_buf ----------//
 
 
 //------------- Begin of function VgaBuf::lock_buf --------------//
@@ -265,25 +126,17 @@ void VgaBuf::lock_buf()
 	err_if( buf_locked )
 		err_now( "VgaBuf::lock_buf() error, buffer already locked." );
 
-	memset( &buf_des, 0, sizeof(buf_des) );
+	cur_buf_ptr = buf_ptr();
+	cur_pitch = buf_true_pitch();
 
-	buf_des.dwSize = sizeof(buf_des);
-
-	int rc = dd_buf->Lock(NULL, &buf_des, DDLOCK_WAIT | DDLOCK_NOSYSLOCK, NULL);
-
-	cur_buf_ptr = (short *) buf_des.lpSurface;
-	cur_pitch = buf_des.lPitch;
-
-	//--------------------------------------//
-
-	if( rc==DD_OK )
+	if( surface->lock_buf() )
 		buf_locked = TRUE;
 	else
 	{
 		if( is_front )
-			err_now( dd_err_str("VgaBuf::lock_buf() locking front buffer failed.", rc) );
+			err_now( "VgaBuf::lock_buf() locking front buffer failed." );
 		else
-			err_now( dd_err_str("VgaBuf::lock_buf() locking back buffer failed.", rc) );
+			err_now( "VgaBuf::lock_buf() locking back buffer failed." );
 	}
 }
 //--------------- End of function VgaBuf::lock_buf --------------//
@@ -294,21 +147,19 @@ void VgaBuf::lock_buf()
 void VgaBuf::unlock_buf()
 {
 	// ####### begin Gilbert 16/9 #####//
-	if( !dd_buf )
+	if( !surface )
 		return;
 	// ####### end Gilbert 16/9 #####//
 	err_when( !buf_locked );
 
-	int rc = dd_buf->Unlock(NULL);
-
-	if( rc==DD_OK )
+	if( surface->unlock_buf() )
 		buf_locked = FALSE;
 	else
 	{
 		if( is_front )
-			err_now( dd_err_str("VgaBuf::unlock_buf() unlocking front buffer failed.", rc) );
+			err_now( "VgaBuf::unlock_buf() unlocking front buffer failed." );
 		else
-			err_now( dd_err_str("VgaBuf::unlock_buf() unlocking back buffer failed.", rc) );
+			err_now( "VgaBuf::unlock_buf() unlocking back buffer failed." );
 	}
 }
 //--------------- End of function VgaBuf::unlock_buf --------------//
@@ -592,123 +443,6 @@ void VgaBuf::rest_area(short* saveScr, int releaseFlag)
 		mem_del( saveScr );
 }
 //------------ End of function VgaBuf::rest_area ----------//
-
-
-//------------ Begin of function VgaBuf::write_bmp_file --------------//
-//
-// Load a BMP file into the current VgaBuf DIB object.
-//
-// <char*> fileName - the name of the BMP file.
-//
-// return : <int> 1-succeeded, 0-failed.
-//
-int VgaBuf::write_bmp_file(char* fileName)
-{
-	 File				bmpFile;
-	 BITMAPINFO*	bmpInfoPtr = NULL;
-	 char*			bitmapPtr = NULL;
-
-	 int				hasPaletteFlag = 0;
-
-	 bmpFile.file_create(fileName, 1, 0);		// 1-handle error, 0-disable variable file size
-
-	 //------------ Write the file header ------------//
-
-	 BITMAPFILEHEADER bmpFileHdr;
-
-	 bmpFileHdr.bfType 		= 0x4D42;			// set the type to "BM"
-	 bmpFileHdr.bfSize 		= buf_size();
-	 bmpFileHdr.bfReserved1 = 0;
-	 bmpFileHdr.bfReserved2 = 0;
-	 bmpFileHdr.bfOffBits   = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
-	 if( hasPaletteFlag )
-		bmpFileHdr.bfOffBits += sizeof(RGBQUAD)*256;
-
-	 bmpFile.file_write(&bmpFileHdr, sizeof(bmpFileHdr));
-
-	 //------------ Write in the info header -----------//
-
-	 BITMAPINFOHEADER bmpInfoHdr;
-
-	 bmpInfoHdr.biSize			 = sizeof(BITMAPINFOHEADER);
-	 bmpInfoHdr.biWidth			 = buf_des.dwWidth;
-	 bmpInfoHdr.biHeight			 = buf_des.dwHeight;
-	 bmpInfoHdr.biPlanes			 = 1; 
-	 bmpInfoHdr.biBitCount		 = 24;
-    bmpInfoHdr.biCompression	 = BI_RGB; 
-	 bmpInfoHdr.biSizeImage	    = bmpInfoHdr.biWidth * bmpInfoHdr.biHeight * bmpInfoHdr.biBitCount / 8;
-	 bmpInfoHdr.biXPelsPerMeter = 0;
-    bmpInfoHdr.biYPelsPerMeter = 0; 
-	 bmpInfoHdr.biClrUsed		 = 0; 
-    bmpInfoHdr.biClrImportant  = 0; 
-
-	 bmpFile.file_write(&bmpInfoHdr, sizeof(bmpInfoHdr));
-
-	 //------------ write the color table -----------//
-
-	 if( hasPaletteFlag )
-	 {
-		 LPDIRECTDRAWPALETTE ddPalettePtr;				// get the direct draw surface's palette
-		 dd_buf->GetPalette(&ddPalettePtr);
-
-		 PALETTEENTRY *palEntries = (PALETTEENTRY*) mem_add( sizeof(PALETTEENTRY)*256 );
-		 ddPalettePtr->GetEntries(0, 0, 256, palEntries);
-		
-		 RGBQUAD *colorTable = (RGBQUAD*) mem_add( sizeof(RGBQUAD)*256 );		// allocate a color table with 256 entries 
-			
-		 for( int i=0 ; i<256 ; i++ )
-		 {
-			 colorTable[i].rgbBlue  = palEntries[i].peBlue;
-			 colorTable[i].rgbGreen = palEntries[i].peGreen;
-			 colorTable[i].rgbRed   = palEntries[i].peRed; 
-			 colorTable[i].rgbReserved = 0;
-		 }
-			 
-		 bmpFile.file_write(colorTable, sizeof(RGBQUAD)*256);
-
-		 mem_del(palEntries);
-		 mem_del(colorTable);
-	 }
-
-	 //----------- write the bitmap ----------//
-
-	 if( bmpInfoHdr.biBitCount == 8 )
-	 {
-		 for( int y=buf_height()-1 ; y>=0 ; y-- )					// write in reversed order as DIB's vertical order is reversed
-			 bmpFile.file_write(buf_ptr(0,y), buf_width());
-	 }
-	 else if( bmpInfoHdr.biBitCount == 24 )
-	 {
-		 int lineBufferSize = sizeof(RGBColor) * bmpInfoHdr.biWidth;
-		 RGBColor *lineBuffer = (RGBColor *)mem_add( lineBufferSize );
-		 for( int y = buf_height()-1; y>=0 ; --y )
-		 {
-			 register short *pixelPtr = buf_ptr( 0, y );
-			 register RGBColor *lineBufPtr = lineBuffer;
-			 for( int x = buf_width()-1; x >= 0; --x, ++pixelPtr, ++lineBufPtr)
-			 {
-				 vga.decode_pixel( *pixelPtr, lineBufPtr );
-				 // exchange Red and blue
-				 BYTE r = lineBufPtr->red;
-				 lineBufPtr->red = lineBufPtr->blue;
-				 lineBufPtr->blue = r;
-			 }
-			 bmpFile.file_write(lineBuffer, lineBufferSize );
-		 }
-		 mem_del(lineBuffer);
-	 }
-	 else
-	 {
-		 err_here();
-	 }
-
-	 //------------ close the file -----------//
-
-	 bmpFile.file_close();
-
-	 return 1;
-}
-//------------ End of function VgaBuf::write_bmp_file --------------//
 
 
 //---------- Begin of function VgaBuf::put_large_bitmap ---------//

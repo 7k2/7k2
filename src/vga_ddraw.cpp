@@ -252,21 +252,21 @@ int VgaDDraw::init()
    if( sys.use_true_front )                // if we are currently in triple buffer mode, don't lock the front buffer otherwise the system will hang up
    {
       DEBUG_LOG("Attempt vga_true_front.init_front()");
-      vga_true_front.init_front();
+      init_front(&vga_true_front);
       DEBUG_LOG("Attempt vga_front.init_back()");
-      vga_front.init_back();		// create in video memory
+      init_back(&vga_front);		// create in video memory
       vga_front.is_front = 1;       // set it to 1, overriding the setting in init_back()
 		DEBUG_LOG("Attempt vga_back.init_back()");
-		vga_back.init_back();
+		init_back(&vga_back);
 		DEBUG_LOG("vga_back.init_back() finish");
    }
    else
    {
-      vga_front.init_front();
+      init_front(&vga_front);
 #if(!defined(USE_FLIP))
-		vga_back.init_back();		// create in system memory
+		init_back(&vga_back);		// create in system memory
 #else
-		vga_back.init_back(0, 0, 1 );		// create in video memory
+		init_back(&vga_back, 0, 0, 1 );		// create in video memory
 #endif
    }
 
@@ -354,6 +354,123 @@ int VgaDDraw::init_dd()
    return 1;
 }
 //-------- End of function VgaDDraw::init_dd ----------//
+
+
+//-------- Begin of function VgaDDraw::init_front ----------//
+//
+// Create a direct draw front buffer.
+//
+int VgaDDraw::init_front(VgaBuf *b)
+{
+	DDSURFACEDESC2       ddsd;
+	Surface              *surface;
+
+	// ##### begin Gilbert 4/11 ######//
+	//------ Get Direct Draw capacity info --------//
+//	DDCAPS              ddcaps;
+//	ZeroMemory( &ddcaps, 0, sizeof(ddcaps) );
+//	ddcaps.dwSize = sizeof( ddcaps );
+//	if( ddPtr->GetCaps( &ddcaps, NULL ) != DD_OK )
+//		err.run( "Error creating Direct Draw front surface!" );
+	// ##### end Gilbert 4/11 ######//
+
+	//---------------------------------------------//
+	// Create the Front Buffer
+	//---------------------------------------------//
+
+	ZeroMemory( &ddsd, sizeof(ddsd) );
+	ddsd.dwSize = sizeof( ddsd );
+
+	ddsd.dwFlags = DDSD_CAPS;
+	ddsd.ddsCaps.dwCaps = DDSCAPS_PRIMARYSURFACE;
+//	ddsd.ddsCaps.dwCaps = DDSCAPS_PRIMARYSURFACE | DDSCAPS_VIDEOMEMORY;
+
+//	LPDIRECTDRAWSURFACE dd1Buf;
+//	rc = ddPtr->CreateSurface( &ddsd, &dd1Buf, NULL );
+	// no createSurface can direct create direct draw surface 4 interface
+	surface = create_surface( &ddsd );
+	if( !surface )
+	{
+		err.run( "Error creating Direct Draw front surface!" );
+		return 0;
+	}
+
+//	rc = dd1Buf->QueryInterface(IID_IDirectDrawSurface2, (void **)&dd_buf);
+//	if( rc != DD_OK )
+//	{
+//		dd1Buf->Release();
+//		err.run ( dd_err_str("Error creating Direct Draw front surface!!", rc) );
+//	}
+//	dd1Buf->Release();
+
+	b->lock_bit_stack = 0;
+	b->lock_stack_count = 0;
+
+	b->default_remap_table = vga.default_remap_table;	// new for 16-bit
+	b->default_blend_table = vga.default_blend_table;	// new for 16-bit
+
+	b->init(surface, 1);
+	return 1;
+}
+//-------- End of function VgaDDraw::init_front ----------//
+
+
+//-------- Begin of function VgaDDraw::init_back ----------//
+//
+// Create a direct draw back buffer.
+//
+// [DWORD] w      : width of the surface [default 0 : VGA_WIDTH]
+// [DWORD] h      : height of the surface [default 0 : VGA_HEIGHT]
+// [int] videoMemoryFlag : 1 for create surface in video memory [default 0 : in system memory]
+//
+int VgaDDraw::init_back(VgaBuf *b, DWORD w, DWORD h, int videoMemoryFlag)
+{
+	DDSURFACEDESC2       ddsd;
+	Surface              *surface;
+
+	//--------- fill in surface desc -----------//
+
+	memset( &ddsd, 0, sizeof( ddsd ) );
+	ddsd.dwSize = sizeof( ddsd );
+	ddsd.dwFlags = DDSD_CAPS | DDSD_HEIGHT |DDSD_WIDTH;
+
+	// create back buffer
+	if( videoMemoryFlag & 1)
+		ddsd.ddsCaps.dwCaps = 0;
+	//	ddsd.ddsCaps.dwCaps = DDSCAPS_VIDEOMEMORY;
+	else
+		ddsd.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN | DDSCAPS_SYSTEMMEMORY;
+
+	ddsd.dwWidth  = w ? w : VGA_WIDTH;
+	ddsd.dwHeight = h ? h : VGA_HEIGHT;
+
+//	LPDIRECTDRAWSURFACE dd1Buf;
+//	rc = ddPtr->CreateSurface( &ddsd, &dd1Buf, NULL );
+	// CreateSurface can now create DIRECTDRAWSURFACE4
+	surface = create_surface( &ddsd );
+	if( !surface )
+	{
+		err.run( "Error creating direct draw back surface!" );
+		return 0;
+	}
+
+//	rc = dd1Buf->QueryInterface(IID_IDirectDrawSurface2, (void **)&dd_buf);
+//	if( rc != DD_OK )
+//	{
+//		dd1Buf->Release();
+//		err.run( dd_err_str("Error creating direct draw back surface!!", rc) );
+//	}
+//	dd1Buf->Release();
+
+	b->lock_bit_stack = 0;
+	b->lock_stack_count = 0;
+
+	b->default_remap_table = vga.default_remap_table;	// new for 16-bit
+
+	b->init(surface, 0);
+	return 1;
+}
+//-------- End of function VgaDDraw::init_back ----------//
 
 
 //-------- Begin of function VgaDDraw::set_mode ----------//
@@ -705,7 +822,7 @@ void VgaDDraw::init_gray_remap_table()
 //
 // On failure, the return is NULL.
 //
-LPDIRECTDRAWSURFACE4 VgaDDraw::create_surface(LPDDSURFACEDESC2 ddsd)
+Surface* VgaDDraw::create_surface(LPDDSURFACEDESC2 ddsd)
 {
    LPDIRECTDRAWSURFACE4 dd_buf;
    HRESULT rc;
@@ -714,7 +831,7 @@ LPDIRECTDRAWSURFACE4 VgaDDraw::create_surface(LPDDSURFACEDESC2 ddsd)
    if( rc != DD_OK )
       return NULL;
 
-   return dd_buf;
+   return new Surface(dd_buf);
 }
 //--------- End of function VgaDDraw::create_surface -----------//
 

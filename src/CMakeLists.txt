@@ -445,6 +445,7 @@ set(7k2_SOURCES
   oworld.cpp
   oworld_m.cpp
   oworld_z.cpp
+  surface_ddraw.cpp
   vga_ddraw.cpp
   vga_util.cpp
   wav_stream.cpp)
