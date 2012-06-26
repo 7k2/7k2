@@ -4,6 +4,7 @@ set(7k2_SOURCES
   file_util.cpp
   input_stream.cpp
   mem_input_stream.cpp
+  mouse_none.cpp
   oai_act.cpp
   oai_act2.cpp
   oai_attk.cpp
@@ -247,13 +248,7 @@ set(7k2_SOURCES
   omlink.cpp
   omodeid.cpp
   omonsres.cpp
-  omouse.cpp
   omousecr.cpp
-  omousefr.cpp
-  omousege.cpp
-  omouseit.cpp
-  omouseng.cpp
-  omousesp.cpp
   omp_crc.cpp
   omusic.cpp
   on_human.cpp
@@ -460,7 +455,6 @@ if(UNIX)
     gdi32
     dxguid
     ddraw
-    dinput
     winmm
     shell32)
   set(EXTRA_LIBS ${WINE_LIBS})
