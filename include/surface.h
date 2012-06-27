@@ -25,10 +25,10 @@
 #ifndef __SURFACE_H
 #define __SURFACE_H
 
-#ifndef USE_NOVIDEO
-#include <surface_ddraw.h>
-#else
+//#ifndef USE_NOVIDEO
+//#include <surface_ddraw.h>
+//#else
 #include <surface_none.h>
-#endif
+//#endif
 
 #endif // __SURFACE_H
