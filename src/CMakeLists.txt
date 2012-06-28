@@ -440,7 +440,7 @@ set(7k2_SOURCES
   oworld.cpp
   oworld_m.cpp
   oworld_z.cpp
-  vga_ddraw.cpp
+  vga_none.cpp
   vga_util.cpp
   wav_stream.cpp)
 
@@ -453,7 +453,6 @@ if(UNIX)
     winmm
     gdi32
     dxguid
-    ddraw
     winmm
     shell32)
   set(EXTRA_LIBS ${WINE_LIBS})

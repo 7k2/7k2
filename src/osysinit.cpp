@@ -220,7 +220,7 @@ int Sys::init_objects()
 #else
    mouse.init();
 #endif 
-	SetFocus( vga.main_hwnd );
+//	SetFocus( vga.main_hwnd );
 
    //------- init resource class ----------//
 

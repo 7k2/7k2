@@ -119,6 +119,7 @@ void Error::internal(char* errMsg,const char* fileName,int lineNum)
 
 	//if( vga.is_inited() )
 	//	box.msg( strBuf, 0 );
+#if 0
 	if( vga.is_inited() && vga_front.is_inited() )
 	{
 		VgaFrontLock vgaLock;
@@ -133,6 +134,7 @@ void Error::internal(char* errMsg,const char* fileName,int lineNum)
 		MessageBox(vga.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
 		ShowCursor(FALSE);
 	}
+#endif
 
 //	sys.deinit_directx();
 
@@ -169,6 +171,7 @@ void Error::mem()
 
 	//if( vga.is_inited() )
 	//	box.msg( strBuf, 0 );
+#if 0
 	if( vga.is_inited() && vga_front.is_inited() )
 	{
 		VgaFrontLock vgaLock;
@@ -183,6 +186,7 @@ void Error::mem()
 		MessageBox(vga.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
 		ShowCursor(FALSE);
 	}
+#endif
 
 	// sys.deinit_directx();
 
@@ -225,6 +229,7 @@ void Error::msg( const char *format, ... )
 
 	//if( vga.is_inited() )
 	//	box.msg( strBuf, 0 );
+#if 0
 	if( vga.is_inited() && vga_front.is_inited() )
 	{
 		VgaFrontLock vgaLock;
@@ -239,6 +244,7 @@ void Error::msg( const char *format, ... )
 		MessageBox(vga.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
 		ShowCursor(FALSE);
 	}
+#endif
 
 //	sys.deinit_directx();
 	error_flag = 0;		// this error does not exit program
@@ -283,6 +289,7 @@ void Error::run( const char *format, ... )
 
 	// if( vga.is_inited() )
 	//	box.msg( strBuf, 0 );
+#if 0
 	if( vga.is_inited() && vga_front.is_inited() )
 	{
 		VgaFrontLock vgaLock;
@@ -297,6 +304,7 @@ void Error::run( const char *format, ... )
 		MessageBox(vga.main_hwnd, strBuf, WIN_TITLE, MB_OK | MB_ICONERROR);
 		ShowCursor(FALSE);
 	}
+#endif
 
 //	sys.deinit_directx();
 

@@ -576,7 +576,7 @@ void Sys::pause()
    if( paused_flag )
       return;
 
-   InvalidateRect(vga.main_hwnd, NULL, TRUE);
+//   InvalidateRect(vga.main_hwnd, NULL, TRUE);
 
    paused_flag = TRUE;
 }

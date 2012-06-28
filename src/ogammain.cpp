@@ -130,6 +130,7 @@ void Game::run_main_menu_option(int optionId)
 		view_credits();
 	}
 
+#if 0
 	if( optionId==6 )		// go to home page
 	{
 		const char *shortcutFilename = "7k2home.url";
@@ -151,6 +152,7 @@ void Game::run_main_menu_option(int optionId)
 			HINSTANCE hinst = ShellExecute( vga.main_hwnd, "open", shortcutFilename, NULL, "", SW_SHOWNORMAL );
 		}
 	}
+#endif
 
 	if( optionId==7 )
 	{

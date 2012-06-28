@@ -1,7 +1,6 @@
 /*
  * Seven Kingdoms 2: The Fryhtan War
  *
- * Copyright 1999 Enlight Software Ltd.
  * Copyright 2010 Jesse Allen
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,19 +18,19 @@
  *
  */
 
-//Filename    : OVGA.H
-//Description : Video display management class
+//Filename    : vga_none.cpp
+//Description : VGA manipulation functions (No output)
 
-#ifndef __OVGA_H
-#define __OVGA_H
+#include <ovga.h>
 
-#define USE_NOVIDEO
-#ifndef USE_NOVIDEO
-#include <vga_ddraw.h>
-#else
-#include <vga_none.h>
-#endif
+//------ Define static class member vars ---------//
 
-extern Vga vga;
+char    VgaBase::use_back_buf = 0;
+char    VgaBase::opaque_flag  = 0;
+VgaBuf* VgaBase::active_buf   = &vga_front;      // default: front buffer
 
-#endif
+char    low_video_memory_flag = 0;
+extern "C"
+{
+	short transparent_code_w;
+}

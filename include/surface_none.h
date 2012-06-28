@@ -29,8 +29,8 @@
 class SurfaceNone
 {
 public:
-	SurfaceNone();
-	~SurfaceNone();
+	SurfaceNone() { }
+	~SurfaceNone() { }
 
 	//---------- system functions ----------//
 
