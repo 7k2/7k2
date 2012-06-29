@@ -22,8 +22,6 @@
 //Description : Object Remote
 
 #include <all.h>
-#include <windowsx.h>
-#include <mmsystem.h>
 
 #include <obox.h>
 #include <ovga.h>

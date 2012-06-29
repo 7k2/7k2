@@ -34,6 +34,7 @@ typedef uint8_t  BYTE;
 typedef uint8_t  UCHAR;
 typedef uint16_t WORD;
 typedef int32_t  BOOL;
+typedef int32_t  LONG;
 typedef uint32_t UINT;
 typedef uint32_t DWORD;
 typedef uint32_t ULONG;

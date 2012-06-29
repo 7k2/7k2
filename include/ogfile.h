@@ -21,7 +21,7 @@
 //Filename    : OGFILE.H
 //Description : Oject Game file, save and restore game
 
-#include <windows.h>
+#include <win32_compat.h>
 
 #ifndef __OGFILE_H
 #define __OGFILE_H

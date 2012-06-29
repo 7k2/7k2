@@ -24,6 +24,7 @@
 
 
 #include <of_lish.h>
+#include <cstdlib>
 #include <all.h>
 #include <osys.h>
 #include <oremote.h>

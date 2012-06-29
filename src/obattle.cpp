@@ -22,6 +22,7 @@
 //Description : Battle Object
 
 #include <obattle.h>
+#include <cstdlib>
 #include <osys.h>
 #include <ovga.h>
 #include <omodeid.h>

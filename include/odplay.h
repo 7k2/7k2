@@ -31,7 +31,7 @@
 #include <mptypes.h>
 
 extern GUID GAME_GUID;
-extern HANDLE PLAYER_MESSAGE_HANDLE;
+extern void* PLAYER_MESSAGE_HANDLE;
 
 #define MP_SERVICE_PROVIDER_NAME_LEN 64
 #define MP_SESSION_NAME_LEN 64

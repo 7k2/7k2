@@ -21,6 +21,7 @@
 //Filename    : OGAMSING.CPP
 //Description : Single player game interface
 
+#include <cstdlib>
 #include <ogame.h>
 #include <obitmap.h>
 #include <ovga.h>
@@ -610,6 +611,7 @@ static int select_option2()
 
 		while(1)
 		{
+#ifndef NO_WINDOWS  // FIXME
 			MSG msg;
 			if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
 			{
@@ -628,6 +630,7 @@ static int select_option2()
 				WaitMessage();
 				continue;
 			}
+#endif
 			if( sys.need_redraw_flag )
 			{
 				refreshFlag = SGOPTION_ALL;

@@ -22,6 +22,7 @@
 // Description: growth of plant
 // Ownership  : Gilbert
 
+#include <cstdlib>
 #include <omatrix.h>
 #include <oworld.h>
 #include <oworldmt.h>

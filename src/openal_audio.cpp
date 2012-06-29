@@ -21,6 +21,7 @@
 #include <assert.h>
 #include <limits.h>
 #include <math.h>
+#include <cstdlib>
 #include <vector>
 
 #include <all.h>

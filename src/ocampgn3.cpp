@@ -569,6 +569,7 @@ void Campaign::select_royal_menu(CampaignMember *king, CampaignMember *royalList
 
 		while(1)
 		{
+#ifndef NO_WINDOWS  // FIXME
 			MSG msg;
 			if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
 			{
@@ -587,6 +588,7 @@ void Campaign::select_royal_menu(CampaignMember *king, CampaignMember *royalList
 				WaitMessage();
 				continue;
 			}
+#endif
 			if( sys.need_redraw_flag )
 			{
 				refreshFlag = DROPTION_ALL;

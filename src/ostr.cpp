@@ -22,8 +22,8 @@
 //Description : Object String
 
 #include <omisc.h>
-#include <ctype.h>
 #include <ostr.h>
+#include <win32_compat.h>
 
 
 //------- Define static variable --------//

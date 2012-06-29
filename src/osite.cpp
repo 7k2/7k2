@@ -21,6 +21,7 @@
 //Filename    : OSITE.CPP
 //Description : Object Site
 
+#include <cstdlib>
 #include <osys.h>
 #include <oinfo.h>
 #include <oworld.h>

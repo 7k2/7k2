@@ -24,6 +24,7 @@
 
 #include <math.h>
 #include <time.h>
+#include <cstdlib>
 #include <ovgabuf.h>
 #include <all.h>
 #include <ovga.h>

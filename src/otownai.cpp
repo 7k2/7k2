@@ -21,6 +21,7 @@
 //Filename    : OTOWNAI.CPP
 //Description : Object Town AI
 
+#include <cstdlib>
 #include <oworld.h>
 #include <ounit.h>
 #include <oconfig.h>

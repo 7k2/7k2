@@ -177,8 +177,6 @@ void Sys::run(int isLoadedGame)
 //
 void Sys::main_loop(int isLoadedGame)
 {
-	MSG msg;
-
 	//-------- reset day_frame_count -------//
 
 	if( !isLoadedGame )
@@ -269,6 +267,9 @@ void Sys::main_loop(int isLoadedGame)
 
 	while( 1 )
 	{
+#ifndef NO_WINDOWS  // FIXME
+		MSG msg;
+
 		if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
 		{
 			if (!GetMessage( &msg, NULL, 0, 0))
@@ -280,8 +281,9 @@ void Sys::main_loop(int isLoadedGame)
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
+#endif
 		// ####### begin Gilbert 11/5 #######//
-		else if ( !paused_flag && active_flag || use_true_front && remote.is_enable() )	// if switch tasked, still run in multiplay mode
+		if ( !paused_flag && active_flag || use_true_front && remote.is_enable() )	// if switch tasked, still run in multiplay mode
 		// ####### end Gilbert 11/5 #######//
 		{
 #ifdef DEBUG
@@ -541,7 +543,9 @@ void Sys::main_loop(int isLoadedGame)
 		}
 		else
 		{
+#ifndef NO_WINDOWS  // FIXME
 			WaitMessage();
+#endif
 		}
 	}
 

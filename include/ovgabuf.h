@@ -26,6 +26,7 @@
 
 #include <imgfun.h>
 #include <surface.h>
+#include <win32_compat.h>
 
 //-------- Define class VgaBuf ----------------//
 

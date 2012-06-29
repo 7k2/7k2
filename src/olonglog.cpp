@@ -22,7 +22,9 @@
 
 #include <olonglog.h>
 #include <stdio.h>
-#include <windows.h>
+#include <cstdarg>
+#include <cstring>
+#include <win32_compat.h>
 
 
 LongLog::LongLog(char suffix)

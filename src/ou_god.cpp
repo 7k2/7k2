@@ -21,7 +21,7 @@
 //Filename   : OU_GOD.CPP
 //Description: God Unit
 
-#include <windows.h>
+#include <win32_compat.h>
 #include <ou_god.h>
 #include <osys.h>
 #include <ogame.h>

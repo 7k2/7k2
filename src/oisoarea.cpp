@@ -19,6 +19,7 @@
  */
 
 #include <math.h>
+#include <cstdlib>
 #include <oisoarea.h>
 #include <omisc.h>
 #include <all.h>

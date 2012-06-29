@@ -42,8 +42,6 @@ public:
 		  short *					default_remap_table;				// new for 16-bit
 		  short *					default_blend_table;				// new for 16-bit
 
-		  HWND		main_hwnd;
-
 public:
 		  VgaNone() {};
 		  ~VgaNone() {};

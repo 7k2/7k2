@@ -67,6 +67,7 @@
 #include <ot_camp.h>
 #include <ot_talk.h>
 #include <ofile.h>
+#include <win32_compat.h>
 
 ///////////////////////////////////////////
 ///////////////////////////////////////////
@@ -75,14 +76,9 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <stdio.h>
-#include <conio.h>
 #include <math.h>
 #include <malloc.h> 
 #include <string.h>
-#include <io.h>
-#include <fcntl.h> 
-#include <signal.h>
-#include <float.h>
 
 //#include <ddraw.h>          // include DirectDraw stuff
 
@@ -145,6 +141,37 @@
 typedef unsigned char  UCHAR;
 
 // the bitmap file structure /////////////////////////////////////////////////
+typedef struct {
+	WORD  bfType;
+	DWORD bfSize;
+	WORD  bfReserved1;
+	WORD  bfReserved2;
+	DWORD bfOffBits;
+} BITMAPFILEHEADER, *PBITMAPFILEHEADER;
+
+typedef struct tagBITMAPINFOHEADER {
+	DWORD biSize;
+	LONG  biWidth;
+	LONG  biHeight;
+	WORD  biPlanes;
+	WORD  biBitCount;
+	DWORD biCompression;
+	DWORD biSizeImage;
+	LONG  biXPelsPerMeter;
+	LONG  biYPelsPerMeter;
+	DWORD biClrUsed;
+	DWORD biClrImportant;
+} BITMAPINFOHEADER, *PBITMAPINFOHEADER;
+
+typedef struct tagPALETTEENTRY {
+	BYTE peRed;
+	BYTE peGreen;
+	BYTE peBlue;
+	BYTE peFlags;
+} PALETTEENTRY;
+
+const uint8_t PC_NOCOLLAPSE = 0x04;
+
 typedef struct bitmap_file_tag
         {
         BITMAPFILEHEADER bitmapfileheader;  // this contains the bitmapfile header

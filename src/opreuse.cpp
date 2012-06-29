@@ -22,6 +22,7 @@
 //Description	:	Implementation of class PathReuse
 //Owner			:	Juliet
  
+#include <cstdlib>
 #include "all.h"
 #include "oterrain.h"
 #include "opreuse.h"
@@ -195,10 +196,10 @@ void PathReuse::init(Unit** units, int nUnits)
 void PathReuse::reset()
 {
 	int rnUnits = sizeof(ReuseNode*)*MAX_REUSE_NUMBER_OF_UNITS;
-	::ZeroMemory(cur_paths, rnUnits); //set the memory allocated to zero
-	::ZeroMemory(cur_paths_head, rnUnits); //and the set these memory to zero
+	memset(cur_paths, 0, rnUnits); //set the memory allocated to zero
+	memset(cur_paths_head, 0, rnUnits); //and the set these memory to zero
 	rnUnits*=MAX_REUSE_NODE_NUM_PER_UNIT;
-	::ZeroMemory(reuse_node_arr, rnUnits); //set the memory to zero
+	memset(reuse_node_arr, 0, rnUnits); //set the memory to zero
 	reuse_node_count = 0; //initialize the reuse_node_count to zero
 }
 //-----------End of function PathReuse::reset ----------------//

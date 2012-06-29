@@ -22,6 +22,7 @@
 //Description : Info class
 
 #include <oinfo.h>
+#include <cstdlib>
 #include <ovga.h>
 #include <vga_util.h>
 #include <omodeid.h>

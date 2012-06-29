@@ -26,6 +26,7 @@
 
 //--------- Include other headers -------//
 
+#include <cstddef>
 #include <win32_compat.h>
 #include <omisc.h>
 #include <ostr.h>
@@ -35,10 +36,6 @@
 #include <oerror.h>
 
 //-------- define standard type ---------//
-
-#ifndef NULL
-#define NULL 0
-#endif
 
 typedef unsigned short USHORT;
 typedef void *LPVOID;

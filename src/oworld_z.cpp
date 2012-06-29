@@ -84,6 +84,7 @@
 #include <ovgalock.h>
 #include <ot_firm.h>
 #include <ot_unit.h>
+#include <win32_compat.h>
 
 // -------- define constant ----------//
 
@@ -116,6 +117,11 @@ static int update_abs_x1, update_abs_y1, update_abs_x2, update_abs_y2;
 static int sort_display_function( const void *a, const void *b );
 
 static void draw_cubic_plane(int x, int y, LocationCorners, UCHAR);
+
+typedef struct tagPOINT {
+	LONG x;
+	LONG y;
+} POINT;
 
 static int test_inside_polygon(int x, int y, POINT *vertex, int verCount);
 

@@ -24,6 +24,8 @@
 #ifndef __OPOWER_H
 #define __OPOWER_H
 
+#include <cstddef>
+
 //-------- Define command id. -----------//
 
 enum { 
@@ -72,8 +74,6 @@ enum ScreenObjectType
 };
 
 //--------- Define class Power ----------//
-
-#define NULL 0
 
 struct Location;
 

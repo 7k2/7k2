@@ -29,7 +29,7 @@
 #include <oresdb.h>
 #endif
 
-#define NULL 0
+#include <cstddef>
 
 // ----------- Define struct SnowRec --------- //
 //

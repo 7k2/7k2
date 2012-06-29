@@ -24,10 +24,9 @@
 #ifndef __OHELP_H
 #define __OHELP_H
 
+#include <cstddef>
 
 //----------- Define constant -------------//
-
-#define NULL 0
 
 enum { NO_HELP, BRIEF_HELP, DETAIL_HELP };	 	// for config.help_mode  
 

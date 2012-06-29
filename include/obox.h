@@ -24,9 +24,9 @@
 #ifndef __OBOX_H
 #define __OBOX_H
 
-//------- constant for arrow box ----------//
+#include <cstddef>
 
-#define NULL 0
+//------- constant for arrow box ----------//
 
 enum { ARROW_BOX_WIDTH        = 390,
        ARROW_BOX_X_MARGIN     = 15,

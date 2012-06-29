@@ -53,7 +53,6 @@ enum { GAME_PREGAME=1,
 
 // ----- define constant -------//
 
-#define NULL 0
 #define MAX_WIN_CONDITION 8
 #define MAX_LOSE_CONDITION 8
 

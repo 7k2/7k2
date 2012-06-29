@@ -23,6 +23,7 @@
 // Onwership   : Gilbert
 
 #include <oanline.h>
+#include <cstdlib>
 #include <ovgabuf.h>
 #include <all.h>
 #include <math.h>

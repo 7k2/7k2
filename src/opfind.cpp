@@ -21,6 +21,7 @@
 // Filename: OPFIND.CPP
 // Description: Implementation of the Pathfinding algorithm
 
+#include <cstdlib>
 #include <all.h>
 #include <opfind.h>
 #include <oworldmt.h> 
@@ -579,7 +580,7 @@ bool PathFinder::find_path2(int sourceX, int sourceY, int destX, int destY, int 
 
 	PathNode* node;
 	node = node_arr + node_count++;
-	::ZeroMemory(node, sizeof(PathNode));
+	memset(node, 0, sizeof(PathNode));
 
 	node->g = 0;
 	node->h = dist;
@@ -1284,7 +1285,7 @@ void PathFinder::gen_child(PathNode* n, int x, int y)
 		err_when( node_count >= MAX_NODE_NUM);
 		succ = node_arr + node_count++;
 
-		ZeroMemory(succ, sizeof(PathNode));
+		memset(succ, 0, sizeof(PathNode));
 
 		succ->parent = n;
 		// succ->g = g;

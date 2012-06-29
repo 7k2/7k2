@@ -25,8 +25,8 @@
 #ifndef __OTERRAIN_H
 #define __OTERRAIN_H
 
+#include <cstddef>
 #include <oresdb.h>
-#define NULL 0
 
 
 // ------- define constant --------//

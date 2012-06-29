@@ -444,23 +444,8 @@ set(7k2_SOURCES
   vga_util.cpp
   wav_stream.cpp)
 
-if(UNIX)
-  find_package(Wine REQUIRED)
-  include_directories(SYSTEM ${WINE_MSVCRT_INCLUDE_DIR} ${WINE_WINDOWS_INCLUDE_DIR})
-  set(WINE_LIBS
-    ole32
-    msvcrt
-    winmm
-    gdi32
-    dxguid
-    winmm
-    shell32)
-  set(EXTRA_LIBS ${WINE_LIBS})
-  set(CMAKE_CXX_COMPILER ${WINEG++_EXECUTABLE})
-  set_source_files_properties(ogammain.cpp PROPERTIES COMPILE_DEFINITIONS "DISABLE_MULTI_PLAYER")
-  set_source_files_properties(osysproc.cpp PROPERTIES COMPILE_DEFINITIONS "ENABLE_WINE_HACKS")
-endif(UNIX)
-
+set_source_files_properties(${7k2_SOURCES} PROPERTIES COMPILE_DEFINITIONS "NO_WINDOWS")
+set_source_files_properties(ogammain.cpp PROPERTIES COMPILE_DEFINITIONS "NO_WINDOWS;DISABLE_MULTI_PLAYER")
 set_source_files_properties(${7k2_SOURCES} PROPERTIES COMPILE_DEFINITIONS_DEBUG "DEBUG")
 include_directories(SYSTEM ${JPEG_INCLUDE_DIR})
 include_directories(SYSTEM ${OPENAL_INCLUDE_DIR})
@@ -468,4 +453,5 @@ include_directories(${7K2_SOURCE_DIR}/include)
 add_library(7k2_lib STATIC ${7k2_SOURCES})
 add_executable(7k2 am.cpp)
 target_link_libraries(7k2 7k2_lib imgfun ${EXTRA_LIBS} ${JPEG_LIBRARIES} ${OPENAL_LIBRARY})
+set_target_properties(7k2 PROPERTIES COMPILE_DEFINITIONS "NO_WINDOWS")
 set_target_properties(7k2 PROPERTIES COMPILE_DEFINITIONS_DEBUG "DEBUG")

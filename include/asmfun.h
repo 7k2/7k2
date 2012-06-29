@@ -30,16 +30,15 @@
 #define __asmsym__(s)
 #define IMGcall
 
-#else // ASM Requires Wine or Win32 and JWasm!!
-
-#include <windows.h>
+#else // ASM Requires MSVC or JWasm!!
 
 #ifdef ASM_FOR_MSVC
 #define __asmsym__(s)
-#else
-#define __asmsym__(s) __asm__(s)
-#endif
 #define IMGcall _stdcall
+#else  // GCC with JWasm
+#define __asmsym__(s) __asm__(s)
+#define IMGcall __attribute__((stdcall))
+#endif
 
 #endif
 

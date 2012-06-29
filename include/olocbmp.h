@@ -25,8 +25,6 @@
 #ifndef __OLOCBMP_H
 #define __OLOCBMP_H
 
-#define NULL 0
-
 #define RHOMBUS_LOCATION 1
 
 class Blob2DW;

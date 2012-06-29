@@ -24,6 +24,8 @@
 #ifndef __SURFACE_NONE_H
 #define __SURFACE_NONE_H
 
+#include <cstddef>
+
 //-------- Define class SurfaceNone ----------------//
 
 class SurfaceNone

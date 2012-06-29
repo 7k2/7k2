@@ -21,6 +21,7 @@
 //Filename    : OGAMEMP.CPP
 //Description : Main Game Object - Multiplayer Game (using Imagic multiplayer SDK)
 
+#include <cstdlib>
 #include <osys.h>
 #include <omouse.h>
 #include <omousecr.h>
@@ -864,6 +865,7 @@ int Game::mp_select_service()
 
 		while(1)
 		{
+#ifndef NO_WINDOWS  // FIXME
 			MSG msg;
 			if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
 			{
@@ -882,6 +884,7 @@ int Game::mp_select_service()
 				WaitMessage();
 				continue;
 			}
+#endif
 			if( sys.need_redraw_flag )
 			{
 				refreshFlag = SVOPTION_ALL;
@@ -1046,6 +1049,7 @@ int Game::mp_select_mode(char *defSaveFileName)
 
 	while(1)
 	{
+#ifndef NO_WINDOWS  // FIXME
 		MSG msg;
 		if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
 		{
@@ -1064,6 +1068,7 @@ int Game::mp_select_mode(char *defSaveFileName)
 			WaitMessage();
 			continue;
 		}
+#endif
 		if( sys.need_redraw_flag )
 		{
 			refreshFlag = SMOPTION_ALL;
@@ -1245,6 +1250,7 @@ int Game::mp_select_session()
 		int s;
 		int b;
 
+#ifndef NO_WINDOWS  // FIXME
 		MSG msg;
 		if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
 		{
@@ -1263,6 +1269,7 @@ int Game::mp_select_session()
 			WaitMessage();
 			continue;
 		}
+#endif
 		if( sys.need_redraw_flag )
 		{
 			refreshFlag = SSOPTION_ALL;
@@ -1325,7 +1332,9 @@ int Game::mp_select_session()
 				choice = 0;
 				for( s = 1; mp_obj.get_session(s); ++s )
 				{
+#if 0  // FIXME
 					if( sessionGuid == mp_obj.get_session(s)->session_id() )
+#endif
 						choice = s;
 				}
 
@@ -2267,6 +2276,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 
 		while(1)
 		{
+#ifndef NO_WINDOWS  // FIXME
 			MSG msg;
 			if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
 			{
@@ -2287,6 +2297,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 				WaitMessage();
 				continue;
 			}
+#endif
 			if( sys.need_redraw_flag )
 			{
 				refreshFlag = SGOPTION_ALL;
@@ -5013,6 +5024,7 @@ int Game::mp_select_load_option(char *fileName)
 
 		while(1)
 		{
+#ifndef NO_WINDOWS  // FIXME
 			MSG msg;
 			if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
 			{
@@ -5033,6 +5045,7 @@ int Game::mp_select_load_option(char *fileName)
 				WaitMessage();
 				continue;
 			}
+#endif
 			if( sys.need_redraw_flag )
 			{
 				refreshFlag = SGOPTION_ALL;

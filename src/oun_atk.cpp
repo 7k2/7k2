@@ -21,7 +21,8 @@
 //Filename	 : OPER_AT.CPP
 //Description: Unit attacking functions
  
-#include <windows.h>
+#include <cstdlib>
+#include <win32_compat.h>
 #include <orebel.h>
 #include <ounitres.h>
 #include <oconfig.h>

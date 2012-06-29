@@ -24,6 +24,7 @@
 
 
 #include <of_off2.h>
+#include <cstdlib>
 #include <all.h>
 #include <osys.h>
 #include <oremote.h>

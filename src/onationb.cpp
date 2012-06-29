@@ -21,6 +21,7 @@
 //Filename    : ONATION.CPP
 //Description : Object Nation - part 1
 
+#include <cstdlib>
 #include <ostr.h>
 #include <osys.h>
 #include <oseres.h>

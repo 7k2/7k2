@@ -22,6 +22,7 @@
 //Description : Object Bullet Array
 //Owner		  : Alex
 
+#include <cstdlib>
 #include <ovga.h>
 #include <ounit.h>
 #include <obullet.h>

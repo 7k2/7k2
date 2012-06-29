@@ -25,11 +25,11 @@
 #ifndef __OWALLRES_H
 #define __OWALLRES_H
 
+#include <cstddef>
+
 #ifndef __ORESDB_H
 #include <oresdb.h>
 #endif
-
-#define NULL 0
 
 //------------ Define constant -------------//
 

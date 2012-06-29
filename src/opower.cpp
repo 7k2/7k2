@@ -22,6 +22,7 @@
 //Description : Object Power
 
 #include <opower.h>
+#include <cstdlib>
 #include <omouse.h>
 #include <omousecr.h>
 #include <obox.h>

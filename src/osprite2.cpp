@@ -21,6 +21,7 @@
 //Filename    : OSPRITE2.CPP
 //Description : Object Sprite
 
+#include <cstdlib>
 #include <all.h>
 #include <osys.h>
 #include <ovga.h>

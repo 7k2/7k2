@@ -89,6 +89,7 @@ int GameFile::save_game(const char *path, const char* fileName, const char *game
 
 	int rc = 1;
 	char lowDiskSpaceFlag = 0;
+#ifndef NO_WINDOWS  // FIXME
 	DWORD sectorPerCluster = 0;
 	DWORD bytePerSector = 0;
 	DWORD freeCluster = 0;
@@ -111,6 +112,7 @@ int GameFile::save_game(const char *path, const char* fileName, const char *game
 			lowDiskSpaceFlag = 1;
 		}
 	}
+#endif
 
 	// ##### begin Gilbert 2/11 ######//
 	if( rc )
@@ -519,9 +521,11 @@ int GameFile::write_game_header(File* filePtr)
 
 	game_date = info.game_date;
 
+#ifndef NO_WINDOWS  // FIXME
 	//----- set the file date ------//
 
 	CoFileTimeNow(&file_date);
+#endif
 
 	//------- write GameFile to the saved game file -------//
 

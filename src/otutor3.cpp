@@ -583,6 +583,7 @@ int Tutor::select_learning_campaign_menu()
 
 		while(1)
 		{
+#ifndef NO_WINDOWS  // FIXME
 			MSG msg;
 			if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
 			{
@@ -601,6 +602,7 @@ int Tutor::select_learning_campaign_menu()
 				WaitMessage();
 				continue;
 			}
+#endif
 
 			if( sys.need_redraw_flag )
 			{

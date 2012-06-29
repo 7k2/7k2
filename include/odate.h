@@ -24,8 +24,7 @@
 #ifndef __ODATE_H
 #define __ODATE_H
 
-struct _FILETIME;
-typedef _FILETIME FILETIME;
+#include <win32_compat.h>
 
 class DateInfo
 {

@@ -22,6 +22,7 @@
 //Description : Object World
 
 #include <oworld.h>
+#include <cstdlib>
 #include <all.h>
 #include <oworldmt.h>
 

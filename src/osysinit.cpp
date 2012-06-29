@@ -161,7 +161,7 @@ void Sys::deinit()
 //
 int Sys::init_directx()
 {
-   ShowCursor(FALSE);
+//   ShowCursor(FALSE);
 
 	DisplayModeInfo::set_current_display_mode(MODE_ID_DEFAULT);
 

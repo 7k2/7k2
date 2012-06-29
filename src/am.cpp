@@ -374,9 +374,9 @@ unsigned long	last_unit_transform_fortress_profile_time = 0L;
 
 static void extra_error_handler();
 
-//---------- Begin of function WinMain ----------//
-//¹ç
-// WinMain - initialization, message loop
+//---------- Begin of function main ----------//
+//
+// main - initialization, message loop
 //
 // Compilation constants:
 //
@@ -385,8 +385,7 @@ static void extra_error_handler();
 // DEBUG3 - debugging some functions (e.g. Location::get_loc()) which
 //          will cause major slowdown.
 //
-int PASCAL WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
-						  LPSTR lpCmdLine, int nCmdShow)
+int main(int argc, char **argv)
 {
 	//try to read from CONFIG.DAT, moved to AM.CPP
 
@@ -443,6 +442,7 @@ int PASCAL WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 //   game.main_menu();
 //#else
 	// ######## begin Gilbert 2/7 #######//
+#if 0  // FIXME
 	if( strstr(lpCmdLine, lobbyLaunchCmdLine) != NULL )
 	{
 		mp_obj.pre_init();
@@ -463,8 +463,11 @@ int PASCAL WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	{
 		game.main_menu();
 	}
+#endif
 	// ######## end Gilbert 24/2 #######//
 //#endif
+
+	game.main_menu();
 
 #ifdef DEMO
 	if (vga.is_inited())

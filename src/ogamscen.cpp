@@ -21,6 +21,7 @@
 //Filename    : OGAMSCEN.CPP
 //Description : Select Game Scenario
 
+#include <cstdlib>
 #include <ostr.h>
 #include <osys.h>
 #include <onews.h>

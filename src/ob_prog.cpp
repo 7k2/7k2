@@ -22,6 +22,7 @@
 // Description : BulletProgram, Programming bullet
 
 #include <ob_prog.h>
+#include <cstdlib>
 #include <ovga.h>
 #include <omagic.h>
 #include <of_fort.h>

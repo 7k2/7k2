@@ -21,6 +21,7 @@
 //Filename    : OPERSDRW.CPP
 //Description : Object Unit Drawing routines
 
+#include <cstdlib>
 #include <osys.h>
 #include <obitmap.h>
 #include <obitmapw.h>
