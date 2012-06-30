@@ -6,7 +6,7 @@ Requirements
 
 * GCC 3.0 or later
 * JWasm 2.00 or later
-* Wine 1.3.15 or later
+* SDL2 2.0.0 or later
 * CMake 2.8.0 or later
 * libjpeg 6b or later
 * OpenAL 1.13 or later

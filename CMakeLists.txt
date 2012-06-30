@@ -8,5 +8,7 @@ endif(UNIX)
 
 find_package(JPEG REQUIRED)
 find_package(OpenAL REQUIRED)
+include(FindPkgConfig)
+pkg_check_modules(SDL2 REQUIRED sdl2)
 add_subdirectory(src/asm)
 add_subdirectory(src)
