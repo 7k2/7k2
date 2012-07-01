@@ -45,19 +45,20 @@ extern const int GAME_VERSION;
 #define PATH_DELIM "\\"
 #endif
 
-#define DIR_RES         "RESOURCE\\"
-#define DIR_SPRITE      "SPRITE\\"
-#define DIR_FIRM			"FIRM\\"
-#define DIR_FIRM_SMALL	"FIRMSML\\"
-#define DIR_SOUND       "SOUND\\"
-#define DIR_SAVE        "SAVE\\"
-#define DIR_IMAGE       sys.dir_image
-#define DIR_MUSIC       sys.dir_music
-#define DIR_TUTORIAL		sys.dir_tutorial
-#define DIR_SCENARIO		sys.dir_scenario
-#define DIR_CAMPAIGN		sys.dir_campaign
+#define DIR_RES               "resource"PATH_DELIM
+#define DIR_SPRITE            "sprite"PATH_DELIM
+#define DIR_FIRM              "firm"PATH_DELIM
+#define DIR_FIRM_SMALL        "firmsml"PATH_DELIM
+#define DIR_SOUND             "sound"PATH_DELIM
+#define DIR_SAVE              "save"PATH_DELIM
+#define DIR_IMAGE             "image"PATH_DELIM
+#define DIR_MUSIC             "music"PATH_DELIM
+#define DIR_TUTORIAL          "tutorial"PATH_DELIM
+#define DIR_SCENARIO          "scenario"PATH_DELIM
+#define DIR_CAMPAIGN          "campaign"PATH_DELIM
 // see MAX_SCENARIO_PATH in sys
-#define DIR_SCENARIO_PATH(p)	sys.dir_scenario_path[p]
+#define DIR_SCENARIO_PATH(p)  "scenario"PATH_DELIM"premade"PATH_DELIM
+#define DIR_SCENARIO_PREMADE  "scenario"PATH_DELIM"premade"PATH_DELIM
 
 //--------- Define direction types -----------//
 

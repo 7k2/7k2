@@ -963,7 +963,7 @@ int GameFileArray::save_new_game(const char* fileName)
 		if( save_default_dir[0] != '\0' )
 		{
 			strcpy( gameFile.file_name, save_default_dir );
-			strcat( gameFile.file_name, "\\" );
+			strcat( gameFile.file_name, PATH_DELIM );
 			strcat( gameFile.file_name, fileName );
 		}
 		else
@@ -1138,7 +1138,7 @@ void GameFileArray::load_all_game_header(const char *path, const char *extStr)
 	if( path && path[0] != '\0' )
 	{
 		str = path;
-		str += "\\";
+		str += PATH_DELIM;
 		str += extStr;
 	}
 	else
@@ -1159,7 +1159,7 @@ void GameFileArray::load_all_game_header(const char *path, const char *extStr)
 		if( path && path[0] != '\0' )
 		{
 			str = path;
-			str += "\\";
+			str += PATH_DELIM;
 			str += gameDir[i]->name;
 		}
 		else
@@ -1412,7 +1412,7 @@ int GameFileArray::auto_save()
 
 	String str1(save_default_dir);
 	if( save_default_dir[0] )
-		str1 += "\\";
+		str1 += PATH_DELIM;
 	str1 += "AUTO";
 	str1 += strchr( save_default_ext, '.' );
 
@@ -1420,7 +1420,7 @@ int GameFileArray::auto_save()
 
 	String str2(save_default_dir);
 	if( save_default_dir[0] )
-		str2 += "\\";
+		str2 += PATH_DELIM;
 	str2 += "AUTO2";
 	str2 += strchr( save_default_ext, '.' );
 

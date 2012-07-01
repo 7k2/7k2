@@ -472,15 +472,15 @@ void Sys::deinit_objects()
 //
 void Sys::set_game_dir()
 {
-	strcpy(dir_image, "IMAGE\\");
-	strcpy(dir_campaign, "CAMPAIGN\\");
-	strcpy(dir_music, "MUSIC\\");
-	strcpy(dir_tutorial, "TUTORIAL\\");
-	strcpy(dir_scenario, "SCENARIO\\");
+	strcpy(dir_image, DIR_IMAGE);
+	strcpy(dir_campaign, DIR_CAMPAIGN);
+	strcpy(dir_music, DIR_MUSIC);
+	strcpy(dir_tutorial, DIR_TUTORIAL);
+	strcpy(dir_scenario, DIR_SCENARIO);
 
 	// ####### begin Gilbert 26/5 #########//
 #if(MAX_SCENARIO_PATH >= 2)
-   strcpy(dir_scenario_path[1], "SCENARIO\\PREMADE\\");
+   strcpy(dir_scenario_path[1], DIR_SCENARIO_PREMADE);
 #endif
 	// ####### end Gilbert 26/5 #########//
 

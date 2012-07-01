@@ -173,7 +173,7 @@ char *PlayerProfile::save_game_path(char *wildcardStr)
 
 		if( wildcardStr )
 		{
-			strcat( retStr, "\\" );
+			strcat( retStr, PATH_DELIM );
 			strcat( retStr, wildcardStr );
 		}
 	}

@@ -70,7 +70,7 @@ int GameFile::save_game(const char *path, const char* fileName, const char *game
 		if( path && path[0] != '\0' )		// non empty string
 		{
 			strcpy(file_name, path);
-			strcat(file_name, "\\");
+			strcat(file_name, PATH_DELIM);
 			strcat(file_name, fileName);
 		}
 		else
@@ -215,7 +215,7 @@ int GameFile::load_game(const char *path, const char* fileName)
 		if( path && path[0] != '\0' )		// non empty string
 		{
 			strcpy(file_name, path);
-			strcat(file_name, "\\");
+			strcat(file_name, PATH_DELIM);
 			strcat(file_name, fileName);
 		}
 		else
@@ -342,7 +342,7 @@ void GameFile::set_file_name(const char *path, const char *extension)
 	if( path && path != '\0' )
 	{
 		str = path;
-		str += "\\";
+		str += PATH_DELIM;
 	}
 	else
 	{

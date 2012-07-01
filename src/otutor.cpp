@@ -673,7 +673,7 @@ void Tutor::play_speech(int tutorId, int objectiveRecno)
 
 	String str;
 	str  = DIR_TUTORIAL;
-	str += "\\SOUND\\";
+	str += "SOUND"PATH_DELIM;
 
 	char str2[10] = "H1-XX.WAV";
 	str2[0] = tutor[tutorId]->code[0];
