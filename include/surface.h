@@ -25,9 +25,8 @@
 #ifndef __SURFACE_H
 #define __SURFACE_H
 
-#define USE_NOVIDEO
 #ifndef USE_NOVIDEO
-#include <surface_ddraw.h>
+#include <surface_sdl.h>
 #else
 #include <surface_none.h>
 #endif

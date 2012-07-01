@@ -57,8 +57,6 @@ public:
 
 	virtual bool   is_inited() =0;
 
-	virtual void   adjust_brightness(int changeValue) =0;
-
 	void use_front() { use_back_buf=0; active_buf = &vga_front; }
 	void use_back()  { use_back_buf=1; active_buf = &vga_back;  }
 

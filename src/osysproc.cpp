@@ -683,9 +683,8 @@ void Sys::yield()
 #endif
 	// ###### end Gilbert 11/2 #######//
 
-#ifdef ENABLE_WINE_HACKS
-   GetInputState();
-#endif
+   vga.handle_messages();
+
    mouse.poll_event();
 
    audio.yield();
@@ -743,6 +742,8 @@ void Sys::yield()
 		}
 #endif
    }
+
+   vga.update_screen();
 
    isYielding=0;
 }
