@@ -4,7 +4,7 @@ set(7k2_SOURCES
   file_util.cpp
   input_stream.cpp
   mem_input_stream.cpp
-  mouse_none.cpp
+  mouse_sdl.cpp
   oai_act.cpp
   oai_act2.cpp
   oai_attk.cpp

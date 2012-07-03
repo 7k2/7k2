@@ -25,7 +25,6 @@
 #ifndef __OMOUSE_H
 #define __OMOUSE_H
 
-#define USE_NOINPUT
 #ifndef USE_NOINPUT
 #include <mouse_sdl.h>
 #else
