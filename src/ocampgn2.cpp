@@ -141,6 +141,7 @@
 typedef unsigned char  UCHAR;
 
 // the bitmap file structure /////////////////////////////////////////////////
+#pragma pack(1)
 typedef struct {
 	WORD  bfType;
 	DWORD bfSize;
@@ -148,6 +149,7 @@ typedef struct {
 	WORD  bfReserved2;
 	DWORD bfOffBits;
 } BITMAPFILEHEADER, *PBITMAPFILEHEADER;
+#pragma pack();
 
 typedef struct tagBITMAPINFOHEADER {
 	DWORD biSize;
