@@ -250,7 +250,7 @@ void MonsterRes::second_init()
 			}
 
 			strncat( name_array[i].name, namePtr, MonsterName::NAME_LEN );
-			name_array[i].name[MonsterName::NAME_LEN] = NULL;
+			name_array[i].name[MonsterName::NAME_LEN] = '\0';
 		}
 
 		//--- convert the name to lower cases except the first letter ---//

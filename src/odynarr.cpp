@@ -126,7 +126,7 @@ void DynArray::linkin(void* ent)
    if ( ent )
       memcpy(body_buf+(cur_pos-1)*ele_size, ent, ele_size );
    else
-      *(body_buf+(cur_pos-1)*ele_size) = NULL;
+      *(body_buf+(cur_pos-1)*ele_size) = '\0';
 }
 
 //---------- END OF FUNCTION DynArray::linkin ------------//
@@ -175,7 +175,7 @@ void DynArray::insert(void* ent)
    if ( ent )
       memcpy(body_buf+(cur_pos-1)*ele_size, ent, ele_size );
    else
-      *(body_buf+(cur_pos-1)*ele_size) = NULL;
+      *(body_buf+(cur_pos-1)*ele_size) = '\0';
 }
 
 //---------- END OF FUNCTION DynArray::insert ------------//
@@ -210,7 +210,7 @@ void DynArray::insert_at(int insertPos, void* ent)
 	if ( ent )
 		memcpy(body_buf+(insertPos-1)*ele_size, ent, ele_size );
 	else
-		*(body_buf+(insertPos-1)*ele_size) = NULL;
+		*(body_buf+(insertPos-1)*ele_size) = '\0';
 }
 
 //---------- END OF FUNCTION DynArray::insert_at ------------//
@@ -264,7 +264,7 @@ void DynArray::update(void* bodyPtr, int recNo)
    if( bodyPtr )
       memcpy(body_buf+(recNo-1)*ele_size, bodyPtr, ele_size );
    else
-      *(body_buf+(recNo-1)*ele_size) = NULL;
+      *(body_buf+(recNo-1)*ele_size) = '\0';
 }
 //----------- END OF FUNCTION DynArray::update ---------//
 
@@ -398,7 +398,7 @@ int DynArray::compare(void* varChar,int varOff,char varType)
          return *((double*)(bodyPtr+varOff)) == *((double*)varChar);
    }
 
-   return NULL;
+   return 0;
 }
 
 //-------- END OF FUNCTION DynArray::compare ----------//

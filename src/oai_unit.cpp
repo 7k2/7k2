@@ -606,7 +606,7 @@ int Nation::recruit_in_firm_soldier(Firm* destFirmPtr, int preferedRaceId)
 	}
 
 	if( !bestSoldierId )
-		return NULL;
+		return 0;
 
 	return bestFirmCamp->mobilize_soldier( bestSoldierId, COMMAND_AI );
 }

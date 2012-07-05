@@ -197,7 +197,7 @@ char* DateInfo::date_str( long julianDate, int shortMonthStr)
 
    if ( julianDate > 5373484 || julianDate < JULIAN_ADJUSTMENT )
    {
-      strBuf[0]=NULL;
+      strBuf[0]='\0';
       return strBuf;
    }
 
@@ -224,7 +224,7 @@ char* DateInfo::date_str( long julianDate, int shortMonthStr)
 
    if ( month_day( year, nDays, month, day ) < 0 )
    {
-      strBuf[0]=NULL;
+      strBuf[0]='\0';
       return strBuf;
    }
 

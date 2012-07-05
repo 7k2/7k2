@@ -302,7 +302,7 @@ int Campaign::create_work_firm(Place* placePtr, int firmId)
 	int firmRecno = create_firm_next_to_place( placePtr, firmId, nationPtr->race_id );
 
 	if( !firmRecno )
-		return NULL;
+		return 0;
 
 	//------- set war factory parameters --------//
 

@@ -1714,7 +1714,7 @@ void NewsArray::chat_msg(int fromNationRecno, char* chatStr)
 		chatInfo->from_nation_recno = fromNationRecno;
 
 		strncpy( chatInfo->chat_str, chatStr, CHAT_STR_LEN );
-		chatInfo->chat_str[CHAT_STR_LEN] = NULL;
+		chatInfo->chat_str[CHAT_STR_LEN] = '\0';
 	}
 
 	//----------------------------------------------//

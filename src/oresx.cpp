@@ -233,7 +233,7 @@ int ResourceIdx::data_size(char* dataName)
 		return index_buf[indexId].pointer - index_buf[indexId-1].pointer;
 		// ###### patch end Gilbert 19/11 ######//
 	else
-		return NULL;
+		return 0;
 }
 //----------- End of function ResourceIdx::data_size -------------//
 

@@ -348,7 +348,7 @@ void CampaignEastWest::stage_6_process_game_result()
 			// ######## patch begin 17/12 ########//
 			if( unit_array.is_deleted(ownNation->king_unit_recno) )
 			{
-				old_king_name[0] = NULL;
+				old_king_name[0] = '\0';
 				ownNation->set_king(hero_unit_recno, 0);		// 0 - this is not the first king
 			}
 			else if( ownNation->king_unit_recno != hero_unit_recno )
@@ -358,7 +358,7 @@ void CampaignEastWest::stage_6_process_game_result()
 				//--- save the name of the old king for displaying letter later ---//
 
 				strncpy( old_king_name, oldKingUnit->unit_name(0), CUSTOM_NAME_LEN );		//0-without title
-				old_king_name[CUSTOM_NAME_LEN] = NULL;
+				old_king_name[CUSTOM_NAME_LEN] = '\0';
 
 				//-- resign the old king and promote the hero as king ----//
 

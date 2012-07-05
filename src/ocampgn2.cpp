@@ -1872,7 +1872,7 @@ void Campaign::disp_text(int boxX1, int boxY1, int boxX2, int boxY2,
 				if( textPtr+j < dialogText )
 					break;
 
-				textPtr[j+1] = NULL;
+				textPtr[j+1] = '\0';
 				text_block_array[i].nullified_pos = j+1;
 				break;
 			}
@@ -2147,7 +2147,7 @@ void Campaign::disp_letter(char isMonster, char* dialogText, ...)
 					if( textPtr+j < text_buf )
 						break;
 
-					textPtr[j+1] = NULL;
+					textPtr[j+1] = '\0';
 					text_block_array[i].nullified_pos = j+1;
 					break;
 				}

@@ -694,7 +694,7 @@ char* NationBase::nation_name()
 
 	strncpy( nation_name_str, 
 		text_unit.str_unit_nation(race_id, king_name(1)), NATION_NAME_LEN );	// 1-get the first word of the name only
-	nation_name_str[NATION_NAME_LEN]=NULL;
+	nation_name_str[NATION_NAME_LEN]='\0';
 
 	return nation_name_str;		// each name needs to have its own var as multiple nation names will be displayed at the same time in diplomatic talk choices
 }

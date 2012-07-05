@@ -1086,7 +1086,7 @@ char* NationArray::get_custom_king_name(int nationRecno, int firstWordOnly)
 
 	char* humanName = custom_king_name_array[nationRecno-1];
 
-	if( humanName[0] == NULL )
+	if( humanName[0] == '\0' )
 		return NULL;
 
 	if( firstWordOnly )
@@ -1095,7 +1095,7 @@ char* NationArray::get_custom_king_name(int nationRecno, int firstWordOnly)
 		for( i=0 ; i<CUSTOM_NAME_LEN && humanName[i] && humanName[i]!=' ' ; i++ )
 			humanNameOneWord[i] = humanName[i];
 
-		humanNameOneWord[i] = NULL;
+		humanNameOneWord[i] = '\0';
 
 		return humanNameOneWord;
 	}
@@ -1116,7 +1116,7 @@ void NationArray::set_custom_king_name(int nationRecno, const char* nameStr)
 	err_when( nationRecno < 1 || nationRecno > MAX_NATION );
 
 	strncpy( custom_king_name_array[nationRecno-1], nameStr, CUSTOM_NAME_LEN );
-	custom_king_name_array[nationRecno-1][CUSTOM_NAME_LEN] = NULL;
+	custom_king_name_array[nationRecno-1][CUSTOM_NAME_LEN] = '\0';
 }
 //--------- End of function NationArray::set_custom_king_name ---------//
 
@@ -1146,7 +1146,7 @@ void NationArray::set_custom_nation_name(int nationRecno, const char* nameStr)
 	err_when( nationRecno < 1 || nationRecno > MAX_NATION );
 
 	strncpy( custom_nation_name_array[nationRecno-1], nameStr, CUSTOM_NAME_LEN );
-	custom_nation_name_array[nationRecno-1][CUSTOM_NAME_LEN] = NULL;
+	custom_nation_name_array[nationRecno-1][CUSTOM_NAME_LEN] = '\0';
 }
 //--------- End of function NationArray::set_custom_nation_name ---------//
 

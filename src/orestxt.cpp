@@ -86,7 +86,7 @@ void ResTxt::init(char* resName, int alwaysOpenFlag)
    strncpy( res_file_name, resName, MAX_PATH );
    strncat( res_file_name, ".RTX" , MAX_PATH );
 
-   res_file_name[MAX_PATH] = NULL;
+   res_file_name[MAX_PATH] = '\0';
 
    always_open_flag = alwaysOpenFlag;
 
@@ -207,7 +207,7 @@ char* ResTxt::get_body(int recNo)
    if( !always_open_flag )
       file_txt.file_close();
 
-   txt_buf[textSize]=NULL;
+   txt_buf[textSize]='\0';
 
    return txt_buf;
 }
@@ -226,7 +226,7 @@ char* ResTxt::get_body(int recNo)
 int ResTxt::locate_topic(char* titleStr)
 {
    if( !init_flag )
-      return NULL;
+      return 0;
 
    int       i;
    TxtIndex* txtIndex = txt_index_array;

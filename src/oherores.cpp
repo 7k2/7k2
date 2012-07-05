@@ -185,7 +185,7 @@ void HeroRes::generate_fictional_hero()
 			// ##### end Gilbert 1/3 #####//
 
 			strncpy( heroInfo->name, race_res[raceId]->get_name(nameId), heroInfo->NAME_LEN );
-			heroInfo->name[heroInfo->NAME_LEN] = NULL;
+			heroInfo->name[heroInfo->NAME_LEN] = '\0';
 		}
 	}
 

@@ -101,7 +101,7 @@ void CampaignNation::set_custom_name(char* customName)
 {
 	strncpy( custom_name, customName, CUSTOM_NAME_LEN );
 
-	custom_name[CUSTOM_NAME_LEN] = NULL;
+	custom_name[CUSTOM_NAME_LEN] = '\0';
 }
 //-------- End of function CampaignNation::set_custom_name ------//
 

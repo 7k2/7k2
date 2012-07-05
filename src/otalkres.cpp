@@ -670,7 +670,7 @@ void TalkRes::add_talk_choice(const char* talkStr, int talkPara, int talkPara2)
 
 	strncpy( talk_choice_array[talk_choice_count-1].str, talkStr, TalkChoice::CHOICE_TEXT_LEN);
 
-	talk_choice_array[talk_choice_count-1].str[TalkChoice::CHOICE_TEXT_LEN] = NULL;
+	talk_choice_array[talk_choice_count-1].str[TalkChoice::CHOICE_TEXT_LEN] = '\0';
 
 	talk_choice_array[talk_choice_count-1].para = talkPara;
 	talk_choice_array[talk_choice_count-1].para2 = talkPara2;

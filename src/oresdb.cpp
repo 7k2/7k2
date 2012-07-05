@@ -186,7 +186,7 @@ void ResourceDb::init_imported(const char* resName, int readAll, int useCommonBu
    deinit();
 
    db_obj             = NULL;
-   index_field_offset = NULL;
+   index_field_offset = 0;
 
    read_all = readAll;
 

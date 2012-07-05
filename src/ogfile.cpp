@@ -427,7 +427,7 @@ void GameFile::set_file_name(const char *path, const char *extension)
 
 	strncpy( file_name, str, MAX_PATH );
 
-	file_name[MAX_PATH] = NULL;
+	file_name[MAX_PATH] = '\0';
 }
 //--------- End of function GameFile::set_file_name -------//
 
@@ -498,7 +498,7 @@ int GameFile::write_game_header(File* filePtr)
 	Nation* playerNation = ~nation_array;
 
 	strncpy( player_name, playerNation->king_name(), NationArray::CUSTOM_NAME_LEN );
-	player_name[NationArray::CUSTOM_NAME_LEN] = NULL;
+	player_name[NationArray::CUSTOM_NAME_LEN] = '\0';
 
 	race_id 		 = playerNation->race_id;
 	nation_color = playerNation->nation_color;

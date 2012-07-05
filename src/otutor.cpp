@@ -303,13 +303,13 @@ void Tutor::load(int tutorId)
 			tokenStr = fileTxt.get_token(1);
 
 			strncpy( tutorTextBlock->button_code, tokenStr, tutorTextBlock->BUTTON_CODE_LEN );
-			tutorTextBlock->button_code[tutorTextBlock->BUTTON_CODE_LEN] = NULL;
+			tutorTextBlock->button_code[tutorTextBlock->BUTTON_CODE_LEN] = '\0';
 			
 			tokenStr = fileTxt.get_token(0); // advance the pointer
 		}
 		else
 		{
-			tutorTextBlock->button_code[0] = NULL;
+			tutorTextBlock->button_code[0] = '\0';
 		}
 
 		//------ read in the display title of the tutorial segment -------//
@@ -318,7 +318,7 @@ void Tutor::load(int tutorId)
 		if( strcmpi( tokenStr, "Title" ) == 0 )
 		{
 			fileTxt.get_token(1);		// advance the pointer
-			tutorTextBlock->title_code[0] = NULL;
+			tutorTextBlock->title_code[0] = '\0';
 			while (1)
 			{
 				tokenStr = fileTxt.get_token(1);
@@ -339,7 +339,7 @@ void Tutor::load(int tutorId)
 		}
 		else
 		{
-			tutorTextBlock->title_code[0] = NULL;
+			tutorTextBlock->title_code[0] = '\0';
 		}
 
 
@@ -398,8 +398,8 @@ void Tutor::load(int tutorId)
 		if( !tokenStr )
 			break;
 
-		tutorTextBlock->button_code[0] = NULL;
-		tutorTextBlock->title_code[0] = NULL;
+		tutorTextBlock->button_code[0] = '\0';
+		tutorTextBlock->title_code[0] = '\0';
 		
 		//------- read in the tutorial text -------//
 
@@ -455,8 +455,8 @@ void Tutor::load(int tutorId)
 		if( !tokenStr )
 			break;
 
-		tutorTextBlock->button_code[0] = NULL;
-		tutorTextBlock->title_code[0] = NULL;
+		tutorTextBlock->button_code[0] = '\0';
+		tutorTextBlock->title_code[0] = '\0';
 				
 		//------- read in the tutorial text -------//
 

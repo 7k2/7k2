@@ -86,7 +86,7 @@ void Misc::str_shorten(char* destStr, const char* srcStr, int destLen)
 {
    strncpy( destStr, srcStr, destLen );
 
-   destStr[destLen]=NULL;
+   destStr[destLen]='\0';
 
    //------ no need to cut characters if it fit preciously ----//
    //
@@ -116,9 +116,9 @@ void Misc::str_shorten(char* destStr, const char* srcStr, int destLen)
    int i;
 
    for( i=destLen-1 ; i>0 && destStr[i] != ' ' ; i-- )
-      destStr[i] = NULL;
+      destStr[i] = '\0';
 
-   destStr[i] = NULL;	// trim the space also
+   destStr[i] = '\0';	// trim the space also
 }
 //------------ END OF FUNCTIN Misc::str_shorten -----------------//
 
@@ -144,7 +144,7 @@ int Misc::str_cut(char* dstr, const char* sstr, int schar, int charnum )
    for (si=schar-1,di=0 ; ( di<charnum || forever ) && sstr[si] ; si++,di++)
       dstr[di] = sstr[si] ;
 
-   dstr[di] = NULL;      // terminating NULL sign
+   dstr[di] = '\0';      // terminating NULL sign
 
    return 1;
 }
@@ -329,7 +329,7 @@ void Misc::rtrim( char* des, char* src )
    for ( i=strlen(src)-1 ; src[i]==' ' && i>=0 ; i-- )
       des[i] = src[i];
 
-   des[i+1] = NULL;
+   des[i+1] = '\0';
 }
 //------- END OF FUNCTION Misc::rtrim --------//
 
@@ -351,7 +351,7 @@ void Misc::ltrim( char* des, char* src )
    for ( j=0 ; src[i] ; i++,j++ )
       des[j] = src[i];
 
-   des[j] = NULL;
+   des[j] = '\0';
 }
 //------- END OF FUNCTION Misc::ltrim --------//
 
@@ -373,7 +373,7 @@ void Misc::alltrim( char* des, char* src)
    for ( j=0 ; src[i] && src[i]!=' ' ; i++,j++ )
       des[j] = src[i];
 
-   des[j] = NULL;
+   des[j] = '\0';
 }
 //------- END OF FUNCTION Misc::alltrim --------//
 
@@ -388,7 +388,7 @@ char* Misc::rtrim( char* str )
 
    for ( i=strlen(str)-1 ; str[i]==' ' && i>=0 ; i-- );
 
-   str[i+1] = NULL;
+   str[i+1] = '\0';
 
    return str;
 }
@@ -408,7 +408,7 @@ char* Misc::ltrim( char* str )
    for ( j=0 ; str[i] ; i++,j++ )
       str[j] = str[i];
 
-   str[j] = NULL;
+   str[j] = '\0';
 
    return str;
 }
@@ -428,7 +428,7 @@ char* Misc::alltrim( char* str )
    for ( j=0 ; str[i] && str[i]!=' ' ; i++,j++ )
       str[j] = str[i];
 
-   str[j] = NULL;
+   str[j] = '\0';
 
    return str;
 }
@@ -447,7 +447,7 @@ char* Misc::alltrim( char* str )
 void Misc::empty(char *inStr, int strLen )
 {
    memset( inStr,' ',strLen);
-   inStr[strLen] = NULL;
+   inStr[strLen] = '\0';
 }
 
 //-------- END OF FUNCTION Misc::empty ---------//
@@ -494,7 +494,7 @@ void Misc::fix_str(char* str,int len,char endChar)
 {
    int oldLen;
 
-   if ( endChar == NULL )
+   if ( endChar == '\0' )
       oldLen = strlen(str);
    else
    {
@@ -506,7 +506,7 @@ void Misc::fix_str(char* str,int len,char endChar)
    if ( len > oldLen )
       memset( str+oldLen, ' ', len-oldLen );
 
-   str[len] = NULL;
+   str[len] = '\0';
 }
 
 //--------- END OF FUNCTION Misc::fix_str ---------//
@@ -556,7 +556,7 @@ int Misc::str_cmp( const char* str1, const char* str2 )
       if ( str1[i] != str2[i] )
          return 0;
 
-   return ( str2[i] == NULL && (str1[i]==NULL || str1[i]==' ') );
+   return ( str2[i] == '\0' && (str1[i]=='\0' || str1[i]==' ') );
 }
 
 //--------- END OF FUNCTION Misc::str_cmp -----------//
@@ -584,7 +584,7 @@ int Misc::str_cmpx( const char* str1, const char* str2 )
       if ( str1[i] != str2[i] )
          return 0;
 
-   return ( str2[i] == NULL );
+   return ( str2[i] == '\0' );
 }
 
 //--------- END OF FUNCTION Misc::str_cmpx -----------//
@@ -610,7 +610,7 @@ int Misc::str_icmpx( const char* str1, const char* str2 )
    register int a,b;
 
 
-   for (i=0 ; (a=str1[i]) != NULL && (b=str2[i]) != NULL ; i++)
+   for (i=0 ; (a=str1[i]) != '\0' && (b=str2[i]) != '\0' ; i++)
    {
       if ( a >= 'a' && a <= 'z' )
          a -= 32;
@@ -622,7 +622,7 @@ int Misc::str_icmpx( const char* str1, const char* str2 )
          return 0;
    }
 
-   return ( str2[i] == NULL );
+   return ( str2[i] == '\0' );
 }
 
 //--------- END OF FUNCTION Misc::str_icmpx -----------//
@@ -721,7 +721,7 @@ char* Misc::format( int inNum, int formatType )
    if( sign < 0 )
       *outPtr++ = ')';
 
-   *outPtr++ = NULL;
+   *outPtr++ = '\0';
 
    return outBuf;
 }
@@ -811,7 +811,7 @@ char* Misc::format(double inNum, int formatType)
    if( inNum < 0 )
       *outPtr++ = ')';
 
-   *outPtr++ = NULL;
+   *outPtr++ = '\0';
 
    return outBuf;
 }
@@ -861,13 +861,13 @@ char* Misc::nullify(char* strPtr, int strLen)
    {
       if( str_buf[i] != ' ' )
       {
-         str_buf[i+1] = NULL;
+         str_buf[i+1] = '\0';
          break;
       }
    }
 
    if( i<0 )              // Empty value
-      str_buf[0] = NULL;
+      str_buf[0] = '\0';
 
    return str_buf;
 }
@@ -890,7 +890,7 @@ void Misc::rtrim_fld(char* varPtr, char* fldPtr, int fldLen)
    int rtrimLen = rtrim_len( fldPtr, 1, fldLen );
 
    memcpy( varPtr, fldPtr, rtrimLen );
-   varPtr[rtrimLen] = NULL;
+   varPtr[rtrimLen] = '\0';
 }
 //---------- End of function Misc::rtrim_fld ---------//
 
@@ -1277,7 +1277,7 @@ void Misc::extract_file_name(char* desFileName, const char* srcFileName)
 	}
 
 	strncpy(desFileName, srcFileName+i+1, MAX_PATH);
-	desFileName[MAX_PATH]=NULL;
+	desFileName[MAX_PATH]='\0';
 }
 //---------- End of function Misc::extract_file_name ---------//
 

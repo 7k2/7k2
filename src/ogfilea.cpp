@@ -111,7 +111,7 @@ GameFileArray::GameFileArray() : DynArray( sizeof(GameFile), 10 )
 		demo_format = 1;
 	#endif
 */
-	last_file_name[0] = NULL;
+	last_file_name[0] = '\0';
 	save_default_dir[0] = '\0';
 	strcpy( save_default_ext, "*.SAV");
 	has_read_hall_of_fame = 0;

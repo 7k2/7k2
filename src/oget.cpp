@@ -156,7 +156,7 @@ void Get::init(int maxGetNum,int updownExitFlag)
    deinit();
 
    fld_array = (GetFld*) mem_add( sizeof(GetFld) * maxGetNum );
-   memset(fld_array, NULL, sizeof(GetFld) * maxGetNum );
+   memset(fld_array, 0, sizeof(GetFld) * maxGetNum );
 
    max_get_num  = maxGetNum;
    up_down_exit = updownExitFlag;
@@ -550,7 +550,7 @@ int Get::load_data( GetFld *getPtr, char *chr_buf )
    else
       memcpy( chr_buf, (char*)getPtr->data, strlen((char*)getPtr->data) );	// don't copy the NULL character
 
-   chr_buf[getPtr->width_data] = NULL;
+   chr_buf[getPtr->width_data] = '\0';
 
    //---- if has picture, process the character buf with the picture ----//
 
@@ -686,7 +686,7 @@ void Get::store_data( GetFld *getPtr, char *buffer, char *pict )
    {
       memcpy( getPtr->data, buffer, getPtr->width_data ) ;
 
-      ((char*)getPtr->data)[getPtr->width_data] = NULL;
+      ((char*)getPtr->data)[getPtr->width_data] = '\0';
 
       m.rtrim( (char*) getPtr->data );    // right rtrim the character
    }

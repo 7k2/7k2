@@ -355,7 +355,7 @@ char* TextResource::format(double inNum, int formatType)
    if( inNum < 0 )
       *outPtr++ = ')';
 
-   *outPtr++ = NULL;
+   *outPtr++ = '\0';
 
    return outBuf;
 }
@@ -418,7 +418,7 @@ char* TextResource::format(int inNum, int formatType)
    if( sign < 0 )
       *outPtr++ = ')';
 
-   *outPtr++ = NULL;
+   *outPtr++ = '\0';
 
    return outBuf;
 }
