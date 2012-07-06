@@ -149,7 +149,7 @@ typedef struct {
 	WORD  bfReserved2;
 	DWORD bfOffBits;
 } BITMAPFILEHEADER, *PBITMAPFILEHEADER;
-#pragma pack();
+#pragma pack()
 
 typedef struct tagBITMAPINFOHEADER {
 	DWORD biSize;
