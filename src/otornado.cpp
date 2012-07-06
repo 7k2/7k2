@@ -39,7 +39,7 @@
 #include <math.h>
 
 
-#define M_PI 3.141592654
+#define PI 3.141592654
 #define DAMAGE_POINT_RADIUS 32
 
 // #define TORNADO_SPRITE_ID  12          // Tornado sprite in SPRITE.DBF
@@ -96,7 +96,7 @@ void Tornado::process_move()
 	if( speed > 10)
 		speed = 10;
 
-	double windDir = weather.wind_direct_rad() + (m.random(31)-15)*M_PI/180.0;
+	double windDir = weather.wind_direct_rad() + (m.random(31)-15)*PI/180.0;
 	cur_x += short(speed * sin(windDir));
 	cur_y -= short(speed * cos(windDir));
 	if( ++cur_frame > cur_sprite_move()->frame_count )

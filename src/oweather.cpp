@@ -35,7 +35,7 @@
 #define WINDY 4
 #define HOT_WAVE 8
 #define COLD_WAVE 0x10
-#define M_PI 3.14159265359
+#define PI 3.14159265359
 
 
 //-------- Begin of function Lightning::rand_seed ----------//
@@ -106,7 +106,7 @@ void Weather::init_date(short year, short month, short day, short latitude, int 
 	day_to_quake = quakeFreq + rand_seed(quakeFreq);
 
 	// ----------- determine avg_temp and temp_amp from latitude
-	double angle = latitude * M_PI / 180.0;
+	double angle = latitude * PI / 180.0;
 	avg_temp = (short)( 35.0 - fabs(latitude / 90.0 * 40.0));
 	temp_amp = (short)( 17.0 * sin(angle));	// negative for South Hemisphere
 
@@ -244,7 +244,7 @@ void Weather::next_day()
 short Weather::base_temp()
 {
 	return( (short)(avg_temp + temp_amp * sin(season_phase / 365.0
-		* 2 * M_PI) ));
+		* 2 * PI) ));
 }
 //---------- End of function Weather::base_temp ----------//
 
@@ -308,7 +308,7 @@ double Weather::wind_direct_rad()
 {
 	if( this == &weather && magic_weather.wind_day > 0)
 		return magic_weather.wind_direct_rad();
-	return wind_dir * M_PI / 180.0;
+	return wind_dir * PI / 180.0;
 }
 //---------- End of function Weather::wind_direct ----------//
 
@@ -615,7 +615,7 @@ short MagicWeather::wind_direct()
 //--------- Begin of function MagicWeather::wind_direct_rad ----------//
 double MagicWeather::wind_direct_rad()
 {
-	return wind_dir * M_PI / 180.0;
+	return wind_dir * PI / 180.0;
 }
 //--------- End of function MagicWeather::wind_direct_rad ----------//
 
