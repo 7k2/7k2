@@ -84,8 +84,6 @@ public:
 	//---------- system functions ----------//
 
 	void		init(Surface *s, char front);
-	void		attach_surface(VgaBuf *);
-	void		detach_surface(VgaBuf *);
 	void		deinit();
 	BOOL		is_buf_lost() { return surface->is_buf_lost(); }
 	BOOL		restore_buf() { return surface->restore_buf(); }
@@ -364,6 +362,8 @@ public:
 
 	void		join_trans( VgaBuf *srcBuf, int x, int y, char *bitmapBuf )
 				{ IMGjoinTransRemap( cur_buf_ptr, cur_pitch, srcBuf->cur_buf_ptr, srcBuf->cur_pitch, x, y, bitmapBuf, default_remap_table ); }
+
+	void flip(VgaBuf *srcBuf) { surface->flip(srcBuf->surface); }
 };
 
 extern VgaBuf vga_front, vga_back, vga_true_front;

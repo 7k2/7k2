@@ -154,10 +154,6 @@ int VgaSDL::init()
       init_back(&vga_back);		// create in system memory
    }
 
-#if(defined(USE_FLIP))
-	vga_front.attach_surface( &vga_back );
-#endif
-
    vga_front.lock_buf();
 
    vga_back.lock_buf();
@@ -326,7 +322,7 @@ void VgaSDL::flip()
 	vga_front.temp_unlock();
 	vga_back.temp_unlock();
 
-	vga_front.dd_buf->Flip(NULL, DDFLIP_WAIT );
+	vga_front.flip(&vga_back);
 
 	vga_back.temp_restore_lock();
 	vga_front.temp_restore_lock();

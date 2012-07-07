@@ -24,6 +24,7 @@
 #ifndef __SURFACE_SDL_H
 #define __SURFACE_SDL_H
 
+#include <algorithm>
 #include <cstddef>
 #include "SDL.h"
 #include <win32_compat.h>
@@ -69,6 +70,8 @@ public:
 	void	blt_virtual_buf(SurfaceSDL *srcBuf);
 	void	blt_virtual_buf_area(SurfaceSDL *srcBuf, int x1, int y1, int x2, int y2);
 	SDL_Surface *get_surface();
+	SDL_Surface*& get_surface_sdl() { return surface; }
+	void flip(SurfaceSDL *srcBuf) { std::swap(surface, srcBuf->get_surface_sdl()); }
 };
 
 typedef SurfaceSDL Surface;

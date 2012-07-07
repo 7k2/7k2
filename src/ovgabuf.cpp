@@ -67,39 +67,6 @@ void VgaBuf::init(Surface *s, char front)
 }
 //-------- End of function VgaBuf::init ----------//
 
-//------ Begin of function VgaBuf::attach_surface --------//
-void VgaBuf::attach_surface(VgaBuf *backBuf)
-{
-#ifdef USE_FLIP
-	HRESULT rc;
-	if( dd_buf && backBuf->dd_buf )
-	{
-		rc = dd_buf->AddAttachedSurface(backBuf->dd_buf);
-		// ##### begin Gilbert 4/11 #####//
-		// err_when( rc != DD_OK );
-		if( rc != DD_OK )
-			err.run( dd_err_str("Cannot attach flipping surface", rc) );
-		// ##### end Gilbert 4/11 #####//
-	}
-#endif
-}
-//------ End of function VgaBuf::attach_surface --------//
-
-
-//------ Begin of function VgaBuf::detach_surface --------//
-void VgaBuf::detach_surface(VgaBuf *backBuf)
-{
-#ifdef USE_FLIP
-	HRESULT rc;
-	if( dd_buf && backBuf->dd_buf )
-	{
-		rc = dd_buf->DeleteAttachedSurface(0, backBuf->dd_buf);
-		err_when( rc != DD_OK );
-	}
-#endif
-}
-//------ End of function VgaBuf::detach_surface --------//
-
 
 //------ Begin of function VgaBuf::deinit --------//
 
