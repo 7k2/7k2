@@ -399,7 +399,7 @@ void VgaUtil::disp_image_file(const char* fileName, int x1, int y1)
 
    str  = DIR_IMAGE;
    str += fileName;
-   str += ".JPG";
+   str += ".jpg";
 
    if( m.is_file_exist(str) )
    {

@@ -49,7 +49,7 @@ static ResourceIdx res_credit;
 void Game::view_credits()
 {
 	//----- display the first page ------//
-	vga_util.disp_image_file("CREDITS1");
+	vga_util.disp_image_file("credits1");
 
 	String str;
 	str  = DIR_RES;
@@ -90,7 +90,7 @@ void Game::view_credits()
 	}
 	
 	//----- display the 2nd page ------//
-	vga_util.disp_image_file("CREDITS1");
+	vga_util.disp_image_file("credits1");
 
 	credit_buf = NULL;
 	credit_buf_size = 0;

@@ -58,12 +58,12 @@ void GameFileArray::disp_hall_of_fame(int type)
 	int y = 116, offset = 76;
 	if (type)
 	{
-		vga_util.disp_image_file("HALFAME2");
+		vga_util.disp_image_file("halfame2");
 		y += 76;
 		offset -= 20;
 	}
 	else
-		vga_util.disp_image_file("HALFAME1");
+		vga_util.disp_image_file("halfame1");
 
 	//---------- display hall of fame records ------------//
 

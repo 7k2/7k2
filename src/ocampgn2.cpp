@@ -781,7 +781,7 @@ void Campaign::disp_intro()
 	mouse.hide();
 	
 	vga.use_back();
-	vga_util.disp_image_file("FRWIN01");
+	vga_util.disp_image_file("frwin01");
 	sys.yield();
 	for (i = 0; i < 4; i++)
 	{
@@ -937,7 +937,7 @@ void Campaign::disp_monster_defeated()
 	
 	mouse.hide();
 	vga.use_back();
-	vga_util.disp_image_file("HUWIN02");
+	vga_util.disp_image_file("huwin02");
 	sys.yield();
 	for (i = 0; i < 4; i++)
 	{
@@ -1084,7 +1084,7 @@ void Campaign::disp_final_victory()
 	
 	mouse.hide();
 	vga.use_back();
-	vga_util.disp_image_file("BRIEF01");
+	vga_util.disp_image_file("brief01");
 	sys.yield();
 	for (i = 0; i < 4; i++)
 	{
@@ -2187,11 +2187,11 @@ void Campaign::disp_letter(char isMonster, char* dialogText, ...)
 		if (!vga.use_back_buf)
 		{
 			vga.use_back();
-			vga_util.disp_image_file("LETTERS");
+			vga_util.disp_image_file("letters");
 			vga.use_front();
 		}
 		else
-			vga_util.disp_image_file("LETTERS");
+			vga_util.disp_image_file("letters");
 
 		if( isMonster == 1 )
 			font_cmpf.center_put_paragraph( LETTER_TEXT_X1, LETTER_TEXT_Y1, LETTER_TEXT_X2, LETTER_TEXT_Y2,
@@ -2400,11 +2400,11 @@ void Campaign::disp_nation_info()
 	if (!vga.use_back_buf)
 	{
 		vga.use_back();
-		vga_util.disp_image_file("CAMPAIGN");
+		vga_util.disp_image_file("campaign");
 		vga.use_front();
 	}
 	else
-		vga_util.disp_image_file("CAMPAIGN");
+		vga_util.disp_image_file("campaign");
 
 //vga_back.adjust_brightness( 0, 0, VGA_WIDTH -1, MAIN_MAP_Y2+10, -6 );
 

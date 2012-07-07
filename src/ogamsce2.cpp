@@ -431,7 +431,7 @@ int Game::select_scenario(int scenCount, ScenInfo* scenInfoArray)
 			char* pathName;
 
 			scenFileName = scenInfoArray[scenIndex[browseRecno-1]].file_name;
-			m.change_file_ext( pictName, scenFileName, "SCP" );
+			m.change_file_ext( pictName, scenFileName, "scp" );
 			m.change_file_ext( textName, scenFileName, "SCT" );
 			pathName = DIR_SCENARIO_PATH(scenInfoArray[scenIndex[browseRecno-1]].dir_id);
 			err_when( ! *pathName );
