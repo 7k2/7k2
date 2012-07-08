@@ -387,11 +387,13 @@ static void extra_error_handler();
 //
 int main(int argc, char **argv)
 {
-	//try to read from CONFIG.DAT, moved to AM.CPP
+	sys.set_config_dir();
+
+	//try to read from config.dat, moved to AM.CPP
 
 	// ####### patch begin Gilbert 14/1 ########//
 	// validate
-	if( !config.load("CONFIG.DAT") || !config.validate() )
+	if( !config.load("config.dat") || !config.validate() )
 	{
 		new_config_dat_flag = 1;
 		config.init();

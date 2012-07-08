@@ -31,6 +31,9 @@
 #include <omodeid.h>
 #include <ogame.h>
 //#include <ot_gmenu.h>
+#include <dbglog.h>
+
+DBGLOG_DEFAULT_CHANNEL(Config);
 
 // ------- define difficult table ---------//
 
@@ -70,7 +73,7 @@ void Config::init()
 
 void Config::deinit()
 {
-	config.save("CONFIG.DAT");		// save the config when the game quits
+	config.save("config.dat");		// save the config when the game quits
 
 	default_game_setting();
 	default_local_game_setting();
@@ -464,9 +467,17 @@ void Config::disable_weather_audio()
 //--------- Begin of function Config::save -------------//
 int Config::save(const char *filename)
 {
+	char full_path[MAX_PATH+1];
 	File configFile;
 
-	if( !configFile.file_create(filename) )
+	if(!m.path_cat(full_path, sys.dir_config, filename, MAX_PATH))
+	{
+		ERR("Path too long to the config file.\n");
+		return 0;
+	}
+	MSG("Saving config: %s\n", full_path);
+
+	if( !configFile.file_create(full_path) )
 		return 0;
 
 	int retFlag = write_file(&configFile);
@@ -485,9 +496,17 @@ int Config::save(const char *filename)
 //
 int Config::load(const char *filename)
 {
+	char full_path[MAX_PATH+1];
 	File configFile;
 
-	if( !m.is_file_exist(filename) || !configFile.file_open(filename) )
+        if(!m.path_cat(full_path, sys.dir_config, filename, MAX_PATH))
+        {
+                ERR("Path too long to the config file.\n");
+                return 0;
+        }
+        MSG("Loading config: %s\n", full_path);
+
+	if( !m.is_file_exist(full_path) || !configFile.file_open(full_path) )
 		return 0;
 
 	int retFlag = 0;

@@ -627,10 +627,10 @@ int OptionMenu::detect()
 		{
 			// save config
 			Config fileConfig;
-			if( !fileConfig.load("CONFIG.DAT") )
+			if( !fileConfig.load("config.dat") )
 				fileConfig.init();
 			fileConfig.change_preference(tempConfig);
-			fileConfig.save("CONFIG.DAT");
+			fileConfig.save("config.dat");
 		}
 
 	}

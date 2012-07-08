@@ -81,7 +81,7 @@ void Game::single_player_game(int noAI)
 		return;
 
 	// ------ attempt to save the config -------//
-	config.save("CONFIG.DAT");
+	config.save("config.dat");
 
 	//------ start single player game ----------//
 

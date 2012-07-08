@@ -45,6 +45,13 @@ extern const int GAME_VERSION;
 #define PATH_DELIM "\\"
 #endif
 
+// config dir
+#ifdef NO_WINDOWS
+#define DEFAULT_DIR_CONFIG PATH_DELIM ".config" PATH_DELIM "7k2"
+#else // WINDOWS
+#define DEFAULT_DIR_CONFIG PATH_DELIM "7k2"
+#endif
+
 #define DIR_RES               "resource"PATH_DELIM
 #define DIR_SPRITE            "sprite"PATH_DELIM
 #define DIR_FIRM              "firm"PATH_DELIM

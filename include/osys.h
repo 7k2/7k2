@@ -138,6 +138,7 @@ public:
 
 	char  	cdrom_drive;
 
+	char  	dir_config[MAX_PATH+1];
 	char  	dir_image[MAX_PATH+1];
 	char  	dir_music[MAX_PATH+1];
 	char  	dir_tutorial[MAX_PATH+1];
@@ -200,6 +201,7 @@ public:
 
 	//---- for setting game directories ----//
 
+	int 		set_config_dir();
 	void 		set_game_dir();
 
 	//-------- for load/save games --------//

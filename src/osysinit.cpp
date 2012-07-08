@@ -57,6 +57,9 @@
 #include <ot_talk.h>
 #include <ot_news.h>
 #include <ot_sedit.h>
+#include <dbglog.h>
+
+DBGLOG_DEFAULT_CHANNEL(Sys);
 
 
 // -------- define constant -----//
@@ -112,6 +115,11 @@ int Sys::init()
 #else
 	use_true_front         = debug_session;
 #endif
+
+	// where saves, config.dat, player profiles, and hall of fame are kept
+	if (!set_config_dir())
+	   return FALSE;
+
 	// ##### begin Gilbert 15/2 ########//
 
 	set_game_dir();      // set game directories names and game version
@@ -464,6 +472,48 @@ void Sys::deinit_objects()
    game_file_array.deinit();
 }
 //------- End of function Sys::deinit_objects -----------//
+
+
+//-------- Begin of function Sys::set_config_dir --------//
+//
+int Sys::set_config_dir()
+{
+#ifdef NO_WINDOWS
+   const char *home_env_var = "HOME";
+#else // WINDOWS
+   const char *home_env_var = "USERPROFILE";
+#endif
+   int r;
+
+   // Find the path for the config directory--this is based on the default
+   // location for the logged in user.
+   char *home = getenv(home_env_var);
+
+   if (strlen(home) + strlen(DEFAULT_DIR_CONFIG) >= MAX_PATH-2)
+   {
+      ERR("Game config dir path too long.\n");
+      return 0;
+   }
+
+   strcpy(dir_config, home);
+   strcat(dir_config, DEFAULT_DIR_CONFIG);
+
+   MSG("Game config dir path: %s\n", dir_config);
+
+   // create the config directory
+   if (!m.mkpath(dir_config))
+   {
+      ERR("Unable to acquire a usable game config dir.\n");
+      dir_config[0] = 0;
+      return 0;
+   }
+
+   // place ending delimiter to help with concatenating
+   strcat(dir_config, PATH_DELIM);
+
+   return 1;
+}
+//------- End of function Sys::set_config_dir -----------//
 
 
 //-------- Begin of function Sys::set_game_dir ----------//
