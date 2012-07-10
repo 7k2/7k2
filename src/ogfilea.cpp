@@ -52,6 +52,9 @@
 #include <ocampgn.h>
 #include <ot_gmenu.h>
 #include <ot_basic.h>
+#include <dbglog.h>
+
+DBGLOG_DEFAULT_CHANNEL(GameFile);
 
 
 //--------- Define constant ---------//
@@ -82,7 +85,7 @@
 
 #define MAX_BROWSE_DISP_REC	   4		// max. no. of records can be displayed in the saved game browser
 
-#define HALL_OF_FAME_FILE_NAME  "HALLFAME.DAT"
+#define HALL_OF_FAME_FILE_NAME  "hallfame.dat"
 
 //------- Declare static vars & functions ----------//
 
@@ -1063,10 +1066,17 @@ void GameFileArray::del_game()
 //
 int GameFileArray::write_hall_of_fame()
 {
+	char full_path[MAX_PATH+1];
 	int  rc;
 	File file;
 
-	rc = file.file_create( HALL_OF_FAME_FILE_NAME, 0, 1 );  // 0=don't handle error itself
+	if (!m.path_cat(full_path, sys.dir_config, HALL_OF_FAME_FILE_NAME, MAX_PATH))
+	{
+		ERR("Path to the hall of fame too long.\n");
+		return 0;
+	}
+
+	rc = file.file_create( full_path, 0, 1 );  // 0=don't handle error itself
 
 	if( !rc )
 		return 0;
@@ -1093,13 +1103,20 @@ int GameFileArray::write_hall_of_fame()
 //
 int GameFileArray::read_hall_of_fame()
 {
-	if( !m.is_file_exist(HALL_OF_FAME_FILE_NAME) )
-		return 0;
-
+	char full_path[MAX_PATH+1];
 	int  rc;
 	File file;
 
-	rc = file.file_open( HALL_OF_FAME_FILE_NAME, 0, 1 );   // 0=don't handle error itself
+	if (!m.path_cat(full_path, sys.dir_config, HALL_OF_FAME_FILE_NAME, MAX_PATH))
+	{
+		ERR("Path to the hall of fame too long.\n");
+		return 0;
+	}
+
+	if( !m.is_file_exist(full_path) )
+		return 0;
+
+	rc = file.file_open( full_path, 0, 1 );   // 0=don't handle error itself
                                                         // 1=allow the writing size and the read size to be different
 	if( !rc )
 		return 0;
