@@ -45,8 +45,10 @@
 #include <ounitres.h>
 #include <oraceres.h>
 #include <ot_gmenu.h>
-
+#include <dbglog.h>
 #include <stdio.h>
+
+DBGLOG_DEFAULT_CHANNEL(PlayerProfile);
 
 
 #define PPOPTION_PAGE          0x40000000
@@ -207,12 +209,18 @@ int PlayerProfile::register_menu()
 
 	if( is_registered() )		// try to load it again
 	{
+		char full_path[MAX_PATH+1];
 		String str;
 		str = file_name;
 		str += ".PRF";
 
 		File f;
-		if( !m.is_file_exist(str) || !f.file_open(str) || !reload() )
+		if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
+		{
+			ERR("Path to the player profile too long.\n");
+			return 0;
+		}
+		if( !m.is_file_exist(full_path) || !f.file_open(full_path) || !reload() )
 		{
 			init();
 		}
@@ -315,9 +323,15 @@ int PlayerProfile::register_menu()
 		{
 			if( refreshFlag & PPOPTION_ENUM_PROFILE )
 			{
+				char full_path[MAX_PATH+1];
 				profileCount = 0;
 				Directory profileDir;
-				profileDir.read( "*.PRF", 1 );		// sort file name
+				if( !m.path_cat(full_path, sys.dir_config, "*.PRF", MAX_PATH) )
+				{
+					ERR("Path to the config directory too long.\n");
+					return 0;
+				}
+				profileDir.read( full_path, 1 );		// sort file name
 				profileBlock.resize( sizeof(PlayerProfile) * profileDir.size() );
 				profileArray = (PlayerProfile *) profileBlock.p();
 				int i;
@@ -641,13 +655,19 @@ int PlayerProfile::register_menu()
 
 					// ------ create dir_save first ------//
 
+					char full_path[MAX_PATH+1];
 					String str;
 					str = DIR_SAVE;
 					str = str.substr(0, str.len()-1);
 					// remove backslash at the end
-					if( !m.is_file_exist(str) )
+					if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
 					{
-						if( !m.mkpath( str ) )
+						ERR("Path to the save game directory too long.\n");
+						return 0;
+					}
+					if( !m.is_file_exist(full_path) )
+					{
+						if( !m.mkpath( full_path ) )
 						{
 							// box.msg( "Error creating SAVE directory" );
 							box.msg( text_game_menu.str_profile_error_dir(str) );
@@ -659,7 +679,12 @@ int PlayerProfile::register_menu()
 
 					str = file_name;
 					str += ".PRF";
-					if( m.is_file_exist(str) )
+					if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
+					{
+						ERR("Path to the player profile too long.\n");
+						return 0;
+					}
+					if( m.is_file_exist(full_path) )
 					{
 						if( strlen(file_name) >= 4 )
 							file_name[4] = '\0';		// cut to 4 char
@@ -668,8 +693,10 @@ int PlayerProfile::register_menu()
 						strcat( file_name, "_____001"+strlen(file_name) );
 						str = file_name,
 						str += ".PRF";
+						char tryPath[MAX_PATH+1];
+						m.path_cat( tryPath, sys.dir_config, str, MAX_PATH );
 						int tryCount = 1;
-						while( m.is_file_exist(str) )
+						while( m.is_file_exist(tryPath) )
 						{
 							++tryCount;
 							if( tryCount >= 1000 )
@@ -683,6 +710,7 @@ int PlayerProfile::register_menu()
 							file_name[5] = (tryCount / 100) % 10 + '0';		// unit digit
 							str = file_name;
 							str += ".PRF";
+							m.path_cat( tryPath, sys.dir_config, str, MAX_PATH );
 						}
 					}
 
@@ -690,7 +718,12 @@ int PlayerProfile::register_menu()
 
 					str = DIR_SAVE;
 					str += save_dir;
-					if( m.is_file_exist(str) )
+					if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
+					{
+						ERR("Path to the save game directory too long.\n");
+						return 0;
+					}
+					if( m.is_file_exist(full_path) )
 					{
 						if( strlen(save_dir) >= 4 )
 							save_dir[4] = '\0';		// cut to 4 char
@@ -699,8 +732,10 @@ int PlayerProfile::register_menu()
 						strcat( save_dir, "_____001"+strlen(save_dir) );
 						str = DIR_SAVE;
 						str += save_dir;
+						char tryPath[MAX_PATH+1];
+						m.path_cat( tryPath, sys.dir_config, str, MAX_PATH );
 						int tryCount = 1;
-						while( m.is_file_exist(str) )
+						while( m.is_file_exist(tryPath) )
 						{
 							++tryCount;
 							if( tryCount >= 1000 )
@@ -714,16 +749,22 @@ int PlayerProfile::register_menu()
 							save_dir[5] = (tryCount / 100) % 10 + '0';		// hundred digit
 							str = DIR_SAVE;
 							str += save_dir;
+							m.path_cat( tryPath, sys.dir_config, str, MAX_PATH );
 						}
 					}
 
 					// ------ create directory -------//
 
-					int dirCreated = m.mkpath( str );
+					if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
+					{
+						ERR("Path to the save game directory too long.\n");
+						return 0;
+					}
+					int dirCreated = m.mkpath( full_path );
 					if( !save() )
 					{
 						if( dirCreated )
-							remove( str);	// clear the directory created
+							remove( full_path );	// clear the directory created
 						// box.msg( "Error creating profile" );
 						box.msg( text_game_menu.str_profile_error_create() );
 					}
@@ -756,17 +797,28 @@ int PlayerProfile::register_menu()
 		case PROFILE_MENU_DEL:
 			if( mouse.single_click(BUTTON2_X1, BUTTON2_Y1, BUTTON2_X2, BUTTON2_Y2) )
 			{
+				char full_path[MAX_PATH+1];
 				String str;
 				str = profileArray[selectedProfile-1].file_name;
 				str += ".PRF";
-				remove(str);
+				if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
+				{
+					ERR("Path to the player profile too long.\n");
+					return 0;
+				}
+				remove( full_path );
 
 				// BUGHERE : delete file inside the directory 
 
 				// ###### patch begin Gilbert 12/4 #######//
 				str = DIR_SAVE;
 				str += profileArray[selectedProfile-1].save_dir;
-				remove( str );
+				if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
+				{
+					ERR("Path to the save game directory too long.\n");
+					return 0;
+				}
+				remove( full_path );
 				// ###### patch end Gilbert 12/4 #######//
 
 				if(stricmp( file_name, profileArray[selectedProfile-1].file_name) == 0)
@@ -879,8 +931,14 @@ static void disp_scroll_bar_func(SlideBar *scroll, int)
 //
 int PlayerProfile::load_count_profiles( PlayerProfile *profileArray, int maxLoad )
 {
+	char full_path[MAX_PATH+1];
 	Directory profileDir;
-	profileDir.read( "*.PRF", 1 );		// sort file name
+	if( !m.path_cat(full_path, sys.dir_config, "*.PRF", MAX_PATH) )
+	{
+		ERR("Path to the config directory too long.\n");
+		return 0;
+	}
+	profileDir.read( full_path, 1 );		// sort file name
 
 	int profileCount = 0;
 	for( int i = 1; i <= profileDir.size() && profileCount < maxLoad; ++i )

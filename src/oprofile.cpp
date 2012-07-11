@@ -31,10 +31,13 @@
 #include <ounit.h>
 #include <ospy.h>
 #include <osoldier.h>
+#include <osys.h>
 #include <otransl.h>
 #include <ot_unit.h>
-
+#include <dbglog.h>
 #include <stdlib.h>
+
+DBGLOG_DEFAULT_CHANNEL(PlayerProfile);
 
 
 // ------- begin of function PlayerProfile::PlayerProfile -------//
@@ -84,12 +87,18 @@ int PlayerProfile::save()
 
 	encrypt( BYTE(m.get_time() % 192) + 32 | 7);
 
+	char full_path[MAX_PATH+1];
 	File f;
 	String str;
 	str = file_name;
 	str += ".PRF";
 
-	f.file_create( str );
+	if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
+	{
+		ERR("Path to the player profile too long.\n");
+		return 0;
+	}
+	f.file_create( full_path );
 	int rc = f.file_write( this, sizeof(*this) );
 	f.file_close();
 
@@ -111,8 +120,14 @@ int PlayerProfile::load(char *fileName)
 {
 	PlayerProfile tmp;
 
+	char full_path[MAX_PATH+1];
 	File f;
-	f.file_open(fileName);
+	if( !m.path_cat(full_path, sys.dir_config, fileName, MAX_PATH) )
+	{
+		ERR("Path to the player profile too long.\n");
+		return 0;
+	}
+	f.file_open(full_path);
 
 	if( f.file_read(&tmp, sizeof(tmp)) && tmp.decrypt() )
 	{
@@ -168,13 +183,24 @@ char *PlayerProfile::save_game_path(char *wildcardStr)
 	}
 	else
 	{
-		strcpy( retStr, DIR_SAVE );
-		strcat( retStr, save_dir );
+		char full_path[MAX_PATH+1];
+		m.path_cat( full_path, sys.dir_config, DIR_SAVE, MAX_PATH );
+		if( !m.path_cat( full_path, full_path, save_dir, MAX_PATH) )
+		{
+			ERR( "Path to the save game directory too long.\n" );
+			return NULL;
+		}
+		strcpy( retStr, full_path );
 
 		if( wildcardStr )
 		{
-			strcat( retStr, PATH_DELIM );
-			strcat( retStr, wildcardStr );
+			m.path_cat( full_path, full_path, PATH_DELIM, MAX_PATH );
+			if( !m.path_cat( full_path, full_path, wildcardStr, MAX_PATH ) )
+			{
+				ERR( "Path to the save game directory too long.\n" );
+				return NULL;
+			}
+			strcpy( retStr, full_path );
 		}
 	}
 
