@@ -212,7 +212,7 @@ int PlayerProfile::register_menu()
 		char full_path[MAX_PATH+1];
 		String str;
 		str = file_name;
-		str += ".PRF";
+		str += ".prf";
 
 		File f;
 		if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
@@ -230,7 +230,7 @@ int PlayerProfile::register_menu()
 		init();
 	}
 
-	// ------- directory of PRF file ------//
+	// ------- directory of prf file ------//
 
 	Blob profileBlock;
 	PlayerProfile *profileArray = NULL;
@@ -326,7 +326,7 @@ int PlayerProfile::register_menu()
 				char full_path[MAX_PATH+1];
 				profileCount = 0;
 				Directory profileDir;
-				if( !m.path_cat(full_path, sys.dir_config, "*.PRF", MAX_PATH) )
+				if( !m.path_cat(full_path, sys.dir_config, "*.prf", MAX_PATH) )
 				{
 					ERR("Path to the config directory too long.\n");
 					return 0;
@@ -678,7 +678,7 @@ int PlayerProfile::register_menu()
 					// ----- set file_name ------ //
 
 					str = file_name;
-					str += ".PRF";
+					str += ".prf";
 					if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
 					{
 						ERR("Path to the player profile too long.\n");
@@ -692,7 +692,7 @@ int PlayerProfile::register_menu()
 						// pad trail underscore and "001"
 						strcat( file_name, "_____001"+strlen(file_name) );
 						str = file_name,
-						str += ".PRF";
+						str += ".prf";
 						char tryPath[MAX_PATH+1];
 						m.path_cat( tryPath, sys.dir_config, str, MAX_PATH );
 						int tryCount = 1;
@@ -709,7 +709,7 @@ int PlayerProfile::register_menu()
 							file_name[6] = (tryCount / 10) % 10 + '0';		// ten digit
 							file_name[5] = (tryCount / 100) % 10 + '0';		// unit digit
 							str = file_name;
-							str += ".PRF";
+							str += ".prf";
 							m.path_cat( tryPath, sys.dir_config, str, MAX_PATH );
 						}
 					}
@@ -800,7 +800,7 @@ int PlayerProfile::register_menu()
 				char full_path[MAX_PATH+1];
 				String str;
 				str = profileArray[selectedProfile-1].file_name;
-				str += ".PRF";
+				str += ".prf";
 				if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
 				{
 					ERR("Path to the player profile too long.\n");
@@ -933,7 +933,7 @@ int PlayerProfile::load_count_profiles( PlayerProfile *profileArray, int maxLoad
 {
 	char full_path[MAX_PATH+1];
 	Directory profileDir;
-	if( !m.path_cat(full_path, sys.dir_config, "*.PRF", MAX_PATH) )
+	if( !m.path_cat(full_path, sys.dir_config, "*.prf", MAX_PATH) )
 	{
 		ERR("Path to the config directory too long.\n");
 		return 0;

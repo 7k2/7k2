@@ -77,7 +77,7 @@ int PlayerProfile::is_registered()
 
 // ------- begin of function PlayerProfile::save -------//
 //
-// save to <file_name>.PRF
+// save to <file_name>.prf
 //
 // return true if success
 //
@@ -91,7 +91,7 @@ int PlayerProfile::save()
 	File f;
 	String str;
 	str = file_name;
-	str += ".PRF";
+	str += ".prf";
 
 	if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
 	{
@@ -158,7 +158,7 @@ int PlayerProfile::reload()
 {
 	String str;
 	str = file_name;
-	str += ".PRF";
+	str += ".prf";
 
 	return load(str);
 }
