@@ -75,9 +75,11 @@ void Config::deinit()
 {
 	config.save("config.dat");		// save the config when the game quits
 
+#if 0 // FIXME
 	default_game_setting();
 	default_local_game_setting();
 	default_preference();
+#endif
 }
 //--------- End of function Config::deinit --------//
 
