@@ -1114,6 +1114,9 @@ int MouseSDL::poll_event()
 		case SDL_KEYUP:
 			update_skey_state();
 			break;
+		case SDL_TEXTINPUT:
+			// Not interested.
+			break;
 		default:
 			ERR("unhandled event %d\n", event.type);
 			break;
