@@ -34,6 +34,9 @@
 #include <otornado.h>
 #include <ospy.h>
 #include <math.h>
+#include <dbglog.h>
+
+DBGLOG_DEFAULT_CHANNEL(UnitGod);
 
 // -------- Begin of function UnitGod::UnitGod --------//
 //
@@ -496,7 +499,7 @@ void UnitGod::cast_on_unit(int unitRecno, int divider)
 		break;
 
 	default:
-		err_here();
+		ERR("cast_on_unit(): god_id = %d\n", god_id);
 	}
 }
 //---------- End of function UnitGod::cast_on_unit ----------//
