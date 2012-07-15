@@ -338,8 +338,11 @@ void UnitCaravan::detect_stop()
 
 		if( button_go_stop[i].detect() )
 		{
-			Firm* firmPtr = firm_array[ stop_array[i].firm_recno ];
-			world.go_loc( firmPtr->center_x, firmPtr->center_y );
+			if ( !firm_array.is_deleted(stop_array[i].firm_recno) )
+			{
+				Firm* firmPtr = firm_array[ stop_array[i].firm_recno ];
+				world.go_loc( firmPtr->center_x, firmPtr->center_y );
+			}
 		}
 
 		if( !is_own() )
