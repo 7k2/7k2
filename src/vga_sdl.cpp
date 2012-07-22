@@ -398,18 +398,36 @@ void VgaSDL::handle_messages()
 //-------- End of function VgaSDL::handle_messages --------//
 
 
+namespace
+{
+
+// Source of rotl function:
+//   http://en.wikipedia.org/wiki/Circular_shift
+unsigned int rotl(const unsigned int value, int shift)
+{
+	if( (shift &= sizeof(value) * 8 - 1) == 0 )
+		return value;
+	return (value << shift) | (value >> (sizeof(value) * 8 - shift));
+}
+
+}  // namespace
+
 int VgaSDL::make_pixel(Uint8 red, Uint8 green, Uint8 blue)
 {
-	// ##### begin Gilbert 19/10 #######//
-	return IMGmakePixel( (blue << 16) + (green << 8) + red);
-	// ##### end Gilbert 19/10 #######//
+	Uint32 eax = SDL_Swap32((blue << 16) + (green << 8) + red);
+	eax = rotl(eax, 8);
+	Uint8 al = ((Uint8)eax) >> 3;
+	eax = (eax & 0xFFFFFF00) | al;
+	eax = rotl(eax, 8);
+	Uint16 ax = ((Uint16)eax) >> 2;
+	eax = (eax & 0xFFFF0000) | ax;
+	eax = rotl(eax, 5);
+	return eax;
 }
 
 int VgaSDL::make_pixel(RGBColor *rgb)
 {
-	int u;
-	memcpy(&u, rgb, sizeof(RGBColor));
-	return IMGmakePixel(u);
+	return make_pixel(rgb->red, rgb->green, rgb->blue);
 }
 
 void VgaSDL::decode_pixel(int p, RGBColor *rgb)
