@@ -432,7 +432,14 @@ int VgaSDL::make_pixel(RGBColor *rgb)
 
 void VgaSDL::decode_pixel(int p, RGBColor *rgb)
 {
-	int u = IMGdecodePixel(p);
+	Uint32 edx = p;
+	p <<= 19;
+	edx <<= 5;
+	Uint8 ah = (Uint16)edx >> 8;
+	p = (p & 0xFFFF00FF) | (ah << 8);
+	edx >>= 13;
+	p = (p & 0xFFFFFF00) | (Uint8)edx;
+	int u = p;
 	memcpy(rgb, &u, sizeof(RGBColor));
 }
 
