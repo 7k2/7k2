@@ -5,7 +5,6 @@ Requirements
 ------------
 
 * GCC 3.0 or later
-* JWasm 2.00 or later
 * SDL2 2.0.0 or later
 * CMake 2.8.0 or later
 * libjpeg 6b or later
