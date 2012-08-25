@@ -84,10 +84,7 @@ private:
 };
 
 typedef VgaSDL Vga;
-extern "C"
-{
-	extern short transparent_code_w __asmsym__("_transparent_code_w");
-}
+extern short transparent_code_w;
 
 //--------------------------------------------//
 

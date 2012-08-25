@@ -29,10 +29,7 @@
 typedef unsigned char CRC_TYPE;
 const unsigned int CRC_LEN = sizeof(CRC_TYPE);
 
-extern "C"
-{
-	CRC_TYPE IMGcall crc8(unsigned char *, int) __asmsym__("_crc8");
-}
+CRC_TYPE crc8(unsigned char *, int);
 
 
 #endif

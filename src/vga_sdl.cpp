@@ -51,10 +51,7 @@ char    VgaBase::use_back_buf = 0;
 char    VgaBase::opaque_flag  = 0;
 VgaBuf* VgaBase::active_buf   = &vga_front;      // default: front buffer
 
-extern "C"
-{
-   short transparent_code_w;
-}
+short transparent_code_w;
 
 // ------ declare static function ----------//
 
@@ -223,7 +220,6 @@ int VgaSDL::set_mode(int width, int height)
 
    // assembly functions to initalize effect processing
 
-   INITeffect(pixel_format_flag);
    INITbright(pixel_format_flag);
 
    return 1;

@@ -36,11 +36,7 @@
 
 #define SHADOW_CODE      		  0x00
 
-#include <asmfun.h>
-extern "C"
-{
-	extern short transparent_code_w __asmsym__("_transparent_code_w");
-}
+extern short transparent_code_w;
 
 // no more outline
 // #define OUTLINE_CODE            0xf2
