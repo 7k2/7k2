@@ -44,7 +44,6 @@
 #include <oconfig.h>
 #include <oserial.h>
 #include <oimgres.h>
-#include <oget.h>
 #include <key.h>
 #include <omusic.h>
 #include <ocoltbl.h>

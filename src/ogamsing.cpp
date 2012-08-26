@@ -36,7 +36,6 @@
 #include <oinfo.h>
 #include <obutton.h>
 #include <obutt3d.h> 
-#include <oget.h>
 #include <ogammenu.h>
 #include <obattle.h>
 #include <ogfile.h>

@@ -214,7 +214,6 @@ set(7k2_SOURCES
   ogenhill.cpp
   ogenmap.cpp
   ogenmap2.cpp
-  oget.cpp
   ogeta.cpp
   ogfile.cpp
   ogfile2.cpp
