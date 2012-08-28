@@ -52,6 +52,7 @@
 #include <ocampgn.h>
 #include <ot_gmenu.h>
 #include <ot_basic.h>
+#include <win32_compat.h>
 #include <dbglog.h>
 
 DBGLOG_DEFAULT_CHANNEL(GameFile);
@@ -835,12 +836,8 @@ void GameFile::disp_info(int x, int y)
 
 	SYSTEMTIME sysTime;
 	FILETIME localFileTime;
-#ifndef NO_WINDOWS  //FIXME
 	FileTimeToLocalFileTime( &file_date, &localFileTime );
 	FileTimeToSystemTime( &localFileTime, &sysTime );
-#else
-	memset(&sysTime, 0, sizeof(SYSTEMTIME));
-#endif
 
 //	str  = translate.process("File Date: ");
 //	str += date.date_str(date.julian(sysTime.wYear, sysTime.wMonth,sysTime.wDay), 1);
@@ -1189,7 +1186,11 @@ void GameFileArray::load_all_game_header(const char *path, const char *extStr)
 			&& gameFile.validate_header() )
 		{
 			strcpy( gameFile.file_name, file.file_name );  // in case that the name may be different
+#ifndef NO_WINDOWS
+			// Don't reset gameFile.file_date on Linux because
+			// gameDir[i]->time is not set correctly.
 			gameFile.file_date = gameDir[i]->time;
+#endif
 	      linkin(&gameFile);
 		}
 		file.file_close();

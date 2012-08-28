@@ -42,6 +42,7 @@
 #include <oconfig.h>
 #include <ocampgn.h>
 #include <ot_gmenu.h>
+#include <win32_compat.h>
 
 
 // -------- define constant ----------//
@@ -521,11 +522,9 @@ int GameFile::write_game_header(File* filePtr)
 
 	game_date = info.game_date;
 
-#ifndef NO_WINDOWS  // FIXME
 	//----- set the file date ------//
 
 	CoFileTimeNow(&file_date);
-#endif
 
 	//------- write GameFile to the saved game file -------//
 
