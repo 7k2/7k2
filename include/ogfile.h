@@ -80,7 +80,7 @@ class GameFile
 public:
 	enum     { SAVE_GAME_DESC_LEN = 80 };
 
-   size_t   class_size;    // for version compare
+   uint32_t class_size;    // for version compare
    char     file_name[MAX_PATH+1];
 
    char     player_name[NationArray::CUSTOM_NAME_LEN+1];

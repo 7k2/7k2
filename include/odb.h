@@ -39,7 +39,7 @@ private:
 	{
 		char     dbf_id;
 		char     last_update[3];
-		long     last_rec;
+		uint32_t last_rec;
 		unsigned short data_offset;
 		unsigned short rec_size;
 		char		dummy[20];
@@ -49,7 +49,7 @@ private:
 	{
 		char     field_name[11];
 		char     field_type;
-		long     field_offset;
+		uint32_t field_offset;
 		union
 		{
 			unsigned short char_len;

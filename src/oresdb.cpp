@@ -164,7 +164,7 @@ File* ResourceDb::get_file()
    if( memcmp( indexFieldPtr, emptyField, 8 ) == 0 )
       return NULL;      // no sample screen for this file
 
-   file_seek( *indexFieldPtr + sizeof(long) );
+   file_seek( *indexFieldPtr + sizeof(int32_t) );
 
    return this;
 }
@@ -244,7 +244,7 @@ char* ResourceDb::read_imported(long offset)
 	{
 		//SXM: Remove the following line for Chinese Version, but it's a risk.
 		err_when( offset<0 || offset>=data_buf_size );
-		return data_buf + offset + sizeof(long);  // by pass the long parameters which is the size of the data
+		return data_buf + offset + sizeof(int32_t);  // by pass the long parameters which is the size of the data
 	}
 	// ##### end Gilbert 4/10 #######//
 

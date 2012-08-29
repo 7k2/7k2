@@ -132,8 +132,8 @@ public:
 	// int	spy_execute;
 	// ###### end Gilbert 23/12 #####//
 
-	unsigned long start_play_time;	// the time player start playing the game today
-	unsigned long total_play_time;  	// total time the player has played in all saved games
+	uint32_t start_play_time;	// the time player start playing the game today
+	uint32_t total_play_time;  	// total time the player has played in all saved games
 
 	char* play_time_str(); // return total time played in string
 	char* game_duration_str();

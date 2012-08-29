@@ -219,8 +219,8 @@ void RockRes::load_bitmap_info()
 		rockBitmapInfo->offset_x = m.atoi(rockBitmapRec->offset_x, rockBitmapRec->OFFSET_LEN);
 		rockBitmapInfo->offset_y = m.atoi(rockBitmapRec->offset_y, rockBitmapRec->OFFSET_LEN);
 
-		long bitmapOffset;
-		memcpy( &bitmapOffset, rockBitmapRec->bitmap_ptr, sizeof(long) );
+		uint32_t bitmapOffset;
+		memcpy( &bitmapOffset, rockBitmapRec->bitmap_ptr, sizeof(uint32_t) );
 		rockBitmapInfo->bitmap_ptr = res_bitmap.read_imported(bitmapOffset);
 
 		// modify offset_x/y for 7k2

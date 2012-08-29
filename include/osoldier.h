@@ -48,7 +48,7 @@ public:
 	short spy_recno;
 
 	short	hero_id;                                // >0 if this is a hero
-	long	unique_id;              // unique number generated across campaign
+	int	unique_id;              // unique number generated across campaign
 
 	char	loyalty;
 	char 	is_royal;		// whether the unit is a royal unit

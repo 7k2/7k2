@@ -149,8 +149,8 @@ void SpriteRes::load_sprite_info()
 		}
 		else
 		{
-			long paletteOffset;
-			memcpy(&paletteOffset, spriteRec->pal_offset, sizeof(long));
+			uint32_t paletteOffset;
+			memcpy(&paletteOffset, spriteRec->pal_offset, sizeof(uint32_t));
 			spriteInfo->pal_ptr = 8+(BYTE *)res_pal.read_imported(paletteOffset);	// skip 8 bytes header
 		}
 		spriteInfo->palw_ptr = NULL;

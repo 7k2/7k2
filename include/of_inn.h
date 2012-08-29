@@ -50,7 +50,7 @@ struct InnUnit
 public:
 	short unit_id;
 	short hero_id;
-	long	unique_id;
+	int	unique_id;
 
 	short	spy_skill;		// >0 if this unit is a spy with a spying skill for hire, he is added by FirmInn
 	short spy_recno;		// >0 if this unit is an enemy spy sneaked into the inn.

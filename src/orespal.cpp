@@ -103,15 +103,15 @@ void ResourcePal::generate_pal()
 			// process each palette
 			long fileSize = *(long *)(data_buf + offset);
 			err_when( fileSize < 0 );
-			RGBColor *srcPtr = (RGBColor *)(offset + sizeof(long) + 8 + (char *)data_buf);		// skip length field and 8 byte header
-			short *destPtr = (short *)(offset + sizeof(long)  + (char *)pal_data_buf);
+			RGBColor *srcPtr = (RGBColor *)(offset + sizeof(uint32_t) + 8 + (char *)data_buf);	// skip length field and 8 byte header
+			short *destPtr = (short *)(offset + sizeof(uint32_t)  + (char *)pal_data_buf);
 
 			// process each entry
 			for( int j = 0; j < 0x100; ++j )
 				destPtr[j] = vga.make_pixel( &srcPtr[j] );
 
 			// proceed to next palette
-			offset += sizeof(long) + fileSize;			// skip length field
+			offset += sizeof(uint32_t) + fileSize;			// skip length field
 		}
 	}
 	else
@@ -136,7 +136,7 @@ short* ResourcePal::read_imported_pal(long offset)
 	if( read_all )
 	{
 		err_when( offset<0 || offset>=data_buf_size );
-		return pal_data_buf + offset + sizeof(long);  // by pass the long parameters which is the size of the data
+		return pal_data_buf + offset + sizeof(uint32_t);  // by pass the long parameters which is the size of the data
 	}
 	else
 	{

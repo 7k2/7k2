@@ -219,7 +219,7 @@ void TextResource::load_res(const char *fileName)
 char *TextResource::get_format_str(int textId, const char *checkMark )
 {
 	err_when( !textId && !checkMark );		// cannot be both null
-	err_when( sizeof(long) != CHECK_MARK_STRLEN );	// else use strncmp instead
+	err_when( sizeof(uint32_t) != CHECK_MARK_STRLEN );	// else use strncmp instead
 
 	if( textId > 0 && textId <= text_count )
 	{
@@ -228,7 +228,7 @@ char *TextResource::get_format_str(int textId, const char *checkMark )
 			||	(formatText > main_text
 			&&	formatText[-1] == CHECK_MARK_END
 //			&& strncmp(formatText-1-CHECK_MARK_STRLEN, checkMark, CHECK_MARK_STRLEN) == 0) )
-			&& *(long *)(formatText-1-CHECK_MARK_STRLEN) == *(long *)checkMark) )
+			&& *(uint32_t *)(formatText-1-CHECK_MARK_STRLEN) == *(uint32_t *)checkMark) )
 		{
 			return formatText;
 		}

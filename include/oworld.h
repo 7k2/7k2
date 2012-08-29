@@ -81,7 +81,7 @@ public:
 	char			 dummy1;
 	int			 plant_count;
 	int			 plant_limit;
-	long			 gen_map_random_seed;
+	int			 gen_map_random_seed;
 
 	// ------- variable for scrolling ------//
 

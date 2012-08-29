@@ -65,7 +65,7 @@ private:
 
 	short wind_spd;
 	// #### begin Gilbert 31/10 #######//
-	long	high_wind_day;
+	int32_t	high_wind_day;
 	// #### end Gilbert 31/10 #######//
 	short	wind_dir;
 	short windy_speed;

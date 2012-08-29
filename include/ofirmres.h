@@ -352,7 +352,7 @@ struct FirmGroup
 struct FirmBitmap
 {
 //	char* bitmap_ptr;
-	long	bitmap_ptr; 
+	int	bitmap_ptr;
 	short width, height;
 
 	char	ani_part;

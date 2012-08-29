@@ -128,7 +128,7 @@ void FirmDieRes::load_bitmap_info()
 		firmBitmapRec = (FirmBitmapRec*) dbFirmBitmap->read(i+1);
 		firmBitmap    = firm_bitmap_array+i;
 
-		memcpy( &firmBitmap->bitmap_ptr, firmBitmapRec->bitmap_ptr, sizeof(long) );
+		memcpy( &firmBitmap->bitmap_ptr, firmBitmapRec->bitmap_ptr, sizeof(uint32_t) );
 	//	memcpy( &bitmapOffset, firmBitmapRec->bitmap_ptr, sizeof(long) );
 	//	firmBitmap->bitmap_ptr = NULL;
 
@@ -220,8 +220,8 @@ void FirmDieRes::load_build_info()
 		}
 		else
 		{
-			long paletteOffset;
-			memcpy(&paletteOffset, firmBuildRec->pal_offset, sizeof(long));
+			uint32_t paletteOffset;
+			memcpy(&paletteOffset, firmBuildRec->pal_offset, sizeof(uint32_t));
 			firmBuild->pal_ptr = 8+(BYTE *)res_pal.read_imported(paletteOffset);	// skip 8 bytes header
 		}
 		firmBuild->palw_ptr = NULL;

@@ -1069,7 +1069,7 @@ int Misc::rand()
 //
 // return : <int> a random long number
 //
-long Misc::rand_long()
+int Misc::rand_long()
 {
    #define MULTIPLIER      0x015a4e35L
    #define INCREMENT       1

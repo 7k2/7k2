@@ -178,7 +178,7 @@ void UnitRes::load_info()
 	Database  *dbUnit = game_set.open_db(UNIT_DB);
 	UnitRec 	 *unitRec;
 	UnitInfo  *unitInfo;
-	long		 bitmapOffset;
+	uint32_t	 bitmapOffset;
 	int		 i;
 
 	unit_info_count = dbUnit->rec_count();
@@ -246,12 +246,12 @@ void UnitRes::load_info()
 
 		// ----- set bitmap pointers -------//
 
-		memcpy( &bitmapOffset, unitRec->large_icon_ptr, sizeof(long) );
+		memcpy( &bitmapOffset, unitRec->large_icon_ptr, sizeof(uint32_t) );
 		unitInfo->soldier_icon_ptr = res_large_icon.read_imported(bitmapOffset);
 
 		if( unitRec->general_icon_file_name[0] != '\0' && unitRec->general_icon_file_name[0] != ' ')
 		{
-			memcpy( &bitmapOffset, unitRec->general_icon_ptr, sizeof(long) );
+			memcpy( &bitmapOffset, unitRec->general_icon_ptr, sizeof(uint32_t) );
 			unitInfo->general_icon_ptr = res_general_icon.read_imported(bitmapOffset);
 		}
 		else
@@ -261,7 +261,7 @@ void UnitRes::load_info()
 
 		if( unitRec->king_icon_file_name[0] != '\0' && unitRec->king_icon_file_name[0] != ' ')
 		{
-			memcpy( &bitmapOffset, unitRec->king_icon_ptr, sizeof(long) );
+			memcpy( &bitmapOffset, unitRec->king_icon_ptr, sizeof(uint32_t) );
 			unitInfo->king_icon_ptr = res_king_icon.read_imported(bitmapOffset);
 		}
 		else
@@ -269,12 +269,12 @@ void UnitRes::load_info()
 			unitInfo->king_icon_ptr = unitInfo->soldier_icon_ptr;
 		}
 
-		memcpy( &bitmapOffset, unitRec->small_icon_ptr, sizeof(long) );
+		memcpy( &bitmapOffset, unitRec->small_icon_ptr, sizeof(uint32_t) );
 		unitInfo->soldier_small_icon_ptr = res_small_icon.read_imported(bitmapOffset);
 
 		if( unitRec->general_small_icon_file_name[0] != '\0' && unitRec->general_small_icon_file_name[0] != ' ')
 		{
-			memcpy( &bitmapOffset, unitRec->general_small_icon_ptr, sizeof(long) );
+			memcpy( &bitmapOffset, unitRec->general_small_icon_ptr, sizeof(uint32_t) );
 			unitInfo->general_small_icon_ptr = res_general_small_icon.read_imported(bitmapOffset);
 		}
 		else
@@ -284,7 +284,7 @@ void UnitRes::load_info()
 
 		if( unitRec->king_small_icon_file_name[0] != '\0' && unitRec->king_small_icon_file_name[0] != ' ')
 		{
-			memcpy( &bitmapOffset, unitRec->king_small_icon_ptr, sizeof(long) );
+			memcpy( &bitmapOffset, unitRec->king_small_icon_ptr, sizeof(uint32_t) );
 			unitInfo->king_small_icon_ptr = res_king_small_icon.read_imported(bitmapOffset);
 		}
 		else
@@ -293,7 +293,7 @@ void UnitRes::load_info()
 		}
 		if( unitRec->unit_icon_file_name[0] != '\0' && unitRec->unit_icon_file_name[0] != ' ')
 		{
-			memcpy( &bitmapOffset, unitRec->unit_icon_ptr, sizeof(long) );
+			memcpy( &bitmapOffset, unitRec->unit_icon_ptr, sizeof(uint32_t) );
 			unitInfo->unit_icon_ptr = res_unit_icon.read_imported(bitmapOffset);
 		}
 		unitInfo->unit_icon_offsetx = m.atoi(unitRec->unit_icon_offsetx, unitRec->OFFSET_LEN);

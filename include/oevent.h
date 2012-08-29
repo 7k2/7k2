@@ -56,7 +56,7 @@ class File;
 class RandomEvent
 {
 public:
-	long	day_to_event;
+	int	day_to_event;
 
 	int	last_event_id;
 	int	last_event_nation;		// 0 = all
@@ -64,7 +64,7 @@ public:
 	int	last_event_para2;
 
 private:
-	long	random_seed;
+	int	random_seed;
 
 public:
 	void	init(int randomSeed);

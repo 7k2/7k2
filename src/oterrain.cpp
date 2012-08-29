@@ -338,7 +338,7 @@ void TerrainRes::load_info()
 	TerrainRec  	*terrainRec;
 	TerrainInfo 	*terrainInfo = NULL;
 	int      	 	i;
-	long			 	bitmapOffset;
+	uint32_t		 	bitmapOffset;
 
 	//---- read in terrain count and initialize terrain info array ----//
 
@@ -465,7 +465,7 @@ void TerrainRes::load_info()
 
 		//---- get the bitmap pointer of the terrain icon in res_icon ----//
 
-		memcpy( &bitmapOffset, terrainRec->bitmap_ptr, sizeof(long) );
+		memcpy( &bitmapOffset, terrainRec->bitmap_ptr, sizeof(uint32_t) );
 
 		terrainInfo->bitmap_ptr = res_bitmap.read_imported(bitmapOffset);
 
@@ -837,7 +837,7 @@ void TerrainRes::load_anim_info()
 {
 	TerrainAnimRec	terrainAnimRec, lastAnimRec;
 	int i;
-	long bitmapOffset;
+	uint32_t bitmapOffset;
 
 	String terAnimDbName(DIR_RES);
 	terAnimDbName += "TERANM";
@@ -861,7 +861,7 @@ void TerrainRes::load_anim_info()
 		char* bitmapPtr;
 		terrainAnimRec = *(TerrainAnimRec *)(dbTerAnim->read(i+1));
 		
-		memcpy( &bitmapOffset, terrainAnimRec.bitmap_ptr, sizeof(long) );
+		memcpy( &bitmapOffset, terrainAnimRec.bitmap_ptr, sizeof(uint32_t) );
 		bitmapPtr = anm_bitmap.read_imported(bitmapOffset);
 
 		if( memcmp(terrainAnimRec.base_file, lastAnimRec.base_file, terrainAnimRec.FILE_NAME_LEN))
@@ -989,7 +989,7 @@ void TerrainRes::load_tex_info()
 	TerrainTextureRec  	*textureRec;
 	TerrainTextureInfo 	*textureInfo = NULL;
 	int      	 	i;
-	long			 	bitmapOffset;
+	uint32_t		 	bitmapOffset;
 
 	char				lastTypeCode = 0;
 
@@ -1042,7 +1042,7 @@ void TerrainRes::load_tex_info()
 			}
 		}
 
-		memcpy( &bitmapOffset, textureRec->bitmap_ptr, sizeof(long) );
+		memcpy( &bitmapOffset, textureRec->bitmap_ptr, sizeof(uint32_t) );
 		textureInfo->bitmap_ptr = tex_bitmap.read_imported(bitmapOffset);
 
 		if( lastTypeCode != textureInfo->type_code )

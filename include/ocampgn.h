@@ -121,7 +121,7 @@ public:
 	int		monster_id()	{ return -race_id;  }
 	WORD		name_id;          // id. of the unit's name in RaceRes::first_name_array;
 	short		hero_id;                                // >0 if this is a hero
-	long		unique_id;              // unique number generated across campaign
+	int		unique_id;              // unique number generated across campaign
 
 	char		loyalty;
 	char		target_loyalty;

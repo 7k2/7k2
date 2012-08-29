@@ -24,6 +24,8 @@
 #ifndef __OSFRMRES_H
 #define __OSFRMRES_H
 
+#include <stdint.h>
+
 //-------- Define struct SpriteFrameRec ----------//
 
 struct SpriteFrameRec
@@ -51,7 +53,7 @@ struct SpriteFrame
 {
 	short	offset_x, offset_y;
 	short width, height;
-	long  bitmap_offset;
+	uint32_t bitmap_offset;
 };
 
 //--------- Define class SpriteFrameRes --------//

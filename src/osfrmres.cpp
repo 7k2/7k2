@@ -118,7 +118,7 @@ void SpriteFrameRes::load_info()
 		spriteFrame->width  = m.atoi(frameRec->width , frameRec->WIDTH_LEN);
 		spriteFrame->height = m.atoi(frameRec->height, frameRec->HEIGHT_LEN);
 
-		memcpy( &spriteFrame->bitmap_offset, frameRec->bitmap_offset, sizeof(long) );
+		memcpy( &spriteFrame->bitmap_offset, frameRec->bitmap_offset, sizeof(uint32_t) );
 
 		// modify offset_x/y for 7k2, assume loc_width = loc_height = 1
 		spriteFrame->offset_x += -spriteInfo->loc_width*LOCATE_WIDTH/2 - (-spriteInfo->loc_width*ZOOM_LOC_X_WIDTH/2 + -spriteInfo->loc_height*ZOOM_LOC_Y_WIDTH/2);

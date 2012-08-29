@@ -128,7 +128,7 @@ void MouseCursor::load_cursor_info()
 	CursorRec  		*cursorRec;
 	CursorInfo     *cursorInfo;
 	int      		i;
-	long				bitmapOffset;
+	uint32_t			bitmapOffset;
 	Database 		dbCursor(CURSOR_DBF, 1);		// 1-read all into the buffer
 
 	cursor_count = (short) dbCursor.rec_count();
@@ -143,12 +143,12 @@ void MouseCursor::load_cursor_info()
 		cursorRec  = (CursorRec*) dbCursor.read(i+1);
 		cursorInfo = cursor_info_array+i;
 
-		memcpy( &bitmapOffset, cursorRec->human_bitmap_ptr, sizeof(long) );
+		memcpy( &bitmapOffset, cursorRec->human_bitmap_ptr, sizeof(uint32_t) );
 		cursorInfo->human_bitmap_ptr = human_res_bitmap.read_imported(bitmapOffset);
 		cursorInfo->human_hot_spot_x = m.atoi( cursorRec->human_hot_spot_x, cursorRec->HOT_SPOT_LEN );
 		cursorInfo->human_hot_spot_y = m.atoi( cursorRec->human_hot_spot_y, cursorRec->HOT_SPOT_LEN );
 
-		memcpy( &bitmapOffset, cursorRec->monster_bitmap_ptr, sizeof(long) );
+		memcpy( &bitmapOffset, cursorRec->monster_bitmap_ptr, sizeof(uint32_t) );
 		cursorInfo->monster_bitmap_ptr = monster_res_bitmap.read_imported(bitmapOffset);
 		cursorInfo->monster_hot_spot_x = m.atoi( cursorRec->monster_hot_spot_x, cursorRec->HOT_SPOT_LEN );
 		cursorInfo->monster_hot_spot_y = m.atoi( cursorRec->monster_hot_spot_y, cursorRec->HOT_SPOT_LEN );

@@ -51,7 +51,7 @@ public:
 	int		monster_id()	{ return -race_id;  }
 	WORD		name_id;          // id. of the unit's name in RaceRes::first_name_array;
 	short		hero_id;                                // >0 if this is a hero
-	long		unique_id;              // unique number generated across campaign
+	int		unique_id;              // unique number generated across campaign
 
 	char		loyalty;
 	char		target_loyalty;
@@ -107,7 +107,7 @@ public:
 	char			mp_use_gem_stone; // 0 - not use, 1 - use
 	char			mp_new_game_flag;	// 0 - not specified, 1 = new, 2 = load game
 	char			mp_load_file_name[9];
-	long			reserved_p3;
+	int			reserved_p3;
 
 	// ----------------------------//
 
@@ -124,12 +124,12 @@ public:
 	// -------- statistic --------//
 
 	char			king_rank;
-	long			single_game_started;			// single player game
-	long			single_game_won;				// meaningful?
-	long			multi_game_started;			// multi player game
-	long			multi_game_won;
-	long			campaign_started;
-	long			campaign_finish;
+	int			single_game_started;			// single player game
+	int			single_game_won;				// meaningful?
+	int			multi_game_started;			// multi player game
+	int			multi_game_won;
+	int			campaign_started;
+	int			campaign_finish;
 	short			monster_boss_defeat[MAX_MONSTER_BOSS];
 
 	// -------- lobby client info ----------//
@@ -150,10 +150,10 @@ public:
 	
 	short			tutorial_finish_count;
 
-	long			reserved_c0;
-	long			reserved_c1;
-	long			reserved_c2;
-	long			reserved_c3;
+	int			reserved_c0;
+	int			reserved_c1;
+	int			reserved_c2;
+	int			reserved_c3;
 
 	// ----------------------------//
 

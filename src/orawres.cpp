@@ -128,9 +128,9 @@ void RawRes::load_all_info()
 		rawInfo->raw_id    = i+1;
 		rawInfo->tera_type = m.atoi( rawRec->tera_type, rawRec->TERA_TYPE_LEN );
 
-		long bitmapOffset;
+		uint32_t bitmapOffset;
 
-		memcpy( &bitmapOffset, rawRec->map_icon_ptr, sizeof(long) );
+		memcpy( &bitmapOffset, rawRec->map_icon_ptr, sizeof(uint32_t) );
 		rawInfo->map_icon_ptr = res_map_icon.read_imported(bitmapOffset);
 
 		rawInfo->map_loc_width = (char) m.atoi(rawRec->map_loc_width, rawRec->LOC_LEN );
@@ -138,19 +138,19 @@ void RawRes::load_all_info()
 		rawInfo->map_icon_offset_x = m.atoi(rawRec->map_icon_offset_x, rawRec->OFFSET_LEN);
 		rawInfo->map_icon_offset_y = m.atoi(rawRec->map_icon_offset_y, rawRec->OFFSET_LEN);
 
-		memcpy( &bitmapOffset, rawRec->small_raw_ptr, sizeof(long) );
+		memcpy( &bitmapOffset, rawRec->small_raw_ptr, sizeof(uint32_t) );
 		rawInfo->small_raw_ptr = res_small_raw.read_imported(bitmapOffset);
 
-		memcpy( &bitmapOffset, rawRec->small_product_ptr, sizeof(long) );
+		memcpy( &bitmapOffset, rawRec->small_product_ptr, sizeof(uint32_t) );
 		rawInfo->small_product_ptr = res_small_product.read_imported(bitmapOffset);
 
-		memcpy( &bitmapOffset, rawRec->large_raw_ptr, sizeof(long) );
+		memcpy( &bitmapOffset, rawRec->large_raw_ptr, sizeof(uint32_t) );
 		rawInfo->large_raw_ptr = res_large_raw.read_imported(bitmapOffset);
 
-		memcpy( &bitmapOffset, rawRec->large_product_ptr, sizeof(long) );
+		memcpy( &bitmapOffset, rawRec->large_product_ptr, sizeof(uint32_t) );
 		rawInfo->large_product_ptr = res_large_product.read_imported(bitmapOffset);
 
-		memcpy( &bitmapOffset, rawRec->interface_raw_ptr, sizeof(long) );
+		memcpy( &bitmapOffset, rawRec->interface_raw_ptr, sizeof(uint32_t) );
 		rawInfo->interface_raw_ptr = res_interface_raw.read_imported(bitmapOffset);
 
 		// modify offset_x/y for 7k2

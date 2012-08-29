@@ -25,6 +25,7 @@
 #define __MISC_H
 
 #include <stddef.h>
+#include <stdint.h>
 
 //-------- Define macro constant ---------//
 
@@ -40,7 +41,7 @@ public:
 
 	char  str_buf[STR_BUF_LEN+1];
 	char	freeze_seed;
-	long  random_seed;
+	int32_t random_seed;
 
 	int	random_chance;
 	int	random_chance_accumulated;
@@ -109,7 +110,7 @@ public:
    long  get_random_seed();
    int   rand();
    int   random(int);
-	long	rand_long();
+	int	rand_long();
 
    int   is_file_exist(const char*);
    int   path_cat(char *dest, const char *src1, const char *src2, int max_len);

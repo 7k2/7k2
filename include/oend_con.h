@@ -105,7 +105,7 @@ public:
 	char	cond_str[CONDITION_STR_LEN+1];
 	char	result_str[CONDITION_STR_LEN+1];
 
-	long	para1_unique_id;		// unique id of unit whose unit_recno is para1
+	int	para1_unique_id;		// unique id of unit whose unit_recno is para1
 	union
 	{
 		char	para1_unit_killed;

@@ -305,7 +305,7 @@ public:
 
 	short			hero_id;				// >0 if this is a hero
 	char			is_royal;
-	long			unique_id;              // unique number generated across campaign
+	int			unique_id;              // unique number generated across campaign
 	char     	loyalty;
 	char     	target_loyalty;
 

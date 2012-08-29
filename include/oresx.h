@@ -32,7 +32,7 @@
 struct ResIndex
 {
    char name[9];
-   long pointer;
+   uint32_t pointer;
 };
 #pragma pack()
 

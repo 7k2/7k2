@@ -180,8 +180,8 @@ void TownWallRes::load_town_wall_bitmap()
 		townWallBitmapInfo->offset_y         = m.atoi( townWallBitmapRec->offset_y, townWallBitmapRec->OFFSET_LEN );
 		townWallBitmapInfo->mode             = townWallBitmapRec->mode;
 
-		long bitmapOffset;
-		memcpy( &bitmapOffset, townWallBitmapRec->bitmap_ptr, sizeof(long) );
+		uint32_t bitmapOffset;
+		memcpy( &bitmapOffset, townWallBitmapRec->bitmap_ptr, sizeof(uint32_t) );
 		townWallBitmapInfo->bitmap_ptr    = res_bitmap.read_imported(bitmapOffset);
 
 		// modify offset_x/y for 7k2

@@ -232,11 +232,11 @@ public:
 
 	//-------- weather audio effect parameters ----------//
 
-	long			lightning_volume;		// default 100
-	long			earthquake_volume;	// default 100
-	long			rain_volume;			// default 90
-	long			snow_volume;			// default 100
-	long			wind_volume;			// default 70
+	int			lightning_volume;		// default 100
+	int			earthquake_volume;	// default 100
+	int			rain_volume;			// default 90
+	int			snow_volume;			// default 100
+	int			wind_volume;			// default 70
 
 	//------------ map prefernce -------------//
 

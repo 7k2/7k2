@@ -63,8 +63,8 @@ private:
 	unsigned	seed;
 
 public:
-	long	snow_thick;
-	long	snow_pattern;
+	int32_t	snow_thick;
+	int32_t	snow_pattern;
 
 public:
 	void	init(long initSnowScale, long anyNumber);

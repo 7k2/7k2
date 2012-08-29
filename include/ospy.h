@@ -77,7 +77,7 @@ public:
 	char  race_id;
 	char	is_civilian;
 	short	name_id;
-	long	unique_id;
+	int	unique_id;
 
 	char  action_mode;
 	const char* action_str();
