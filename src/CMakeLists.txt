@@ -1,7 +1,10 @@
 set(7k2_SOURCES
   dbglog.cpp
   file_input_stream.cpp
+  file_output_stream.cpp
+  file_reader.cpp
   file_util.cpp
+  file_writer.cpp
   input_stream.cpp
   mem_input_stream.cpp
   mouse_sdl.cpp
@@ -418,6 +421,7 @@ set(7k2_SOURCES
   ounita.cpp
   ounitb.cpp
   ounitres.cpp
+  output_stream.cpp
   ovbrowi2.cpp
   ovbrowif.cpp
   ovbrowse.cpp
