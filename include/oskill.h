@@ -52,8 +52,6 @@ public:
 	unsigned char  skill_potential;			// skill potential
 	short 		  	max_combat_level;
 	short				max_skill_level;
-
-private:
 	short				std_hit_points;			// the hit points when combat level is 100
 	float 		  	combat_level;    			// they must be accessed via actual_??()
 	float 			skill_level;

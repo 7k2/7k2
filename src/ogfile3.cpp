@@ -43,6 +43,10 @@
 #include <ounit.h>
 #include <opfind.h>
 #include <oun_grp.h>
+#include <file_io_visitor.h>
+#include <file_reader.h>
+
+using namespace FileIOVisitor;
 
 //------- declare static functions -------//
 
@@ -175,6 +179,214 @@ int UnitArray::read_file(File* filePtr)
 //--------- End of function UnitArray::read_file ---------------//
 
 
+enum { UNIT_RECORD_SIZE = 233 };
+
+template <typename Visitor>
+static void visit_baseobj(Visitor *v, BaseObj *o)
+{
+	visit<int16_t>(v, &o->base_obj_recno);
+	visit<int8_t>(v, &o->obj_type);
+	visit<int16_t>(v, &o->obj_extern_recno);
+
+	//------- game vars -----------//
+
+	visit<uint8_t>(v, &o->is_ai);
+	visit<uint8_t>(v, &o->already_killed);
+	visit<int8_t>(v, &o->nation_recno);
+	visit<int8_t>(v, &o->race_id);
+	visit<int32_t>(v, &o->last_attack_date);
+	visit<int16_t>(v, &o->last_attack_nation_recno);
+	visit<int8_t>(v, &o->defense_attribute.sturdiness);
+	visit<int8_t>(v, &o->defense_attribute.is_wood);
+
+	//-------- hit points vars ---------//
+
+	visit<float>(v, &o->hit_points);
+}
+
+template <typename Visitor>
+static void visit_sprite(Visitor *v, Sprite *s)
+{
+	visit<int16_t>(v, &s->sprite_id);
+	visit<int16_t>(v, &s->sprite_recno);
+	visit<int8_t>(v, &s->mobile_type);
+	visit<uint8_t>(v, &s->cur_action);
+	visit<uint8_t>(v, &s->saved_action);
+	visit<uint8_t>(v, &s->cur_dir);
+	visit<uint8_t>(v, &s->cur_frame);
+	visit<uint8_t>(v, &s->cur_attack);
+	visit<uint8_t>(v, &s->final_dir);
+	visit<int8_t>(v, &s->turn_delay);
+	visit<int8_t>(v, &s->guard_count);
+	visit<int32_t>(v, &s->freeze_frame_left);
+	visit<uint8_t>(v, &s->remain_attack_delay);
+	visit<uint8_t>(v, &s->remain_frames_per_step);
+	visit<int16_t>(v, &s->cur_x);
+	visit<int16_t>(v, &s->cur_y);
+	visit<int16_t>(v, &s->go_x);
+	visit<int16_t>(v, &s->go_y);
+	visit<int16_t>(v, &s->next_x);
+	visit<int16_t>(v, &s->next_y);
+	visit_pointer(v, &s->sprite_info);
+}
+
+template <typename Visitor>
+static void visit_unitb(Visitor *v, UnitB *b)
+{
+	//--------- profile vars ----------//
+
+	visit<int16_t>(v, &b->unit_id);
+
+	//-------- selection vars -----//
+
+	visit<int8_t>(v, &b->selected_flag);
+
+	//----- location info -------//
+
+	visit<int8_t>(v, &b->loc_width);
+	visit<int8_t>(v, &b->loc_height);
+	visit<int32_t>(v, &b->wait_state);
+	visit<int32_t>(v, &b->retry_state);
+	visit<int8_t>(v, &b->cur_order.mode);
+	visit<int16_t>(v, &b->cur_order.para);
+	visit<int16_t>(v, &b->cur_order.loc_x);
+	visit<int16_t>(v, &b->cur_order.loc_y);
+	visit<int16_t>(v, &b->cur_order.action_nation_recno);
+	visit<uint16_t>(v, &b->cur_order.ai_action_id);
+	visit<uint16_t>(v, &b->cur_order.name_id);
+
+	//----- movement vars ----//
+
+	visit<int16_t>(v, &b->move_to_loc_x);
+	visit<int16_t>(v, &b->move_to_loc_y);
+	visit<int16_t>(v, &b->wait_count);
+
+	//------ path var -------//
+
+	visit_pointer(v, &b->cur_path);
+	visit<int16_t>(v, &b->cur_path_result_id);
+	visit<int32_t>(v, &b->steps_remaining);
+
+	//---- other movement and path seeking vars ----//
+
+	visit<int8_t>(v, &b->seek_path_fail_count);
+	visit<int8_t>(v, &b->ignore_power_nation);
+	visit<int32_t>(v, &b->number_of_times_being_blocked);
+	visit<uint8_t>(v, &b->check_formation);
+}
+
+template <typename Visitor>
+static void visit_unit(Visitor *v, Unit *u)
+{
+	v->skip(4);  // virtual table pointer
+
+	visit_baseobj(v, u);
+	visit_sprite(v, u);
+	visit_unitb(v, u);
+
+	//--------- profile vars ----------//
+
+	visit<int8_t>(v, &u->rank_id);
+	visit<uint16_t>(v, &u->name_id);
+	visit<int16_t>(v, &u->hero_id);
+	visit<int8_t>(v, &u->is_royal);
+	visit<int32_t>(v, &u->unique_id);
+	visit<int8_t>(v, &u->loyalty);
+	visit<int8_t>(v, &u->target_loyalty);
+	visit<int16_t>(v, &u->spy_recno);
+
+	//-------- skill vars ----------//
+
+	visit<uint8_t>(v, &u->skill.skill_potential);
+	visit<int16_t>(v, &u->skill.max_combat_level);
+	visit<int16_t>(v, &u->skill.max_skill_level);
+	visit<int16_t>(v, &u->skill.std_hit_points);
+	visit<float>(v, &u->skill.combat_level);
+	visit<float>(v, &u->skill.skill_level);
+
+	//------ unit mode vars --------//
+
+	visit<int8_t>(v, &u->unit_mode);
+	visit<int16_t>(v, &u->unit_mode_para);
+
+	//------- politics vars ---------//
+
+	visit<int16_t>(v, &u->nation_contribution);
+	visit<int16_t>(v, &u->total_reward);
+
+	//--------- Team vars --------//
+
+	visit_pointer(v, &u->team_info);
+	visit<int16_t>(v, &u->leader_unit_recno);
+
+	//-------- item vars --------//
+
+	visit<int16_t>(v, &u->item.id);
+	visit<int32_t>(v, &u->item.para);
+
+	// ------- magic effect vars -------//
+
+	visit<int16_t>(v, &u->invulnerable_day_count);
+
+	//------- order vars -------//
+
+	visit<int8_t>(v, &u->pushed_order.mode);
+	visit<int16_t>(v, &u->pushed_order.para);
+	visit<int16_t>(v, &u->pushed_order.loc_x);
+	visit<int16_t>(v, &u->pushed_order.loc_y);
+	visit<int16_t>(v, &u->pushed_order.action_nation_recno);
+	visit<uint16_t>(v, &u->pushed_order.ai_action_id);
+	visit<uint16_t>(v, &u->pushed_order.name_id);
+	visit<int8_t>(v, &u->saved_order.mode);
+	visit<int16_t>(v, &u->saved_order.para);
+	visit<int16_t>(v, &u->saved_order.loc_x);
+	visit<int16_t>(v, &u->saved_order.loc_y);
+	visit<int16_t>(v, &u->saved_order.action_nation_recno);
+	visit<uint16_t>(v, &u->saved_order.ai_action_id);
+	visit<uint16_t>(v, &u->saved_order.name_id);
+
+	//------- attack parameters --------//
+
+	visit_pointer(v, &u->attack_info_array);
+	visit<int8_t>(v, &u->attack_count);
+	visit<int16_t>(v, &u->range_attack_x_loc);
+	visit<int16_t>(v, &u->range_attack_y_loc);
+	visit<int16_t>(v, &u->attack_loc_offset_x);
+	visit<int16_t>(v, &u->attack_loc_offset_y);
+	visit<uint8_t>(v, &u->attack_dir);
+	visit<int16_t>(v, &u->cur_power);
+	visit<int16_t>(v, &u->max_power);
+	visit<int16_t>(v, &u->original_target_x_loc);
+	visit<int16_t>(v, &u->original_target_y_loc);
+	visit<int32_t>(v, &u->last_ask_attack_date);
+
+	//------- other movement and attack behavior vars ------//
+
+	visit<int8_t>(v, &u->can_guard_flag);
+	visit<uint8_t>(v, &u->force_move_flag);
+	visit<uint8_t>(v, &u->has_way_point);
+	visit<int16_t>(v, &u->home_camp_firm_recno);
+	visit<int8_t>(v, &u->behavior_mode);
+	visit<int32_t>(v, &u->auto_retreat_hit_point);
+
+	//---------- AI vars ---------//
+
+	visit<int16_t>(v, &u->ai_original_target_x_loc);
+	visit<int16_t>(v, &u->ai_original_target_y_loc);
+	visit<uint8_t>(v, &u->ai_no_suitable_action);
+
+	// -------- special ability ----------//
+
+	visit<int32_t>(v, &u->last_special_ability_start_date);
+	visit<int8_t>(v, &u->special_abilty_id);
+	visit<int8_t>(v, &u->special_abilty_para);
+
+	// -------- newly added member ----------//
+
+	visit<int8_t>(v, &u->in_ai_attack_mission);
+}
+
+
 //--------- Begin of function Unit::write_file ---------//
 //
 // Write data in derived class.
@@ -184,7 +396,7 @@ int UnitArray::read_file(File* filePtr)
 //
 int Unit::write_file(File* filePtr)
 {
-	if( !filePtr->file_write( this, sizeof(Unit) ) )
+	if( !write_with_record_size( filePtr, this, &visit_unit<FileWriterVisitor>, UNIT_RECORD_SIZE ) )
 		return 0;
 
 	//---------- write PathResult ----------//
@@ -212,12 +424,20 @@ int Unit::write_file(File* filePtr)
 //
 int Unit::read_file(File* filePtr)
 {
-	char* vfPtr = *((char**)this);      // save the virtual function table pointer
+	FileReader r;
+	FileReaderVisitor v;
 
-	if( !filePtr->file_read( this, sizeof(Unit) ) )
+	if( !r.init(filePtr) )
 		return 0;
 
-	*((char**)this) = vfPtr;
+	r.check_record_size(UNIT_RECORD_SIZE);
+	v.init(&r);
+	visit_unit(&v, this);
+
+	if( !r.good() )
+		return 0;
+
+	r.deinit();
 
 	//---------- read path ----------//
 
