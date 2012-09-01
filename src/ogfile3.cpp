@@ -776,6 +776,120 @@ int Projectile::read_derived_file(File *filePtr)
 
 //*****//
 
+template <typename Visitor>
+static void visit_place(Visitor *v, Place *p)
+{
+	visit<int32_t>(v, &p->setup_date);
+	visit<float>(v, &p->place_max_hit_points);
+	visit<char>(v, &p->no_neighbor_space);
+
+	//--------- location vars ----------//
+
+	visit<uint8_t>(v, &p->region_id);
+	visit<int16_t>(v, &p->loc_x1);
+	visit<int16_t>(v, &p->loc_y1);
+	visit<int16_t>(v, &p->loc_x2);
+	visit<int16_t>(v, &p->loc_y2);
+	visit<int16_t>(v, &p->abs_x1);
+	visit<int16_t>(v, &p->abs_y1);
+	visit<int16_t>(v, &p->abs_x2);
+	visit<int16_t>(v, &p->abs_y2);
+	visit<int16_t>(v, &p->altitude);
+	visit<int16_t>(v, &p->center_x);
+	visit<int16_t>(v, &p->center_y);
+
+	//------- animation vars ---------//
+
+	visit<int8_t>(v, &p->cur_frame);
+	visit<int8_t>(v, &p->remain_frame_delay);
+
+	//------- construction vars --------//
+
+	visit<int8_t>(v, &p->under_construction);
+	visit<int16_t>(v, &p->builder_recno);
+	visit<uint8_t>(v, &p->builder_region_id);
+	visit<int8_t>(v, &p->repair_flag);
+}
+
+template <typename Visitor>
+static void visit_firm(Visitor *v, Firm *f)
+{
+	v->skip(4);  // virtual table pointer
+
+	visit_baseobj(v, f);
+	visit_place(v, f);
+
+	visit<int16_t>(v, &f->firm_recno);
+
+	visit<int8_t>(v, &f->firm_id);
+	visit<int16_t>(v, &f->firm_build_id);
+
+	visit<int16_t>(v, &f->upgrading_firm_id);
+	visit<int16_t>(v, &f->upgrade_completion_percent);
+
+	//-------- firm name vars ---------//
+
+	visit<int16_t>(v, &f->closest_town_name_id);
+	visit<int16_t>(v, &f->firm_name_instance_id);
+
+	//-------- firm animation vars ---------//
+
+	visit_array<int8_t>(v, f->firm_cur_frame, MAX_FRAME_COUNTERS);
+	visit_array<int8_t>(v, f->firm_remain_frame_delay, MAX_FRAME_COUNTERS);
+
+	//------ inter-relationship -------//
+
+	visit<int8_t>(v, &f->linked_firm_count);
+	visit<int8_t>(v, &f->linked_town_count);
+
+	visit_array<int16_t>(v, f->linked_firm_array, MAX_LINKED_FIRM_FIRM);
+	visit_array<int16_t>(v, f->linked_town_array, MAX_LINKED_FIRM_TOWN);
+
+	visit_array<int8_t>(v, f->linked_firm_enable_array, MAX_LINKED_FIRM_FIRM);
+	visit_array<int8_t>(v, f->linked_town_enable_array, MAX_LINKED_FIRM_TOWN);
+
+	visit<int16_t>(v, &f->active_link_town_recno);
+
+	//--------- financial vars ---------//
+
+	visit<float>(v, &f->last_year_income);
+	visit<float>(v, &f->cur_year_income);
+
+	//---------- misc vars ------------//
+
+	visit<int8_t>(v, &f->should_set_power);
+	visit<int8_t>(v, &f->reveal_info);
+
+	// --------- rally point vars -------//
+
+	visit<int16_t>(v, &f->rally_enable_flag);
+	visit<int16_t>(v, &f->rally_dest_base_obj_recno);
+	visit<int16_t>(v, &f->rally_dest_x);
+	visit<int16_t>(v, &f->rally_dest_y);
+
+	//----------- AI vars ------------//
+
+	visit<int8_t>(v, &f->ai_processed);
+	visit<int8_t>(v, &f->ai_status);
+	visit<int8_t>(v, &f->ai_link_checked);
+	visit<int8_t>(v, &f->ai_sell_flag);
+
+	visit<int8_t>(v, &f->should_close_flag);
+	visit<int8_t>(v, &f->ai_should_build_factory_count);
+}
+
+enum { FIRM_RECORD_SIZE = 296 };
+
+static bool read_firm(File *file, Firm *firm)
+{
+	return read_with_record_size(file, firm, &visit_firm<FileReaderVisitor>, FIRM_RECORD_SIZE);
+}
+
+static bool write_firm(File *file, Firm *firm)
+{
+	return write_with_record_size(file, firm, &visit_firm<FileWriterVisitor>, FIRM_RECORD_SIZE);
+}
+
 //-------- Start of function FirmArray::write_file -------------//
 //
 int FirmArray::write_file(File* filePtr)
@@ -811,8 +925,8 @@ int FirmArray::write_file(File* filePtr)
 
          //------ write data in base class --------//
 
-			if( !filePtr->file_write( firmPtr, sizeof(Firm) ) )
-            return 0;
+         if( !write_firm(filePtr, firmPtr) )
+	    return 0;
 
          //--------- write worker_array ---------//
 
@@ -844,7 +958,6 @@ int FirmArray::write_file(File* filePtr)
 int FirmArray::read_file(File* filePtr)
 {
 	Firm*   firmPtr;
-	char*   vfPtr;
 	int     i, firmId, firmRecno;
 
 	int firmCount      = filePtr->file_get_short();  // get no. of firms from file
@@ -874,12 +987,8 @@ int FirmArray::read_file(File* filePtr)
 
          //---- read data in base class -----//
 
-         vfPtr = *((char**)firmPtr);      // save the virtual function table pointer
-
-         if( !filePtr->file_read( firmPtr, sizeof(Firm) ) )
-            return 0;
-
-         *((char**)firmPtr) = vfPtr;
+	 if( !read_firm(filePtr, firmPtr) )
+	    return 0;
 
          //--------- read worker_array ---------//
 
