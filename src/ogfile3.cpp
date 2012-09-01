@@ -671,14 +671,45 @@ int BulletArray::read_file(File* filePtr)
 //--------- End of function BulletArray::read_file ---------------//
 
 
+template <typename Visitor>
+static void visit_bullet(Visitor *v, Bullet *b)
+{
+	v->skip(4);  // virtual table pointer
+
+	visit_baseobj(v, b);
+	visit_sprite(v, b);
+
+	visit<int16_t>(v, &b->parent_recno);
+	visit<int16_t>(v, &b->parent_base_obj_recno);
+	visit<int8_t>(v, &b->target_mobile_type);
+	visit<float>(v, &b->attack_damage);
+	visit<int16_t>(v, &b->damage_radius);
+	visit<int8_t>(v, &b->fire_radius);
+	visit<int16_t>(v, &b->origin_x);
+	visit<int16_t>(v, &b->origin_y);
+	visit<int16_t>(v, &b->target_x_loc);
+	visit<int16_t>(v, &b->target_y_loc);
+	visit<int16_t>(v, &b->cur_step);
+	visit<int16_t>(v, &b->total_step);
+	visit<int16_t>(v, &b->z_init);
+	visit<int16_t>(v, &b->z_dest);
+	visit<int8_t>(v, &b->attack_attribute.sturdiness);
+	visit<int8_t>(v, &b->attack_attribute.explosiveness);
+	visit<int8_t>(v, &b->attack_attribute.heat);
+	visit<int8_t>(v, &b->attack_attribute.wood_favour);
+}
+
+enum { BULLET_RECORD_SIZE = 92 };
+
+
 //--------- Begin of function Bullet::write_file ---------//
 //
 int Bullet::write_file(File* filePtr)
 {
-	if( !filePtr->file_write( this, sizeof(Bullet) ) )
-		return 0;
-
-	return 1;
+	return write_with_record_size(filePtr,
+				      this,
+				      &visit_bullet<FileWriterVisitor>,
+				      BULLET_RECORD_SIZE);
 }
 //----------- End of function Bullet::write_file ---------//
 
@@ -687,12 +718,11 @@ int Bullet::write_file(File* filePtr)
 //
 int Bullet::read_file(File* filePtr)
 {
-	char* vfPtr = *((char**)this);      // save the virtual function table pointer
-
-	if( !filePtr->file_read( this, sizeof(Bullet) ) )
+	if( !read_with_record_size(filePtr,
+				   this,
+				   &visit_bullet<FileReaderVisitor>,
+				   BULLET_RECORD_SIZE) )
 		return 0;
-
-	*((char**)this) = vfPtr;
 
    //------------ post-process the data read ----------//
 
