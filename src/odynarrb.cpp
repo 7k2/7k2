@@ -23,6 +23,9 @@
 
 #include <oinfo.h>
 #include <odynarrb.h>
+#include <file_io_visitor.h>
+
+using namespace FileIOVisitor;
 
 
 //----------------------------------------------------------//
@@ -175,6 +178,25 @@ void DynArrayB::linkout(int delPos)
 //------------ END OF FUNCTION DynArrayB::linkout ----------//
 
 
+template <typename Visitor>
+static void visit_dyn_array_b(Visitor *v, DynArrayB *dab)
+{
+   /* DynArray */
+   visit<int32_t>(v, &dab->ele_num);
+   visit<int32_t>(v, &dab->block_num);
+   visit<int32_t>(v, &dab->cur_pos);
+   visit<int32_t>(v, &dab->last_ele);
+   visit<int32_t>(v, &dab->ele_size);
+   visit<int32_t>(v, &dab->sort_offset);
+   visit<int8_t>(v, &dab->sort_type);
+   v->skip(4); /* dab->body_buf */
+
+   /* Not reading DynArrayB members */
+}
+
+enum { DYN_ARRAY_B_RECORD_SIZE = 29 };
+
+
 //---------- Begin of function DynArrayB::write_file -------------//
 //
 // Write current dynamic array into file,
@@ -187,8 +209,11 @@ void DynArrayB::linkout(int delPos)
 //
 int DynArrayB::write_file(File* filePtr)
 {
-	if( !filePtr->file_write( this, sizeof(DynArray) ) )
-		 return 0;
+	if( !write_with_record_size( filePtr,
+				     this,
+				     &visit_dyn_array_b<FileWriterVisitor>,
+				     DYN_ARRAY_B_RECORD_SIZE ) )
+		return 0;
 
 	//---------- write body_buf ---------//
 
@@ -220,8 +245,11 @@ int DynArrayB::read_file(File* filePtr)
 {
 	char*	bodyBuf = body_buf;         // preserve body_buf which has been allocated
 
-	if( !filePtr->file_read( this, sizeof(DynArray) ) )
-      return 0;
+	if( !read_with_record_size( filePtr,
+				    this,
+				    &visit_dyn_array_b<FileReaderVisitor>,
+				    DYN_ARRAY_B_RECORD_SIZE ) )
+		return 0;
 
    //---------- read body_buf ---------//
 
