@@ -1741,12 +1741,29 @@ int SnowGroundArray::read_file(File* filePtr)
 
 //*****//
 
+template <typename Visitor>
+static void visit_region_array(Visitor *v, RegionArray *ra)
+{
+	visit<int32_t>(v, &ra->init_flag);
+	visit_pointer(v, &ra->region_info_array);
+	visit<int32_t>(v, &ra->region_info_count);
+	visit_pointer(v, &ra->region_stat_array);
+	visit<int32_t>(v, &ra->region_stat_count);
+	visit_pointer(v, &ra->connect_bits);
+	visit_array<uint8_t>(v, ra->region_sorted_array, MAX_REGION);
+}
+
+enum { REGION_ARRAY_RECORD_SIZE = 279 };
+
 //-------- Start of function RegionArray::write_file -------------//
 //
 int RegionArray::write_file(File* filePtr)
 {
-   if( !filePtr->file_write( this, sizeof(RegionArray)) )
-      return 0;
+	if( !write_with_record_size( filePtr,
+				     this,
+				     &visit_region_array<FileWriterVisitor>,
+				     REGION_ARRAY_RECORD_SIZE ) )
+		return 0;
 
 	if( !filePtr->file_write( region_info_array, sizeof(RegionInfo)*region_info_count ) )
 		return 0;
@@ -1780,8 +1797,11 @@ int RegionArray::read_file(File* filePtr)
 {
 	deinit();		// to free memory of region_info_array, region_stat_count, and connect_bits
    
-	if( !filePtr->file_read( this, sizeof(RegionArray)) )
-      return 0;
+	if( !read_with_record_size( filePtr,
+				    this,
+				    &visit_region_array<FileReaderVisitor>,
+				    REGION_ARRAY_RECORD_SIZE ) )
+		return 0;
 
    if( region_info_count > 0 )
       region_info_array = (RegionInfo *) mem_add(sizeof(RegionInfo)*region_info_count);
