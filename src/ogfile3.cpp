@@ -1624,14 +1624,32 @@ int TornadoArray::read_file(File* filePtr)
 //--------- End of function TornadoArray::read_file ---------------//
 
 
+template <typename Visitor>
+static void visit_tornado(Visitor *v, Tornado *t)
+{
+   v->skip(4);  // virtual table pointer
+
+   visit_baseobj(v, t);
+   visit_sprite(v, t);
+
+   visit<float>(v, &t->attack_damage);
+   visit<int16_t>(v, &t->life_time);
+   visit<int16_t>(v, &t->dmg_offset_x);
+   visit<int16_t>(v, &t->dmg_offset_y);
+   visit<int16_t>(v, &t->damage_player_flag);
+}
+
+enum { TORNADO_RECORD_SIZE = 72 };
+
+
 //--------- Begin of function Tornado::write_file ---------//
 //
 int Tornado::write_file(File* filePtr)
 {
-   if( !filePtr->file_write( this, sizeof(Tornado) ) )
-      return 0;
-
-   return 1;
+   return write_with_record_size( filePtr,
+                                  this,
+                                  &visit_tornado<FileWriterVisitor>,
+                                  TORNADO_RECORD_SIZE );
 }
 //----------- End of function Tornado::write_file ---------//
 
@@ -1640,12 +1658,11 @@ int Tornado::write_file(File* filePtr)
 //
 int Tornado::read_file(File* filePtr)
 {
-   char* vfPtr = *((char**)this);      // save the virtual function table pointer
-
-   if( !filePtr->file_read( this, sizeof(Tornado) ) )
+   if( !read_with_record_size( filePtr,
+                               this,
+                               &visit_tornado<FileReaderVisitor>,
+                               TORNADO_RECORD_SIZE ) )
       return 0;
-
-   *((char**)this) = vfPtr;
 
    //------------ post-process the data read ----------//
 
