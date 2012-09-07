@@ -47,7 +47,7 @@ public:
 	void	draw(int outLine, int drawFlag);
 	// #### end Gilbert 17/9 ######//
 
-	// int	write_derived_file(File *);
+	int	write_derived_file(File *);
 	int	read_derived_file(File *);
 
 	//-------------- multiplayer checking codes ---------------//

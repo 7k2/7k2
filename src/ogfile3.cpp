@@ -772,27 +772,44 @@ int Bullet::read_derived_file(File *filePtr)
 //----------- End of function Bullet::read_derived_file ---------//
 
 
+template <typename Visitor>
+static void visit_projectile(Visitor *v, Projectile *p)
+{
+	visit<float>(v, &p->z_coff);
+
+	v->skip(4);  // virtual table pointer
+	visit_baseobj(v, &p->act_bullet);
+	visit_sprite(v, &p->act_bullet);
+
+	v->skip(4);  // virtual table pointer
+	visit_baseobj(v, &p->bullet_shadow);
+	visit_sprite(v, &p->bullet_shadow);
+}
+
+enum { PROJECTILE_RECORD_SIZE = 124 };
+
+
+//----------- Begin of function Projectile::write_derived_file ---------//
+
+int Projectile::write_derived_file(File *filePtr)
+{
+	return write_with_record_size( filePtr,
+				       this,
+				       &visit_projectile<FileWriterVisitor>,
+				       PROJECTILE_RECORD_SIZE );
+}
+//----------- End of function Projectile::write_derived_file ---------//
+
+
 //----------- Begin of function Projectile::read_derived_file ---------//
 
 int Projectile::read_derived_file(File *filePtr)
 {
-	//--- backup virtual function table pointer of act_bullet and bullet_shadow ---//
-   char* actBulletVfPtr = *((char**)&act_bullet);
-   char* bulletShadowVfPtr = *((char**)&bullet_shadow);
-
-	// ##### begin Gilbert 25/9 #######//
-
-	//---------- read file ----------//
-	int rc = Bullet::read_derived_file(filePtr);
-
-	//------ restore virtual function table pointer --------//
-	*((char**)&act_bullet) = actBulletVfPtr;
-	*((char**)&bullet_shadow) = bulletShadowVfPtr;
-
-	if( !rc )
+	if( !read_with_record_size( filePtr,
+				    this,
+				    &visit_projectile<FileReaderVisitor>,
+				    PROJECTILE_RECORD_SIZE ) )
 		return 0;
-	// ##### end Gilbert 25/9 #######//
-
 
    //----------- post-process the data read ----------//
 	act_bullet.sprite_info = sprite_res[act_bullet.sprite_id];
