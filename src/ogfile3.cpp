@@ -1470,11 +1470,322 @@ int NationArray::read_file(File* filePtr)
 //--------- End of function NationArray::read_file ---------------//
 
 
+template <typename Visitor>
+static void visit_nation_relation(Visitor *v, NationRelation *nr)
+{
+	visit<int8_t>(v, &nr->has_contact);
+	visit<int8_t>(v, &nr->should_attack);
+	visit<int8_t>(v, &nr->trade_treaty);
+	visit<int8_t>(v, &nr->status);
+	visit<int32_t>(v, &nr->last_change_status_date);
+	visit<int8_t>(v, &nr->ai_relation_level);
+	visit<int8_t>(v, &nr->ai_secret_attack);
+	visit<int8_t>(v, &nr->ai_demand_trade_treaty);
+	visit<float>(v, &nr->good_relation_duration_rating);
+	visit<int16_t>(v, &nr->started_war_on_us_count);
+	visit_array<float>(v, nr->cur_year_import, IMPORT_TYPE_COUNT);
+	visit_array<float>(v, nr->last_year_import, IMPORT_TYPE_COUNT);
+	visit_array<float>(v, nr->lifetime_import, IMPORT_TYPE_COUNT);
+	visit_array<int32_t>(v, nr->last_talk_reject_date_array, MAX_TALK_TYPE);
+	visit_array<int32_t>(v, nr->never_accept_until_date_array, MAX_TALK_TYPE);
+	visit<int32_t>(v, &nr->last_military_aid_date);
+	visit_array<int8_t>(v, nr->ai_never_consider, MAX_TALK_TYPE);
+	visit<int32_t>(v, &nr->last_give_gift_date);
+	visit<int16_t>(v, &nr->total_given_gift_amount);
+	visit<int8_t>(v, &nr->contact_msg_flag);
+}
+
+
+template <typename Visitor>
+static void visit_ai_region(Visitor *v, AIRegion *reg)
+{
+	visit<uint8_t>(v, &reg->region_id);
+	visit<int8_t>(v, &reg->town_count);
+	visit<int8_t>(v, &reg->base_town_count);
+}
+
+
+template <typename Visitor>
+static void visit_attack_camp(Visitor *v, AttackCamp *ac)
+{
+	visit<int16_t>(v, &ac->firm_recno);
+	visit<int16_t>(v, &ac->combat_level);
+	visit<int16_t>(v, &ac->distance);
+	visit<int32_t>(v, &ac->patrol_date);
+}
+
+
+template <typename Visitor>
+static void visit_nation(Visitor *v, Nation *nat)
+{
+	v->skip(4);  // virtual table pointer
+
+	/* NationBase */
+	visit<int16_t>(v, &nat->nation_recno);
+	visit<int8_t>(v, &nat->nation_type);
+	visit<int16_t>(v, &nat->campaign_nation_recno);
+	visit<int8_t>(v, &nat->race_id);
+	visit<int8_t>(v, &nat->color_scheme_id);
+	visit<int8_t>(v, &nat->nation_color);
+	visit<int16_t>(v, &nat->king_unit_recno);
+	visit<int16_t>(v, &nat->king_leadership);
+	visit_array<int8_t>(v, nat->nation_name_str, Nation::NATION_NAME_LEN+1);
+	visit<uint32_t>(v, &nat->player_id);
+	visit<int8_t>(v, &nat->next_frame_ready);
+	visit<int16_t>(v, &nat->last_caravan_id);
+	visit<int16_t>(v, &nat->nation_firm_count);
+	visit<int32_t>(v, &nat->last_build_firm_date);
+	visit_array<int8_t>(v, nat->know_base_array, MAX_RACE);
+	visit_array<int8_t>(v, nat->base_count_array, MAX_RACE);
+	visit<int8_t>(v, &nat->is_at_war_today);
+	visit<int8_t>(v, &nat->is_at_war_yesterday);
+	visit<int32_t>(v, &nat->last_war_date);
+	visit<int16_t>(v, &nat->last_attacker_obj_recno);
+	visit<int32_t>(v, &nat->last_independent_unit_join_date);
+	visit<int8_t>(v, &nat->cheat_enabled_flag);
+	visit<float>(v, &nat->cash);
+	visit<float>(v, &nat->food);
+	visit<float>(v, &nat->increased_cash);
+	visit<float>(v, &nat->reputation);
+	visit<float>(v, &nat->live_points);
+	visit<float>(v, &nat->kill_monster_score);
+	visit<int16_t>(v, &nat->auto_retreat_hit_point);
+	visit<int16_t>(v, &nat->auto_collect_tax_loyalty);
+	visit<int16_t>(v, &nat->auto_grant_loyalty);
+	visit<int16_t>(v, &nat->research_tech_id);
+	visit<float>(v, &nat->fraction_research_progress);
+	visit<float>(v, &nat->cur_year_profit);
+	visit<float>(v, &nat->last_year_profit);
+	visit<float>(v, &nat->cur_year_fixed_income);
+	visit<float>(v, &nat->last_year_fixed_income);
+	visit<float>(v, &nat->cur_year_fixed_expense);
+	visit<float>(v, &nat->last_year_fixed_expense);
+	visit_array<float>(v, nat->cur_year_income_array, INCOME_TYPE_COUNT);
+	visit_array<float>(v, nat->last_year_income_array, INCOME_TYPE_COUNT);
+	visit<float>(v, &nat->cur_year_income);
+	visit<float>(v, &nat->last_year_income);
+	visit_array<float>(v, nat->cur_year_expense_array, EXPENSE_TYPE_COUNT);
+	visit_array<float>(v, nat->last_year_expense_array, EXPENSE_TYPE_COUNT);
+	visit<float>(v, &nat->cur_year_expense);
+	visit<float>(v, &nat->last_year_expense);
+	visit<float>(v, &nat->cur_year_cheat);
+	visit<float>(v, &nat->last_year_cheat);
+	visit<float>(v, &nat->cur_year_food_in);
+	visit<float>(v, &nat->last_year_food_in);
+	visit<float>(v, &nat->cur_year_food_out);
+	visit<float>(v, &nat->last_year_food_out);
+	visit<float>(v, &nat->cur_year_food_change);
+	visit<float>(v, &nat->last_year_food_change);
+	visit<float>(v, &nat->cur_year_reputation_change);
+	visit<float>(v, &nat->last_year_reputation_change);
+	visit<float>(v, &nat->cur_year_live_points_change);
+	visit<float>(v, &nat->last_year_live_points_change);
+
+	for( int n = 0; n < MAX_NATION; n++ )
+		visit_nation_relation(v, &nat->relation_array[n]);
+
+	visit_array<int8_t>(v, nat->relation_status_array, MAX_NATION);
+	visit_array<int8_t>(v, nat->relation_passable_array, MAX_NATION);
+	visit_array<int8_t>(v, nat->relation_should_attack_array, MAX_NATION);
+	visit<int8_t>(v, &nat->is_allied_with_player);
+	visit<int32_t>(v, &nat->total_population);
+	visit<int32_t>(v, &nat->total_jobless_population);
+	visit<int32_t>(v, &nat->total_unit_count);
+	visit<int32_t>(v, &nat->total_human_count);
+	visit<int32_t>(v, &nat->total_monster_count);
+	visit<int32_t>(v, &nat->total_general_count);
+	visit<int32_t>(v, &nat->total_weapon_count);
+	visit<int32_t>(v, &nat->total_ship_count);
+	visit<int32_t>(v, &nat->total_firm_count);
+	visit<int32_t>(v, &nat->total_spy_count);
+	visit<int32_t>(v, &nat->total_ship_combat_level);
+	visit<int16_t>(v, &nat->largest_town_recno);
+	visit<int16_t>(v, &nat->largest_town_pop);
+	visit_array<int16_t>(v, nat->raw_count_array, MAX_RAW);
+	visit_array<int16_t>(v, nat->last_unit_name_id_array, MAX_UNIT_TYPE);
+	visit<int32_t>(v, &nat->population_rating);
+	visit<int32_t>(v, &nat->military_rating);
+	visit<int32_t>(v, &nat->economic_rating);
+	visit<int32_t>(v, &nat->overall_rating);
+	visit<int32_t>(v, &nat->enemy_soldier_killed);
+	visit<int32_t>(v, &nat->own_soldier_killed);
+	visit<int32_t>(v, &nat->enemy_frythan_killed);
+	visit<int32_t>(v, &nat->own_frythan_killed);
+	visit<int32_t>(v, &nat->enemy_civilian_killed);
+	visit<int32_t>(v, &nat->own_civilian_killed);
+	visit<int32_t>(v, &nat->enemy_weapon_destroyed);
+	visit<int32_t>(v, &nat->own_weapon_destroyed);
+	visit<int32_t>(v, &nat->enemy_ship_destroyed);
+	visit<int32_t>(v, &nat->own_ship_destroyed);
+	visit<int32_t>(v, &nat->enemy_firm_destroyed);
+	visit<int32_t>(v, &nat->own_firm_destroyed);
+
+	/* Nation */
+	visit<int16_t>(v, &nat->nation_class_id);
+	v->skip(40); /* action_array */
+	visit<uint16_t>(v, &nat->last_action_id);
+
+	//------------------------------------------------------//
+	// array used to store the info. of the firms
+	//------------------------------------------------------//
+
+	visit_pointer(v, &nat->ai_town_array);
+	visit_pointer(v, &nat->ai_base_array);
+	visit_pointer(v, &nat->ai_camp_array);
+	visit_pointer(v, &nat->ai_mine_array);
+	visit_pointer(v, &nat->ai_factory_array);
+	visit_pointer(v, &nat->ai_market_array);
+	visit_pointer(v, &nat->ai_research_array);
+	visit_pointer(v, &nat->ai_war_array);
+	visit_pointer(v, &nat->ai_inn_array);
+	visit_pointer(v, &nat->ai_spy_array);
+	visit_pointer(v, &nat->ai_special_array);
+	visit_pointer(v, &nat->ai_offend_array);
+	visit_pointer(v, &nat->ai_lishorr_array);
+	visit_pointer(v, &nat->ai_mons_train_array);
+	visit_pointer(v, &nat->ai_mons_alchemy_array);
+	visit_pointer(v, &nat->ai_mons_fort_array);
+	visit_pointer(v, &nat->ai_mons_animal_array);
+	visit_pointer(v, &nat->ai_incubator_array);
+	visit_pointer(v, &nat->ai_mons_magic_array);
+	visit_pointer(v, &nat->ai_monster_array);
+	visit_pointer(v, &nat->ai_general_array);
+	visit_pointer(v, &nat->ai_caravan_array);
+	visit_pointer(v, &nat->ai_ship_array);
+
+	//--------------------------------------------------------//
+	// parameters used to make decisions
+	//--------------------------------------------------------//
+
+	visit<int16_t>(v, &nat->ai_town_size);
+	visit<int16_t>(v, &nat->ai_base_size);
+	visit<int16_t>(v, &nat->ai_camp_size);
+	visit<int16_t>(v, &nat->ai_mine_size);
+	visit<int16_t>(v, &nat->ai_factory_size);
+	visit<int16_t>(v, &nat->ai_market_size);
+	visit<int16_t>(v, &nat->ai_research_size);
+	visit<int16_t>(v, &nat->ai_war_size);
+	visit<int16_t>(v, &nat->ai_inn_size);
+	visit<int16_t>(v, &nat->ai_spy_size);
+	visit<int16_t>(v, &nat->ai_special_size);
+	visit<int16_t>(v, &nat->ai_offend_size);
+	visit<int16_t>(v, &nat->ai_lishorr_size);
+	visit<int16_t>(v, &nat->ai_mons_train_size);
+	visit<int16_t>(v, &nat->ai_mons_alchemy_size);
+	visit<int16_t>(v, &nat->ai_mons_fort_size);
+	visit<int16_t>(v, &nat->ai_mons_animal_size);
+	visit<int16_t>(v, &nat->ai_incubator_size);
+	visit<int16_t>(v, &nat->ai_mons_magic_size);
+	visit<int16_t>(v, &nat->ai_monster_size);
+	visit<int16_t>(v, &nat->ai_general_size);
+	visit<int16_t>(v, &nat->ai_caravan_size);
+	visit<int16_t>(v, &nat->ai_ship_size);
+	visit<int16_t>(v, &nat->ai_town_count);
+	visit<int16_t>(v, &nat->ai_base_count);
+	visit<int16_t>(v, &nat->ai_camp_count);
+	visit<int16_t>(v, &nat->ai_mine_count);
+	visit<int16_t>(v, &nat->ai_factory_count);
+	visit<int16_t>(v, &nat->ai_market_count);
+	visit<int16_t>(v, &nat->ai_research_count);
+	visit<int16_t>(v, &nat->ai_war_count);
+	visit<int16_t>(v, &nat->ai_inn_count);
+	visit<int16_t>(v, &nat->ai_spy_count);
+	visit<int16_t>(v, &nat->ai_special_count);
+	visit<int16_t>(v, &nat->ai_offend_count);
+	visit<int16_t>(v, &nat->ai_lishorr_count);
+	visit<int16_t>(v, &nat->ai_mons_train_count);
+	visit<int16_t>(v, &nat->ai_mons_alchemy_count);
+	visit<int16_t>(v, &nat->ai_mons_fort_count);
+	visit<int16_t>(v, &nat->ai_mons_animal_count);
+	visit<int16_t>(v, &nat->ai_incubator_count);
+	visit<int16_t>(v, &nat->ai_mons_magic_count);
+	visit<int16_t>(v, &nat->ai_monster_count);
+	visit<int16_t>(v, &nat->ai_general_count);
+	visit<int16_t>(v, &nat->ai_caravan_count);
+	visit<int16_t>(v, &nat->ai_ship_count);
+	visit<int16_t>(v, &nat->ai_base_town_count);
+	visit_array<int16_t>(v, nat->firm_should_close_array, MAX_FIRM_TYPE);
+
+	//------------------------------------------------------//
+	// parameters about the nation itself
+	//------------------------------------------------------//
+
+	for( int n = 0; n < MAX_AI_REGION; n++ )
+		visit_ai_region(v, &nat->ai_region_array[n]);
+	visit<int8_t>(v, &nat->ai_region_count);
+
+	//------------------------------------------------------//
+	// AI unitalties
+	//------------------------------------------------------//
+
+	visit<int8_t>(v, &nat->pref_force_projection);
+	visit<int8_t>(v, &nat->pref_military_development);
+	visit<int8_t>(v, &nat->pref_economic_development);
+	visit<int8_t>(v, &nat->pref_inc_pop_by_capture);
+	visit<int8_t>(v, &nat->pref_inc_pop_by_growth);
+	visit<int8_t>(v, &nat->pref_peacefulness);
+	visit<int8_t>(v, &nat->pref_military_courage);
+	visit<int8_t>(v, &nat->pref_territorial_cohesiveness);
+	visit<int8_t>(v, &nat->pref_trading_tendency);
+	visit<int8_t>(v, &nat->pref_allying_tendency);
+	visit<int8_t>(v, &nat->pref_honesty);
+	visit<int8_t>(v, &nat->pref_town_defense);
+	visit<int8_t>(v, &nat->pref_loyalty_concern);
+	visit<int8_t>(v, &nat->pref_forgiveness);
+	visit<int8_t>(v, &nat->pref_collect_tax);
+	visit<int8_t>(v, &nat->pref_hire_unit);
+	visit<int8_t>(v, &nat->pref_use_weapon);
+	visit<int8_t>(v, &nat->pref_keep_general);
+	visit<int8_t>(v, &nat->pref_keep_skilled_unit);
+	visit<int8_t>(v, &nat->pref_diplomacy_retry);
+	visit<int8_t>(v, &nat->pref_attack_monster);
+	visit<int8_t>(v, &nat->pref_spy);
+	visit<int8_t>(v, &nat->pref_counter_spy);
+	visit<int8_t>(v, &nat->pref_food_reserve);
+	visit<int8_t>(v, &nat->pref_cash_reserve);
+	visit<int8_t>(v, &nat->pref_use_marine);
+	visit<int8_t>(v, &nat->pref_unit_chase_distance);
+	visit<int8_t>(v, &nat->pref_repair_concern);
+	visit<int8_t>(v, &nat->pref_scout);
+	visit<int8_t>(v, &nat->pref_research);
+	visit<int8_t>(v, &nat->pref_seat_of_power);
+	visit<int8_t>(v, &nat->pref_monster_aggressiveness);
+	visit<int8_t>(v, &nat->pref_monster_special);
+	visit<int8_t>(v, &nat->pref_live_points_reserve);
+	visit<int8_t>(v, &nat->pref_surrender);
+
+	//------- AI action vars --------//
+
+	visit<int16_t>(v, &nat->ai_capture_enemy_town_recno);
+	visit<int32_t>(v, &nat->ai_capture_enemy_town_plan_date);
+	visit<int32_t>(v, &nat->ai_capture_enemy_town_start_attack_date);
+	visit<int8_t>(v, &nat->ai_capture_enemy_town_use_all_camp);
+	visit<int32_t>(v, &nat->ai_last_defend_action_date);
+	visit_array<int16_t>(v, nat->ai_attack_target_x_loc, MAX_AI_ATTACK_TARGET);
+	visit_array<int16_t>(v, nat->ai_attack_target_y_loc, MAX_AI_ATTACK_TARGET);
+	visit<int16_t>(v, &nat->ai_attack_target_count);
+	visit<int16_t>(v, &nat->ai_attack_target_nation_recno);
+
+	for( int n = 0; n < MAX_SUITABLE_ATTACK_CAMP; n++ )
+		visit_attack_camp(v, &nat->attack_camp_array[n]);
+
+	visit<int16_t>(v, &nat->attack_camp_count);
+	visit<int16_t>(v, &nat->lead_attack_camp_recno);
+	visit<int32_t>(v, &nat->ai_last_build_lishorr_net_power);
+}
+
+
+enum { NATION_RECORD_SIZE = 3180 };
+
+
 //--------- Begin of function Nation::write_file ---------//
 //
 int Nation::write_file(File* filePtr)
 {
-	if( !filePtr->file_write( this, sizeof(Nation) ) )
+	if( !write_with_record_size( filePtr,
+				     this,
+				     &visit_nation<FileWriterVisitor>,
+				     NATION_RECORD_SIZE ) )
 		return 0;
 
 	//----------- write AI Action Array ------------//
@@ -1532,8 +1843,6 @@ static void write_ai_info(File* filePtr, short* aiInfoArray, short aiInfoCount, 
 //
 int Nation::read_file(File* filePtr)
 {
-	char* vfPtr = *((char**)this);      // save the virtual function table pointer
-
 	//---- save the action_array first before loading in the whole Nation class ----//
 
 	char* saveActionArray = (char*) mem_add( sizeof(DynArrayB) );
@@ -1542,10 +1851,11 @@ int Nation::read_file(File* filePtr)
 
 	//--------------------------------------------------//
 
-	if( !filePtr->file_read( this, sizeof(Nation) ) )
+	if( !read_with_record_size( filePtr,
+				    this,
+				    &visit_nation<FileReaderVisitor>,
+				    NATION_RECORD_SIZE ) )
 		return 0;
-
-	*((char**)this) = vfPtr;
 
 	//---------- restore action_array  ------------//
 
