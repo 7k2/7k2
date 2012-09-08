@@ -1305,13 +1305,66 @@ int TownArray::read_file(File* filePtr)
 //*****//
 
 
+template <typename Visitor>
+static void visit_nation_array(Visitor *v, NationArray *na)
+{
+   /* DynArray and DynArrayB skipped */
+
+   visit<int16_t>(v, &na->nation_count);
+   visit<int16_t>(v, &na->ai_nation_count);
+   visit<int32_t>(v, &na->last_del_nation_date);
+   visit<int32_t>(v, &na->last_new_nation_date);
+   visit<int32_t>(v, &na->max_nation_population);
+   visit<int32_t>(v, &na->all_nation_population);
+   visit<int16_t>(v, &na->independent_town_count);
+   visit_array<int16_t>(v, na->independent_town_count_race_array, MAX_RACE);
+   visit<int32_t>(v, &na->max_nation_units);
+   visit<int32_t>(v, &na->max_nation_humans);
+   visit<int32_t>(v, &na->max_nation_generals);
+   visit<int32_t>(v, &na->max_nation_weapons);
+   visit<int32_t>(v, &na->max_nation_ships);
+   visit<int32_t>(v, &na->max_nation_spies);
+   visit<int32_t>(v, &na->max_nation_firms);
+   visit<int32_t>(v, &na->max_nation_tech_level);
+   visit<int32_t>(v, &na->max_population_rating);
+   visit<int32_t>(v, &na->max_military_rating);
+   visit<int32_t>(v, &na->max_economic_rating);
+   visit<int32_t>(v, &na->max_reputation);
+   visit<int32_t>(v, &na->max_kill_monster_score);
+   visit<int32_t>(v, &na->max_overall_rating);
+   visit<int16_t>(v, &na->max_population_nation_recno);
+   visit<int16_t>(v, &na->max_military_nation_recno);
+   visit<int16_t>(v, &na->max_economic_nation_recno);
+   visit<int16_t>(v, &na->max_reputation_nation_recno);
+   visit<int16_t>(v, &na->max_kill_monster_nation_recno);
+   visit<int16_t>(v, &na->max_overall_nation_recno);
+   visit<int32_t>(v, &na->last_alliance_id);
+   visit<int32_t>(v, &na->nation_peace_days);
+   visit<int16_t>(v, &na->player_recno);
+   visit_pointer(v, &na->player_ptr);
+   visit_array<int8_t>(v, na->nation_color_array, MAX_NATION+1);
+   visit_array<int8_t>(v, na->nation_power_color_array, MAX_NATION+2);
+
+   for( int n = 0; n < MAX_NATION; n++ )
+   {
+      visit_array<int8_t>(v, na->custom_nation_name_array[n], NationArray::CUSTOM_NAME_LEN+1);
+      visit_array<int8_t>(v, na->custom_king_name_array[n], NationArray::CUSTOM_NAME_LEN+1);
+   }
+}
+
+enum { NATION_ARRAY_RECORD_SIZE = 859 };
+
+
 //-------- Start of function NationArray::write_file -------------//
 //
 int NationArray::write_file(File* filePtr)
 {
 	//------ write info in NationArray ------//
 
-   if( !filePtr->file_write( (char*) this + sizeof(DynArrayB), sizeof(NationArray)-sizeof(DynArrayB) ) )
+   if( !write_with_record_size( filePtr,
+                                this,
+                                &visit_nation_array<FileWriterVisitor>,
+                                NATION_ARRAY_RECORD_SIZE ) )
       return 0;
 
    //---------- write Nations --------------//
@@ -1357,7 +1410,10 @@ int NationArray::read_file(File* filePtr)
 {
    //------ read info in NationArray ------//
 
-   if( !filePtr->file_read( (char*) this + sizeof(DynArrayB), sizeof(NationArray)-sizeof(DynArrayB) ) )
+   if( !read_with_record_size( filePtr,
+                               this,
+                               &visit_nation_array<FileReaderVisitor>,
+                               NATION_ARRAY_RECORD_SIZE ) )
       return 0;
 
    //---------- read Nations --------------//
