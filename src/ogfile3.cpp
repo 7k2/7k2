@@ -1190,6 +1190,117 @@ int SiteArray::read_file(File* filePtr)
 //*****//
 
 
+template <typename Visitor>
+static void visit_town(Visitor *v, Town *t)
+{
+	v->skip(4);  // virtual table pointer
+
+	visit_baseobj(v, t);
+	visit_place(v, t);
+
+	//------- basic vars --------//
+
+	visit<int16_t>(v, &t->town_recno);
+	visit<int16_t>(v, &t->town_name_id);
+	visit<int8_t>(v, &t->is_base_town);
+	visit<int8_t>(v, &t->construction_completion_percent);
+
+	//------ town layout vars -------//
+
+	visit<int16_t>(v, &t->layout_id);
+	visit<int16_t>(v, &t->first_slot_id);
+	visit_array<int16_t>(v, t->slot_object_id_array, MAX_TOWN_LAYOUT_SLOT);
+	visit<int16_t>(v, &t->max_layout_pop);
+
+	//------ primary town game vars ------//
+
+	visit<int16_t>(v, &t->population);
+	visit<int16_t>(v, &t->jobless_population);
+	visit<int16_t>(v, &t->population_growth);
+	visit<float>(v, &t->loyalty);
+	visit<int16_t>(v, &t->target_loyalty);
+	visit<int16_t>(v, &t->bonus_loyalty);
+	visit_array<float>(v, t->resistance_array, MAX_NATION);
+	visit_array<int16_t>(v, t->target_resistance_array, MAX_NATION);
+	visit<int16_t>(v, &t->quality_of_life);
+
+	//------- secondary game vars -------//
+
+	visit<int16_t>(v, &t->spy_count);
+	visit<int16_t>(v, &t->town_defender_count);
+	visit<float>(v, &t->received_hit_count);
+
+	// ------ wall ---------- //
+
+	visit<int8_t>(v, &t->current_wall_level);
+	visit<int8_t>(v, &t->target_wall_level);
+	visit<int8_t>(v, &t->target_wall_man_power);
+	visit<int16_t>(v, &t->upgrade_wall_progress);
+
+	// ------- archer vars -------//
+
+	visit<int16_t>(v, &t->archers_energy);
+	visit<float>(v, &t->arrow_damage);
+	visit<int16_t>(v, &t->target_count);
+	visit_array<int16_t>(v, t->target_base_obj_recno, MAX_TOWN_TARGETS);
+
+	//-------- rebel vars -------//
+
+	visit<int16_t>(v, &t->rebel_recno);
+	visit<int32_t>(v, &t->last_rebel_date);
+
+	//-------- penalty vars ----------//
+
+	visit<int32_t>(v, &t->accumulated_collect_tax_penalty);
+	visit<int32_t>(v, &t->accumulated_reward_penalty);
+	visit<int32_t>(v, &t->accumulated_recruit_penalty);
+	visit<int32_t>(v, &t->accumulated_enemy_grant_penalty);
+
+	//----- independent town/unit vars -----//
+
+	visit<int8_t>(v, &t->independ_town_nation_relation);
+	visit<int16_t>(v, &t->independent_unit_join_nation_min_rating);
+
+	//------- auto policy -------------//
+
+	visit<int16_t>(v, &t->auto_collect_tax_loyalty);
+	visit<int16_t>(v, &t->auto_grant_loyalty);
+
+	//------ inter-relationship -------//
+
+	visit<int16_t>(v, &t->linked_firm_count);
+	visit<int16_t>(v, &t->linked_town_count);
+	visit_array<int16_t>(v, t->linked_firm_array, MAX_LINKED_FIRM_TOWN);
+	visit_array<int16_t>(v, t->linked_town_array, MAX_LINKED_TOWN_TOWN);
+	visit_array<int8_t>(v, t->linked_firm_enable_array, MAX_LINKED_FIRM_TOWN);
+	visit_array<int8_t>(v, t->linked_town_enable_array, MAX_LINKED_TOWN_TOWN);
+	visit<int8_t>(v, &t->has_linked_own_camp);
+	visit<int8_t>(v, &t->has_linked_enemy_camp);
+
+	//----------- AI vars ------------//
+
+	visit<int8_t>(v, &t->ai_town);
+	visit<int8_t>(v, &t->ai_link_checked);
+	visit<int8_t>(v, &t->town_combat_level);
+	visit_array<int8_t>(v, t->has_product_supply, MAX_PRODUCT);
+}
+
+
+enum { TOWN_RECORD_SIZE = 402 };
+
+
+static bool read_town(File *file, Town *town)
+{
+	return read_with_record_size(file, town, &visit_town<FileReaderVisitor>, TOWN_RECORD_SIZE);
+}
+
+
+static bool write_town(File *file, Town *town)
+{
+	return write_with_record_size(file, town, &visit_town<FileWriterVisitor>, TOWN_RECORD_SIZE);
+}
+
+
 //-------- Start of function TownArray::write_file -------------//
 //
 int TownArray::write_file(File* filePtr)
@@ -1223,7 +1334,7 @@ int TownArray::write_file(File* filePtr)
 
 			filePtr->file_put_short(1);      // the town exists
 
-         if( !filePtr->file_write( townPtr, sizeof(Town) ) )
+         if( !write_town(filePtr, townPtr) )
             return 0;
       }
    }
@@ -1243,9 +1354,6 @@ int TownArray::read_file(File* filePtr)
 {
    Town*   townPtr;
    int     i;
-	// ##### begin Gilbert 25/9 #######//
-	char*		vfPtr;
-	// ##### end Gilbert 25/9 #######//
 
 	int townCount = filePtr->file_get_short();  // get no. of towns from file
 	selected_recno = filePtr->file_get_short();
@@ -1266,13 +1374,9 @@ int TownArray::read_file(File* filePtr)
 		{
 			townPtr = town_array.create_town();
 
-			// ###### begin Gilbert 25/9 #######//
-         vfPtr = *((char**)townPtr);      // save the virtual function table pointer
-
-			if( !filePtr->file_read( townPtr, sizeof(Town) ) )
+			if( !read_town(filePtr, townPtr) )
 				return 0;
 
-         *((char**)townPtr) = vfPtr;
 
 			// ###### end Gilbert 25/9 #######//
 //			#ifdef DEBUG
