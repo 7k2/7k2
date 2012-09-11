@@ -66,6 +66,9 @@
 #include <oblob.h>
 #include <orle.h>
 #include <oc_east.h>
+#include <file_io_visitor.h>
+
+using namespace FileIOVisitor;
 
 #if(defined(CHINESE) && defined(DEBUG))
 //SXM:Debug
@@ -1264,11 +1267,61 @@ int TechRes::read_file(File* filePtr)
 
 //***//
 
+template <typename Visitor>
+static void visit_talk_msg(Visitor *v, TalkMsg *tm)
+{
+	visit<int16_t>(v, &tm->talk_id);
+	visit<int16_t>(v, &tm->talk_para1);
+	visit<int16_t>(v, &tm->talk_para2);
+	visit<int16_t>(v, &tm->talk_para3);
+	visit<int16_t>(v, &tm->talk_para4);
+	visit<int32_t>(v, &tm->date);
+	visit<int8_t>(v, &tm->from_nation_recno);
+	visit<int8_t>(v, &tm->to_nation_recno);
+	visit<int8_t>(v, &tm->from_nation_invisible);
+	visit<int8_t>(v, &tm->reply_type);
+	visit<int32_t>(v, &tm->reply_date);
+	visit<int8_t>(v, &tm->relation_status);
+}
+
+template <typename Visitor>
+static void visit_talk_choice(Visitor *v, TalkChoice *tc)
+{
+	visit_array<int8_t>(v, tc->str, TalkChoice::CHOICE_TEXT_LEN+1);
+	visit<int16_t>(v, &tc->para);
+	visit<int16_t>(v, &tc->para2);
+}
+
+template <typename Visitor>
+static void visit_talk_res(Visitor *v, TalkRes *tr)
+{
+	visit<int8_t>(v, &tr->init_flag);
+	visit<int16_t>(v, &tr->reply_talk_msg_recno);
+	visit_talk_msg(v, &tr->cur_talk_msg);
+	visit_pointer(v, &tr->choice_question);
+	visit_pointer(v, &tr->choice_question_second_line);
+	visit<int16_t>(v, &tr->talk_choice_count);
+
+	for( int n = 0; n < MAX_TALK_CHOICE; n++ )
+		visit_talk_choice(v, &tr->talk_choice_array[n]);
+
+	visit_array<int8_t>(v, tr->available_talk_id_array, MAX_TALK_TYPE);
+	visit<int16_t>(v, &tr->cur_choice_id);
+	visit<int8_t>(v, &tr->save_view_mode);
+	visit<int8_t>(v, &tr->msg_add_nation_color);
+	v->skip(40); /* &tr->talk_msg_array */
+}
+
+enum { TALK_RES_RECORD_SIZE = 1150 };
+
 //-------- Start of function TalkRes::write_file -------------//
 //
 int TalkRes::write_file(File* filePtr)
 {
-	if( !filePtr->file_write( this, sizeof(TalkRes) ) )
+	if( !write_with_record_size( filePtr,
+				     this,
+				     &visit_talk_res<FileWriterVisitor>,
+				     TALK_RES_RECORD_SIZE ) )
 		return 0;
 
 	if( !talk_msg_array.write_file(filePtr) )
@@ -1291,7 +1344,10 @@ int TalkRes::read_file(File* filePtr)
 
 	//------ read in TalkRes --------//
 
-	if( !filePtr->file_read( this, sizeof(TalkRes) ) )
+	if( !read_with_record_size( filePtr,
+				    this,
+				    &visit_talk_res<FileReaderVisitor>,
+				    TALK_RES_RECORD_SIZE ) )
 		return 0;
 
 	//------ restore talk_msg_array --------//
