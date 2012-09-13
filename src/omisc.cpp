@@ -1308,7 +1308,11 @@ void Misc::extract_file_name(char* desFileName, const char* srcFileName)
 	int i;
 	for( i=strlen(srcFileName) ; i>=0 ; i-- )
 	{
+#ifndef NO_WINDOWS
 		if( srcFileName[i]=='\\' )			// get last '\' before the file name
+#else
+		if( srcFileName[i]=='/' )			// get last '/' before the file name
+#endif
 			break;
 	}
 
