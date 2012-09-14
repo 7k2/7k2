@@ -64,7 +64,7 @@ extern const int GAME_VERSION;
 #define DIR_SCENARIO          "scenario"PATH_DELIM
 #define DIR_CAMPAIGN          "campaign"PATH_DELIM
 // see MAX_SCENARIO_PATH in sys
-#define DIR_SCENARIO_PATH(p)  "scenario"PATH_DELIM"premade"PATH_DELIM
+#define DIR_SCENARIO_PATH(p)  sys.dir_scenario_path[p]
 #define DIR_SCENARIO_PREMADE  "scenario"PATH_DELIM"premade"PATH_DELIM
 
 //--------- Define direction types -----------//
