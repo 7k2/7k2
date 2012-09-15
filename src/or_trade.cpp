@@ -34,7 +34,6 @@
 #include <oworld.h>
 #include <onation.h> 
 #include <ou_cara.h>
-// #include <ou_mari.h>
 // #include <oworldmt.h>
 #include <ot_reps.h>
 #include <ot_unit.h>

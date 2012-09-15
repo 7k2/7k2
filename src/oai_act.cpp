@@ -26,7 +26,6 @@
 #include <osys.h>
 #include <oconfig.h>
 #include <oinfo.h>
-#include <ou_mari.h>
 #include <onation.h>
 
 //------- Begin of function Nation::process_action --------//
