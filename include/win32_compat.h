@@ -133,7 +133,7 @@ inline void CoFileTimeNow(FILETIME *lpFileTime)
 	struct timeval now;
 	gettimeofday(&now, NULL);
 
-	LARGE_INTEGER t = {0};
+	LARGE_INTEGER t = {{0}};
 	t.QuadPart  = now.tv_sec * TICKSPERSEC + TICKS_1601_TO_1970;
 	t.QuadPart += now.tv_usec * 10;
 
