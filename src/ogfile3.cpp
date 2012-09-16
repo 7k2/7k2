@@ -50,7 +50,6 @@ using namespace FileIOVisitor;
 
 //------- declare static functions -------//
 
-static char* create_monster_func();
 static char* create_rebel_func();
 
 static void write_ai_info(File* filePtr, short* aiInfoArray, short aiInfoCount, short aiInfoSize);
