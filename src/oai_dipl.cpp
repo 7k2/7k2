@@ -750,7 +750,7 @@ int Nation::think_give_tribute_aid(TalkMsg* rejectedMsg)
 	//--------------------------------------//
 
 	Nation* talkNation = nation_array[talkNationRecno];
-	int	  rc;
+	int	  rc = 0;
 
 	if( rejectedTalkId == TALK_PROPOSE_TRADE_TREATY )
 	{
