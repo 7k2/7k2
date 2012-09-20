@@ -152,7 +152,7 @@ void FirmInn::assign_unit(int unitRecno)
 	unitPtr->spy_recno = 0;				// prevent Unit::deinit call spy_array.del_spy
 
 	innUnit->set_hire_cost();
-	innUnit->stay_count = 10 + m.random(5);
+	innUnit->stay_count = 10 + misc.random(5);
 	unitPtr->deinit_sprite();
 	unit_array.disappear_in_firm(unitRecno);
 }
@@ -360,7 +360,7 @@ void FirmInn::update_add_hire_list()
 	{
 		if( should_add_inn_unit() )
 		{
-			add_inn_unit( m.random(MAX_RACE)+1 );
+			add_inn_unit( misc.random(MAX_RACE)+1 );
 		}
 	}
 }
@@ -434,7 +434,7 @@ void FirmInn::add_inn_unit(int raceId)
 	else if( count_spy() >= MAX_INN_UNIT/2 )
 		spyFlag = 0;
 	else
-		spyFlag = m.random(2);
+		spyFlag = misc.random(2);
 
 	memset( innUnit, 0, sizeof(InnUnit) );
 
@@ -448,7 +448,7 @@ void FirmInn::add_inn_unit(int raceId)
 
 		int unitRecno;
 
-		if( m.random(20)==0 )		// 5% have a hero
+		if( misc.random(20)==0 )		// 5% have a hero
 		{
 			unitRecno = hero_res.create_hero( -1, -1, 0, 0, 0, 0, 1);		// -1 - create the unit as an invisible unit
 		}																								// last 1 - the heroes are for hire, check the HeroInfo::for_hire before adding it
@@ -456,9 +456,9 @@ void FirmInn::add_inn_unit(int raceId)
 		{
 			int unitId;
 
-			int heroPower = 20 + m.random(20);
+			int heroPower = 20 + misc.random(20);
 
-			if( m.random(2)==0 )
+			if( misc.random(2)==0 )
 				unitId = raceInfo->infantry_unit_id;
 			else
 				unitId = raceInfo->special_unit_id;
@@ -491,32 +491,32 @@ void FirmInn::add_inn_unit(int raceId)
 	}
 	else							// a spy
 	{
-		switch( m.random(3) )
+		switch( misc.random(3) )
 		{
 		case 0:					// civilian spy
 			innUnit->unit_id = (char) raceInfo->civilian_unit_id;
 			innUnit->skill.init(innUnit->unit_id, CITIZEN_COMBAT_LEVEL, 0);
-			innUnit->spy_skill			 = 30+m.random(40);
+			innUnit->spy_skill			 = 30+misc.random(40);
 			break;
 		case 1:					// infantry spy
 			innUnit->unit_id = (char) raceInfo->infantry_unit_id;
-			innUnit->skill.init(innUnit->unit_id, 20+m.random(30), 20+m.random(30));	// a spy also have leadership and combat ability, but lower than units with leadership as their main skills
-			innUnit->spy_skill			 = 30+m.random(40);
+			innUnit->skill.init(innUnit->unit_id, 20+misc.random(30), 20+misc.random(30));	// a spy also have leadership and combat ability, but lower than units with leadership as their main skills
+			innUnit->spy_skill			 = 30+misc.random(40);
 			break;
 		case 2:					// special unit spy
 			innUnit->unit_id = (char) raceInfo->special_unit_id;
-			innUnit->skill.init(innUnit->unit_id, 30+m.random(30), 10+m.random(20));	// a spy also have leadership and combat ability, but lower than units with leadership as their main skills
-			innUnit->spy_skill			 = 30+m.random(40);
+			innUnit->skill.init(innUnit->unit_id, 30+misc.random(30), 10+misc.random(20));	// a spy also have leadership and combat ability, but lower than units with leadership as their main skills
+			innUnit->spy_skill			 = 30+misc.random(40);
 			break;
 		default:
 			err_here();
 		}
 
-		if( m.random(4)==0 )
-			innUnit->spy_skill += m.random(30);
+		if( misc.random(4)==0 )
+			innUnit->spy_skill += misc.random(30);
 
-		else if( m.random(2)==0 )
-			innUnit->spy_skill += m.random(15);
+		else if( misc.random(2)==0 )
+			innUnit->spy_skill += misc.random(15);
 	}
 
 	err_when( !innUnit->unit_id );
@@ -524,7 +524,7 @@ void FirmInn::add_inn_unit(int raceId)
 	// ------ randomly assign a unique id --------//
 
 	// ###### begin Gilbert 23/2 ######//
-	innUnit->unique_id = m.rand_long();
+	innUnit->unique_id = misc.rand_long();
 	// ###### end Gilbert 23/2 ######//
 
 	// ------ set current hit point -------//
@@ -534,7 +534,7 @@ void FirmInn::add_inn_unit(int raceId)
 	//-------------------------------------------//
 
 	innUnit->set_hire_cost();
-	innUnit->stay_count = 10 + m.random(5);
+	innUnit->stay_count = 10 + misc.random(5);
 }
 //----------- End of function FirmInn::add_inn_unit -----------//
 
@@ -617,7 +617,7 @@ void FirmInn::del_inn_unit(int recNo)
 	}
 	// ######## end Gilbert 6/1 ########//
 
-	m.del_array_rec(inn_unit_array, inn_unit_count, sizeof(InnUnit), recNo);
+	misc.del_array_rec(inn_unit_array, inn_unit_count, sizeof(InnUnit), recNo);
 
 	inn_unit_count--;
 
@@ -659,7 +659,7 @@ int FirmInn::transfer_inn_unit(int recNo)
 
 	int ownFirmRecno = 0;
 	int anyOwnInn = 0;
-	int firmRecno = 1+m.random(firm_array.size());
+	int firmRecno = 1+misc.random(firm_array.size());
 
 	int firmCount;
 	for( firmCount = firm_array.size(); firmCount > 0; --firmCount, ++firmRecno )
@@ -713,7 +713,7 @@ int FirmInn::transfer_inn_unit(int recNo)
 
 		// ------- generate new stay count ------//
 
-		newInnUnit->stay_count = 10 + m.random(5);
+		newInnUnit->stay_count = 10 + misc.random(5);
 		newInnUnit->set_hire_cost();
 
 		// ------ trasfer Spy ------- //

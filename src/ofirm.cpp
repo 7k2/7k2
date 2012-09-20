@@ -484,7 +484,7 @@ int Firm::get_closest_town_name_id()
 
 		townPtr = town_array[i];
 
-		townDistance = m.points_distance( townPtr->center_x, townPtr->center_y,
+		townDistance = misc.points_distance( townPtr->center_x, townPtr->center_y,
 							center_x, center_y );
 
 		if( townDistance < minTownDistance )
@@ -708,14 +708,14 @@ void Firm::process_animation()
 
 	if( hit_points < (max_hit_points() * 0.1))
 	{
-		if (m.random(100) > 65)
+		if (misc.random(100) > 65)
 		{
 			int effectId = sprite_res.search_sprite( "FIRMDIE" );
 			if( effectId )
 			{
 				Effect::create(effectId, 
-					(loc_x1 + m.random(20)%(loc_x2 -loc_x1 +1)) *LOCATE_WIDTH,
-					(loc_y1 + m.random(20)%(loc_y2 -loc_y1 +1)) *LOCATE_HEIGHT,
+					(loc_x1 + misc.random(20)%(loc_x2 -loc_x1 +1)) *LOCATE_WIDTH,
+					(loc_y1 + misc.random(20)%(loc_y2 -loc_y1 +1)) *LOCATE_HEIGHT,
 					SPRITE_DIE, 1, 2, 0); 
 			}
 		}
@@ -723,14 +723,14 @@ void Firm::process_animation()
 	else
 	if( hit_points < (max_hit_points() * 0.3))
 	{
-		if (m.random(100) > 80)
+		if (misc.random(100) > 80)
 		{	
 			int effectId = sprite_res.search_sprite( "FIRMDIE" );
 			if( effectId )
 			{
 				Effect::create(effectId, 
-					(loc_x1 + m.random(20)%(loc_x2 -loc_x1 +1)) *LOCATE_WIDTH,
-					(loc_y1 + m.random(20)%(loc_y2 -loc_y1 +1)) *LOCATE_HEIGHT,
+					(loc_x1 + misc.random(20)%(loc_x2 -loc_x1 +1)) *LOCATE_WIDTH,
+					(loc_y1 + misc.random(20)%(loc_y2 -loc_y1 +1)) *LOCATE_HEIGHT,
 					SPRITE_DIE, 1, 2, 0);
 			}
 		}
@@ -785,7 +785,7 @@ void Firm::process_animation()
 			
 								firm_remain_frame_delay[i] = firmBitmap->delay;
 								if (firmBitmap->random_flag)
-									firm_cur_frame[i] = m.random(100) % frameCount +1;
+									firm_cur_frame[i] = misc.random(100) % frameCount +1;
 								else
 								if( ++firm_cur_frame[i] > frameCount )
 									firm_cur_frame[i] = 1;
@@ -905,31 +905,31 @@ void Firm::next_day()
 
 	if( hit_points < (max_hit_points() * 0.1))
 	{
-		if (m.random(100) > 20)
+		if (misc.random(100) > 20)
 		{
 			FirmDie firmDieFire1;
-			firmDieFire1.init(this, 3, m.random(100));
+			firmDieFire1.init(this, 3, misc.random(100));
 			firm_die_array.add(&firmDieFire1);
 		}
-		if (m.random(100) > 40)
+		if (misc.random(100) > 40)
 		{
 			FirmDie firmDieFire2;
-			firmDieFire2.init(this, 3, m.random(100));
+			firmDieFire2.init(this, 3, misc.random(100));
 			firm_die_array.add(&firmDieFire2);
 		}
-	//	if (m.random(100) > 30)
+	//	if (misc.random(100) > 30)
 	//		bullet_array.add_bullet(this, this);
 	}
 	else
 	if( hit_points < (max_hit_points() * 0.3))
 	{
-		if (m.random(100) > 30)
+		if (misc.random(100) > 30)
 		{
 			FirmDie firmDieFire3;
-			firmDieFire3.init(this, 3, m.random(100));
+			firmDieFire3.init(this, 3, misc.random(100));
 			firm_die_array.add(&firmDieFire3);
 		}
-	//	if (m.random(100) > 20)
+	//	if (misc.random(100) > 20)
 	//		bullet_array.add_bullet(this, this);
 	}
 }

@@ -184,7 +184,7 @@ int IsolateArea::detect_isolate_area(short refXLoc, short refYLoc, short spaceXL
 	deinit();
 	init();
 
-	short dist = m.points_distance(refXLoc, refYLoc, spaceXLoc, spaceYLoc);
+	short dist = misc.points_distance(refXLoc, refYLoc, spaceXLoc, spaceYLoc);
 	short startXLoc1 = refXLoc;
 	short startYLoc1 = refYLoc;
 	short startXLoc2 = spaceXLoc;
@@ -197,7 +197,7 @@ int IsolateArea::detect_isolate_area(short refXLoc, short refYLoc, short spaceXL
 		//... startXLoc1= .....//
 	}
 
-	err_when(m.points_distance(startXLoc1, startYLoc1, startXLoc2, startYLoc2)!=1);
+	err_when(misc.points_distance(startXLoc1, startYLoc1, startXLoc2, startYLoc2)!=1);
 
 	//--------- store useful information ----------//
 	regions_line_x_loc1 = startXLoc1;
@@ -327,7 +327,7 @@ void IsolateArea::process_move_around_boundary(char& dir, short& xLoc,short& yLo
 	if(!canMove)
 	{
 		//-------- cannot move ---------//
-		err_when(m.points_distance(xLoc, yLoc, regions_line_x_loc1, regions_line_y_loc1)>1);
+		err_when(misc.points_distance(xLoc, yLoc, regions_line_x_loc1, regions_line_y_loc1)>1);
 		same_region.distance = 1;
 		same_region.with_data++;
 		same_region.x_loc = xLoc;
@@ -363,7 +363,7 @@ void IsolateArea::process_move_around_boundary(char& dir, short& xLoc,short& yLo
 			}
 			else
 			{		
-				dist = m.points_distance(checkXLoc, checkYLoc, regions_line_x_loc1, regions_line_y_loc1);
+				dist = misc.points_distance(checkXLoc, checkYLoc, regions_line_x_loc1, regions_line_y_loc1);
 				if(dist<same_region.distance)
 				{
 					same_region.distance = dist;
@@ -383,7 +383,7 @@ void IsolateArea::process_move_around_boundary(char& dir, short& xLoc,short& yLo
 			}
 			else
 			{
-				dist = m.points_distance(checkXLoc, checkYLoc, regions_line_x_loc1, regions_line_y_loc1);
+				dist = misc.points_distance(checkXLoc, checkYLoc, regions_line_x_loc1, regions_line_y_loc1);
 				if(dist<diff_region.distance)
 				{
 					diff_region.distance = dist;

@@ -117,7 +117,7 @@ void Firm::disp_info_both(int refreshFlag)
 		if( ratio > 100 )
 			ratio = 100;
 		font_vill.center_put( INFO_X1+20, INFO_Y1+139, INFO_X1+125, INFO_Y1+171, 
-			m.format(ratio, 3) );
+			misc.format(ratio, 3) );
 	}
 	else
 		put_info(refreshFlag);			// virtual function
@@ -628,7 +628,7 @@ void Firm::disp_worker_info(int dispY1, int refreshFlag)
 		String str;
 
 		if( workerPtr->race_id )
-			str = m.format(workerPtr->skill_level, 1);
+			str = misc.format(workerPtr->skill_level, 1);
 		else
 			str = "N/A";
 
@@ -642,7 +642,7 @@ void Firm::disp_worker_info(int dispY1, int refreshFlag)
 		if( firm_id == FIRM_CAMP )
 		{
 			if( workerPtr->race_id )
-				str = m.format(workerPtr->combat_level, 1);
+				str = misc.format(workerPtr->combat_level, 1);
 			else
 				str = "N/A";
 

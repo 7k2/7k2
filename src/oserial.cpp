@@ -121,7 +121,7 @@ int SerialRepository::load()
 	if( !is_persistant() )
 		return 0;
 
-	if( !m.is_file_exist(file_name) )
+	if( !misc.is_file_exist(file_name) )
 		return 0;
 
 	int rc;
@@ -247,7 +247,7 @@ bool SerialRepository::remove(long num)
 	{
 		if( history_array[i] == num )
 		{
-			m.del_array_rec (history_array, cur_history_size, sizeof(history_array[0]), i+1 );
+			misc.del_array_rec (history_array, cur_history_size, sizeof(history_array[0]), i+1 );
 			--cur_history_size;
 			flag = true;
 		}
@@ -272,7 +272,7 @@ bool SerialRepository::remove_first(long num)
 	{
 		if( history_array[i] == num )
 		{
-			m.del_array_rec (history_array, cur_history_size, sizeof(history_array[0]), i+1 );
+			misc.del_array_rec (history_array, cur_history_size, sizeof(history_array[0]), i+1 );
 			--cur_history_size;
 			// i--;
 			save();
@@ -296,7 +296,7 @@ bool SerialRepository::remove_last(long num)
 	{
 		if( history_array[i] == num )
 		{
-			m.del_array_rec (history_array, cur_history_size, sizeof(history_array[0]), i+1 );
+			misc.del_array_rec (history_array, cur_history_size, sizeof(history_array[0]), i+1 );
 			--cur_history_size;
 			save();
 			return true;

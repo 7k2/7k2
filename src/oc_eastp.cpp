@@ -79,7 +79,7 @@ int CampaignEastWest::player_pick_attack_target(int targetType)
 	if( selectableStateCount==1 )
 		target_state_recno = selectableStateArray[0];		// there is only one choice. No need to select.
 	else
-	//	target_state_recno = selectableStateArray[ m.random(selectableStateCount) ];	// REPLACE THIS LINE WITH A FUNCTION
+	//	target_state_recno = selectableStateArray[ misc.random(selectableStateCount) ];	// REPLACE THIS LINE WITH A FUNCTION
 		target_state_recno = select_attackable_state(selectableStateArray, selectableStateCount);
 
 	if( targetType == CAMPAIGN_NATION_MONSTER )

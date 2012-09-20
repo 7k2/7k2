@@ -476,7 +476,7 @@ int TalkRes::add_exchange_tech_choices()
 				if( techInfo->max_tech_level(0)>1 )
 				{
 					str += " ";
-					str += m.roman_number(j);
+					str += misc.roman_number(j);
 				}
 
 				add_talk_choice( str, i, j );		// i-techId, j-version id.

@@ -315,7 +315,7 @@ void i_disp_research_button(ButtonCustom *button, int repaintBody)
 	if( researchVersion > 1 )
 	{
 		str += " ";
-		str += m.roman_number(researchVersion);
+		str += misc.roman_number(researchVersion);
 	}
 //	str2 = "Life Point Cost : ";
 //	str2 += techInfo->live_points_cost();

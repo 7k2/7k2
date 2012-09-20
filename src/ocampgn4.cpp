@@ -85,13 +85,13 @@ void Campaign::init_player_resource(int resourceLevel)
 	//-----------------------------------------//
 
 	int resourceAmt = (20+cashLevel) * 50;
-	nationPtr->cash = float( resourceAmt * t + m.random(resourceAmt) );
+	nationPtr->cash = float( resourceAmt * t + misc.random(resourceAmt) );
 
 	resourceAmt = foodLevel * 30;
-	nationPtr->food = float( resourceAmt * t + m.random(resourceAmt) );
+	nationPtr->food = float( resourceAmt * t + misc.random(resourceAmt) );
 
 	resourceAmt = reputationLevel / 5;
-	nationPtr->reputation = float( resourceAmt * t + m.random(resourceAmt) );
+	nationPtr->reputation = float( resourceAmt * t + misc.random(resourceAmt) );
 
 	town_array.set_all_loyalty_to_target();	// set the loyalty of all towns to their targets.
 }
@@ -136,20 +136,20 @@ void Campaign::init_nation_resource(int nationRecno, int resourceLevel)
 	//-----------------------------------------//
 
 	int resourceAmt = cashLevel * 70;
-	nationPtr->cash = float( resourceAmt * t + m.random(resourceAmt) );
+	nationPtr->cash = float( resourceAmt * t + misc.random(resourceAmt) );
 
 	resourceAmt = foodLevel * 35;
-	nationPtr->food = float( resourceAmt * t + m.random(resourceAmt) );
+	nationPtr->food = float( resourceAmt * t + misc.random(resourceAmt) );
 
 	if( nationPtr->is_monster() )
 	{
 		resourceAmt = livePoints * 35;
-		nationPtr->live_points = float( resourceAmt * t + m.random(resourceAmt) );
+		nationPtr->live_points = float( resourceAmt * t + misc.random(resourceAmt) );
 	}
 	else
 	{
 		resourceAmt = reputationLevel / 5;
-		nationPtr->reputation = float( resourceAmt * t + m.random(resourceAmt) );
+		nationPtr->reputation = float( resourceAmt * t + misc.random(resourceAmt) );
 	}
 
 	town_array.set_all_loyalty_to_target();	// set the loyalty of all towns to their targets.
@@ -308,7 +308,7 @@ int Campaign::create_work_firm(Place* placePtr, int firmId)
 
 	FirmWork* firmWork = firm_array[firmRecno]->cast_to_FirmWork();
 
-	firmWork->set_needed_worker_count( 10 + m.random(11), COMMAND_AUTO);
+	firmWork->set_needed_worker_count( 10 + misc.random(11), COMMAND_AUTO);
 
 	for( int i=0 ; i<firmWork->needed_worker_count ; i++ )
 		firmWork->recruit_worker();
@@ -341,8 +341,8 @@ int Campaign::create_nation_town(int nationRecno, int xLoc, int yLoc,
 
 	int raceId = nationPtr->race_id;
 
-	if( !sameRaceTown && m.random(2)==0 )
-		raceId = m.random(MAX_RACE)+1;
+	if( !sameRaceTown && misc.random(2)==0 )
+		raceId = misc.random(MAX_RACE)+1;
 
 	int townRecno = town_array.generate_town(nationPtr->nation_recno, raceId, xLoc, yLoc);
 
@@ -354,18 +354,18 @@ int Campaign::create_nation_town(int nationRecno, int xLoc, int yLoc,
 
 	if( has_situation )
 	{
-		initLoyalty = cur_situation.town_loyalty_level + m.random(20);
+		initLoyalty = cur_situation.town_loyalty_level + misc.random(20);
 		initLoyalty = MIN(100, initLoyalty);
 
-		initPop = MAX_TOWN_POPULATION * cur_situation.population_level / 100 + m.random(20) - 10;
+		initPop = MAX_TOWN_POPULATION * cur_situation.population_level / 100 + misc.random(20) - 10;
 
 		initPop = MAX( initPop, 10 );
 		initPop = MIN( initPop, MAX_TOWN_POPULATION );
 	}
 	else
 	{
-		initLoyalty = 60 + m.random(30);
-		initPop 	   = 30+m.random(30);
+		initLoyalty = 60 + misc.random(30);
+		initPop 	   = 30+misc.random(30);
 	}
 
 	//------------------------------------//
@@ -400,8 +400,8 @@ int Campaign::create_nation_town(int nationRecno, int xLoc, int yLoc,
 
 	if( has_situation )
 	{
-		int newLoyalty = cur_situation.unit_loyalty_level + m.random(30);
-		int maxLoyalty = 90 + m.random(10);		// don't set to 100 too often
+		int newLoyalty = cur_situation.unit_loyalty_level + misc.random(30);
+		int maxLoyalty = 90 + misc.random(10);		// don't set to 100 too often
 		unit_array[unitRecno]->loyalty = MIN( newLoyalty, maxLoyalty );
 	}
 
@@ -427,24 +427,24 @@ int Campaign::create_nation_town(int nationRecno, int xLoc, int yLoc,
 
 		if( combatLevel )		// if a combat level is specified for setting up this fort.
 		{
-			thisCombatLevel = combatLevel + m.random(20) - 10;
+			thisCombatLevel = combatLevel + misc.random(20) - 10;
 
 			thisCombatLevel = MIN(thisCombatLevel, 100);
 			thisCombatLevel = MAX(thisCombatLevel, 0);
 		}
 		else
 		{
-			thisCombatLevel = 30 + m.random(30);
+			thisCombatLevel = 30 + misc.random(30);
 		}
 
 		soldierPtr->skill.set_combat_level( thisCombatLevel );
-		soldierPtr->skill.set_skill_level( 20 + m.random(10) );
+		soldierPtr->skill.set_skill_level( 20 + misc.random(10) );
 		soldierPtr->hit_points = soldierPtr->max_hit_points();
 		soldierPtr->complete_training();
 
 		if( has_situation )
 		{
-			int newLoyalty = cur_situation.unit_loyalty_level + m.random(20);
+			int newLoyalty = cur_situation.unit_loyalty_level + misc.random(20);
 			soldierPtr->loyalty = MIN( newLoyalty, 100 );
 		}
 	}
@@ -523,7 +523,7 @@ int Campaign::create_monster_lair(int xLoc, int yLoc, int nationRecno, int soldi
 
 	if( has_situation )
 	{
-		int newLoyalty = cur_situation.unit_loyalty_level + m.random(30);
+		int newLoyalty = cur_situation.unit_loyalty_level + misc.random(30);
 		unit_array[unitRecno]->loyalty = MIN( newLoyalty, 100 );
 	}
 
@@ -553,12 +553,12 @@ int Campaign::create_monster_lair(int xLoc, int yLoc, int nationRecno, int soldi
 
 	for( i=0 ; i<firmLair->soldier_count ; i++, soldierPtr++ )
 	{
-		int combatLevel = avgCombatLevel + m.random(30) - 15;
+		int combatLevel = avgCombatLevel + misc.random(30) - 15;
 
 		combatLevel = MIN( combatLevel, 100 );
 		combatLevel = MAX( combatLevel, 20  );
 
-		int skillLevel = avgCombatLevel + m.random(20) - 10;
+		int skillLevel = avgCombatLevel + misc.random(20) - 10;
 
 		skillLevel = MIN( skillLevel, 100 );
 		skillLevel = MAX( skillLevel, 20  );
@@ -570,7 +570,7 @@ int Campaign::create_monster_lair(int xLoc, int yLoc, int nationRecno, int soldi
 
 		if( has_situation )
 		{
-			int newLoyalty = cur_situation.unit_loyalty_level + m.random(20);
+			int newLoyalty = cur_situation.unit_loyalty_level + misc.random(20);
 			soldierPtr->loyalty = MIN( newLoyalty, 100 );
 		}
 	}
@@ -597,7 +597,7 @@ int Campaign::create_slave_town(int firmRecno, int raceId)
 
 	//-------- create a town ---------//
 
-	int initPop = 30 + m.random(30);
+	int initPop = 30 + misc.random(30);
 
 	int townRecno = create_town_next_to_place( firmPtr, 0, raceId, initPop );
 
@@ -642,12 +642,12 @@ int Campaign::create_economic_firm(int townRecno)
 
 	FirmMine* firmMine = firm_array[firmRecno]->cast_to_FirmMine();
 
-	firmMine->set_needed_worker_count( 6 + m.random(6), COMMAND_AUTO);
+	firmMine->set_needed_worker_count( 6 + misc.random(6), COMMAND_AUTO);
 
 	for( i=0 ; i<firmMine->needed_worker_count ; i++ )
 		firmMine->recruit_worker();
 
-	firmMine->stock_qty   =  float( 100 + m.random(400) );
+	firmMine->stock_qty   =  float( 100 + misc.random(400) );
 
 	if( has_situation )
 		firmMine->reserve_qty = firmMine->reserve_qty * cur_situation.mine_raw_level / 100;
@@ -663,7 +663,7 @@ int Campaign::create_economic_firm(int townRecno)
 
 	FirmFactory* firmFactory = firm_array[firmRecno]->cast_to_FirmFactory();
 
-	firmFactory->stock_qty = float( 100 + m.random(400) );
+	firmFactory->stock_qty = float( 100 + misc.random(400) );
 
 	//------- build market ----------//
 
@@ -692,7 +692,7 @@ void Campaign::make_should_build_array(char* arrayPtr, int arraySize, int buildL
 
 	for( int i=0 ; i<buildCount ; )
 	{
-		int j=m.random(arraySize);
+		int j=misc.random(arraySize);
 
 		if( !arrayPtr[j] )
 		{
@@ -743,7 +743,7 @@ int Campaign::create_military_firm(int townRecno, int powerRating)
 
 			//---------- recruit special units ----------//
 
-			int unitCount = MAX_TRAINEE/2 + m.random(MAX_TRAINEE/2) + 1;
+			int unitCount = MAX_TRAINEE/2 + misc.random(MAX_TRAINEE/2) + 1;
 
 			for( i=unitCount ; i>0 ; i-- )
 			{
@@ -798,23 +798,23 @@ void Campaign::random_edge_location(int& xLoc, int& yLoc, int whichEdge)
 		switch( whichEdge )
 		{
 			case 1:		// top edge
-				xLoc = m.random(MAX_WORLD_X_LOC);
+				xLoc = misc.random(MAX_WORLD_X_LOC);
 				yLoc = 2;
 				break;
 
 			case 2: 		// bottom edge
-				xLoc = m.random(MAX_WORLD_X_LOC);
+				xLoc = misc.random(MAX_WORLD_X_LOC);
 				yLoc = MAX_WORLD_Y_LOC-2;
 				break;
 
 			case 3:		// left edge
 				xLoc = 2;
-				yLoc = m.random(MAX_WORLD_Y_LOC);
+				yLoc = misc.random(MAX_WORLD_Y_LOC);
 				break;
 
 			case 4: 		// right edge
 				xLoc = MAX_WORLD_X_LOC-2;
-				yLoc = m.random(MAX_WORLD_Y_LOC);
+				yLoc = misc.random(MAX_WORLD_Y_LOC);
 				break;
 		}
 	}
@@ -822,15 +822,15 @@ void Campaign::random_edge_location(int& xLoc, int& yLoc, int whichEdge)
 	{
 		//--- determine which edge of the map the reinforcement comes from ---//
 
-		if( m.random(2)==0 )
+		if( misc.random(2)==0 )
 		{
-			xLoc = m.random(2)==0 ? 2 : MAX_WORLD_X_LOC-3;
-			yLoc = m.random(MAX_WORLD_Y_LOC);
+			xLoc = misc.random(2)==0 ? 2 : MAX_WORLD_X_LOC-3;
+			yLoc = misc.random(MAX_WORLD_Y_LOC);
 		}
 		else
 		{
-			xLoc = m.random(MAX_WORLD_X_LOC);
-			yLoc = m.random(2)==0 ? 2 : MAX_WORLD_Y_LOC-3;
+			xLoc = misc.random(MAX_WORLD_X_LOC);
+			yLoc = misc.random(2)==0 ? 2 : MAX_WORLD_Y_LOC-3;
 		}
 	}
 }
@@ -961,7 +961,7 @@ void Campaign::create_troop(int nationRecno, int totalUnit, int avgCombatLevel, 
 		 ( (~nation_array)->get_relation_status(nationRecno) == RELATION_ALLIANCE &&
 			nation_array[nationRecno]->is_human() ) )
 	{
-		create_wagon(nationRecno, 60-campaign_difficulty*10+m.random(10), 1);		// 1-useLastLocation
+		create_wagon(nationRecno, 60-campaign_difficulty*10+misc.random(10), 1);		// 1-useLastLocation
 	}
 }
 //------ End of function Campaign::create_troop ----//
@@ -1001,7 +1001,7 @@ void Campaign::create_troop2(int nationRecno, int totalUnit, int avgCombatLevel,
 
 	for( int i=0 ; i<teamCount ; i++ )
 	{
-		create_unit_group( nationRecno, teamSize+m.random(3)-1, unitId, 1, 0, xLoc, yLoc );		// create two groups of monsters
+		create_unit_group( nationRecno, teamSize+misc.random(3)-1, unitId, 1, 0, xLoc, yLoc );		// create two groups of monsters
 
 		//--- set the location for the next team ----//
 
@@ -1041,11 +1041,11 @@ void Campaign::create_troop2(int nationRecno, int totalUnit, int avgCombatLevel,
 
 			if( unitPtr->rank_id==RANK_GENERAL )
 			{
-				combatLevel = avgCombatLevel + 30 + m.random(30) - 15;
+				combatLevel = avgCombatLevel + 30 + misc.random(30) - 15;
 			}
 			else if( unitPtr->rank_id==RANK_SOLDIER )
 			{
-				combatLevel = avgCombatLevel + m.random(30) - 15;
+				combatLevel = avgCombatLevel + misc.random(30) - 15;
 			}
 			else
 				continue;
@@ -1339,8 +1339,8 @@ int Campaign::should_general_defect(int intervalDays)
 		return 0;
 
 	general_defect_count--;
-	next_general_defect_date = info.game_date + intervalDays + m.random(intervalDays*2);
-	next_rebel_date = info.game_date + intervalDays + m.random(intervalDays*2);
+	next_general_defect_date = info.game_date + intervalDays + misc.random(intervalDays*2);
+	next_rebel_date = info.game_date + intervalDays + misc.random(intervalDays*2);
 
 	return 1;
 }
@@ -1361,8 +1361,8 @@ int Campaign::should_rebel(int intervalDays)
 
 	rebel_count--;
 
-	next_general_defect_date += m.random(intervalDays);
-	next_rebel_date = info.game_date + intervalDays + m.random(intervalDays*2);
+	next_general_defect_date += misc.random(intervalDays);
+	next_rebel_date = info.game_date + intervalDays + misc.random(intervalDays*2);
 
 	return 1;
 }
@@ -1381,7 +1381,7 @@ int Campaign::general_defect_form_new_nation(int nationRecno)
 
 	Nation* nationPtr = nation_array[nationRecno];
 	Unit*   unitPtr;
-	int 	  generalSeq = m.random(nationPtr->ai_general_count);
+	int 	  generalSeq = misc.random(nationPtr->ai_general_count);
 
 	int i;
 	for( i=0 ; i<nationPtr->ai_general_count ; i++ )
@@ -1429,7 +1429,7 @@ int Campaign::general_defect_form_new_nation(int nationRecno)
 
 	for( i=0 ; i<MAX_TALK_TYPE ; i++ )
 	{
-		nationRelation->never_accept_until_date_array[i] = info.game_date + m.random(90) + 90;
+		nationRelation->never_accept_until_date_array[i] = info.game_date + misc.random(90) + 90;
 	}
 
 	news_array.enable();
@@ -1454,7 +1454,7 @@ int Campaign::general_defect_to_other_nation(int fromNationRecno, int toNationRe
 
 	Nation* nationPtr = nation_array[fromNationRecno];
 	Unit*   unitPtr;
-	int 	  generalSeq = m.random(nationPtr->ai_general_count);
+	int 	  generalSeq = misc.random(nationPtr->ai_general_count);
 
 	for( int i=0 ; i<nationPtr->ai_general_count ; i++ )
 	{
@@ -1491,7 +1491,7 @@ int Campaign::town_defect(int nationRecno, int defectToNationRecno)
 
 	Nation* nationPtr = nation_array[nationRecno];
 	Town* townPtr, *bestTown=NULL;
-	int townSeq = m.random(nationPtr->ai_town_count);
+	int townSeq = misc.random(nationPtr->ai_town_count);
 
 	for( int loopCount=1 ; loopCount<=2 && !bestTown ; loopCount++ )
 	{
@@ -1520,11 +1520,11 @@ int Campaign::town_defect(int nationRecno, int defectToNationRecno)
 
 	//-------- change the town to independent now ----//
 
-	if( defectToNationRecno==0 && m.random(2)==0 )
+	if( defectToNationRecno==0 && misc.random(2)==0 )
 	{
 		//----- randomly pick a nation to defect to ------//
 
-		int nationRecno = m.random(nation_array.size())+1;
+		int nationRecno = misc.random(nation_array.size())+1;
 
 		for( int i=nation_array.size() ; i>0 ; i-- )
 		{
@@ -1570,7 +1570,7 @@ void Campaign::monster_reinforcement(int nationRecno, int whichEdge)
 		return;
 	}
 
-	int createCount = 3 + campaign_difficulty*3 + m.random(5);
+	int createCount = 3 + campaign_difficulty*3 + misc.random(5);
 
 	createCount = MIN(createCount, monster_reinforcement_count);
 
@@ -1629,7 +1629,7 @@ void Campaign::monster_reinforcement_to_lair(int whichEdge)
 
 	//------ create a group of unit and assign them to the firm ------//
 
-	int createCount = MAX_SOLDIER - firmLair->soldier_count - m.random(5);
+	int createCount = MAX_SOLDIER - firmLair->soldier_count - misc.random(5);
 
 	createCount = MIN(createCount, monster_reinforcement_count);
 
@@ -1659,7 +1659,7 @@ void Campaign::create_raw_site()
 	if( has_situation )
 		siteCount = 5 * cur_situation.site_raw_level / 100;
 	else
-		siteCount = site_array.size() + 2 + m.random(2);		// create 2 to 3 sites
+		siteCount = site_array.size() + 2 + misc.random(2);		// create 2 to 3 sites
 
 	site_array.generate_raw_site(siteCount);		// 3 to 5 raw material deposits at the startup
 }
@@ -1734,7 +1734,7 @@ void Campaign::think_enemy_attack2(int targetNationRecno, Unit* unitPtr)
 	//--- locate the closest town to attack ---//
 
 	Town* townPtr; 
-	int townRecno = m.random(town_array.size())+1;
+	int townRecno = misc.random(town_array.size())+1;
 
 	int i;
 	for( i=town_array.size() ; i>0 ; i-- )
@@ -1897,11 +1897,11 @@ void Campaign::random_init_monster_tech(int monsterNationRecno, int ownTechChanc
 		else
 			techChance = otherTechChance;
 
-		if( techChance > m.random(100) )
+		if( techChance > misc.random(100) )
 		{
 			int maxTechLevel = techInfo->max_tech_level(monsterNationRecno);
 
-			techInfo->set_nation_tech_level( monsterNationRecno, m.random(maxTechLevel)+1 );
+			techInfo->set_nation_tech_level( monsterNationRecno, misc.random(maxTechLevel)+1 );
 
 			//---- if this tech has parent tech, also enable the child tech ----//
 
@@ -1948,20 +1948,20 @@ int Campaign::create_lair(int campaignNationRecno, int nationRecno,
 
 		if( lairAddCount > 0 )
 		{
-			int soldierCount = MAX_SOLDIER/2 + m.random(MAX_SOLDIER/4);
+			int soldierCount = MAX_SOLDIER/2 + misc.random(MAX_SOLDIER/4);
 			int thisCombatLevel;
 
 			if( soldierCombatLevel )
-				thisCombatLevel = soldierCombatLevel + m.random(30) - 15;
+				thisCombatLevel = soldierCombatLevel + misc.random(30) - 15;
 			else
 				thisCombatLevel = 30 + campaign_difficulty*10;
 
 			int monsterId;
 
-			if( m.random(2)==0 )
+			if( misc.random(2)==0 )
 				monsterId = nation_array[nationRecno]->monster_id();
 			else
-				monsterId =	m.random(MAX_MONSTER_TYPE)+1;
+				monsterId =	misc.random(MAX_MONSTER_TYPE)+1;
 
 			//--- adjust the soldier combat level to balance power differences in different Fryhtan species ---//
 
@@ -1985,10 +1985,10 @@ int Campaign::create_lair(int campaignNationRecno, int nationRecno,
 
 			int raceId;
 
-			if( m.random(2)==0 )
+			if( misc.random(2)==0 )
 				raceId = nation_array[PLAYER_NATION_RECNO]->race_id;
 			else
-				raceId = m.random(MAX_RACE)+1;
+				raceId = misc.random(MAX_RACE)+1;
 
 			create_slave_town(firmRecno, raceId);
 
@@ -2007,9 +2007,9 @@ int Campaign::create_lair(int campaignNationRecno, int nationRecno,
 
 		else if( independentTownAddCount > 0 )
 		{
-			int raceId = m.random(MAX_RACE)+1;
-			int initPopulation = 30 + m.random(30);
-			int initResistance = 60 + m.random(40);
+			int raceId = misc.random(MAX_RACE)+1;
+			int initPopulation = 30 + misc.random(30);
+			int initResistance = 60 + misc.random(40);
 
 			create_independent_town(xLoc, yLoc, raceId, initPopulation, initResistance);
 
@@ -2040,7 +2040,7 @@ void Campaign::unveil_new_tech()
 	int i;
 	for( i=0 ; i<10 ; i++ )		// maximum 10 tries
 	{
-		if( m.random(6) == 0 )		// 1/6 chance to unveil special units and special structures
+		if( misc.random(6) == 0 )		// 1/6 chance to unveil special units and special structures
 		{
 			if( unveil_spu_tech() )
 				break;
@@ -2110,7 +2110,7 @@ void Campaign::unveil_new_tech()
 //
 int Campaign::unveil_one_tech(short* techClassIdArray, int techClassCount)
 {
-	int techClassSeq = m.random(techClassCount);
+	int techClassSeq = misc.random(techClassCount);
 
 	for( int i=0 ; i<techClassCount ; i++ )
 	{
@@ -2135,7 +2135,7 @@ int Campaign::unveil_one_tech(short* techClassIdArray, int techClassCount)
 		TechClass* techClass = tech_res.tech_class(techClassId);
 		TechInfo*  techInfo  = tech_res[techClass->first_tech_id];
 
-		if( m.random(2)==0 )
+		if( misc.random(2)==0 )
 		{
 			//----- 50% chance of unveiling a new tech ----//
 
@@ -2279,7 +2279,7 @@ int Campaign::add_weapon_to_camp(int campFirmRecno)
 
 	err_when( !weaponCount );
 
-	int weaponUnitId = weaponArray[ m.random(weaponCount) ];
+	int weaponUnitId = weaponArray[ misc.random(weaponCount) ];
 
 	//------- create a weapon now -----------//
 
@@ -2314,7 +2314,7 @@ void Campaign::rebel_form_nation()
 
 	//----- randomly pick an independent town -----//
 
-	int townRecno = m.random(town_array.size())+1;
+	int townRecno = misc.random(town_array.size())+1;
 
 	int i;
 	for( i=town_array.size() ; i>0 ; i-- )
@@ -2347,8 +2347,8 @@ void Campaign::rebel_form_nation()
 
 	//------ start with abundance of cash and food ----//
 
-	nationPtr->cash = (float) 3000 + campaign_difficulty*3000 + m.random(3000);
-	nationPtr->food = (float) 1500 + campaign_difficulty*1500 + m.random(1500);
+	nationPtr->cash = (float) 3000 + campaign_difficulty*3000 + misc.random(3000);
+	nationPtr->food = (float) 1500 + campaign_difficulty*1500 + misc.random(1500);
 
 	//------ set vars so that the new nation will not start sending diplomatic to the player nation (the nation it defected from) too soon ---//
 
@@ -2356,7 +2356,7 @@ void Campaign::rebel_form_nation()
 
 	for( i=0 ; i<MAX_TALK_TYPE ; i++ )
 	{
-		nationRelation->never_accept_until_date_array[i] = info.game_date + m.random(90) + 90;
+		nationRelation->never_accept_until_date_array[i] = info.game_date + misc.random(90) + 90;
 	}
 }
 //------- End of function Campaign::rebel_form_nation ----//
@@ -2465,7 +2465,7 @@ void Campaign::create_offensive_structure(int nationRecno, int buildCount)
 
 	Nation* nationPtr = nation_array[nationRecno];
 
-	int t = m.random(4);
+	int t = misc.random(4);
 
 	int firmId = FIRM_OFFENSIVE_BUILDING_1 + t;
 	int techId = TECH_OFFENSIVE_STRUCTURE_1 + t;
@@ -2518,7 +2518,7 @@ void Campaign::create_offensive_structure(int townRecno)
 	Town*   townPtr   = town_array[townRecno];
 	Nation* nationPtr = nation_array[townPtr->nation_recno];
 
-	int t = m.random(4);
+	int t = misc.random(4);
 
 	int firmId = FIRM_OFFENSIVE_BUILDING_1 + t;
 	int techId = TECH_OFFENSIVE_STRUCTURE_1 + t;

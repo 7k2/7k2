@@ -148,28 +148,28 @@ void ScenarioEditor::disp_players_main(int refreshFlag)
 		// -------- treasure --------//
 
 		font_whbl.put( INFO_X1+15, y, text_editor.str_player_treasure() ); //"Treasure" );
-		font_whbl.right_put( INFO_X1+140-4, y, m.format( (int)nationPtr->cash, 2) );
+		font_whbl.right_put( INFO_X1+140-4, y, misc.format( (int)nationPtr->cash, 2) );
 		button_cash_up.paint();
 		button_cash_down.paint();
 
 		// --------- food ----------//
 
 		font_whbl.put( INFO_X1+15, y+22, text_editor.str_player_food() ); // "Food" );
-		font_whbl.right_put( INFO_X1+140-4, y+22, m.format((int)nationPtr->food) );
+		font_whbl.right_put( INFO_X1+140-4, y+22, misc.format((int)nationPtr->food) );
 		button_food_up.paint();
 		button_food_down.paint();
 
 		// --------- reputation -------//
 
 		font_whbl.put( INFO_X1+15, y+44, text_editor.str_player_reputation() ); // "Reputation" );
-		font_whbl.right_put( INFO_X1+140-4, y+44, m.format( (int)nationPtr->reputation) );
+		font_whbl.right_put( INFO_X1+140-4, y+44, misc.format( (int)nationPtr->reputation) );
 		button_reput_up.paint();
 		button_reput_down.paint();
 
 		// --------- live points ---------//
 
 		font_whbl.put( INFO_X1+15, y+66, text_editor.str_player_live_points() ); // "Life Points" );
-		font_whbl.right_put( INFO_X1+140-4, y+66, m.format( (int)nationPtr->live_points) );
+		font_whbl.right_put( INFO_X1+140-4, y+66, misc.format( (int)nationPtr->live_points) );
 		button_live_up.paint();
 		button_live_down.paint();
 	}
@@ -373,7 +373,7 @@ static void disp_nation_rec(int recNo,int x,int y,int refreshFlag)
 		else
 			font_snds.put( x+132, y+2, monster_res[nationPtr->monster_id()]->name, 0, x+198 );
 
-		font_snds.put( x+18,  y+16, m.format((int)nationPtr->cash,2) );
+		font_snds.put( x+18,  y+16, misc.format((int)nationPtr->cash,2) );
 
 		char charStr[] = "?";
 			//SXM:Risk

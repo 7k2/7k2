@@ -58,7 +58,7 @@ void TeamInfo::del_member(int unitRecno)
 	{
 		if( member_unit_array[i] == unitRecno )
 		{
-			m.del_array_rec( member_unit_array, member_count,
+			misc.del_array_rec( member_unit_array, member_count,
 								  sizeof( member_unit_array[0] ), i+1 );
 
 			member_count--;
@@ -99,7 +99,7 @@ void TeamInfo::validate()
 		{
 			err_when( member_count > MAX_TEAM_MEMBER );
 
-			m.del_array_rec( member_unit_array, member_count,
+			misc.del_array_rec( member_unit_array, member_count,
 								  sizeof( member_unit_array[0] ), i+1 );
 
 			member_count--;

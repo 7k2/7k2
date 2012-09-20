@@ -68,7 +68,7 @@ void CampaignEastWest::plot_c2_create_game()
 		if( unitPtr->is_own() && !unitPtr->item.id
 			&& item_res.can_pick(ITEM_TOWN_FREE, i) )
 		{
-			unitPtr->item.set(ITEM_TOWN_FREE, item_res.random_para(ITEM_TOWN_FREE, m.rand()));
+			unitPtr->item.set(ITEM_TOWN_FREE, item_res.random_para(ITEM_TOWN_FREE, misc.rand()));
 
 			// -------- select the unit ------//
 			unitPtr->select( itemCreated == maxItemCount );

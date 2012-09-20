@@ -77,7 +77,7 @@ void FirmWar::remove_queue(int unitId)
 		{
 			err_when( build_queue_count > MAX_BUILD_QUEUE );
 
-			m.del_array_rec( build_queue_array, build_queue_count, sizeof(build_queue_array[0]), i+1 );
+			misc.del_array_rec( build_queue_array, build_queue_count, sizeof(build_queue_array[0]), i+1 );
 
 			build_queue_count--;
 			return;
@@ -128,7 +128,7 @@ void FirmWar::process_queue()
 		while( build_queue_count > 0 
 			&& unit_res[build_queue_array[0]]->get_nation_tech_level(nation_recno) == 0 )
 		{
-			m.del_array_rec( build_queue_array, build_queue_count, sizeof(build_queue_array[0]), 1 );
+			misc.del_array_rec( build_queue_array, build_queue_count, sizeof(build_queue_array[0]), 1 );
 			build_queue_count--;
 		}
 	}
@@ -154,7 +154,7 @@ void FirmWar::process_queue()
 
 	err_when( build_queue_count > MAX_BUILD_QUEUE );
 
-	m.del_array_rec( build_queue_array, build_queue_count, sizeof(build_queue_array[0]), 1 );
+	misc.del_array_rec( build_queue_array, build_queue_count, sizeof(build_queue_array[0]), 1 );
 
 	build_queue_count--;
 

@@ -254,7 +254,7 @@ int Nation::ai_attack_target(int targetXLoc, int targetYLoc, int targetCombatLev
 
                if( firmCamp->soldier_count == MAX_SOLDIER )    // the king shouldn't go out alone
                {
-                  if( m.points_distance(firmCamp->center_x, firmCamp->center_y,
+                  if( misc.points_distance(firmCamp->center_x, firmCamp->center_y,
                       targetXLoc, targetYLoc) <= world.effective_distance(firmCamp->firm_id,0) )
                   {
                      kingFirmRecno = 0;
@@ -498,7 +498,7 @@ int Nation::ai_attack_target(int targetXLoc, int targetYLoc, int targetCombatLev
 
       err_when( firmPtr->nation_recno != nation_recno );
 
-		attack_camp_array[i].distance = m.points_distance( firmPtr->center_x, firmPtr->center_y,
+		attack_camp_array[i].distance = misc.points_distance( firmPtr->center_x, firmPtr->center_y,
                                     targetXLoc, targetYLoc );
 
       err_when( attack_camp_array[i].distance < 0 );
@@ -563,7 +563,7 @@ void Nation::set_ai_attack_target(int targetXLoc, int targetYLoc, int defenseMod
 
 	for( int i=1 ; i<=scanRange*scanRange ; i++ )
 	{
-		m.cal_move_around_a_point(i, scanRange, scanRange, xOffset, yOffset);
+		misc.cal_move_around_a_point(i, scanRange, scanRange, xOffset, yOffset);
 
 		xLoc = targetXLoc + xOffset;
 		yLoc = targetYLoc + yOffset;
@@ -639,7 +639,7 @@ int Nation::ai_attack_order_nearby_mobile(int targetXLoc, int targetYLoc, int ta
 
    for( int i=2 ; i<scanRange*scanRange ; i++ )
    {
-      m.cal_move_around_a_point(i, scanRange, scanRange, xOffset, yOffset);
+      misc.cal_move_around_a_point(i, scanRange, scanRange, xOffset, yOffset);
 
       xLoc = targetXLoc + xOffset;
       yLoc = targetYLoc + yOffset;
@@ -791,8 +791,8 @@ void Nation::ai_attack_target_execute(int directAttack)
 
 		//---- go to the next target ----//
 
-		m.del_array_rec( ai_attack_target_x_loc, ai_attack_target_count, sizeof(ai_attack_target_x_loc[0]), 1 );
-		m.del_array_rec( ai_attack_target_y_loc, ai_attack_target_count, sizeof(ai_attack_target_y_loc[0]), 1 );
+		misc.del_array_rec( ai_attack_target_x_loc, ai_attack_target_count, sizeof(ai_attack_target_x_loc[0]), 1 );
+		misc.del_array_rec( ai_attack_target_y_loc, ai_attack_target_count, sizeof(ai_attack_target_y_loc[0]), 1 );
 
 		//--- if all targets are no longer valid, cancel this attack action ---//
 
@@ -874,7 +874,7 @@ void Nation::ai_attack_target_execute(int directAttack)
 
       //------- remove this from attack_camp_array -------//
 
-      m.del_array_rec(attack_camp_array, attack_camp_count, sizeof(AttackCamp), i+1 );
+      misc.del_array_rec(attack_camp_array, attack_camp_count, sizeof(AttackCamp), i+1 );
       attack_camp_count--;
    }
 }

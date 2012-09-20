@@ -1016,16 +1016,16 @@ int Game::mp_select_mode(char *defSaveFileName)
 	if( defSaveFileName )
 	{
 		char extractedFileName[MAX_PATH+1];
-		m.extract_file_name(extractedFileName, defSaveFileName);
+		misc.extract_file_name(extractedFileName, defSaveFileName);
 
-		int newLen = m.str_str(extractedFileName, "." );
+		int newLen = misc.str_str(extractedFileName, "." );
 		if( newLen > 8)
-			m.str_cut(saveFileName, extractedFileName, 1, 8);	// saveFileName has 8 char only plus string terminator
+			misc.str_cut(saveFileName, extractedFileName, 1, 8);	// saveFileName has 8 char only plus string terminator
 		else if( newLen > 1)
-			m.str_cut(saveFileName, extractedFileName, 1, newLen-1);
+			misc.str_cut(saveFileName, extractedFileName, 1, newLen-1);
 		else
 			err_here();
-		if( m.str_icmpx(saveFileName, "AUTO") || m.str_icmpx(saveFileName, "AUTO2") )
+		if( misc.str_icmpx(saveFileName, "AUTO") || misc.str_icmpx(saveFileName, "AUTO2") )
 		{
 			strcpy(saveFileName, "MULTI");
 		}
@@ -1172,8 +1172,8 @@ int Game::mp_select_mode(char *defSaveFileName)
 		if( rc )
 		{
 			// check saveFileName is AUTO*
-			if( m.str_icmpx(getSaveFile.input_field, "AUTO") ||
-				m.str_icmpx(getSaveFile.input_field, "AUTO2") )
+			if( misc.str_icmpx(getSaveFile.input_field, "AUTO") ||
+				misc.str_icmpx(getSaveFile.input_field, "AUTO2") )
 			{
 				if( !box.ask( text_game_menu.str_change_auto_save()) ) // "It is not recommended to use this save game file name, do you wish to continue?") )
 				{
@@ -1186,9 +1186,9 @@ int Game::mp_select_mode(char *defSaveFileName)
 		{
 			// correct saveFileName
 			int newLen;
-			if( (newLen = m.str_str(getSaveFile.input_field, ".")) > 0 )
+			if( (newLen = misc.str_str(getSaveFile.input_field, ".")) > 0 )
 			{
-				m.str_cut(getSaveFile.input_field, getSaveFile.input_field, 1, newLen-1);
+				misc.str_cut(getSaveFile.input_field, getSaveFile.input_field, 1, newLen-1);
 			}
 			if( strlen(getSaveFile.input_field) == 0 )
 			{
@@ -1309,7 +1309,7 @@ int Game::mp_select_session()
 
 			if( refreshFlag & SSOPTION_POLL_SESSION )
 			{
-				pollTime = m.get_time();
+				pollTime = misc.get_time();
 				if( !mp_obj.poll_sessions() )
 				{
 					// return fail if poll_sessions fails or cancel the dialogue box
@@ -1318,11 +1318,11 @@ int Game::mp_select_session()
 				}
 
 				// limit the pollTime between 1 sec to 10 sec
-				pollTime = m.get_time() - pollTime + 1000;
+				pollTime = misc.get_time() - pollTime + 1000;
 				if( pollTime > 10000 )
 					pollTime = 10000;
 
-				refreshTime = m.get_time();
+				refreshTime = misc.get_time();
 
 				// ------- sort by name ---------//
 				mp_obj.sort_sessions(2);		// sort by session name
@@ -1460,7 +1460,7 @@ int Game::mp_select_session()
 				refreshFlag |= SSOPTION_DISP_SESSION;
 
 				// suspend the refreshTime, so session list won't update immediate after release dragging
-				refreshTime = m.get_time();
+				refreshTime = misc.get_time();
 
 				// if poll session flag is on turn it off
 				refreshFlag &= ~SSOPTION_POLL_SESSION;
@@ -1510,7 +1510,7 @@ int Game::mp_select_session()
 			break;
 		}
 
-		if( !(mouse.skey_state & SHIFT_KEY_MASK) && m.get_time() - refreshTime > pollTime )
+		if( !(mouse.skey_state & SHIFT_KEY_MASK) && misc.get_time() - refreshTime > pollTime )
 			refreshFlag |= SSOPTION_POLL_SESSION | SSOPTION_DISP_SESSION;
 	}
 
@@ -1945,7 +1945,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 	cy = 331-35;
 	for( i = 0; i < OPTION_HARDEST-OPTION_EASIEST+1; ++i )
 	{
-		strcpy( diffButtonStr[i], m.roman_number(i+1) );
+		strcpy( diffButtonStr[i], misc.roman_number(i+1) );
 		w = font_thin_black.text_width(diffButtonStr[i]);
 		h = font_thin_black.text_height();
 		diffGroup[i].create( cx, cy, cx+w+10, cy+h+10,
@@ -2343,7 +2343,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ###### begin Gilbert 29/6 #########//
@@ -2458,7 +2458,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//
@@ -2606,7 +2606,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//
@@ -2680,7 +2680,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//
@@ -2757,7 +2757,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//
@@ -2788,7 +2788,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 					{
 						enoughPeopleButton.paint(tempConfig.goal_population_flag);
 						font_bold_black.put( peopleInc.x1-65, peopleInc.y1, 
-							m.format(tempConfig.goal_population), 1, peopleInc.x1-1);
+							misc.format(tempConfig.goal_population), 1, peopleInc.x1-1);
 						peopleInc.paint();
 						peopleDec.paint();
 					}
@@ -2796,7 +2796,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 					{
 						enoughIncomeButton.paint(tempConfig.goal_economic_score_flag);
 						font_bold_black.put( incomeInc.x1-65, incomeInc.y1, 
-							m.format(tempConfig.goal_economic_score), 1, incomeInc.x1-1 );
+							misc.format(tempConfig.goal_economic_score), 1, incomeInc.x1-1 );
 						incomeInc.paint();
 						incomeDec.paint();
 					}
@@ -2804,7 +2804,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 					{
 						enoughScoreButton.paint(tempConfig.goal_total_score_flag);
 						font_bold_black.put( scoreInc.x1-65, scoreInc.y1, 
-							m.format(tempConfig.goal_total_score), 1, scoreInc.x1-1 );
+							misc.format(tempConfig.goal_total_score), 1, scoreInc.x1-1 );
 						scoreInc.paint();
 						scoreDec.paint();
 					}
@@ -2812,7 +2812,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 					{
 						timeLimitButton.paint(tempConfig.goal_year_limit_flag);
 						int x2 = font_bold_black.put( yearInc.x1-100, yearInc.y1, 
-							m.format(tempConfig.goal_year_limit), 1, yearInc.x1-60-1 );
+							misc.format(tempConfig.goal_year_limit), 1, yearInc.x1-60-1 );
 						font_thin_black.put( yearInc.x1-60, yearInc.y1, text_game_menu.str_goal_time_units(), 1 );	// "years"
 						yearInc.paint();
 						yearDec.paint();
@@ -2845,7 +2845,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//
@@ -2959,7 +2959,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 				if( optionMode != OPTION_SPECIES && refreshFlag & SGOPTION_DIFFICULTY )
 				{
 					font_bld.center_put( 40, 85, 82, 105, text_game_menu.str_level_in_score(), 1 );	// "Level"
-					font_bold_black.center_put( 40, 105, 82, 125, m.format(tempConfig.multi_player_difficulty(regPlayerCount-1, 0)), 1 );
+					font_bold_black.center_put( 40, 105, 82, 125, misc.format(tempConfig.multi_player_difficulty(regPlayerCount-1, 0)), 1 );
 				}
 
 				refreshFlag = 0;
@@ -3086,7 +3086,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 								mp_obj.send_stream( BROADCAST_PID, &msgAccept, sizeof(msgAccept) );
 
 								// assign initial race
-								int c = m.get_time() % MAX_RACE;
+								int c = misc.get_time() % MAX_RACE;
 								int t;
 								for( t = 0; t < MAX_RACE; ++t, ++c )
 								{
@@ -3103,7 +3103,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 								err_when( t >= MAX_RACE );		// not found
 
 								// assign initial color
-								c = m.get_time() % MAX_COLOR_SCHEME;
+								c = misc.get_time() % MAX_COLOR_SCHEME;
 								for( t = 0; t < MAX_COLOR_SCHEME; ++t, ++c )
 								{
 									c %= MAX_COLOR_SCHEME;
@@ -4062,9 +4062,9 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 			do
 			{
 				info.init_random_seed( atol(msgSeedStr.seed_str) );
-			} while (m.get_random_seed() == 0L);
+			} while (misc.get_random_seed() == 0L);
 			{
-				MpStructSeed msgSeed(m.get_random_seed());
+				MpStructSeed msgSeed(misc.get_random_seed());
 				memcpy( setupString.reserve(sizeof(msgSeed)), &msgSeed, sizeof(msgSeed) );
 			}
 
@@ -4278,9 +4278,9 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 			// ---- to filter other all message until MP_MSG_END_SETTING ---//
 
 			trial = 5000;
-			startTime = m.get_time();
+			startTime = misc.get_time();
 			// int recvEndSetting = 0;
-			while( --trial > 0 || m.get_time() - startTime < 10000 )
+			while( --trial > 0 || misc.get_time() - startTime < 10000 )
 			{
 				if( recvEndSetting >= playerCount-1)
 					break;
@@ -4290,7 +4290,7 @@ int Game::mp_select_option(NewNationPara *nationPara, int *mpPlayerCount)
 				if( recvPtr )
 				{
 					trial = MAX(trial, 1000);
-					startTime = m.get_time();
+					startTime = misc.get_time();
 					if( ((MpStructBase *)recvPtr)->msg_id == MPMSG_END_SETTING )
 					{
 						recvEndSetting++;
@@ -4483,7 +4483,7 @@ int Game::mp_select_load_option(char *fileName)
 	{
 		memset( colorAssigned, 0, sizeof(colorAssigned) );		// assume all color are unassigned
 		MpStructLoadGameNewPlayer msgNewPlayer( mp_obj.my_player_id, ~nation_array, sys.frame_count,
-			m.get_random_seed(), sys.cdrom_drive ? PLAYER_RATIO_CDROM : PLAYER_RATIO_NOCD );
+			misc.get_random_seed(), sys.cdrom_drive ? PLAYER_RATIO_CDROM : PLAYER_RATIO_NOCD );
 		mp_obj.send_stream(BROADCAST_PID, &msgNewPlayer, sizeof(msgNewPlayer) );
 
 		// ####### begin Gilbert 15/4 ##########//
@@ -4694,7 +4694,7 @@ int Game::mp_select_load_option(char *fileName)
 	cy = 331-35;
 	for( i = 0; i < OPTION_HARDEST-OPTION_EASIEST+1; ++i )
 	{
-		strcpy( diffButtonStr[i], m.roman_number(i+1) );
+		strcpy( diffButtonStr[i], misc.roman_number(i+1) );
 		w = font_thin_black.text_width(diffButtonStr[i]);
 		h = font_thin_black.text_height();
 		diffGroup[i].create( cx, cy, cx+w+10, cy+h+10,
@@ -5091,7 +5091,7 @@ int Game::mp_select_load_option(char *fileName)
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ###### begin Gilbert 29/6 #########//
@@ -5211,7 +5211,7 @@ int Game::mp_select_load_option(char *fileName)
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//
@@ -5359,7 +5359,7 @@ int Game::mp_select_load_option(char *fileName)
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//
@@ -5433,7 +5433,7 @@ int Game::mp_select_load_option(char *fileName)
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//
@@ -5510,7 +5510,7 @@ int Game::mp_select_load_option(char *fileName)
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//
@@ -5541,7 +5541,7 @@ int Game::mp_select_load_option(char *fileName)
 					{
 						enoughPeopleButton.paint(tempConfig.goal_population_flag);
 						font_bold_black.put( peopleInc.x1-65, peopleInc.y1, 
-							m.format(tempConfig.goal_population), 1, peopleInc.x1-1);
+							misc.format(tempConfig.goal_population), 1, peopleInc.x1-1);
 						peopleInc.paint();
 						peopleDec.paint();
 					}
@@ -5549,7 +5549,7 @@ int Game::mp_select_load_option(char *fileName)
 					{
 						enoughIncomeButton.paint(tempConfig.goal_economic_score_flag);
 						font_bold_black.put( incomeInc.x1-65, incomeInc.y1, 
-							m.format(tempConfig.goal_economic_score), 1, incomeInc.x1-1 );
+							misc.format(tempConfig.goal_economic_score), 1, incomeInc.x1-1 );
 						incomeInc.paint();
 						incomeDec.paint();
 					}
@@ -5557,7 +5557,7 @@ int Game::mp_select_load_option(char *fileName)
 					{
 						enoughScoreButton.paint(tempConfig.goal_total_score_flag);
 						font_bold_black.put( scoreInc.x1-65, scoreInc.y1, 
-							m.format(tempConfig.goal_total_score), 1, scoreInc.x1-1 );
+							misc.format(tempConfig.goal_total_score), 1, scoreInc.x1-1 );
 						scoreInc.paint();
 						scoreDec.paint();
 					}
@@ -5565,7 +5565,7 @@ int Game::mp_select_load_option(char *fileName)
 					{
 						timeLimitButton.paint(tempConfig.goal_year_limit_flag);
 						int x2 = font_bold_black.put( yearInc.x1-100, yearInc.y1, 
-							m.format(tempConfig.goal_year_limit), 1, yearInc.x1-60-1 );
+							misc.format(tempConfig.goal_year_limit), 1, yearInc.x1-60-1 );
 						font_thin_black.put( yearInc.x1-60, yearInc.y1, text_game_menu.str_goal_time_units(), 1 );	// "years"
 						yearInc.paint();
 						yearDec.paint();
@@ -5597,7 +5597,7 @@ int Game::mp_select_load_option(char *fileName)
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//
@@ -5715,11 +5715,11 @@ int Game::mp_select_load_option(char *fileName)
 				{
 					font_bld.center_put( 40, 85, 82, 105, text_game_menu.str_level_in_score(), 1 );	// "Level"
 					// load game only, display difficulty_rating
-					// font_bold_black.center_put( 40, 105, 82, 125, m.format(tempConfig.multi_player_difficulty(regPlayerCount-1,0)), 1 );
+					// font_bold_black.center_put( 40, 105, 82, 125, misc.format(tempConfig.multi_player_difficulty(regPlayerCount-1,0)), 1 );
 					if( tempConfig.race_id >= 0 )
-						font_bold_black.center_put( 40, 105, 82, 125, m.format(tempConfig.human_difficulty_rating), 1 );
+						font_bold_black.center_put( 40, 105, 82, 125, misc.format(tempConfig.human_difficulty_rating), 1 );
 					else
-						font_bold_black.center_put( 40, 105, 82, 125, m.format(tempConfig.monster_difficulty_rating), 1 );
+						font_bold_black.center_put( 40, 105, 82, 125, misc.format(tempConfig.monster_difficulty_rating), 1 );
 				}
 
 				refreshFlag = 0;
@@ -5849,7 +5849,7 @@ int Game::mp_select_load_option(char *fileName)
 								&& nation_array[newPlayerMsg->nation_recno]->race_id == newPlayerMsg->race_id
 								&& !colorAssigned[newPlayerMsg->color_scheme_id-1] 
 								&& newPlayerMsg->frame_count == sys.frame_count
-								&& newPlayerMsg->random_seed == m.get_random_seed()) )
+								&& newPlayerMsg->random_seed == misc.get_random_seed()) )
 							{
 								// reply refuse new player
 								MpStructRefuseNewPlayer msgRefuse(from, MpStructRefuseNewPlayer::REFUSE_LOAD_GAME_UNSYNC );
@@ -6497,9 +6497,9 @@ int Game::mp_select_load_option(char *fileName)
 			// ---- to filter other all message until MP_MSG_END_SETTING ---//
 
 			trial = 5000;
-			startTime = m.get_time();
+			startTime = misc.get_time();
 			// int recvEndSetting = 0;
-			while( --trial > 0 || m.get_time() - startTime < 10000 )
+			while( --trial > 0 || misc.get_time() - startTime < 10000 )
 			{
 				if( recvEndSetting >= playerCount-1)
 					break;
@@ -6509,7 +6509,7 @@ int Game::mp_select_load_option(char *fileName)
 				if( recvPtr )
 				{
 					trial = MAX(trial, 1000);
-					startTime = m.get_time();
+					startTime = misc.get_time();
 					if( ((MpStructBase *)recvPtr)->msg_id == MPMSG_END_SETTING )
 					{
 						recvEndSetting++;
@@ -6608,7 +6608,7 @@ static void i_disp_int_button(ButtonCustom *button, int repaintBody)
 	Font *fontPtr = button->pushed_flag ? &font_bold_red : &font_thin_black;
 	// top center align
 	fontPtr->center_put( button->x1, button->y1, button->x2, button->y1+fontPtr->font_height-1,
-		m.format(button->custom_para.value) );
+		misc.format(button->custom_para.value) );
 }
 // ------ end of static function i_disp_int_button ------//
 

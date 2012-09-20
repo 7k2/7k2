@@ -79,13 +79,13 @@ int Game::select_run_scenario(int countScenarioOnly)
 					scenInfoArray[scenInfoSize].file_name = gameDir[i]->name;    // keep the pointers to the file name string
 					scenInfoArray[scenInfoSize].dir_id    = dirId;
 
-					m.change_file_ext( txtFileName, gameDir[i]->name, "SCT" );
+					misc.change_file_ext( txtFileName, gameDir[i]->name, "SCT" );
 
 					String str;
 					str  = DIR_SCENARIO_PATH(dirId);
 					str += txtFileName;
 
-					if( !m.is_file_exist(str) )
+					if( !misc.is_file_exist(str) )
 					{
 						scenInfoArray[scenInfoSize].scen_name[0] = '\0'; // no desc
 						scenInfoArray[scenInfoSize].goal_difficulty = 0;
@@ -164,7 +164,7 @@ int Game::run_scenario(ScenInfo* scenInfo)
 	str  = DIR_SCENARIO_PATH(scenInfo->dir_id);
 	str += scenInfo->file_name;
 
-	if( m.is_file_exist(str) )
+	if( misc.is_file_exist(str) )
 	{
 		// ###### begin Gilbert 1/11 #########//
 		// save the name in the config

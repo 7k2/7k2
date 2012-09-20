@@ -86,7 +86,7 @@ void FirmMonsterAlchemy::disp_firm_info(int dispY1, int refreshFlag )
 				text_firm.str_alchemy_raw(raw_id) );
 
 			// str = "Estimated Reserves ";
-			// str += m.format((int)reserve_qty, 1);
+			// str += misc.format((int)reserve_qty, 1);
 			font_whbl.center_put( INFO_X1+20, INFO_Y1+40, INFO_X2-10, INFO_Y1+60, 
 				text_firm.str_estimated_resource((int)reserve_qty) );
 

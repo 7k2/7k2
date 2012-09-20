@@ -59,13 +59,13 @@ void CampaignEastWest::plot_a5_create_game()
 
 		for( int trial = 100; trial > 0; --trial )
 		{
-			int xLoc = m.random(MAX_WORLD_X_LOC);
-			int yLoc = m.random(MAX_WORLD_Y_LOC);
+			int xLoc = misc.random(MAX_WORLD_X_LOC);
+			int yLoc = misc.random(MAX_WORLD_Y_LOC);
 
 			if( !world.can_build_site( xLoc, yLoc, 1, 1, 3) )	// some space there
 				continue;
 
-			int dist = m.points_distance( xLoc, yLoc,
+			int dist = misc.points_distance( xLoc, yLoc,
 				playerKing->next_x_loc(), playerKing->next_y_loc() );
 
 			if( dist > maxDist )
@@ -86,14 +86,14 @@ void CampaignEastWest::plot_a5_create_game()
 		if( maxDist )
 		{
 			site_array.add_site( farXLoc, farYLoc, SITE_ITEM, 
-				itemId, item_res.random_para(itemId, m.rand()) );
+				itemId, item_res.random_para(itemId, misc.rand()) );
 		}
 
 		// add teleporter
 		if( nearDist < 1000 )
 		{
 			site_array.add_site( nearXLoc, nearYLoc, SITE_ITEM, 
-				ITEM_TELEPORT, item_res.random_para(ITEM_TELEPORT, m.rand()) );
+				ITEM_TELEPORT, item_res.random_para(ITEM_TELEPORT, misc.rand()) );
 		}
 
 		// add presistent item (i.e. ring of life) to monster king, so it will not take the bane

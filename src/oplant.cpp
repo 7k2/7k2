@@ -133,7 +133,7 @@ void PlantRes::load_plant_info()
 		plantRec  = (PlantRec*) dbPlant->read(i+1);
 		plantInfo = plant_info_array+i;
 
-		m.rtrim_fld( plantInfo->code, plantRec->code, plantRec->CODE_LEN );
+		misc.rtrim_fld( plantInfo->code, plantRec->code, plantRec->CODE_LEN );
 #if(defined(CHINESE))
 		// so scenario editor can display Chinese word of "tree"
 		//SXM:Risk
@@ -144,7 +144,7 @@ void PlantRes::load_plant_info()
 #endif
 		//SXM
 #endif
-		plantInfo->climate_zone = m.atoi( plantRec->climate_zone, plantRec->ZONE_LEN );
+		plantInfo->climate_zone = misc.atoi( plantRec->climate_zone, plantRec->ZONE_LEN );
 
 		if( plantRec->tera_type1[0] == 'T' )		// town plant
 		{
@@ -182,8 +182,8 @@ void PlantRes::load_plant_info()
 				plantInfo->tera_type[2] = 0;
 		}
 
-		plantInfo->first_bitmap = m.atoi( plantRec->first_bitmap, plantRec->FIRST_BITMAP_LEN );
-		plantInfo->bitmap_count = m.atoi( plantRec->bitmap_count, plantRec->BITMAP_COUNT_LEN );
+		plantInfo->first_bitmap = misc.atoi( plantRec->first_bitmap, plantRec->FIRST_BITMAP_LEN );
+		plantInfo->bitmap_count = misc.atoi( plantRec->bitmap_count, plantRec->BITMAP_COUNT_LEN );
 	}
 }
 //--------- End of function PlantRes::load_plant_info ---------//
@@ -221,7 +221,7 @@ void PlantRes::load_plant_bitmap()
 		plantBitmapRec = (PlantBitmapRec*) dbPlantBitmap->read(i+1);
 		plantBitmap    = plant_bitmap_array+i;
 
-		plantBitmap->size = m.atoi( plantBitmapRec->size, plantBitmapRec->SIZE_LEN );
+		plantBitmap->size = misc.atoi( plantBitmapRec->size, plantBitmapRec->SIZE_LEN );
 
 		memcpy( &bitmapOffset, plantBitmapRec->bitmap_ptr, sizeof(uint32_t) );
 
@@ -229,8 +229,8 @@ void PlantRes::load_plant_bitmap()
 		plantBitmap->bitmap_width  = *((short*)plantBitmap->bitmap_ptr);
 		plantBitmap->bitmap_height = *(((short*)plantBitmap->bitmap_ptr)+1);
 
-		plantBitmap->offset_x = m.atoi( plantBitmapRec->offset_x, plantBitmapRec->OFFSET_LEN );
-		plantBitmap->offset_y = m.atoi( plantBitmapRec->offset_y, plantBitmapRec->OFFSET_LEN );
+		plantBitmap->offset_x = misc.atoi( plantBitmapRec->offset_x, plantBitmapRec->OFFSET_LEN );
+		plantBitmap->offset_y = misc.atoi( plantBitmapRec->offset_y, plantBitmapRec->OFFSET_LEN );
 
 		// modify offset_x/y for 7k2
 		plantBitmap->offset_x += -LOCATE_WIDTH/2 - (-ZOOM_LOC_X_WIDTH/2 + -ZOOM_LOC_Y_WIDTH/2);
@@ -295,7 +295,7 @@ int PlantRes::scan(int climateZone, int teraType, int townAge)
 
 	if( matchCount > 0 )
 	{
-		int plantBitmapId = scan_id_array[m.random(matchCount)];
+		int plantBitmapId = scan_id_array[misc.random(matchCount)];
 
 		err_when( plantBitmapId < 1 || plantBitmapId > plant_bitmap_count );
 

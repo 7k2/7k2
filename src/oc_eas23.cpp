@@ -63,7 +63,7 @@ int CampaignEastWest::stage_23_create_game()
 
 	//----- create offensive structures ---------//
 
-	create_offensive_structure( STAGE_23_EASTERN_NATION_RECNO, 1+campaign_difficulty/2 + m.random(2) );		// build 2 structures if the difficulty > 3
+	create_offensive_structure( STAGE_23_EASTERN_NATION_RECNO, 1+campaign_difficulty/2 + misc.random(2) );		// build 2 structures if the difficulty > 3
 
 	//------ create the player troop -------//
 
@@ -148,7 +148,7 @@ int CampaignEastWest::stage_23_create_nation()
 
 int CampaignEastWest::stage_23_create_town()
 {
-	int townAddCount   = 8 + m.random(2);
+	int townAddCount   = 8 + misc.random(2);
 	int hasFortPercent = 100;
 	int combatLevel    = 40 + campaign_difficulty*10;
 
@@ -168,7 +168,7 @@ int CampaignEastWest::stage_23_create_firm()
 	int townRecno1 = king_oversee_town_recno(STAGE_23_EASTERN_NATION_RECNO);
 	int townRecno2 = random_pick_town_with_camp(STAGE_23_EASTERN_NATION_RECNO, 2);		// only pick towns with <= 2 links
 
-	if( townRecno2 && m.random(2)==0 )		// swap the town in 50% chance
+	if( townRecno2 && misc.random(2)==0 )		// swap the town in 50% chance
 	{
 		int t=townRecno1;
 		townRecno1 = townRecno2;
@@ -193,7 +193,7 @@ int CampaignEastWest::stage_23_create_firm()
 
 	//----- four possible situations -------//
 
-	int eastSituation = m.random(2)+1;
+	int eastSituation = misc.random(2)+1;
 
 	//-------------------------------------------------//
 	// The target state has an emphasis on weapon
@@ -213,7 +213,7 @@ int CampaignEastWest::stage_23_create_firm()
 		{
 			FirmCamp* firmCamp = firm_array[ nationPtr->ai_camp_array[i] ]->cast_to_FirmCamp();
 
-			int addCount = MAX_SOLDIER - firmCamp->soldier_count - m.random(3);		// don't always full up, sometimes leave a free slots empty
+			int addCount = MAX_SOLDIER - firmCamp->soldier_count - misc.random(3);		// don't always full up, sometimes leave a free slots empty
 
 			for( int j=addCount ; j>0 ; j-- )
 				add_weapon_to_camp( firmCamp->firm_recno );

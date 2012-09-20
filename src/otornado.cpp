@@ -74,11 +74,11 @@ void Tornado::init(short startX, short startY, short lifeTime)
 void Tornado::pre_process()
 {
 	// ##### patch begin Gilbert 16/2 ######//
-//	double angle = m.random(32) / 16.0 * M_PI;
+//	double angle = misc.random(32) / 16.0 * M_PI;
 //	dmg_offset_x = short(DAMAGE_POINT_RADIUS * sin(angle));
 //	dmg_offset_y = short(DAMAGE_POINT_RADIUS * cos(angle));
-	dmg_offset_x = m.random(LOCATE_WIDTH*3) - LOCATE_WIDTH;
-	dmg_offset_y = m.random(LOCATE_HEIGHT*3) - LOCATE_HEIGHT;
+	dmg_offset_x = misc.random(LOCATE_WIDTH*3) - LOCATE_WIDTH;
+	dmg_offset_y = misc.random(LOCATE_HEIGHT*3) - LOCATE_HEIGHT;
 	// ##### patch end Gilbert 16/2 ######//
 	if( --life_time <= 0)
 		cur_action = SPRITE_DIE;
@@ -96,7 +96,7 @@ void Tornado::process_move()
 	if( speed > 10)
 		speed = 10;
 
-	double windDir = weather.wind_direct_rad() + (m.random(31)-15)*PI/180.0;
+	double windDir = weather.wind_direct_rad() + (misc.random(31)-15)*PI/180.0;
 	cur_x += short(speed * sin(windDir));
 	cur_y -= short(speed * cos(windDir));
 	if( ++cur_frame > cur_sprite_move()->frame_count )

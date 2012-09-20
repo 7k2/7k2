@@ -241,7 +241,7 @@ void FirmAnimal::disp_unit_list(int dispY1, int refreshFlag)
 
 				int fontHeight = font_whbl.max_font_height;
 
-				font_whbl.center_put( x, yHp, x+UNIT_X_SPACING, yHp+fontHeight, m.format(animalUnit->combat_level()) );
+				font_whbl.center_put( x, yHp, x+UNIT_X_SPACING, yHp+fontHeight, misc.format(animalUnit->combat_level()) );
 			}
 		}
 	}
@@ -318,7 +318,7 @@ void FirmAnimal::disp_unit_info(int dispY1, int refreshFlag)
 	{
 		x2 = font_snds.put( x, y, text_unit.str_combat_level() ) + 10;
 		// font_snds.put( x2, y, animalUnit->combat_level() );
-		font_snds.right_put( x+90, y, m.format(animalUnit->combat_level(),4) );
+		font_snds.right_put( x+90, y, misc.format(animalUnit->combat_level(),4) );
 	}
 
 	y += 14;
@@ -329,7 +329,7 @@ void FirmAnimal::disp_unit_info(int dispY1, int refreshFlag)
 	{
 		x2 = font_snds.put( x, y, text_unit.str_leadership() ) + 10;
 		// font_snds.put( x2, y, animalUnit->skill_level() );
-		font_snds.right_put( x+90, y, m.format(animalUnit->skill_level(),4) );
+		font_snds.right_put( x+90, y, misc.format(animalUnit->skill_level(),4) );
 	}
 
 	y += 14;
@@ -338,7 +338,7 @@ void FirmAnimal::disp_unit_info(int dispY1, int refreshFlag)
 
 //	String str;
 //	str = "Hiring Cost : ";
-//	str += m.format(animalUnit->hire_cost, 2);
+//	str += misc.format(animalUnit->hire_cost, 2);
 //	str += " + ";
 //	str += animalUnit->live_point_cost;
 //	str += " live points";

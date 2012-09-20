@@ -301,9 +301,9 @@ int Nation::ai_assign_spy(ActionNode* actionNode)
 	Spy* spyPtr = spy_array[spyUnit->spy_recno];
 /*
 	if( reputation < 0 )		// if the nation's reputation is negative, use sneak mode to avoid chance of being uncovered and further damage the reputation
-		newFlag = m.random( 2+(-(int)reputation)/5 )==0;	// 2 to 22
+		newFlag = misc.random( 2+(-(int)reputation)/5 )==0;	// 2 to 22
 	else
-		newFlag = m.random(4)==0;		// 25% chance of being 1
+		newFlag = misc.random(4)==0;		// 25% chance of being 1
 
 	//-- the spy should not notify when it is just outside an espionage college --//
 
@@ -319,7 +319,7 @@ int Nation::ai_assign_spy(ActionNode* actionNode)
 			if( firmPtr->nation_recno == nation_recno &&
 				 firmPtr->firm_id		  == FIRM_SPY )
 			{
-				if( m.points_distance( firmPtr->center_x, firmPtr->center_y,
+				if( misc.points_distance( firmPtr->center_x, firmPtr->center_y,
 											  spyUnit->next_x_loc(), spyUnit->next_y_loc() ) < 20 )
 				{
 					newFlag = 0;
@@ -337,8 +337,8 @@ int Nation::ai_assign_spy(ActionNode* actionNode)
 
 	if( !spyUnit->can_spy_change_nation() )		// if the spy can't change nation recno now
 	{
-		int destXLoc = spyUnit->next_x_loc() + m.random(20) - 10;
-		int destYLoc = spyUnit->next_y_loc() + m.random(20) - 10;
+		int destXLoc = spyUnit->next_x_loc() + misc.random(20) - 10;
+		int destYLoc = spyUnit->next_y_loc() + misc.random(20) - 10;
 
 		destXLoc = MAX(0, destXLoc);
 		destXLoc = MIN(MAX_WORLD_X_LOC-1, destXLoc);
@@ -357,7 +357,7 @@ int Nation::ai_assign_spy(ActionNode* actionNode)
 	// ###### begin Gilbert 20/4 #######//
 	if( !spyPtr->notify_cloaked_nation_flag && spyPtr->can_camouflage() )
 	{
-		int camouflageFlag = m.random(100) < spyPtr->spy_skill;
+		int camouflageFlag = misc.random(100) < spyPtr->spy_skill;
 		if( camouflageFlag )		// set break point here to change
 			spyPtr->start_camouflage(COMMAND_AI);
 	}
@@ -453,7 +453,7 @@ int Nation::think_assign_spy_target_inn(int regionId)
 {
 	Firm *firmPtr;
 	int  totalFirm = firm_array.size();
-	int  firmRecno = m.random(totalFirm)+1;
+	int  firmRecno = misc.random(totalFirm)+1;
 
 	for( int i=totalFirm ; i>0 ; i-- )
 	{
@@ -490,7 +490,7 @@ int Nation::think_assign_spy_target_town(int raceId, int regionId)
 {
 	Town  *townPtr;
 	int   townCount = town_array.size();
-	int   townRecno = m.random(townCount)+1;
+	int   townRecno = misc.random(townCount)+1;
 
 	for( int i=town_array.size() ; i>0 ; i-- )
 	{
@@ -515,7 +515,7 @@ int Nation::think_assign_spy_target_town(int raceId, int regionId)
 
 		if( !townPtr->ai_town )
 		{
-			if( m.random(3) != 0 )
+			if( misc.random(3) != 0 )
 				continue;
 		}
 
@@ -551,7 +551,7 @@ int Nation::think_assign_spy_own_town(int raceId, int regionId)
 {
 	Town  *townPtr;
 	int   townCount = town_array.size();
-	int   townRecno = m.random(townCount)+1;
+	int   townRecno = misc.random(townCount)+1;
 	int   spyCount;
 
 	for( int i=town_array.size() ; i>0 ; i-- )
@@ -601,7 +601,7 @@ int Nation::train_spy(int raceId, int isCivilian, short destX, short destY)
 {
 	short 	townRecnoArray[MAX_RACE];
 	int 		curRating, bestRating=0;
-	int		bestFirmSeq=m.random(ai_spy_count);
+	int		bestFirmSeq=misc.random(ai_spy_count);
 
 	//------ first try to select the spy college that is closest to the target ----//
 

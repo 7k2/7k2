@@ -479,7 +479,7 @@ void TalkMsg::request_buy_food()
 	{
 		str =  from_nation_name();
 		str += " bietet ";
-		str += m.format(talk_para2,2);
+		str += misc.format(talk_para2,2);
 		str += " für 10 Nahrungseinheiten.";
 
 		return;
@@ -644,7 +644,7 @@ void TalkMsg::give_tribute(char* tributeTypeStr)
 			str  = "Sie bieten ";
 			str += to_nation_name();
 			str += " ";
-			str += m.format(talk_para1, 2);
+			str += misc.format(talk_para1, 2);
 			str += " ";
 			str += tributeStr;
 			str += " an.";
@@ -653,7 +653,7 @@ void TalkMsg::give_tribute(char* tributeTypeStr)
 		{
 			str  = from_nation_name();
 			str += " bietet Ihnen ";
-			str += m.format(talk_para1, 2);
+			str += misc.format(talk_para1, 2);
 			str += " ";
 			str += tributeStr;
 			str += " an.";
@@ -672,7 +672,7 @@ void TalkMsg::give_tribute(char* tributeTypeStr)
 
 			str += tributeStr;
 			str += " von ";
-			str += m.format(talk_para1, 2);
+			str += misc.format(talk_para1, 2);
 			str += ".";
 		}
 		else
@@ -682,7 +682,7 @@ void TalkMsg::give_tribute(char* tributeTypeStr)
 			else
 				str = "Sie verweigern ";
 
-			str += m.format(talk_para1, 2);
+			str += misc.format(talk_para1, 2);
 			str += " ";
 			str += tributeStr;
 			str += " von ";
@@ -752,7 +752,7 @@ void TalkMsg::demand_tribute(int isAid)
 			else
 				str = "Sie verlangen ";
 
-			str += m.format(talk_para1,2);
+			str += misc.format(talk_para1,2);
 			str += " ";
 			str += aidStr;
 			str += " von ";
@@ -768,7 +768,7 @@ void TalkMsg::demand_tribute(int isAid)
 			else
 				str += " verlangt ";
 
-			str += m.format(talk_para1,2);
+			str += misc.format(talk_para1,2);
 			str += " ";
 			str += aidStr;
 			str += " von Ihnen.";
@@ -784,7 +784,7 @@ void TalkMsg::demand_tribute(int isAid)
 				str += " akzeptiert";
 			else
 				str += " verweigert Zahlung von ";
-			str += m.format(talk_para1,2);
+			str += misc.format(talk_para1,2);
 			str += " ";
 			str += aidStr;
 			str += ".";
@@ -797,7 +797,7 @@ void TalkMsg::demand_tribute(int isAid)
 				str = "Sie verweigern";
 
 			str += " Zahlung von ";
-			str += m.format(talk_para1,2);
+			str += misc.format(talk_para1,2);
 			str += " ";
 			str += aidStr;
 			str += " an ";
@@ -867,7 +867,7 @@ void TalkMsg::give_tech()
 		if( talk_para2 )		// Ships do not have different versions 
 		{
 			str += " ";
-			str += m.roman_number(talk_para2);
+			str += misc.roman_number(talk_para2);
 		}
 
 		str += " -Technologie an.";
@@ -889,7 +889,7 @@ void TalkMsg::give_tech()
 			if( talk_para2 )		// Ships do not have different versions
 			{
 				str += " ";
-				str += m.roman_number(talk_para2);
+				str += misc.roman_number(talk_para2);
 			}
 
 			str += " -Technologie.";
@@ -908,7 +908,7 @@ void TalkMsg::give_tech()
 			if( talk_para2 )		// Ships do not have different versions
 			{
 				str += " ";
-				str += m.roman_number(talk_para2);
+				str += misc.roman_number(talk_para2);
 			}
 
 			str += " -Technologie von ";

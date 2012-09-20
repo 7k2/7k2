@@ -57,7 +57,7 @@ int CampaignEastWest::stage_28_create_game()
 
 	//----- create independent towns ------//
 
-	Battle::create_independent_town(5+m.random(3));
+	Battle::create_independent_town(5+misc.random(3));
 
 	//---- create the player force and peasants ----//
 
@@ -70,7 +70,7 @@ int CampaignEastWest::stage_28_create_game()
 	//---- create a group of peasants with the player's nationality ---//
 
 	int unitId = race_res[playerNation->race_id]->civilian_unit_id;
-	int peasantCount = 25 + m.random(6);
+	int peasantCount = 25 + misc.random(6);
 
 	for( int i=0 ; i<peasantCount ; i++ )
 	{
@@ -177,9 +177,9 @@ void CampaignEastWest::stage_28_next_day()
 
 	//------ independent towns forming new kingdoms ----//
 
-	if( m.random( ( 12-campaign_difficulty*2+nation_array.size()*2 ) * 15 )==0 )
+	if( misc.random( ( 12-campaign_difficulty*2+nation_array.size()*2 ) * 15 )==0 )
 	{
-		int townRecno = m.random(town_array.size())+1;
+		int townRecno = misc.random(town_array.size())+1;
 
 		for( int i=town_array.size() ; i>0 ; i-- )
 		{
@@ -244,7 +244,7 @@ void CampaignEastWest::stage_28_process_game_result()
 
 		info.game_year = game_year;			// revert info.game_year back to campaign's game year so that the game's time will not advance
 
-		m.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
+		misc.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
 	}
 }
 //---- End of function CampaignEastWest::stage_28_process_game_result -----//

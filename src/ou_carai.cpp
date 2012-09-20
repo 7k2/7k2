@@ -187,7 +187,7 @@ void UnitCaravan::disp_goods(int dispY1, int refreshFlag)
 		int y = INFO_Y1+235+4+ (productId-1)*20;
 
 //		vga.active_buf->put_bitmap_trans( x+2, y, raw_res.small_product_icon(productId) );
-		font_whbl.right_put( x+BUTTON_ACTION_WIDTH-3, y, m.format(product_raw_qty_array[productId-1]) );
+		font_whbl.right_put( x+BUTTON_ACTION_WIDTH-3, y, misc.format(product_raw_qty_array[productId-1]) );
 	}
 
 	for(int rawId = 1; rawId <= MAX_RAW; ++rawId )
@@ -196,7 +196,7 @@ void UnitCaravan::disp_goods(int dispY1, int refreshFlag)
 		int y = INFO_Y1+235+4+ (rawId-1)*20;
 
 //		vga.active_buf->put_bitmap_trans( x+2, y, raw_res.small_raw_icon(rawId) );
-		font_whbl.right_put( x+BUTTON_ACTION_WIDTH-3, y, m.format(raw_qty_array[rawId-1]) );
+		font_whbl.right_put( x+BUTTON_ACTION_WIDTH-3, y, misc.format(raw_qty_array[rawId-1]) );
 	}
 }
 //---------- End of function UnitCaravan::disp_goods ----------//

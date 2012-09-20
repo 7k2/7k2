@@ -742,7 +742,7 @@ int Nation::think_give_tribute_aid(TalkMsg* rejectedMsg)
 	//---- think if the nation should spend money now ----//
 
 	static short tributeAmountArray[] = { 500, 1000 };
-	int tributeAmount = tributeAmountArray[m.random(2)];
+	int tributeAmount = tributeAmountArray[misc.random(2)];
 
 	if( !ai_should_spend(0, (float) tributeAmount) )		// importance rating is 0
 		return 0;
@@ -815,7 +815,7 @@ int Nation::think_demand_tribute_aid()
 
 	Nation* nationPtr;
 	int	  totalNation=nation_array.size();
-	int	  nationRecno=m.random(totalNation)+1;
+	int	  nationRecno=misc.random(totalNation)+1;
 	int	  curRating, requestRating;
 	int	  talkId;
 	int	  ourMilitary = military_rank_rating();
@@ -980,12 +980,12 @@ int Nation::think_demand_tribute_aid()
 //
 int Nation::think_exchange_tech()
 {
-	if( m.random(10) > 0 )		// only 1/10 chance of calling this function
+	if( misc.random(10) > 0 )		// only 1/10 chance of calling this function
 		return 0;
 
 	Nation* nationPtr;
 	int	  totalNation=nation_array.size();
-	int	  nationRecno=m.random(totalNation)+1;
+	int	  nationRecno=misc.random(totalNation)+1;
 
 	for( int i=totalNation ; i>0 ; i-- )
 	{
@@ -1082,7 +1082,7 @@ int Nation::think_request_surrender()
 	if( info.game_date < info.game_start_date + 365 * 2 )		// don't offer to buy throne in the first 2 years of the game
 		return 0;
 
-	if( m.random(5) != 0 )		// don't do this too often
+	if( misc.random(5) != 0 )		// don't do this too often
 		return 0;
 
 	//---- only do so when we have enough cash ----//
@@ -1118,7 +1118,7 @@ int Nation::think_request_surrender()
 	int     ourOverallRankRating = overall_rank_rating();
 	int	  totalNation = nation_array.size();
 
-	int nationRecno = m.random(totalNation)+1;
+	int nationRecno = misc.random(totalNation)+1;
 
 	for( i=0 ; i<totalNation ; i++ )
 	{

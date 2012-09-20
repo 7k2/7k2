@@ -55,19 +55,19 @@ void Trainee::init(int raceId, int initLoyalty, int spyRecno, int trainType, int
 		case TRAIN_UNIT_INFANTRY:
 			unit_id = (char) race_res[raceId]->infantry_unit_id;
 			// ##### begin Gilbert 28/6 #########/
-			// train_combat_potential = 40 + m.random(20);
-			train_combat_potential = 70 + m.random(30);
+			// train_combat_potential = 40 + misc.random(20);
+			train_combat_potential = 70 + misc.random(30);
 			// ##### end Gilbert 28/6 #########/
-			train_skill_potential = 10 + m.random(10);
+			train_skill_potential = 10 + misc.random(10);
 			break;
 
 		case TRAIN_UNIT_SPECIAL:
 			unit_id = (char) race_res[raceId]->special_unit_id;
 			// ##### begin Gilbert 28/6 #########/
-			// train_combat_potential = 40 + m.random(20);
-			train_combat_potential = 70 + m.random(30);
+			// train_combat_potential = 40 + misc.random(20);
+			train_combat_potential = 70 + misc.random(30);
 			// ##### end Gilbert 28/6 #########/
-			train_skill_potential = 10 + m.random(10);
+			train_skill_potential = 10 + misc.random(10);
 			break;
 
 		default:

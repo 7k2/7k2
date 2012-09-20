@@ -395,21 +395,21 @@ void FirmMonsterTrain::disp_trainee_list(int dispY1, int refreshFlag )
 						if( attribute >= 0 )
 						{
 							font->center_put( x, yHp, x+TRAINEE_X_SPACING, yHp+font->max_font_height, 
-								m.format(attribute) );
+								misc.format(attribute) );
 						}
 					}
 					else if( ownSpy )		// display spy icon
 						vga.active_buf->put_bitmap_trans( x+TRAINEE_X_SPACING/2-8, yHp-5, image_icon.read("U_SPY") );
 					else					// display combat skill
 						font->center_put( x, yHp, x+TRAINEE_X_SPACING, yHp+font->max_font_height, 
-							m.format(representAttribute) );
+							misc.format(representAttribute) );
 				}
 				else
 				{
 					// display spy skill
 					err_when( !ownSpy );
 					font_whbl.center_put( x, yHp, x+TRAINEE_X_SPACING, yHp+font->max_font_height, 
-						m.format(spy_array[ownSpy]->spy_skill) );
+						misc.format(spy_array[ownSpy]->spy_skill) );
 				}
 			}
 		}
@@ -524,7 +524,7 @@ void FirmMonsterTrain::disp_trainee_info(int dispY1, int refreshFlag )
 		if( unit_res[traineePtr->unit_id]->class_info.has_loyalty )
 		{
 		//	info.disp_loyalty( x, y+14, x+60, traineePtr->loyalty, traineePtr->loyalty, nation_recno, refreshFlag );
-			info.disp_loyalty( x, y+12, INFO_X2-99 - font_snds.text_width(m.format(traineePtr->loyalty, 4)),
+			info.disp_loyalty( x, y+12, INFO_X2-99 - font_snds.text_width(misc.format(traineePtr->loyalty, 4)),
 							traineePtr->loyalty, traineePtr->loyalty, nation_recno, refreshFlag );
 		}
 				
@@ -533,7 +533,7 @@ void FirmMonsterTrain::disp_trainee_info(int dispY1, int refreshFlag )
 		if( unit_res[traineePtr->unit_id]->class_info.has_combat_level )
 		{
 			x2 = font_snds.put( x+110, y+12, text_unit.str_combat_level() ) + 10;
-			font_snds.right_put( INFO_X2-10, y+12, m.format(traineePtr->combat_level(),4) );
+			font_snds.right_put( INFO_X2-10, y+12, misc.format(traineePtr->combat_level(),4) );
 		//	font_snds.put( x2, y+14, traineePtr->combat_level() );
 		}
 
@@ -543,7 +543,7 @@ void FirmMonsterTrain::disp_trainee_info(int dispY1, int refreshFlag )
 			&& traineePtr->skill_level() > 0 )
 		{
 			x2 = font_snds.put( x+110, y+26, text_unit.str_leadership() ) + 10;
-			font_snds.right_put( INFO_X2-10, y+26, m.format(traineePtr->skill_level(),4) );
+			font_snds.right_put( INFO_X2-10, y+26, misc.format(traineePtr->skill_level(),4) );
 	//		font_snds.put( x2, y+28, traineePtr->skill_level() );
 		}
 

@@ -539,7 +539,7 @@ static void disp_stat(int y)
 	put_stat( y+=20, text_end_condition.str_game_time(), info.play_time_str() );
 
 	put_stat( y+=30, text_end_condition.str_final_population(), nationPtr->all_population() );
-	put_stat( y+=20, text_end_condition.str_final_treasure(), m.format((int)nationPtr->cash,2) );
+	put_stat( y+=20, text_end_condition.str_final_treasure(), misc.format((int)nationPtr->cash,2) );
 
 	put_stat( y+=30, text_end_condition.str_kill_soldiers(), nationPtr->enemy_soldier_killed );
 	put_stat( y+=20, text_end_condition.str_lose_soldiers(nationTitle), nationPtr->own_soldier_killed );
@@ -577,7 +577,7 @@ static void put_stat(int y, char* desStr, char* dispStr)
 static void put_stat(int y, char* desStr, int dispValue)
 {
 	font_scre.put( 140, y, desStr );
-	font_scre.put( 530, y, m.format(dispValue) );
+	font_scre.put( 530, y, misc.format(dispValue) );
 }
 //----------- End of static function put_stat -----------//
 
@@ -678,7 +678,7 @@ static int disp_score(int winFlag)
 		totalScore += rankScore;
 
 		font_scre.put( x, y, rankStrArray[i] );
-		font_scre.right_put( x+330, y, m.format(rankScore) );
+		font_scre.right_put( x+330, y, misc.format(rankScore) );
 	}
 
 	vga_front.bar( x, y, x+340, y+1, V_BLACK );
@@ -688,7 +688,7 @@ static int disp_score(int winFlag)
 	//-------- display thte total score --------//
 
 	font_scre.put( x    , y+2, text_reports.str_total_score() ); // "Total Score" );
-	font_scre.right_put( x+330, y, m.format(totalScore) );
+	font_scre.right_put( x+330, y, misc.format(totalScore) );
 //	y+=28;
 	y+=20;
 

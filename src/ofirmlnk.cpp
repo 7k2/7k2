@@ -60,7 +60,7 @@ void Firm::setup_link()
 
 		//---------- check if the firm is close enough to this firm -------//
 
-		if( m.points_distance( firmPtr->center_x, firmPtr->center_y,
+		if( misc.points_distance( firmPtr->center_x, firmPtr->center_y,
 			 center_x, center_y ) > world.effective_distance(firmPtr->firm_id, firm_id) ) 
 		{
 			continue;
@@ -156,7 +156,7 @@ void Firm::setup_link()
 
 		//------ check if the town is close enough to this firm -------//
 
-		if( m.points_distance( townPtr->center_x, townPtr->center_y,
+		if( misc.points_distance( townPtr->center_x, townPtr->center_y,
 			 center_x, center_y ) > world.effective_distance(firm_id, 0) )
 		{
 			continue;
@@ -309,8 +309,8 @@ void Firm::release_firm_link(int releaseFirmRecno)
 		{
 			err_when( linked_firm_count > MAX_LINKED_FIRM_FIRM );
 
-			m.del_array_rec( linked_firm_array, linked_firm_count, sizeof(linked_firm_array[0]), i+1 );
-         m.del_array_rec( linked_firm_enable_array, linked_firm_count, sizeof(linked_firm_enable_array[0]), i+1 );
+			misc.del_array_rec( linked_firm_array, linked_firm_count, sizeof(linked_firm_array[0]), i+1 );
+         misc.del_array_rec( linked_firm_enable_array, linked_firm_count, sizeof(linked_firm_enable_array[0]), i+1 );
          linked_firm_count--;
          return;
       }
@@ -338,8 +338,8 @@ void Firm::release_town_link(int releaseTownRecno)
 		{
 			err_when( linked_town_count > MAX_LINKED_FIRM_TOWN );
 
-			m.del_array_rec( linked_town_array, linked_town_count, sizeof(linked_town_array[0]), i+1 );
-			m.del_array_rec( linked_town_enable_array, linked_town_count, sizeof(linked_town_enable_array[0]), i+1 );
+			misc.del_array_rec( linked_town_array, linked_town_count, sizeof(linked_town_array[0]), i+1 );
+			misc.del_array_rec( linked_town_enable_array, linked_town_count, sizeof(linked_town_enable_array[0]), i+1 );
          linked_town_count--;
          return;
       }

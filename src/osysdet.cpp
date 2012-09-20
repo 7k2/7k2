@@ -130,17 +130,17 @@ void Sys::detect()
 		else
 		{
 			if( game.campaign()->auto_test_flag )		// if in auto test mode, we must randomize the seed as retry will restore the original seed. 
-				m.randomize();
+				misc.randomize();
 
-			if( m.random(3)>0 )		// 2/3 chance winning
+			if( misc.random(3)>0 )		// 2/3 chance winning
 			{
-				game.result_win_condition_recno = m.random(game.win_condition_count);
+				game.result_win_condition_recno = misc.random(game.win_condition_count);
 				game.result_win_condition_id = game.win_condition[game.result_win_condition_recno].condition_id;
 				game.game_end(nation_array.player_recno);
 			}
 			else
 			{
-				game.result_lose_condition_recno = m.random(game.lose_condition_count);
+				game.result_lose_condition_recno = misc.random(game.lose_condition_count);
 				game.result_lose_condition_id = game.lose_condition[game.result_lose_condition_recno].condition_id;
 				game.game_end(0);
 			}
@@ -368,7 +368,7 @@ void Sys::detect_letter_key(unsigned scanCode, unsigned skeyState)
 		(game.game_mode != GAME_TUTORIAL || tutor.allow_this_hot_key(keyCode)))
    {
 		// ####### begin Gilbert 1/6 #########//
-//		keyCode = m.lower(keyCode);
+//		keyCode = misc.lower(keyCode);
 		// ####### end Gilbert 1/6 #########//
 
       switch(keyCode)
@@ -888,7 +888,7 @@ void Sys::detect_cheat_key(unsigned scanCode, unsigned skeyState)
    if( !keyCode )    // since all keys concern are printable
       return;
 
-   keyCode = m.lower(keyCode);
+   keyCode = misc.lower(keyCode);
 
    switch( keyCode )
    {
@@ -1089,7 +1089,7 @@ void Sys::detect_campaign_cheat_key(unsigned scanCode, unsigned skeyState)
 
 	if( campaignCheat==1 )
 	{
-		if( m.lower(keyCode) == 'a' )
+		if( misc.lower(keyCode) == 'a' )
 		{
 			game.campaign()->auto_test_flag = 1;
 		}
@@ -1146,7 +1146,7 @@ void Sys::detect_debug_cheat_key(unsigned scanCode, unsigned skeyState)
 	if( !keyCode )    // since all keys concern are printable
 		return;
 
-	keyCode = m.lower(keyCode);
+	keyCode = misc.lower(keyCode);
 
 	switch( keyCode )
 	{
@@ -1281,7 +1281,7 @@ void Sys::detect_debug_cheat_key(unsigned scanCode, unsigned skeyState)
 			break;
 
       case '[':
-         if(m.is_file_exist("SYN.SYS"))
+         if(misc.is_file_exist("SYN.SYS"))
 			{
             debug_seed_status_flag = DEBUG_SYN_AUTO_SAVE;
             sp_seed_pos_reset();
@@ -1295,7 +1295,7 @@ void Sys::detect_debug_cheat_key(unsigned scanCode, unsigned skeyState)
       case ']':
          if(debug_seed_status_flag==NO_DEBUG_SYN)
          {
-            if(m.is_file_exist("SYN.SYS"))
+            if(misc.is_file_exist("SYN.SYS"))
             {
                debug_seed_status_flag = DEBUG_SYN_LOAD_AND_COMPARE_ONCE;
                game_file.load_game("syn.sav");
@@ -1478,8 +1478,8 @@ static int detect_scenario_cheat_key(unsigned scanCode, unsigned skeyState)
             }
             else if(locPtr->can_build_site(1) && !locPtr->is_power_off()) // add site
             {
-               i = MAX_RAW_RESERVE_QTY * (50 + m.random(50)) / 100;
-               site_array.add_site(curXLoc, curYLoc, SITE_RAW, m.random(MAX_RAW)+1, i);
+               i = MAX_RAW_RESERVE_QTY * (50 + misc.random(50)) / 100;
+               site_array.add_site(curXLoc, curYLoc, SITE_RAW, misc.random(MAX_RAW)+1, i);
                //box.msg( "Site added." );
                keyProcessed++;
             }
@@ -1622,7 +1622,7 @@ int Sys::detect_set_speed(unsigned scanCode, unsigned skeyState)
 
 	//----- 'P' or space to pause and resume game ----//
 
-	else if( m.lower(keyCode)=='p' || keyCode==' ' )
+	else if( misc.lower(keyCode)=='p' || keyCode==' ' )
 	{
 		if( curSpeedMode == 0 )		// resume game
 		{

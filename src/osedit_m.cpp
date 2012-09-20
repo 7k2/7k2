@@ -722,7 +722,7 @@ int ScenarioEditor::detect_misc_view()
 					int siteWidth = raw_res[raw_browse_recno]->map_loc_width;
 					int siteHeight = raw_res[raw_browse_recno]->map_loc_height;
 					if( world.can_build_site(xLoc, yLoc, siteWidth, siteHeight, INTER_PLACE_SPACE ) )
-						site_array.add_site( xLoc, yLoc, SITE_RAW, raw_browse_recno, MAX_RAW_RESERVE_QTY * (50 + m.random(50)) / 100 );
+						site_array.add_site( xLoc, yLoc, SITE_RAW, raw_browse_recno, MAX_RAW_RESERVE_QTY * (50 + misc.random(50)) / 100 );
 				}
 
 				return 1;
@@ -767,7 +767,7 @@ int ScenarioEditor::detect_misc_view()
 					&& world.zoom_matrix->get_detect_location(mouse.click_x(0), mouse.click_y(0), &xLoc, &yLoc, NULL ) )
 				{
 					if( world.get_loc(xLoc, yLoc)->can_build_site() )
-						site_array.add_site( xLoc, yLoc, SITE_ITEM, item_browse_recno, item_res.random_para(item_browse_recno, m.rand()) );
+						site_array.add_site( xLoc, yLoc, SITE_ITEM, item_browse_recno, item_res.random_para(item_browse_recno, misc.rand()) );
 				}
 
 				return 1;
@@ -914,7 +914,7 @@ static void disp_gold_rec(int recNo,int x,int y,int refreshFlag)
 		amount = gold_coin_amount_array[recNo-1];
 	else
 		amount = 10000 + 1000 * recNo - GOLD_COIN_AMOUNT_COUNT;
-	font_san.put( x+6, y+4, m.format(amount , 2) );
+	font_san.put( x+6, y+4, misc.format(amount , 2) );
 }
 // ---- end of static function disp_gold_rec ------//
 

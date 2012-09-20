@@ -182,7 +182,7 @@ Unit* Nation::ai_find_unit(int isCivilian, int raceId, short destX, short destY,
 
 			if( unitPtr->cur_action!=SPRITE_ATTACK && !unitPtr->cur_order.ai_action_id )
 			{
-				curDist = m.points_distance(unitPtr->next_x_loc(), unitPtr->next_y_loc(), destX, destY);
+				curDist = misc.points_distance(unitPtr->next_x_loc(), unitPtr->next_y_loc(), destX, destY);
 
 				if(curDist < minDist)
 				{
@@ -376,7 +376,7 @@ int Nation::hire_unit(int raceId, int isCivilian, int hireSpy, short destX, shor
 
 		innUnit = firmInnPtr->inn_unit_array + innUnitCount - 1;
 
-		curFirmDist = m.points_distance(firmPtr->center_x, firmPtr->center_y, destX, destY);
+		curFirmDist = misc.points_distance(firmPtr->center_x, firmPtr->center_y, destX, destY);
 
 		//------- check units in the inn ---------//
 
@@ -474,7 +474,7 @@ int Nation::recruit_peasant(int raceId, short destX, short destY, int& recruitTo
 
 		//--------------------------------------//
 
-		curDist = m.points_distance(townPtr->center_x, townPtr->center_y, destX, destY);
+		curDist = misc.points_distance(townPtr->center_x, townPtr->center_y, destX, destY);
 
 		curRating = 100-100*curDist/MAX_WORLD_X_LOC;
 

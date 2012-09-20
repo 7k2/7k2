@@ -148,13 +148,13 @@ void World::remove_rock(short rockArrayRecno )
 void World::gen_rocks(int nGrouped, int nLarge, int nSmall)
 {
 	if( !nGrouped )
-		nGrouped = 10 + m.random(10);
+		nGrouped = 10 + misc.random(10);
 
 	if( !nLarge )
-		nLarge = 10 + m.random(10);
+		nLarge = 10 + misc.random(10);
 
 	if( !nSmall )
-		nSmall = 10 + m.random(10);
+		nSmall = 10 + misc.random(10);
 
 	//----------------------------------------------//
 
@@ -169,15 +169,15 @@ void World::gen_rocks(int nGrouped, int nLarge, int nSmall)
 		// generate grouped rocks i.e. small stones must have same terrsin as huge ones
 		if( nGrouped > 0 )
 		{
-			short x = (GAP+LARGE_ROCK_SIZE)+m.random( max_x_loc - HUGE_ROCK_SIZE +1 - 2*(GAP+LARGE_ROCK_SIZE));
-			short y = (GAP+LARGE_ROCK_SIZE)+m.random( max_y_loc - HUGE_ROCK_SIZE +1 - 2*(GAP+LARGE_ROCK_SIZE));
+			short x = (GAP+LARGE_ROCK_SIZE)+misc.random( max_x_loc - HUGE_ROCK_SIZE +1 - 2*(GAP+LARGE_ROCK_SIZE));
+			short y = (GAP+LARGE_ROCK_SIZE)+misc.random( max_y_loc - HUGE_ROCK_SIZE +1 - 2*(GAP+LARGE_ROCK_SIZE));
 			short x2 = x + HUGE_ROCK_SIZE -1;
 			short y2 = y + HUGE_ROCK_SIZE -1;
 
 			if( can_add_rock(x,y, x2,y2) )
 			{
 				short rockRecno;
-		//		if (m.random(10) >5)
+		//		if (misc.random(10) >5)
 				rockRecno = rock_res.search("R",LARGE_ROCK_SIZE +1,HUGE_ROCK_SIZE,LARGE_ROCK_SIZE +1,HUGE_ROCK_SIZE,-1,0,
 					terrain_res[get_loc(x,y)->terrain_id]->average_type );
 		//		else
@@ -201,7 +201,7 @@ void World::gen_rocks(int nGrouped, int nLarge, int nSmall)
 					for(int subTrial = 12; subTrial > 0 ; --subTrial )
 					{
 						// sx from x-SMALL_ROCK_SIZE to x+4-1+SMALL_ROCK_SIZE
-						short r = m.random(360);
+						short r = misc.random(360);
 						short sx = (short)(x+ tempwidth/2 + (tempwidth/2 +GAP) * cos(r * PI /180));
 						short sy = (short)(y+ tempheight/2 + (tempheight/2 +GAP) * sin(r * PI /180));
 						short sx2 = sx + LARGE_ROCK_SIZE-1;
@@ -210,7 +210,7 @@ void World::gen_rocks(int nGrouped, int nLarge, int nSmall)
 						if( can_add_rock( sx, sy, sx2, sy2))
 						{
 							short rock2Recno;
-						//	if (m.random(10) >5)
+						//	if (misc.random(10) >5)
 							rock2Recno = rock_res.search("R",1,LARGE_ROCK_SIZE,1,LARGE_ROCK_SIZE,-1,0,
 								terrain_res[get_loc(sx,sy)->terrain_id]->average_type );
 						//	else
@@ -238,15 +238,15 @@ void World::gen_rocks(int nGrouped, int nLarge, int nSmall)
 		// generate stand-alone large rock
 		if( nLarge > 0 )
 		{
-			short x = m.random( max_x_loc - LARGE_ROCK_SIZE);
-			short y = m.random( max_y_loc - LARGE_ROCK_SIZE);
+			short x = misc.random( max_x_loc - LARGE_ROCK_SIZE);
+			short y = misc.random( max_y_loc - LARGE_ROCK_SIZE);
 			short x2 = x + LARGE_ROCK_SIZE -1;
 			short y2 = y + LARGE_ROCK_SIZE -1;
 
 			if( can_add_rock( x, y, x2, y2) )
 			{
 				short rockRecno;
-			//	if (m.random(10) >5)
+			//	if (misc.random(10) >5)
 				rockRecno = rock_res.search("R", SMALL_ROCK_SIZE+1,LARGE_ROCK_SIZE,SMALL_ROCK_SIZE+1,LARGE_ROCK_SIZE,-1,0,
 					terrain_res[get_loc(x,y)->terrain_id]->average_type );
 			//	else
@@ -271,15 +271,15 @@ void World::gen_rocks(int nGrouped, int nLarge, int nSmall)
 		// generate stand-alone small rock
 		if( nSmall > 0)
 		{
-			short x = m.random( max_x_loc - SMALL_ROCK_SIZE);
-			short y = m.random( max_y_loc - SMALL_ROCK_SIZE);
+			short x = misc.random( max_x_loc - SMALL_ROCK_SIZE);
+			short y = misc.random( max_y_loc - SMALL_ROCK_SIZE);
 			short x2 = x + SMALL_ROCK_SIZE -1;
 			short y2 = y + SMALL_ROCK_SIZE -1;
 
 			if( can_add_rock( x, y, x2, y2) )
 			{
 				short rockRecno;
-			//	if (m.random(10) >5)
+			//	if (misc.random(10) >5)
 				rockRecno = rock_res.search("R", 1,SMALL_ROCK_SIZE,1,SMALL_ROCK_SIZE,-1,0,
 					terrain_res[get_loc(x,y)->terrain_id]->average_type );
 			//	else
@@ -426,8 +426,8 @@ void World::gen_dirt(int nGrouped, int nLarge, int nSmall)
 		// generate grouped dirt
 		if( nGrouped > 0 )
 		{
-			short x = (GAP+LARGE_ROCK_SIZE)+m.random( max_x_loc - HUGE_ROCK_SIZE +1 - 2*(GAP+LARGE_ROCK_SIZE));
-			short y = (GAP+LARGE_ROCK_SIZE)+m.random( max_y_loc - HUGE_ROCK_SIZE +1 - 2*(GAP+LARGE_ROCK_SIZE));
+			short x = (GAP+LARGE_ROCK_SIZE)+misc.random( max_x_loc - HUGE_ROCK_SIZE +1 - 2*(GAP+LARGE_ROCK_SIZE));
+			short y = (GAP+LARGE_ROCK_SIZE)+misc.random( max_y_loc - HUGE_ROCK_SIZE +1 - 2*(GAP+LARGE_ROCK_SIZE));
 			short x2 = x + HUGE_ROCK_SIZE -1;
 			short y2 = y + HUGE_ROCK_SIZE -1;
 
@@ -456,7 +456,7 @@ void World::gen_dirt(int nGrouped, int nLarge, int nSmall)
 					for(int subTrial = 12; subTrial > 0 ; --subTrial )
 					{
 						// sx from x-SMALL_ROCK_SIZE to x+4-1+SMALL_ROCK_SIZE
-						short r = m.random(360);
+						short r = misc.random(360);
 						short sx = (short)(x+ tempwidth/2 + (tempwidth/2 +GAP) * cos(r * PI /180));
 						short sy = (short)(y+ tempheight/2 + (tempheight/2 +GAP) * sin(r * PI /180));
 						short sx2 = sx + LARGE_ROCK_SIZE-1;
@@ -494,8 +494,8 @@ void World::gen_dirt(int nGrouped, int nLarge, int nSmall)
 		// generate stand-alone large rock
 		if( nLarge > 0 )
 		{
-			short x = m.random( max_x_loc - LARGE_ROCK_SIZE);
-			short y = m.random( max_y_loc - LARGE_ROCK_SIZE);
+			short x = misc.random( max_x_loc - LARGE_ROCK_SIZE);
+			short y = misc.random( max_y_loc - LARGE_ROCK_SIZE);
 			short x2 = x + LARGE_ROCK_SIZE -1;
 			short y2 = y + LARGE_ROCK_SIZE -1;
 
@@ -523,8 +523,8 @@ void World::gen_dirt(int nGrouped, int nLarge, int nSmall)
 		// generate stand-alone small dirt
 		if( nSmall > 0 )
 		{
-			short x = m.random( max_x_loc - SMALL_ROCK_SIZE);
-			short y = m.random( max_y_loc - SMALL_ROCK_SIZE);
+			short x = misc.random( max_x_loc - SMALL_ROCK_SIZE);
+			short y = misc.random( max_y_loc - SMALL_ROCK_SIZE);
 			short x2 = x + SMALL_ROCK_SIZE -1;
 			short y2 = y + SMALL_ROCK_SIZE -1;
 
@@ -591,7 +591,7 @@ void World::gen_mountains(char* mountainLayout, int adjustAmount)
 		//---- determine the altitude level to add mountains ----//
 
 		int mountainAddCount = MAX_WORLD_X_LOC * MAX_WORLD_Y_LOC
-									  * ( 30+m.random(20) ) / 100 / (HUGE_ROCK_SIZE*HUGE_ROCK_SIZE/2);		// 10% to 30% of mountains
+									  * ( 30+misc.random(20) ) / 100 / (HUGE_ROCK_SIZE*HUGE_ROCK_SIZE/2);		// 10% to 30% of mountains
 
 		if( adjustAmount )
 			mountainAddCount = mountainAddCount * adjustAmount / 100;
@@ -616,8 +616,8 @@ void World::gen_mountains(char* mountainLayout, int adjustAmount)
 	{
 		for( x=0 ; x<max_x_loc-HUGE_ROCK_SIZE ; x++ )
 		{
-			int mX = (x + m.random(5) - 2) * MOUNTAIN_LAYOUT_X_COUNT / MAX_WORLD_X_LOC;
-			int mY = (y + m.random(5) - 2) * MOUNTAIN_LAYOUT_Y_COUNT / MAX_WORLD_Y_LOC;
+			int mX = (x + misc.random(5) - 2) * MOUNTAIN_LAYOUT_X_COUNT / MAX_WORLD_X_LOC;
+			int mY = (y + misc.random(5) - 2) * MOUNTAIN_LAYOUT_Y_COUNT / MAX_WORLD_Y_LOC;
 
 			int mX2 = x * MOUNTAIN_LAYOUT_X_COUNT / MAX_WORLD_X_LOC;
 			int mY2 = y * MOUNTAIN_LAYOUT_Y_COUNT / MAX_WORLD_Y_LOC;
@@ -665,8 +665,8 @@ void World::gen_mountains(char* mountainLayout, int adjustAmount)
 	{
 		for( x=0 ; x<max_x_loc-SMALL_ROCK_SIZE ; x++ )
 		{
-			int mX = (x + m.random(5) - 2) * MOUNTAIN_LAYOUT_X_COUNT / MAX_WORLD_X_LOC;
-			int mY = (y + m.random(5) - 2) * MOUNTAIN_LAYOUT_Y_COUNT / MAX_WORLD_Y_LOC;
+			int mX = (x + misc.random(5) - 2) * MOUNTAIN_LAYOUT_X_COUNT / MAX_WORLD_X_LOC;
+			int mY = (y + misc.random(5) - 2) * MOUNTAIN_LAYOUT_Y_COUNT / MAX_WORLD_Y_LOC;
 
 			int mX2 = x * MOUNTAIN_LAYOUT_X_COUNT / MAX_WORLD_X_LOC;
 			int mY2 = y * MOUNTAIN_LAYOUT_Y_COUNT / MAX_WORLD_Y_LOC;
@@ -687,7 +687,7 @@ void World::gen_mountains(char* mountainLayout, int adjustAmount)
 
 			//------------------------------------//
 
-			if( m.random(3) != 0 )		// add randomly
+			if( misc.random(3) != 0 )		// add randomly
 				continue;
 
 			int x2 = x + SMALL_ROCK_SIZE -1;
@@ -717,8 +717,8 @@ void World::gen_mountains(char* mountainLayout, int adjustAmount)
 	{
 		for( x=0 ; x<max_x_loc ; x++ )
 		{
-			int mX = (x + m.random(3) - 1) * MOUNTAIN_LAYOUT_X_COUNT / MAX_WORLD_X_LOC;
-			int mY = (y + m.random(3) - 1) * MOUNTAIN_LAYOUT_Y_COUNT / MAX_WORLD_Y_LOC;
+			int mX = (x + misc.random(3) - 1) * MOUNTAIN_LAYOUT_X_COUNT / MAX_WORLD_X_LOC;
+			int mY = (y + misc.random(3) - 1) * MOUNTAIN_LAYOUT_Y_COUNT / MAX_WORLD_Y_LOC;
 
 			int mX2 = x * MOUNTAIN_LAYOUT_X_COUNT / MAX_WORLD_X_LOC;
 			int mY2 = y * MOUNTAIN_LAYOUT_Y_COUNT / MAX_WORLD_Y_LOC;
@@ -739,7 +739,7 @@ void World::gen_mountains(char* mountainLayout, int adjustAmount)
 
 			//------------------------------------//
 
-			if( m.random(3) != 0 )		// add randomly
+			if( misc.random(3) != 0 )		// add randomly
 				continue;
 
 			int x2 = x + SMALLEST_ROCK_SIZE -1;
@@ -777,8 +777,8 @@ void World::gen_mountains(char* mountainLayout, int adjustAmount)
 		int i, j, x, y;
 		for( i = 0; i < pointMax; ++i )
 		{
-			pointX[i] = m.random(max_x_loc);
-			pointY[i] = m.random(max_y_loc);
+			pointX[i] = misc.random(max_x_loc);
+			pointY[i] = misc.random(max_y_loc);
 		}
 		int pointCount = pointMax;
 
@@ -792,7 +792,7 @@ void World::gen_mountains(char* mountainLayout, int adjustAmount)
 			{
 				if( j ==i )
 					continue;
-				if( m.points_distance(pointX[i], pointY[i], pointX[j], pointY[j]) < 20 )
+				if( misc.points_distance(pointX[i], pointY[i], pointX[j], pointY[j]) < 20 )
 				{
 					dropFlag++;
 					break;
@@ -801,8 +801,8 @@ void World::gen_mountains(char* mountainLayout, int adjustAmount)
 			
 			if( dropFlag )
 			{
-				m.del_array_rec( pointX, pointCount, sizeof(short), i+1 );
-				m.del_array_rec( pointY, pointCount, sizeof(short), i+1 );
+				misc.del_array_rec( pointX, pointCount, sizeof(short), i+1 );
+				misc.del_array_rec( pointY, pointCount, sizeof(short), i+1 );
 				--pointCount;
 			}
 		}

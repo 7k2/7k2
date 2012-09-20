@@ -93,7 +93,7 @@ void UnitB::move_to(int destXLoc, int destYLoc, bool raiseDest)
 	//------- search the path ---------//
 
 //#ifdef DEBUG
-//	unsigned long pathFinderStartTime = m.get_time();
+//	unsigned long pathFinderStartTime = misc.get_time();
 //#endif
 	path_finder.set_attribute(loc_width, loc_height, mobile_type, 0);
 
@@ -181,7 +181,7 @@ void UnitB::move_to(int destXLoc, int destYLoc, bool raiseDest)
 
 //#ifdef DEBUG
 //	// ######## begin Gilbert 27/4 #######//
-//	pathFinderStartTime = m.get_time() - pathFinderStartTime;
+//	pathFinderStartTime = misc.get_time() - pathFinderStartTime;
 //	pathfind_profile_time += pathFinderStartTime;
 //	pathfind_count++;
 //	if( pathFinderStartTime > longest_pathfind_profile_time )
@@ -198,8 +198,8 @@ void UnitB::move_to(int destXLoc, int destYLoc, bool raiseDest)
 		{
 			// ##### begin Gilber 27/4 ########//
 //#ifdef DEBUG
-			// unsigned long pathFinderStartTime = m.get_time();
-			// pathFinderStartTime = m.get_time();
+			// unsigned long pathFinderStartTime = misc.get_time();
+			// pathFinderStartTime = misc.get_time();
 //#endif
 			// ##### end Gilber 27/4 ########//
 			// ###### begin Gilbert 12/5 ########//
@@ -244,7 +244,7 @@ void UnitB::move_to(int destXLoc, int destYLoc, bool raiseDest)
 			// ###### end Gilbert 11/5 #########//
 //#ifdef DEBUG
 //			// ######## begin Gilbert 27/4 #######//
-//			pathFinderStartTime = m.get_time() - pathFinderStartTime;
+//			pathFinderStartTime = misc.get_time() - pathFinderStartTime;
 //			pathfind_profile_time += pathFinderStartTime;
 //			pathfind_count++;
 //			if( pathFinderStartTime > longest_pathfind_profile_time )
@@ -492,7 +492,7 @@ int UnitB::set_next(int newNextX, int newNextY, int para, int ignoreBlockCheck)
 
 			get_object_range(move_to_loc_x, move_to_loc_y, rangeX1, rangeY1, rangeX2, rangeY2);
 
-			if( m.is_touch( rangeX1, rangeY1, rangeX2, rangeY2,
+			if( misc.is_touch( rangeX1, rangeY1, rangeX2, rangeY2,
 								 newNextXLoc, newNextYLoc, newNextXLoc+loc_width-1, newNextYLoc+loc_height-1 ) )
 			{
 				stop_move();
@@ -613,7 +613,7 @@ void UnitB::process_wait()
 		if( (!occUnitNum || (occUnitNum && (occStuff=unit_array[occUnitNum])
 			 && (occStuff->cur_action != SPRITE_MOVE
 			 && occStuff->cur_action != SPRITE_WAIT)))
-			 || (SEARCH_NEW_PATH_PROBABILITY > m.random(100) && sprite_speed() <= occStuff->sprite_speed() && !is_in_formation()) )
+			 || (SEARCH_NEW_PATH_PROBABILITY > misc.random(100) && sprite_speed() <= occStuff->sprite_speed() && !is_in_formation()) )
 		{
 			wait_state = 0;
 			move_to(move_to_loc_x, move_to_loc_y);
@@ -1178,7 +1178,7 @@ bool UnitB::handle_blocking()
 		return false;
 	}
 
-	directionAngle = m.angle_lookup(directionX, directionY);
+	directionAngle = misc.angle_lookup(directionX, directionY);
 
 	int firstTimeAngle = directionAngle;
 	
@@ -1226,7 +1226,7 @@ bool UnitB::handle_blocking()
 		}
 		
 		directionAngle+=45;
-		m.xy_lookup(directionAngle, directionX, directionY);
+		misc.xy_lookup(directionAngle, directionX, directionY);
 		checkingLocX = lX+directionX;
 		checkingLocY = lY+directionY;
 	}

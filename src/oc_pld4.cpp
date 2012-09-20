@@ -66,8 +66,8 @@ void CampaignEastWest::plot_d4_create_game()
 
 	for( trial = 100; trial > 0; --trial )
 	{
-		int xLoc = m.random(MAX_WORLD_X_LOC - searchAreaWidth);
-		int yLoc = m.random(MAX_WORLD_Y_LOC - searchAreaHeight);
+		int xLoc = misc.random(MAX_WORLD_X_LOC - searchAreaWidth);
+		int yLoc = misc.random(MAX_WORLD_Y_LOC - searchAreaHeight);
 
 		if( !world.check_unit_space(xLoc, yLoc, xLoc+searchAreaWidth-1, yLoc+searchAreaHeight-1) )
 			continue;
@@ -85,7 +85,7 @@ void CampaignEastWest::plot_d4_create_game()
 
 			if( townPtr->is_own() )
 			{
-				int d = m.points_distance( townPtr->center_x, townPtr->center_y, xLoc+searchAreaWidth/2, yLoc+searchAreaHeight/2 );
+				int d = misc.points_distance( townPtr->center_x, townPtr->center_y, xLoc+searchAreaWidth/2, yLoc+searchAreaHeight/2 );
 				sumDist2 += d*d;
 			}
 		}

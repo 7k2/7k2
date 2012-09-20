@@ -92,7 +92,7 @@ void SpriteFrameRes::load_info()
 
 		char spriteName[frameRec->NAME_LEN+1];
 		
-		m.rtrim_fld( spriteName, frameRec->sprite_name, frameRec->NAME_LEN );
+		misc.rtrim_fld( spriteName, frameRec->sprite_name, frameRec->NAME_LEN );
 
 		// check for sprite_code,
 
@@ -112,11 +112,11 @@ void SpriteFrameRes::load_info()
 
 		err_when( !spriteInfo || strcmp( spriteInfo->sprite_code, spriteName) );
 
-		spriteFrame->offset_x = m.atoi(frameRec->offset_x, frameRec->OFFSET_LEN);
-		spriteFrame->offset_y = m.atoi(frameRec->offset_y, frameRec->OFFSET_LEN);
+		spriteFrame->offset_x = misc.atoi(frameRec->offset_x, frameRec->OFFSET_LEN);
+		spriteFrame->offset_y = misc.atoi(frameRec->offset_y, frameRec->OFFSET_LEN);
 
-		spriteFrame->width  = m.atoi(frameRec->width , frameRec->WIDTH_LEN);
-		spriteFrame->height = m.atoi(frameRec->height, frameRec->HEIGHT_LEN);
+		spriteFrame->width  = misc.atoi(frameRec->width , frameRec->WIDTH_LEN);
+		spriteFrame->height = misc.atoi(frameRec->height, frameRec->HEIGHT_LEN);
 
 		memcpy( &spriteFrame->bitmap_offset, frameRec->bitmap_offset, sizeof(uint32_t) );
 

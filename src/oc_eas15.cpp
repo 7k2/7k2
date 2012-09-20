@@ -107,7 +107,7 @@ void CampaignEastWest::stage_15_init_vars()
 
 	short techIdArray[] = { TECH_MEGA_CANNON,	TECH_MEGA_F_BALLISTA, TECH_MEGA_SAW };
 
-	mega_tech_id = techIdArray[m.random(3)];
+	mega_tech_id = techIdArray[misc.random(3)];
 
 	tech_res[mega_tech_id]->set_nation_tech_level(STAGE_15_MONSTER_NATION_RECNO, 1);
 
@@ -164,12 +164,12 @@ int CampaignEastWest::stage_15_create_nation()
 
 int CampaignEastWest::stage_15_create_lair()
 {
-	int lairAddCount = 6 + m.random(2);						// add 6 to 7 Fryhtan Lairs
+	int lairAddCount = 6 + misc.random(2);						// add 6 to 7 Fryhtan Lairs
 	int independentTownAddCount=0;
-	int specialFirmCount= 4 + m.random(2);
+	int specialFirmCount= 4 + misc.random(2);
 
-	if( m.random(2)==0 )		// 50% chance having independent towns
-		independentTownAddCount = 6 + m.random(3);		// 6 to 8 independent towns
+	if( misc.random(2)==0 )		// 50% chance having independent towns
+		independentTownAddCount = 6 + misc.random(3);		// 6 to 8 independent towns
 
 	create_lair(cur_monster_nation_recno, STAGE_15_MONSTER_NATION_RECNO, lairAddCount, independentTownAddCount, specialFirmCount);
 
@@ -235,7 +235,7 @@ void CampaignEastWest::stage_15_process_game_result()
 
 		info.game_year = game_year;			// revert info.game_year back to campaign's game year so that the game's time will not advance
 
-		m.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
+		misc.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
 	}
 }
 //---- End of function CampaignEastWest::stage_15_process_game_result -----//

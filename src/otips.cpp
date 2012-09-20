@@ -283,8 +283,8 @@ void TipsRes::random_select()
 
 	if( count > 0 )
 	{
-		// int chosen = m.random(count) + 1;		// change random seed cuase bug in game.init
-		int chosen = (m.get_time() >> 2) % count + 1;
+		// int chosen = misc.random(count) + 1;		// change random seed cuase bug in game.init
+		int chosen = (misc.get_time() >> 2) % count + 1;
 		int count = 0;
 		current_tips = 0;
 		for( c = 1 ; c <= tips_class_count; ++c )

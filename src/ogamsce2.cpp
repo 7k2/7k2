@@ -431,8 +431,8 @@ int Game::select_scenario(int scenCount, ScenInfo* scenInfoArray)
 			char* pathName;
 
 			scenFileName = scenInfoArray[scenIndex[browseRecno-1]].file_name;
-			m.change_file_ext( pictName, scenFileName, "scp" );
-			m.change_file_ext( textName, scenFileName, "SCT" );
+			misc.change_file_ext( pictName, scenFileName, "scp" );
+			misc.change_file_ext( textName, scenFileName, "SCT" );
 			pathName = DIR_SCENARIO_PATH(scenInfoArray[scenIndex[browseRecno-1]].dir_id);
 			err_when( ! *pathName );
 
@@ -443,7 +443,7 @@ int Game::select_scenario(int scenCount, ScenInfo* scenInfoArray)
 				str = pathName;
 				str += pictName;
 
-				if( browseRecno && m.is_file_exist(str) )
+				if( browseRecno && misc.is_file_exist(str) )
 				{
 					jpeg.put_to_buf( &vga_front, PIC_AREA_X1, PIC_AREA_Y1, str );
 				}
@@ -462,7 +462,7 @@ int Game::select_scenario(int scenCount, ScenInfo* scenInfoArray)
 				str = pathName;
 				str += textName;
 
-				if( browseRecno && m.is_file_exist(str) )
+				if( browseRecno && misc.is_file_exist(str) )
 				{
 					File textFile;
 					int dataSize;
@@ -554,8 +554,8 @@ int Game::select_scenario(int scenCount, ScenInfo* scenInfoArray)
 
 							//---- display the scenario difficulty and bonus points ----//
 
-							textFont.center_put( x2-100, y1, x2-50, y2, m.format(scenInfo->goal_difficulty), 1 );
-							textFont.center_put( x2-50, y1, x2, y2, m.format(scenInfo->goal_score_bonus), 1 );
+							textFont.center_put( x2-100, y1, x2-50, y2, misc.format(scenInfo->goal_difficulty), 1 );
+							textFont.center_put( x2-50, y1, x2, y2, misc.format(scenInfo->goal_score_bonus), 1 );
 						}
 						else		// description not found, display file name
 						{

@@ -477,7 +477,7 @@ void NewsArray::town_destroyed(char *townName, int xLoc, int yLoc, BaseObj* atta
 		return;
 
 	// newsPtr->short_para1 = townNameId;
-	m.str_cut( newsPtr->str_para1, townName, 1, NEWS_STR_PARA_LEN );
+	misc.str_cut( newsPtr->str_para1, townName, 1, NEWS_STR_PARA_LEN );
 
 	//-------- set destroyer type ------//
 
@@ -553,7 +553,7 @@ void NewsArray::town_attacked(char *townName, int xLoc, int yLoc, BaseObj* attac
 		return;
 
 	// newsPtr->short_para1 = townNameId;
-	m.str_cut( newsPtr->str_para1, townName, 1, NEWS_STR_PARA_LEN );
+	misc.str_cut( newsPtr->str_para1, townName, 1, NEWS_STR_PARA_LEN );
 
 	//-------- set destroyer type ------//
 

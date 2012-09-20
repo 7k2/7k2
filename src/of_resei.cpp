@@ -449,7 +449,7 @@ void i_disp_research_button(ButtonCustom *button, int repaintBody)
 	if( researchVersion > 1 )
 	{
 		str += " ";
-		str += m.roman_number(researchVersion);
+		str += misc.roman_number(researchVersion);
 	}
 
 	// ####### begin Gilbert 22/1 #######//
@@ -527,7 +527,7 @@ void FirmResearch::disp_research_info(int dispY1, int refreshFlag)
 		if( researchVersion > 1 )
 		{
 			str += " ";
-			str += m.roman_number(researchVersion);
+			str += misc.roman_number(researchVersion);
 		}
 
 		font_san.put( x, y+4, str);
@@ -590,7 +590,7 @@ void FirmResearch::disp_firm_info(int dispY1, int refreshFlag)
 		if( researchVersion > 1 )
 		{
 			str += " ";
-			str += m.roman_number(researchVersion);
+			str += misc.roman_number(researchVersion);
 		}
 		font_snds.center_put( INFO_X1+7, INFO_Y1+28, INFO_X2, INFO_Y1+45, str );
 
@@ -708,7 +708,7 @@ void FirmResearch::disp_edit_mode(int& refreshFlag, int& y, int dispBG)
 		if( researchVersion > 1 )
 		{
 			str += " ";
-			str += m.roman_number(researchVersion);
+			str += misc.roman_number(researchVersion);
 		}
 		x = font_whbl.put( x1, y, str, 0, x2 );
 
@@ -716,7 +716,7 @@ void FirmResearch::disp_edit_mode(int& refreshFlag, int& y, int dispBG)
 		x = x1;
 
 		x = edit_progress_x2 = font_blue.put( (edit_progress_x1=x), (edit_progress_y1=y), 
-			m.format((int)nation_array[nation_recno]->research_progress(), 3), 0, x2 );
+			misc.format((int)nation_array[nation_recno]->research_progress(), 3), 0, x2 );
 		edit_progress_y2 = edit_progress_y1+font_blue.max_font_height;
 
 		y += 18;

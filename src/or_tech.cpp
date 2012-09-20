@@ -278,7 +278,7 @@ static void put_tech_rec(int recNo, int x, int y, int refreshFlag)
 	font_bld.put( x , y, str );
 
 	if( curLevel >= 1 && techInfo->max_tech_level(0) > 1 )		// only need to display version for tech with more than one level
-		font_bld.put( x+275, y, m.roman_number(curLevel) );
+		font_bld.put( x+275, y, misc.roman_number(curLevel) );
 
 	//----- if the nation is researching this technology -----//
 
@@ -289,7 +289,7 @@ static void put_tech_rec(int recNo, int x, int y, int refreshFlag)
 		err_when( curLevel >= techInfo->max_tech_level(info.viewing_nation_recno) );
 
 		if( techInfo->max_tech_level(0) > 1 )		// only need to display version for tech with more than one level
-			font_bld.put( x+375, y, m.roman_number(curLevel+1) );
+			font_bld.put( x+375, y, misc.roman_number(curLevel+1) );
 
 		//----- display the research progress bar -----//
 

@@ -382,7 +382,7 @@ void Unit::disp_main_menu(int refreshFlag)
 
 		if (config.show_debug_info)
 			font_whbl.center_put( INFO_X1+122, INFO_Y1+90, INFO_X1+154, INFO_Y1+110, 
-				m.format( spy_array[spy_recno]->camouflage_count > 0 ? spy_array[spy_recno]->camouflage_count : spy_array[spy_recno]->camouflage_power,
+				misc.format( spy_array[spy_recno]->camouflage_count > 0 ? spy_array[spy_recno]->camouflage_count : spy_array[spy_recno]->camouflage_power,
 				4 ) );
 		else
 		if (spy_array[spy_recno]->can_camouflage())
@@ -889,9 +889,9 @@ void Unit::disp_hit_point()
 		if ( barType == 0)
 		{
 		//	str = (int)hitPoints;
-			font_whbl.center_put( INFO_X1 +33, INFO_Y1 +45, INFO_X1 +65, INFO_Y1 +57, m.format((int)hitPoints,1));
+			font_whbl.center_put( INFO_X1 +33, INFO_Y1 +45, INFO_X1 +65, INFO_Y1 +57, misc.format((int)hitPoints,1));
 		//	str = (int)max_hit_points();
-			font_whbl.center_put( INFO_X1 +166, INFO_Y1 +45, INFO_X1 +200, INFO_Y1 +57, m.format((int)max_hit_points(),1) );
+			font_whbl.center_put( INFO_X1 +166, INFO_Y1 +45, INFO_X1 +200, INFO_Y1 +57, misc.format((int)max_hit_points(),1) );
 		}
 		else
 		{
@@ -1129,7 +1129,7 @@ void Unit::disp_button(int refreshFlag)
 				button_return_camp.x1+BUTTON_ACTION_WIDTH-1, button_return_camp.y1+BUTTON_ACTION_HEIGHT-16, 1, 0 );
 			font_whbl.center_put( button_return_camp.x1, button_return_camp.y1, 
 				button_return_camp.x1+BUTTON_ACTION_WIDTH-1, button_return_camp.y1+BUTTON_ACTION_HEIGHT-1,
-									m.format(auto_retreat_hit_point,3));
+									misc.format(auto_retreat_hit_point,3));
 		}
 
 		//------- spy notify button ------//
@@ -1274,7 +1274,7 @@ void Unit::detect_button()
 					button_return_camp.x1+BUTTON_ACTION_WIDTH-1, button_return_camp.y1+BUTTON_ACTION_HEIGHT-16, 1, 0 );
 				font_whbl.center_put( button_return_camp.x1, button_return_camp.y1, 
 					button_return_camp.x1+BUTTON_ACTION_WIDTH-1, button_return_camp.y1+BUTTON_ACTION_HEIGHT-1,
-					m.format(auto_retreat_hit_point, 3) );
+					misc.format(auto_retreat_hit_point, 3) );
 			}
 
 			se_res.far_sound(next_x_loc(), next_y_loc(), 1, 'S', sprite_id, "ACK");
@@ -1449,7 +1449,7 @@ void Unit::detect_button()
 				}
 
 #ifdef DEBUG
-				font_whbl.center_put(INFO_X2-30, INFO_Y1+65, INFO_X2-10, INFO_Y1+85,m.format(totalRoyal),0,1);
+				font_whbl.center_put(INFO_X2-30, INFO_Y1+65, INFO_X2-10, INFO_Y1+85,misc.format(totalRoyal),0,1);
 #endif
 				if (totalRoyal < MAX_ROYAL_UNIT)
 					is_royal = 1;
@@ -1930,9 +1930,9 @@ void Unit::disp_build(int refreshFlag)
 		firm_res[power.command_para]->name ) );
 
 //	str  = translate.process("cost ");
-//	str += m.format(firm_res[power.command_para]->setup_cost,2);
+//	str += misc.format(firm_res[power.command_para]->setup_cost,2);
 //	str += " + ";
-//	str += m.format(firm_res[power.command_para]->setup_live_points_cost,1);
+//	str += misc.format(firm_res[power.command_para]->setup_live_points_cost,1);
 //	str += " life points";
 	font_snds.put_paragraph( INFO_X1+20, INFO_Y1+60, INFO_X1 +216, INFO_Y1 +80,
 		text_unit.str_build_cost( 
@@ -2043,7 +2043,7 @@ void Unit::disp_unit_info()
 	{
 		str = text_unit.str_loyalty(); // "Loyalty ";
 		str += " ";
-		str += m.format((int)loyalty, 4);
+		str += misc.format((int)loyalty, 4);
 		font_whbl.center_put(INFO_X1 +12, INFO_Y1 +60, INFO_X2, INFO_Y1 +80, str );
 		return;
 	}
@@ -2054,19 +2054,19 @@ void Unit::disp_unit_info()
 		if( is_own_spy() )	// only display spy loyalty instead of unit loyalty if this is a spy and this spy is ours
 		{
 		//	info.disp_loyalty( INFO_X1+20, INFO_Y1+208, INFO_X1+80, spy_array[spy_recno]->spy_loyalty, spy_array[spy_recno]->spy_loyalty, true_nation_recno(), INFO_REPAINT );
-			info.disp_loyalty( INFO_X1+20, INFO_Y1+192, INFO_X2-99 - font_snds.text_width(m.format(spy_array[spy_recno]->spy_loyalty, 4)),
+			info.disp_loyalty( INFO_X1+20, INFO_Y1+192, INFO_X2-99 - font_snds.text_width(misc.format(spy_array[spy_recno]->spy_loyalty, 4)),
 							spy_array[spy_recno]->spy_loyalty, spy_array[spy_recno]->spy_loyalty, true_nation_recno(), INFO_REPAINT );
 		}
 		else if( nation_recno )
 		{
 		//	info.disp_loyalty( INFO_X1+20, INFO_Y1+208, INFO_X1+80, (int)loyalty, (int)target_loyalty, nation_recno, INFO_REPAINT );
 			if ((int)loyalty != (int)target_loyalty)
-				info.disp_loyalty( INFO_X1+20, INFO_Y1+192, INFO_X2-99 - font_snds.text_width(m.format((int)loyalty, 4)) -
-							font_snds.text_width(m.format((int)target_loyalty, 4)) -
+				info.disp_loyalty( INFO_X1+20, INFO_Y1+192, INFO_X2-99 - font_snds.text_width(misc.format((int)loyalty, 4)) -
+							font_snds.text_width(misc.format((int)target_loyalty, 4)) -
 							font_snds.text_width("11"),
 							(int)loyalty, (int)target_loyalty, nation_recno, INFO_REPAINT );							
 			else
-				info.disp_loyalty( INFO_X1+20, INFO_Y1+192, INFO_X2-99 - font_snds.text_width(m.format((int)loyalty, 4)),
+				info.disp_loyalty( INFO_X1+20, INFO_Y1+192, INFO_X2-99 - font_snds.text_width(misc.format((int)loyalty, 4)),
 							(int)loyalty, (int)target_loyalty, nation_recno, INFO_REPAINT );							
 		}
 	}
@@ -2082,7 +2082,7 @@ void Unit::disp_unit_info()
 	if( unitInfo->class_info.has_combat_level )
 	{
 		x2 = font_snds.put( INFO_X1+130, INFO_Y1+192, text_unit.str_combat_level() ); // "Combat" );
-		font_snds.right_put( INFO_X2-10, INFO_Y1+192, m.format(combat_level(),4) );
+		font_snds.right_put( INFO_X2-10, INFO_Y1+192, misc.format(combat_level(),4) );
 	//	font_snds.put( x2+10, INFO_Y1+194, combat_level() );
 	}
 
@@ -2091,7 +2091,7 @@ void Unit::disp_unit_info()
 	if ( unitInfo->class_info.has_skill_level && skill_level() > 0 )
 	{
 		x2 = font_snds.put( INFO_X1+130, INFO_Y1+206, text_unit.str_leadership() ); //"Leadership" );
-		font_snds.right_put( INFO_X2-10, INFO_Y1+206, m.format(skill_level(),4) );
+		font_snds.right_put( INFO_X2-10, INFO_Y1+206, misc.format(skill_level(),4) );
 	//	font_snds.put( x2+10, INFO_Y1+208, skill_level() );
 	}
 
@@ -2106,16 +2106,16 @@ void Unit::disp_unit_info()
 		else
 			hitPoints = (int) hit_points;
 
-		str = m.format(hitPoints, 4);
+		str = misc.format(hitPoints, 4);
 		str += "/";
-		str += m.format(max_hit_points(), 4);
+		str += misc.format(max_hit_points(), 4);
 		font_snds.right_put( INFO_X2-100, INFO_Y1+206, str );
 	}
 
 	if( is_own_spy() )
 	{
 		x2 = font_snds.put( INFO_X1+130, INFO_Y1+178, text_unit.str_spy_skill() ); // "Spying" );
-		font_snds.right_put( INFO_X2-10, INFO_Y1+178, m.format(spy_array[spy_recno]->spy_skill,4) );
+		font_snds.right_put( INFO_X2-10, INFO_Y1+178, misc.format(spy_array[spy_recno]->spy_skill,4) );
 	//	font_snds.put( x2+10, INFO_Y1+178, spy_array[spy_recno]->spy_skill);
 	}
 		
@@ -2589,7 +2589,7 @@ static void disp_auto_menu_button(ButtonCustom *button, int)
 		str = text_unit.str_disable_auto(); //"DISABLE";
 	else
 	{
-		str = m.format( paintInfo *10 + 10, 3 );		// %
+		str = misc.format( paintInfo *10 + 10, 3 );		// %
 	}
 
 	if ( button->pushed_flag )
@@ -2715,7 +2715,7 @@ void Unit::disp_hire_menu(int refreshFlag)
 //	String str;
 //	str = unit_name();
 //	str += " will take your color for ";
-//	str += m.format( hero_hire_cost(), 2);
+//	str += misc.format( hero_hire_cost(), 2);
 //	str += "\nHire him now?";
 
 	font_snds.put_paragraph( INFO_X1+22, INFO_Y1+18, INFO_X2-10, INFO_Y1+200, 

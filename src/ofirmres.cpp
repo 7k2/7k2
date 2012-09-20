@@ -170,18 +170,18 @@ void FirmRes::load_firm_bitmap()
 //		firmBitmap->width  	  = *((short*)firmBitmap->bitmap_ptr);
 //		firmBitmap->height 	  = *(((short*)firmBitmap->bitmap_ptr)+1);
 	
-		firmBitmap->width  	  = m.atoi( firmBitmapRec->width, firmBitmapRec->LOC_LEN );
-		firmBitmap->height 	  = m.atoi( firmBitmapRec->height, firmBitmapRec->LOC_LEN );
+		firmBitmap->width  	  = misc.atoi( firmBitmapRec->width, firmBitmapRec->LOC_LEN );
+		firmBitmap->height 	  = misc.atoi( firmBitmapRec->height, firmBitmapRec->LOC_LEN );
 
-		firmBitmap->offset_x = m.atoi( firmBitmapRec->offset_x, firmBitmapRec->OFFSET_LEN );
-		firmBitmap->offset_y = m.atoi( firmBitmapRec->offset_y, firmBitmapRec->OFFSET_LEN );
+		firmBitmap->offset_x = misc.atoi( firmBitmapRec->offset_x, firmBitmapRec->OFFSET_LEN );
+		firmBitmap->offset_y = misc.atoi( firmBitmapRec->offset_y, firmBitmapRec->OFFSET_LEN );
 
-		firmBitmap->loc_width  = m.atoi( firmBitmapRec->loc_width , firmBitmapRec->LOC_LEN );
-		firmBitmap->loc_height = m.atoi( firmBitmapRec->loc_height, firmBitmapRec->LOC_LEN );
+		firmBitmap->loc_width  = misc.atoi( firmBitmapRec->loc_width , firmBitmapRec->LOC_LEN );
+		firmBitmap->loc_height = misc.atoi( firmBitmapRec->loc_height, firmBitmapRec->LOC_LEN );
 		
-		firmBitmap->delay = m.atoi( firmBitmapRec->delay, firmBitmapRec->DELAY_LEN );
+		firmBitmap->delay = misc.atoi( firmBitmapRec->delay, firmBitmapRec->DELAY_LEN );
 
-		firmBitmap->ani_part = m.atoi( firmBitmapRec->ani_part, firmBitmapRec->FRAME_ID_LEN );
+		firmBitmap->ani_part = misc.atoi( firmBitmapRec->ani_part, firmBitmapRec->FRAME_ID_LEN );
 		firmBitmap->random_flag = firmBitmapRec->random_flag[0] == 'R' ? 1 : 0;
 
 		firmBitmap->display_layer = firmBitmapRec->layer - '0';
@@ -234,13 +234,13 @@ void FirmRes::load_firm_group()
 		firmGroupRec = (FirmGroupRec*) dbFirmGroup->read(i+1);
 		firmGroup	 = firm_group_array+i;
 
-		m.rtrim_fld( firmGroup->firm_code, firmGroupRec->firm_code, firmGroup->FIRM_CODE_LEN );
+		misc.rtrim_fld( firmGroup->firm_code, firmGroupRec->firm_code, firmGroup->FIRM_CODE_LEN );
 		
-		firmGroup->group 	  = m.atoi( firmGroupRec->group, firmGroupRec->GROUP_LEN );
+		firmGroup->group 	  = misc.atoi( firmGroupRec->group, firmGroupRec->GROUP_LEN );
 		
-		firmGroup->race_id  = m.atoi( firmGroupRec->race_id, firmGroupRec->RACE_ID_LEN );
+		firmGroup->race_id  = misc.atoi( firmGroupRec->race_id, firmGroupRec->RACE_ID_LEN );
 		
-		m.rtrim_fld( firmGroup->race_code, firmGroupRec->race_code, firmGroup->RACE_CODE_LEN );
+		misc.rtrim_fld( firmGroup->race_code, firmGroupRec->race_code, firmGroup->RACE_CODE_LEN );
 
 	}
 }
@@ -284,19 +284,20 @@ void FirmRes::load_firm_build()
 		firmBuildRec = (FirmBuildRec*) dbFirmBuild->read(i+1);
 		firmBuild	 = firm_build_array+i;
 
-		firmBuild->group 	  = m.atoi( firmBuildRec->group, firmBuildRec->GROUP_LEN );
+		firmBuild->group 	  = misc.atoi( firmBuildRec->group, firmBuildRec->GROUP_LEN );
 
-		m.rtrim_fld( firmBuild->name, firmBuildRec->name, firmBuild->NAME_LEN );
+		misc.rtrim_fld( firmBuild->name, firmBuildRec->name, firmBuild->NAME_LEN );
 
-		m.rtrim_fld( firmBuild->firm_resource_name, firmBuildRec->firm_resource_name, firmBuildRec->PAL_NAME_LEN );		
+		misc.rtrim_fld( firmBuild->firm_resource_name, firmBuildRec->firm_resource_name, firmBuildRec->PAL_NAME_LEN );
+
 		translate.multi_to_win(firmBuild->name, firmBuild->NAME_LEN);
 
 		firmBuild->animate_full_size = firmBuildRec->animate_full_size=='1';
 
 		firmBuild->use_first_frame = !(firmBuildRec->use_first_frame=='0');
 
-		firmBuild->frame_count = m.atoi( firmBuildRec->frame_count, firmBuildRec->FRAME_COUNT_LEN );
-		firmBuild->ani_part_count = m.atoi( firmBuildRec->ani_part_count, firmBuildRec->FRAME_COUNT_LEN );
+		firmBuild->frame_count = misc.atoi( firmBuildRec->frame_count, firmBuildRec->FRAME_COUNT_LEN );
+		firmBuild->ani_part_count = misc.atoi( firmBuildRec->ani_part_count, firmBuildRec->FRAME_COUNT_LEN );
 		if (firmBuild->animate_full_size == 1)
 			firmBuild->ani_part_count = 1;
 
@@ -327,22 +328,22 @@ void FirmRes::load_firm_build()
 //			}
 //		}
 
-		firmBuild->under_construction_bitmap_recno = m.atoi(firmBuildRec->under_construction_bitmap_recno, firmBuildRec->BITMAP_RECNO_LEN);
+		firmBuild->under_construction_bitmap_recno = misc.atoi(firmBuildRec->under_construction_bitmap_recno, firmBuildRec->BITMAP_RECNO_LEN);
 		firmBuild->under_construction_bitmap_count =
-			m.atoi(firmBuildRec->under_construction_bitmap_count, firmBuildRec->FRAME_COUNT_LEN);
-		firmBuild->idle_bitmap_recno 					 = m.atoi(firmBuildRec->idle_bitmap_recno, firmBuildRec->BITMAP_RECNO_LEN);
-		firmBuild->ground_bitmap_recno             = m.atoi(firmBuildRec->ground_bitmap_recno, firmBuildRec->BITMAP_RECNO_LEN);
+			misc.atoi(firmBuildRec->under_construction_bitmap_count, firmBuildRec->FRAME_COUNT_LEN);
+		firmBuild->idle_bitmap_recno 					 = misc.atoi(firmBuildRec->idle_bitmap_recno, firmBuildRec->BITMAP_RECNO_LEN);
+		firmBuild->ground_bitmap_recno             = misc.atoi(firmBuildRec->ground_bitmap_recno, firmBuildRec->BITMAP_RECNO_LEN);
 		
-		firmBuild->defense_attribute.init(m.atoi(firmBuildRec->sturdiness, firmBuildRec->ATTRIBUTE_LEN),
-			m.atoi(firmBuildRec->is_wood, firmBuildRec->IS_WOOD_LEN));
+		firmBuild->defense_attribute.init(misc.atoi(firmBuildRec->sturdiness, firmBuildRec->ATTRIBUTE_LEN),
+			misc.atoi(firmBuildRec->is_wood, firmBuildRec->IS_WOOD_LEN));
 		
-		firmBuild->bullet_sprite_id = m.atoi(firmBuildRec->bullet_sprite_id, firmBuildRec->BULLET_ID_LEN);
-		m.rtrim_fld( firmBuild->bullet_sprite_code, firmBuildRec->bullet_sprite_code, firmBuild->BULLET_SPRITE_LEN );
+		firmBuild->bullet_sprite_id = misc.atoi(firmBuildRec->bullet_sprite_id, firmBuildRec->BULLET_ID_LEN);
+		misc.rtrim_fld( firmBuild->bullet_sprite_code, firmBuildRec->bullet_sprite_code, firmBuild->BULLET_SPRITE_LEN );
 
-//		firmBuild->min_offset_y = m.atoi(firmBuildRec->min_offset_y, firmBuildRec->OFFSET_LEN);	
+//		firmBuild->min_offset_y = misc.atoi(firmBuildRec->min_offset_y, firmBuildRec->OFFSET_LEN);
 		err_when( firmBuild->frame_count > MAX_FIRM_FRAME );
 
-		firstFrameArray[i] = m.atoi( firmBuildRec->first_frame, firmBuildRec->FIRST_FRAME_LEN );
+		firstFrameArray[i] = misc.atoi( firmBuildRec->first_frame, firmBuildRec->FIRST_FRAME_LEN );
 	}
 
 	//-------- read in FFRAME.DBF --------//
@@ -371,10 +372,10 @@ void FirmRes::load_firm_build()
 
 			//------ following animation frames, bitmap sections -----//
 
-			firmBuild->first_bitmap_array[j] = m.atoi( firmFrameRec->first_bitmap, firmFrameRec->FIRST_BITMAP_LEN );
-			firmBuild->bitmap_count_array[j] = m.atoi( firmFrameRec->bitmap_count, firmFrameRec->BITMAP_COUNT_LEN );
+			firmBuild->first_bitmap_array[j] = misc.atoi( firmFrameRec->first_bitmap, firmFrameRec->FIRST_BITMAP_LEN );
+			firmBuild->bitmap_count_array[j] = misc.atoi( firmFrameRec->bitmap_count, firmFrameRec->BITMAP_COUNT_LEN );
 
-			firmBuild->frame_delay_array[j] = m.atoi( firmFrameRec->delay, firmFrameRec->DELAY_LEN );
+			firmBuild->frame_delay_array[j] = misc.atoi( firmFrameRec->delay, firmFrameRec->DELAY_LEN );
 
 			//---- get the min offset_x, offset_y and max width, height ----//
 			//
@@ -553,11 +554,11 @@ void FirmRes::load_firm_info()
 		firmRec  = (FirmRec*) dbFirm->read(i+1);
 		firmInfo = firm_info_array+i;
 
-		m.rtrim_fld( firmInfo->name, firmRec->name, firmRec->NAME_LEN );
-		m.rtrim_fld( firmInfo->short_name, firmRec->short_name, firmRec->SHORT_NAME_LEN );
+		misc.rtrim_fld( firmInfo->name, firmRec->name, firmRec->NAME_LEN );
+		misc.rtrim_fld( firmInfo->short_name, firmRec->short_name, firmRec->SHORT_NAME_LEN );
 
-		m.rtrim_fld( firmInfo->overseer_title, firmRec->overseer_title, firmRec->TITLE_LEN );
-		m.rtrim_fld( firmInfo->worker_title  , firmRec->worker_title  , firmRec->TITLE_LEN );
+		misc.rtrim_fld( firmInfo->overseer_title, firmRec->overseer_title, firmRec->TITLE_LEN );
+		misc.rtrim_fld( firmInfo->worker_title  , firmRec->worker_title  , firmRec->TITLE_LEN );
 		translate.multi_to_win(firmInfo->name, firmInfo->NAME_LEN);
 		translate.multi_to_win(firmInfo->short_name, firmInfo->SHORT_NAME_LEN);
 		translate.multi_to_win(firmInfo->overseer_title, firmInfo->TITLE_LEN);
@@ -566,13 +567,13 @@ void FirmRes::load_firm_info()
 		firmInfo->firm_id     	 	  = i+1;
 		firmInfo->tera_type   	 	  = firmRec->tera_type-'0';
 
-		firmInfo->max_hit_points 	  = m.atoi( firmRec->hit_points, firmRec->HIT_POINTS_LEN );
+		firmInfo->max_hit_points 	  = misc.atoi( firmRec->hit_points, firmRec->HIT_POINTS_LEN );
 
-		firmInfo->first_build_id = m.atoi( firmRec->first_build, firmRec->FIRST_BUILD_LEN );
-		firmInfo->build_count	 = m.atoi( firmRec->build_count, firmRec->BUILD_COUNT_LEN );
+		firmInfo->first_build_id = misc.atoi( firmRec->first_build, firmRec->FIRST_BUILD_LEN );
+		firmInfo->build_count	 = misc.atoi( firmRec->build_count, firmRec->BUILD_COUNT_LEN );
 
-		firmInfo->first_group_id = m.atoi( firmRec->first_group, firmRec->FIRST_GROUP_LEN );
-		firmInfo->group_count	 = m.atoi( firmRec->group_count, firmRec->GROUP_COUNT_LEN );
+		firmInfo->first_group_id = misc.atoi( firmRec->first_group, firmRec->FIRST_GROUP_LEN );
+		firmInfo->group_count	 = misc.atoi( firmRec->group_count, firmRec->GROUP_COUNT_LEN );
 
 		firmInfo->need_overseer  = firmInfo->overseer_title[0] && firmInfo->overseer_title[0] != ' ';
 		firmInfo->need_worker  	 = firmInfo->worker_title[0]   && firmInfo->worker_title[0]   != ' ';
@@ -583,10 +584,10 @@ void FirmRes::load_firm_info()
 //			firmInfo->need_worker  	= 1;
 //		}
 
-		firmInfo->setup_cost		 = m.atoi( firmRec->setup_cost, firmRec->COST_LEN );
-		firmInfo->year_cost		 = m.atoi( firmRec->year_cost, firmRec->COST_LEN );
-		firmInfo->setup_live_points_cost = m.atoi( firmRec->setup_live_points_cost, firmRec->COST_LEN );
-		firmInfo->year_live		 = m.atoi( firmRec->year_live, firmRec->COST_LEN );
+		firmInfo->setup_cost		 = misc.atoi( firmRec->setup_cost, firmRec->COST_LEN );
+		firmInfo->year_cost		 = misc.atoi( firmRec->year_cost, firmRec->COST_LEN );
+		firmInfo->setup_live_points_cost = misc.atoi( firmRec->setup_live_points_cost, firmRec->COST_LEN );
+		firmInfo->year_live		 = misc.atoi( firmRec->year_live, firmRec->COST_LEN );
 
 		firmInfo->is_linkable_to_town = firmRec->is_linkable_to_town=='1';
 		

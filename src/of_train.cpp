@@ -155,10 +155,10 @@ void FirmTrain::recruit_trainee(int townRecno, int trainType, char remoteAction)
 
 	int spySeq, spyRecno;
 
-	// if( townPtr->spy_count > 0 && (spySeq=m.random(townPtr->recruitable_pop(1))) < townPtr->spy_count )
+	// if( townPtr->spy_count > 0 && (spySeq=misc.random(townPtr->recruitable_pop(1))) < townPtr->spy_count )
 	// use town population instead of recruitable_pop(1) because assume some spy is working, spy_count include those working
 
-	if( townPtr->spy_count > 0 && (spySeq=m.random(townPtr->population)) < townPtr->spy_count )
+	if( townPtr->spy_count > 0 && (spySeq=misc.random(townPtr->population)) < townPtr->spy_count )
 		spyRecno = spy_array.find_town_spy(townRecno, 1+spySeq);
 	else
 		spyRecno = 0;
@@ -364,7 +364,7 @@ int FirmTrain::mobilize_trainee(int traineeId, char remoteAction )
 	err_when( trainee_count > MAX_TRAINEE );
 	err_when( selected_trainee_id > trainee_count );
 
-	m.del_array_rec(trainee_array, trainee_count, sizeof(Trainee), traineeId);
+	misc.del_array_rec(trainee_array, trainee_count, sizeof(Trainee), traineeId);
 
 	if( selected_trainee_id > traineeId || selected_trainee_id == trainee_count )
 		selected_trainee_id--;
@@ -415,7 +415,7 @@ void FirmTrain::kill_trainee(int traineeId )
 	err_when( trainee_count > MAX_TRAINEE );
 	err_when( selected_trainee_id > trainee_count );
 
-	m.del_array_rec(trainee_array, trainee_count, sizeof(Trainee), traineeId);
+	misc.del_array_rec(trainee_array, trainee_count, sizeof(Trainee), traineeId);
 
 	if( selected_trainee_id > traineeId || selected_trainee_id == trainee_count )
 		selected_trainee_id--;

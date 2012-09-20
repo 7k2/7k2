@@ -160,9 +160,9 @@ void HallFame::disp_info(int x, int y, int pos)
 
 	// str  = translate.process("Period: ");
 	str  = text_game_menu.str_hall_of_fame_period();
-	str += m.num_to_str(start_year);     // without adding comma separators
+	str += misc.num_to_str(start_year);     // without adding comma separators
 	str += "-";
-	str += m.num_to_str(end_year);
+	str += misc.num_to_str(end_year);
 
 	fontPtr->put( xPeriod, y2, str );
 

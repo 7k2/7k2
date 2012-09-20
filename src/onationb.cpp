@@ -166,7 +166,7 @@ void NationBase::init(int nationType, int raceId, int colorSchemeId, DWORD playe
 	god_res.init_nation_know(nation_recno);
 
 	//### begin alex 23/9 ###//
-	if(remote.is_enable() && nation_recno && !is_ai() && m.is_file_exist("TECHGOD.SYS"))
+	if(remote.is_enable() && nation_recno && !is_ai() && misc.is_file_exist("TECHGOD.SYS"))
 	{
 		tech_res.inc_all_tech_level(nation_recno);
 		tech_res.inc_all_tech_level(nation_recno);
@@ -352,7 +352,7 @@ void NationBase::init_relation(int relationNationRecno)
 	nationRelation->trade_treaty = relationNationRecno==nation_recno;
 
 	nationRelation->status       		 = RELATION_NEUTRAL;
-	nationRelation->ai_relation_level = RELATION_NEUTRAL * RELATION_LEVEL_PER_STATUS + m.random(40) - 20;		// -20 to +20 randomness
+	nationRelation->ai_relation_level = RELATION_NEUTRAL * RELATION_LEVEL_PER_STATUS + misc.random(40) - 20;		// -20 to +20 randomness
 	nationRelation->last_change_status_date = info.game_date;
 
 	if( relationNationRecno == nation_recno )		// own nation
@@ -741,12 +741,12 @@ char* NationBase::cash_str()
 
 	if( cash >= 0 )
 	{
-		str = m.format( (int)cash, 4 );			// format type 4 - no thousand separators
+		str = misc.format( (int)cash, 4 );			// format type 4 - no thousand separators
 	}
 	else
 	{
 		str  = "-";
-		str += m.format( (int)-cash, 4 );		// format type 4 - no thousand separators
+		str += misc.format( (int)-cash, 4 );		// format type 4 - no thousand separators
 	}
 
 	//--------------------------------------//
@@ -762,7 +762,7 @@ char* NationBase::cash_str()
 		else
 			str += "-";
 
-		str += m.format( abs(curProfit), 4 ); 	// format type 4 - no thousand separators
+		str += misc.format( abs(curProfit), 4 ); 	// format type 4 - no thousand separators
 		str += ")";
 	}
 
@@ -780,12 +780,12 @@ char* NationBase::total_cash_str()
 
 	if( cash >= 0 )
 	{
-		str = m.format( (int)cash, 4 );			// format type 4 - no thousand separators
+		str = misc.format( (int)cash, 4 );			// format type 4 - no thousand separators
 	}
 	else
 	{
 		str  = "-";
-		str += m.format( (int)-cash, 4 );		// format type 4 - no thousand separators
+		str += misc.format( (int)-cash, 4 );		// format type 4 - no thousand separators
 	}
 	return str;
 }
@@ -809,7 +809,7 @@ char* NationBase::annual_cash_str()
 		else
 			str += "-";
 
-		str += m.format( abs(curProfit), 4 ); 	// format type 4 - no thousand separators
+		str += misc.format( abs(curProfit), 4 ); 	// format type 4 - no thousand separators
 		str += ")";
 	}
 	return str;
@@ -828,12 +828,12 @@ char* NationBase::food_str()
 
 	if( food >= 0 )
 	{
-		str = m.format( (int)food, 4 );			// format type 4 - no thousand separators
+		str = misc.format( (int)food, 4 );			// format type 4 - no thousand separators
 	}
 	else
 	{
 		str  = "-";
-		str += m.format( (int)-food, 4 );		// format type 4 - no thousand separators
+		str += misc.format( (int)-food, 4 );		// format type 4 - no thousand separators
 	}
 
 	//--------------------------------------//
@@ -849,7 +849,7 @@ char* NationBase::food_str()
 		else
 			str += "-";
 
-		str += m.format( abs(foodChange), 4 ); 	// format type 4 - no thousand separators
+		str += misc.format( abs(foodChange), 4 ); 	// format type 4 - no thousand separators
 		str += ")";
 	}
 
@@ -867,12 +867,12 @@ char* NationBase::total_food_str()
 
 	if( food >= 0 )
 	{
-		str = m.format( (int)food, 4 );			// format type 4 - no thousand separators
+		str = misc.format( (int)food, 4 );			// format type 4 - no thousand separators
 	}
 	else
 	{
 		str  = "-";
-		str += m.format( (int)-food, 4 );		// format type 4 - no thousand separators
+		str += misc.format( (int)-food, 4 );		// format type 4 - no thousand separators
 	}
 	return str;
 }
@@ -896,7 +896,7 @@ char* NationBase::annual_food_str()
 		else
 			str += "-";
 
-		str += m.format( abs(foodChange), 4 ); 	// format type 4 - no thousand separators
+		str += misc.format( abs(foodChange), 4 ); 	// format type 4 - no thousand separators
 		str += ")";
 	}
 	return str;
@@ -1219,7 +1219,7 @@ void NationBase::add_cheat(float cheatAmount)
 	}
 	else		// cheat less obviously, randomly add to one of the account at a random amount //
 	{
-		int itemId = m.random(INCOME_TYPE_COUNT-1)+1; // 1 - INCOME_CHEAT-1
+		int itemId = misc.random(INCOME_TYPE_COUNT-1)+1; // 1 - INCOME_CHEAT-1
 		if( cheatAmount < 0 )
 		{
 			int selItemId = itemId;
@@ -1799,7 +1799,7 @@ int NationBase::revealed_by_phoenix(int xLoc, int yLoc)
 		if( unitPtr->unit_id == UNIT_PHOENIX &&
 			 unitPtr->nation_recno == nation_recno )
 		{
-			if( m.points_distance( xLoc, yLoc,
+			if( misc.points_distance( xLoc, yLoc,
 				 unitPtr->next_x_loc(), unitPtr->next_y_loc() ) <= effectiveRange )
 			{
 				return 1;
@@ -2966,7 +2966,7 @@ void NationRelation::set_ai_never_consider(short* neverConsiderArray)
 //
 void NationRelation::set_never_accept_until_date(int talkId, int dayCount)
 {
-	int newDate = info.game_date + dayCount * (70 + m.random(60)) / 100;   // -30 to +30 random 
+	int newDate = info.game_date + dayCount * (70 + misc.random(60)) / 100;   // -30 to +30 random
 
 	never_accept_until_date_array[talkId-1] = MAX( never_accept_until_date_array[talkId-1], newDate );
 }

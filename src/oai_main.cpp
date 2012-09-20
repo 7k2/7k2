@@ -242,45 +242,45 @@ void Nation::deinit_all_ai_info()
 //--------- Begin of function Nation::init_personalty --------//
 void Nation::init_personalty()
 {
-   pref_force_projection     = m.random(101);
-   pref_military_development = m.random(101);
+   pref_force_projection     = misc.random(101);
+   pref_military_development = misc.random(101);
    pref_economic_development = 100-pref_military_development;
-   pref_inc_pop_by_capture   = m.random(101);
+   pref_inc_pop_by_capture   = misc.random(101);
    pref_inc_pop_by_growth    = 100-pref_inc_pop_by_capture;
-   pref_peacefulness         = m.random(101);
-   pref_military_courage     = m.random(101);
-   pref_territorial_cohesiveness = m.random(101);
-   pref_trading_tendency     = m.random(101);
-   pref_allying_tendency     = m.random(101);
-   pref_honesty              = m.random(101);
-	pref_town_defense         = m.random(101);
-   pref_loyalty_concern      = m.random(101);
-   pref_forgiveness          = m.random(101);
-   pref_collect_tax          = m.random(101);
-   pref_hire_unit            = m.random(101);
-   pref_use_weapon           = m.random(101);
-   pref_keep_general         = m.random(101);
-   pref_keep_skilled_unit    = m.random(101);
-   pref_diplomacy_retry      = m.random(101);
-   pref_attack_monster       = m.random(101);
-	pref_spy                  = m.random(101);
-	pref_counter_spy          = m.random(101);
+   pref_peacefulness         = misc.random(101);
+   pref_military_courage     = misc.random(101);
+   pref_territorial_cohesiveness = misc.random(101);
+   pref_trading_tendency     = misc.random(101);
+   pref_allying_tendency     = misc.random(101);
+   pref_honesty              = misc.random(101);
+	pref_town_defense         = misc.random(101);
+   pref_loyalty_concern      = misc.random(101);
+   pref_forgiveness          = misc.random(101);
+   pref_collect_tax          = misc.random(101);
+   pref_hire_unit            = misc.random(101);
+   pref_use_weapon           = misc.random(101);
+   pref_keep_general         = misc.random(101);
+   pref_keep_skilled_unit    = misc.random(101);
+   pref_diplomacy_retry      = misc.random(101);
+   pref_attack_monster       = misc.random(101);
+	pref_spy                  = misc.random(101);
+	pref_counter_spy          = misc.random(101);
 
 	pref_spy = MIN(60, pref_spy);   							// if the pref is too high, the AI will use it like crazy and will introduce weird strategies
 	pref_counter_spy = MIN(60, pref_counter_spy);
 
-   pref_cash_reserve         = m.random(101);
-   pref_food_reserve         = m.random(101);
-   pref_use_marine           = m.random(101);
-   pref_unit_chase_distance  = 15+m.random(15);
-   pref_repair_concern       = m.random(101);
-   pref_scout                = m.random(101);
-	pref_research             = m.random(101);
-	pref_seat_of_power		  = m.random(101);
-	pref_monster_aggressiveness = m.random(101);
-	pref_monster_special		  = m.random(101);
-	pref_live_points_reserve  = m.random(101);
-	pref_surrender				  = m.random(101);
+   pref_cash_reserve         = misc.random(101);
+   pref_food_reserve         = misc.random(101);
+   pref_use_marine           = misc.random(101);
+   pref_unit_chase_distance  = 15+misc.random(15);
+   pref_repair_concern       = misc.random(101);
+   pref_scout                = misc.random(101);
+	pref_research             = misc.random(101);
+	pref_seat_of_power		  = misc.random(101);
+	pref_monster_aggressiveness = misc.random(101);
+	pref_monster_special		  = misc.random(101);
+	pref_live_points_reserve  = misc.random(101);
+	pref_surrender				  = misc.random(101);
 }
 //---------- End of function Nation::init_personalty --------//
 
@@ -327,7 +327,7 @@ void Nation::process_ai()
 	process_ai_main( (info.game_date-nation_recno*4) % intervalDays );
 
 	LOG_MSG(debugStr);
-	LOG_MSG(m.get_random_seed());
+	LOG_MSG(misc.get_random_seed());
 
 	if( nation_array.is_deleted(nationRecno) )      // the nation can have surrendered
       return;
@@ -339,7 +339,7 @@ void Nation::process_ai()
       LOG_MSG("begin process_action(0,ACTION_AI_PROCESS_TALK_MSG)");
       process_action(0, ACTION_AI_PROCESS_TALK_MSG);
       LOG_MSG("end process_action(0,ACTION_AI_PROCESS_TALK_MSG)");
-      LOG_MSG(m.get_random_seed());
+      LOG_MSG(misc.get_random_seed());
 
       if( nation_array.is_deleted(nationRecno) )      // the nation can have surrendered
          return;
@@ -352,7 +352,7 @@ void Nation::process_ai()
       LOG_MSG("begin process_action()");
       process_action();
 		LOG_MSG("end process_action()");
-      LOG_MSG(m.get_random_seed());
+      LOG_MSG(misc.get_random_seed());
 
 		if( nation_array.is_deleted(nationRecno) )      // the nation can have surrendered
          return;
@@ -382,7 +382,7 @@ void Nation::process_ai()
 	if( 1 || game.game_mode == GAME_TUTORIAL )	//BUGHERE
 	{
       if( cash < 100 )
-         add_cheat( (float)200+m.random(500) );
+         add_cheat( (float)200+misc.random(500) );
 
       if( food < 100 )
          food += 1000;
@@ -416,7 +416,7 @@ int Nation::process_ai_main(int mainActionId)
 #endif
 			think_build_firm();
 			LOG_MSG(debugStr);
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 			return 1;
 
 		case 1:
@@ -425,7 +425,7 @@ int Nation::process_ai_main(int mainActionId)
 #endif
 			think_capture();
 			LOG_MSG(debugStr);
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 			return 1;
 
 		case 2:
@@ -434,7 +434,7 @@ int Nation::process_ai_main(int mainActionId)
 #endif
 			think_explore();
 			LOG_MSG(debugStr);
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 			return 1;
 
 		case 3:        // think about expanding its military force
@@ -443,7 +443,7 @@ int Nation::process_ai_main(int mainActionId)
 #endif
          think_military();
 			LOG_MSG(debugStr);
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 			return 1;
 
       case 4:
@@ -452,7 +452,7 @@ int Nation::process_ai_main(int mainActionId)
 #endif
          think_secret_attack();
 			LOG_MSG(debugStr);
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 			return 1;
 
 		case 5:
@@ -461,7 +461,7 @@ int Nation::process_ai_main(int mainActionId)
 #endif
 			think_diplomacy();
 			LOG_MSG(debugStr);
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 			return 1;
 
 		case 6:
@@ -470,7 +470,7 @@ int Nation::process_ai_main(int mainActionId)
 #endif
 			think_grand_plan();
 			LOG_MSG(debugStr);
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 			return 1;
 
 		case 7:
@@ -479,7 +479,7 @@ int Nation::process_ai_main(int mainActionId)
 #endif
 			think_reduce_expense();
 			LOG_MSG(debugStr);
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 			return 1;
 	}
 
@@ -679,7 +679,7 @@ void Nation::ai_improve_relation()
       //--- decrease the started_war_on_us_count once per year, gradually forgiving other nations' wrong doing ---//
 
       if( nationRelation->started_war_on_us_count > 0
-          && m.random(5-pref_forgiveness/20) > 0 )
+          && misc.random(5-pref_forgiveness/20) > 0 )
       {
          nationRelation->started_war_on_us_count--;
       }
@@ -706,7 +706,7 @@ void Nation::think_new_research()
 	if( tech_res[TECH_FARMING]->can_research(nation_recno) )
 	{
 		if( !ai_has_enough_food() ||
-			 m.random(100-pref_food_reserve) < 10 )
+			 misc.random(100-pref_food_reserve) < 10 )
 		{
 			bestTechId = TECH_FARMING;
 		}
@@ -720,7 +720,7 @@ void Nation::think_new_research()
 		{
 			int totalWeaponTech = tech_res.tech_class(TECH_CLASS_WEAPON)->total_tech_count(nation_recno);
 
-			if( m.random(100 - pref_use_weapon + totalWeaponTech * 3 ) < 25 )
+			if( misc.random(100 - pref_use_weapon + totalWeaponTech * 3 ) < 25 )
 				bestTechClassId = TECH_CLASS_WEAPON;
 		}
 	}
@@ -733,7 +733,7 @@ void Nation::think_new_research()
 		{
 			int totalSpyTech = tech_res.tech_class(TECH_CLASS_SPYING)->total_tech_count(nation_recno);
 
-			if( m.random(100 - pref_spy + totalSpyTech * 3 ) < 25 )
+			if( misc.random(100 - pref_spy + totalSpyTech * 3 ) < 25 )
 				bestTechClassId = TECH_CLASS_SPYING;
 		}
 	}
@@ -786,11 +786,11 @@ void Nation::think_new_research()
 	if( !bestTechId )
 	{
 		if( !bestTechClassId )
-			bestTechClassId = m.random(tech_res.tech_class_count)+1;
+			bestTechClassId = misc.random(tech_res.tech_class_count)+1;
 
 		TechClass* techClass = tech_res.tech_class(bestTechClassId);
 
-		int classSubId = m.random(techClass->tech_count)+1;
+		int classSubId = misc.random(techClass->tech_count)+1;
 
 		for( int i=techClass->tech_count ; i>0 ; i-- )
 		{
@@ -814,7 +814,7 @@ void Nation::think_new_research()
 
 	if( !bestTechId )
 	{
-		int techId = m.random(tech_res.tech_count)+1;
+		int techId = misc.random(tech_res.tech_count)+1;
 
 		for( int i=tech_res.tech_count ; i>0 ; i-- )
 		{
@@ -836,7 +836,7 @@ void Nation::think_new_research()
 
 	if( !bestTechId )
 	{
-		int techId = m.random(tech_res.tech_count)+1;
+		int techId = misc.random(tech_res.tech_count)+1;
 
 		for( int i=tech_res.tech_count ; i>0 ; i-- )
 		{

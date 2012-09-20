@@ -48,7 +48,7 @@ int Unit::think_use_special_ability()
 		if( info.game_date - last_special_ability_start_date < SPECIAL_ABILITY_DELAY )
 			return 0;
 
-		if( m.random(100+spLevel) < 100 )
+		if( misc.random(100+spLevel) < 100 )
 			return 0;
 
 		use_special_ability();

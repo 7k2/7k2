@@ -102,10 +102,10 @@ void CampaignEastWest::stage_2_init_vars()
 	//------ init stage 1 vars -------//
 
 	rebel_count = MAX(1, campaign_difficulty-1);
-	next_rebel_date = info.game_date + 30 + m.random(30);
+	next_rebel_date = info.game_date + 30 + misc.random(30);
 
 	general_defect_count = MAX(1, campaign_difficulty/2);
-	next_general_defect_date = info.game_date + 30 + m.random(30);
+	next_general_defect_date = info.game_date + 30 + misc.random(30);
 
 	//----- init monster reinforcement settings -----//
 
@@ -183,11 +183,11 @@ int CampaignEastWest::stage_2_create_town()
 
 	int rangeX1, rangeY1, rangeX2, rangeY2;
 
-	if( m.random(2)==0 )		// divided horizontally
+	if( misc.random(2)==0 )		// divided horizontally
 	{
 		int mountainX;
 
-		if( m.random(2)==0 )
+		if( misc.random(2)==0 )
 		{
 			rangeX1 = 0;
 			rangeX2 = 70;
@@ -211,10 +211,10 @@ int CampaignEastWest::stage_2_create_town()
 
 		//----- a vertical mountain -----//
 
-		int gap1Y1 = TOWN_STATE_MAP_HEIGHT/3 + m.random(20)-10;
+		int gap1Y1 = TOWN_STATE_MAP_HEIGHT/3 + misc.random(20)-10;
 		int gap1Y2 = gap1Y1 + MOUNTAIN_GAP_SIZE;
 
-		int gap2Y1 = TOWN_STATE_MAP_HEIGHT*2/3 + m.random(20)-10;
+		int gap2Y1 = TOWN_STATE_MAP_HEIGHT*2/3 + misc.random(20)-10;
 		int gap2Y2 = gap2Y1 + MOUNTAIN_GAP_SIZE;
 
 		for( int i=0 ; i<TOWN_STATE_MAP_HEIGHT ; i++ )
@@ -234,7 +234,7 @@ int CampaignEastWest::stage_2_create_town()
 	{
 		int mountainY;
 
-		if( m.random(2)==0 )
+		if( misc.random(2)==0 )
 		{
 			rangeY1 = 0;
 			rangeY2 = 70;
@@ -258,10 +258,10 @@ int CampaignEastWest::stage_2_create_town()
 
 		//----- a horizontal mountain -----//
 
-		int gap1X1 = TOWN_STATE_MAP_WIDTH/3 + m.random(20)-10;
+		int gap1X1 = TOWN_STATE_MAP_WIDTH/3 + misc.random(20)-10;
 		int gap1X2 = gap1X1 + MOUNTAIN_GAP_SIZE;
 
-		int gap2X1 = TOWN_STATE_MAP_WIDTH*2/3 + m.random(20)-10;
+		int gap2X1 = TOWN_STATE_MAP_WIDTH*2/3 + misc.random(20)-10;
 		int gap2X2 = gap2X1 + MOUNTAIN_GAP_SIZE;
 
 		for( int i=0 ; i<TOWN_STATE_MAP_WIDTH ; i++ )
@@ -282,7 +282,7 @@ int CampaignEastWest::stage_2_create_town()
 
 	//------ generate a StateArray ---------//
 
-	int playerTownAddCount  = 5 + m.random(3);
+	int playerTownAddCount  = 5 + misc.random(3);
 	int monsterLairAddCount = 3;
 
 	StateArray townStateArray;
@@ -349,7 +349,7 @@ int CampaignEastWest::stage_2_create_firm()
 	int townRecno1 = king_oversee_town_recno(PLAYER_NATION_RECNO);
 	int townRecno2 = random_pick_town_with_camp(PLAYER_NATION_RECNO, 2);		// only pick towns with <= 2 links
 
-	if( townRecno2 && m.random(2)==0 )		// swap the town in 50% chance
+	if( townRecno2 && misc.random(2)==0 )		// swap the town in 50% chance
 	{
 		int t=townRecno1;
 		townRecno1 = townRecno2;
@@ -469,7 +469,7 @@ void CampaignEastWest::stage_2_process_game_result()
 
 		info.game_year = game_year;			// revert info.game_year back to campaign's game year so that the game's time will not advance
 
-		m.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
+		misc.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
 	}
 }
 //---- End of function CampaignEastWest::stage_2_process_game_result -----//

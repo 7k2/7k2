@@ -223,12 +223,12 @@ void Tutor::load_tutor_info()
 		tutorRec  = (TutorRec*) dbTutor.read(i+1);
 		tutorInfo = tutor_info_array+i;
 
-		m.rtrim_fld( tutorInfo->intro, tutorRec->intro, tutorRec->CODE_LEN );
-		m.rtrim_fld( tutorInfo->result, tutorRec->result, tutorRec->CODE_LEN );
-		m.rtrim_fld( tutorInfo->code, tutorRec->code, tutorRec->CODE_LEN );
-		m.rtrim_fld( tutorInfo->in_box, tutorRec->in_box, tutorRec->CODE_LEN );
-		m.rtrim_fld( tutorInfo->des_text , tutorRec->des_text , tutorRec->CODE_LEN  );
-		m.rtrim_fld( tutorInfo->des , tutorRec->des , tutorRec->DES_LEN  );
+		misc.rtrim_fld( tutorInfo->intro, tutorRec->intro, tutorRec->CODE_LEN );
+		misc.rtrim_fld( tutorInfo->result, tutorRec->result, tutorRec->CODE_LEN );
+		misc.rtrim_fld( tutorInfo->code, tutorRec->code, tutorRec->CODE_LEN );
+		misc.rtrim_fld( tutorInfo->in_box, tutorRec->in_box, tutorRec->CODE_LEN );
+		misc.rtrim_fld( tutorInfo->des_text , tutorRec->des_text , tutorRec->CODE_LEN  );
+		misc.rtrim_fld( tutorInfo->des , tutorRec->des , tutorRec->DES_LEN  );
 		translate.multi_to_win(tutorInfo->des, tutorInfo->DES_LEN);
 	}
 
@@ -578,7 +578,7 @@ void Tutor::run(int tutorId, int inGameCall)
 			str += "L";
 		str += ".TUT";
 
-		if( m.is_file_exist(str) )
+		if( misc.is_file_exist(str) )
 		{
 			// game_file.load_game(str);
 			// ####### begin Gilbert 5/7 #########//
@@ -598,7 +598,7 @@ void Tutor::run(int tutorId, int inGameCall)
 			str += "STANDARD.TUT";
 		//	str = "SAVE\\BANT_001\\AUTO.SAV";
 		//	str = "SAVE\\BANTHEGR\\AUTO.SAV";
-			if( m.is_file_exist(str) )
+			if( misc.is_file_exist(str) )
 			{
 				// ####### begin Gilbert 5/7 #########//
 				// game_file.load_game(str);
@@ -683,7 +683,7 @@ void Tutor::play_speech(int tutorId, int objectiveRecno)
 
 	strcat(str, str2);
 
-	if( !m.is_file_exist(str) )
+	if( !misc.is_file_exist(str) )
 		return;
 
 	// ##### begin Gilbert 25/9 ######//

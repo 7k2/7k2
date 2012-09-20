@@ -74,8 +74,8 @@ void FirmOffensive2::put_info(int refreshFlag)
 		vga.active_buf->put_bitmapW( INFO_X1 +80 +20 +offsetX, INFO_Y1 +49 +offsetY, hitPointBitmap );
 		mem_del( hitPointBitmap );				
 			
-		font_whbl.center_put( INFO_X1 +43, INFO_Y1 +45, INFO_X1 +65, INFO_Y1 +57, m.format((int)hitPoints,4));
-		font_whbl.center_put( INFO_X1 +169, INFO_Y1 +45, INFO_X1 +191, INFO_Y1 +57, m.format((int)max_hit_points(),4) );
+		font_whbl.center_put( INFO_X1 +43, INFO_Y1 +45, INFO_X1 +65, INFO_Y1 +57, misc.format((int)hitPoints,4));
+		font_whbl.center_put( INFO_X1 +169, INFO_Y1 +45, INFO_X1 +191, INFO_Y1 +57, misc.format((int)max_hit_points(),4) );
 	}
 
 	// font_whbl.center_put( INFO_X1 +12, INFO_Y1 +9, INFO_X2, INFO_Y1 +21, "Offensive Building 3", 0, 1 );

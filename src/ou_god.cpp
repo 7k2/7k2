@@ -299,8 +299,8 @@ void UnitGod::japanese_kill_spy()
 
 		// chance of escape
 
-//		if( m.random(200) < spyPtr->spy_skill )
-//		if( m.random(1000) >= 900 - spyPtr->spy_skill )		// 10% - 20% change of escape
+//		if( misc.random(200) < spyPtr->spy_skill )
+//		if( misc.random(1000) >= 900 - spyPtr->spy_skill )		// 10% - 20% change of escape
 //			continue;
 
 		// BUGHERE: call get_killed or set_exposed?
@@ -431,7 +431,7 @@ void UnitGod::cast_on_loc(int castXLoc, int castYLoc)
 		{
 			int divider = STD_TOWN_LOC_WIDTH * STD_TOWN_LOC_HEIGHT;
 
-			float changePoints = (float)7 + m.random(8);		// decrease 7 to 15 loyalty points instantly
+			float changePoints = (float)7 + misc.random(8);		// decrease 7 to 15 loyalty points instantly
 
 			if( townPtr->nation_recno )
 				townPtr->change_loyalty(-changePoints/divider);
@@ -597,7 +597,7 @@ void UnitGod::persian_cast_power(int unitRecno, int divider)
 
 	if( unitPtr->nation_recno == nation_recno && unitPtr->race_id > 0 )
 	{
-		float changePoints = (float) unitPtr->max_hit_points() / (6+m.random(4));	 // divided by (6 to 9)
+		float changePoints = (float) unitPtr->max_hit_points() / (6+misc.random(4));	 // divided by (6 to 9)
 
 		changePoints = MAX( changePoints, 10 );
 
@@ -618,7 +618,7 @@ void UnitGod::japanese_cast_power(int unitRecno, int divider)
 
 	if( unitPtr->nation_recno != nation_recno && unitPtr->race_id > 0 )
 	{
-		int changePoints = 7 + m.random(8);		// decrease 7 to 15 loyalty points instantly
+		int changePoints = 7 + misc.random(8);		// decrease 7 to 15 loyalty points instantly
 
 		unitPtr->change_loyalty( -MAX(1, changePoints/divider) );
 	}
@@ -659,7 +659,7 @@ void UnitGod::mongol_cast_power( int unitRecno, int divider )
 		turnProbability = 100 - int(q * 100.0);
 	}
 
-	if( m.random(100) >= turnProbability )
+	if( misc.random(100) >= turnProbability )
 		return;
 
 	unitPtr->betray( nation_recno );
@@ -678,7 +678,7 @@ void UnitGod::maya_cast_power(int unitRecno, int divider)
 
 	if( unitPtr->nation_recno == nation_recno && unitPtr->race_id == RACE_MAYA )
 	{
-		int changePoints = 15 + m.random(10);		// add 15 to 25 points to its combat level instantly
+		int changePoints = 15 + misc.random(10);		// add 15 to 25 points to its combat level instantly
 
 		int newCombatLevel = unitPtr->combat_level() + changePoints/divider;
 
@@ -703,7 +703,7 @@ void UnitGod::persian_cast_power(Worker* workerPtr, int nationRecno, int divider
 
 	if( nationRecno == nation_recno && workerPtr->race_id > 0 )
 	{
-		int changePoints = workerPtr->max_hit_points() / (4+m.random(4));	 // divided by (4 to 7)
+		int changePoints = workerPtr->max_hit_points() / (4+misc.random(4));	 // divided by (4 to 7)
 
 		changePoints = MAX( changePoints, 10 );
 
@@ -721,7 +721,7 @@ void UnitGod::japanese_cast_power(Worker* workerPtr, int nationRecno, int divide
 
 	if( nationRecno != nation_recno && workerPtr->race_id > 0 )
 	{
-		int changePoints = 7 + m.random(8);		// decrease 7 to 15 loyalty points instantly
+		int changePoints = 7 + misc.random(8);		// decrease 7 to 15 loyalty points instantly
 
 		workerPtr->change_loyalty( -MAX(1, changePoints/divider) );
 	}
@@ -737,7 +737,7 @@ void UnitGod::maya_cast_power(Worker* workerPtr, int nationRecno, int divider)
 
 	if( nationRecno == nation_recno && workerPtr->race_id == RACE_MAYA )
 	{
-		int changePoints = 15 + m.random(10);		// add 15 to 25 points to its combat level instantly
+		int changePoints = 15 + misc.random(10);		// add 15 to 25 points to its combat level instantly
 
 		int newCombatLevel = workerPtr->combat_level + MAX(1, changePoints/divider);
 
@@ -803,7 +803,7 @@ void UnitGod::indian_cast_power(int unitRecno, int divider)
 
 	if( unitPtr->is_visible() && nation_array.should_attack(nation_recno, unitPtr->nation_recno) )
 	{
-		unitPtr->change_loyalty(-30 + m.random(11));
+		unitPtr->change_loyalty(-30 + misc.random(11));
 	}
 }
 //---------- End of function UnitGod::indian_cast_power ----------//

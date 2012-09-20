@@ -162,12 +162,12 @@ int CampaignEastWest::stage_18_create_nation()
 
 int CampaignEastWest::stage_18_create_lair()
 {
-	int lairAddCount = 10 + m.random(3);						// add 6 to 7 Fryhtan Lairs
+	int lairAddCount = 10 + misc.random(3);						// add 6 to 7 Fryhtan Lairs
 	int independentTownAddCount=0;
-	int specialFirmCount= 7 + m.random(2);
+	int specialFirmCount= 7 + misc.random(2);
 
-	if( m.random(2)==0 )		// 50% chance having independent towns
-		independentTownAddCount = 6 + m.random(3);		// 6 to 8 independent towns
+	if( misc.random(2)==0 )		// 50% chance having independent towns
+		independentTownAddCount = 6 + misc.random(3);		// 6 to 8 independent towns
 
 	create_lair(cur_monster_nation_recno, STAGE_18_MONSTER_NATION_RECNO, lairAddCount, independentTownAddCount, specialFirmCount);
 
@@ -225,7 +225,7 @@ void CampaignEastWest::stage_18_process_game_result()
 
 		info.game_year = game_year;			// revert info.game_year back to campaign's game year so that the game's time will not advance
 
-		m.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
+		misc.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
 	}
 }
 //---- End of function CampaignEastWest::stage_18_process_game_result -----//

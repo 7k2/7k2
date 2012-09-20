@@ -58,10 +58,10 @@ int CampaignEastWest::stage_6_create_game()
 
 	set_std_situation();
 
-	cur_situation.population_level = 80 + m.random(20);
-	cur_situation.town_loyalty_level = 80 + m.random(20);
-	cur_situation.unit_loyalty_level = 80 + m.random(20);
-	cur_situation.unit_combat_level  = 20 + m.random(10);
+	cur_situation.population_level = 80 + misc.random(20);
+	cur_situation.town_loyalty_level = 80 + misc.random(20);
+	cur_situation.unit_loyalty_level = 80 + misc.random(20);
+	cur_situation.unit_combat_level  = 20 + misc.random(10);
 
 	//---- create game objects and vars ----//
 
@@ -177,7 +177,7 @@ int CampaignEastWest::stage_6_create_town()
 
 	//------ generate a StateArray ---------//
 
-	int townAddCount  = 5 + m.random(2);		// add 5 to 6 player towns
+	int townAddCount  = 5 + misc.random(2);		// add 5 to 6 player towns
 	int addedCount=0;
 
 	StateArray townStateArray;
@@ -192,7 +192,7 @@ int CampaignEastWest::stage_6_create_town()
 		int xLoc = (int) stateInfo->center_x * MAX_WORLD_X_LOC / TOWN_STATE_MAP_WIDTH;
 		int yLoc = (int) stateInfo->center_y * MAX_WORLD_Y_LOC / TOWN_STATE_MAP_HEIGHT;
 
-		int soldierAddCount = MAX_SOLDIER/4 + m.random(MAX_SOLDIER/4) + 1;
+		int soldierAddCount = MAX_SOLDIER/4 + misc.random(MAX_SOLDIER/4) + 1;
 
 		if( create_nation_town(PLAYER_NATION_RECNO, xLoc, yLoc, 1, 0, soldierAddCount) )		// 0-the race of the town need not to be the same as the nation
 			addedCount++;
@@ -299,7 +299,7 @@ void CampaignEastWest::stage_6_create_hero()
 	//-------- create the hero ----------//
 
 	hero_unit_recno = hero_res.create_hero(xLoc, yLoc, 0,
-							(~nation_array)->race_id, 80, 80+m.random(20), -1, 0, 1 );		// last 0-the hero must be a fictional one as opposite to a historic one.	Last 1-use reserve
+							(~nation_array)->race_id, 80, 80+misc.random(20), -1, 0, 1 );		// last 0-the hero must be a fictional one as opposite to a historic one.	Last 1-use reserve
 
 	if( hero_unit_recno )
 	{
@@ -308,10 +308,10 @@ void CampaignEastWest::stage_6_create_hero()
 		unitPtr->item.set( ITEM_LEADER, 0 );
 
 		unitPtr->skill.set_max_skill_level( 300 );
-		unitPtr->skill.set_skill_level( 200 + m.random(100) );
+		unitPtr->skill.set_skill_level( 200 + misc.random(100) );
 
 		unitPtr->skill.set_max_combat_level( 300 );
-		unitPtr->set_combat_level( 200 + m.random(100) );
+		unitPtr->set_combat_level( 200 + misc.random(100) );
 
 		unitPtr->betray(PLAYER_NATION_RECNO);
 
@@ -383,7 +383,7 @@ void CampaignEastWest::stage_6_process_game_result()
 
 		info.game_year = game_year;			// revert info.game_year back to campaign's game year so that the game's time will not advance
 
-		m.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
+		misc.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
 	}
 }
 //---- End of function CampaignEastWest::stage_6_process_game_result -----//

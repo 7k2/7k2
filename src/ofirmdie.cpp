@@ -132,18 +132,18 @@ void FirmDieRes::load_bitmap_info()
 	//	memcpy( &bitmapOffset, firmBitmapRec->bitmap_ptr, sizeof(long) );
 	//	firmBitmap->bitmap_ptr = NULL;
 
-		firmBitmap->width  	  = m.atoi( firmBitmapRec->width, firmBitmapRec->LOC_LEN );
-		firmBitmap->height 	  = m.atoi( firmBitmapRec->height, firmBitmapRec->LOC_LEN );
+		firmBitmap->width  	  = misc.atoi( firmBitmapRec->width, firmBitmapRec->LOC_LEN );
+		firmBitmap->height 	  = misc.atoi( firmBitmapRec->height, firmBitmapRec->LOC_LEN );
 
-		firmBitmap->offset_x = m.atoi( firmBitmapRec->offset_x, firmBitmapRec->OFFSET_LEN );
-		firmBitmap->offset_y = m.atoi( firmBitmapRec->offset_y, firmBitmapRec->OFFSET_LEN );
+		firmBitmap->offset_x = misc.atoi( firmBitmapRec->offset_x, firmBitmapRec->OFFSET_LEN );
+		firmBitmap->offset_y = misc.atoi( firmBitmapRec->offset_y, firmBitmapRec->OFFSET_LEN );
 
-		firmBitmap->loc_width  = m.atoi( firmBitmapRec->loc_width , firmBitmapRec->LOC_LEN );
-		firmBitmap->loc_height = m.atoi( firmBitmapRec->loc_height, firmBitmapRec->LOC_LEN );
+		firmBitmap->loc_width  = misc.atoi( firmBitmapRec->loc_width , firmBitmapRec->LOC_LEN );
+		firmBitmap->loc_height = misc.atoi( firmBitmapRec->loc_height, firmBitmapRec->LOC_LEN );
 		
-		firmBitmap->delay = m.atoi( firmBitmapRec->delay, firmBitmapRec->DELAY_LEN );
+		firmBitmap->delay = misc.atoi( firmBitmapRec->delay, firmBitmapRec->DELAY_LEN );
 
-		firmBitmap->ani_part = m.atoi( firmBitmapRec->ani_part, firmBitmapRec->FRAME_ID_LEN );
+		firmBitmap->ani_part = misc.atoi( firmBitmapRec->ani_part, firmBitmapRec->FRAME_ID_LEN );
 	//	firmBitmap->random_flag = firmBitmapRec->random_flag[0] == 'R' ? 1 : 0;
 		firmBitmap->random_flag = firmBitmapRec->random_flag[0];
 
@@ -197,19 +197,19 @@ void FirmDieRes::load_build_info()
 		firmBuildRec = (FirmBuildRec*) dbFirmBuild->read(i+1);
 		firmBuild	 = firm_build_array+i;
 
-		firmBuild->group 	  = m.atoi( firmBuildRec->group, firmBuildRec->GROUP_LEN );
+		firmBuild->group 	  = misc.atoi( firmBuildRec->group, firmBuildRec->GROUP_LEN );
 		
-		m.rtrim_fld( firmBuild->name, firmBuildRec->name, firmBuild->NAME_LEN );
+		misc.rtrim_fld( firmBuild->name, firmBuildRec->name, firmBuild->NAME_LEN );
 
-		m.rtrim_fld( firmBuild->firm_resource_name, firmBuildRec->firm_resource_name, firmBuildRec->PAL_NAME_LEN );
+		misc.rtrim_fld( firmBuild->firm_resource_name, firmBuildRec->firm_resource_name, firmBuildRec->PAL_NAME_LEN );
 
 		firmBuild->animate_full_size = firmBuildRec->animate_full_size=='1';
 
 		firmBuild->use_first_frame = !(firmBuildRec->use_first_frame=='0');
 
-		firmBuild->frame_count = m.atoi( firmBuildRec->frame_count, firmBuildRec->FRAME_COUNT_LEN );
+		firmBuild->frame_count = misc.atoi( firmBuildRec->frame_count, firmBuildRec->FRAME_COUNT_LEN );
 		
-		firmBuild->ani_part_count = m.atoi( firmBuildRec->ani_part_count, firmBuildRec->FRAME_COUNT_LEN );
+		firmBuild->ani_part_count = misc.atoi( firmBuildRec->ani_part_count, firmBuildRec->FRAME_COUNT_LEN );
 		
 		if (firmBuild->animate_full_size == 1)
 			firmBuild->ani_part_count = 1;
@@ -226,23 +226,23 @@ void FirmDieRes::load_build_info()
 		}
 		firmBuild->palw_ptr = NULL;
 
-		firmBuild->under_construction_bitmap_recno = m.atoi(firmBuildRec->under_construction_bitmap_recno, firmBuildRec->BITMAP_RECNO_LEN);
+		firmBuild->under_construction_bitmap_recno = misc.atoi(firmBuildRec->under_construction_bitmap_recno, firmBuildRec->BITMAP_RECNO_LEN);
 		firmBuild->under_construction_bitmap_count =
-			m.atoi(firmBuildRec->under_construction_bitmap_count, firmBuildRec->FRAME_COUNT_LEN);
-		firmBuild->idle_bitmap_recno 					 = m.atoi(firmBuildRec->idle_bitmap_recno, firmBuildRec->BITMAP_RECNO_LEN);
-		firmBuild->ground_bitmap_recno             = m.atoi(firmBuildRec->ground_bitmap_recno, firmBuildRec->BITMAP_RECNO_LEN);
+			misc.atoi(firmBuildRec->under_construction_bitmap_count, firmBuildRec->FRAME_COUNT_LEN);
+		firmBuild->idle_bitmap_recno 					 = misc.atoi(firmBuildRec->idle_bitmap_recno, firmBuildRec->BITMAP_RECNO_LEN);
+		firmBuild->ground_bitmap_recno             = misc.atoi(firmBuildRec->ground_bitmap_recno, firmBuildRec->BITMAP_RECNO_LEN);
 		
-		firmBuild->defense_attribute.init(m.atoi(firmBuildRec->sturdiness, firmBuildRec->ATTRIBUTE_LEN), 0);
+		firmBuild->defense_attribute.init(misc.atoi(firmBuildRec->sturdiness, firmBuildRec->ATTRIBUTE_LEN), 0);
 
-		firmBuild->bullet_sprite_id = m.atoi(firmBuildRec->bullet_sprite_id, firmBuildRec->BULLET_ID_LEN);
-		m.rtrim_fld( firmBuild->bullet_sprite_code, firmBuildRec->bullet_sprite_code, firmBuild->BULLET_SPRITE_LEN );
+		firmBuild->bullet_sprite_id = misc.atoi(firmBuildRec->bullet_sprite_id, firmBuildRec->BULLET_ID_LEN);
+		misc.rtrim_fld( firmBuild->bullet_sprite_code, firmBuildRec->bullet_sprite_code, firmBuild->BULLET_SPRITE_LEN );
 
 		err_when( firmBuild->frame_count > MAX_FIRM_FRAME );
 
 		// the following variables are hard coded //
 		firmBuild->frame_count = 39;
 		firstFrameArray[i] = 1;
-	//	firstFrameArray[i] = m.atoi( firmBuildRec->first_frame, firmBuildRec->FIRST_FRAME_LEN );
+	//	firstFrameArray[i] = misc.atoi( firmBuildRec->first_frame, firmBuildRec->FIRST_FRAME_LEN );
 	}
 
 	//-------- read in FDFRAME.DBF --------//
@@ -265,10 +265,10 @@ void FirmDieRes::load_build_info()
 
 			//------ following animation frames, bitmap sections -----//
 
-			firmBuild->first_bitmap_array[j] = m.atoi( firmFrameRec->first_bitmap, firmFrameRec->FIRST_BITMAP_LEN );
-			firmBuild->bitmap_count_array[j] = m.atoi( firmFrameRec->bitmap_count, firmFrameRec->BITMAP_COUNT_LEN );
+			firmBuild->first_bitmap_array[j] = misc.atoi( firmFrameRec->first_bitmap, firmFrameRec->FIRST_BITMAP_LEN );
+			firmBuild->bitmap_count_array[j] = misc.atoi( firmFrameRec->bitmap_count, firmFrameRec->BITMAP_COUNT_LEN );
 
-			firmBuild->frame_delay_array[j] = m.atoi( firmFrameRec->delay, firmFrameRec->DELAY_LEN );
+			firmBuild->frame_delay_array[j] = misc.atoi( firmFrameRec->delay, firmFrameRec->DELAY_LEN );
 
 			//---- get the min offset_x, offset_y and max width, height ----//
 			//

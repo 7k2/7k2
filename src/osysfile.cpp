@@ -142,7 +142,7 @@ void Sys::auto_save()
 
             debug_seed_status_flag = NO_DEBUG_SYN;
 	    // DIK_BACKSLASH = 0x2B
-            mouse.add_key_event(0x2B, m.get_time()); // load file for comparison
+            mouse.add_key_event(0x2B, misc.get_time()); // load file for comparison
          }
 
          //debug_seed_status_flag = 2;

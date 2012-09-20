@@ -122,21 +122,21 @@ void RawRes::load_all_info()
 
 		rawInfo = raw_info_array+i;
 
-		m.rtrim_fld( rawInfo->name, rawRec->name, rawRec->NAME_LEN );
+		misc.rtrim_fld( rawInfo->name, rawRec->name, rawRec->NAME_LEN );
 		translate.multi_to_win(rawInfo->name, rawInfo->NAME_LEN);
 
 		rawInfo->raw_id    = i+1;
-		rawInfo->tera_type = m.atoi( rawRec->tera_type, rawRec->TERA_TYPE_LEN );
+		rawInfo->tera_type = misc.atoi( rawRec->tera_type, rawRec->TERA_TYPE_LEN );
 
 		uint32_t bitmapOffset;
 
 		memcpy( &bitmapOffset, rawRec->map_icon_ptr, sizeof(uint32_t) );
 		rawInfo->map_icon_ptr = res_map_icon.read_imported(bitmapOffset);
 
-		rawInfo->map_loc_width = (char) m.atoi(rawRec->map_loc_width, rawRec->LOC_LEN );
-		rawInfo->map_loc_height = (char) m.atoi(rawRec->map_loc_height, rawRec->LOC_LEN );
-		rawInfo->map_icon_offset_x = m.atoi(rawRec->map_icon_offset_x, rawRec->OFFSET_LEN);
-		rawInfo->map_icon_offset_y = m.atoi(rawRec->map_icon_offset_y, rawRec->OFFSET_LEN);
+		rawInfo->map_loc_width = (char) misc.atoi(rawRec->map_loc_width, rawRec->LOC_LEN );
+		rawInfo->map_loc_height = (char) misc.atoi(rawRec->map_loc_height, rawRec->LOC_LEN );
+		rawInfo->map_icon_offset_x = misc.atoi(rawRec->map_icon_offset_x, rawRec->OFFSET_LEN);
+		rawInfo->map_icon_offset_y = misc.atoi(rawRec->map_icon_offset_y, rawRec->OFFSET_LEN);
 
 		memcpy( &bitmapOffset, rawRec->small_raw_ptr, sizeof(uint32_t) );
 		rawInfo->small_raw_ptr = res_small_raw.read_imported(bitmapOffset);

@@ -387,7 +387,7 @@ static void put_nation_rec(int recNo, int x, int y, int refreshFlag)
 	font_bld.put( x+20 , y, nationPtr->nation_name(), 0, x+215 );
 
 	if( nationPtr->is_human() )
-		font_bld.put( x+220, y, m.format((int) nationPtr->reputation) );
+		font_bld.put( x+220, y, misc.format((int) nationPtr->reputation) );
 
 	//------- display relation parameters --------//
 
@@ -421,14 +421,14 @@ static void put_nation_rec(int recNo, int x, int y, int refreshFlag)
 		}
 		else
 		{
-			font_bld.put( x+465, y, m.format( (int) viewingNation->total_year_trade(nationRecno),2) );
+			font_bld.put( x+465, y, misc.format( (int) viewingNation->total_year_trade(nationRecno),2) );
 		}
 		// ###### end Gilbert 11/5 ########//
 
 		if( config.show_debug_info )
 		{
-			font_bld.put( x+510, y, m.format(nationPtr->get_relation(info.viewing_nation_recno)->ai_relation_level) );
-			font_bld.put( x+180, y, m.format( (int) nationPtr->get_relation(info.viewing_nation_recno)->good_relation_duration_rating) );
+			font_bld.put( x+510, y, misc.format(nationPtr->get_relation(info.viewing_nation_recno)->ai_relation_level) );
+			font_bld.put( x+180, y, misc.format( (int) nationPtr->get_relation(info.viewing_nation_recno)->good_relation_duration_rating) );
 		}
 	}
 }
@@ -720,8 +720,8 @@ static void disp_nation_info()
 			if( nationPtr->get_relation(i)->trade_treaty )
 			{
 				int x2 = font_bld.put( x1+330, y, text_talk.str_trade_treaty()); // "Trade Treaty" );
-				// font_bld.put( x1+450, y, m.format((int)nationPtr->total_year_trade(i),2) );
-				font_bld.put( x2+10, y, m.format((int)nationPtr->total_year_trade(i),2) );
+				// font_bld.put( x1+450, y, misc.format((int)nationPtr->total_year_trade(i),2) );
+				font_bld.put( x2+10, y, misc.format((int)nationPtr->total_year_trade(i),2) );
 			}
 
 			if( config.show_debug_info )

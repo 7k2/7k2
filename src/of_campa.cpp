@@ -173,7 +173,7 @@ void FirmCamp::process_ai_capturing()
 		if( townPtr->nation_recno )
 			nation_array[nation_recno]->set_relation_should_attack( townPtr->nation_recno, 1, COMMAND_AI );
 
-		int unitRecno = patrol_unit_array[ m.random(patrol_unit_count) ];
+		int unitRecno = patrol_unit_array[ misc.random(patrol_unit_count) ];
 
 		unit_array[unitRecno]->attack(townPtr->base_obj_recno, true);
 	}
@@ -209,7 +209,7 @@ void FirmCamp::ai_attack_town_defender(Unit* attackerUnit)
 	//---- if there are still town defenders out there ---//
 
 	int unitCount = unit_array.size();
-	int unitRecno = m.random(unitCount)+1;		// scan randomly
+	int unitRecno = misc.random(unitCount)+1;		// scan randomly
 	Unit* targetUnit;
 
 	for( int i=0 ; i<unitCount ; i++ )
@@ -299,7 +299,7 @@ void FirmCamp::think_recruit()
 			if( firmCamp->should_close_flag && 
 				 (firmCamp->overseer_recno || firmCamp->soldier_count>0) )
 			{
-				curRating = 100 - m.points_distance( center_x, center_y,
+				curRating = 100 - misc.points_distance( center_x, center_y,
 								firmCamp->center_x, firmCamp->center_y );
 
 				if( curRating > bestRating )
@@ -590,7 +590,7 @@ void FirmCamp::think_capture()
 
 	//--- try using spies if there are defense forces and the nation likes to use spies ---//
 
-	if( defenseCombatLevel > 0 ) 		// && ownNation->pref_spy >= 50 && m.random(3)==0 )		// 1/3 chance of using spies here, otherwise only use spies when we are not strong enough to take over the village by force
+	if( defenseCombatLevel > 0 ) 		// && ownNation->pref_spy >= 50 && misc.random(3)==0 )		// 1/3 chance of using spies here, otherwise only use spies when we are not strong enough to take over the village by force
 	{
 		if( targetTown->nation_recno==0 )		// if the camp is trying to capture an independent town, the leadership and race id. of the overseer matters.
 		{
@@ -1317,7 +1317,7 @@ int FirmCamp::think_attack_invader()
 
 					enemyCombatLevel += (int) unitPtr->hit_points;
 
-					if( enemyXLoc == -1 || m.random(5)==0 )
+					if( enemyXLoc == -1 || misc.random(5)==0 )
 					{
 						enemyXLoc = xLoc;
 						enemyYLoc = yLoc;

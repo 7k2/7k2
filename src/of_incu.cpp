@@ -80,7 +80,7 @@ void FirmIncubator::remove_queue(int unitId)
 		{
 			err_when( build_queue_count > MAX_BUILD_QUEUE );
 
-			m.del_array_rec( build_queue_array, build_queue_count, sizeof(build_queue_array[0]), i+1 );
+			misc.del_array_rec( build_queue_array, build_queue_count, sizeof(build_queue_array[0]), i+1 );
 
 			build_queue_count--;
 			return;
@@ -193,7 +193,7 @@ void FirmIncubator::process_queue()
 
 	err_when( build_queue_count > MAX_BUILD_QUEUE );
 
-	m.del_array_rec( build_queue_array, build_queue_count, sizeof(build_queue_array[0]), 1 );
+	misc.del_array_rec( build_queue_array, build_queue_count, sizeof(build_queue_array[0]), 1 );
 
 	build_queue_count--;
 

@@ -68,7 +68,7 @@ void CampaignEastWest::plot_a6_create_game()
 		{
 			townRecnoArray[selectedTownCount] = i;
 		}
-		else if( (r = m.random(selectedTownCount+1)) < maxSelectedTownCount )
+		else if( (r = misc.random(selectedTownCount+1)) < maxSelectedTownCount )
 		{
 			// replace with any 
 			townRecnoArray[r] = i;
@@ -85,7 +85,7 @@ void CampaignEastWest::plot_a6_create_game()
 	{
 		Town *townPtr = town_array[townRecnoArray[i]];
 
-		int newPop = townPtr->population + 20 + m.random(20);
+		int newPop = townPtr->population + 20 + misc.random(20);
 		if( newPop > MAX_TOWN_POPULATION )
 			newPop = MAX_TOWN_POPULATION;
 
@@ -114,9 +114,9 @@ void CampaignEastWest::plot_a6_create_game()
 
 	while( --trial > 0 )
 	{
-		int xLoc = m.random(MAX_WORLD_X_LOC);
-		int yLoc = m.random(MAX_WORLD_Y_LOC);
-		int dist = m.points_distance( xLoc, yLoc, kingX, kingY );
+		int xLoc = misc.random(MAX_WORLD_X_LOC);
+		int yLoc = misc.random(MAX_WORLD_Y_LOC);
+		int dist = misc.points_distance( xLoc, yLoc, kingX, kingY );
 
 		if( dist >= 10 &&	world.can_build_site( xLoc, yLoc, 1, 1, 3) )		// some space there
 		{
@@ -126,7 +126,7 @@ void CampaignEastWest::plot_a6_create_game()
 			int j;
 			for( j = 0; j < itemToCreate; ++j )
 			{
-				int itemDist = m.points_distance( xLoc, yLoc, itemX[j], itemY[j]);
+				int itemDist = misc.points_distance( xLoc, yLoc, itemX[j], itemY[j]);
 				if( itemDist < minItemDist )
 					minItemDist = itemDist;
 			}
@@ -164,7 +164,7 @@ void CampaignEastWest::plot_a6_create_game()
 
 	for( i = 0; i < itemToCreate; ++i )
 	{
-		site_array.add_site( itemX[i], itemY[i], SITE_ITEM, ITEM_TOWN_CHANGE_NATION, item_res.random_para(ITEM_TOWN_CHANGE_NATION, m.rand()) );
+		site_array.add_site( itemX[i], itemY[i], SITE_ITEM, ITEM_TOWN_CHANGE_NATION, item_res.random_para(ITEM_TOWN_CHANGE_NATION, misc.rand()) );
 	}
 }
 

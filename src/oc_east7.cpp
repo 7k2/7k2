@@ -151,7 +151,7 @@ int CampaignEastWest::stage_7_create_nation()
 
 int CampaignEastWest::stage_7_create_lair()
 {
-	int lairAddCount = 5 + m.random(2);		// add 5 to 6 player towns
+	int lairAddCount = 5 + misc.random(2);		// add 5 to 6 player towns
 	int independentTownAddCount = 0;
 	int specialFirmCount = 0;
 
@@ -232,7 +232,7 @@ void CampaignEastWest::stage_7_process_game_result()
 
 		info.game_year = game_year;			// revert info.game_year back to campaign's game year so that the game's time will not advance
 
-		m.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
+		misc.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
 	}
 }
 //---- End of function CampaignEastWest::stage_7_process_game_result -----//

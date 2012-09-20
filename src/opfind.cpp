@@ -417,7 +417,7 @@ bool PathFinder::find_path(int sourceX, int sourceY, int destX, int destY,
 									int destRangeX1, int destRangeY1, int destRangeX2, int destRangeY2, bool raiseIt, bool raiseDest, int maxTries, int stopAtRange)
 {
 #ifdef DEBUG
-	unsigned long pathFinderStartTime = m.get_time();
+	unsigned long pathFinderStartTime = misc.get_time();
 #endif
 
 	int i, j, unitRecno=0;
@@ -519,7 +519,7 @@ bool PathFinder::find_path(int sourceX, int sourceY, int destX, int destY,
 
 #ifdef DEBUG
 	// ######## begin Gilbert 27/4 #######//
-	pathFinderStartTime = m.get_time() - pathFinderStartTime;
+	pathFinderStartTime = misc.get_time() - pathFinderStartTime;
 	pathfind_profile_time += pathFinderStartTime;
 	pathfind_count++;
 	if( pathFinderStartTime > longest_pathfind_profile_time )
@@ -606,7 +606,7 @@ bool PathFinder::find_path2(int sourceX, int sourceY, int destX, int destY, int 
 	open = node;
 #endif
 
-	if ( m.points_distance(sourceX, sourceY, destX, destY) <= stopAtRange )
+	if ( misc.points_distance(sourceX, sourceY, destX, destY) <= stopAtRange )
 	{
 		// if src = dest, just returns the src/dest node
 		cur_path = node;
@@ -637,7 +637,7 @@ bool PathFinder::find_path2(int sourceX, int sourceY, int destX, int destY, int 
 
 		// if we've found the destination, return successfully
 		// if (bestPathNode->x == destX && bestPathNode->y == destY) //destination found
-		if ( m.points_distance(bestPathNode->x, bestPathNode->y, destX, destY) <= stopAtRange )
+		if ( misc.points_distance(bestPathNode->x, bestPathNode->y, destX, destY) <= stopAtRange )
 		{
 			cur_path = bestPathNode;
 			return true;
@@ -1244,7 +1244,7 @@ void PathFinder::gen_child(PathNode* n, int x, int y)
 			else if (g == old->g)
 			{
 				//---- improvement so that it might take a path with the same cost as the one being calculated, even though it might not improve (nor worsen) the cost
-//				if (m.rand()%2)
+//				if (misc.rand()%2)
 //				{
 //					old->parent = n;
 //
@@ -1272,7 +1272,7 @@ void PathFinder::gen_child(PathNode* n, int x, int y)
 			else if (g == old->g)
 			{
 				//--- impprovement so that the pathfinder might consider equally good paths of the same cost
-//				if (m.rand()%2)
+//				if (misc.rand()%2)
 //				{
 //					old->parent = n;
 //					propagate_down(old);

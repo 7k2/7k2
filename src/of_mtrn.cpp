@@ -110,7 +110,7 @@ void FirmMonsterTrain::recruit_trainee(int trainUnitId, char remoteAction)
 	trainee_count++;
 
 	monsterTrainee->unit_id = trainUnitId;
-	monsterTrainee->loyalty = 70 + m.random(20);
+	monsterTrainee->loyalty = 70 + misc.random(20);
 	monsterTrainee->skill.init(trainUnitId);
 
 	//------- add expense ----------//
@@ -136,7 +136,7 @@ int FirmMonsterTrain::can_recruit(int trainUnitId)
 
 	// ------- check trainUnitId in train_unit_id -------//
 
-	err_when( !m.str_chr( train_unit_id, trainUnitId, 1, train_type_count) );
+	err_when( !misc.str_chr( train_unit_id, trainUnitId, 1, train_type_count) );
 
 	// ------ check nation tech level --------//
 
@@ -276,7 +276,7 @@ int FirmMonsterTrain::mobilize_trainee(int traineeId, char remoteAction )
 	err_when( trainee_count > MAX_MONSTER_TRAINEE );
 	err_when( selected_trainee_id > trainee_count );
 
-	m.del_array_rec(trainee_array, trainee_count, sizeof(MonsterTrainee), traineeId);
+	misc.del_array_rec(trainee_array, trainee_count, sizeof(MonsterTrainee), traineeId);
 
 	if( selected_trainee_id > traineeId || selected_trainee_id == trainee_count )
 		selected_trainee_id--;
@@ -316,7 +316,7 @@ void FirmMonsterTrain::kill_trainee(int traineeId )
 	err_when( trainee_count > MAX_MONSTER_TRAINEE );
 	err_when( selected_trainee_id > trainee_count );
 
-	m.del_array_rec(trainee_array, trainee_count, sizeof(MonsterTrainee), traineeId);
+	misc.del_array_rec(trainee_array, trainee_count, sizeof(MonsterTrainee), traineeId);
 
 	if( selected_trainee_id > traineeId || selected_trainee_id == trainee_count )
 		selected_trainee_id--;

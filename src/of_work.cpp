@@ -171,7 +171,7 @@ void FirmWork::recruit_worker()
 		if( townPtr->jobless_population==0 )
 			continue;
 
-		int townDistance = m.points_distance(townPtr->center_x, townPtr->center_y, center_x, center_y);
+		int townDistance = misc.points_distance(townPtr->center_x, townPtr->center_y, center_x, center_y);
 
 		//-------- calculate the recruit rating --------//
 
@@ -282,7 +282,7 @@ void FirmWork::resign_worker(int workerId)
 	err_when( worker_count > MAX_WORKER );
 	err_when( selected_worker_id > worker_count );
 
-	m.del_array_rec(worker_array, worker_count, sizeof(Worker), workerId);
+	misc.del_array_rec(worker_array, worker_count, sizeof(Worker), workerId);
 
 	if( selected_worker_id > workerId || selected_worker_id == worker_count )
 		selected_worker_id--;
@@ -312,7 +312,7 @@ void FirmWork::kill_all_worker()
 			// ###### begin Gilbert 18/1 #######//
 			// ----- kill town spy -------//
 			int spySeq;
-			if( townPtr->spy_count > 0 && (spySeq = m.random(townPtr->population)) < townPtr->spy_count )
+			if( townPtr->spy_count > 0 && (spySeq = misc.random(townPtr->population)) < townPtr->spy_count )
 			{
 				int spyRecno = spy_array.find_town_spy(townPtr->town_recno, spySeq+1 );
 				spy_array.del_spy(spyRecno);

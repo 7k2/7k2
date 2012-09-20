@@ -156,7 +156,7 @@ void Campaign::init(int campaignId)
 
 	//------ set campaign auto test flag --------//
 
-	auto_test_flag = m.is_file_exist("CTEST.SYS" );
+	auto_test_flag = misc.is_file_exist("CTEST.SYS" );
 }
 //-------- End of function Campaign::init ------//
 
@@ -296,17 +296,17 @@ void Campaign::set_cur_situation(int situationId)
 
 	//------- randomize cur situation vars ------//
 
-	cur_situation.cash_level 	    += m.random(11) - 5;
-	cur_situation.food_level       += m.random(11) - 5;
-	cur_situation.mine_raw_level   += m.random(11) - 5;
-	cur_situation.site_raw_level   += m.random(11) - 5;
-	cur_situation.population_level += m.random(11) - 5;
-	cur_situation.reputation_level += m.random(11) - 5;
-	cur_situation.tech_level       += m.random(11) - 5;
-	cur_situation.economy_level    += m.random(11) - 5;
-	cur_situation.military_level   += m.random(11) - 5;
-	cur_situation.town_loyalty_level += m.random(11) - 5;
-	cur_situation.unit_loyalty_level += m.random(11) - 5;
+	cur_situation.cash_level 	    += misc.random(11) - 5;
+	cur_situation.food_level       += misc.random(11) - 5;
+	cur_situation.mine_raw_level   += misc.random(11) - 5;
+	cur_situation.site_raw_level   += misc.random(11) - 5;
+	cur_situation.population_level += misc.random(11) - 5;
+	cur_situation.reputation_level += misc.random(11) - 5;
+	cur_situation.tech_level       += misc.random(11) - 5;
+	cur_situation.economy_level    += misc.random(11) - 5;
+	cur_situation.military_level   += misc.random(11) - 5;
+	cur_situation.town_loyalty_level += misc.random(11) - 5;
+	cur_situation.unit_loyalty_level += misc.random(11) - 5;
 }
 //--------- End of function Campaign::set_cur_situation ------//
 
@@ -380,7 +380,7 @@ void Campaign::init_new_campaign()
 	// size of this terrain 512 x 512, because the render_terrain() 
 	// program only support this size //
 	random_terrain_map.init(MAIN_TERRAIN_WIDTH, MAIN_TERRAIN_HEIGHT);
-	random_terrain_map.generate( m.random(2), 5, m.rand() );
+	random_terrain_map.generate( misc.random(2), 5, misc.rand() );
 	int prevHeight = random_terrain_map.get_pix(0, 0);
 	
 	for(i = 0; i <MAIN_TERRAIN_WIDTH; i++)
@@ -908,7 +908,7 @@ int Campaign::random_pick_monster_campaign_nation(int excludedStateRecno, int ne
 		return 0;
 	}
 
-	return monsterNationArray[ m.random(monsterNationCount) ];
+	return monsterNationArray[ misc.random(monsterNationCount) ];
 }
 //---- End of function Campaign::random_pick_monster_campaign_nation -----//
 
@@ -968,13 +968,13 @@ int Campaign::random_pick_attack_state(int attackNationRecno, int targetNationRe
 
 	//------ randomly pick an attacker state -----//
 
-	attacker_state_recno = attackerStateArray[ m.random(attackerStateCount) ];
+	attacker_state_recno = attackerStateArray[ misc.random(attackerStateCount) ];
 
 	//------- randomly pick a target state -------//
 
 	StateInfo* attackerState = state_array[attacker_state_recno];
 
-	target_state_recno = m.random(state_array.size())+1;
+	target_state_recno = misc.random(state_array.size())+1;
 
 	for( i=1 ; i<=state_array.size() ; i++ )
 	{
@@ -1026,7 +1026,7 @@ int Campaign::random_pick_state(int nationRecno, int neighborStateRecno)
 	if( stateCount==0 )
 		return 0;
 
-	return stateArray[m.random(stateCount)];
+	return stateArray[misc.random(stateCount)];
 }
 //---- End of function Campaign::random_pick_state -----//
 
@@ -1037,7 +1037,7 @@ int Campaign::random_pick_state(int nationRecno, int neighborStateRecno)
 //
 int Campaign::random_pick_town_with_camp(int nationRecno, int maxLink)
 {
-	int 	townRecno = m.random(town_array.size()) + 1;
+	int 	townRecno = misc.random(town_array.size()) + 1;
 	Town* townPtr = NULL;
 
 	for( int i=town_array.size() ; i>0 ; i-- )		// locate a town closest to the mine

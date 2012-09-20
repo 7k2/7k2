@@ -82,7 +82,7 @@ void Plasma::init(short x, short y, short initValue)
 	max_y = y;
 	matrix = (short *) mem_add( (x+1)*(y+1)*sizeof(short) );
 	// memset( matrix, 0, (x+1)*(y+1)*sizeof(short) );
-	m.memsetw( matrix, initValue, (x+1)*(y+1) );
+	misc.memsetw( matrix, initValue, (x+1)*(y+1) );
 }
 // --------- End of function Plasma::init -----------//
 
@@ -125,7 +125,7 @@ void Plasma::generate(int genMethod, int grainFactor, int randomSeed)
    srand(randomSeed);
 
    for(n = 0; n < 4; n++)
-      rnd[n] = 1+(((m.rand()/MAX_COLOR)*(MAX_COLOR-1))>>(SHIFT_VALUE-11));
+      rnd[n] = 1+(((misc.rand()/MAX_COLOR)*(MAX_COLOR-1))>>(SHIFT_VALUE-11));
 
    plot(    0,     0, rnd[0]);
    plot(max_x,     0, rnd[1]);
@@ -306,7 +306,7 @@ U16 Plasma::adjust(int xa,int ya,int x,int y,int xb,int yb)
 {
    S32 pseudoRandom;
 
-   pseudoRandom = ((S32)iparmx)*((m.rand()-16383));
+   pseudoRandom = ((S32)iparmx)*((misc.rand()-16383));
 //   pseudoRandom = pseudoRandom*(abs(xa-xb)+abs(ya-yb));
 
    pseudoRandom = pseudoRandom * recur1;
@@ -542,7 +542,7 @@ void Plasma::shuffle_level(short minHeight, short maxHeight, short amplitude)
 				h = get_pix(x,y);
 
 				// method 1 - random amplitude
-				//h += m.random(amplitude*2+1) - amplitude;
+				//h += misc.random(amplitude*2+1) - amplitude;
 				//if( h > maxHeight )
 				//	h = maxHeight;
 				//if( h < minHeight )

@@ -506,7 +506,7 @@ static void put_unit_rec(int recNo, int x, int y, int refreshFlag)
 	y+=2;
 
 	font_bld.put( x   , y, str );
-	font_bld.put( x+320, y, m.format(unitCount,1) );
+	font_bld.put( x+320, y, misc.format(unitCount,1) );
 }
 //----------- End of static function put_unit_rec -----------//
 

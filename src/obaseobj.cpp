@@ -233,7 +233,7 @@ void BaseObj::being_attack_hit2(BaseObj* attackerObj)
 
 //--------- Begin of function BaseObj::area_distance --------//
 //
-// distance between object, see m.area_distance
+// distance between object, see misc.area_distance
 //
 int BaseObj::area_distance( BaseObj *objPtr)
 {
@@ -242,7 +242,7 @@ int BaseObj::area_distance( BaseObj *objPtr)
 
 	register BaseObj *targetPtr = objPtr;
 
-	return m.area_distance( obj_loc_x1(), obj_loc_y1(), obj_loc_x2(), obj_loc_y2(),
+	return misc.area_distance( obj_loc_x1(), obj_loc_y1(), obj_loc_x2(), obj_loc_y2(),
 		targetPtr->obj_loc_x1(), targetPtr->obj_loc_y1(),
 		targetPtr->obj_loc_x2(), targetPtr->obj_loc_y2() );
 }

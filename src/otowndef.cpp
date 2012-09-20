@@ -123,7 +123,7 @@ int Town::mobilize_defender(int attackerNationRecno)
 
 	unitPtr->skill.set_skill_level( (int) loyaltyDec );	// if the unit is a town defender, this var is temporary used for storing the loyalty that will be added back to the town if the defender returns to the town
 
-	int combatLevel = town_combat_level + m.random(20) - 10;		// -10 to +10 random difference
+	int combatLevel = town_combat_level + misc.random(20) - 10;		// -10 to +10 random difference
 
 	combatLevel = MIN(combatLevel, 100);
 	combatLevel = MAX(combatLevel, 10);

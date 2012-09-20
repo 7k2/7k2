@@ -136,7 +136,7 @@ const int GAME_VERSION = 120;	// Version 1.00, don't change major version unless
 #endif
 
 Error             err;              // constructor only call set_new_handler()d
-Misc              m, m2;
+Misc              misc, misc2;
 DateInfo          date;
 Config            config;
 SerialRepository  serial_repository( 1000, "GAMESERL.DAT" );

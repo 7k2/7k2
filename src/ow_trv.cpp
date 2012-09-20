@@ -233,7 +233,7 @@ void WorldScanTraverser::remove()
 // remove is not prefered as it take time to memmove
 //	if( scan_count > 0 )
 //	{
-//		m.del_array_rec( unit_recno_array, scan_count, sizeof(*unit_recno_array), traverse_count+1 );
+//		misc.del_array_rec( unit_recno_array, scan_count, sizeof(*unit_recno_array), traverse_count+1 );
 //		--scan_count;
 //		--traverse_count;		// move backward so next() will advance traverse_count
 //	}
@@ -330,9 +330,9 @@ static int sort_unit_by_dist1( const void *shortPtr1, const void *shortPtr2 )
 	Unit *unitA = unit_array[ ((ScannedObj *)shortPtr1)->unit_recno ];
 	Unit *unitB = unit_array[ ((ScannedObj *)shortPtr2)->unit_recno ];
 
-	return m.area_distance( sort_center_x1, sort_center_y1, sort_center_x2, sort_center_y2,
+	return misc.area_distance( sort_center_x1, sort_center_y1, sort_center_x2, sort_center_y2,
 		unitA->obj_loc_x1(), unitA->obj_loc_y1(), unitA->obj_loc_x2(), unitA->obj_loc_y2() )
-		- m.area_distance( sort_center_x1, sort_center_y1, sort_center_x2, sort_center_y2,
+		- misc.area_distance( sort_center_x1, sort_center_y1, sort_center_x2, sort_center_y2,
 		unitB->obj_loc_x1(), unitB->obj_loc_y1(), unitB->obj_loc_x2(), unitB->obj_loc_y2() );
 }
 // ------ begin of static function sort_unit_by_dist1 -------//

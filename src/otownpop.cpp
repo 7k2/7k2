@@ -825,7 +825,7 @@ void Town::move_pop(Town* destTown)
 
 	if(  spy_count > 0 && spy_count == population )
 	{
-		int spySeqId = m.random( spy_count ) + 1;		// randomly pick one of the spies
+		int spySeqId = misc.random( spy_count ) + 1;		// randomly pick one of the spies
 
 		int spyRecno = spy_array.find_town_spy(town_recno, spySeqId);
 
@@ -852,7 +852,7 @@ void Town::move_pop(Town* destTown)
 
 			//-- get the distance between the firm and the target town ---//
 
-			int newDistance = m.points_distance( firmWork->center_x, firmWork->center_y,
+			int newDistance = misc.points_distance( firmWork->center_x, firmWork->center_y,
 									destTown->center_x, destTown->center_y  );
 
 			//--- the firm must be within effective distance of the target town ---//
@@ -1158,9 +1158,9 @@ void Town::kill_town_people(int attackerNationRecno)
 
 	// ###### begin Gilbert 18/6 ########//
 	//------ the killed unit can be a spy -----//
-//	if( m.random(population) < spy_count )
+//	if( misc.random(population) < spy_count )
 //	{
-//		int spyRecno = spy_array.find_town_spy(town_recno, m.random(spy_count)+1 );
+//		int spyRecno = spy_array.find_town_spy(town_recno, misc.random(spy_count)+1 );
 //		spy_array.del_spy(spyRecno);
 //	}
 	// ###### end Gilbert 18/6 ########//
@@ -1181,9 +1181,9 @@ void Town::kill_town_people(int attackerNationRecno)
 
 	// ###### begin Gilbert 18/6 ########//
 	//------ the killed unit can be a spy -----//
-	if( m.random(population) < spy_count )
+	if( misc.random(population) < spy_count )
 	{
-		int spyRecno = spy_array.find_town_spy(town_recno, m.random(spy_count)+1 );
+		int spyRecno = spy_array.find_town_spy(town_recno, misc.random(spy_count)+1 );
 		// spy_array.del_spy(spyRecno);
 
 		Spy *spyPtr = spy_array[spyRecno];
@@ -1330,7 +1330,7 @@ int Town::recruit(bool recruitWagon, char remoteAction)
 		int enemySpyCount = 0;
 		short enemySpyArray[MAX_WAGON_POPULATION];
 
-		int spyRecno = m.random(spy_array.size());
+		int spyRecno = misc.random(spy_array.size());
 
 		for( int spyCount = spy_array.size(); spyCount > 0 ; --spyCount )
 		{
@@ -1375,7 +1375,7 @@ int Town::recruit(bool recruitWagon, char remoteAction)
 			{
 				// -------- put enemy spy -------//
 
-				if( m.random(population-i-counterSpyCount) < enemySpyCount )
+				if( misc.random(population-i-counterSpyCount) < enemySpyCount )
 				{
 					spyArray[spyArrayCount++] = *enemySpyRecnoPtr;
 					// don't take last enemySpyArray because enemySpyCount may be

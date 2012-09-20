@@ -702,19 +702,19 @@ void Campaign::select_royal_menu(CampaignMember *king, CampaignMember *royalList
 							}
 
 							// display combat level
-							font_whbl.right_put( x1+26, y1+2, m.format(unit->combat_level()) );
+							font_whbl.right_put( x1+26, y1+2, misc.format(unit->combat_level()) );
 
 							// display leadership
 							if( unit->skill_level() > 0 )
 							{
-								font_whbl.right_put( x1+26, y1+16, m.format(unit->skill_level()) );
+								font_whbl.right_put( x1+26, y1+16, misc.format(unit->skill_level()) );
 							}
 
 							// display spy skill
 
 							if( unit->is_spy )
 							{
-								font_whbl.right_put( x1+26, y1+30, m.format(unit->spy_skill) );
+								font_whbl.right_put( x1+26, y1+30, misc.format(unit->spy_skill) );
 							}
 
 							// frame if selected
@@ -934,7 +934,7 @@ void Campaign::select_royal_menu(CampaignMember *king, CampaignMember *royalList
 				int s = CURRENT_MAX_ROYAL_UNIT;
 				for( int i = royalCount; i > 0; --i )
 				{
-					if( mTemp.random(i) < s )		// similar to m.random(i) < s
+					if( mTemp.random(i) < s )		// similar to misc.random(i) < s
 					{
 						selectedFlagArray[i-1] = 1;
 						s--;
@@ -964,8 +964,8 @@ void Campaign::select_royal_menu(CampaignMember *king, CampaignMember *royalList
 				&& (mouse.any_click( BUTTON9_X1, BUTTON9_Y1, BUTTON9_X2, BUTTON9_Y2) 
 				|| mouse.key_code == KEY_DEL) )
 			{
-				m.del_array_rec( royalList, royalCount, sizeof(royalList[0]), selectedRecno );
-				m.del_array_rec( selectedFlagArray, royalCount, sizeof(selectedFlagArray[0]), selectedRecno );
+				misc.del_array_rec( royalList, royalCount, sizeof(royalList[0]), selectedRecno );
+				misc.del_array_rec( selectedFlagArray, royalCount, sizeof(selectedFlagArray[0]), selectedRecno );
 				--royalCount;
 				if( selectedRecno > royalCount )
 					selectedRecno = royalCount;

@@ -145,7 +145,7 @@ int FirmCamp::spy_bribe(int bribeAmount, short briberSpyRecno, short soldierId)
 
 	//------ if the bribe succeeds ------//
 
-	if( succeedChance > 0 && m.random(100) < succeedChance )
+	if( succeedChance > 0 && misc.random(100) < succeedChance )
 	{
 		int spyRecno = spy_array.add_spy();		// add a new Spy record
 
@@ -401,7 +401,7 @@ void FirmCamp::disp_bribe_menu(int refreshFlag)
 		{
 //			String str;
 //			str = "(";
-//			str += m.format( spy_action_chance, 3 );
+//			str += misc.format( spy_action_chance, 3 );
 //			str += " chance)";
 //			font_snds.put( INFO_X1+18, y+5, str );
 			font_snds.put( INFO_X1+18, y+5, text_firm.str_bribe_chance(spy_action_chance) );
@@ -695,7 +695,7 @@ void FirmCamp::disp_assassinate_confirm(int refreshFlag)
 	}
 
 //	str = "You have a ";
-//	str += m.format( spy_action_chance, 3 );
+//	str += misc.format( spy_action_chance, 3 );
 //	str += " chance of success!";
 	str = text_firm.str_assassin_chance( spy_action_chance );
 
@@ -844,7 +844,7 @@ void FirmCamp::disp_steal_tech_confirm(int refreshFlag)
 	font_whbl.center_put_paragraph( INFO_X1 +40 , INFO_Y1, INFO_X2 -30, INFO_Y1 +100, str, 2, 0, 0);
 
 //	str = "You have a ";
-//	str += m.format( spy_action_chance, 3 );
+//	str += misc.format( spy_action_chance, 3 );
 //	str += " chance of success!";
 	str = text_firm.str_steal_tech_chance( spy_action_chance );
 
@@ -921,7 +921,7 @@ void FirmCamp::disp_steal_tech_result(int refreshFlag)
 //		if( techLevel > 1 )
 //		{
 //			str += " ";
-//			str += m.roman_number(techLevel);
+//			str += misc.roman_number(techLevel);
 //		}
 
 		int techLevel = tech_res[steal_tech_result]->get_nation_tech_level(nation_array.player_recno);
@@ -1130,7 +1130,7 @@ void FirmCamp::disp_incident_confirm(int refreshFlag)
 		text_firm.str_ask_incident() );	// "Do you really want to create an incident?" );
 
 //	str = "(";
-//	str += m.format( spy_action_chance, 3 );
+//	str += misc.format( spy_action_chance, 3 );
 //	str += " chance)";
 //	font_whbl.put( INFO_X1+18, INFO_Y1+73, str );
 	font_whbl.put( INFO_X1+18, INFO_Y1+73, text_firm.str_incident_chance(spy_action_chance) );

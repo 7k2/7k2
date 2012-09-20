@@ -145,13 +145,13 @@ void MouseCursor::load_cursor_info()
 
 		memcpy( &bitmapOffset, cursorRec->human_bitmap_ptr, sizeof(uint32_t) );
 		cursorInfo->human_bitmap_ptr = human_res_bitmap.read_imported(bitmapOffset);
-		cursorInfo->human_hot_spot_x = m.atoi( cursorRec->human_hot_spot_x, cursorRec->HOT_SPOT_LEN );
-		cursorInfo->human_hot_spot_y = m.atoi( cursorRec->human_hot_spot_y, cursorRec->HOT_SPOT_LEN );
+		cursorInfo->human_hot_spot_x = misc.atoi( cursorRec->human_hot_spot_x, cursorRec->HOT_SPOT_LEN );
+		cursorInfo->human_hot_spot_y = misc.atoi( cursorRec->human_hot_spot_y, cursorRec->HOT_SPOT_LEN );
 
 		memcpy( &bitmapOffset, cursorRec->monster_bitmap_ptr, sizeof(uint32_t) );
 		cursorInfo->monster_bitmap_ptr = monster_res_bitmap.read_imported(bitmapOffset);
-		cursorInfo->monster_hot_spot_x = m.atoi( cursorRec->monster_hot_spot_x, cursorRec->HOT_SPOT_LEN );
-		cursorInfo->monster_hot_spot_y = m.atoi( cursorRec->monster_hot_spot_y, cursorRec->HOT_SPOT_LEN );
+		cursorInfo->monster_hot_spot_x = misc.atoi( cursorRec->monster_hot_spot_x, cursorRec->HOT_SPOT_LEN );
+		cursorInfo->monster_hot_spot_y = misc.atoi( cursorRec->monster_hot_spot_y, cursorRec->HOT_SPOT_LEN );
 	}
 }
 //--------- End of function MouseCursor::load_cursor_info ---------//

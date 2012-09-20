@@ -510,7 +510,7 @@ void Unit::king_die()
 {
 	//----- drop power of scroll when the king dies -----//
 
-	int raceId = m.random(MAX_RACE)+1;
+	int raceId = misc.random(MAX_RACE)+1;
 
 	int i;
 	for( i=1 ; i<MAX_RACE ; i++ )
@@ -537,7 +537,7 @@ void Unit::king_die()
 	TechClass *techClass = tech_res.tech_class(TECH_CLASS_MEGA_WEAPON);
 	if( techClass->tech_count > 0 )
 	{
-		int techId = techClass->first_tech_id + m.random(techClass->tech_count);
+		int techId = techClass->first_tech_id + misc.random(techClass->tech_count);
 
 		for( i=1 ; i<=techClass->tech_count; i++ )
 		{
@@ -772,7 +772,7 @@ int Unit::betray(int newNationRecno)
 	{
 		Nation* nationPtr = nation_array[nation_recno];
 
-		loyalty = UNIT_BETRAY_LOYALTY + 10 + m.random(20);
+		loyalty = UNIT_BETRAY_LOYALTY + 10 + misc.random(20);
 
 		if( nationPtr->reputation > 0 )
 			change_loyalty( (int) nationPtr->reputation );

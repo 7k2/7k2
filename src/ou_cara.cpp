@@ -316,7 +316,7 @@ void UnitCaravan::update_stop_list()
 
 	//------------- used to debug for multiplayer game ------------------//
 	#ifdef DEBUG
-		m.random(100);
+		misc.random(100);
 	#endif
 
 	//-------------------------------------------------------//
@@ -493,7 +493,7 @@ void UnitCaravan::update_stop_list()
 		else
 		{
 			firmPtr = firm_array[nodePtr->firm_recno];
-			dist = m.points_distance(xLoc, yLoc, firmPtr->center_x, firmPtr->center_y);
+			dist = misc.points_distance(xLoc, yLoc, firmPtr->center_x, firmPtr->center_y);
 
 			if(dist<minDist)
 			{

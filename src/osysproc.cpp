@@ -168,7 +168,7 @@ void Sys::run(int isLoadedGame)
 
 	//-----------------------------------------//
 
-	m.unlock_seed();
+	misc.unlock_seed();
 }
 //--------- End of function Sys::run --------//
 
@@ -196,7 +196,7 @@ void Sys::main_loop(int isLoadedGame)
 	remote.packet_send_count    = 0;
 	remote.packet_receive_count = 0;
 
-	last_frame_time = m.get_time()+60000;     // plus 60 seconds buffer for game loading/starting time
+	last_frame_time = misc.get_time()+60000;     // plus 60 seconds buffer for game loading/starting time
 	is_sync_frame   = 0;
 
 	//----------------------------------------------//
@@ -257,7 +257,7 @@ void Sys::main_loop(int isLoadedGame)
 	in_game_menu.clear_active();
 	// ##### end Gilbert 18/1 #######//
 
-	DWORD lastDispFrameTime = m.get_time();
+	DWORD lastDispFrameTime = misc.get_time();
 	// skipFrameMax : 0 for disable skip frame, // at most skip 1 frame
 	int	skipFrameMax = remote.is_enable() ? 1 : 0;	
 	int	skipFrameCount = skipFrameMax;	// so disp frame for the first frame
@@ -290,7 +290,7 @@ void Sys::main_loop(int isLoadedGame)
 			static unsigned long lastStartTime, lastEndTime, startTime;
 			unsigned long processTime = 0;
 			lastStartTime = startTime;
-			startTime = m.get_time();
+			startTime = misc.get_time();
 #endif
 			int rc = 0;
 
@@ -313,7 +313,7 @@ void Sys::main_loop(int isLoadedGame)
 
 			//--------------------------------//
 
-			DWORD markTime = m.get_time();      // a time taken earlier than should_next_frame takes
+			DWORD markTime = misc.get_time();      // a time taken earlier than should_next_frame takes
 
 			// ###### begin Gilbert 12/2 ######//
 			if( remote.is_enable() && (testing_session || debug_session) )
@@ -344,9 +344,9 @@ void Sys::main_loop(int isLoadedGame)
 				if( remote.is_enable() )      // && is_sync_frame )
 				{
 					remote.poll_msg();
-					m.unlock_seed();
+					misc.unlock_seed();
 					rc = is_mp_sync(&unreadyPlayerFlag);         // if all players are synchronized
-					m.lock_seed();
+					misc.lock_seed();
 				}
 				else
 					rc = should_next_frame();
@@ -354,7 +354,7 @@ void Sys::main_loop(int isLoadedGame)
 				if( rc )
 				{
 					LOG_BEGIN;
-					m.unlock_seed();
+					misc.unlock_seed();
 
 #ifdef DEBUG
 					if( remote.is_enable() )
@@ -364,15 +364,15 @@ void Sys::main_loop(int isLoadedGame)
 #endif
 
 #ifdef DEBUG
-					processTime = m.get_time();
+					processTime = misc.get_time();
 #endif
 					process();
 #ifdef DEBUG
-					processTime = m.get_time() - processTime;
+					processTime = misc.get_time() - processTime;
 #endif
 
                if(remote.is_enable() )
-                  m.lock_seed();    // such that random seed is unchanged outside sys::process()
+                  misc.lock_seed();    // such that random seed is unchanged outside sys::process()
 					LOG_END;
 
                // -------- compare objects' crc --------- //
@@ -402,11 +402,11 @@ void Sys::main_loop(int isLoadedGame)
 					if( skipFrameCount >= skipFrameMax
 						|| exceededDispTime < targetFrameTime )
 					{
-						m.lock_seed();
+						misc.lock_seed();
 						disp_frame();
-						m.unlock_seed();
+						misc.unlock_seed();
 
-						unsigned long dispFrameTime = m.get_time();
+						unsigned long dispFrameTime = misc.get_time();
 						if( dispFrameTime - lastDispFrameTime >= targetFrameTime )
 						{
 							// excess time, accumulate into exceededDispTime
@@ -434,7 +434,7 @@ void Sys::main_loop(int isLoadedGame)
 				{
 					// set firstUnreadyTime, begin of a delay
 					if( !firstUnreadyTime )
-						firstUnreadyTime = m.get_time();
+						firstUnreadyTime = misc.get_time();
 
 					if( config.frame_speed == 0 || markTime-lastDispFrameTime >= DWORD(1000/config.frame_speed) 
 						|| zoom_need_redraw || map_need_redraw
@@ -448,7 +448,7 @@ void Sys::main_loop(int isLoadedGame)
 						lastDispFrameTime = markTime;
 
 						// display player not ready
-						if( firstUnreadyTime && m.get_time() - firstUnreadyTime > 5000 )
+						if( firstUnreadyTime && misc.get_time() - firstUnreadyTime > 5000 )
 						{
 							int y = ZOOM_Y1 + 10;
 							int x = ZOOM_X1 + 10;
@@ -533,7 +533,7 @@ void Sys::main_loop(int isLoadedGame)
 #ifdef DEBUG
 			unsigned long interLoopTime = startTime - lastEndTime;	// we may also interested in this timing
 
-			lastEndTime = m.get_time();
+			lastEndTime = misc.get_time();
 			unsigned long loopTime = lastEndTime - startTime;
 			loopTime = 0;		// set break point here
 #endif
@@ -692,7 +692,7 @@ void Sys::yield()
    if( remote.is_enable() )
    {
 #ifdef DEBUG
-		remoteTime = m.get_time();
+		remoteTime = misc.get_time();
 #endif
 
 		remote.poll_msg();
@@ -731,7 +731,7 @@ void Sys::yield()
 //		}
 
 #ifdef DEBUG
-		remoteTime = m.get_time() - remoteTime;
+		remoteTime = misc.get_time() - remoteTime;
 
 		if( power.enable_flag )
 		{
@@ -824,7 +824,7 @@ int Sys::is_mp_sync( int *unreadyPlayerFlag)
          char *p = (char *)remote.new_send_queue_msg(MSG_TELL_RANDOM_SEED, sizeof(short)+sizeof(long));
          *(short *)p = nation_array.player_recno;
          p += sizeof(short);
-         *(long *)p = m.get_random_seed();
+         *(long *)p = misc.get_random_seed();
       }
       else
       {
@@ -851,7 +851,7 @@ int Sys::is_mp_sync( int *unreadyPlayerFlag)
          char *p = (char *)remote.new_send_queue_msg(MSG_TELL_RANDOM_SEED, sizeof(short)+sizeof(long));
          *(short *)p = nation_array.player_recno;
          p += sizeof(short);
-         *(long *)p = m.get_random_seed();
+         *(long *)p = misc.get_random_seed();
       }
       else
       {
@@ -905,11 +905,11 @@ int Sys::is_mp_sync( int *unreadyPlayerFlag)
       DEBUG_LOG("a nation not ready");
 		DEBUG_LOG(nationRecno);
 
-		if( m.get_time() >= last_frame_time+RESEND_TIME_OUT )
+		if( misc.get_time() >= last_frame_time+RESEND_TIME_OUT )
 		{
 			//---- if it has been time out for too long, carry out connection lost handling ---//
 
-			if( // m.get_time() >= last_frame_time+CONNECTION_LOST_TIME_OUT ||
+			if( // misc.get_time() >= last_frame_time+CONNECTION_LOST_TIME_OUT ||
 				!ec_remote.is_player_valid(nationRecno))
          {
             DEBUG_LOG( "Connection Lost" );
@@ -956,7 +956,7 @@ int Sys::is_mp_sync( int *unreadyPlayerFlag)
 
    //-------- record this frame's time -------//
 
-   last_frame_time  = m.get_time();
+   last_frame_time  = misc.get_time();
    last_resend_time = 0;
 
    return 1;
@@ -980,7 +980,7 @@ int Sys::should_next_frame()
 
    //---- check if it's now the time for processing the next frame ----//
 
-   DWORD curTime = m.get_time();
+   DWORD curTime = misc.get_time();
 
    if( next_frame_time )      // if next_frame_time==0, it's the first frame of the game
    {
@@ -1032,26 +1032,26 @@ void Sys::process()
 
 	way_point_array.process();
 
-	LOG_MSG(m.get_random_seed());
+	LOG_MSG(misc.get_random_seed());
 	LOG_MSG("begin unit_array.process()");
 	unit_array.process();
 	LOG_MSG("end unit_array.process()");
-	LOG_MSG(m.get_random_seed());
+	LOG_MSG(misc.get_random_seed());
 
 	LOG_MSG("begin firm_array.process()");
 	firm_array.process();
 	LOG_MSG("end firm_array.process()");
-	LOG_MSG(m.get_random_seed());
+	LOG_MSG(misc.get_random_seed());
 
 	LOG_MSG("begin town_array.process()");
 	town_array.process();
 	LOG_MSG("end town_array.process()");
-	LOG_MSG(m.get_random_seed());
+	LOG_MSG(misc.get_random_seed());
 
 	LOG_MSG("begin nation_array.process()");
 	nation_array.process();
 	LOG_MSG("end nation_array.process()");
-	LOG_MSG(m.get_random_seed());
+	LOG_MSG(misc.get_random_seed());
 
 	if( sys.quick_exit_flag() )
 		return;
@@ -1059,37 +1059,37 @@ void Sys::process()
 	LOG_MSG("begin bullet_array.process()");
 	bullet_array.process();
 	LOG_MSG("end bullet_array.process()");
-	LOG_MSG(m.get_random_seed());
+	LOG_MSG(misc.get_random_seed());
 
 	LOG_MSG("begin world.process()");
 	world.process();
 	LOG_MSG("end world.process()");
-	LOG_MSG(m.get_random_seed());
+	LOG_MSG(misc.get_random_seed());
 
 	LOG_MSG("begin tornado_array.process()");
 	tornado_array.process();
 	LOG_MSG("begin tornado_array.process()");
-	LOG_MSG(m.get_random_seed());
+	LOG_MSG(misc.get_random_seed());
 
 	LOG_MSG("begin snow_ground_array.process()");
 	snow_ground_array.process();
 	LOG_MSG("end snow_ground_array.process()");
-	LOG_MSG(m.get_random_seed());
+	LOG_MSG(misc.get_random_seed());
 
 	LOG_MSG("begin rock_array.process()");
 	rock_array.process();
 	LOG_MSG("end rock_array.process()");
-	LOG_MSG(m.get_random_seed());
+	LOG_MSG(misc.get_random_seed());
 
 	LOG_MSG("begin dirt_array.process()");
 	dirt_array.process();
 	LOG_MSG("end dirt_array.process()");
-	LOG_MSG(m.get_random_seed());
+	LOG_MSG(misc.get_random_seed());
 
 	LOG_MSG("begin effect_array.process()");
 	effect_array.process();
 	LOG_MSG("end effect_array.process()");
-	LOG_MSG(m.get_random_seed());
+	LOG_MSG(misc.get_random_seed());
 
 	LOG_MSG("begin war_point_array.process()");
 	war_point_array.process();
@@ -1106,81 +1106,81 @@ void Sys::process()
 		LOG_MSG("begin info.next_day()");
 		info.next_day();
 		LOG_MSG("end info.next_day()");
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		LOG_MSG("begin world.next_day()");
 		world.next_day();
 		LOG_MSG("end world.next_day()");
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		LOG_MSG("begin site_array.next_day()");
 		site_array.next_day();
 		LOG_MSG("end site_array.next_day()");
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		LOG_MSG("begin rebel_array.next_day()");
 		rebel_array.next_day();
 		LOG_MSG("end rebel_array.next_day()");
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		LOG_MSG("begin spy_array.next_day()");
 		spy_array.next_day();
 		LOG_MSG("end spy_array.next_day()");
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		LOG_MSG("begin sprite_res.update_speed()");
 		if( config.weather_effect)
 			sprite_res.update_speed();
 		LOG_MSG("end sprite_res.update_speed()");
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		LOG_MSG("begin raw_res.next_day()");
 		raw_res.next_day();
 		LOG_MSG("end raw_res.next_day()");
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		LOG_MSG("begin talk_res.next_day()");
 		talk_res.next_day();
 		LOG_MSG("end talk_res.next_day()");
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		LOG_MSG("begin hero_res.next_day()");
 		hero_res.next_day();
 		LOG_MSG("end hero_res.next_day()");
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		LOG_MSG("begin region_array.next_day()");
 		region_array.next_day();
 		LOG_MSG("end region_array.next_day()");
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		LOG_MSG("begin random_event.next_day()");
 		random_event.next_day();
 		LOG_MSG("end random_event.next_day()");
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		LOG_MSG("begin campaign.next_day()");
 		if( game.is_campaign_mode() )
 			game.campaign()->next_day();
 		LOG_MSG("end campaign.next_day()");
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		day_frame_count = 0;
 	}
 
 	// moved to sys.main_loop
 //#ifdef DEBUG
-//	unsigned long dispFrameTime = m.get_time();
+//	unsigned long dispFrameTime = misc.get_time();
 //#endif
 	//------ display the current frame ------//
 //	LOG_MSG("begin sys.disp_frame");
-//	m.lock_seed();
+//	misc.lock_seed();
 //	disp_frame();
-//	m.unlock_seed();
+//	misc.unlock_seed();
 //	LOG_MSG("end sys.disp_frame");
-//	LOG_MSG(m.get_random_seed() );
+//	LOG_MSG(misc.get_random_seed() );
 //#ifdef DEBUG
-//	dispFrameTime = m.get_time() - dispFrameTime;
+//	dispFrameTime = misc.get_time() - dispFrameTime;
 //#endif
 }
 //--------- End of function Sys::process ---------//
@@ -1204,7 +1204,7 @@ void Sys::set_speed(int frameSpeed, int remoteCall)
    //---------- set the speed now ----------//
 
    if( config.frame_speed==0 )                   // if it's currently frozen, set last_frame_time to avoid incorrect timeout
-      last_frame_time = m.get_time();
+      last_frame_time = misc.get_time();
 
    config.frame_speed = frameSpeed;
 }

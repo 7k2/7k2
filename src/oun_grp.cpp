@@ -1073,7 +1073,7 @@ void UnitGroup::run_action(int destXLoc, int destYLoc, int orderId, int orderPar
 	if(isInFormation)
 	{
 #ifdef DEBUG
-		unsigned long pathReuseStartTime = m.get_time();
+		unsigned long pathReuseStartTime = misc.get_time();
 #endif
 		path_reuse.set_handle_power_nation(0);
 		if(nationRecno)
@@ -1090,7 +1090,7 @@ void UnitGroup::run_action(int destXLoc, int destYLoc, int orderId, int orderPar
 		path_reuse.init(this);
 		path_reuse.find_paths();
 #ifdef DEBUG
-		path_reuse_profile_time += m.get_time()-pathReuseStartTime;
+		path_reuse_profile_time += misc.get_time()-pathReuseStartTime;
 #endif
 	}
 	else
@@ -1735,7 +1735,7 @@ void UnitGroup::cluster_units_for_path_reuse(int destX, int destY, int centerX, 
 			if( checkCount > 0 )
 			{
 #ifdef DEBUG
-				unsigned long pathReuseStartTime = m.get_time();
+				unsigned long pathReuseStartTime = misc.get_time();
 #endif
 				path_reuse.set_handle_power_nation(0);
 				if(nationRecno)
@@ -1767,7 +1767,7 @@ void UnitGroup::cluster_units_for_path_reuse(int destX, int destY, int centerX, 
 				path_reuse.init(units, checkCount );
 				path_reuse.find_paths();
 #ifdef DEBUG
-				path_reuse_profile_time += m.get_time() - pathReuseStartTime;
+				path_reuse_profile_time += misc.get_time() - pathReuseStartTime;
 #endif
 			}
 		}
@@ -1792,15 +1792,15 @@ static void put_profile(int y, const char* dispDes, int dispValue)
 void UnitGroup::draw_profile()
 {
 #ifdef DEBUG
-	static unsigned long lastDrawTime = m.get_time();
+	static unsigned long lastDrawTime = misc.get_time();
 
-	if(m.get_time() >= lastDrawTime + 1000)
+	if(misc.get_time() >= lastDrawTime + 1000)
 	{
 		//----update pathfind profile-----//
 		last_path_reuse_profile_time = path_reuse_profile_time;
 		path_reuse_profile_time = 0L;
 
-		lastDrawTime = m.get_time();
+		lastDrawTime = misc.get_time();
 	}
 
 	//---- draw unit process profile -----//
@@ -1987,7 +1987,7 @@ static void pack_clusters( ClusterInfo *clusterArray, int clusterCount, int cent
 			// find the minimum distance between other areas
 			// it is the area it can move without colliding with other area
 
-			int freeDist = m.area_distance( iminx, iminy, imaxx, imaxy,
+			int freeDist = misc.area_distance( iminx, iminy, imaxx, imaxy,
 				centerX, centerY, centerX, centerY );
 
 			if( freeDist == 0 )		// overlapped don't consider ( if possible, translate together...)
@@ -1999,7 +1999,7 @@ static void pack_clusters( ClusterInfo *clusterArray, int clusterCount, int cent
 					continue;
 
 				// one less to the measure the gap between areas
-				int dist = m.area_distance( iminx, iminy, imaxx, imaxy,
+				int dist = misc.area_distance( iminx, iminy, imaxx, imaxy,
 					clusterArray[j].new_minx, clusterArray[j].new_miny, 
 					clusterArray[j].new_maxx, clusterArray[j].new_maxy ) - 1; 
 

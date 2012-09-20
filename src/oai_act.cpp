@@ -83,7 +83,7 @@ int Nation::process_action(int priorityActionRecno, int processActionMode)
 		if( actionNode->action_mode == ACTION_AI_PROCESS_TALK_MSG &&
 			 processActionMode != ACTION_AI_PROCESS_TALK_MSG )
 		{
-			if( m.random(10) > 0 )		// 1/10 chance of processing the diplomatic messages
+			if( misc.random(10) > 0 )		// 1/10 chance of processing the diplomatic messages
 				continue;
 		}
 
@@ -564,7 +564,7 @@ int Nation::is_build_action_exist(int firmId, int xLoc, int yLoc)
 		if( actionNode->action_mode == ACTION_AI_BUILD_FIRM &&
 			 actionNode->action_para == firmId )
 		{
-			if( m.points_distance( actionNode->action_x_loc, actionNode->action_y_loc,
+			if( misc.points_distance( actionNode->action_x_loc, actionNode->action_y_loc,
 				 xLoc, yLoc) <= effectiveDis )
 			{
 				return 1;

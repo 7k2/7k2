@@ -200,8 +200,8 @@ void Unit::think_independent_hero()
 
 	for( i=100 ; i>0 ; i-- )
 	{
-		xLoc = m.random(MAX_WORLD_X_LOC);
-		yLoc = m.random(MAX_WORLD_Y_LOC);
+		xLoc = misc.random(MAX_WORLD_X_LOC);
+		yLoc = misc.random(MAX_WORLD_Y_LOC);
 
 		Location* locPtr = world.get_loc(xLoc, yLoc);
 

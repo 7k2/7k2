@@ -42,7 +42,7 @@ void CampaignEastWest::plot_a1_create_game()
 {
 	//------- create the rebel nation -------//
 
-	int raceId = m.random(MAX_RACE)+1;
+	int raceId = misc.random(MAX_RACE)+1;
 
 	plot_nation_recno1 = nation_array.new_nation( NATION_HUMAN, NATION_AI, raceId, nation_array.random_unused_color() );
 
@@ -50,7 +50,7 @@ void CampaignEastWest::plot_a1_create_game()
 
 	//---- create towns for the rebel nation ----//
 
-	int townAddCount   = 2 + m.random(2);		// 2 to 3 towns
+	int townAddCount   = 2 + misc.random(2);		// 2 to 3 towns
 	int hasFortPercent = 100;
 
 	create_town( plot_nation_recno1, townAddCount, hasFortPercent );

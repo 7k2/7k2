@@ -71,11 +71,11 @@ int CampaignEastWest::stage_11_create_game()
 
 	//---- create the attacking monster force ----//
 
-	create_troop(STAGE_11_ALLIED_MONSTER_NATION_RECNO, 55-campaign_difficulty*5, 50+m.random(20) );		// 50-70 combat level
+	create_troop(STAGE_11_ALLIED_MONSTER_NATION_RECNO, 55-campaign_difficulty*5, 50+misc.random(20) );		// 50-70 combat level
 
 	//---- create the attacking player force ----//
 
-	create_troop(PLAYER_NATION_RECNO, 55-campaign_difficulty*5, 60+m.random(10) );
+	create_troop(PLAYER_NATION_RECNO, 55-campaign_difficulty*5, 60+misc.random(10) );
 
 	//------ init stage 1 vars -------//
 
@@ -170,8 +170,8 @@ int CampaignEastWest::stage_11_create_nation()
 
 int CampaignEastWest::stage_11_create_lair()
 {
-	int lairAddCount = 8 + m.random(2);						// add 6 to 7 Fryhtan Lairs
-	int specialFirmCount = 5 + m.random(2);
+	int lairAddCount = 8 + misc.random(2);						// add 6 to 7 Fryhtan Lairs
+	int specialFirmCount = 5 + misc.random(2);
 	int independentTownAddCount = 0;
 	int combatLevel = 54 + campaign_difficulty*6;
 
@@ -226,7 +226,7 @@ void CampaignEastWest::stage_11_process_game_result()
 		{
 			if( state_array.nation_state_count(cur_monster_nation_recno) > 1 &&			// if the allied monster only has one state, it will not give land
 				 (~nation_array)->get_relation_status(STAGE_11_ALLIED_MONSTER_NATION_RECNO) == RELATION_ALLIANCE &&
-				 m.random(10) < 7 ) 		// 70% chance that the allied Fryhtan will deliver its promise
+				 misc.random(10) < 7 ) 		// 70% chance that the allied Fryhtan will deliver its promise
 			{
 				//---- the allied Frythan gives a state to the player ----//
 
@@ -265,7 +265,7 @@ void CampaignEastWest::stage_11_process_game_result()
 
 		info.game_year = game_year;			// revert info.game_year back to campaign's game year so that the game's time will not advance
 
-		m.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
+		misc.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
 	}
 }
 //---- End of function CampaignEastWest::stage_11_process_game_result -----//

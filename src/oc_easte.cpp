@@ -134,13 +134,13 @@ int CampaignEastWest::event_random_point_1()
 
 	//------- Fryhtan kingdom break up if it is beaten too much ------//
 
-	if( m.random(2)==0 &&
+	if( misc.random(2)==0 &&
 		 !has_event_run( EVENT_FRYHTAN_BREAK_UP ) &&
 		 state_array.nation_state_count(cur_monster_nation_recno) >= 2 )		// the Fryhtan kingdom should at least have 2 states
 	{
 		if( player_beat_fryhtan_count >= player_beat_fryhtan_max ||
 			 (player_beat_fryhtan_count >= 1 && eastern_nation_recno==0) ||
-			 m.random((player_beat_fryhtan_max-player_beat_fryhtan_count)/2)==0 )
+			 misc.random((player_beat_fryhtan_max-player_beat_fryhtan_count)/2)==0 )
 		{
 			set_event( EVENT_FRYHTAN_BREAK_UP );
 			return 1;
@@ -163,9 +163,9 @@ int CampaignEastWest::event_random_point_1()
 
 	//----------------------------------------//
 
-	m.randomize_chance();
+	misc.randomize_chance();
 
-	if( m.chance(16) || m.random(6)==0 )		// 1/6 chance X 2
+	if( misc.chance(16) || misc.random(6)==0 )		// 1/6 chance X 2
 	{
 		if( state_array.nation_state_count(western_nation_recno) > 1 )
 		{
@@ -176,7 +176,7 @@ int CampaignEastWest::event_random_point_1()
 		return 0;		// also return so that random point 1 will be run again and make the randomization more accurate
 	}
 
-	if( m.chance(16) && state_array.nation_state_count(western_nation_recno) > 1 )		// Fryhtan will demand one state
+	if( misc.chance(16) && state_array.nation_state_count(western_nation_recno) > 1 )		// Fryhtan will demand one state
 	{
 		if( run_event_once(EVENT_FRYHTAN_OFFER_PEACE) )
 			return 1;
@@ -184,11 +184,11 @@ int CampaignEastWest::event_random_point_1()
 		return 0;
 	}
 
-	if( m.chance(16) )
+	if( misc.chance(16) )
 	{
 		//--- the likelihood of running Invasion 2 is low if Defense has been run ---//
 
-		if( !has_stage_run(STAGE_DEFENSE) || m.random(10) )
+		if( !has_stage_run(STAGE_DEFENSE) || misc.random(10) )
 		{
 			//----- get the nation with the least states -----//
 
@@ -206,7 +206,7 @@ int CampaignEastWest::event_random_point_1()
 		return 0;
 	}
 
-	if( m.chance(32) )
+	if( misc.chance(32) )
 	{
 		if( monster_take_over_east_count >= 1 &&
 			 !has_event_run(EVENT_EAST_ASK_FOR_JOINT_ATTACK) )
@@ -233,7 +233,7 @@ int CampaignEastWest::event_random_point_1()
 		}
 	}
 
-	if( m.random( event_run_count_array[EVENT_FRYHTAN_TAKEOVER-1] )==0 &&
+	if( misc.random( event_run_count_array[EVENT_FRYHTAN_TAKEOVER-1] )==0 &&
 		 state_array.nation_state_count(western_nation_recno) > 1 )
 	{
 		if( !cur_monster_nation_recno )
@@ -391,9 +391,9 @@ int CampaignEastWest::event_random_point_2()
 {
 	//-- 25% chance of going to Game:Train Leader or Game:Grow Population --//
 
-	if( m.random(4)==0 )
+	if( misc.random(4)==0 )
 	{
-		if( m.random(2)==0 && !has_stage_run(STAGE_TRAIN_LEADERS) )
+		if( misc.random(2)==0 && !has_stage_run(STAGE_TRAIN_LEADERS) )
 		{
 			return_event_id = EVENT_RANDOM_POINT_2;
 
@@ -421,7 +421,7 @@ int CampaignEastWest::event_random_point_2()
 
 	//------- acquire mega weapon --------//
 
-	if( m.random(4)==0 &&
+	if( misc.random(4)==0 &&
 		 random_pick_attack_state(western_nation_recno, cur_monster_nation_recno) &&
 		 !has_stage_run(STAGE_ACQUIRE_MEGA_WEAPON) )
 	{
@@ -447,8 +447,8 @@ int CampaignEastWest::event_random_point_2()
 	{
 		//----- if relationship with Eastern Empire >= Neutral ----//
 
-		if( (get_relation_status(eastern_nation_recno) >= RELATION_NEUTRAL || m.random(2)==0) &&
-					m.random( event_run_count(EVENT_EASTERN_EMPIRE_OFFER_HELP)+2 )==0 )		// start with moderate probability and decrease as it has been run more times
+		if( (get_relation_status(eastern_nation_recno) >= RELATION_NEUTRAL || misc.random(2)==0) &&
+					misc.random( event_run_count(EVENT_EASTERN_EMPIRE_OFFER_HELP)+2 )==0 )		// start with moderate probability and decrease as it has been run more times
 		{
 			set_event( EVENT_EASTERN_EMPIRE_OFFER_HELP );
 			return 1;
@@ -461,7 +461,7 @@ int CampaignEastWest::event_random_point_2()
 			 state_array.nation_state_count(western_nation_recno) > 1 &&
 			 !defeated_eastern_empire_invasion &&		// the eastern empire will never attack again if it has been defeated.
 			 !has_stage_run( STAGE_EASTERN_EMPIRE_INVADE_OUR_LAND ) &&
-			 m.random(2)==0 )		// 50% chance
+			 misc.random(2)==0 )		// 50% chance
 		{
 			if( random_pick_attack_state(eastern_nation_recno, western_nation_recno) )
 			{
@@ -484,7 +484,7 @@ int CampaignEastWest::event_random_point_2()
 
 	//------- Fryhtans attack Fryhtans --------//
 
-	if( m.random(2)==0 || has_event_run(EVENT_FRYHTAN_BREAK_UP) )		// if a Fryhtan kingdom has broken up, run the Fryhtan attacks Fryhtan event
+	if( misc.random(2)==0 || has_event_run(EVENT_FRYHTAN_BREAK_UP) )		// if a Fryhtan kingdom has broken up, run the Fryhtan attacks Fryhtan event
 	{
 		//-- try getting 3 states next to each other, only run the event if the function returns successfully --//
 
@@ -514,7 +514,7 @@ int CampaignEastWest::event_random_point_2()
 
 		if( state_array.is_adjacent_to_nation(target_state_recno, eastern_nation_recno) )
 		{
-			if( m.random(2)==0 && !has_event_run(EVENT_ASK_EASTERN_EMPIRE_FOR_HELP) )
+			if( misc.random(2)==0 && !has_event_run(EVENT_ASK_EASTERN_EMPIRE_FOR_HELP) )
 			{
 				set_event( EVENT_ASK_EASTERN_EMPIRE_FOR_HELP );
 				return 1;
@@ -800,7 +800,7 @@ int CampaignEastWest::event_fryhtan_ask_for_joint_attack()
 
 	//-------------------------------------------//
 
-	if( m.random(2)==0 )		// either Fryhtan kingdom A or B will ask for a joint attack
+	if( misc.random(2)==0 )		// either Fryhtan kingdom A or B will ask for a joint attack
 	{
 		attacker_state_recno = monsterStateRecno1;
 		target_state_recno = monsterStateRecno2;
@@ -835,7 +835,7 @@ int CampaignEastWest::event_fryhtan_ask_for_joint_attack()
 	}
 	else if( rc == 2 )	// Refuse
 	{
-		if( m.random(2)==0 )	//--- you get Fryhtan mad and it turns against you ---//
+		if( misc.random(2)==0 )	//--- you get Fryhtan mad and it turns against you ---//
 		{
 			target_state_recno = humanStateRecno;
 
@@ -844,7 +844,7 @@ int CampaignEastWest::event_fryhtan_ask_for_joint_attack()
 		}
 		else //--- the Fryhtan attacks the target alone -----//
 		{
-			if( m.random(2)==0 )		 // the Fryhtan wins
+			if( misc.random(2)==0 )		 // the Fryhtan wins
 			{
 				attack_state(attacker_state_recno, target_state_recno, 1, 1, 3 );
 
@@ -865,7 +865,7 @@ int CampaignEastWest::event_fryhtan_ask_for_joint_attack()
 	}
 	else 				// Demand land
 	{
-		if( m.random(2)==0 )		// 50% chance the Fryhtan agrees
+		if( misc.random(2)==0 )		// 50% chance the Fryhtan agrees
 		{
 			disp_letter( 0, res_event.read("9D1"), monsterNation->race_name(),
 				monsterNation->minister_name(MINISTER_ORDO), monsterNation->king_name() );
@@ -901,7 +901,7 @@ int CampaignEastWest::event_random_point_3()
 	{
 		if( use_fryhtan_count >=1 &&
 			 ( use_fryhtan_count >= use_fryhtan_max ||
-				m.random(use_fryhtan_max-use_fryhtan_count)==0 ) )
+				misc.random(use_fryhtan_max-use_fryhtan_count)==0 ) )
 		{
 			return_event_id = EVENT_RANDOM_POINT_3;
 
@@ -914,7 +914,7 @@ int CampaignEastWest::event_random_point_3()
 
 	if( disband_fryhtan_reply == -1 )
 	{
-		if( use_fryhtan_count - use_fryhtan_max >= m.random(3) &&
+		if( use_fryhtan_count - use_fryhtan_max >= misc.random(3) &&
 			 packed_nation_count() < MAX_NATION )		// we can still add new nations.
 		{
 			set_event( EVENT_FRYHTAN_ARMY_REVOLT );
@@ -924,9 +924,9 @@ int CampaignEastWest::event_random_point_3()
 
 	//-- 25% chance of going to Game:Train Leader or Game:Grow Population --//
 
-	if( m.random(4)==0 )
+	if( misc.random(4)==0 )
 	{
-		if( m.random(2)==0 && !has_stage_run(STAGE_TRAIN_LEADERS) )
+		if( misc.random(2)==0 && !has_stage_run(STAGE_TRAIN_LEADERS) )
 		{
 			return_event_id = EVENT_RANDOM_POINT_2;
 
@@ -963,7 +963,7 @@ int CampaignEastWest::event_random_point_3()
 		{
 			//-- if there are still Fryhtan states left ----//
 
-			if( m.random(2)==0 ) 	// start an interactive game
+			if( misc.random(2)==0 ) 	// start an interactive game
 			{
 				if( player_pick_attack_target(CAMPAIGN_NATION_MONSTER) )
 				{
@@ -1024,7 +1024,7 @@ int CampaignEastWest::event_fryhtan_think_surrender()
 
 	if( !( cur_monster_nation_recno &&					// this function is called after a fryhtan kingdom is deleted, and cur_monster_nation_recno keeps the nation recno of the fryhtan kingdom
 			 fryhtan_surrendered_state_recno==0 && 		// only surrender once
-			 m.random(3)>0 ) )								// 66% chance
+			 misc.random(3)>0 ) )								// 66% chance
 	{
 		set_event( EVENT_RANDOM_POINT_3 );
 		return 1;
@@ -1088,7 +1088,7 @@ int CampaignEastWest::event_ask_eastern_empire_for_help()
 
 	if( detect_letter()==1 )		// want to ask for help
 	{
-		if( m.random(10) < 3 )		// 30% chance the Eastern Empire agrees
+		if( misc.random(10) < 3 )		// 30% chance the Eastern Empire agrees
 		{
 			attacker_state_recno	 = playerStateRecno;
 			attacker2_state_recno = eastStateRecno;
@@ -1210,11 +1210,11 @@ int CampaignEastWest::event_random_point_4()
 
 	//--------- randomize chance ----------//
 
-	m.randomize_chance();
+	misc.randomize_chance();
 
 	//------ the state turns independent ------//
 
-	if( m.chance(35) && eastern_nation_recno &&
+	if( misc.chance(35) && eastern_nation_recno &&
 		 new_kingdom_nation_recno==0 &&
 		 state_array.nation_state_count(eastern_nation_recno) >= 2 )		// the eastern empire must have at least 2 states for this to happen
 	{
@@ -1233,7 +1233,7 @@ int CampaignEastWest::event_random_point_4()
 
 	//------ the state turns towards you ------//
 
-	else if( m.chance(20) && eastern_nation_recno )
+	else if( misc.chance(20) && eastern_nation_recno )
 	{
 		int stateRecno = random_pick_state( eastern_nation_recno );
 
@@ -1280,7 +1280,7 @@ int CampaignEastWest::event_random_point_4()
 	if( !has_stage_run( STAGE_UPRISING ) )
 	{
 		if( (state_array.nation_state_count(western_nation_recno) -
-			 saved_player_state_count >= 2 && m.random(2)==0) || m.random(4)==0 )
+			 saved_player_state_count >= 2 && misc.random(2)==0) || misc.random(4)==0 )
 		{
 			set_stage( STAGE_UPRISING );
 			return 1;
@@ -1309,9 +1309,9 @@ int CampaignEastWest::event_random_point_4()
 
 	//----- if a new kingdom has been formed -----//
 
-	if( new_kingdom_nation_recno && m.random(2)==0 )		// if there is a new kingdom and 50% chance
+	if( new_kingdom_nation_recno && misc.random(2)==0 )		// if there is a new kingdom and 50% chance
 	{
-		if( m.random(2)==0 &&
+		if( misc.random(2)==0 &&
 			 !has_stage_run(STAGE_NEW_KINGDOM_INVASION) &&
 			 random_pick_attack_state(new_kingdom_nation_recno, western_nation_recno) )
 		{
@@ -1324,11 +1324,11 @@ int CampaignEastWest::event_random_point_4()
 		//-- new kingdom attacks eastern empire -----//
 
 		else if( eastern_nation_recno &&
-					( m.random(2)==0 || get_nation(eastern_nation_recno)->get_relation_status(new_kingdom_nation_recno)==RELATION_HOSTILE ) )
+					( misc.random(2)==0 || get_nation(eastern_nation_recno)->get_relation_status(new_kingdom_nation_recno)==RELATION_HOSTILE ) )
 		{
 			if( random_pick_attack_state(new_kingdom_nation_recno, eastern_nation_recno) )
 			{
-				int winFlag = m.random(2);
+				int winFlag = misc.random(2);
 
 				disp_strategic_screen();
 				attack_state( attacker_state_recno, target_state_recno, winFlag, 1, 3 );		// 50% chance win and 50% chance lose
@@ -1435,7 +1435,7 @@ int CampaignEastWest::event_random_point_4()
 //
 int CampaignEastWest::event_ultimate_victory()
 {
-	int curDate = date.julian(game_year, m.random(12)+1, m.random(28)+1);		// randomly set the current date
+	int curDate = date.julian(game_year, misc.random(12)+1, misc.random(28)+1);		// randomly set the current date
 
 	disp_letter( 0, res_event.read("15A"), date.date_str(curDate),
 		minister_name(MINISTER_OF_WAR) );
@@ -1475,7 +1475,7 @@ int CampaignEastWest::event_fryhtan_invade_east()
 
 	int attackResult;
 
-	if( m.random(2)==0 )
+	if( misc.random(2)==0 )
 		attackResult = 1;
 	else
 		attackResult = -1;
@@ -1603,14 +1603,14 @@ int CampaignEastWest::event_fryhtan_break_up()
 		return 0;
 	}
 
-	if( m.random(2)==0 )		// 50% swap the two states
+	if( misc.random(2)==0 )		// 50% swap the two states
 	{
 		int t = attackStateRecno;
 		attackStateRecno = stateRecno;
 		stateRecno = t;
 	}
 
-	int 	    attackResult = ( m.random(2)==0 ? 1 : -1 );
+	int 	    attackResult = ( misc.random(2)==0 ? 1 : -1 );
 	CampaignNation* attackerNation = get_nation( state_array[attackStateRecno]->campaign_nation_recno );
 
 	disp_narrative( res_event.read( attackResult==1 ? (char*)"18B" : (char*)"18C" ),
@@ -1661,7 +1661,7 @@ int CampaignEastWest::event_player_take_over_fryhtan()
 
 	//---- 30% chance running Game:Restore Prosperity ----//
 
-	if( m.random(3)==0 )
+	if( misc.random(3)==0 )
 	{
 		return_event_id = EVENT_RANDOM_POINT_3;		// direct Game:Restore Prosperity to go back to EVENT_POINT_3 when it is finished.
 
@@ -1712,7 +1712,7 @@ int CampaignEastWest::event_independent_surrender()
 
 	//--- pick an independent state first -----//
 
-	int stateRecno = m.random(state_array.size())+1;
+	int stateRecno = misc.random(state_array.size())+1;
 
 	int i;
 	for( i=state_array.size() ; i>0 ; i-- )
@@ -1828,7 +1828,7 @@ int CampaignEastWest::event_player_take_over_east()
 
 	//---- 30% chance running Game:Restore Prosperity ----//
 
-	if( m.random(3)==0 && !has_stage_run(STAGE_RESTORE_PROSPERITY) )
+	if( misc.random(3)==0 && !has_stage_run(STAGE_RESTORE_PROSPERITY) )
 	{
 		return_event_id = EVENT_RANDOM_POINT_4;		// direct Game:Restore Prosperity to go back to EVENT_POINT_4 when it is finished.
 

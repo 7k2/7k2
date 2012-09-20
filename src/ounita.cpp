@@ -323,13 +323,13 @@ void UnitArray::process()
 			#endif
 			{
 				#ifdef DEBUG
-				unsigned long profileAiStartTime = m.get_time();
+				unsigned long profileAiStartTime = misc.get_time();
 				#endif
 
 				unitPtr->process_ai();
 
 				#ifdef DEBUG
-				unit_ai_profile_time += m.get_time() - profileAiStartTime;
+				unit_ai_profile_time += misc.get_time() - profileAiStartTime;
 				#endif
 			}
 

@@ -105,13 +105,13 @@ void MonsterRes::load_monster_info()
 
 		monsterInfo->monster_id = i+1;
 
-      m.rtrim_fld( monsterInfo->name, monsterRec->name, monsterRec->NAME_LEN );
+      misc.rtrim_fld( monsterInfo->name, monsterRec->name, monsterRec->NAME_LEN );
 		translate.multi_to_win(monsterInfo->name, monsterInfo->NAME_LEN);
 
-		monsterInfo->unit_id      = m.atoi(monsterRec->unit_id     , monsterRec->UNIT_ID_LEN);
+		monsterInfo->unit_id      = misc.atoi(monsterRec->unit_id     , monsterRec->UNIT_ID_LEN);
 		monsterInfo->level        = monsterRec->level - '0';
 
-		m.rtrim_fld( monsterInfo->firm_build_code, monsterRec->firm_build_code, monsterRec->FIRM_BUILD_CODE_LEN );
+		misc.rtrim_fld( monsterInfo->firm_build_code, monsterRec->firm_build_code, monsterRec->FIRM_BUILD_CODE_LEN );
 
 		strcpy( monsterInfo->adjective, monsterInfo->name );
 
@@ -151,8 +151,8 @@ MonsterInfo* MonsterRes::operator[](int monsterId)
 void MonsterRes::second_init()
 {
 	// ###### begin Gilbert 14/3 ########//
-	long backupSeed = m.get_random_seed();	// backup random seed in order to use a fixed random seed
-	m.set_random_seed(5);
+	long backupSeed = misc.get_random_seed();	// backup random seed in order to use a fixed random seed
+	misc.set_random_seed(5);
 	// ###### end Gilbert 14/3 ########//
 
 	struct MonsterNamePart
@@ -173,8 +173,8 @@ void MonsterRes::second_init()
 	int i;
 	for( i=0 ; i<nameACount ; i++ )
 	{
-		nameRec = (MonsterNameRec*) dbNameA->read( m.random(nameACount)+1 );
-		m.rtrim_fld( nameArrayA[i].name, nameRec->name, nameRec->NAME_LEN );
+		nameRec = (MonsterNameRec*) dbNameA->read( misc.random(nameACount)+1 );
+		misc.rtrim_fld( nameArrayA[i].name, nameRec->name, nameRec->NAME_LEN );
 	}
 
 	//-------- read name part B --------//
@@ -186,8 +186,8 @@ void MonsterRes::second_init()
 
 	for( i=0 ; i<nameBCount ; i++ )
 	{
-		nameRec = (MonsterNameRec*) dbNameB->read( m.random(nameBCount)+1 );
-		m.rtrim_fld( nameArrayB[i].name, nameRec->name, nameRec->NAME_LEN );
+		nameRec = (MonsterNameRec*) dbNameB->read( misc.random(nameBCount)+1 );
+		misc.rtrim_fld( nameArrayB[i].name, nameRec->name, nameRec->NAME_LEN );
 	}
 
 	//-------- read name part C --------//
@@ -199,8 +199,8 @@ void MonsterRes::second_init()
 
 	for( i=0 ; i<nameCCount ; i++ )
 	{
-		nameRec = (MonsterNameRec*) dbnameC->read( m.random(nameCCount)+1 );
-		m.rtrim_fld( nameArrayC[i].name, nameRec->name, nameRec->NAME_LEN );
+		nameRec = (MonsterNameRec*) dbnameC->read( misc.random(nameCCount)+1 );
+		misc.rtrim_fld( nameArrayC[i].name, nameRec->name, nameRec->NAME_LEN );
 	}
 
 	//-------------------------------------------//
@@ -224,7 +224,7 @@ void MonsterRes::second_init()
 
 	for( i=0 ; i<MONSTER_NAME_COUNT ; i++ )
 	{
-		const char* nameFormat = nameFormatArray[ m.random(MONSTER_NAME_COUNT_FORMAT) ];
+		const char* nameFormat = nameFormatArray[ misc.random(MONSTER_NAME_COUNT_FORMAT) ];
 		int   strLen = (int) strlen(nameFormat);
 		const char* namePtr;
 
@@ -234,15 +234,15 @@ void MonsterRes::second_init()
 			switch( nameFormat[j] )
 			{
 				case 'A':
-					namePtr = nameArrayA[m.random(nameACount)].name;
+					namePtr = nameArrayA[misc.random(nameACount)].name;
 					break;
 
 				case 'B':
-					namePtr = nameArrayB[m.random(nameBCount)].name;
+					namePtr = nameArrayB[misc.random(nameBCount)].name;
 					break;
 
 				case 'C':
-					namePtr = nameArrayC[m.random(nameCCount)].name;
+					namePtr = nameArrayC[misc.random(nameCCount)].name;
 					break;
 
 				default:
@@ -259,7 +259,7 @@ void MonsterRes::second_init()
 
 		for( j=1 ; j<strLen ; j++ )
 		{
-			name_array[i].name[j] = m.lower( name_array[i].name[j] );
+			name_array[i].name[j] = misc.lower( name_array[i].name[j] );
 		}
 	}
 
@@ -270,7 +270,7 @@ void MonsterRes::second_init()
 	// ###### begin Gilbert 14/3 ########//
 	// -------- random seed --------//
 
-	m.set_random_seed(backupSeed);
+	misc.set_random_seed(backupSeed);
 	// ###### end Gilbert 14/3 ########//
 }
 //----------- End of function MonsterRes::second_init ---------//
@@ -285,7 +285,7 @@ void MonsterRes::second_init()
 WORD MonsterRes::get_new_name_id()
 {
 	int i;
-	int nameId = m.random(MONSTER_NAME_COUNT)+1;
+	int nameId = misc.random(MONSTER_NAME_COUNT)+1;
 
 	for( i=1 ; i<=MONSTER_NAME_COUNT ; i++ )
 	{

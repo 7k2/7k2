@@ -63,9 +63,9 @@ int Town::return_fire( BaseObj *attackerObj )
 		target_count++;
 		return 1;
 	}
-	else if( m.random(100) < 20 )		// 20% to preempt
+	else if( misc.random(100) < 20 )		// 20% to preempt
 	{
-		target_base_obj_recno[m.random(MAX_TOWN_TARGETS)] = attackerObj->base_obj_recno;
+		target_base_obj_recno[misc.random(MAX_TOWN_TARGETS)] = attackerObj->base_obj_recno;
 	}
 
 	return 0;
@@ -84,9 +84,9 @@ void Town::process_attack_target()
 	if( target_count <= 0 )
 		return;
 
-	for( fireCount = (m.random(3)==0) ; fireCount > 0; --fireCount )
+	for( fireCount = (misc.random(3)==0) ; fireCount > 0; --fireCount )
 	{
-		int i = m.random(target_count);
+		int i = misc.random(target_count);
 
 		if( archers_energy <= 0 )
 			break;

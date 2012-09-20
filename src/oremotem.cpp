@@ -314,7 +314,7 @@ void RemoteMsg::update_game_setting()
 
 	//------- set random seed -----------//
 
-	m.set_random_seed(*(long*)dataPtr);
+	misc.set_random_seed(*(long*)dataPtr);
 	dataPtr 		    += sizeof(long);
 
 	//------- update nation_array -----------//
@@ -423,9 +423,9 @@ void RemoteMsg::tell_send_time()
 	unsigned long sendTime = *((unsigned long*)data_buf);
 
 	str  = "Packet Delivery Time: ";
-	str += m.get_time() - sendTime;
+	str += misc.get_time() - sendTime;
 	str += " ms ";
-	str += m.get_time();
+	str += misc.get_time();
 
 	// font_san.disp( ZOOM_X1, 4, str, ZOOM_X1+249);
 }
@@ -3624,7 +3624,7 @@ void RemoteMsg::caravan_selected()
 
 	//------ help to check syn. for multiplayer ------//
 	#ifdef DEBUG
-		m.random(100);
+		misc.random(100);
 	#endif
 
 	// unit_array.mp_add_selected_caravan(*shortPtr);
@@ -3653,7 +3653,7 @@ void RemoteMsg::ship_selected()
 
 	//------ help to check syn. for multiplayer ------//
 	#ifdef DEBUG
-		m.random(100);
+		misc.random(100);
 	#endif
 
 	unit_array.mp_add_selected_ship(*shortPtr);

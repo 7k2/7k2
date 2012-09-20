@@ -69,7 +69,7 @@ VgaUtil::~VgaUtil()
 void VgaUtil::blt_buf(int x1, int y1, int x2, int y2, int putBackCursor)
 {
 #ifdef DEBUG
-	unsigned long startTime = m.get_time();
+	unsigned long startTime = misc.get_time();
 #endif
 
    if( putBackCursor )
@@ -110,7 +110,7 @@ void VgaUtil::blt_buf(int x1, int y1, int x2, int y2, int putBackCursor)
       mouse.show_area();
 
 #ifdef DEBUG
-	startTime = m.get_time() - startTime;
+	startTime = misc.get_time() - startTime;
 #endif
 }
 //---------- End of function VgaUtil::blt_buf ----------//
@@ -401,7 +401,7 @@ void VgaUtil::disp_image_file(const char* fileName, int x1, int y1)
    str += fileName;
    str += ".jpg";
 
-   if( m.is_file_exist(str) )
+   if( misc.is_file_exist(str) )
    {
       Jpeg jpeg;
       jpeg.put_to_buf( &vga_back, 0, 0, str );

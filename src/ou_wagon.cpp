@@ -170,7 +170,7 @@ short	UnitWagon::del_spy(short spyRecno)
 	if( spyRecno < 0 )
 	{
 		spyRecno = spy_recno[0];
-		m.del_array_rec(spy_recno, MAX_WAGON_POPULATION, sizeof(spy_recno[0]), 1);
+		misc.del_array_rec(spy_recno, MAX_WAGON_POPULATION, sizeof(spy_recno[0]), 1);
 	}
 	else if( spyRecno > 0 )
 	{
@@ -178,7 +178,7 @@ short	UnitWagon::del_spy(short spyRecno)
 		for(i=0; i < MAX_WAGON_POPULATION && spy_recno[i] != spyRecno; ++i);
 		if( i >= MAX_WAGON_POPULATION )		// spy not found
 			return 0;
-		m.del_array_rec(spy_recno, MAX_WAGON_POPULATION, sizeof(spy_recno[0]), i+1);
+		misc.del_array_rec(spy_recno, MAX_WAGON_POPULATION, sizeof(spy_recno[0]), i+1);
 	}
 	else
 	{

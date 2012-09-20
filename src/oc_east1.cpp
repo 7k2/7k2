@@ -180,7 +180,7 @@ int CampaignEastWest::stage_1_create_town()
 
 	//------ generate a StateArray ---------//
 
-	int townAddCount  = 4 + m.random(2);		// add 4 to 5 player towns
+	int townAddCount  = 4 + misc.random(2);		// add 4 to 5 player towns
 	int addedCount=0;
 
 	StateArray townStateArray;
@@ -200,7 +200,7 @@ int CampaignEastWest::stage_1_create_town()
 		if( addedCount==0 )		// the first town
 			soldierAddCount = MAX_SOLDIER;
 		else
-			soldierAddCount = MAX_SOLDIER/2 + m.random(MAX_SOLDIER/2) + 1;
+			soldierAddCount = MAX_SOLDIER/2 + misc.random(MAX_SOLDIER/2) + 1;
 
 		if( create_nation_town(PLAYER_NATION_RECNO, xLoc, yLoc, 1, 1, soldierAddCount) )		// 1-the race of the town should be the same as the nation
 			addedCount++;
@@ -224,7 +224,7 @@ int CampaignEastWest::stage_1_create_firm()
 	int townRecno1 = king_oversee_town_recno(PLAYER_NATION_RECNO);
 	int townRecno2 = random_pick_town_with_camp(PLAYER_NATION_RECNO, 2);		// only pick towns with <= 2 links
 
-	if( townRecno2 && m.random(2)==0 )		// swap the town in 50% chance
+	if( townRecno2 && misc.random(2)==0 )		// swap the town in 50% chance
 	{
 		int t=townRecno1;
 		townRecno1 = townRecno2;
@@ -294,7 +294,7 @@ void CampaignEastWest::stage_1_process_game_result()
 
 		info.game_year = game_year;			// revert info.game_year back to campaign's game year so that the game's time will not advance  
 
-		m.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
+		misc.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
 	}
 }
 //---- End of function CampaignEastWest::stage_1_process_game_result -----//

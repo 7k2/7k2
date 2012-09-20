@@ -64,7 +64,7 @@ void Town::think_independent_town()
 	{
 		LOG_MSG(" Town::think_independent_set_link");
 		think_independent_set_link();
-		LOG_MSG(m.get_random_seed() );
+		LOG_MSG(misc.get_random_seed() );
 	}
 
 	//---- think about independent units join existing nations ----//
@@ -73,7 +73,7 @@ void Town::think_independent_town()
 	{
 		LOG_MSG(" Town::think_independent_unit_join_nation");
 		think_independent_unit_join_nation();
-		LOG_MSG(m.get_random_seed() );
+		LOG_MSG(misc.get_random_seed() );
 	}
 
 
@@ -90,11 +90,11 @@ void Town::think_independent_town()
 	{
 		LOG_MSG(" Town::think_independent_form_new_nation");
 		think_independent_form_new_nation();
-		LOG_MSG(m.get_random_seed() );
+		LOG_MSG(misc.get_random_seed() );
 	}
 
 	LOG_MSG("end Town::think_independent_town");
-	LOG_MSG(m.get_random_seed());
+	LOG_MSG(misc.get_random_seed());
 }
 //-------- End of function Town::think_independent_town ---------//
 
@@ -143,7 +143,7 @@ void Town::think_independent_set_link()
 //
 int Town::think_independent_form_new_nation()
 {
-	if( m.random(10) > 0 )		// 1/10 chance to set up a new nation.
+	if( misc.random(10) > 0 )		// 1/10 chance to set up a new nation.
 		return 0;
 
 	//-------- check if the town is big enough -------//
@@ -228,8 +228,8 @@ int Town::form_new_nation()
 
 	Unit* kingUnit = unit_array[kingUnitRecno];
 
-	kingUnit->skill.set_skill_level( 50+m.random(51) );		// leadership skill
-	kingUnit->set_combat_level(70+m.random(31));
+	kingUnit->skill.set_skill_level( 50+misc.random(51) );		// leadership skill
+	kingUnit->set_combat_level(70+misc.random(31));
 
 	nationPtr->set_king(kingUnitRecno, 1);		// 1-this is the first king of the nation
 
@@ -243,7 +243,7 @@ int Town::form_new_nation()
 
 	//------ increase the loyalty of the town -----//
 
-	loyalty = (float) 70 + m.random(20);			// 70 to 90 initial loyalty 
+	loyalty = (float) 70 + misc.random(20);			// 70 to 90 initial loyalty
 
 	//--------- add news ----------//
 
@@ -263,24 +263,24 @@ int Town::form_new_nation()
 
 	int mobileCount;
 
-	switch( m.random(10) )
+	switch( misc.random(10) )
 	{
 		//**BUGHERE
 
 //		case 1:		// knowledge of weapon in the beginning.
-//			tech_res[ m.random(tech_res.tech_count)+1 ]->set_nation_tech_level(nationRecno, 1);
+//			tech_res[ misc.random(tech_res.tech_count)+1 ]->set_nation_tech_level(nationRecno, 1);
 //			break;		
 
 		case 2:		// random additional cash
-			nationPtr->cash += m.random(5000);
+			nationPtr->cash += misc.random(5000);
 			break;
 
 		case 3:		// random additional food
-			nationPtr->food += m.random(5000);
+			nationPtr->food += misc.random(5000);
 			break;
 
 		case 4:		// random leader units
-			mobileCount = m.random(5)+1;
+			mobileCount = misc.random(5)+1;
 
 			for( int i=0 ; i<mobileCount && recruitable_pop(0)>0 ; i++ )		// 0-don't recruit spies
 			{
@@ -290,8 +290,8 @@ int Town::form_new_nation()
 				{
 					Unit* unitPtr = unit_array[unitRecno];
 
-					unitPtr->skill.set_skill_level( 50 + m.random(50) );
-					unitPtr->set_combat_level( 50 + m.random(50) );
+					unitPtr->skill.set_skill_level( 50 + misc.random(50) );
+					unitPtr->set_combat_level( 50 + misc.random(50) );
 				}
 				else
 					break;
@@ -379,7 +379,7 @@ int Town::think_independent_unit_join_nation()
 
 	//--- set a new value to independent_unit_join_nation_min_rating ---//
 
-	independent_unit_join_nation_min_rating = bestRating + 100 + m.random(30);		// reset it to a higher rating
+	independent_unit_join_nation_min_rating = bestRating + 100 + misc.random(30);		// reset it to a higher rating
 
 	if( independent_unit_join_nation_min_rating < 100 )
 		independent_unit_join_nation_min_rating = 100;
@@ -450,7 +450,7 @@ int Town::think_independent_build_wall()
 
 	randomChance += population / 2;
 
-	if( m.random(200) < randomChance )
+	if( misc.random(200) < randomChance )
 		set_target_wall_level(current_wall_level+1, COMMAND_AI);
 
 	return 1;

@@ -65,7 +65,7 @@ int CampaignEastWest::stage_9_create_game()
 
 	create_troop(STAGE_9_EASTERN_NATION_RECNO, 10+campaign_difficulty*12);
 
-	create_wagon(STAGE_9_EASTERN_NATION_RECNO, 10+campaign_difficulty*15+m.random(10), 1);		// 1-useLastLocation
+	create_wagon(STAGE_9_EASTERN_NATION_RECNO, 10+campaign_difficulty*15+misc.random(10), 1);		// 1-useLastLocation
 
 	//------ init stage 9 vars -------//
 
@@ -106,11 +106,11 @@ void CampaignEastWest::stage_9_init_vars()
 {
 	//------ init stage 9 vars -------//
 
-	rebel_count = m.random(campaign_difficulty/2);
-	next_rebel_date = info.game_date + m.random(300);
+	rebel_count = misc.random(campaign_difficulty/2);
+	next_rebel_date = info.game_date + misc.random(300);
 
-	general_defect_count = m.random(campaign_difficulty/2);
-	next_general_defect_date = info.game_date + m.random(300);
+	general_defect_count = misc.random(campaign_difficulty/2);
+	next_general_defect_date = info.game_date + misc.random(300);
 
 	init_player_resource(50);
 
@@ -166,7 +166,7 @@ int CampaignEastWest::stage_9_create_town()
 
 	//------ generate a StateArray ---------//
 
-	int townAddCount  = 4 + m.random(2);		// add 4 to 5 player towns
+	int townAddCount  = 4 + misc.random(2);		// add 4 to 5 player towns
 	int addedCount=0;
 
 	StateArray townStateArray;
@@ -186,7 +186,7 @@ int CampaignEastWest::stage_9_create_town()
 		if( addedCount==0 )
 			soldierAddCount = MAX_SOLDIER;
 		else
-			soldierAddCount = MAX_SOLDIER/2 + m.random(MAX_SOLDIER/2) + 1;
+			soldierAddCount = MAX_SOLDIER/2 + misc.random(MAX_SOLDIER/2) + 1;
 
 		if( create_nation_town(PLAYER_NATION_RECNO, xLoc, yLoc, 1, 1, soldierAddCount) )		// 1-the race of the town should be the same as the nation
 			addedCount++;
@@ -194,7 +194,7 @@ int CampaignEastWest::stage_9_create_town()
 
 	//----- create independent towns ------//
 
-	Battle::create_independent_town(4+m.random(3));
+	Battle::create_independent_town(4+misc.random(3));
 
    //-------- update links -------//
 
@@ -216,7 +216,7 @@ int CampaignEastWest::stage_9_create_firm()
 	int townRecno1 = king_oversee_town_recno(PLAYER_NATION_RECNO);
 	int townRecno2 = random_pick_town_with_camp(PLAYER_NATION_RECNO, 2);		// only pick towns with <= 2 links
 
-	if( townRecno2 && m.random(2)==0 )		// swap the town in 50% chance
+	if( townRecno2 && misc.random(2)==0 )		// swap the town in 50% chance
 	{
 		int t=townRecno1;
 		townRecno1 = townRecno2;

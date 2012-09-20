@@ -83,7 +83,7 @@ void Game::run_campaign()
 	//---- create debuggin log if in testing mode -----//
 
 #ifdef DEBUG
-	if( m.is_file_exist("CTEST.SYS") )
+	if( misc.is_file_exist("CTEST.SYS") )
 	{
 		game.debug_log = new LongLog('0');
 		game.debug_log->printf( "\n\r---------------------------\n\r" );
@@ -422,7 +422,7 @@ int Game::select_campaign_menu()
 	cy = 331;
 	for( i = 0; i < 5; ++i )
 	{
-		strcpy( campDiffButtonStr[i], m.roman_number(i+1) );
+		strcpy( campDiffButtonStr[i], misc.roman_number(i+1) );
 
 		w = font_thin_black.text_width(campDiffButtonStr[i]);
 		h = font_thin_black.text_height();
@@ -582,7 +582,7 @@ int Game::select_campaign_menu()
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//
@@ -626,7 +626,7 @@ int Game::select_campaign_menu()
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//
@@ -693,7 +693,7 @@ int Game::select_campaign_menu()
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i,
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//

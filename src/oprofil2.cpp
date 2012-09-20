@@ -215,12 +215,12 @@ int PlayerProfile::register_menu()
 		str += ".prf";
 
 		File f;
-		if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
+		if( !misc.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
 		{
 			ERR("Path to the player profile too long.\n");
 			return 0;
 		}
-		if( !m.is_file_exist(full_path) || !f.file_open(full_path) || !reload() )
+		if( !misc.is_file_exist(full_path) || !f.file_open(full_path) || !reload() )
 		{
 			init();
 		}
@@ -326,7 +326,7 @@ int PlayerProfile::register_menu()
 				char full_path[MAX_PATH+1];
 				profileCount = 0;
 				Directory profileDir;
-				if( !m.path_cat(full_path, sys.dir_config, "*.prf", MAX_PATH) )
+				if( !misc.path_cat(full_path, sys.dir_config, "*.prf", MAX_PATH) )
 				{
 					ERR("Path to the config directory too long.\n");
 					return 0;
@@ -660,14 +660,14 @@ int PlayerProfile::register_menu()
 					str = DIR_SAVE;
 					str = str.substr(0, str.len()-1);
 					// remove backslash at the end
-					if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
+					if( !misc.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
 					{
 						ERR("Path to the save game directory too long.\n");
 						return 0;
 					}
-					if( !m.is_file_exist(full_path) )
+					if( !misc.is_file_exist(full_path) )
 					{
-						if( !m.mkpath( full_path ) )
+						if( !misc.mkpath( full_path ) )
 						{
 							// box.msg( "Error creating SAVE directory" );
 							box.msg( text_game_menu.str_profile_error_dir(str) );
@@ -679,12 +679,12 @@ int PlayerProfile::register_menu()
 
 					str = file_name;
 					str += ".prf";
-					if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
+					if( !misc.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
 					{
 						ERR("Path to the player profile too long.\n");
 						return 0;
 					}
-					if( m.is_file_exist(full_path) )
+					if( misc.is_file_exist(full_path) )
 					{
 						if( strlen(file_name) >= 4 )
 							file_name[4] = '\0';		// cut to 4 char
@@ -694,9 +694,9 @@ int PlayerProfile::register_menu()
 						str = file_name,
 						str += ".prf";
 						char tryPath[MAX_PATH+1];
-						m.path_cat( tryPath, sys.dir_config, str, MAX_PATH );
+						misc.path_cat( tryPath, sys.dir_config, str, MAX_PATH );
 						int tryCount = 1;
-						while( m.is_file_exist(tryPath) )
+						while( misc.is_file_exist(tryPath) )
 						{
 							++tryCount;
 							if( tryCount >= 1000 )
@@ -710,7 +710,7 @@ int PlayerProfile::register_menu()
 							file_name[5] = (tryCount / 100) % 10 + '0';		// unit digit
 							str = file_name;
 							str += ".prf";
-							m.path_cat( tryPath, sys.dir_config, str, MAX_PATH );
+							misc.path_cat( tryPath, sys.dir_config, str, MAX_PATH );
 						}
 					}
 
@@ -718,12 +718,12 @@ int PlayerProfile::register_menu()
 
 					str = DIR_SAVE;
 					str += save_dir;
-					if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
+					if( !misc.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
 					{
 						ERR("Path to the save game directory too long.\n");
 						return 0;
 					}
-					if( m.is_file_exist(full_path) )
+					if( misc.is_file_exist(full_path) )
 					{
 						if( strlen(save_dir) >= 4 )
 							save_dir[4] = '\0';		// cut to 4 char
@@ -733,9 +733,9 @@ int PlayerProfile::register_menu()
 						str = DIR_SAVE;
 						str += save_dir;
 						char tryPath[MAX_PATH+1];
-						m.path_cat( tryPath, sys.dir_config, str, MAX_PATH );
+						misc.path_cat( tryPath, sys.dir_config, str, MAX_PATH );
 						int tryCount = 1;
-						while( m.is_file_exist(tryPath) )
+						while( misc.is_file_exist(tryPath) )
 						{
 							++tryCount;
 							if( tryCount >= 1000 )
@@ -749,18 +749,18 @@ int PlayerProfile::register_menu()
 							save_dir[5] = (tryCount / 100) % 10 + '0';		// hundred digit
 							str = DIR_SAVE;
 							str += save_dir;
-							m.path_cat( tryPath, sys.dir_config, str, MAX_PATH );
+							misc.path_cat( tryPath, sys.dir_config, str, MAX_PATH );
 						}
 					}
 
 					// ------ create directory -------//
 
-					if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
+					if( !misc.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
 					{
 						ERR("Path to the save game directory too long.\n");
 						return 0;
 					}
-					int dirCreated = m.mkpath( full_path );
+					int dirCreated = misc.mkpath( full_path );
 					if( !save() )
 					{
 						if( dirCreated )
@@ -801,7 +801,7 @@ int PlayerProfile::register_menu()
 				String str;
 				str = profileArray[selectedProfile-1].file_name;
 				str += ".prf";
-				if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
+				if( !misc.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
 				{
 					ERR("Path to the player profile too long.\n");
 					return 0;
@@ -813,7 +813,7 @@ int PlayerProfile::register_menu()
 				// ###### patch begin Gilbert 12/4 #######//
 				str = DIR_SAVE;
 				str += profileArray[selectedProfile-1].save_dir;
-				if( !m.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
+				if( !misc.path_cat(full_path, sys.dir_config, str, MAX_PATH) )
 				{
 					ERR("Path to the save game directory too long.\n");
 					return 0;
@@ -881,9 +881,9 @@ int PlayerProfile::re_create_directory()
 		}
 
 		if( searchPtr != beginPtr				// if path is "\SAVE\GILBERT", searchPtr == beginPtr
-			&& !m.is_file_exist(pathName) )	// not beginPtr, eg "SAVE\GILBERT'
+			&& !misc.is_file_exist(pathName) )	// not beginPtr, eg "SAVE\GILBERT'
 		{
-			if( !m.mkpath( pathName ) )
+			if( !misc.mkpath( pathName ) )
 			{
 				//String str = "Error creating ";
 				//str += pathName;
@@ -933,7 +933,7 @@ int PlayerProfile::load_count_profiles( PlayerProfile *profileArray, int maxLoad
 {
 	char full_path[MAX_PATH+1];
 	Directory profileDir;
-	if( !m.path_cat(full_path, sys.dir_config, "*.prf", MAX_PATH) )
+	if( !misc.path_cat(full_path, sys.dir_config, "*.prf", MAX_PATH) )
 	{
 		ERR("Path to the config directory too long.\n");
 		return 0;

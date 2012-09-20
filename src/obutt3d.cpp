@@ -322,7 +322,7 @@ int Button3D::detect(unsigned keyCode1, unsigned keyCode2, int detectRight, int 
    //----- paint the button with pressed shape ------//
 
 	#define PRESSED_TIMEOUT_SECONDS  1      // 1 seconds
-	DWORD timeOutTime = m.get_time()+PRESSED_TIMEOUT_SECONDS*1000;
+	DWORD timeOutTime = misc.get_time()+PRESSED_TIMEOUT_SECONDS*1000;
 
 	if( elastic_flag )
 	{
@@ -334,7 +334,7 @@ int Button3D::detect(unsigned keyCode1, unsigned keyCode2, int detectRight, int 
 			sys.yield();
 			mouse.get_event();
 
-			if( m.get_time() >= timeOutTime )
+			if( misc.get_time() >= timeOutTime )
 				break;
 
 			// leave the rectangle, cancel press
@@ -362,7 +362,7 @@ int Button3D::detect(unsigned keyCode1, unsigned keyCode2, int detectRight, int 
 			sys.yield();
 			mouse.get_event();
 
-			if( m.get_time() >= timeOutTime )
+			if( misc.get_time() >= timeOutTime )
 				break;
 		}
 	}

@@ -145,7 +145,7 @@ void GameFileArray::init(const char *path, const char *extStr)
 
 	strcpy( save_default_dir, path );
 	// REMOVE '\\' at the end if any, 
-	m.rtrim( save_default_dir);		// trim space at the end first
+	misc.rtrim( save_default_dir);		// trim space at the end first
 	int dirLen = strlen(save_default_dir);
 	if( dirLen > 1 && save_default_dir[dirLen-1] == '\\' )
 		save_default_dir[dirLen-1] = '\0';
@@ -828,7 +828,7 @@ void GameFile::disp_info(int x, int y)
 
 	// str  = translate.process("File Name: ");
 	char shortFileName[MAX_PATH+1];
-	m.extract_file_name( shortFileName, file_name );		// get the file name only from a full path string 
+	misc.extract_file_name( shortFileName, file_name );		// get the file name only from a full path string
 //	str += shortFileName;
 //	font_small.put( x+380, y+12, str );
 	x2 = font_small.put( x+380, y+12, text_game_menu.str_file_name() );
@@ -1067,7 +1067,7 @@ int GameFileArray::write_hall_of_fame()
 	int  rc;
 	File file;
 
-	if (!m.path_cat(full_path, sys.dir_config, HALL_OF_FAME_FILE_NAME, MAX_PATH))
+	if (!misc.path_cat(full_path, sys.dir_config, HALL_OF_FAME_FILE_NAME, MAX_PATH))
 	{
 		ERR("Path to the hall of fame too long.\n");
 		return 0;
@@ -1104,13 +1104,13 @@ int GameFileArray::read_hall_of_fame()
 	int  rc;
 	File file;
 
-	if (!m.path_cat(full_path, sys.dir_config, HALL_OF_FAME_FILE_NAME, MAX_PATH))
+	if (!misc.path_cat(full_path, sys.dir_config, HALL_OF_FAME_FILE_NAME, MAX_PATH))
 	{
 		ERR("Path to the hall of fame too long.\n");
 		return 0;
 	}
 
-	if( !m.is_file_exist(full_path) )
+	if( !misc.is_file_exist(full_path) )
 		return 0;
 
 	rc = file.file_open( full_path, 0, 1 );   // 0=don't handle error itself
@@ -1381,14 +1381,14 @@ GameFile* GameFileArray::operator[](int recNo)
 static void key_search()
 {
 	int i;
-	int searchKey = m.upper(mouse.key_code);
+	int searchKey = misc.upper(mouse.key_code);
 
 	if( searchKey < '0' || searchKey > 'Z' )
 		return;
 
 	for( i=1 ; i<=game_file_array.size() ; i++ )
 	{
-		if( m.upper(game_file_array[i]->file_name[0]) >= searchKey )
+		if( misc.upper(game_file_array[i]->file_name[0]) >= searchKey )
 		{
 			browse_recno = i+(action_mode==1);
 			return;
@@ -1444,9 +1444,9 @@ int GameFileArray::auto_save()
 
       //--- rename the existing AUTO.xxx to AUTO2.xxx and save a new game ---//
 
-   if( m.is_file_exist( str1 ) )
+   if( misc.is_file_exist( str1 ) )
    {
-      if( m.is_file_exist( str2 ) )      // if there is already an AUTO2.SVM, delete it
+      if( misc.is_file_exist( str2 ) )      // if there is already an AUTO2.SVM, delete it
          remove( str2 );
 
       rename( str1, str2 );

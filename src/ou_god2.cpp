@@ -106,7 +106,7 @@ void UnitGod::think_norman_god()
 
 	else if( (int)hit_points /2 < max_hit_points()
 		&& nation_ptr()->peaceful_days() > 100
-		&& m.random(max_hit_points()) > 2 * (int) hit_points )
+		&& misc.random(max_hit_points()) > 2 * (int) hit_points )
 	{
 		resign(COMMAND_AI);
 		return;
@@ -130,7 +130,7 @@ void UnitGod::think_viking_god()
 
 	else if( (int)hit_points /2 < max_hit_points()
 		&& nation_ptr()->peaceful_days() > 100
-		&& m.random(max_hit_points()) > 2 * (int) hit_points )
+		&& misc.random(max_hit_points()) > 2 * (int) hit_points )
 	{
 		resign(COMMAND_AI);
 		return;
@@ -154,7 +154,7 @@ void UnitGod::think_celt_god()
 
 	else if( (int)hit_points /2 < max_hit_points()
 		&& nation_ptr()->peaceful_days() > 100
-		&& m.random(max_hit_points()) > 2 * (int) hit_points )
+		&& misc.random(max_hit_points()) > 2 * (int) hit_points )
 	{
 		resign(COMMAND_AI);
 		return;
@@ -178,7 +178,7 @@ void UnitGod::think_chinese_god()
 
 	else if( (int)hit_points /2 < max_hit_points()
 		&& nation_ptr()->peaceful_days() > 100
-		&& m.random(max_hit_points()) > 2 * (int) hit_points )
+		&& misc.random(max_hit_points()) > 2 * (int) hit_points )
 	{
 		resign(COMMAND_AI);
 		return;
@@ -392,7 +392,7 @@ void UnitGod::think_greek_god()
 		}
 
 		// distance
-		int dist = m.points_distance( next_x_loc(), next_y_loc(),
+		int dist = misc.points_distance( next_x_loc(), next_y_loc(),
 			generalPtr->next_x_loc(), generalPtr->next_y_loc() );
 		weight -= dist / 8;
 
@@ -419,7 +419,7 @@ void UnitGod::think_greek_god()
 	{
 		// if close to god, cast
 		// else go to there
-		if( m.points_distance( next_x_loc(), next_y_loc(), targetXLoc, targetYLoc ) <= 20 )
+		if( misc.points_distance( next_x_loc(), next_y_loc(), targetXLoc, targetYLoc ) <= 20 )
 		{
 			if( !isTargetLoc )
 			{
@@ -435,7 +435,7 @@ void UnitGod::think_greek_god()
 			}
 			return;
 		}
-		else if( bestWeight+ai_para > m.random(100) )
+		else if( bestWeight+ai_para > misc.random(100) )
 		{
 			ai_para += 5;
 			move(targetXLoc, targetYLoc);
@@ -452,7 +452,7 @@ void UnitGod::think_greek_god()
 
 		if( bestWeight < 10 && (int)hit_points /2 < max_hit_points()
 			&& nation_ptr()->peaceful_days() > 100
-			&& m.random(max_hit_points()) > 2 * (int) hit_points )
+			&& misc.random(max_hit_points()) > 2 * (int) hit_points )
 		{
 			resign(COMMAND_AI);
 			return;
@@ -477,8 +477,8 @@ void UnitGod::think_carth_god()
 	for( int i = 20; i > 0; --i )
 	{
 		int weight = 0;
-		int x1 = m.random( MAX_WORLD_X_LOC - castRadius - castRadius );
-		int y1 = m.random( MAX_WORLD_Y_LOC - castRadius - castRadius );
+		int x1 = misc.random( MAX_WORLD_X_LOC - castRadius - castRadius );
+		int y1 = misc.random( MAX_WORLD_Y_LOC - castRadius - castRadius );
 		int x2 = x1 + castRadius + castRadius;
 		int y2 = y1 + castRadius + castRadius;
 
@@ -523,7 +523,7 @@ void UnitGod::think_carth_god()
 
 		// distance factor
 
-		int dist = m.points_distance( next_x_loc(), next_y_loc(), (x1+x2)/2, (y1+y2)/2 );
+		int dist = misc.points_distance( next_x_loc(), next_y_loc(), (x1+x2)/2, (y1+y2)/2 );
 		weight -= dist/8;
 
 		if( bestWeight < weight )
@@ -534,7 +534,7 @@ void UnitGod::think_carth_god()
 		}
 	}
 
-	if( bestWeight >= 10 && bestWeight+ai_para >= 20 && bestWeight+ai_para >= m.random(50) )
+	if( bestWeight >= 10 && bestWeight+ai_para >= 20 && bestWeight+ai_para >= misc.random(50) )
 	{
 		ai_para = 0;
 		go_cast_power(targetXLoc, targetYLoc, COMMAND_AI);		// 1 - cast power type
@@ -598,7 +598,7 @@ void UnitGod::think_japanese_god()
 			if( townPtr->population <= 0 )
 				continue;
 			weight += 5 + townPtr->population / 10;		// large population large change
-			weight += m.random(5);
+			weight += misc.random(5);
 		}
 		else if( baseObj->cast_to_Firm() )
 		{
@@ -629,7 +629,7 @@ void UnitGod::think_japanese_god()
 								weight += 2;
 						}
 
-						weight += m.random(5);
+						weight += misc.random(5);
 					}
 				}
 				break;
@@ -644,7 +644,7 @@ void UnitGod::think_japanese_god()
 					{
 						// less important than firm camp/fort
 						weight += 1 + firmTrain->trainee_count;
-						weight += m.random(5);
+						weight += misc.random(5);
 					}
 				}
 				break;
@@ -665,7 +665,7 @@ void UnitGod::think_japanese_god()
 		}
 	}
 
-	if( bestWeight >= 10 && bestWeight > m.random(20) )
+	if( bestWeight >= 10 && bestWeight > misc.random(20) )
 	{
 		// update ai_para
 		if( aiParaStruct.count < sizeof(ai_para)-1 )
@@ -740,7 +740,7 @@ void UnitGod::think_mongol_god()
 	}
 
 	if( bestWeight >= CITIZEN_COMBAT_LEVEL*3 
-		&& bestWeight+ai_para >= 100 && bestWeight+ai_para > m.random(300) )
+		&& bestWeight+ai_para >= 100 && bestWeight+ai_para > misc.random(300) )
 	{
 		go_cast_power( targetXLoc, targetYLoc, COMMAND_AI, bestUnitRecno );
 		ai_para = 0;
@@ -776,7 +776,7 @@ void UnitGod::think_mongol_god()
 		}
 	}
 
-	if( bestWeight >= CITIZEN_COMBAT_LEVEL*3 && bestWeight+ai_para >= 80 && bestWeight+ai_para > m.random(150) )
+	if( bestWeight >= CITIZEN_COMBAT_LEVEL*3 && bestWeight+ai_para >= 80 && bestWeight+ai_para > misc.random(150) )
 	{
 		move( targetXLoc, targetYLoc );
 		ai_para += 10;			// so it is easier to cast after move
@@ -915,7 +915,7 @@ void UnitGod::think_indian_god()
 
 	else if( (int)hit_points /2 < max_hit_points()
 		&& nation_ptr()->peaceful_days() > 100
-		&& m.random(max_hit_points()) > 2 * (int) hit_points )
+		&& misc.random(max_hit_points()) > 2 * (int) hit_points )
 	{
 		resign(COMMAND_AI);
 		return;
@@ -940,7 +940,7 @@ int UnitGod::think_god_attack_target(int& targetXLoc, int& targetYLoc)
 	Nation* 	ownNation = nation_array[nation_recno];
 	int		curXLoc=next_x_loc(), curYLoc=next_y_loc();
 	int   	totalFirm = firm_array.size();
-	int   	firmRecno = m.random(totalFirm)+1;
+	int   	firmRecno = misc.random(totalFirm)+1;
 
 	for( int i=totalFirm ; i>0 ; i-- )
 	{
@@ -1024,7 +1024,7 @@ int UnitGod::think_god_attack_target(int& targetXLoc, int& targetYLoc)
 	// assist attacking unit of same nation
 
 	int unitArraySize = unit_array.size();
-	int unitRecno = m.random(unitArraySize) + 1;
+	int unitRecno = misc.random(unitArraySize) + 1;
 	int bestUnitRecno = 0;
 	int bestWeight = 0;
 	int bestTargetRecno;
@@ -1157,8 +1157,8 @@ void UnitGod::think_chinese_dragon()
 
 void UnitGod::think_phoenix()
 {
-	int xLoc = m.random(MAX_WORLD_X_LOC);
-	int yLoc = m.random(MAX_WORLD_Y_LOC);
+	int xLoc = misc.random(MAX_WORLD_X_LOC);
+	int yLoc = misc.random(MAX_WORLD_Y_LOC);
 
 	move( xLoc, yLoc );
 }
@@ -1249,7 +1249,7 @@ void UnitGod::think_japanese_god()
 
 	//------ think firm target --------//
 
-	if( m.random(2)==0 )
+	if( misc.random(2)==0 )
 	{
 		for( int i=firm_array.size() ; i>0 ; i-- )
 		{
@@ -1333,7 +1333,7 @@ int UnitGod::think_god_attack_target(int& targetXLoc, int& targetYLoc)
 	Nation* 	ownNation = nation_array[nation_recno];
 	int		curXLoc=next_x_loc(), curYLoc=next_y_loc();
 	int   	totalFirm = firm_array.size();
-	int   	firmRecno = m.random(totalFirm)+1;
+	int   	firmRecno = misc.random(totalFirm)+1;
 
 	for( int i=totalFirm ; i>0 ; i-- )
 	{
@@ -1590,7 +1590,7 @@ void UnitGod::think_indian_god()
 					unitPtr->loyalty <= 80 && unitPtr->target_loyalty < 30)
 				&& ownNation->get_relation(unitPtr->nation_recno)->status == RELATION_HOSTILE )
 			{
-				int cost = m.points_distance(next_x_loc(), next_y_loc(), unitPtr->next_x_loc(), unitPtr->next_y_loc());
+				int cost = misc.points_distance(next_x_loc(), next_y_loc(), unitPtr->next_x_loc(), unitPtr->next_y_loc());
 				if( cost < bestUnitCost )
 				{
 					bestUnitCost = cost;
@@ -1602,20 +1602,20 @@ void UnitGod::think_indian_god()
 
 		if( bestUnitCost < 100 )
 		{
-			if( m.points_distance(next_x_loc(), next_y_loc(), xLoc, yLoc) <= god_res[god_id]->cast_power_range )
+			if( misc.points_distance(next_x_loc(), next_y_loc(), xLoc, yLoc) <= god_res[god_id]->cast_power_range )
 				go_cast_power(xLoc, yLoc, 1, COMMAND_AI);		// 1 - cast power type
 			else
 				move( xLoc, yLoc );
 		}
-		else if( m.random(4) == 0 )
+		else if( misc.random(4) == 0 )
 		{
 			// move to a near random location
-			xLoc = next_x_loc() + m.random(100) - 50;
+			xLoc = next_x_loc() + misc.random(100) - 50;
 			if( xLoc < 0 )
 				xLoc = 0;
 			if( xLoc >= MAX_WORLD_X_LOC)
 				xLoc = MAX_WORLD_X_LOC-1;
-			yLoc = next_y_loc() + m.random(100) - 50;
+			yLoc = next_y_loc() + misc.random(100) - 50;
 			if( yLoc < 0 )
 				yLoc = 0;
 			if( yLoc >= MAX_WORLD_Y_LOC)

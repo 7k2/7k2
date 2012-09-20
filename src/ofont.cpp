@@ -1115,7 +1115,7 @@ void Font::put_field(int x1, int y1, const char* desStr, int x2, int value, int 
 	vga_util.d3_panel_up( x1, y1, x2, y1+font_height+6 );
 
 	put( x1+4, y1+2, desStr);
-	put( x2+4, y1+2, m.format(value,format) );
+	put( x2+4, y1+2, misc.format(value,format) );
 }
 //--------- End of function Font::put_field ---------//
 
@@ -1140,7 +1140,7 @@ void Font::update_field(int x1, int y1, int value, int format, int x2)
 	if( x2<0 )
       x2 = x1+80;
 
-   put( x1+4, y1+2, m.format(value,format), 1, x2 );
+   put( x1+4, y1+2, misc.format(value,format), 1, x2 );
 }
 //--------- End of function Font::update_field ---------//
 
@@ -1177,11 +1177,11 @@ void Font::field(int xDes, int y1, const char* desStr, int xValue, int value,
 		// ####### begin Gilbert 10/2 ########//
 		put( xDes+4  , y1+2, desStr, 0, xValue-4);
 		// ####### end Gilbert 10/2 ########//
-		x2 = put( xValue+4, y1+2, m.format(value,format) );
+		x2 = put( xValue+4, y1+2, misc.format(value,format) );
 	}
 	else
 	{
-		x2 = put( xValue+4, y1+2, m.format(value,format), 1, xEnd );
+		x2 = put( xValue+4, y1+2, misc.format(value,format), 1, xEnd );
 	}
 
 	if( helpCode )
@@ -1213,7 +1213,7 @@ void Font::put_field(int x1, int y1, const char* desStr, int x2, double value, i
 	// ####### begin Gilbert 10/2 ########//
 	put( x1+4, y1+2, desStr, 0, x2-4 );
 	// ####### begin Gilbert 10/2 ########//
-	put( x2+4, y1+2, m.format(value,format) );
+	put( x2+4, y1+2, misc.format(value,format) );
 }
 //--------- End of function Font::put_field ---------//
 
@@ -1238,7 +1238,7 @@ void Font::update_field(int x1, int y1, double value, int format, int x2)
 	if( x2<0 )
       x2 = x1+80;
 
-   put( x1+4, y1+2, m.format(value,format), 1, x2 );
+   put( x1+4, y1+2, misc.format(value,format), 1, x2 );
 }
 //--------- End of function Font::update_field ---------//
 
@@ -1275,11 +1275,11 @@ void Font::field(int xDes, int y1, const char* desStr, int xValue, double value,
 		// ####### begin Gilbert 10/2 ########//
       put( xDes+4  , y1+2, desStr, 0, xValue-4);
 		// ####### begin Gilbert 10/2 ########//
-      x2 = put( xValue+4, y1+2, m.format(value,format) );
+      x2 = put( xValue+4, y1+2, misc.format(value,format) );
    }
    else
    {
-		x2 = put( xValue+4, y1+2, m.format(value,format), 1, xEnd );
+		x2 = put( xValue+4, y1+2, misc.format(value,format), 1, xEnd );
 	}
 
 	if( helpCode )
@@ -1392,7 +1392,7 @@ int Font::disp(int x1, int y1, int value, int format, int x2)
 	if( x2<0 )
       x2 = x1+80;
 
-   int lastX = put( x1, y1, m.format(value,format), 1, x2 );
+   int lastX = put( x1, y1, misc.format(value,format), 1, x2 );
 
    return lastX;
 }
@@ -1420,7 +1420,7 @@ int Font::disp(int x1, int y1, double value, int format, int x2)
 	if( x2<0 )
       x2 = x1+80;
 
-   int lastX = put( x1, y1, m.format(value,format), 1, x2 );
+   int lastX = put( x1, y1, misc.format(value,format), 1, x2 );
 
    return lastX;
 }

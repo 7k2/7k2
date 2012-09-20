@@ -118,10 +118,10 @@ void TownWallRes::load_town_race_wall()
 		townRaceWallRec = (TownRaceWallRec *)database->read(i+1);
 		townRaceWallInfo = town_race_wall_array + i;
 
-		townRaceWallInfo->race_id          = m.atoi( townRaceWallRec->race_id, townRaceWallRec->RACE_ID_LEN );
-		townRaceWallInfo->fence_id			  = m.atoi( townRaceWallRec->fence_id, townRaceWallRec->WALL_ID_LEN );
-		townRaceWallInfo->basic_wall_id    = m.atoi( townRaceWallRec->basic_wall_id, townRaceWallRec->WALL_ID_LEN );
-		townRaceWallInfo->adv_wall_id      = m.atoi( townRaceWallRec->adv_wall_id, townRaceWallRec->WALL_ID_LEN );
+		townRaceWallInfo->race_id          = misc.atoi( townRaceWallRec->race_id, townRaceWallRec->RACE_ID_LEN );
+		townRaceWallInfo->fence_id			  = misc.atoi( townRaceWallRec->fence_id, townRaceWallRec->WALL_ID_LEN );
+		townRaceWallInfo->basic_wall_id    = misc.atoi( townRaceWallRec->basic_wall_id, townRaceWallRec->WALL_ID_LEN );
+		townRaceWallInfo->adv_wall_id      = misc.atoi( townRaceWallRec->adv_wall_id, townRaceWallRec->WALL_ID_LEN );
 	}
 }
 // ------- end of function TownWallRes::load_town_race_wall -----------//
@@ -147,9 +147,9 @@ void TownWallRes::load_town_wall()
 		townWallRec = (TownWallRec *)database->read(i+1);
 		townWallInfo = town_wall_array + i;
 
-		townWallInfo->first_recno      = m.atoi( townWallRec->first_recno, townWallRec->RECNO_LEN );
-		townWallInfo->rec_count        = m.atoi( townWallRec->rec_count, townWallRec->RECNO_LEN );
-		townWallInfo->max_frame        = m.atoi( townWallRec->max_frame, townWallRec->FRAME_LEN );
+		townWallInfo->first_recno      = misc.atoi( townWallRec->first_recno, townWallRec->RECNO_LEN );
+		townWallInfo->rec_count        = misc.atoi( townWallRec->rec_count, townWallRec->RECNO_LEN );
+		townWallInfo->max_frame        = misc.atoi( townWallRec->max_frame, townWallRec->FRAME_LEN );
 	}
 }
 // ------- end of function TownWallRes::load_town_wall -----------//
@@ -175,9 +175,9 @@ void TownWallRes::load_town_wall_bitmap()
 		townWallBitmapRec = (TownWallBitmapRec *)database->read(i+1);
 		townWallBitmapInfo = town_wall_bitmap_array + i;
 
-		townWallBitmapInfo->frame            = m.atoi( townWallBitmapRec->frame, townWallBitmapRec->FRAME_LEN );
-		townWallBitmapInfo->offset_x         = m.atoi( townWallBitmapRec->offset_x, townWallBitmapRec->OFFSET_LEN );
-		townWallBitmapInfo->offset_y         = m.atoi( townWallBitmapRec->offset_y, townWallBitmapRec->OFFSET_LEN );
+		townWallBitmapInfo->frame            = misc.atoi( townWallBitmapRec->frame, townWallBitmapRec->FRAME_LEN );
+		townWallBitmapInfo->offset_x         = misc.atoi( townWallBitmapRec->offset_x, townWallBitmapRec->OFFSET_LEN );
+		townWallBitmapInfo->offset_y         = misc.atoi( townWallBitmapRec->offset_y, townWallBitmapRec->OFFSET_LEN );
 		townWallBitmapInfo->mode             = townWallBitmapRec->mode;
 
 		uint32_t bitmapOffset;
@@ -185,8 +185,8 @@ void TownWallRes::load_town_wall_bitmap()
 		townWallBitmapInfo->bitmap_ptr    = res_bitmap.read_imported(bitmapOffset);
 
 		// modify offset_x/y for 7k2
-		int locWidth = m.atoi( townWallBitmapRec->loc_width, townWallBitmapRec->LOC_LEN );
-		int locHeight = m.atoi( townWallBitmapRec->loc_height, townWallBitmapRec->LOC_LEN );
+		int locWidth = misc.atoi( townWallBitmapRec->loc_width, townWallBitmapRec->LOC_LEN );
+		int locHeight = misc.atoi( townWallBitmapRec->loc_height, townWallBitmapRec->LOC_LEN );
 		townWallBitmapInfo->offset_x += -locWidth*LOCATE_WIDTH/2 - (-locWidth*ZOOM_LOC_X_WIDTH/2 + -locHeight*ZOOM_LOC_Y_WIDTH/2);
 		townWallBitmapInfo->offset_y += -locHeight*LOCATE_HEIGHT/2 - (-locWidth*ZOOM_LOC_X_HEIGHT/2 + -locHeight*ZOOM_LOC_Y_HEIGHT/2);
 	}

@@ -775,7 +775,7 @@ int ItemRes::random_item_id(int lowRare, int highRare)
 		{
 			++match;
 
-			if( m.random(match) == 0 )
+			if( misc.random(match) == 0 )
 				selectedItem = i;
 		}
 	}
@@ -812,7 +812,7 @@ void ItemRes::use_manually( Item &item, int unitRecno, int targetBaseObjRecno, i
 			{
 				// create a random monster
 
-				int summonUnitId = monster_res[m.random(MAX_MONSTER_TYPE) + 1]->unit_id;
+				int summonUnitId = monster_res[misc.random(MAX_MONSTER_TYPE) + 1]->unit_id;
 				SpriteInfo *summonSpriteInfo = sprite_res[unit_res[summonUnitId]->sprite_id];
 
 				int r;
@@ -835,7 +835,7 @@ void ItemRes::use_manually( Item &item, int unitRecno, int targetBaseObjRecno, i
 
 							int monsterLevel = monster_res[summonUnit->monster_id()]->level;
 							err_when( monsterLevel < 3 || monsterLevel > 9 );	// tuned for level between 3 and 9
-							int combatSkill = (7 * MAX_COMBAT_TRAIN + m.random(MAX_COMBAT_TRAIN)) / (5 + monster_res[summonUnit->monster_id()]->level);
+							int combatSkill = (7 * MAX_COMBAT_TRAIN + misc.random(MAX_COMBAT_TRAIN)) / (5 + monster_res[summonUnit->monster_id()]->level);
 							combatSkill = MIN( combatSkill, MAX_COMBAT_TRAIN);
 							summonUnit->set_combat_level( combatSkill );
 							summonUnit->skill.set_skill_level(CITIZEN_SKILL_LEVEL);

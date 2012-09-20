@@ -41,12 +41,12 @@ static short opt_temp[3] = { 32, 25, 28 };		// tropical,temperate and both
 //------------ Define inline function -------//
 inline int rand_inner_x()
 {
-	return LOCATE_WIDTH / 4 + m.random(LOCATE_WIDTH/2);
+	return LOCATE_WIDTH / 4 + misc.random(LOCATE_WIDTH/2);
 }
 
 inline int rand_inner_y()
 {
-	return (LOCATE_HEIGHT * 3) / 8 + m.random(LOCATE_HEIGHT/4);
+	return (LOCATE_HEIGHT * 3) / 8 + misc.random(LOCATE_HEIGHT/4);
 }
 
 //----------- Begin of function World::plant_ops -----------//
@@ -68,8 +68,8 @@ void World::plant_ops()
 void World::plant_grow(int pGrow, int scanDensity)
 {
 	// scan part of the map for plant
-	int yBase = m.random(scanDensity);
-	int xBase = m.random(scanDensity);
+	int yBase = misc.random(scanDensity);
+	int xBase = misc.random(scanDensity);
 	for( int y = yBase; y < max_y_loc; y += scanDensity)
 		for( int x = xBase; x < max_x_loc; x += scanDensity)
 		{
@@ -77,7 +77,7 @@ void World::plant_grow(int pGrow, int scanDensity)
 			short bitmapId, basePlantId;
 
 			// is a plant and is not at maximum grade
-			if( l->is_plant() && m.random(100) < pGrow &&
+			if( l->is_plant() && misc.random(100) < pGrow &&
 				(basePlantId = plant_res.plant_recno(bitmapId = l->plant_id())) != 0 &&
 				bitmapId - plant_res[basePlantId]->first_bitmap < plant_res[basePlantId]->bitmap_count -1)
 			{
@@ -105,8 +105,8 @@ void World::plant_reprod(int pReprod, int scanDensity)
 	short t = weather.temp_c();
 
 	// scan the map for plant
-	int yBase = m.random(scanDensity);
-	int xBase = m.random(scanDensity);
+	int yBase = misc.random(scanDensity);
+	int xBase = misc.random(scanDensity);
 	for( int y = yBase; y < max_y_loc; y += scanDensity)
 	{
 		for( int x = xBase; x < max_x_loc; x += scanDensity)
@@ -124,7 +124,7 @@ void World::plant_reprod(int pReprod, int scanDensity)
 				short tempEffect = 5 - abs( oTemp - t);
 				tempEffect = tempEffect > 0 ? tempEffect : 0;
 
-				if( m.random(100) < tempEffect * pReprod)
+				if( misc.random(100) < tempEffect * pReprod)
 				{
 					// produce the same plant but grade 1,
 					char trial = 2;
@@ -132,7 +132,7 @@ void World::plant_reprod(int pReprod, int scanDensity)
 					while( trial --)
 					{
 						newl = NULL;
-						switch(m.random(8))
+						switch(misc.random(8))
 						{
 						case 0:		// north square
 							if( y > 0)
@@ -210,15 +210,15 @@ void World::plant_spread(int pSpread)
 	if( 5 * plant_count < 4 * plant_limit )
 		pSpread += pSpread;
 
-	if(m.random(1000) >= pSpread )
+	if(misc.random(1000) >= pSpread )
 		return;
 
 	// ------- determine temperature
 	short t = weather.temp_c();
 
 	// ------- randomly select a place to seed plant
-	int y = 1+m.random(max_y_loc-2);
-	int x = 1+m.random(max_x_loc-2);
+	int y = 1+misc.random(max_y_loc-2);
+	int x = 1+misc.random(max_x_loc-2);
 
 	Location *l = get_loc(x,y);
 	int build_flag = 1;
@@ -243,7 +243,7 @@ void World::plant_spread(int pSpread)
 		{
 			for( char j=0; j < 3; ++j)
 			{
-				if( m.random(5) > abs(t- opt_temp[j]) )
+				if( misc.random(5) > abs(t- opt_temp[j]) )
 				{
 					climateZone = j+1;
 					plantBitmap = plant_res.scan( climateZone, teraType, 0);
@@ -273,8 +273,8 @@ void World::plant_spread(int pSpread)
 
 void World::plant_death(int scanDensity, int scanRadius)
 {
-	int yBase = m.random(scanDensity);
-	int xBase = m.random(scanDensity);
+	int yBase = misc.random(scanDensity);
+	int xBase = misc.random(scanDensity);
 	for( int y = yBase; y < max_y_loc; y += scanDensity)
 	{
 		for( int x = xBase; x < max_x_loc; x += scanDensity)
@@ -332,8 +332,8 @@ void World::plant_init(int plantTrial, int scanRadius)
 	for( int trial = plantTrial; trial > 0; --trial )
 	{
 		// ------- randomly select a place to seed plant
-		int y = 1+m.random(max_y_loc-2);
-		int x = 1+m.random(max_x_loc-2);
+		int y = 1+misc.random(max_y_loc-2);
+		int x = 1+misc.random(max_x_loc-2);
 
 		Location *l = get_loc(x,y);
 		int build_flag = 1;
@@ -360,7 +360,7 @@ void World::plant_init(int plantTrial, int scanRadius)
 			}
 			if( plantArray[0] )
 			{
-				plant_spray(plantArray, 1 + m.random(3), 1 + m.random(2), x, y);
+				plant_spray(plantArray, 1 + misc.random(3), 1 + misc.random(2), x, y);
 			}
 		}
 	}
@@ -382,7 +382,7 @@ void World::plant_init(int plantTrial, int scanRadius)
 				if (dirtInfo->rock_type == 'P') 
 				{
 					if( plantArray[0] )
-						plant_spray(plantArray, 0, m.random(3), xLoc, yLoc); 
+						plant_spray(plantArray, 0, misc.random(3), xLoc, yLoc);
 				}
 			}
 		}
@@ -405,16 +405,16 @@ void World::plant_spray(short *plantArray, char area, char distance, short x, sh
 		for (j=-area; j<=area; j++)
 		{
 			// ###### begin Gilbert 9/11 #####//
-			tempi = m.random(distance<<2) + i - (distance<<1);
-			tempj = m.random(distance<<2) + j - (distance<<1);
+			tempi = misc.random(distance<<2) + i - (distance<<1);
+			tempj = misc.random(distance<<2) + j - (distance<<1);
 			// ###### end Gilbert 9/11 #####//
 			if ( ((x+tempi)<(max_x_loc-1)) &&
 				 ((y+tempj)<(max_y_loc-1)) &&
 				 ((x+tempi)> 0) && ((y+tempj)> 0)) 
 			{
 				newl = get_loc(x+tempi, y+tempj);
-				short basePlantId = plantArray[m.random(PLANT_ARRAY_SIZE)]; //get type of tree
-				short plantSize = m.random(plant_res[basePlantId]->bitmap_count); //get  size of tree
+				short basePlantId = plantArray[misc.random(PLANT_ARRAY_SIZE)]; //get type of tree
+				short plantSize = misc.random(plant_res[basePlantId]->bitmap_count); //get  size of tree
 				teraType = terrain_res[newl->terrain_id]->average_type;
 				if( newl && newl->can_add_plant() && 
 				   ((plant_res[basePlantId]->tera_type[0] == teraType) ||

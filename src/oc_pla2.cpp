@@ -63,9 +63,9 @@ void CampaignEastWest::plot_a2_create_game()
 /*
 	// create military building
 
-	int lairAddCount = 6 + m.random(3);						// add 6 to 8 Fryhtan Lairs
-	int independentTownAddCount = 6 + m.random(3);		// 6 to 8 independent towns
-	int specialFirmCount= lairAddCount - m.random(3);
+	int lairAddCount = 6 + misc.random(3);						// add 6 to 8 Fryhtan Lairs
+	int independentTownAddCount = 6 + misc.random(3);		// 6 to 8 independent towns
+	int specialFirmCount= lairAddCount - misc.random(3);
 
 	create_lair( 0, plot_enemy_nation_recno, lairAddCount, independentTownAddCount, specialFirmCount);
 */
@@ -114,7 +114,7 @@ void CampaignEastWest::plot_a2_create_game()
 			{
 				Firm *firmPtr = firm_array[firmRecno];
 
-				firmPtr->hit_points = m.random((int)firmPtr->hit_points) / 2.0f + 1.0f;
+				firmPtr->hit_points = misc.random((int)firmPtr->hit_points) / 2.0f + 1.0f;
 			}
 
 			limitBestWeight = bestWeight;

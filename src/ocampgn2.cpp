@@ -441,7 +441,7 @@ void Campaign::main_loop(int isLoadedGame)
 		{
 			stageId = stage_id;
 
-			saved_random_seed = m.random_seed;
+			saved_random_seed = misc.random_seed;
 
 			stage_prelude();
 
@@ -765,7 +765,7 @@ void Campaign::disp_intro()
 		if( mouse.left_press || mouse.right_press )
 			break;
 
-		if( m.upper(mouse.key_code)=='T' )		// testing run - no games will be played
+		if( misc.upper(mouse.key_code)=='T' )		// testing run - no games will be played
 		{
 			auto_test_flag = 1;
 			break;
@@ -1363,7 +1363,7 @@ void Campaign::put_center_text(int x, int y, const char* str, char black, Font* 
 //
 int Campaign::detect_cheat_key()
 {
-	int keyCode = m.upper(mouse.key_code);
+	int keyCode = misc.upper(mouse.key_code);
 
 	if( keyCode == 'E' || keyCode == 'S' )
 	{
@@ -1454,7 +1454,7 @@ void Campaign::disp_strategic_screen(int shouldBltBuf, int terrainMapOnly)
 
 	String str;
 //	str = "Campaign Score To Date : ";
-//	str += m.format( campaign_score, 1 );
+//	str += misc.format( campaign_score, 1 );
 //	font_bld.center_put( 550, 480, 750, 500, text_campaign.str_campaign_score(campaign_score) );
 
 	//------- display debug info --------//
@@ -1968,7 +1968,7 @@ void Campaign::play_speech_animation(int raceId)
 
 	flcName += ".FLC";
 
-	if( !m.is_file_exist(flcName) || !flc.open_file(flcName) )
+	if( !misc.is_file_exist(flcName) || !flc.open_file(flcName) )
 		return;
 
 	//----------------------------------------//
@@ -1984,7 +1984,7 @@ void Campaign::play_speech_animation(int raceId)
 
 		for( ; flc.cur_frame() < flc.max_frame(); flc.advance() )
 		{
-			DWORD startTime = m.get_time();
+			DWORD startTime = misc.get_time();
 
 			RGBColor *palBuf = (RGBColor *)flc.get_palette();
 			// process palette
@@ -2005,7 +2005,7 @@ void Campaign::play_speech_animation(int raceId)
 			sys.yield();
 			sys.blt_virtual_buf();
 
-			DWORD endTime = m.get_time();
+			DWORD endTime = misc.get_time();
 			if( mouse.left_press || endTime - startTime >= 50 )
 				Sleep(1);
 			else
@@ -2027,7 +2027,7 @@ int Campaign::detect_reply()
 	//------ if auto test mode is on ------//
 
 	if( auto_test_flag )
-		return m.random(text_block_count)+1;
+		return misc.random(text_block_count)+1;
 
 	//-------------------------------------//
 
@@ -2341,7 +2341,7 @@ int Campaign::detect_letter()
 
 		if( auto_test_flag )
 		{
-			return m.random(text_block_count)-FIRST_REPLY_TEXT_BLOCK_ID+1;
+			return misc.random(text_block_count)-FIRST_REPLY_TEXT_BLOCK_ID+1;
 		}
 
 		//-------- detect mouse action --------//
@@ -2774,7 +2774,7 @@ void Campaign::attack_animation(int attackerUnitId, int targetUnitId,
 //	destScrnY = MAIN_MAP_Y1 + ( MAIN_MAP_Y2-MAIN_MAP_Y1+1 ) * destScrnY / state_array.max_y_loc;
 
 	// distance between two point
-	int distScrn = m.diagonal_distance(srcScrnX,srcScrnY, destScrnX,destScrnY );
+	int distScrn = misc.diagonal_distance(srcScrnX,srcScrnY, destScrnX,destScrnY );
 
 	Sprite attackerUnit;
 	attackerUnit.init( unit_res[attackerUnitId]->sprite_id, 0, 0 );
@@ -2821,7 +2821,7 @@ void Campaign::attack_animation(int attackerUnitId, int targetUnitId,
 
 		if( (!firstStep || firstStep <= 1 ) && (!lastStep || 1 <= lastStep) )
 		{
-			DWORD startTime = m.get_time();
+			DWORD startTime = misc.get_time();
 
 			// -------- save area first --------//
 
@@ -2892,7 +2892,7 @@ void Campaign::attack_animation(int attackerUnitId, int targetUnitId,
 			sys.yield();
 			sys.blt_virtual_buf();
 
-			DWORD endTime = m.get_time();
+			DWORD endTime = misc.get_time();
 			if( mouse.left_press || endTime - startTime >= 50 )
 				Sleep(1);
 			else
@@ -2901,7 +2901,7 @@ void Campaign::attack_animation(int attackerUnitId, int targetUnitId,
 
 		// move attacker 
 
-		int closeDist = m.diagonal_distance( attackerUnit.cur_x, attackerUnit.cur_y,
+		int closeDist = misc.diagonal_distance( attackerUnit.cur_x, attackerUnit.cur_y,
 			attackerUnit.go_x, attackerUnit.go_y );
 		attackerUnit.cur_x += attackerUnit.sprite_speed() * (attackerUnit.go_x - attackerUnit.cur_x) / closeDist;
 		attackerUnit.cur_y += attackerUnit.sprite_speed() * (attackerUnit.go_y - attackerUnit.cur_y) / closeDist;
@@ -2951,7 +2951,7 @@ void Campaign::attack_animation(int attackerUnitId, int targetUnitId,
 
 		if( (!firstStep || firstStep <= 2 ) && (!lastStep || 2 <= lastStep) )
 		{
-			DWORD startTime = m.get_time();
+			DWORD startTime = misc.get_time();
 
 			// -------- save area first --------//
 
@@ -3022,7 +3022,7 @@ void Campaign::attack_animation(int attackerUnitId, int targetUnitId,
 			sys.yield();
 			sys.blt_virtual_buf();
 
-			DWORD endTime = m.get_time();
+			DWORD endTime = misc.get_time();
 			if( mouse.left_press || endTime - startTime >= 50 )
 				Sleep(1);
 			else
@@ -3083,7 +3083,7 @@ void Campaign::attack_animation(int attackerUnitId, int targetUnitId,
 
 			if( (!firstStep || firstStep <= 3 ) && (!lastStep || 3 <= lastStep) )
 			{
-				DWORD startTime = m.get_time();
+				DWORD startTime = misc.get_time();
 
 				// -------- save area first --------//
 
@@ -3154,7 +3154,7 @@ void Campaign::attack_animation(int attackerUnitId, int targetUnitId,
 				sys.yield();
 				sys.blt_virtual_buf();
 
-				DWORD endTime = m.get_time();
+				DWORD endTime = misc.get_time();
 				if( mouse.left_press || endTime - startTime >= 50 )
 					Sleep(1);
 				else
@@ -3249,14 +3249,14 @@ void Campaign::attack_animation(int attackerUnitId, int targetUnitId,
 
 		int closeDist;
 
-		while( (closeDist = m.diagonal_distance( attackerUnit.cur_x, attackerUnit.cur_y,
+		while( (closeDist = misc.diagonal_distance( attackerUnit.cur_x, attackerUnit.cur_y,
 			attackerUnit.go_x, attackerUnit.go_y)) > attackerUnit.sprite_speed() )
 		{
 			// display sprites
 
 			if( (!firstStep || firstStep <= 3 ) && (!lastStep || 3 <= lastStep) )
 			{
-				DWORD startTime = m.get_time();
+				DWORD startTime = misc.get_time();
 
 				// -------- save area first --------//
 
@@ -3303,7 +3303,7 @@ void Campaign::attack_animation(int attackerUnitId, int targetUnitId,
 				sys.yield();
 				sys.blt_virtual_buf();
 
-				DWORD endTime = m.get_time();
+				DWORD endTime = misc.get_time();
 				if( mouse.left_press || endTime - startTime >= 50 )
 					Sleep(1);
 				else
@@ -3352,7 +3352,7 @@ void Campaign::attack_animation(int attackerUnitId, int targetUnitId,
 
 			if( (!firstStep || firstStep <= 3 ) && (!lastStep || 3 <= lastStep) )
 			{
-				DWORD startTime = m.get_time();
+				DWORD startTime = misc.get_time();
 
 				// -------- save area first --------//
 
@@ -3403,7 +3403,7 @@ void Campaign::attack_animation(int attackerUnitId, int targetUnitId,
 				sys.yield();
 				sys.blt_virtual_buf();
 
-				DWORD endTime = m.get_time();
+				DWORD endTime = misc.get_time();
 				if( mouse.left_press || endTime - startTime >= 50 )
 					Sleep(1);
 				else
@@ -3519,7 +3519,7 @@ void Campaign::attack_animation( CampaignAnimationUnit *attackerArray,
 
 		// ------ estimate expectedSteps[a] --------//
 
-		distScrn[a] = m.diagonal_distance( attackerArray[a].scrn_x, attackerArray[a].scrn_y,
+		distScrn[a] = misc.diagonal_distance( attackerArray[a].scrn_x, attackerArray[a].scrn_y,
 			attackerArray[a].go_scrn_x, attackerArray[a].go_scrn_y );
 
 		expectedSteps[a] = distScrn[a] / attackerUnit[a].sprite_speed();
@@ -3599,7 +3599,7 @@ void Campaign::attack_animation( CampaignAnimationUnit *attackerArray,
 
 		if( (!firstStep || firstStep <= 1 ) && (!lastStep || 1 <= lastStep) )
 		{
-			DWORD startTime = m.get_time();
+			DWORD startTime = misc.get_time();
 
 			// -------- save area first --------//
 
@@ -3674,7 +3674,7 @@ void Campaign::attack_animation( CampaignAnimationUnit *attackerArray,
 			sys.yield();
 			sys.blt_virtual_buf();
 
-			DWORD endTime = m.get_time();
+			DWORD endTime = misc.get_time();
 			if( mouse.left_press || endTime - startTime >= 50 )
 				Sleep(1);
 			else
@@ -3730,7 +3730,7 @@ void Campaign::attack_animation( CampaignAnimationUnit *attackerArray,
 				}
 				else
 				{
-					int closeDist = m.diagonal_distance( attackerArray[a].scrn_x, attackerArray[a].scrn_y,
+					int closeDist = misc.diagonal_distance( attackerArray[a].scrn_x, attackerArray[a].scrn_y,
 						attackerArray[a].go_scrn_x, attackerArray[a].go_scrn_y );
 					attackerArray[a].scrn_x += attackerUnit[a].sprite_speed() * (attackerArray[a].go_scrn_x - attackerArray[a].scrn_x) / closeDist;
 					attackerArray[a].scrn_y += attackerUnit[a].sprite_speed() * (attackerArray[a].go_scrn_y - attackerArray[a].scrn_y) / closeDist;
@@ -3799,7 +3799,7 @@ void Campaign::attack_animation( CampaignAnimationUnit *attackerArray,
 
 		if( (!firstStep || firstStep <= 2 ) && (!lastStep || 2 <= lastStep) )
 		{
-			DWORD startTime = m.get_time();
+			DWORD startTime = misc.get_time();
 
 			// -------- save area first --------//
 
@@ -3874,7 +3874,7 @@ void Campaign::attack_animation( CampaignAnimationUnit *attackerArray,
 			sys.yield();
 			sys.blt_virtual_buf();
 
-			DWORD endTime = m.get_time();
+			DWORD endTime = misc.get_time();
 			if( mouse.left_press || endTime - startTime >= 50 )
 				Sleep(1);
 			else
@@ -3973,7 +3973,7 @@ void Campaign::attack_animation( CampaignAnimationUnit *attackerArray,
 
 		if( (!firstStep || firstStep <= 3 ) && (!lastStep || 3 <= lastStep) )
 		{
-			DWORD startTime = m.get_time();
+			DWORD startTime = misc.get_time();
 
 			// -------- save area first --------//
 
@@ -4056,7 +4056,7 @@ void Campaign::attack_animation( CampaignAnimationUnit *attackerArray,
 			sys.yield();
 			sys.blt_virtual_buf();
 
-			DWORD endTime = m.get_time();
+			DWORD endTime = misc.get_time();
 			if( mouse.left_press || endTime - startTime >= 50 )
 				Sleep(1);
 			else
@@ -4230,14 +4230,14 @@ void Campaign::attack_animation( CampaignAnimationUnit *attackerArray,
 
 		int closeDist;
 
-		while( (closeDist = m.diagonal_distance( attackerArray[newLord].scrn_x, attackerArray[newLord].scrn_y,
+		while( (closeDist = misc.diagonal_distance( attackerArray[newLord].scrn_x, attackerArray[newLord].scrn_y,
 			attackerArray[newLord].go_scrn_x, attackerArray[newLord].go_scrn_y)) > attackerUnit[newLord].sprite_speed() )
 		{
 			// display sprites
 
 			if( (!firstStep || firstStep <= 3 ) && (!lastStep || 3 <= lastStep) )
 			{
-				DWORD startTime = m.get_time();
+				DWORD startTime = misc.get_time();
 
 				// -------- save area first --------//
 
@@ -4320,7 +4320,7 @@ void Campaign::attack_animation( CampaignAnimationUnit *attackerArray,
 				sys.yield();
 				sys.blt_virtual_buf();
 
-				DWORD endTime = m.get_time();
+				DWORD endTime = misc.get_time();
 				if( mouse.left_press || endTime - startTime >= 50 )
 					Sleep(1);
 				else
@@ -4402,7 +4402,7 @@ void Campaign::attack_animation( CampaignAnimationUnit *attackerArray,
 
 			if( (!firstStep || firstStep <= 3 ) && (!lastStep || 3 <= lastStep) )
 			{
-				DWORD startTime = m.get_time();
+				DWORD startTime = misc.get_time();
 
 				// -------- save area first --------//
 
@@ -4485,7 +4485,7 @@ void Campaign::attack_animation( CampaignAnimationUnit *attackerArray,
 				sys.yield();
 				sys.blt_virtual_buf();
 
-				DWORD endTime = m.get_time();
+				DWORD endTime = misc.get_time();
 				if( mouse.left_press || endTime - startTime >= 50 )
 					Sleep(1);
 				else
@@ -5078,7 +5078,7 @@ int Campaign::select_attackable_state(char *selectableStateArray, int selectable
    //### trevor 25/6 ####//
 
 	if( auto_test_flag )
-		return selectableStateArray[m.random(selectableStateCount)];
+		return selectableStateArray[misc.random(selectableStateCount)];
 
 	//### trevor 25/6 ####//
 
@@ -5425,7 +5425,7 @@ void Campaign::play_speech(const char* fileName)
 	str += "SOUND"PATH_DELIM;
 	strcat(str, fileName);
 
-	if( !m.is_file_exist(str) )
+	if( !misc.is_file_exist(str) )
 		return;
 	
 	curSpeechWavId = audio.play_long_wav(str, DEF_REL_VOLUME);		// cur_speech_wav_id is the WAV id that is needed for stopping playing of the WAV file

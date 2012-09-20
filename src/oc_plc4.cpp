@@ -53,7 +53,7 @@ void CampaignEastWest::plot_c4_create_game()
 	Unit *kingPtr = unit_array[ (~nation_array)->king_unit_recno ];
 	err_when( !kingPtr->is_visible() );
 
-	int spyCount = m.random(3) + 4;
+	int spyCount = misc.random(3) + 4;
 	int radius;
 	for( radius = 6; spyCount > 0 && radius <= 20; (radius+=2) )
 	{
@@ -91,7 +91,7 @@ void CampaignEastWest::plot_c4_create_game()
 			if( nationRecnoCount <= 0 )
 				break;
 
-			n = nationRecnoCount > 1 ? nationRecnoArray[m.random(nationRecnoCount)] : nationRecnoArray[0];
+			n = nationRecnoCount > 1 ? nationRecnoArray[misc.random(nationRecnoCount)] : nationRecnoArray[0];
 
 			// ----- create a unit of that race --------//
 
@@ -99,7 +99,7 @@ void CampaignEastWest::plot_c4_create_game()
 				areaX1, areaY1, areaX2, areaY2 );
 			if (unitRecno )
 			{
-				unit_array[unitRecno]->spy_recno = spy_array.add_spy( unitRecno, 50 + m.random(40));
+				unit_array[unitRecno]->spy_recno = spy_array.add_spy( unitRecno, 50 + misc.random(40));
 				spyCount--;
 			}
 		}

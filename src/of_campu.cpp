@@ -503,7 +503,7 @@ int FirmCamp::mobilize_soldier(int soldierId, char remoteAction)
 	err_when( soldier_count > MAX_SOLDIER );
 	err_when( selected_soldier_id > soldier_count );
 
-	m.del_array_rec(soldier_array, soldier_count, sizeof(Soldier), soldierId);
+	misc.del_array_rec(soldier_array, soldier_count, sizeof(Soldier), soldierId);
 
 	if( selected_soldier_id > soldierId || selected_soldier_id == soldier_count )
 		selected_soldier_id--;
@@ -579,7 +579,7 @@ int FirmCamp::resign_soldier(int soldierId)
 	err_when( soldier_count > MAX_SOLDIER );
 	err_when( selected_soldier_id > soldier_count );
 
-	m.del_array_rec(soldier_array, soldier_count, sizeof(Soldier), soldierId);
+	misc.del_array_rec(soldier_array, soldier_count, sizeof(Soldier), soldierId);
 
 	if( selected_soldier_id > soldierId || selected_soldier_id == soldier_count )
 		selected_soldier_id--;
@@ -782,7 +782,7 @@ void FirmCamp::kill_soldier(int soldierId)
 	err_when( soldier_count > MAX_SOLDIER );
 	err_when( selected_soldier_id > soldier_count );
 
-	m.del_array_rec(soldier_array, soldier_count, sizeof(Soldier), soldierId);
+	misc.del_array_rec(soldier_array, soldier_count, sizeof(Soldier), soldierId);
 
 	if( selected_soldier_id > soldierId || selected_soldier_id == soldier_count )
 		selected_soldier_id--;

@@ -97,7 +97,7 @@ void Spy::think_town_spy()
 		}
 		else
 		{
-			if( m.random(5)==0 )			// 20% chance of sowing dissents.
+			if( misc.random(5)==0 )			// 20% chance of sowing dissents.
 				set_action_mode(SPY_SOW_DISSENT);
 			else
 				set_action_mode(SPY_IDLE);
@@ -143,11 +143,11 @@ void Spy::think_firm_spy()
 
 	//------ think about changing spy mode ----//
 
-	else if( m.random(3)==0 )           // 1/10 chance to set it to idle to prevent from being caught
+	else if( misc.random(3)==0 )           // 1/10 chance to set it to idle to prevent from being caught
 	{
 		set_action_mode(SPY_IDLE);
 	}
-//	else if( m.random(2)==0 &&
+//	else if( misc.random(2)==0 &&
 //				can_sabotage() && firmPtr->is_operating() && firmPtr->get_productivity() >= 20.0f )
 //	{
 //		set_action_mode(SPY_SABOTAGE);
@@ -504,7 +504,7 @@ int Spy::think_assassinate()
 	// (attackRating - defenseRating)/100 is the chance of assassination
 	// if pref_spy is high, attempt even the chance is low
 
-	if( attackRating - defenseRating + m.random(20+trueNation->pref_spy/4) > 100   )
+	if( attackRating - defenseRating + misc.random(20+trueNation->pref_spy/4) > 100   )
 	{
 		assassinate(firmPtr->overseer_recno, COMMAND_AI);
 		return 1;
@@ -538,7 +538,7 @@ int Spy::think_steal_tech()
 
 	Nation* trueNation = nation_array[true_nation_recno];
 
-	if( stealRating + m.random(20+trueNation->pref_spy/2) > 100   )
+	if( stealRating + misc.random(20+trueNation->pref_spy/2) > 100   )
 	{
 		steal_tech(firmPtr->nation_recno, COMMAND_AI);
 		return 1;
@@ -615,7 +615,7 @@ int Spy::think_create_incident()
 
 	Nation* trueNation = nation_array[true_nation_recno];
 
-	if( bestRating + m.random(25+trueNation->pref_spy/2) > 100 )
+	if( bestRating + misc.random(25+trueNation->pref_spy/2) > 100 )
 	{
 		create_incident(targetNation->nation_recno, bestNationRecno, COMMAND_AI);
 		return 1;

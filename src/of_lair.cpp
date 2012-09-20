@@ -101,7 +101,7 @@ void FirmLair::recruit_soldier(char remoteAction, char noCost)
 	soldierPtr->remain_build_days = unit_res[soldierPtr->unit_id]->build_days;
 	soldierPtr->init_name();
 	// ####### begin Gilbert 2/3 ######//
-	soldierPtr->unique_id = m.rand_long();
+	soldierPtr->unique_id = misc.rand_long();
 	// ####### end Gilbert 2/3 ######//
 	soldierPtr->source_town_recno = 0;
 
@@ -473,7 +473,7 @@ void FirmLair::natural_breed()
 			unitCount++;
 	}
 
-	if( unitCount >= 2 && unitCount > m.random(100) )
+	if( unitCount >= 2 && unitCount > misc.random(100) )
 		recruit_soldier( COMMAND_AUTO, 1 );		// natural breed, so no cost
 }
 //------- End of function FirmLair::natural_breed ---------//

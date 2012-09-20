@@ -99,7 +99,7 @@ void Unit::init(int unitId, int nationRecno, int rankId, int unitLoyalty, int st
 	}
 
 	// ###### begin Gilbert 23/2 ######//
-	unique_id = m.rand_long();
+	unique_id = misc.rand_long();
 	// ###### end Gilbert 23/2 ######//
 
 	//---------- init other vars ----------//

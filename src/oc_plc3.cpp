@@ -75,7 +75,7 @@ void CampaignEastWest::plot_c3_create_game()
 		{
 			FirmCamp *camp = firmPtr->cast_to_FirmCamp();
 
-			if( m.random(100) < spyProb )
+			if( misc.random(100) < spyProb )
 			{
 				for(int j = 0; j < camp->soldier_count; ++j )
 				{
@@ -86,7 +86,7 @@ void CampaignEastWest::plot_c3_create_game()
 						&& (unitRecno = camp->mobilize_soldier(j+1, COMMAND_AUTO)) )
 					{
 						spyRecno = unit_array[unitRecno]->spy_recno
-							= spy_array.add_spy(unitRecno, 50+m.random(40), nation_array.player_recno);
+							= spy_array.add_spy(unitRecno, 50+misc.random(40), nation_array.player_recno);
 
 						// go back to camp
 						camp->assign_unit(unitRecno);

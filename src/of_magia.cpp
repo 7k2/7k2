@@ -71,7 +71,7 @@ void FirmMagic::think_cast_magic()
 		return;
 	}
 
-	int random = m.random( magic_id_upper_limit - magic_id_lower_limit +1 ) + 
+	int random = misc.random( magic_id_upper_limit - magic_id_lower_limit +1 ) +
 		magic_id_lower_limit;
 
 	switch( random )
@@ -112,7 +112,7 @@ void FirmMagic::think_destroy_building()
 
 	for( int loopId=1 ; loopId<=2 ; loopId++ )
 	{
-		int firmRecno = m.random(firm_array.size())+1;
+		int firmRecno = misc.random(firm_array.size())+1;
 		int curRating, bestRating=0;
 		Firm* bestFirm = NULL;
 
@@ -299,8 +299,8 @@ void FirmMagic::think_cast_to_top(int magicId)
 	}
 
 
-	if( enemyUnit > 10*hit_points/max_hit_points() + m.random(10)		// large number of enemy, or going to die, cast
-		|| enemyUnit >= 5 && ownUnit >= 5 && (ownUnit-enemyUnit-5) < m.random(20) )	// close force, cast
+	if( enemyUnit > 10*hit_points/max_hit_points() + misc.random(10)		// large number of enemy, or going to die, cast
+		|| enemyUnit >= 5 && ownUnit >= 5 && (ownUnit-enemyUnit-5) < misc.random(20) )	// close force, cast
 	{
 		cast_magic( magicId, center_x, center_y, 0, COMMAND_AI );
 	}

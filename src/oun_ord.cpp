@@ -141,7 +141,7 @@ void Unit::execute_move()
 		// ##### begin Gilbert 12/5 #########//
 		// avoid move again when too close the the destination
 		// because a unit may ask other units to move away
-		if( m.points_distance( next_x_loc(), next_y_loc(), move_to_loc_x, move_to_loc_y ) > STD_REACH_DEST_RANGE )
+		if( misc.points_distance( next_x_loc(), next_y_loc(), move_to_loc_x, move_to_loc_y ) > STD_REACH_DEST_RANGE )
 		{
 			// backup retry_state and wait_state
 			int backupRetryState = retry_state;
@@ -289,9 +289,9 @@ int Unit::build_firm_now()
 		err_here();
 
 #ifdef DEBUG
-	unsigned long startTime = m.get_time();
+	unsigned long startTime = misc.get_time();
 	int check = firm_array.build_firm(cur_order.loc_x, cur_order.loc_y, nation_recno, cur_order.para, buildCode, sprite_recno);
-	unit_check_build_firm_profile_time += m.get_time() - startTime;
+	unit_check_build_firm_profile_time += misc.get_time() - startTime;
 	return check;
 #else
 	return firm_array.build_firm(cur_order.loc_x, cur_order.loc_y, nation_recno,
@@ -470,7 +470,7 @@ void Unit::execute_settle_town()
 void Unit::assign(int destXLoc, int destYLoc, int actionNationRecno, bool forceMoveFlag)
 {
 #ifdef DEBUG
-	unsigned long startTime = m.get_time();
+	unsigned long startTime = misc.get_time();
 #endif
 
 	// ######## begin Gilbert 15/5 ########//
@@ -489,7 +489,7 @@ void Unit::assign(int destXLoc, int destYLoc, int actionNationRecno, bool forceM
 	}
 	// ######## end Gilbert 15/5 ########//
 #ifdef DEBUG
-	unit_assign_profile_time += m.get_time()-startTime;
+	unit_assign_profile_time += misc.get_time()-startTime;
 #endif
 }
 //--------- End of function Unit::assign ---------//
@@ -700,7 +700,7 @@ void Unit::execute_go_cast_power()
 	{
 		//--- if this unit is close enough to the target location ---//
 
-		if( m.points_distance(next_x_loc(), next_y_loc(),
+		if( misc.points_distance(next_x_loc(), next_y_loc(),
 			 cur_order.loc_x, cur_order.loc_y) <= DO_CAST_POWER_RANGE )
 		{
 			//--- set the current attack mode to the cast spell attack mode (whose attack range must be 1) ---//
@@ -753,12 +753,12 @@ void Unit::execute_go_cast_power()
 				// update target location
 
 				BaseObj *targetObj = base_obj_array[cur_order.para];
-				int diff = m.points_distance( cur_order.loc_x, cur_order.loc_y,
+				int diff = misc.points_distance( cur_order.loc_x, cur_order.loc_y,
 					targetObj->obj_loc_x1(), targetObj->obj_loc_y1() );
 
 				if( diff > 0 )
 				{
-					if( m.points_distance( move_to_loc_x, move_to_loc_y ,
+					if( misc.points_distance( move_to_loc_x, move_to_loc_y ,
 						targetObj->obj_loc_x1(), targetObj->obj_loc_y1() ) > DO_CAST_POWER_RANGE
 						|| area_distance( targetObj ) < DO_CAST_POWER_RANGE * 2 )
 					{

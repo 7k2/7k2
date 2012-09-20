@@ -220,7 +220,7 @@ int FirmAnimal::hire(short recNo)
 	// ------- set unique id -------//
 
 	// ###### begin Gilbert 23/2 ######//
-	unitPtr->unique_id = m.rand_long();
+	unitPtr->unique_id = misc.rand_long();
 	// ###### end Gilbert 23/2 ######//
 
 	// ------ set item -------//
@@ -271,13 +271,13 @@ void FirmAnimal::add_animal_unit(int unitId, int animalLevel)
 	{
 	case 0:
 	case 1:	// 20-30
-		animalUnit->skill.init(unitId, BASIC_COMBAT_TRAIN + m.random(11), 0 );
+		animalUnit->skill.init(unitId, BASIC_COMBAT_TRAIN + misc.random(11), 0 );
 		break;
 	case 2:	// 50-100
-		animalUnit->skill.init(unitId, MAX_COMBAT_TRAIN/2 + m.random(MAX_COMBAT_TRAIN/2), 0 );
+		animalUnit->skill.init(unitId, MAX_COMBAT_TRAIN/2 + misc.random(MAX_COMBAT_TRAIN/2), 0 );
 		break;
 	case 3:	// 100-200
-		animalUnit->skill.init(unitId, MAX_COMBAT_TRAIN + m.random(MAX_COMBAT_BATTLE-MAX_COMBAT_TRAIN), 0 );
+		animalUnit->skill.init(unitId, MAX_COMBAT_TRAIN + misc.random(MAX_COMBAT_BATTLE-MAX_COMBAT_TRAIN), 0 );
 		break;
 	default:
 		err_here();
@@ -286,8 +286,8 @@ void FirmAnimal::add_animal_unit(int unitId, int animalLevel)
 	animalUnit->item.clear();		// no item
 
 	animalUnit->set_hire_cost();
-	animalUnit->stay_count = MAX_ANIMAL_UNIT + m.random(MAX_ANIMAL_UNIT);
-	// 10 + m.random(5);
+	animalUnit->stay_count = MAX_ANIMAL_UNIT + misc.random(MAX_ANIMAL_UNIT);
+	// 10 + misc.random(5);
 
 	// ------ set display_slot_id ------//
 	
@@ -312,7 +312,7 @@ void FirmAnimal::del_animal_unit(int recNo)
 
 	AnimalUnit *animalUnit = animal_unit_array + recNo - 1;
 
-	m.del_array_rec(animal_unit_array, animal_unit_count, sizeof(AnimalUnit), recNo);
+	misc.del_array_rec(animal_unit_array, animal_unit_count, sizeof(AnimalUnit), recNo);
 
 	animal_unit_count--;
 
@@ -353,7 +353,7 @@ void FirmAnimal::update_add_hire_list()
 	{
 		if( tech_res[ animalTechIdArray[i] ]->get_nation_tech_level(nation_recno) )
 		{
-			if( m.random( MIN(animal_unit_count,3) )==0 )
+			if( misc.random( MIN(animal_unit_count,3) )==0 )
 			{
 				add_animal_unit( animal_unit_id[i] );
 				// ###### begin Gilbert 29/12 ####//
@@ -379,11 +379,11 @@ void FirmAnimal::update_add_hire_list()
 //	}
 //	if( unitIdCount <= 0 )
 //		return;
-//	short addUnitId = unitIdArray[m.random(unitIdCount)];
+//	short addUnitId = unitIdArray[misc.random(unitIdCount)];
 
 	// new scheme : select any possbile scheme , skip if not research
 
-	short addUnitId = animal_unit_id[m.random(ANIMAL_TYPE_COUNT)];
+	short addUnitId = animal_unit_id[misc.random(ANIMAL_TYPE_COUNT)];
 
 	// ---- select animal level -------//
 
@@ -397,7 +397,7 @@ void FirmAnimal::update_add_hire_list()
 		if( maxTechLevel > 1 )
 		{
 			err_when( maxTechLevel > 3 );
-			int r = m.random(31);
+			int r = misc.random(31);
 
 			if( r < 1 )			// 1/31 to get a level 3
 				addAnimalLevel = 3;

@@ -105,15 +105,15 @@ void TechRes::load_tech_class()
 		techClass    = tech_class_array+i;
 
 		techClass->class_id = i+1;
-		m.rtrim_fld( techClass->desc, techClassRec->desc, techClassRec->DESC_LEN );
+		misc.rtrim_fld( techClass->desc, techClassRec->desc, techClassRec->DESC_LEN );
 		translate.multi_to_win(techClass->desc, techClass->DESC_LEN);
 
-		techClass->race_id = m.atoi( techClassRec->race_id, techClassRec->RACE_ID_LEN );
+		techClass->race_id = misc.atoi( techClassRec->race_id, techClassRec->RACE_ID_LEN );
 
 #ifdef DEBUG
 		// check code name of tech class
 		char techClassCode[techClassRec->CODE_LEN+1];
-		m.rtrim_fld( techClassCode, techClassRec->class_code, techClassRec->CODE_LEN );
+		misc.rtrim_fld( techClassCode, techClassRec->class_code, techClassRec->CODE_LEN );
 		switch( techClass->class_id )
 		{
 		case TECH_CLASS_PRODUCTION:
@@ -200,22 +200,22 @@ void TechRes::load_tech_info()
 		techInfo = tech_info_array+i;
 
 		techInfo->tech_id			 = i+1;
-		techInfo->class_id  		 = m.atoi( techRec->class_id		 , techRec->ID_LEN );
+		techInfo->class_id  		 = misc.atoi( techRec->class_id		 , techRec->ID_LEN );
 
-		m.rtrim_fld( techInfo->desc, techRec->desc, techRec->DESC_LEN );
+		misc.rtrim_fld( techInfo->desc, techRec->desc, techRec->DESC_LEN );
 		translate.multi_to_win(techInfo->desc, techInfo->DESC_LEN);
 
-		techInfo->common_max_tech_level = m.atoi( techRec->max_tech_level, techRec->MAX_TECH_LEVEL_LEN );
-		techInfo->complex_level  = m.atoi( techRec->complex_level , techRec->COMPLEX_LEVEL_LEN );
+		techInfo->common_max_tech_level = misc.atoi( techRec->max_tech_level, techRec->MAX_TECH_LEVEL_LEN );
+		techInfo->complex_level  = misc.atoi( techRec->complex_level , techRec->COMPLEX_LEVEL_LEN );
 
-		techInfo->unit_id   		 = m.atoi( techRec->unit_id		 , techRec->ID_LEN );
-		techInfo->firm_id   		 = m.atoi( techRec->firm_id		 , techRec->ID_LEN );
+		techInfo->unit_id   		 = misc.atoi( techRec->unit_id		 , techRec->ID_LEN );
+		techInfo->firm_id   		 = misc.atoi( techRec->firm_id		 , techRec->ID_LEN );
 
-		techInfo->parent_tech_id = m.atoi( techRec->parent_tech_id, techRec->ID_LEN );
-		techInfo->parent_tech_level = m.atoi( &techRec->parent_tech_level, sizeof(techRec->parent_tech_level) );
-		techInfo->parent_tech_id2= m.atoi( techRec->parent_tech_id2, techRec->ID_LEN );
-		techInfo->parent_tech_level2= m.atoi( &techRec->parent_tech_level2, sizeof(techRec->parent_tech_level2) );
-		techInfo->advantage_race_id = m.atoi( techRec->advantage_race_id, techRec->RACE_ID_LEN );
+		techInfo->parent_tech_id = misc.atoi( techRec->parent_tech_id, techRec->ID_LEN );
+		techInfo->parent_tech_level = misc.atoi( &techRec->parent_tech_level, sizeof(techRec->parent_tech_level) );
+		techInfo->parent_tech_id2= misc.atoi( techRec->parent_tech_id2, techRec->ID_LEN );
+		techInfo->parent_tech_level2= misc.atoi( &techRec->parent_tech_level2, sizeof(techRec->parent_tech_level2) );
+		techInfo->advantage_race_id = misc.atoi( techRec->advantage_race_id, techRec->RACE_ID_LEN );
 
 		err_when( techInfo->advantage_race_id < 0 );		// total_tech_level_array support only human race so far
 		err_when( techInfo->parent_tech_id && (techInfo->parent_tech_level < 1 || techInfo->parent_tech_level > 9 ));
@@ -246,7 +246,7 @@ void TechRes::load_tech_info()
 #ifdef DEBUG
 		// check code name of tech class
 		char techCode[techRec->CODE_LEN+1];
-		m.rtrim_fld( techCode, techRec->tech_code, techRec->CODE_LEN );
+		misc.rtrim_fld( techCode, techRec->tech_code, techRec->CODE_LEN );
 		switch( techInfo->tech_id )
 		{
 		case TECH_MINING:
@@ -361,7 +361,7 @@ void TechRes::second_init()
 	// shuffle randomly
 	for( i = 0; i < MAX_RACE; ++i )
 	{
-		j = m.random(MAX_RACE);
+		j = misc.random(MAX_RACE);
 
 		// exchance raceSeq[i] and raceSeq[j]
 		char t = raceSeq[i];
@@ -720,11 +720,11 @@ int TechClass::total_tech_count(int nationRecno)
 //
 void TechClass::random_init(int nationRecno, int minTechCount, int maxTechCount)
 {
-	int addCount = minTechCount + m.random(maxTechCount-minTechCount+1);
+	int addCount = minTechCount + misc.random(maxTechCount-minTechCount+1);
 
 	for( int i=0 ; i<addCount ; i++ )
 	{
-		int techSubSeq = m.random(tech_count);
+		int techSubSeq = misc.random(tech_count);
 
 		for( int j=0 ; j<tech_count ; j++ )
 		{

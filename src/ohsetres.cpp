@@ -101,8 +101,8 @@ void HSetRes::load_eqv_pattern_info(unsigned maxPatternId)
 	for( i=0 ; i< record_count ; i++ )
 	{
 		EqPatternRec *eqPatternRec = (EqPatternRec*) dbEqPattern->read(i+1);
-		unsigned char patternId = (unsigned char) m.atoi(eqPatternRec->pattern_id, eqPatternRec->PATTERN_ID_LEN);
-		unsigned char eqPatternId = (unsigned char) m.atoi(eqPatternRec->eqv_pattern_id, eqPatternRec->PATTERN_ID_LEN);
+		unsigned char patternId = (unsigned char) misc.atoi(eqPatternRec->pattern_id, eqPatternRec->PATTERN_ID_LEN);
+		unsigned char eqPatternId = (unsigned char) misc.atoi(eqPatternRec->eqv_pattern_id, eqPatternRec->PATTERN_ID_LEN);
 
 		if( eqv_pattern_count[patternId-1] < MAX_EQV_PATTERN )
 		{
@@ -138,7 +138,7 @@ void HSetRes::load_hset_info()
 	{
 		hSetRec = (HSetRec *) dbHSet->read(i+1);
 
-		short j = (short) m.atoi(hSetRec->set_id, hSetRec->SET_ID_LEN);
+		short j = (short) misc.atoi(hSetRec->set_id, hSetRec->SET_ID_LEN);
 		if( j > hset_info_count)
 		{
 			err_when( j > hset_info_count);
@@ -188,11 +188,11 @@ void HSetRes::load_hset_info()
 			hSetInfo->side = 0;
 		}
 
-		hSetInfo->replaced_length = (char) m.atoi(hSetRec->replaced_length, hSetRec->LENGTH_LEN);
-		hSetInfo->replaced_length2= (char) m.atoi(hSetRec->replaced_length2, hSetRec->LENGTH_LEN);
-		hSetInfo->replaced_width = (char) m.atoi(hSetRec->replaced_width, hSetRec->LENGTH_LEN);
-		hSetInfo->replaced_width2 = (char) m.atoi(hSetRec->replaced_width2, hSetRec->LENGTH_LEN);
-		hSetInfo->step_num = (char) m.atoi(hSetRec->step_num, hSetRec->STEP_LEN);
+		hSetInfo->replaced_length = (char) misc.atoi(hSetRec->replaced_length, hSetRec->LENGTH_LEN);
+		hSetInfo->replaced_length2= (char) misc.atoi(hSetRec->replaced_length2, hSetRec->LENGTH_LEN);
+		hSetInfo->replaced_width = (char) misc.atoi(hSetRec->replaced_width, hSetRec->LENGTH_LEN);
+		hSetInfo->replaced_width2 = (char) misc.atoi(hSetRec->replaced_width2, hSetRec->LENGTH_LEN);
+		hSetInfo->step_num = (char) misc.atoi(hSetRec->step_num, hSetRec->STEP_LEN);
 		hSetInfo->first_hill_set = NULL;
 	}
 }
@@ -221,7 +221,7 @@ void HSetRes::load_hill_set_info()
 	{
 		hillSetRec = (HillSetRec *) dbHillSet->read(i+1);
 
-		short j = (short) m.atoi(hillSetRec->set_id, hillSetRec->SET_ID_LEN);
+		short j = (short) misc.atoi(hillSetRec->set_id, hillSetRec->SET_ID_LEN);
 		if( j > hset_info_count)
 		{
 			err_when( j > hset_info_count);
@@ -268,9 +268,9 @@ void HSetRes::load_hill_set_info()
 			hillSetInfo->post_move = 0;
 		}
 
-		hillSetInfo->pattern_id = (unsigned char) m.atoi(hillSetRec->pattern_id,
+		hillSetInfo->pattern_id = (unsigned char) misc.atoi(hillSetRec->pattern_id,
 			hillSetRec->PATTERN_ID_LEN);
-		hillSetInfo->step = (char) m.atoi(hillSetRec->step, hillSetRec->STEP_LEN);
+		hillSetInfo->step = (char) misc.atoi(hillSetRec->step, hillSetRec->STEP_LEN);
 		hillSetInfo->next_hill_set = NULL;
 
 		// ----------- link from previous one to this -----------//
@@ -328,7 +328,7 @@ unsigned char HSetRes::get_random_pattern(unsigned char patternId)
 	err_when( !init_flag || patternId <= 0 || patternId > max_pattern_id);
 	unsigned char c = eqv_pattern_count[patternId-1];
 	unsigned char d;
-	if( (d = (unsigned char)m.random(c+1)) != 0)
+	if( (d = (unsigned char)misc.random(c+1)) != 0)
 		return get_eqv_pattern_id(patternId, d-1);
 	else
 		return patternId;
@@ -358,7 +358,7 @@ HSetInfo *HSetRes::random_hset(char isSide, char maxLength, char maxWidth, char 
 			// ------ replace the lastResult ---------//
 			// chance of replace is 1/(hSetCount)
 			// all found records have equal chance to be selected
-			if( m.random(hSetCount) == 0)
+			if( misc.random(hSetCount) == 0)
 				lastResult = hSetInfo;
 		}
 	}

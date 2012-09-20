@@ -549,7 +549,7 @@ void Place::invoke_camp_defense(BaseObj* attackerObj)
 
 		//--- only if the camp's within the effective defense distance ---//
 
-		if( m.points_distance(firmPtr->center_x, firmPtr->center_y, center_x, center_y )
+		if( misc.points_distance(firmPtr->center_x, firmPtr->center_y, center_x, center_y )
 			 > EFFECTIVE_DEFEND_DISTANCE )
 		{
 			continue;

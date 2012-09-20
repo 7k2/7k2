@@ -40,9 +40,9 @@ int FirmMonsterFortress::return_fire( BaseObj *attackerObj )
 			target_count++;
 			return 1;
 		}
-		else if( m.random(100) < 20 )		// 20% to preempt
+		else if( misc.random(100) < 20 )		// 20% to preempt
 		{
-			target_base_obj_recno[m.random(MAX_FORTRESS_TARGET)] = attackerObj->base_obj_recno;
+			target_base_obj_recno[misc.random(MAX_FORTRESS_TARGET)] = attackerObj->base_obj_recno;
 			return 1;
 		}
 	}
@@ -55,7 +55,7 @@ void FirmMonsterFortress::process_monster_firm()
 {
 	// fire at target
 
-	int fireCount = m.random(3)-1;		// may be negative, also mean zero
+	int fireCount = misc.random(3)-1;		// may be negative, also mean zero
 
 	// archer's remain_attack_delay decreases in sprite_array.process
 	// so not need to decrease here
@@ -63,7 +63,7 @@ void FirmMonsterFortress::process_monster_firm()
 	if( target_count <= 0 )
 		return;
 
-	int i = m.random(target_count);
+	int i = misc.random(target_count);
 	for( int a = 0; a < archer_count && fireCount > 0; ++a )
 	{
 		Unit *archerPtr = unit_array[archer_unit_recno[a]];

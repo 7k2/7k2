@@ -459,7 +459,7 @@ int FirmLair::ai_get_soldier_from_other_lair()
 		//---- if the firm is to be closed and the king is the commander there ---//
 
 		if( bestFirm->should_close_flag && bestFirm->overseer_recno &&
-			 m.random(3)==0 )		// and some randomness
+			 misc.random(3)==0 )		// and some randomness
 		{
 			unitRecno = bestFirm->mobilize_overseer();
 		}
@@ -472,7 +472,7 @@ int FirmLair::ai_get_soldier_from_other_lair()
 
 			if( readySoldierCount > 0 )
 			{
-				unitRecno = bestFirm->mobilize_soldier( m.random(readySoldierCount)+1, COMMAND_AI );
+				unitRecno = bestFirm->mobilize_soldier( misc.random(readySoldierCount)+1, COMMAND_AI );
 			}
 		}
 

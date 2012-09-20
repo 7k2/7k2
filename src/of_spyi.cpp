@@ -206,7 +206,7 @@ void FirmSpy::disp_train_menu(int refreshFlag)
 			windowX1, windowY1, windowX2, windowY2, 2 );
 
 		font_whbl.center_put( x, yLoyalty, x+TRAINEE_X_SPACING, yLoyalty+font_snds.max_font_height,
-			m.format((int) townPtr->loyalty) );
+			misc.format((int) townPtr->loyalty) );
 	}
 	*/
 }

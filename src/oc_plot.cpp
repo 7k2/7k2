@@ -188,7 +188,7 @@ void CampaignEastWest::init_random_plot(char plotCategory)
 	}
 
 		// ###### begin Gilbert 22/2 ######//
-//			if( m.random(PLOT_A_COUNT*2)==0 )
+//			if( misc.random(PLOT_A_COUNT*2)==0 )
 //			{
 //				plot_create_game_FP = plot_null;		// there is a chance that the plot is null. That means there is no plot for the game.
 //				plot_next_day_FP 	  = plot_null;
@@ -197,14 +197,14 @@ void CampaignEastWest::init_random_plot(char plotCategory)
 //			}
 //			else
 //			{
-//				plot_id = m.random(PLOT_A_COUNT)+1;
+//				plot_id = misc.random(PLOT_A_COUNT)+1;
 //				plot_create_game_FP = plot_a_create_game_func_array[plot_id-1];
 //				plot_next_day_FP 	  = plot_a_next_day_func_array[plot_id-1];
 //			}
 
 	// modified a bit to simply debugging
 
-	if( m.random(7)==0 || funcCount==0 )		// 20% chance that this game does not have a plot
+	if( misc.random(7)==0 || funcCount==0 )		// 20% chance that this game does not have a plot
 	{
 		plot_id = 0;								// set to zero, in case the condition is changed
 		plot_create_game_FP = &CampaignEastWest::plot_null;		// there is a chance that the plot is null. That means there is no plot for the game.
@@ -213,7 +213,7 @@ void CampaignEastWest::init_random_plot(char plotCategory)
 	else		// 1 to funcCount
 	{
 		err_when( funcCount == 0 );
-		plot_id = m.random(funcCount)+1;		// randomize the plot of this game. 
+		plot_id = misc.random(funcCount)+1;		// randomize the plot of this game.
 		err_when( plot_id <= 0 || plot_id > funcCount );
 		plot_create_game_FP = createGameArray[plot_id-1];
 		plot_next_day_FP 	  = nextDayArray[plot_id-1];

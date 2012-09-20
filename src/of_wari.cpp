@@ -228,7 +228,7 @@ void FirmWar::disp_war_info(int dispY1, int refreshFlag)
 			if( techLevel > 1 )
 			{
 				str += " ";
-				str += m.roman_number(techLevel);
+				str += misc.roman_number(techLevel);
 			}
 		}
 		font_snds.center_put( INFO_X1+18, INFO_Y1+13, INFO_X2, INFO_Y1+25, str, 0, 1 );
@@ -513,13 +513,13 @@ static void i_disp_build_button(ButtonCustom *button, int repaintBody)
 		if( techLevel > 1 )		// no space for version
 		{
 			str += " ";
-			str += m.roman_number(techLevel);
+			str += misc.roman_number(techLevel);
 		}
 	}
 	
 //	font_whbl.center_put( x1-3, y1, x1 +67+3, y1+20, str, 0, 1 );
 	font_whbl.center_put( x1-3, y1, x1 +67+3, y1+20, str, 0, 0 );
-	font_whbl.center_put( x1-3, y2-22, x1 +67+3, y2-2, m.format(unit_res[unitId]->build_cost, 2));
+	font_whbl.center_put( x1-3, y2-22, x1 +67+3, y2-2, misc.format(unit_res[unitId]->build_cost, 2));
 
 	// display small button
 	queueButton->paint(-1, repaintBody);
@@ -552,7 +552,7 @@ static void i_disp_queue_button(ButtonCustom *button, int repaintBody)
 	if( warFactory->build_unit_id == unitId)
 		queuedCount++;
 
-	font_bible.center_put( x1, y1, x2, y2, m.format(queuedCount));
+	font_bible.center_put( x1, y1, x2, y2, misc.format(queuedCount));
 }
 //--------- End of static function i_disp_queue_button ---------//
 

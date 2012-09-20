@@ -128,7 +128,7 @@ void FirmFort::recruit_soldier(int townRecno, bool specialUnit, char remoteActio
 	soldierPtr->rank_id = RANK_SOLDIER;
 	soldierPtr->remain_build_days = unitInfo->build_days;
 	// ###### begin Gilbert 23/2 ######//
-	soldierPtr->unique_id = m.rand_long();
+	soldierPtr->unique_id = misc.rand_long();
 	// ###### end Gilbert 23/2 ######//
 	soldierPtr->init_name();
 	// ####### begin Gilbert 26/1 ######//
@@ -143,7 +143,7 @@ void FirmFort::recruit_soldier(int townRecno, bool specialUnit, char remoteActio
 	//------ determine if it is a spy ----------//
 
 	int spySeq;
-	if( townPtr->spy_count > 0 && (spySeq=m.random(townPtr->recruitable_pop(1))) < townPtr->spy_count )
+	if( townPtr->spy_count > 0 && (spySeq=misc.random(townPtr->recruitable_pop(1))) < townPtr->spy_count )
 	{
 		soldierPtr->spy_recno = spy_array.find_town_spy(townRecno, 1+spySeq);
 	}
@@ -246,7 +246,7 @@ void FirmFort::being_attack_hit(BaseObj* attackerObj, float damagePoint)
 	{
 		int randomChance = (int)hit_points-current_archer_count*5;
 
-		if( randomChance <= 0 || m.random(randomChance)==0 )
+		if( randomChance <= 0 || misc.random(randomChance)==0 )
 			kill_archer();
 	}
 

@@ -66,7 +66,7 @@ void World::gen_plasma_map()
 {
 	memset( loc_matrix , 0, sizeof(Location) * MAX_WORLD_X_LOC * MAX_WORLD_Y_LOC );
 
-	plasma( m.random(2), 5, m.rand() );
+	plasma( misc.random(2), 5, misc.rand() );
 }
 //------ End of function World::gen_plasma_map --------//
 
@@ -90,7 +90,7 @@ static void plasma(int genMethod, int grainFactor, int randomSeed)
    srand(randomSeed);
 
    for(n = 0; n < 4; n++)
-      rnd[n] = 1+(((m.rand()/MAX_COLOR)*(MAX_COLOR-1))>>(SHIFT_VALUE-11));
+      rnd[n] = 1+(((misc.rand()/MAX_COLOR)*(MAX_COLOR-1))>>(SHIFT_VALUE-11));
 
    plot(                0,                 0, rnd[0]);
    plot(MAX_WORLD_X_LOC-1,                 0, rnd[1]);
@@ -277,7 +277,7 @@ static U16 adjust(int xa,int ya,int x,int y,int xb,int yb)
 {
    S32 pseudoRandom;
 
-   pseudoRandom = ((S32)iparmx)*((m.rand()-16383));
+   pseudoRandom = ((S32)iparmx)*((misc.rand()-16383));
 //   pseudoRandom = pseudoRandom*(abs(xa-xb)+abs(ya-yb));
 
    pseudoRandom = pseudoRandom * recur1;
@@ -303,9 +303,9 @@ static U16 adjust(int xa,int ya,int x,int y,int xb,int yb)
 static U16 rand16()
 {
    U16 value;
-   value = m.rand();
+   value = misc.rand();
    value <<= 1;
-   value += m.rand()&1;
+   value += misc.rand()&1;
 
    if(value < 1)
       value = 1;

@@ -148,9 +148,9 @@ void NationMonster::think_attack_hostile_nation()
 
 	//---- either attack a town or a firm -----//
 
-	if( m.random(2)==0 )
+	if( misc.random(2)==0 )
 	{
-		int firmRecno = m.random(firm_array.size())+1;
+		int firmRecno = misc.random(firm_array.size())+1;
 
 		for( int i=firm_array.size() ; i>0 ; i-- )
 		{
@@ -174,7 +174,7 @@ void NationMonster::think_attack_hostile_nation()
 	}
 	else
 	{
-		int townRecno = m.random(town_array.size())+1;
+		int townRecno = misc.random(town_array.size())+1;
 
 		for( int i=town_array.size() ; i>0 ; i-- )
 		{

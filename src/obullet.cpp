@@ -435,7 +435,7 @@ void Bullet::hit_target(short x, short y)
 //	else if( dirDiff > 4 )
 //		attackDamage += attackDamage * (dirDiff-4) / 8;
 
-	attackDamage += attackDamage * (4-m.abs_direction_diff(cur_dir & 7, targetUnit->cur_dir & 7))/8;
+	attackDamage += attackDamage * (4-misc.abs_direction_diff(cur_dir & 7, targetUnit->cur_dir & 7))/8;
 	// ######## end Gilbert 1/6 ##########//
 
 	// #### end Gilbert 10/11 ######//
@@ -469,7 +469,7 @@ void Bullet::hit_target(short x, short y)
 //			if( (targetUnit->cur_dir & 7)== ((cur_dir + 4 ) & 7)
 //				|| (targetUnit->cur_dir & 7)== ((cur_dir + 3 ) & 7)
 //				|| (targetUnit->cur_dir & 7)== ((cur_dir + 5 ) & 7) )
-			if( m.abs_direction_diff(targetUnit->cur_dir & 7, cur_dir & 7) >= 3 )
+			if( misc.abs_direction_diff(targetUnit->cur_dir & 7, cur_dir & 7) >= 3 )
 			{
 				// ###### begin Gilbert 22/10 ###### //
 				// attackDamage = attackDamage > (float)10/ATTACK_SLOW_DOWN ? attackDamage - (float)10/ATTACK_SLOW_DOWN : 0;
@@ -486,7 +486,7 @@ void Bullet::hit_target(short x, short y)
 //			if( (targetUnit->cur_dir & 7)== ((cur_dir + 4 ) & 7)
 //				|| (targetUnit->cur_dir & 7)== ((cur_dir + 3 ) & 7)
 //				|| (targetUnit->cur_dir & 7)== ((cur_dir + 5 ) & 7) )
-			if( m.abs_direction_diff(targetUnit->cur_dir & 7, cur_dir & 7) >= 3 )
+			if( misc.abs_direction_diff(targetUnit->cur_dir & 7, cur_dir & 7) >= 3 )
 			{
 				attackDamage -= 4.0f;
 				// no sound if attacking
@@ -501,7 +501,7 @@ void Bullet::hit_target(short x, short y)
 		|| targetUnit->unit_id == UNIT_CHINESE_SPU )
 	{
 		int reducePoint;
-		if( attackDamage > 0.0f && (reducePoint = m.random(10)) >= 7 )
+		if( attackDamage > 0.0f && (reducePoint = misc.random(10)) >= 7 )
 		{
 			attackDamage -= (float)reducePoint;
 		}
@@ -674,7 +674,7 @@ int Bullet::warn_target()
 //									||	(unitPtr->cur_dir & 7)== ((cur_dir + 3 ) & 7)
 //									)
 //								)
-								&& m.abs_direction_diff( unitPtr->cur_dir & 7, cur_dir & 7) >= 3 )	// 3 opposite directions
+								&& misc.abs_direction_diff( unitPtr->cur_dir & 7, cur_dir & 7) >= 3 )	// 3 opposite directions
 							{
 								unitPtr->set_guard_on();
 							}
@@ -687,7 +687,7 @@ int Bullet::warn_target()
 //									||	(unitPtr->cur_dir & 7)== ((cur_dir + 3 ) & 7)
 //									)
 //								)
-								&& m.abs_direction_diff( unitPtr->cur_dir & 7, cur_dir & 7) >= 3 )	// 3 opposite directions
+								&& misc.abs_direction_diff( unitPtr->cur_dir & 7, cur_dir & 7) >= 3 )	// 3 opposite directions
 							{
 								unitPtr->set_guard_on();
 							}
@@ -718,13 +718,13 @@ char Bullet::display_layer()
 //------- Begin of function Bullet::attenuated_damage -----//
 float	Bullet::attenuated_damage(BaseObj *objPtr)
 {
-//	short d = m.points_distance(curX, curY, target_x_loc * LOCATE_WIDTH, target_y_loc * LOCATE_HEIGHT);
+//	short d = misc.points_distance(curX, curY, target_x_loc * LOCATE_WIDTH, target_y_loc * LOCATE_HEIGHT);
 	short d;
 
 	if( objPtr->cast_to_Unit() )
 	{
 		register Unit *unitPtr = objPtr->cast_to_Unit();
-		d = m.area_distance( 
+		d = misc.area_distance(
 			unitPtr->cur_x, unitPtr->cur_y, 
 			(unitPtr->loc_width-1) * LOCATE_WIDTH + unitPtr->cur_x,		// size of target is 1 loc smaller
 			(unitPtr->loc_height-1) * LOCATE_HEIGHT + unitPtr->cur_y,
@@ -733,7 +733,7 @@ float	Bullet::attenuated_damage(BaseObj *objPtr)
 	}
 	else
 	{
-		d = m.area_distance( 
+		d = misc.area_distance(
 			objPtr->obj_loc_x1() * LOCATE_WIDTH,	// size of target is 1 loc smaller
 			objPtr->obj_loc_y1() * LOCATE_HEIGHT,
 			objPtr->obj_loc_x2() * LOCATE_WIDTH,

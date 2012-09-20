@@ -272,7 +272,7 @@ void FirmFort::disp_train_menu(int refreshFlag)
 				// display loyalty
 
 				font_whbl.center_put( x, yLoyalty, x+SOLDIER_X_SPACING, yLoyalty+font_snds.max_font_height,
-					m.format((int) townPtr->loyalty) );
+					misc.format((int) townPtr->loyalty) );
 			}
 		}
 	}
@@ -336,6 +336,6 @@ static void disp_tower_count(ButtonCustom *button, int repaintBody)
 		button->pushed_flag ? (char*)"NUM-D" : (char*)"NUM-U" ) );
 
 	font_bible.center_put( button->x1, button->y1, button->x2, button->y2, 
-		button->custom_para.ptr ? (char *)button->custom_para.ptr : m.format(button->custom_para.value) );
+		button->custom_para.ptr ? (char *)button->custom_para.ptr : misc.format(button->custom_para.value) );
 }
 //--------- End of static function disp_tower_count ---------//

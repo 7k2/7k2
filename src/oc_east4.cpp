@@ -102,7 +102,7 @@ int CampaignEastWest::stage_4_create_game()
 		Town* townPtr = town_array[i];
 
 		if( townPtr->nation_recno == STAGE_4_EASTERN_NATION_RECNO &&
-			 m.random(2)==0 )
+			 misc.random(2)==0 )
 		{
 			world.unveil( townPtr->loc_x1, townPtr->loc_y1, townPtr->loc_x2, townPtr->loc_y2 );
 			world.visit( townPtr->loc_x1, townPtr->loc_y1, townPtr->loc_x2, townPtr->loc_y2, EXPLORE_RANGE-1 );
@@ -119,7 +119,7 @@ int CampaignEastWest::stage_4_create_game()
 void CampaignEastWest::stage_4_init_vars()
 {
 	rebel_count=0;
-	next_rebel_date = info.game_date + 90 + m.random(60);		// don't rebel until at least 3 months into the game
+	next_rebel_date = info.game_date + 90 + misc.random(60);		// don't rebel until at least 3 months into the game
 
 	//------- set player nation vars -------//
 
@@ -167,7 +167,7 @@ int CampaignEastWest::stage_4_create_nation()
 
 int CampaignEastWest::stage_4_create_town()
 {
-	int townAddCount   = 5 + m.random(3);
+	int townAddCount   = 5 + misc.random(3);
 	int hasFortPercent = 50;
 
 	return create_town(STAGE_4_EASTERN_NATION_RECNO, townAddCount, hasFortPercent);
@@ -186,7 +186,7 @@ int CampaignEastWest::stage_4_create_firm()
 	int townRecno1 = king_oversee_town_recno(STAGE_4_EASTERN_NATION_RECNO);
 	int townRecno2 = random_pick_town_with_camp(STAGE_4_EASTERN_NATION_RECNO, 2);		// only pick towns with <= 2 links
 
-	if( townRecno2 && m.random(2)==0 )		// swap the town in 50% chance
+	if( townRecno2 && misc.random(2)==0 )		// swap the town in 50% chance
 	{
 		int t=townRecno1;
 		townRecno1 = townRecno2;

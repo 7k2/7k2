@@ -57,31 +57,31 @@ void Unit::pre_process()
 	{
 		case UNIT_MODE_TOWN_DEFENDER:
 #ifdef DEBUG
-			startTime = m.get_time();
+			startTime = misc.get_time();
 #endif
 			process_mode_town_defender();
 #ifdef DEBUG
-			unit_process_town_defender_profile_time += m.get_time() - startTime;
+			unit_process_town_defender_profile_time += misc.get_time() - startTime;
 #endif
 			break;
 
 		case UNIT_MODE_CAMP_DEFENDER:
 #ifdef DEBUG
-			startTime = m.get_time();
+			startTime = misc.get_time();
 #endif
 			process_mode_camp_defender();
 #ifdef DEBUG
-			unit_process_camp_defender_profile_time += m.get_time() - startTime;
+			unit_process_camp_defender_profile_time += misc.get_time() - startTime;
 #endif
 			break;
 
 		case UNIT_MODE_REBEL:
 #ifdef DEBUG
-			startTime = m.get_time();
+			startTime = misc.get_time();
 #endif
 			process_mode_rebel();
 #ifdef DEBUG
-			unit_process_rebel_profile_time += m.get_time() - startTime;
+			unit_process_rebel_profile_time += misc.get_time() - startTime;
 #endif
 			break;
 	}
@@ -97,71 +97,71 @@ void Unit::pre_process()
 	{
 		case UNIT_MOVE:		// nothing to do with move mode, as UnitB already takes care of it
 #ifdef DEBUG
-			startTime = m.get_time();
+			startTime = misc.get_time();
 #endif
 			execute_move();
 #ifdef DEBUG
-			unit_execute_move_profile_time += m.get_time() - startTime;
+			unit_execute_move_profile_time += misc.get_time() - startTime;
 #endif
 			break;
 
 		case UNIT_ATTACK:
 #ifdef DEBUG
-			startTime = m.get_time();
+			startTime = misc.get_time();
 #endif
 			execute_attack();
 #ifdef DEBUG
-			unit_execute_attack_profile_time += m.get_time() - startTime;
+			unit_execute_attack_profile_time += misc.get_time() - startTime;
 #endif
 			break;
 
 		case UNIT_BUILD_FIRM:
 #ifdef DEBUG
-			startTime = m.get_time();
+			startTime = misc.get_time();
 #endif
 			execute_build_firm();
 #ifdef DEBUG
-			unit_execute_build_firm_profile_time += m.get_time() - startTime;
+			unit_execute_build_firm_profile_time += misc.get_time() - startTime;
 #endif
 			break;
 
 		case UNIT_SETTLE_TOWN:
 #ifdef DEBUG
-			startTime = m.get_time();
+			startTime = misc.get_time();
 #endif
 			execute_settle_town();
 #ifdef DEBUG
-			unit_execute_settle_town_profile_time += m.get_time() - startTime;
+			unit_execute_settle_town_profile_time += misc.get_time() - startTime;
 #endif
 			break;
 
 		case UNIT_ASSIGN:
 #ifdef DEBUG
-			startTime = m.get_time();
+			startTime = misc.get_time();
 #endif
 			execute_assign();
 #ifdef DEBUG
-			unit_execute_assign_profile_time += m.get_time() - startTime;
+			unit_execute_assign_profile_time += misc.get_time() - startTime;
 #endif
 			break;
 
 		case UNIT_GO_CAST_POWER:
 #ifdef DEBUG
-			startTime = m.get_time();
+			startTime = misc.get_time();
 #endif
 			execute_go_cast_power();
 #ifdef DEBUG
-			unit_cast_power_profile_time += m.get_time() - startTime;
+			unit_cast_power_profile_time += misc.get_time() - startTime;
 #endif
 			break;
 
 		case UNIT_TRANSFORM_FORTRESS:
 #ifdef DEBUG
-			startTime = m.get_time();
+			startTime = misc.get_time();
 #endif
 			execute_transform_fortress();
 #ifdef DEBUG
-			unit_transform_fortress_profile_time += m.get_time() - startTime;
+			unit_transform_fortress_profile_time += misc.get_time() - startTime;
 #endif
 			break;
 	}
@@ -391,7 +391,7 @@ int Unit::is_in_order_place(int extraLoc)
 //				 next_x_loc() <= cur_order.place_loc_x2()+extraLoc &&		// either inside the building site or just next to it
 //				 next_y_loc() >= cur_order.loc_y-extraLoc &&
 //				 next_y_loc() <= cur_order.place_loc_y2()+extraLoc;
-		return m.area_distance( obj_loc_x1(), obj_loc_y1(), obj_loc_x2(), obj_loc_y2(),
+		return misc.area_distance( obj_loc_x1(), obj_loc_y1(), obj_loc_x2(), obj_loc_y2(),
 			cur_order.loc_x, cur_order.loc_y, 
 			cur_order.place_loc_x2(), cur_order.place_loc_y2() ) <= extraLoc;
 		// ###### end Gilbert 4/11 ######//
@@ -411,7 +411,7 @@ int Unit::is_in_order_place(int extraLoc)
 	// ####### begin Gilbert 19/2 #######//
 	else if( cur_order.mode == UNIT_GO_CAST_POWER )
 	{
-		return m.area_distance( obj_loc_x1(), obj_loc_y1(), obj_loc_x2(), obj_loc_y2(),
+		return misc.area_distance( obj_loc_x1(), obj_loc_y1(), obj_loc_x2(), obj_loc_y2(),
 			cur_order.loc_x, cur_order.loc_y, cur_order.loc_x, cur_order.loc_y ) <= extraLoc;
 	}
 	// ####### end Gilbert 19/2 #######//
@@ -569,7 +569,7 @@ void Unit::gain_experience()
 			leaderXLoc = -1;
 
 		if( leaderXLoc >= 0 &&
-			 m.points_distance( cur_x_loc(), cur_y_loc(), leaderXLoc, leaderYLoc ) <= EFFECTIVE_LEADING_DISTANCE )
+			 misc.points_distance( cur_x_loc(), cur_y_loc(), leaderXLoc, leaderYLoc ) <= EFFECTIVE_LEADING_DISTANCE )
 		{
 			leaderUnit->skill.inc_skill_level(0.06f);
 
@@ -577,7 +577,7 @@ void Unit::gain_experience()
 
 			if( leaderUnit->skill.skill_potential > 0 )
 			{
-				if( m.random(10-leaderUnit->skill.skill_potential/10)==0 )
+				if( misc.random(10-leaderUnit->skill.skill_potential/10)==0 )
 					leaderUnit->skill.inc_skill_level(0.12f);
 			}
 		}
@@ -589,7 +589,7 @@ void Unit::gain_experience()
 		{
 			if( skill.skill_potential > 0 )
 			{
-				if( m.random(10-skill.skill_potential/10)==0 )
+				if( misc.random(10-skill.skill_potential/10)==0 )
 					skill.inc_skill_level(0.12f);
 			}
 		}

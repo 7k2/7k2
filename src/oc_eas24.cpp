@@ -164,12 +164,12 @@ int CampaignEastWest::stage_24_create_nation()
 
 int CampaignEastWest::stage_24_create_lair()
 {
-	int lairAddCount = 6 + m.random(3);						// add 6 to 7 Fryhtan Lairs
+	int lairAddCount = 6 + misc.random(3);						// add 6 to 7 Fryhtan Lairs
 	int independentTownAddCount=0;
-	int specialFirmCount = 3 + m.random(2);
+	int specialFirmCount = 3 + misc.random(2);
 
-	if( m.random(2)==0 )		// 50% chance having independent towns
-		independentTownAddCount = 6 + m.random(3);		// 6 to 8 independent towns
+	if( misc.random(2)==0 )		// 50% chance having independent towns
+		independentTownAddCount = 6 + misc.random(3);		// 6 to 8 independent towns
 
 	create_lair(cur_monster_nation_recno, STAGE_24_MONSTER_NATION_RECNO, lairAddCount, independentTownAddCount, specialFirmCount);
 

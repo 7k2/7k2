@@ -61,7 +61,7 @@ void Unit::process_ai()
 	{
 		//--- a random chance of the AI catching the spy and resign it ---//
 
-		if( is_visible() && m.random(365 * FRAMES_PER_DAY)==0 )		// if the unit stay outside for one year, it will get caught
+		if( is_visible() && misc.random(365 * FRAMES_PER_DAY)==0 )		// if the unit stay outside for one year, it will get caught
 		{
 			resign(COMMAND_AI);
 			return;
@@ -315,7 +315,7 @@ int Unit::think_stop_chase()
 
 	int aiChaseDistance = 10 + nation_array[nation_recno]->pref_military_courage/20;		// chase distance: 10 to 15
 
-	int curDistance = m.points_distance( targetUnit->next_x_loc(), targetUnit->next_y_loc(),
+	int curDistance = misc.points_distance( targetUnit->next_x_loc(), targetUnit->next_y_loc(),
 							ai_original_target_x_loc, ai_original_target_y_loc );
 
 	if( curDistance <= aiChaseDistance )
@@ -384,7 +384,7 @@ void Unit::ai_move_to_nearby_town(int shouldAssign)
 
 		//-------------------------------------//
 
-		curDistance = m.points_distance(curXLoc, curYLoc, townPtr->center_x, townPtr->center_y );
+		curDistance = misc.points_distance(curXLoc, curYLoc, townPtr->center_x, townPtr->center_y );
 
 		if( curDistance < 10 )		// no need to move if the unit is already close enough to the town.
 			return;
@@ -495,7 +495,7 @@ int Unit::ai_escape_fire()
 
 	for(int i=2; i<checkLimit; i++)
 	{
-		m.cal_move_around_a_point(i, 20, 20, xShift, yShift);
+		misc.cal_move_around_a_point(i, 20, 20, xShift, yShift);
 
 		checkXLoc = curXLoc + xShift;
 		checkYLoc = curYLoc + yShift;
@@ -1511,7 +1511,7 @@ int Unit::think_use_item()
 
 	if( item.id == ITEM_SUMMON_SCROLL )
 	{
-		if( m.random(100)==0 )
+		if( misc.random(100)==0 )
 		{
 			item.use_now();
 			return 1;

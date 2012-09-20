@@ -106,11 +106,11 @@ void FirmSpy::recruit_trainee(int townRecno, int trainType, char remoteAction )
 	{
 		if( traineePtr->train_combat_potential >= 20)
 			traineePtr->train_combat_potential -= 20;
-		traineePtr->train_spy_potential = 40 + m.random(20);
+		traineePtr->train_spy_potential = 40 + misc.random(20);
 	}
 	else
 	{
-		traineePtr->train_spy_potential = 70 + m.random(30);
+		traineePtr->train_spy_potential = 70 + misc.random(30);
 	}
 	// ######## end Gilbert 28/6 #########//
 

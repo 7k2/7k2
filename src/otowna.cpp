@@ -164,7 +164,7 @@ int TownArray::add_town(int nationRecno, int raceId, int xLoc, int yLoc, int bui
 	if( nationRecno && !noCost )
 		nation_array[nationRecno]->add_expense( EXPENSE_TOWN, TOWN_BUILDING_COST );
 
-//	world.plant_limit = world.plant_limit - m.random(10);
+//	world.plant_limit = world.plant_limit - misc.random(10);
 
 	return recno();
 }
@@ -192,7 +192,7 @@ void TownArray::del_town(int townRecno)
 	{
 		nation_array.update_statistic();
 	
-//		world.plant_limit = world.plant_limit + m.random(5);
+//		world.plant_limit = world.plant_limit + misc.random(5);
 	}
 }
 //------- End of function TownArray::del_town -------//
@@ -251,13 +251,13 @@ void TownArray::process()
 				#endif
 				{
 					#ifdef DEBUG
-					unsigned long profileStartTime = m.get_time();
+					unsigned long profileStartTime = misc.get_time();
 					#endif
 
 					townPtr->process_ai();
 
 					#ifdef DEBUG
-					town_profile_time += m.get_time() - profileStartTime;
+					town_profile_time += misc.get_time() - profileStartTime;
 					#endif
 				}
 			}
@@ -268,13 +268,13 @@ void TownArray::process()
 			err_when( townPtr->town_recno==0 );
 
 			#ifdef DEBUG
-			unsigned long profileStartTime = m.get_time();
+			unsigned long profileStartTime = misc.get_time();
 			#endif
 
 			townPtr->next_day();
 
 			#ifdef DEBUG
-			town_profile_time += m.get_time() - profileStartTime;
+			town_profile_time += misc.get_time() - profileStartTime;
 			#endif
 		}
 	}
@@ -300,7 +300,7 @@ void TownArray::next_month()
 	Town*  townPtr;
 
 	LOG_MSG("begin TownArray::next_month");
-	LOG_MSG(m.get_random_seed() );
+	LOG_MSG(misc.get_random_seed() );
 	for(i=1; i <=size() ; i++)
 	{
 		townPtr = (Town*)get_ptr(i);
@@ -310,11 +310,11 @@ void TownArray::next_month()
 			LOG_MSG("Town next_month");
 			LOG_MSG( i );
 			townPtr->next_month();
-			LOG_MSG(m.get_random_seed() );
+			LOG_MSG(misc.get_random_seed() );
 		}
 	}
 	LOG_MSG("end TownArray::next_month");
-	LOG_MSG(m.get_random_seed() );
+	LOG_MSG(misc.get_random_seed() );
 }
 //----------- End of function TownArray::next_month -----------//
 
@@ -328,7 +328,7 @@ void TownArray::think_new_independent_town()
 	if( !config.new_independent_town_emerge )
 		return;
 
-	if( m.random(3) != 0 )		// 1/3 chance
+	if( misc.random(3) != 0 )		// 1/3 chance
 		return;
 
 	//---- count the number of independent towns ----//
@@ -362,12 +362,12 @@ void TownArray::think_new_independent_town()
 
 	for( i=0 ; i<MAX_RACE ; i++ )
 	{
-		race_wander_pop_array[i] += 2+m.random(5);
+		race_wander_pop_array[i] += 2+misc.random(5);
 	}
 
 	//----- check if there are enough wanderers to set up a new town ---//
 
-	int raceId = m.random(MAX_RACE)+1;
+	int raceId = misc.random(MAX_RACE)+1;
 
 	for( i=0 ; i<MAX_RACE ; i++ )
 	{
@@ -391,7 +391,7 @@ void TownArray::think_new_independent_town()
 	//--------------- create town ---------------//
 
 	int townRecno  = town_array.generate_town(0, raceId, xLoc, yLoc);
-	int maxTownPop = 20 + m.random(10);
+	int maxTownPop = 20 + misc.random(10);
 	int addPop, townResistance;
 	int loopCount=0;
 
@@ -423,20 +423,20 @@ int TownArray::independent_town_resistance()
 	switch(config.independent_town_resistance)
 	{
 		case OPTION_LOW:
-			return 50 + m.random(30);
+			return 50 + misc.random(30);
 			break;
 
 		case OPTION_MODERATE:
-			return 70 + m.random(30);
+			return 70 + misc.random(30);
 			break;
 
 		case OPTION_HIGH:
-			return 90 + m.random(10);
+			return 90 + misc.random(10);
 			break;
 
 		default:
 			err_here();
-			return 60 + m.random(40);
+			return 60 + misc.random(40);
 	}
 }
 //----- End of function TownArray::independent_town_resistance ------//
@@ -474,13 +474,13 @@ int TownArray::think_town_loc(int maxTries, int& retXLoc, int& retYLoc, int rang
 	{
 		if( rangeX1 >= 0 )
 		{
-			xLoc = rangeX1 + m.random(rangeX2-rangeX1+1-BUILD_TOWN_LOC_WIDTH);
-			yLoc = 2 + rangeY1 + m.random(rangeY2-rangeY1+1-BUILD_TOWN_LOC_HEIGHT-2);		// do not build on the upper most location as the flag will go beyond the view area
+			xLoc = rangeX1 + misc.random(rangeX2-rangeX1+1-BUILD_TOWN_LOC_WIDTH);
+			yLoc = 2 + rangeY1 + misc.random(rangeY2-rangeY1+1-BUILD_TOWN_LOC_HEIGHT-2);		// do not build on the upper most location as the flag will go beyond the view area
 		}
 		else
 		{
-			xLoc = m.random(MAX_WORLD_X_LOC-BUILD_TOWN_LOC_WIDTH);
-			yLoc = 2+m.random(MAX_WORLD_Y_LOC-BUILD_TOWN_LOC_HEIGHT-2);
+			xLoc = misc.random(MAX_WORLD_X_LOC-BUILD_TOWN_LOC_WIDTH);
+			yLoc = 2+misc.random(MAX_WORLD_Y_LOC-BUILD_TOWN_LOC_HEIGHT-2);
 		}
 
 		canBuildFlag=1;
@@ -525,7 +525,7 @@ int TownArray::think_town_loc(int maxTries, int& retXLoc, int& retYLoc, int rang
 
 			townPtr = town_array[townRecno];
 
-			if( m.points_distance(xLoc+1, yLoc+1, townPtr->center_x,		// xLoc+1 and yLoc+1 to take the center location of the town
+			if( misc.points_distance(xLoc+1, yLoc+1, townPtr->center_x,		// xLoc+1 and yLoc+1 to take the center location of the town
 				 townPtr->center_y) < MIN_INTER_TOWN_DISTANCE )
 			{
 				break;
@@ -544,7 +544,7 @@ int TownArray::think_town_loc(int maxTries, int& retXLoc, int& retYLoc, int rang
 
 			firmPtr = firm_array[firmRecno];
 
-			if( m.points_distance(xLoc+1, yLoc+1, firmPtr->center_x,
+			if( misc.points_distance(xLoc+1, yLoc+1, firmPtr->center_x,
 				 firmPtr->center_y) < MONSTER_ATTACK_NEIGHBOR_RANGE )
 			{
 				break;
@@ -742,15 +742,15 @@ void TownArray::draw_dot(int filterRaceId)
 void TownArray::draw_profile()
 {
 #ifdef DEBUG
-	static unsigned long lastDrawTime = m.get_time();
+	static unsigned long lastDrawTime = misc.get_time();
 
-	if(m.get_time() >= lastDrawTime + 1000)
+	if(misc.get_time() >= lastDrawTime + 1000)
 	{
 		last_town_ai_profile_time = town_ai_profile_time;
 		town_ai_profile_time = 0L;
 		last_town_profile_time = town_profile_time;
 		town_profile_time = 0L;
-		lastDrawTime = m.get_time();
+		lastDrawTime = misc.get_time();
 	}
 
 	String str;
@@ -791,7 +791,7 @@ int TownArray::find_nearest_town(int xLoc, int yLoc, int nationRecno)
 
 		townPtr = town_array[i];
 
-		curDistance = m.points_distance( xLoc, yLoc, townPtr->center_x, townPtr->center_y );
+		curDistance = misc.points_distance( xLoc, yLoc, townPtr->center_x, townPtr->center_y );
 
 		if( nationRecno && townPtr->nation_recno != nationRecno )
 			continue;

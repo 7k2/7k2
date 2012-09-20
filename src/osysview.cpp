@@ -277,11 +277,11 @@ void Sys::update_view()
 	if( view_mode==MODE_NORMAL )
 	{
 #ifdef DEBUG
-		unsigned dispZoomTime = m.get_time();
+		unsigned dispZoomTime = misc.get_time();
 #endif
 		disp_zoom();
 #ifdef DEBUG
-		dispZoomTime = m.get_time() - dispZoomTime;
+		dispZoomTime = misc.get_time() - dispZoomTime;
 #endif
 		report_disp_frame_no = 0;
 		
@@ -579,7 +579,7 @@ void Sys::set_view_mode(int viewMode, int viewingNationRecno, int viewingSpyRecn
 
 			if( escapeChance > 0 )
 			{
-				if( m2.random( escapeChance/15 )==0  )		// use m2 instead of m to maintain mulitplayer sync
+				if( misc2.random( escapeChance/15 )==0  )		// use misc2 instead of misc to maintain mulitplayer sync
 					killFlag = 1;
 			}
 

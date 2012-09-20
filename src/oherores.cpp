@@ -118,10 +118,10 @@ void HeroRes::load_hero_info()
 
 		err_when( !heroInfo->infantry_unit && !heroInfo->special_unit );
 
-		m.rtrim_fld( heroInfo->name, heroRec->name, heroRec->NAME_LEN );
+		misc.rtrim_fld( heroInfo->name, heroRec->name, heroRec->NAME_LEN );
 		translate.multi_to_win(heroInfo->name, heroInfo->NAME_LEN);
 
-		heroInfo->race_id = m.atoi(heroRec->race_id, heroRec->RACE_ID_LEN);
+		heroInfo->race_id = misc.atoi(heroRec->race_id, heroRec->RACE_ID_LEN);
 		heroInfo->historic_hero = 1;		// this is a historic hero as opposite to a fictional one
 	}
 }
@@ -135,8 +135,8 @@ void HeroRes::generate_fictional_hero()
 	// ##### begin Gilbert 14/3 ########//
 	// ----- backup seed so all machine have same set of fictional hero (for multi-player game) ----//
 
-	long backupSeed = m.get_random_seed();
-	m.set_random_seed(4);			// set a constant seed
+	long backupSeed = misc.get_random_seed();
+	misc.set_random_seed(4);			// set a constant seed
 	// ##### end Gilbert 14/3 ########//
 
 	// ###### begin Gilbert 1/3 #####//
@@ -173,7 +173,7 @@ void HeroRes::generate_fictional_hero()
 			heroInfo->hero_id = hero_count;
 			heroInfo->race_id = raceId;
 
-			if( m.random(2)==0 )
+			if( misc.random(2)==0 )
 				heroInfo->infantry_unit = 1;
 			else
 				heroInfo->special_unit = 1;
@@ -207,7 +207,7 @@ void HeroRes::generate_fictional_hero()
 	// ##### begin Gilbert 14/3 ########//
 	// ----- restore seed ----//
 
-	m.set_random_seed(backupSeed);
+	misc.set_random_seed(backupSeed);
 	// ##### end Gilbert 14/3 ########//
 }
 //---------- End of function HeroRes::generate_fictional_hero -------//
@@ -224,7 +224,7 @@ void HeroRes::second_init()
 	{
 		HeroInfo* heroInfo = operator[](i);
 
-		heroInfo->for_hire = m.random(2);
+		heroInfo->for_hire = misc.random(2);
 		heroInfo->appeared_flag = 0;
 	}
 
@@ -333,10 +333,10 @@ int HeroRes::create_hero(int xLoc, int yLoc, int nationRecno, int raceId,
 		if( useReserve )		// use the reserved hero, for campaign only. We need to reserve a hero for Stage 6 - Hero Debut
 			heroInfo = hero_res[ filterHeroArray[filterHeroCount-1] ];		// use the last one
 		else
-			heroInfo = hero_res[ filterHeroArray[m.random(filterHeroCount-1)] ];		// -1 exclude the last one
+			heroInfo = hero_res[ filterHeroArray[misc.random(filterHeroCount-1)] ];		// -1 exclude the last one
 	}
 	else
-		heroInfo = hero_res[ filterHeroArray[m.random(filterHeroCount)] ];
+		heroInfo = hero_res[ filterHeroArray[misc.random(filterHeroCount)] ];
 
 	mem_del( filterHeroArray );
 
@@ -348,7 +348,7 @@ int HeroRes::create_hero(int xLoc, int yLoc, int nationRecno, int raceId,
 	{
 		if (!randomClass)
 		{
-			if( m.random(2)==0 )
+			if( misc.random(2)==0 )
 				unitId = race_res[heroInfo->race_id]->infantry_unit_id;
 			else
 				unitId = race_res[heroInfo->race_id]->special_unit_id;
@@ -417,7 +417,7 @@ int HeroRes::create_powerful_unit(int xLoc, int yLoc, int nationRecno, int unitI
 	//------ create the hero unit now -------//
 
 	if( !unitLoyalty )
-		unitLoyalty = 50 + m.random(40);
+		unitLoyalty = 50 + misc.random(40);
 
 	int unitRecno = unit_array.add_unit( unitId, nationRecno, RANK_SOLDIER, unitLoyalty, xLoc, yLoc );
 
@@ -430,23 +430,23 @@ int HeroRes::create_powerful_unit(int xLoc, int yLoc, int nationRecno, int unitI
 
 	if( !heroPower )
 	{
-		int rc = m.random(10);
+		int rc = misc.random(10);
 
 		if( rc==0 )
 		{
-			heroPower = 50 + m.random(50);
+			heroPower = 50 + misc.random(50);
 		}
 		else if( rc <= 2 )		// 1 to 2
 		{
-			heroPower = 50 + m.random(35);
+			heroPower = 50 + misc.random(35);
 		}
 		else if( rc <= 5 )		// 3 to 5
 		{
-			heroPower = 50 + m.random(25);
+			heroPower = 50 + misc.random(25);
 		}
 		else							// 6 to 9
 		{
-			heroPower = 50 + m.random(10);
+			heroPower = 50 + misc.random(10);
 		}
 
 		//---- historic heroes have higher than usual power ----//
@@ -461,7 +461,7 @@ int HeroRes::create_powerful_unit(int xLoc, int yLoc, int nationRecno, int unitI
 	{
 		int itemRarity = MAX_RARITY * heroPower / 100;
 
-		unitPtr->item.init_random(MIN_RARITY + m.random(itemRarity-MIN_RARITY)+1,
+		unitPtr->item.init_random(MIN_RARITY + misc.random(itemRarity-MIN_RARITY)+1,
 			itemRarity, unitPtr->unit_id, &unitPtr->skill);
 
 		err_when( !unitPtr->item.id );
@@ -470,7 +470,7 @@ int HeroRes::create_powerful_unit(int xLoc, int yLoc, int nationRecno, int unitI
 	//----- initialize hero skill and items -------//
 
 	// ######## begin Gilbert 13/4 #### //
-	int combatLevel = 100 + m.random(400);
+	int combatLevel = 100 + misc.random(400);
 	int skillLevel  = 100 + (500-combatLevel)/3;
 
 	combatLevel = combatLevel * heroPower / 100;
@@ -480,10 +480,10 @@ int HeroRes::create_powerful_unit(int xLoc, int yLoc, int nationRecno, int unitI
 	combatLevel = MAX( BASIC_COMBAT_TRAIN, combatLevel );
 	skillLevel  = MAX( BASIC_SKILL_TRAIN , skillLevel );
 
-	int maxCombatLevel = combatLevel * (100+m.random(30)) / 100;
+	int maxCombatLevel = combatLevel * (100+misc.random(30)) / 100;
 	maxCombatLevel = MAX( MAX_COMBAT_BATTLE, maxCombatLevel );
 
-	int maxSkillLevel = skillLevel * (100+m.random(30)) / 100;
+	int maxSkillLevel = skillLevel * (100+misc.random(30)) / 100;
 	maxSkillLevel = MAX( MAX_SKILL_TRAIN, maxSkillLevel );
 
 	unitPtr->skill.set_max_skill_level( maxSkillLevel );
@@ -535,11 +535,11 @@ void HeroRes::think_generate_hero()
 	int yearPassed = (info.game_date - info.game_start_date) / 365;
 	// ########### end Gilbert 26/4 ###########//
 
-	if( humanNationCount > 0 && m.random(90+yearPassed*2) >= humanNationCount	// more human kingdom higher chance.
-		|| humanNationCount <= 0 && m.random(120+yearPassed*2) != 0 )		// If no human kingdom, still a small chance
+	if( humanNationCount > 0 && misc.random(90+yearPassed*2) >= humanNationCount	// more human kingdom higher chance.
+		|| humanNationCount <= 0 && misc.random(120+yearPassed*2) != 0 )		// If no human kingdom, still a small chance
 		return;
 
-//	if( info.game_date%10 != 0 || m.random(30) != 0 )
+//	if( info.game_date%10 != 0 || misc.random(30) != 0 )
 //		return;
 	// ######## end Gilbert 20/4 ##########//
 
@@ -558,7 +558,7 @@ void HeroRes::think_generate_hero()
 			heroCount++;
 	}
 
-	if( heroCount + m.random(5) >= MAX_INDEPENDENT_HERO )
+	if( heroCount + misc.random(5) >= MAX_INDEPENDENT_HERO )
 		return;
 
 	generate_hero();
@@ -576,7 +576,7 @@ int HeroRes::generate_hero()
 
 	//----- first try to locate an independent town -----//
 
-	int   townRecno = m.random(town_array.size())+1;
+	int   townRecno = misc.random(town_array.size())+1;
 	Town* townPtr;
 
 	int i;
@@ -598,7 +598,7 @@ int HeroRes::generate_hero()
 
 	if( i==0 )
 	{
-		townRecno = m.random(town_array.size())+1;
+		townRecno = misc.random(town_array.size())+1;
 
 		for( i=town_array.size() ; i>0 ; i-- )
 		{

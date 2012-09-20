@@ -152,10 +152,10 @@ void RockRes::load_info()
 		rockRec  = (RockRec*) dbRock->read(i+1);
 		rockInfo = rock_info_array+i;
 
-		m.rtrim_fld( rockInfo->rock_name, rockRec->rock_id, rockRec->ROCKID_LEN );
+		misc.rtrim_fld( rockInfo->rock_name, rockRec->rock_id, rockRec->ROCKID_LEN );
 		rockInfo->rock_type   	 	  = rockRec->rock_type;
-		rockInfo->loc_width          = m.atoi(rockRec->loc_width, rockRec->LOC_LEN);
-		rockInfo->loc_height         = m.atoi(rockRec->loc_height, rockRec->LOC_LEN);
+		rockInfo->loc_width          = misc.atoi(rockRec->loc_width, rockRec->LOC_LEN);
+		rockInfo->loc_height         = misc.atoi(rockRec->loc_height, rockRec->LOC_LEN);
 		if( rockRec->terrain_1 == 0 || rockRec->terrain_1 == ' ')
 			rockInfo->terrain_1 = 0;
 		else
@@ -164,8 +164,8 @@ void RockRes::load_info()
 			rockInfo->terrain_2 = 0;
 		else
 			rockInfo->terrain_2       = TerrainRes::terrain_code(rockRec->terrain_2);
-		rockInfo->first_bitmap_recno = m.atoi(rockRec->first_bitmap_recno, rockRec->RECNO_LEN);
-		rockInfo->max_frame          = m.atoi(rockRec->max_frame, rockRec->MAX_FRAME_LEN);
+		rockInfo->first_bitmap_recno = misc.atoi(rockRec->first_bitmap_recno, rockRec->RECNO_LEN);
+		rockInfo->max_frame          = misc.atoi(rockRec->max_frame, rockRec->MAX_FRAME_LEN);
 
 	//	if( rockRec->pal_file_name[0] == ' ' || rockRec->pal_file_name[0] == '\0' )
 	//	{
@@ -212,20 +212,20 @@ void RockRes::load_bitmap_info()
 		rockBitmapRec  = (RockBitmapRec*) dbRock->read(i+1);
 		rockBitmapInfo = rock_bitmap_array+i;
 
-		rockBitmapInfo->frame = m.atoi(rockBitmapRec->frame, rockBitmapRec->FRAME_NO_LEN);
-		rockBitmapInfo->delay = m.atoi(rockBitmapRec->delay, rockBitmapRec->DELAY_LEN);
-		rockBitmapInfo->next_frame = m.atoi(rockBitmapRec->next_frame, rockBitmapRec->FRAME_NO_LEN);
-		rockBitmapInfo->alt_next = m.atoi(rockBitmapRec->alt_next, rockBitmapRec->FRAME_NO_LEN);
-		rockBitmapInfo->offset_x = m.atoi(rockBitmapRec->offset_x, rockBitmapRec->OFFSET_LEN);
-		rockBitmapInfo->offset_y = m.atoi(rockBitmapRec->offset_y, rockBitmapRec->OFFSET_LEN);
+		rockBitmapInfo->frame = misc.atoi(rockBitmapRec->frame, rockBitmapRec->FRAME_NO_LEN);
+		rockBitmapInfo->delay = misc.atoi(rockBitmapRec->delay, rockBitmapRec->DELAY_LEN);
+		rockBitmapInfo->next_frame = misc.atoi(rockBitmapRec->next_frame, rockBitmapRec->FRAME_NO_LEN);
+		rockBitmapInfo->alt_next = misc.atoi(rockBitmapRec->alt_next, rockBitmapRec->FRAME_NO_LEN);
+		rockBitmapInfo->offset_x = misc.atoi(rockBitmapRec->offset_x, rockBitmapRec->OFFSET_LEN);
+		rockBitmapInfo->offset_y = misc.atoi(rockBitmapRec->offset_y, rockBitmapRec->OFFSET_LEN);
 
 		uint32_t bitmapOffset;
 		memcpy( &bitmapOffset, rockBitmapRec->bitmap_ptr, sizeof(uint32_t) );
 		rockBitmapInfo->bitmap_ptr = res_bitmap.read_imported(bitmapOffset);
 
 		// modify offset_x/y for 7k2
-		short width = m.atoi(rockBitmapRec->loc_width, rockBitmapRec->LOC_LEN);
-		short height = m.atoi(rockBitmapRec->loc_height, rockBitmapRec->LOC_LEN);
+		short width = misc.atoi(rockBitmapRec->loc_width, rockBitmapRec->LOC_LEN);
+		short height = misc.atoi(rockBitmapRec->loc_height, rockBitmapRec->LOC_LEN);
 		rockBitmapInfo->offset_x = rockBitmapInfo->offset_x + width*ZOOM_LOC_X_WIDTH/2 + 
 									height*ZOOM_LOC_Y_WIDTH/2 -width*LOCATE_WIDTH/2;
 		rockBitmapInfo->offset_y = rockBitmapInfo->offset_y + width*ZOOM_LOC_X_HEIGHT/2 +
@@ -276,7 +276,7 @@ short RockRes::get_bitmap_recno(short rockId, char curFrame)
 // <short> rockId        rock Id
 // <char> curFrame       the current frame no.
 // <long> path           a random number, related to the probability of choosing alt_next
-//                       eg. choose_next(..,.., m.random(x)); prob of using alt_next is 1/x
+//                       eg. choose_next(..,.., misc.random(x)); prob of using alt_next is 1/x
 // return next frame no.
 char RockRes::choose_next(short rockId, char curFrame, long path)
 {
@@ -351,7 +351,7 @@ short RockRes::search(const char *rockTypes, short minWidth, short maxWidth, sho
 				rockRecno = i;
 				break;
 			}
-			else if( m.random(findCount) == 0)
+			else if( misc.random(findCount) == 0)
 			{
 				rockRecno = i;
 			}

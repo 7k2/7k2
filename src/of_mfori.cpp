@@ -343,7 +343,7 @@ void FirmMonsterFortress::disp_soldier_list(int dispY1, int refreshFlag, int dis
 						}
 						if( attribute >= 0 )	// hide attribute on some cases
 							font->center_put( x, yHp, x+ARHCER_X_SPACING, 
-								yHp+font->max_font_height, m.format(attribute) );
+								yHp+font->max_font_height, misc.format(attribute) );
 					}
 					else if( ownSpy )		// display spy icon
 					{
@@ -352,7 +352,7 @@ void FirmMonsterFortress::disp_soldier_list(int dispY1, int refreshFlag, int dis
 					else									// display combat skill
 					{
 						font->center_put( x, yHp, x+ARHCER_X_SPACING, yHp+font->max_font_height, 
-							m.format(combatLevel) );
+							misc.format(combatLevel) );
 					}
 
 					if( itemId )
@@ -368,7 +368,7 @@ void FirmMonsterFortress::disp_soldier_list(int dispY1, int refreshFlag, int dis
 					// display spy skill
 					err_when( !ownSpy );
 					font_whbl.center_put( x, yHp, x+ARHCER_X_SPACING, yHp+font->max_font_height, 
-						m.format(spy_array[ownSpy]->spy_skill) );
+						misc.format(spy_array[ownSpy]->spy_skill) );
 				}
 
 				// display hit points bar
@@ -533,12 +533,12 @@ void FirmMonsterFortress::disp_soldier_info(int dispY1, int refreshFlag)
 		if( archerPtr->rank_id != RANK_KING && nation_recno && unitInfo->class_info.has_loyalty )
 		{
 			if (archerPtr->loyalty != archerPtr->target_loyalty)
-				info.disp_loyalty( x, y+12, INFO_X2-99 - font_snds.text_width(m.format(archerPtr->loyalty, 4)) -
-						font_snds.text_width(m.format(archerPtr->target_loyalty, 4)) -
+				info.disp_loyalty( x, y+12, INFO_X2-99 - font_snds.text_width(misc.format(archerPtr->loyalty, 4)) -
+						font_snds.text_width(misc.format(archerPtr->target_loyalty, 4)) -
 						font_snds.text_width("11"),
 						archerPtr->loyalty, archerPtr->target_loyalty, nation_recno, refreshFlag, disp_combat_or_skill==4 );
 			else
-				info.disp_loyalty( x, y+12, INFO_X2-99 - font_snds.text_width(m.format(archerPtr->loyalty, 4)),
+				info.disp_loyalty( x, y+12, INFO_X2-99 - font_snds.text_width(misc.format(archerPtr->loyalty, 4)),
 						archerPtr->loyalty, archerPtr->target_loyalty, nation_recno, refreshFlag, disp_combat_or_skill==4 );
 		}
 
@@ -548,7 +548,7 @@ void FirmMonsterFortress::disp_soldier_info(int dispY1, int refreshFlag)
 		{
 			x2 = (disp_combat_or_skill==1?font_blu2:font_snds).put( x+110, y+12, text_unit.str_combat_level() ) + 10;
 		//	font_snds.put( x2, y+14, archerPtr->combat_level() );
-			font_snds.right_put( INFO_X2-10, y+12, m.format(archerPtr->combat_level(),4) );
+			font_snds.right_put( INFO_X2-10, y+12, misc.format(archerPtr->combat_level(),4) );
 		}
 
 		// ------- display leadership -------//
@@ -557,15 +557,15 @@ void FirmMonsterFortress::disp_soldier_info(int dispY1, int refreshFlag)
 		{
 			x2 = (disp_combat_or_skill==2?font_blu2:font_snds).put( x+110, y+26, text_unit.str_leadership() ) + 10;
 		//	font_snds.put( x2, y+28, archerPtr->skill_level() );
-			font_snds.right_put( INFO_X2-10, y+26, m.format(archerPtr->skill_level(),4) );
+			font_snds.right_put( INFO_X2-10, y+26, misc.format(archerPtr->skill_level(),4) );
 		}
 
 		// ----- display hit point ---------//
 
 		x2 = font_snds.put( x, y+26, text_unit.str_hit_points() ) + 10;
-		str = m.format((int) archerPtr->hit_points, 4);
+		str = misc.format((int) archerPtr->hit_points, 4);
 		str += "/";
-		str += m.format(archerPtr->max_hit_points(), 4);
+		str += misc.format(archerPtr->max_hit_points(), 4);
 		font_snds.right_put( INFO_X2-100, y+26, str );
 	}
 }

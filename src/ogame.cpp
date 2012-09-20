@@ -136,7 +136,7 @@ Game::~Game()
 //-------- Begin of function Game::init --------//
 //
 // Note: all functions called in this function cannot call
-//			m.random(). Otherwise, it will cause random seed
+//			misc.random(). Otherwise, it will cause random seed
 //		   sync error.
 //
 // [int] loadGameCall - weather this function is called
@@ -148,7 +148,7 @@ int Game::init(int loadGameCall)
 	if( init_flag )
 		deinit();
 
-	int originalRandomSeed = m.get_random_seed();
+	int originalRandomSeed = misc.get_random_seed();
 
 	music.stop();
 
@@ -238,7 +238,7 @@ int Game::init(int loadGameCall)
 
 	//---------------------------------------------//
 
-	err_when( originalRandomSeed != m.get_random_seed() );
+	err_when( originalRandomSeed != misc.get_random_seed() );
 
 	mouse_cursor.restore_icon(oldCursor);
 

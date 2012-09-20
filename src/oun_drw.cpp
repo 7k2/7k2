@@ -119,7 +119,7 @@ void Unit::draw(int, int drawFlag)
 		if ((config.frame_speed != 0) && (sys.frame_count%2 == abs(max_power%2)))
 			max_power --;
 		world.zoom_matrix->put_center_text(cur_x, cur_y, 
-			get_z() - 12 * ((max_power) + 10), m.format( cur_power, 2 ), 0, &font_sop);
+			get_z() - 12 * ((max_power) + 10), misc.format( cur_power, 2 ), 0, &font_sop);
 	}
 	UnitInfo* unitInfo = unit_res[unit_id];
 	

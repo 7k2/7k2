@@ -724,7 +724,7 @@ int Power::detect_select(int selX1, int selY1, int selX2, int selY2, int recallG
 			{
 				unitPtr->update_abs_pos();
 
-				if( m.is_touch( absSelX1, absSelY1, absSelX2, absSelY2,
+				if( misc.is_touch( absSelX1, absSelY1, absSelX2, absSelY2,
 					 unitPtr->abs_x1, unitPtr->abs_y1,
 					 unitPtr->abs_x2, unitPtr->abs_y2 ) )
 				{

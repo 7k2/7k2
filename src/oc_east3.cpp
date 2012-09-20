@@ -50,7 +50,7 @@ int CampaignEastWest::stage_3_create_game()
 
 	//--- randomly init the current situation -----//
 
-	set_cur_situation( m.random(CAMPAIGN_SITUATION_COUNT)+1 );
+	set_cur_situation( misc.random(CAMPAIGN_SITUATION_COUNT)+1 );
 
 	//------- create objects and vars --------//
 
@@ -160,8 +160,8 @@ int CampaignEastWest::stage_3_create_town()
 
 	//------ generate a StateArray ---------//
 
-	int playerTownAddCount  	 = 10 + m.random(3);
-	int independentTownAddCount = 3 + m.random(3);
+	int playerTownAddCount  	 = 10 + misc.random(3);
+	int independentTownAddCount = 3 + misc.random(3);
 
 	StateArray townStateArray;
 
@@ -189,9 +189,9 @@ int CampaignEastWest::stage_3_create_town()
 
 		else if( independentTownAddCount > 0 )
 		{
-			int raceId = m.random(MAX_RACE)+1;
-			int initPopulation = 30 + m.random(30);
-			int initResistance = 60 + m.random(40);
+			int raceId = misc.random(MAX_RACE)+1;
+			int initPopulation = 30 + misc.random(30);
+			int initResistance = 60 + misc.random(40);
 
 			create_independent_town(xLoc, yLoc, raceId, initPopulation, initResistance);
 
@@ -217,7 +217,7 @@ int CampaignEastWest::stage_3_create_firm()
 	int townRecno1 = king_oversee_town_recno(PLAYER_NATION_RECNO);
 	int townRecno2 = random_pick_town_with_camp(PLAYER_NATION_RECNO, 2);		// only pick towns with <= 2 links
 
-	if( townRecno2 && m.random(2)==0 )		// swap the town in 50% chance
+	if( townRecno2 && misc.random(2)==0 )		// swap the town in 50% chance
 	{
 		int t=townRecno1;
 		townRecno1 = townRecno2;
@@ -269,12 +269,12 @@ void CampaignEastWest::stage_3_next_day()
 
 	rebel_count--;
 
-	next_rebel_date += 30 + m.random(30);
+	next_rebel_date += 30 + misc.random(30);
 
 	town_defect( PLAYER_NATION_RECNO, 0 );
 
 	if( rebel_count%3==0 ||
-		 m.random( (MAX_CAMPAIGN_DIFFICULTY-campaign_difficulty)/2 + nation_array.nation_count - 1 )==0
+		 misc.random( (MAX_CAMPAIGN_DIFFICULTY-campaign_difficulty)/2 + nation_array.nation_count - 1 )==0
 		 && info.game_date > info.game_start_date + 90 )
 	{
 		rebel_form_nation();       // when this function is called, a new nation will formed if there is any independent towns.
@@ -306,7 +306,7 @@ void CampaignEastWest::stage_3_process_game_result()
 
 		info.game_year = game_year;			// revert info.game_year back to campaign's game year so that the game's time will not advance
 
-		m.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
+		misc.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
 	}
 }
 //---- End of function CampaignEastWest::stage_3_process_game_result -----//

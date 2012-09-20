@@ -60,7 +60,7 @@ int Unit::think_aggressive_action()
 
 		BaseObj* baseObj;
 
-		if( (is_ai || m.random(2) ) &&			// only AI unit will do so, human units will keep attacking the target no matter what it is.
+		if( (is_ai || misc.random(2) ) &&			// only AI unit will do so, human units will keep attacking the target no matter what it is.
 			 !base_obj_array.is_deleted(cur_order.para) &&
 			 !(baseObj = base_obj_array[cur_order.para])->obj_can_attack(0) )      // if the target structure can't attack, then take care of it later, attack the enemy units first
 		{
@@ -153,7 +153,7 @@ int Unit::think_aggressive_attack(int extendedRange, int fullDetect)
 				// assume moving away if the target is moving in 
 				// 3 directions away of this unit
 				if( targetUnit->cur_action == SPRITE_MOVE 
-					&& m.abs_direction_diff( targetUnit->cur_dir & 7,
+					&& misc.abs_direction_diff( targetUnit->cur_dir & 7,
 					get_dir(cur_x, cur_y, targetUnit->cur_x, targetUnit->cur_y)) <= 1 )
 				{
 					scanner.remove();
@@ -284,7 +284,7 @@ int Unit::think_aggressive_attack(int extendedRange, int fullDetect)
 
 	for( int i=startPoint ; i<=endPoint ; i++ )
 	{
-		m.cal_move_around_a_point(i, attackScanRange, attackScanRange, xOffset, yOffset);
+		misc.cal_move_around_a_point(i, attackScanRange, attackScanRange, xOffset, yOffset);
 
 		xLoc = curXLoc + xOffset;
 		yLoc = curYLoc + yOffset;

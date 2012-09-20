@@ -239,7 +239,7 @@ void Unit::attack(short targetRecno, bool resetOrder)
 
 	//--------------------------------------//
 #ifdef	DEBUG
-	unsigned long startTime = m.get_time();
+	unsigned long startTime = misc.get_time();
 #endif
 	BaseObj *targetObj = base_obj_array[targetRecno];
 
@@ -307,7 +307,7 @@ void Unit::attack(short targetRecno, bool resetOrder)
 	}
 
 #ifdef DEBUG
-	unit_attack_profile_time += m.get_time()-startTime;
+	unit_attack_profile_time += misc.get_time()-startTime;
 #endif
 }
 //----------- End of function Unit::attack -----------//
@@ -532,8 +532,8 @@ int Unit::process_attack()
 						|| (panicUnitId == UNIT_INDIAN_SPU && unit_id == UNIT_GORILLA))
 					{
 						//panic !!
-						int panicShiftX = 1+m.random(5);
-						int panicShiftY = 1+m.random(5);
+						int panicShiftX = 1+misc.random(5);
+						int panicShiftY = 1+misc.random(5);
 						
 						if(next_x_loc()-locX > 0) //horror at the right side !
 							panicShiftX = -panicShiftX;		//move towards the left
@@ -737,8 +737,8 @@ int Unit::process_attack()
 							if( panicFlag )
 							{
 								//panic !!
-								int panicShiftX = 1+m.random(5);
-								int panicShiftY = 1+m.random(5);
+								int panicShiftX = 1+misc.random(5);
+								int panicShiftY = 1+misc.random(5);
 								
 								if(next_x_loc() > locX ) //horror at the right side !
 									panicShiftX = -panicShiftX;		//move towards the left
@@ -776,7 +776,7 @@ int Unit::process_attack()
 				//	attackDamage += attackDamage * (4-dirDiff) / 8;
 				//else if( dirDiff > 4 )
 				//	attackDamage += attackDamage * (dirDiff-4) / 8;
-				attackDamage += attackDamage * (4-m.abs_direction_diff(cur_dir & 7, targetUnit->cur_dir & 7))/8;
+				attackDamage += attackDamage * (4-misc.abs_direction_diff(cur_dir & 7, targetUnit->cur_dir & 7))/8;
 				// ####### end Gilbert 1/6 ##### //
 			}
 
@@ -802,7 +802,7 @@ int Unit::process_attack()
 					Unit *scanUnit = unit_array[scanner.get_unit()];
 					if( (!targetUnit || targetUnit != scanUnit )		// not the target attacking
 						&& scanUnit->nation_recno == targetObj->nation_recno
-						&& m.random(scanUnit->combat_level()) < m.random(combat_level()/2) )	// saving depend on combat level
+						&& misc.random(scanUnit->combat_level()) < misc.random(combat_level()/2) )	// saving depend on combat level
 					{
 						// ###### begin Gilbert 10/4 ##########//
 						if( scanUnit->freeze_frame_left == 0 )
@@ -887,7 +887,7 @@ int Unit::validate_attack_target()
 
 				enum { AGGRESSIVE_CHASE_RANGE = 5 };
 
-				int curDistance = m.points_distance( targetObj->obj_loc_x1(),
+				int curDistance = misc.points_distance( targetObj->obj_loc_x1(),
 					targetObj->obj_loc_y1(), original_target_x_loc, original_target_y_loc );
 
 				if( curDistance > AGGRESSIVE_CHASE_RANGE )
@@ -1199,7 +1199,7 @@ void Unit::being_attack_hit(BaseObj* attackerObj, float damagePoint)
 
 		int freezeProbability;
 		if( (freezeProbability = attackUnit->item.ability(ITEM_ABILITY_FREEZE))
-			&& m.random(100) < freezeProbability )
+			&& misc.random(100) < freezeProbability )
 		{
 			freeze(freezeProbability);
 
@@ -1211,7 +1211,7 @@ void Unit::being_attack_hit(BaseObj* attackerObj, float damagePoint)
 		int loyaltyDecProbability;
 		if( race_id		// target can reduce loyalty
 			&&	(loyaltyDecProbability = attackUnit->item.ability(ITEM_ABILITY_DEC_LOYALTY)) 
-			&& m.random(100) < loyaltyDecProbability )
+			&& misc.random(100) < loyaltyDecProbability )
 		{
 			change_loyalty(-1);
 
@@ -1935,7 +1935,7 @@ void Unit::being_killed_subordinate_betray(BaseObj* attackerObj)
 
 	err_when( !team_info );
 
-	int betrayAllowCount = 1 + m.random(3);			// betray only 1 to 3 units at maximum
+	int betrayAllowCount = 1 + misc.random(3);			// betray only 1 to 3 units at maximum
 
 	for( int i=0 ; i<team_info->member_count ; i++ )
 	{
@@ -1951,7 +1951,7 @@ void Unit::being_killed_subordinate_betray(BaseObj* attackerObj)
 
 		//--- only affect units within the commander's leading distance ---//
 
-		if( m.points_distance( unitPtr->next_x_loc(), unitPtr->next_y_loc(),
+		if( misc.points_distance( unitPtr->next_x_loc(), unitPtr->next_y_loc(),
 			 next_x_loc(), next_y_loc() ) > EFFECTIVE_LEADING_DISTANCE )
 		{
 			continue;
@@ -1970,7 +1970,7 @@ void Unit::being_killed_subordinate_betray(BaseObj* attackerObj)
 							- 50 * (int) unitPtr->hit_points / (int) unitPtr->max_hit_points()
 							- (int) unitPtr->loyalty/2;
 
-		if( m.random(100) < betrayChance )
+		if( misc.random(100) < betrayChance )
 		{
 			unitPtr->betray(attackerObj->nation_recno);
 
@@ -1991,7 +1991,7 @@ void Unit::being_killed_subordinate_betray(BaseObj* attackerObj)
 								- 50 * (int) unitPtr->hit_points / (int) unitPtr->max_hit_points()
 								- (int) unitPtr->loyalty/2;
 
-			if( m.random(100) < betrayChance )
+			if( misc.random(100) < betrayChance )
 			{
 				unitPtr->betray(mostPopulatedNationRecno);
 			}
@@ -2021,7 +2021,7 @@ int Unit::most_populated_nation_nearby(int scanRange)
 	int i;
 	for( i=2 ; i<scanRange*scanRange ; i++ )
 	{
-		m.cal_move_around_a_point(i, scanRange, scanRange, xOffset, yOffset);
+		misc.cal_move_around_a_point(i, scanRange, scanRange, xOffset, yOffset);
 
 		xLoc = curXLoc + xOffset;
 		yLoc = curYLoc + yOffset;
@@ -2059,7 +2059,7 @@ int Unit::most_populated_nation_nearby(int scanRange)
 	}
 
 	if( !bestNationId )
-		bestNationId = m.random(nation_array.size())+1;		// if there is no human units nearby (perhaps just using weapons)
+		bestNationId = misc.random(nation_array.size())+1;		// if there is no human units nearby (perhaps just using weapons)
 
 	return bestNationId;
 }
@@ -2118,7 +2118,7 @@ void Unit::target_move(BaseObj* targetObj)
 	// ####### end Gilbert 16/4 ########//
 
 	// ###### begin Gilbert 15/3 ########//
-	// if( attackDistance> (max_attack_range()-m.random(3) ))
+	// if( attackDistance> (max_attack_range()-misc.random(3) ))
 	if( attackDistance> max_attack_range() )
 	// ###### end Gilbert 15/3 ########//
 	{
@@ -2634,7 +2634,7 @@ int Unit::ai_attack_next_target()
 
 	for( int i=1 ; i<=scanRange*scanRange ; i++ )
 	{
-		m.cal_move_around_a_point(i, scanRange, scanRange, xOffset, yOffset);
+		misc.cal_move_around_a_point(i, scanRange, scanRange, xOffset, yOffset);
 
 		xLoc = curXLoc + xOffset;
 		yLoc = curYLoc + yOffset;

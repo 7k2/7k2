@@ -393,12 +393,12 @@ int Nation::think_unite_against_big_enemy()
 
 	if( config.ai_aggressiveness == OPTION_HIGH )
 	{
-		if( m.random(10)!=0 )
+		if( misc.random(10)!=0 )
 			return 0;
 	}
 	else		// OPTION_VERY_HIGH
 	{
-		if( m.random(5)!=0 )
+		if( misc.random(5)!=0 )
 			return 0;
 	}
 
@@ -699,7 +699,7 @@ int Nation::think_ally_against_big_enemy()
 
 	//---- don't have all nations doing it the same time ----//
 
-	if( m.random(nation_array.ai_nation_count)==0 )
+	if( misc.random(nation_array.ai_nation_count)==0 )
 		return 0;
 
 	//---- if the trade rating is high, stay war-less with it ----//
@@ -727,7 +727,7 @@ int Nation::think_ally_against_big_enemy()
 		{
 			static short aidAmountArray[] = { 500, 1000, 2000 };
 
-			int aidAmount = aidAmountArray[m.random(3)];
+			int aidAmount = aidAmountArray[misc.random(3)];
 
 			talk_res.ai_send_talk_msg(enemyNationRecno, nation_recno, talkId, aidAmount);
 		}
@@ -1021,7 +1021,7 @@ int Nation::think_against_mine_monopoly()
 		{
 			static short aidAmountArray[] = { 500, 1000, 2000 };
 
-			int aidAmount = aidAmountArray[m.random(3)];
+			int aidAmount = aidAmountArray[misc.random(3)];
 
 			talk_res.ai_send_talk_msg(targetNationRecno, nation_recno, talkId, aidAmount);
 		}

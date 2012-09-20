@@ -501,7 +501,7 @@ int Power::choose_cursor(int scrnX, int scrnY,
 								(pFirm->loc_x1+pFirm->loc_x2+1)*LOCATE_WIDTH/2,
 								(pFirm->loc_y1+pFirm->loc_y2+1)*LOCATE_HEIGHT/2,
 								pFirm->altitude);
-							if(m.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
+							if(misc.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
 								&& townPtr->can_toggle_firm_link(pointingObjectRecno) )
 							{
 								return CURSOR_ON_LINK;
@@ -521,7 +521,7 @@ int Power::choose_cursor(int scrnX, int scrnY,
 								(pTown->loc_x1+pTown->loc_x2+1)*LOCATE_WIDTH/2,
 								(pTown->loc_y1+pTown->loc_y2+1)*LOCATE_HEIGHT/2,
 								pTown->altitude);
-							if(m.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
+							if(misc.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
 								&& townPtr->can_migrate(pointingObjectRecno) )
 							{
 								return CURSOR_ON_LINK;
@@ -542,7 +542,7 @@ int Power::choose_cursor(int scrnX, int scrnY,
 								(pFirm->loc_x1+pFirm->loc_x2+1)*LOCATE_WIDTH/2,
 								(pFirm->loc_y1+pFirm->loc_y2+1)*LOCATE_HEIGHT/2,
 								pFirm->altitude);
-							if(m.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
+							if(misc.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
 								&& townPtr->can_toggle_firm_link(pointingObjectRecno) )
 							{
 								return CURSOR_ON_LINK;
@@ -563,7 +563,7 @@ int Power::choose_cursor(int scrnX, int scrnY,
 								(pFirm->loc_x1+pFirm->loc_x2+1)*LOCATE_WIDTH/2,
 								(pFirm->loc_y1+pFirm->loc_y2+1)*LOCATE_HEIGHT/2,
 								pFirm->altitude);
-							if(m.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
+							if(misc.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
 								&& townPtr->can_toggle_firm_link(pointingObjectRecno) )
 							{
 								return CURSOR_ON_LINK;
@@ -627,7 +627,7 @@ int Power::choose_cursor(int scrnX, int scrnY,
 								(pTown->loc_x1+pTown->loc_x2+1)*LOCATE_WIDTH/2,
 								(pTown->loc_y1+pTown->loc_y2+1)*LOCATE_HEIGHT/2,
 								pTown->altitude);
-							if(m.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
+							if(misc.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
 								&& firmPtr->can_toggle_town_link(pointingObjectRecno) )
 							{
 								return CURSOR_ON_LINK;
@@ -646,7 +646,7 @@ int Power::choose_cursor(int scrnX, int scrnY,
 								(pFirm->loc_x1+pFirm->loc_x2+1)*LOCATE_WIDTH/2,
 								(pFirm->loc_y1+pFirm->loc_y2+1)*LOCATE_HEIGHT/2,
 								pFirm->altitude);
-							if(m.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
+							if(misc.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
 								&& firmPtr->can_toggle_firm_link(pointingObjectRecno) )
 							{
 								return CURSOR_ON_LINK;
@@ -666,7 +666,7 @@ int Power::choose_cursor(int scrnX, int scrnY,
 								(pTown->loc_x1+pTown->loc_x2+1)*LOCATE_WIDTH/2,
 								(pTown->loc_y1+pTown->loc_y2+1)*LOCATE_HEIGHT/2,
 								pTown->altitude);
-							if(m.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
+							if(misc.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
 								&& firmPtr->can_toggle_town_link(pointingObjectRecno) )
 							{
 								return CURSOR_ON_LINK;
@@ -684,7 +684,7 @@ int Power::choose_cursor(int scrnX, int scrnY,
 								(pFirm->loc_x1+pFirm->loc_x2+1)*LOCATE_WIDTH/2,
 								(pFirm->loc_y1+pFirm->loc_y2+1)*LOCATE_HEIGHT/2,
 								pFirm->altitude);
-							if(m.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
+							if(misc.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
 								&& firmPtr->can_toggle_firm_link(pointingObjectRecno) )
 							{
 								return CURSOR_ON_LINK;
@@ -704,7 +704,7 @@ int Power::choose_cursor(int scrnX, int scrnY,
 								(pTown->loc_x1+pTown->loc_x2+1)*LOCATE_WIDTH/2,
 								(pTown->loc_y1+pTown->loc_y2+1)*LOCATE_HEIGHT/2,
 								pTown->altitude);
-							if(m.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
+							if(misc.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
 								&& firmPtr->can_toggle_town_link(pointingObjectRecno) )
 							{
 								return CURSOR_ON_LINK;
@@ -722,7 +722,7 @@ int Power::choose_cursor(int scrnX, int scrnY,
 								(pFirm->loc_x1+pFirm->loc_x2+1)*LOCATE_WIDTH/2,
 								(pFirm->loc_y1+pFirm->loc_y2+1)*LOCATE_HEIGHT/2,
 								pFirm->altitude);
-							if(m.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
+							if(misc.points_distance( mouse.cur_x, mouse.cur_y, centerX+ZOOM_X1, centerY+ZOOM_Y1) <= 11
 								&& firmPtr->can_toggle_firm_link(pointingObjectRecno) )
 							{
 								return CURSOR_ON_LINK;

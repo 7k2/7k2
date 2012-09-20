@@ -65,7 +65,7 @@ int CampaignEastWest::stage_19_create_game()
 
 	//----- create offensive structures ---------//
 
-	if( m.random(2)==0 )
+	if( misc.random(2)==0 )
 		create_offensive_structure( STAGE_19_EASTERN_NATION_RECNO, 1 + campaign_difficulty/2 );		// build 2 structures if the difficulty > 3
 
 	//------ create the player troop -------//
@@ -153,7 +153,7 @@ int CampaignEastWest::stage_19_create_nation()
 
 int CampaignEastWest::stage_19_create_town()
 {
-	int townAddCount   = 5 + m.random(3);
+	int townAddCount   = 5 + misc.random(3);
 	int hasFortPercent = 70;
 
 	return create_town(STAGE_19_EASTERN_NATION_RECNO, townAddCount, hasFortPercent);
@@ -172,7 +172,7 @@ int CampaignEastWest::stage_19_create_firm()
 	int townRecno1 = king_oversee_town_recno(STAGE_19_EASTERN_NATION_RECNO);
 	int townRecno2 = random_pick_town_with_camp(STAGE_19_EASTERN_NATION_RECNO, 2);		// only pick towns with <= 2 links
 
-	if( townRecno2 && m.random(2)==0 )		// swap the town in 50% chance
+	if( townRecno2 && misc.random(2)==0 )		// swap the town in 50% chance
 	{
 		int t=townRecno1;
 		townRecno1 = townRecno2;
@@ -244,7 +244,7 @@ void CampaignEastWest::stage_19_process_game_result()
 
 		info.game_year = game_year;			// revert info.game_year back to campaign's game year so that the game's time will not advance
 
-		m.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
+		misc.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
 	}
 }
 //---- End of function CampaignEastWest::stage_19_process_game_result -----//

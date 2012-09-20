@@ -212,7 +212,7 @@ int FirmLair::think_build_bregma_special()
 {
 	int firmId;
 
-	if( m.random(2)==0 )
+	if( misc.random(2)==0 )
 		firmId = FIRM_BEE;
 	else
 		firmId = FIRM_TERMITE;
@@ -423,7 +423,7 @@ int FirmLair::think_tech_to_buy(short* techIdArray, short* techPrefArray, int te
 
 	//---- go over the tech list and see if there is any tech we should buy now ---//
 
-	int techSeq = m.random(techCount);
+	int techSeq = misc.random(techCount);
 
 	for( i=0 ; i<techCount ; i++ )
 	{

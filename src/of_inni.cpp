@@ -540,11 +540,11 @@ void FirmInn::disp_unit_list(int dispY1, int refreshFlag)
 				{
 					if( row == 0 )		// display combat skill and leadership
 					{
-						font_whbl.center_put( x, yHp, x+UNIT_X_SPACING, yHp+fontHeight, m.format(innUnit->skill_level()) );
+						font_whbl.center_put( x, yHp, x+UNIT_X_SPACING, yHp+fontHeight, misc.format(innUnit->skill_level()) );
 					}
 					else if( row == 1 )		// display spy skill
 					{
-						font_whbl.center_put( x, yHp, x+UNIT_X_SPACING, yHp+fontHeight, m.format(innUnit->spy_skill) );
+						font_whbl.center_put( x, yHp, x+UNIT_X_SPACING, yHp+fontHeight, misc.format(innUnit->spy_skill) );
 					}
 				}
 
@@ -650,7 +650,7 @@ void FirmInn::disp_unit_info(int dispY1, int refreshFlag)
 
 	// x2 = font_snds.put( x, y, "Combat" ) + 10;
 	x2 = font_snds.put( x, y, text_unit.str_combat_level() ) + 10;
-	font_snds.right_put( INFO_X2-100, y, m.format(innUnit->combat_level(), 4) );
+	font_snds.right_put( INFO_X2-100, y, misc.format(innUnit->combat_level(), 4) );
 //	x2 = font_snds.put( x2, y, innUnit->combat_level() ) + 15;
 
 	// display spying skill
@@ -661,13 +661,13 @@ void FirmInn::disp_unit_info(int dispY1, int refreshFlag)
 		{
 			// x2 = font_snds.put( x+110, y, "Spying" ) + 10;
 			x2 = font_snds.put( x+110, y, text_unit.str_spy_skill() ) + 10;
-			font_snds.right_put( INFO_X2-10, y, m.format(innUnit->spy_skill,4) );
+			font_snds.right_put( INFO_X2-10, y, misc.format(innUnit->spy_skill,4) );
 		}
 		else if( innUnit->is_own_spy() )
 		{
 			// x2 = font_snds.put( x+110, y, "Spying" ) + 10;
 			x2 = font_snds.put( x+110, y, text_unit.str_spy_skill() ) + 10;
-			font_snds.right_put( INFO_X2-10, y, m.format(spy_array[innUnit->spy_recno]->spy_skill,4) );
+			font_snds.right_put( INFO_X2-10, y, misc.format(spy_array[innUnit->spy_recno]->spy_skill,4) );
 		}
 		else if ( innUnit->hero_id )
 		{
@@ -692,13 +692,13 @@ void FirmInn::disp_unit_info(int dispY1, int refreshFlag)
 	{
 		// x2 = font_snds.put( x, y, "Leadership" ) + 10;
 		x2 = font_snds.put( x, y, text_unit.str_leadership() ) + 10;
-		font_snds.right_put( INFO_X2-100, y, m.format(innUnit->skill_level(), 4) );
+		font_snds.right_put( INFO_X2-100, y, misc.format(innUnit->skill_level(), 4) );
 	//	font_snds.put( x2, y, innUnit->skill_level() );
 	}
 
 	// display hire cost
 
-	font_snds.right_put( INFO_X1+212, y, m.format(innUnit->hire_cost, 2) );
+	font_snds.right_put( INFO_X1+212, y, misc.format(innUnit->hire_cost, 2) );
 
 #if(defined(CHINESE))
 	//SXM
@@ -712,7 +712,7 @@ void FirmInn::disp_unit_info(int dispY1, int refreshFlag)
 	if( innUnit->item.id )
 	{
 		font_snds.put( x, y, innUnit->item.item_name() );
-		font_snds.right_put( INFO_X1+212, y, m.format(innUnit->item.cost(), 2) );
+		font_snds.right_put( INFO_X1+212, y, misc.format(innUnit->item.cost(), 2) );
 	}
 	else
 	{
@@ -720,14 +720,14 @@ void FirmInn::disp_unit_info(int dispY1, int refreshFlag)
 		{
 			// x2 = font_snds.put( x, y, "Spying" ) + 10;
 			x2 = font_snds.put( x, y, text_unit.str_spy_skill() ) + 10;
-			font_snds.right_put( INFO_X2-100, y, m.format(innUnit->spy_skill, 4) );
+			font_snds.right_put( INFO_X2-100, y, misc.format(innUnit->spy_skill, 4) );
 		//	font_snds.put( x2, y, innUnit->spy_skill );
 		}
 		else if( innUnit->is_own_spy() )
 		{
 			// x2 = font_snds.put( x, y, "Spying" ) + 10;
 			x2 = font_snds.put( x, y, text_unit.str_spy_skill() ) + 10;
-			font_snds.right_put( INFO_X2-100, y, m.format(spy_array[innUnit->spy_recno]->spy_skill, 4) );
+			font_snds.right_put( INFO_X2-100, y, misc.format(spy_array[innUnit->spy_recno]->spy_skill, 4) );
 		//	font_snds.put( x2, y, spy_array[innUnit->spy_recno]->spy_skill );
 		}
 		else if ( innUnit->hero_id )

@@ -319,9 +319,9 @@ void UnitArray::draw_dot(int filterUnitClassId)
 void UnitArray::draw_profile()
 {
 #ifdef DEBUG
-	static unsigned long lastDrawTime = m.get_time();
+	static unsigned long lastDrawTime = misc.get_time();
 
-	if(m.get_time() >= lastDrawTime + 1000)
+	if(misc.get_time() >= lastDrawTime + 1000)
 	{
 		//----update pathfind profile-----//
 		last_pathfind_profile_time = pathfind_profile_time;
@@ -329,7 +329,7 @@ void UnitArray::draw_profile()
 		last_unit_ai_profile_time = unit_ai_profile_time;
 		unit_ai_profile_time = 0L;
 
-		lastDrawTime = m.get_time();
+		lastDrawTime = misc.get_time();
 	}
 
 	//---- draw unit process profile -----//
@@ -345,9 +345,9 @@ void UnitArray::draw_profile()
 void UnitArray::draw_profile()
 {
 #ifdef DEBUG
-	static unsigned long lastDrawTime = m.get_time();
+	static unsigned long lastDrawTime = misc.get_time();
 
-	if(m.get_time() >= lastDrawTime + 1000)
+	if(misc.get_time() >= lastDrawTime + 1000)
 	{
 		//--------- update unit process profile ---------//
 		last_unit_ai_profile_time = unit_ai_profile_time;
@@ -421,7 +421,7 @@ void UnitArray::draw_profile()
 		last_unit_check_build_firm_profile_time = unit_check_build_firm_profile_time;
 		unit_check_build_firm_profile_time = 0L;
 		*/
-		lastDrawTime = m.get_time();
+		lastDrawTime = misc.get_time();
 	}
 
 	//------------ draw unit process profile -------------//

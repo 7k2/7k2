@@ -140,10 +140,10 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 			{
 				staticSumRare += wish_info_array[effectId-1].rare;
 			}
-			err_when( staticSumRare > 0x7fff );	// larger the limit of m.random
+			err_when( staticSumRare > 0x7fff );	// larger the limit of misc.random
 		}
 
-		long sumRare = m.random(staticSumRare);
+		long sumRare = misc.random(staticSumRare);
 		for( effectId = 1; effectId <= MAX_WISH; ++effectId )
 		{
 			sumRare -= wish_info_array[effectId-1].rare;
@@ -194,7 +194,7 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 
 			if( validTechIdCount > 0 )
 			{
-				techId = validTechId[m.random(validTechIdCount)];
+				techId = validTechId[misc.random(validTechIdCount)];
 				TechInfo *techInfo = tech_res[techId];
 				techInfo->set_nation_tech_level(nation_recno, techInfo->get_nation_tech_level(nation_recno)+1 );
 
@@ -211,7 +211,7 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 		{
 			int unitId;
 			Skill skill;
-			int humanClass = 1+m.random(2);
+			int humanClass = 1+misc.random(2);
 			switch( humanClass )
 			{
 			case 0: 
@@ -221,12 +221,12 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 
 			case 1:
 				unitId = race_res[race_id]->infantry_unit_id;
-				skill.init( unitId, MAX_COMBAT_TRAIN+m.random(MAX_COMBAT_BATTLE-MAX_COMBAT_TRAIN), BASIC_SKILL_TRAIN+m.random(MAX_SKILL_TRAIN-BASIC_SKILL_TRAIN) );
+				skill.init( unitId, MAX_COMBAT_TRAIN+misc.random(MAX_COMBAT_BATTLE-MAX_COMBAT_TRAIN), BASIC_SKILL_TRAIN+misc.random(MAX_SKILL_TRAIN-BASIC_SKILL_TRAIN) );
 				break;
 
 			case 2:
 				unitId = race_res[race_id]->special_unit_id;
-				skill.init( unitId, MAX_COMBAT_TRAIN+m.random(MAX_COMBAT_BATTLE-MAX_COMBAT_TRAIN), BASIC_SKILL_TRAIN+m.random(MAX_SKILL_TRAIN-BASIC_SKILL_TRAIN) );
+				skill.init( unitId, MAX_COMBAT_TRAIN+misc.random(MAX_COMBAT_BATTLE-MAX_COMBAT_TRAIN), BASIC_SKILL_TRAIN+misc.random(MAX_SKILL_TRAIN-BASIC_SKILL_TRAIN) );
 				break;
 			}
 
@@ -246,7 +246,7 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 				}
 				else if( effectId == WISH_NEW_SPY )
 				{
-					unitPtr->spy_recno = spy_array.add_spy(unitPtr->sprite_recno, 100-m.random(20) );
+					unitPtr->spy_recno = spy_array.add_spy(unitPtr->sprite_recno, 100-misc.random(20) );
 					resultStr = text_firm.process( text_firm.get_format_str( 16, "BAW4" ),
 						race_res[unitPtr->race_id]->name );
 				}
@@ -264,11 +264,11 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 	case WISH_NEW_MONSTER:
 	// A fryhtan has entered your service!
 		{
-			int monsterId = 1+m.random(MAX_MONSTER_TYPE);
+			int monsterId = 1+misc.random(MAX_MONSTER_TYPE);
 			int unitId = monster_res[monsterId]->unit_id;
 			Skill skill;
 			// skill.init( unitId, BASIC_COMBAT_TRAIN, BASIC_SKILL_TRAIN );
-			skill.init( unitId, BASIC_COMBAT_TRAIN+m.random(MAX_COMBAT_TRAIN-BASIC_COMBAT_TRAIN), BASIC_SKILL_TRAIN+m.random(MAX_SKILL_TRAIN-BASIC_SKILL_TRAIN) );
+			skill.init( unitId, BASIC_COMBAT_TRAIN+misc.random(MAX_COMBAT_TRAIN-BASIC_COMBAT_TRAIN), BASIC_SKILL_TRAIN+misc.random(MAX_SKILL_TRAIN-BASIC_SKILL_TRAIN) );
 
 			int unitRecno = create_unit( unitId );
 			if( unitRecno )
@@ -339,14 +339,14 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 
 	case WISH_CASH:
 		// A peasant has discovered a hidden hoard of gold has has gladly turned it all over to you!
-		nation_ptr()->add_income( INCOME_TREASURE, (20+m.random(51)) * 100.0f );
+		nation_ptr()->add_income( INCOME_TREASURE, (20+misc.random(51)) * 100.0f );
 		resultStr = text_firm.get_format_str( 20, "BAW8" );
 		break;
 
 	case WISH_FOOD:
 		// A large amount of food has been discovered in a secret peasant cache.
 		// They have recognized their crime and have turned the food over to you.
-		nation_ptr()->add_food( (20+m.random(51)) * 100.0f );
+		nation_ptr()->add_food( (20+misc.random(51)) * 100.0f );
 		resultStr = text_firm.get_format_str( 21, "BAW9" );
 		break;
 
@@ -384,7 +384,7 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 	// An enemy (soldier or civilian) has defected and joined your Kingdom!
 		{
 			int unitArraySize = unit_array.size();
-			int unitRecno = m.random(unitArraySize);
+			int unitRecno = misc.random(unitArraySize);
 			int i;
 			for( i = unitArraySize; i > 0; --i )
 			{
@@ -421,7 +421,7 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 	// An enemy <fort> has recognized your greatness and surrendered to you!
 		{
 			int firmArraySize = firm_array.size();
-			int firmRecno = m.random(firmArraySize);
+			int firmRecno = misc.random(firmArraySize);
 			int i;
 
 			for( i = firmArraySize; i > 0; --i )
@@ -464,7 +464,7 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 	// An enemy town, tired of living under oppressive rule, has declared for you!
 		{
 			int townArraySize = town_array.size();
-			int townRecno = m.random(townArraySize);
+			int townRecno = misc.random(townArraySize);
 			int i;
 
 			for( i = townArraySize; i > 0; --i )
@@ -497,7 +497,7 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 		{
 			// discover any spy first
 			int spyArraySize = spy_array.size();
-			int spyRecno = m.random(spyArraySize);
+			int spyRecno = misc.random(spyArraySize);
 			char spyPlace = SPY_UNDEFINED;
 			short	spyPlacePara = 0;
 			int killCount = 0;
@@ -534,7 +534,7 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 					if( spyPtr->spy_place == spyPlace && spyPtr->spy_place_para == spyPlacePara
 						&& spyPtr->cloaked_nation_recno == nation_recno &&  spyPtr->true_nation_recno != nation_recno )
 					{
-						if( m.random(10) < 7 )		// 70% catch
+						if( misc.random(10) < 7 )		// 70% catch
 						{
 							spyPtr->set_exposed(COMMAND_AUTO);
 							++killCount;
@@ -568,7 +568,7 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 
 				if( spyPtr->cloaked_nation_recno == nation_recno &&  spyPtr->true_nation_recno != nation_recno )
 				{
-					if( m.random(10) < 3 )		// 30% catch
+					if( misc.random(10) < 3 )		// 30% catch
 					{
 						spyPtr->set_exposed(COMMAND_AUTO);
 						killCount++;
@@ -598,7 +598,7 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 
 				if( spyPtr->cloaked_nation_recno == nation_recno &&  spyPtr->true_nation_recno != nation_recno )
 				{
-					if( m.random(10) < 9 )		// 90% catch
+					if( misc.random(10) < 9 )		// 90% catch
 					{
 						spyPtr->set_exposed(COMMAND_AUTO);
 					}
@@ -616,7 +616,7 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 
 			int bestFirm = 0;
 			int bestWeight = 0;
-			int firmRecno = m.random(firm_array.size());
+			int firmRecno = misc.random(firm_array.size());
 			for(int i = firm_array.size(); i > 0; --i )
 			{
 				if( ++firmRecno > firm_array.size() )
@@ -737,13 +737,13 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 	// The loyalty of the people of (town) has increased to its maximum!
 	// The loyalty of everyone in a(n) (structure) of yours has increased to its maximum!
 		{
-			int loyalInc = (effectId == WISH_LOYALTY_BUILDING_S ? m.random(30)+20 : 100);
+			int loyalInc = (effectId == WISH_LOYALTY_BUILDING_S ? misc.random(30)+20 : 100);
 
-			if( m.random(2) == 0 )
+			if( misc.random(2) == 0 )
 			{
 				// town
 				int townArraySize = town_array.size();
-				int townRecno = m.random(townArraySize);
+				int townRecno = misc.random(townArraySize);
 				for( int i = townArraySize; i > 0; --i )
 				{
 					if( ++townRecno > townArraySize )
@@ -782,7 +782,7 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 			{
 				// firm
 				int firmArraySize = firm_array.size();
-				int firmRecno = m.random(firmArraySize);
+				int firmRecno = misc.random(firmArraySize);
 				for( int i = firmArraySize; i > 0; --i )
 				{
 					if( ++firmRecno > firmArraySize )
@@ -853,7 +853,7 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 	// The loyalty of every subject in your Kingdom has increased by (points) points!
 	// The loyalty of every subject in your Kingdom has increased to its maximum!
 		{
-			int loyalInc = (effectId == WISH_LOYALTY_NATION_S ? m.random(30)+20 : 100);
+			int loyalInc = (effectId == WISH_LOYALTY_NATION_S ? misc.random(30)+20 : 100);
 
 			// unit_array
 
@@ -931,10 +931,10 @@ void FirmBase::invoke_random_effect(int effectId, char remoteAction)
 	case WISH_COMBAT_BUILDING:
 	// The combat level of all soldiers in a(n) (structure) of yours has increased by (points) points!
 		{
-			float incCombat = m.random(40)+30.0f;
+			float incCombat = misc.random(40)+30.0f;
 			// select building
 
-			int firmRecno = m.random(firm_array.size());
+			int firmRecno = misc.random(firm_array.size());
 			for(int i = firm_array.size(); i > 0; --i )
 			{
 				if( ++firmRecno > firm_array.size() )

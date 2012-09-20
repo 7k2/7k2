@@ -254,7 +254,7 @@ void Town::disp_main_menu(int refreshFlag)
 		// str = construction_completion_percent;
 		// str += "%";
 		font_vill.center_put( INFO_X1+20, INFO_Y1+139, INFO_X1+125, INFO_Y1+171, 
-			m.format(construction_completion_percent, 3) );
+			misc.format(construction_completion_percent, 3) );
 
 		if( nation_recno && nation_array.player_recno == nation_recno )
 		{
@@ -403,7 +403,7 @@ void Town::disp_main_menu(int refreshFlag)
 
 	// str = jobless_population;
 	font_vill.center_put( INFO_X1 +155, INFO_Y1 +145, INFO_X1 +215, INFO_Y1 +157, 
-		m.format(jobless_population) );
+		misc.format(jobless_population) );
 	help.set_help( INFO_X1+155, INFO_Y1 +130, INFO_X1+213, INFO_Y1 +163, "TPEASANT" );
 
 	// ------- display worker population ---------//
@@ -412,7 +412,7 @@ void Town::disp_main_menu(int refreshFlag)
 
 	// str = population - jobless_population;
 	font_vill.center_put( INFO_X1 +70, INFO_Y1 +145, INFO_X1 +160, INFO_Y1 +157, 
-		m.format(population - jobless_population) );
+		misc.format(population - jobless_population) );
 	help.set_help( INFO_X1+84, INFO_Y1 +130, INFO_X1+144, INFO_Y1 +164, "TWORKER" );
 			
 	// ------- display loyalty and resistance -------- //
@@ -481,7 +481,7 @@ if (population >0)
 	tempx = font_vill.center_put( INFO_X1+111, INFO_Y1 +187, INFO_X1+182, INFO_Y1 +187+font_vill.height(), str );
 	if( dispArrow )
 	{
-		tempx = tempx-font_vill.text_width( m.format(targetLoyalty) ) - 12;
+		tempx = tempx-font_vill.text_width( misc.format(targetLoyalty) ) - 12;
 		if( targetLoyalty > curLoyalty )
 			vga.active_buf->put_bitmap_trans( tempx, INFO_Y1 +190, image_icon.read( "ARROWVUP" ));
 		else
@@ -590,7 +590,7 @@ if (population >0)
 				// str = (int)townPtr->hit_points *100 / (int)townPtr->max_hit_points();
 				// str += "%";
 				font_whbl.center_put( button_buildwall.x1, button_buildwall.y1+21, button_buildwall.x1+BUTTON_ACTION_WIDTH-1, button_buildwall.y1+BUTTON_ACTION_HEIGHT-1, 
-					m.format( (int)hit_points*100/(int)max_hit_points(), 3) );
+					misc.format( (int)hit_points*100/(int)max_hit_points(), 3) );
 			}
 			else if ( target_wall_level > current_wall_level )
 			{	
@@ -600,7 +600,7 @@ if (population >0)
 				// str = upgrade_wall_progress *100 /MAX_WALL_PROGRESS;
 				// str += "%";
 				font_whbl.center_put( button_buildwall.x1, button_buildwall.y1+21, button_buildwall.x1+BUTTON_ACTION_WIDTH-1, button_buildwall.y1+BUTTON_ACTION_HEIGHT-1, 
-					m.format( upgrade_wall_progress *100 /MAX_WALL_PROGRESS, 3) );
+					misc.format( upgrade_wall_progress *100 /MAX_WALL_PROGRESS, 3) );
 			}
 			
 			// ####### begin Gilbert 3/7 #########//
@@ -649,7 +649,7 @@ if (population >0)
 		{
 			// String str;
 			// str = "Annual tribute paid to you by this town: ";
-			// str += m.format( totalTribute, 2 );
+			// str += misc.format( totalTribute, 2 );
 			vga.active_buf->bar( BUTTON_X1, BUTTON_Y1, BUTTON_X2, BUTTON_Y2, V_BLACK );
 			font_whbl.put_paragraph( BUTTON_X1+10, BUTTON_Y1+20, BUTTON_X2-10, BUTTON_Y2-20, 
 				text_firm.str_slave_tribute(totalTribute) );
@@ -666,13 +666,13 @@ void Town::disp_auto_loyalty()
 	{
 		vga.active_buf->bar_alpha( button_tax.x1, button_tax.y1+15, button_tax.x1+BUTTON_ACTION_WIDTH-1, button_tax.y1+BUTTON_ACTION_HEIGHT-16, 1, 0 );
 		font_whbl.center_put( button_tax.x1, button_tax.y1, button_tax.x1+BUTTON_ACTION_WIDTH-1, button_tax.y1+BUTTON_ACTION_HEIGHT-1,
-									m.format(auto_collect_tax_loyalty) );
+									misc.format(auto_collect_tax_loyalty) );
 	}
 	if( auto_grant_loyalty )
 	{
 		vga.active_buf->bar_alpha( button_grant.x1, button_grant.y1+15, button_grant.x1+BUTTON_ACTION_WIDTH-1, button_grant.y1+BUTTON_ACTION_HEIGHT-16, 1, 0 );
 		font_whbl.center_put( button_grant.x1, button_grant.y1, button_grant.x1+BUTTON_ACTION_WIDTH-1, button_grant.y1+BUTTON_ACTION_HEIGHT-1,
-									m.format(auto_grant_loyalty) );
+									misc.format(auto_grant_loyalty) );
 	}
 }
 //----------- End of function Town::disp_auto_loyalty -----------//
@@ -1402,7 +1402,7 @@ static void put_spy_rec(int recNo, int x, int y, int refreshFlag)
 	short nationRecno = town_array[town_array.selected_recno]->nation_recno;
 	info.draw_unit_icon( x+10, y+15, race_res[spyPtr->race_id]->civilian_unit_id, nationRecno,
 		INFO_X1, INFO_Y1, INFO_X2, INFO_Y2, 1);
-	font_whbl.center_put( x, y, x+21, y+23, m.format(recNo,1));
+	font_whbl.center_put( x, y, x+21, y+23, misc.format(recNo,1));
 	
 	//--------- set help parameters --------//
 

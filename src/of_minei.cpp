@@ -216,13 +216,13 @@ void FirmMine::disp_firm_info(int dispY1, int refreshFlag)
 		if (stock_qty >= max_stock_qty)
 			vga.active_buf->put_bitmap( INFO_X2-64+6, INFO_Y1+40+15, image_icon.read("FULLVILL") );	
 		font_snds.center_put( INFO_X2-86+12, INFO_Y1+40, INFO_X2, INFO_Y1+55, 
-			m.format((int) stock_qty) ); // str );
+			misc.format((int) stock_qty) ); // str );
 
 //		str  = (int) reserve_qty;
 //		if ( reserve_qty <= 0 )
 //			vga.active_buf->put_bitmap( INFO_X1+33, INFO_Y1+40+15, image_icon.read("FULLVILL") );
 		font_snds.center_put( INFO_X1+10, INFO_Y1+40, INFO_X1+96, INFO_Y1+55, 
-			m.format((int) reserve_qty) ); // str );
+			misc.format((int) reserve_qty) ); // str );
 
 		if ( (int) production_30days() > 0 )
 	//	if ( is_operating() )
@@ -288,7 +288,7 @@ void FirmMine::disp_firm_info(int dispY1, int refreshFlag)
 //		str = (int) production_30days();
 //		font_snds.center_put( INFO_X1+17, INFO_Y1+117, INFO_X2, INFO_Y1+137, str );
 		font_snds.center_put( INFO_X1+17, INFO_Y1+117, INFO_X2, INFO_Y1+137,
-			m.format((int) production_30days()) );
+			misc.format((int) production_30days()) );
 	}
 }
 // -------- end of function FirmMine::disp_firm_info --------//

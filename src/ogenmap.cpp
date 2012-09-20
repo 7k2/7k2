@@ -61,12 +61,12 @@ void World::generate_map(int loadGame)
 	long backupRandomSeed;
 	if( !loadGame )
 	{
-		gen_map_random_seed = m.get_random_seed();
+		gen_map_random_seed = misc.get_random_seed();
 	}
 	else
 	{
-		backupRandomSeed = m.get_random_seed();
-		m.set_random_seed( gen_map_random_seed );
+		backupRandomSeed = misc.get_random_seed();
+		misc.set_random_seed( gen_map_random_seed );
 	}
 
 	// ---------- generate plasma map ----------//
@@ -76,7 +76,7 @@ void World::generate_map(int loadGame)
 	heightMap.init(max_x_loc, max_y_loc);
 
 //	if( !sys.testing_session )
-		heightMap.generate( m.random(2), 5, m.rand() );
+		heightMap.generate( misc.random(2), 5, misc.rand() );
 
 	terrainMap = heightMap;
 
@@ -148,7 +148,7 @@ void World::generate_map(int loadGame)
 
 	if( loadGame )
 	{
-		m.set_random_seed( backupRandomSeed );
+		misc.set_random_seed( backupRandomSeed );
 	}
 
 }
@@ -964,10 +964,10 @@ void World::gen_road(Plasma &roadMap, short x1, short y1, short x2, short y2)
 		{
 			err_when ( midX[j] != 0 );
 			err_when ( midY[j] != 0 );
-			// int wx = 5 + m.random(7);		// varies from 5:11 to 11:5
-			// int wy = 5 + m.random(7);		// varies from 5:11 to 11:5
-			int wx = 6 + m.random(5);		// varies from 6:10 to 10:6
-			int wy = 6 + m.random(5);		// varies from 6:10 to 10:6
+			// int wx = 5 + misc.random(7);		// varies from 5:11 to 11:5
+			// int wy = 5 + misc.random(7);		// varies from 5:11 to 11:5
+			int wx = 6 + misc.random(5);		// varies from 6:10 to 10:6
+			int wy = 6 + misc.random(5);		// varies from 6:10 to 10:6
 			midX[j] = (midX[j-halfDist]*wx + midX[j+halfDist]*(16-wx))/16;
 			midY[j] = (midY[j-halfDist]*wy + midY[j+halfDist]*(16-wy))/16;
 		}

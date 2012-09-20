@@ -150,7 +150,7 @@ int CampaignEastWest::stage_22_create_nation()
 
 int CampaignEastWest::stage_22_create_town()
 {
-	int townAddCount   = 7 + m.random(3);
+	int townAddCount   = 7 + misc.random(3);
 	int hasFortPercent = 70;
 
 	return create_town(STAGE_22_NEW_KINGDOM_NATION_RECNO, townAddCount, hasFortPercent);
@@ -169,7 +169,7 @@ int CampaignEastWest::stage_22_create_firm()
 	int townRecno1 = king_oversee_town_recno(STAGE_22_NEW_KINGDOM_NATION_RECNO);
 	int townRecno2 = random_pick_town_with_camp(STAGE_22_NEW_KINGDOM_NATION_RECNO, 2);		// only pick towns with <= 2 links
 
-	if( townRecno2 && m.random(2)==0 )		// swap the town in 50% chance
+	if( townRecno2 && misc.random(2)==0 )		// swap the town in 50% chance
 	{
 		int t=townRecno1;
 		townRecno1 = townRecno2;

@@ -673,7 +673,7 @@ void Spy::process_firm_action()
 				Unit* unitPtr = unit_array[firmCamp->overseer_recno];
 				if( unitPtr->race_id == race_id )
 				{
-					if( m.random( (100 - spy_skill + unitPtr->skill_level())/10) <= techLevel
+					if( misc.random( (100 - spy_skill + unitPtr->skill_level())/10) <= techLevel
 						// a commander with a higher leadership skill will be less influenced by the spy's dissents
 						 && unitPtr->loyalty>0 )
 					{
@@ -694,7 +694,7 @@ void Spy::process_firm_action()
 				//---- if the worker does not live in a town ----//
 				if( !soldierPtr->spy_recno )		// the loyalty of the spy himself does not change
 				{
-					if( m.random(11-spy_skill/10) <= techLevel && soldierPtr->loyalty>0 )
+					if( misc.random(11-spy_skill/10) <= techLevel && soldierPtr->loyalty>0 )
 						soldierPtr->loyalty--;
 				}
 			}
@@ -1348,7 +1348,7 @@ int Spy::capture_firm()
 				if( race_res.is_same_race(soldierPtr->race_id, race_id) )
 					obeyChance += 50;
 
-				obeyFlag = m.random(100) < obeyChance; 		// if obeyChance >= 100, all units will object the overseer
+				obeyFlag = misc.random(100) < obeyChance; 		// if obeyChance >= 100, all units will object the overseer
 
 				//--- if the soldier obey, update its loyalty ---//
 
@@ -1886,14 +1886,14 @@ int Spy::assassinate(int targetUnitRecno, int remoteAction)
 
 	// ##### begin Gilbert 12/12 ######//
 	// if( attackRating >= defenseRating )
-	if( m.random(100) < attackRating - defenseRating )
+	if( misc.random(100) < attackRating - defenseRating )
 	// ##### end Gilbert 12/12 ######//
 	{
 		//--- whether the spy will be get caught and killed in the mission ---//
 
 		// ###### begin Gilbert 12/12 ##### //
 		// int spyKillFlag = otherDefenderCount > 0 && attackRating - defenseRating < 80;
-		int spyKillFlag = otherDefenderCount > 0 && !(m.random(100) < attackRating - defenseRating - 20);
+		int spyKillFlag = otherDefenderCount > 0 && !(misc.random(100) < attackRating - defenseRating - 20);
 		// assassin save chance is 20% lower than assassination
 		// ###### end Gilbert 12/12 ##### //
 
@@ -2058,7 +2058,7 @@ int Spy::get_assassinate_rating(int targetUnitRecno, int& attackRating, int& def
 	//-------- if the assassination succeeds -------//
 
 	// ####### begin Gilbert 12/12 #######//
-	//defenseRating += 30 + m.random(30);
+	//defenseRating += 30 + misc.random(30);
 
 	// don't add random component here
 	attackRating *= 3;		// normalize to 100
@@ -2177,7 +2177,7 @@ int Spy::steal_tech(int targetNationRecno, char remoteAction )
 
 	int rating = get_steal_rating(targetNationRecno);
 
-	if( m.random(100) < rating )
+	if( misc.random(100) < rating )
 	{
 		// randomly find a tech
 
@@ -2203,7 +2203,7 @@ int Spy::steal_tech(int targetNationRecno, char remoteAction )
 				continue;					// skip tech we are more advanced
 
 			++matchCount;
-			if( m.random(matchCount) == 0 )	// n-th match have 1/n chance to be selected, therefore evenly distributed
+			if( misc.random(matchCount) == 0 )	// n-th match have 1/n chance to be selected, therefore evenly distributed
 				matchTech = i;
 		}
 
@@ -2365,7 +2365,7 @@ int Spy::create_incident(int targetNationRecno, int involvedNationRecno, char re
 
 	int rating = get_incident_rating(targetNationRecno, involvedNationRecno);
 
-	if( m.random(100) < rating )
+	if( misc.random(100) < rating )
 	{
 		talk_res.create_incident( targetNationRecno, involvedNationRecno );
 		rc = involvedNationRecno;

@@ -281,7 +281,7 @@ int FirmMonsterFortress::mobilize_extra_builder(int builderId)
 
 	//--------- del builder recno from the builder array -------------//
 
-	m.del_array_rec( extra_builder_recno, MAX_EXTRA_BUILDER, sizeof(extra_builder_recno[0]), builderId );
+	misc.del_array_rec( extra_builder_recno, MAX_EXTRA_BUILDER, sizeof(extra_builder_recno[0]), builderId );
 	--extra_builder_count;
 
 	//------- update loyalty -------//
@@ -341,7 +341,7 @@ void FirmMonsterFortress::kill_extra_builder(int builderId)
 
 	//--------- del builder recno from the builder array -------------//
 
-	m.del_array_rec( extra_builder_recno, MAX_EXTRA_BUILDER, sizeof(extra_builder_recno[0]), builderId );
+	misc.del_array_rec( extra_builder_recno, MAX_EXTRA_BUILDER, sizeof(extra_builder_recno[0]), builderId );
 	--extra_builder_count;
 
 	// ------ evenly distrbute hit points ---------//
@@ -495,7 +495,7 @@ int FirmMonsterFortress::mobilize_soldier(int soldierId, char remoteAction)
 
 	//--------- del builder recno from the builder array -------------//
 
-	m.del_array_rec( archer_unit_recno, MAX_FORTRESS_SOLDIER, sizeof(archer_unit_recno[0]), soldierId );
+	misc.del_array_rec( archer_unit_recno, MAX_FORTRESS_SOLDIER, sizeof(archer_unit_recno[0]), soldierId );
 	--archer_count;
 
 	//------- update loyalty -------//
@@ -579,7 +579,7 @@ void FirmMonsterFortress::kill_soldier(int soldierId)
 
 	//--------- del builder recno from the builder array -------------//
 
-	m.del_array_rec( archer_unit_recno, MAX_FORTRESS_SOLDIER, sizeof(archer_unit_recno[0]), soldierId );
+	misc.del_array_rec( archer_unit_recno, MAX_FORTRESS_SOLDIER, sizeof(archer_unit_recno[0]), soldierId );
 	--archer_count;
 }
 // ----- end of function FirmMonsterFortress::kill_soldier -----//

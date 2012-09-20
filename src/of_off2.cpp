@@ -282,7 +282,7 @@ void FirmOffensive2::process_monster_firm()
 	
 						enemyCombatLevel += (int) unitPtr->hit_points;
 
-						if( enemyXLoc == -1 || m.random(5)==0 )
+						if( enemyXLoc == -1 || misc.random(5)==0 )
 						{
 							enemyXLoc = xLoc;
 							enemyYLoc = yLoc;
@@ -319,7 +319,7 @@ void FirmOffensive2::process_monster_firm()
 
 						enemyCombatLevel += MAX(50, firmCombatLevel);		// minimum 50 points for each firm
 
-						if( enemyXLoc == -1 || m.random(5)==0 )
+						if( enemyXLoc == -1 || misc.random(5)==0 )
 						{
 							enemyXLoc = firmPtr->loc_x1;
 							enemyYLoc = firmPtr->loc_y1;

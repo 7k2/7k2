@@ -247,7 +247,7 @@ void Unit::set_rank(int rankId)
       //--- set leadership if this unit does not have any now ----//
 
 		if( skill_level() < 10 )
-			skill.set_skill_level( + m.random(40) );
+			skill.set_skill_level( + misc.random(40) );
    }
 
    //------ refresh if the current unit is selected -----//

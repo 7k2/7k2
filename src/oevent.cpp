@@ -47,7 +47,7 @@
 // #define FIXED_NATION 1
 #endif
 
-// try not to use m.random
+// try not to use misc.random
 
 void RandomEvent::init(int randomSeed)
 {

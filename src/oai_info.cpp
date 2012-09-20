@@ -607,7 +607,7 @@ int Nation::revealed_by_phoenix(int xLoc, int yLoc)
 		{
 			Unit *godPtr = unit_array[firmBase->god_unit_recno];
 			if( godPtr->nation_recno == nation_recno
-				&& m.points_distance( xLoc, yLoc,
+				&& misc.points_distance( xLoc, yLoc,
 				 godPtr->next_x_loc(), godPtr->next_y_loc() ) <= effectiveRange )
 			{
 				return 1;

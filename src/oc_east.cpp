@@ -48,8 +48,8 @@ void CampaignEastWest::init_new_campaign_derived()
 
 	hero_res.disable_hero_appear();	// no heroes will randomly appear in this campaign
 	hero_debut_state_count  = 1;		// The hero debut event will happen when the number of player states drops to this number
-	player_beat_fryhtan_max = 1 + m.random(3);		// random 1-3
-	use_fryhtan_max = 3 + m.random(3);
+	player_beat_fryhtan_max = 1 + misc.random(3);		// random 1-3
+	use_fryhtan_max = 3 + misc.random(3);
 
 	//----- create state array -------//
 
@@ -72,13 +72,13 @@ void CampaignEastWest::init_new_campaign_derived()
 
 	err_when( state_array.nation_state_count(western_nation_recno)==0 );
 
-	if( state_array.nation_state_count(western_nation_recno)==1 || m.random(3)==0 )
+	if( state_array.nation_state_count(western_nation_recno)==1 || misc.random(3)==0 )
 	{
 		set_event(EVENT_RANDOM_POINT_1);
 	}
 	else
 	{
-		if( m.random(2)==0 )		// 50% chance of bypassing the first game
+		if( misc.random(2)==0 )		// 50% chance of bypassing the first game
 			set_stage(STAGE_FRYHTAN_INVASION_1);
 		else
 		{
@@ -95,7 +95,7 @@ void CampaignEastWest::init_new_campaign_derived()
 //
 void CampaignEastWest::create_nation()
 {
-	int monsterNationCount = 2 + m.random(2);		// 2 to 3 Fryhtan kingdoms
+	int monsterNationCount = 2 + misc.random(2);		// 2 to 3 Fryhtan kingdoms
 
 	western_nation_recno = 1;
 	eastern_nation_recno = 2;
@@ -118,12 +118,12 @@ void CampaignEastWest::create_nation()
 void CampaignEastWest::set_state_nation()
 {
 	int monsterNationCount = 0;
-	int maxMonsterNation = 2 + m.random(2);		// 2 to 3
-	int monsterStateToAdd = 4 + m.random(3);		// 4 to 6
+	int maxMonsterNation = 2 + misc.random(2);		// 2 to 3
+	int monsterStateToAdd = 4 + misc.random(3);		// 4 to 6
 
 	//---- add Fryhtan states and create Fryhtan nations (including the player's) ----//
 
-	int stateRecno = m.random(state_array.size())+1;
+	int stateRecno = misc.random(state_array.size())+1;
 
 	int i;
 	for( i=state_array.size() ; i>0 ; i-- )
@@ -143,7 +143,7 @@ void CampaignEastWest::set_state_nation()
 
 		//--- there is a 33% chance that the new state is an extended area of one of the existing Fryhtan nations as opposite to the state of a new nation ----//
 
-		if( m.random(3)==0 || monsterNationCount == maxMonsterNation )
+		if( misc.random(3)==0 || monsterNationCount == maxMonsterNation )
 		{
 			for( int j=state_array.size() ; j>0 ; j-- )
 			{

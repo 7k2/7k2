@@ -242,7 +242,7 @@ void News::migrate()
 	if( short_para4 == 1 )
 		str = "A";
 	else
-		str = m.format(short_para4);
+		str = misc.format(short_para4);
 
 	str += " ";
 	str += race_res[short_para3]->name;
@@ -1096,7 +1096,7 @@ void News::monster_gold_acquired()
 	//----------------------------------------------//
 
 //	str  = "You have recovered ";
-//	str += m.format(short_para1,2);
+//	str += misc.format(short_para1,2);
 //	str += " worth of treasure from the Fryhtans.";
 
 	str = text_news.process( text_news.get_format_str( 50, "YTRE" ),
@@ -1677,7 +1677,7 @@ void News::tech_researched()
 		else
 			str += " Level ";
 
-		str += m.roman_number(short_para2);
+		str += misc.roman_number(short_para2);
 	}
 
 	str += " research.";
@@ -2044,7 +2044,7 @@ void News::weapon_ship_worn_out()
 //	if( short_para2 )
 //	{
 //		str += " ";
-//		str += m.roman_number(short_para2);
+//		str += misc.roman_number(short_para2);
 //	}
 //	str += " of yours has broken down due to the lack of maintenance funds.";
 
@@ -2132,7 +2132,7 @@ void News::event_new_tech()
 //	if( techInfo->max_tech_level(0) > 1 )
 //	{
 //		str += " ";
-//		str += m.roman_number(short_para2);
+//		str += misc.roman_number(short_para2);
 //	}
 //	str += " technology!";
 

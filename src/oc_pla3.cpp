@@ -149,7 +149,7 @@ void CampaignEastWest::plot_a3_create_game()
 
 		//---- create towns for the rebel nation ----//
 
-		int townAddCount   = 2 + m.random(2);		// 2 to 3 towns
+		int townAddCount   = 2 + misc.random(2);		// 2 to 3 towns
 		int hasFortPercent = 100;
 
 		create_town( plot_nation_recno2, townAddCount, hasFortPercent );

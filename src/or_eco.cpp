@@ -182,7 +182,7 @@ static void disp_total()
 	int y=INCOME_BROWSE_Y2-16;
 
 	font_bld.put( x, y, text_reports.str_total_yearly_income() ); // "Total Yearly Income" );
-	font_bld.put( x+370, y, m.format( (int) totalIncome, 2 ) );
+	font_bld.put( x+370, y, misc.format( (int) totalIncome, 2 ) );
 
 	//---------- display total expense ----------//
 
@@ -192,7 +192,7 @@ static void disp_total()
 	y=EXPENSE_BROWSE_Y2-16;
 
 	font_bld.put( x, y, text_reports.str_total_yearly_expense() ); // "Total Yearly Expenses" );
-	font_bld.put( x+370, y, m.format( (int) totalExpense, 2 ) );
+	font_bld.put( x+370, y, misc.format( (int) totalExpense, 2 ) );
 
 	//----------- display the balance --------//
 
@@ -201,7 +201,7 @@ static void disp_total()
 	vga_back.d3_panel_up(EXPENSE_BROWSE_X1, EXPENSE_BROWSE_Y2+4, EXPENSE_BROWSE_X2, ZOOM_Y2-6 );
 
 	font_bld.put( x, y, text_reports.str_yearly_balance() ); // "Yearly Balance" );
-	font_bld.put( x+370, y, m.format( (int)(totalIncome-totalExpense), 2 ) );
+	font_bld.put( x+370, y, misc.format( (int)(totalIncome-totalExpense), 2 ) );
 }
 //----------- End of static function disp_total -----------//
 
@@ -238,7 +238,7 @@ static void put_income_rec(int recNo, int x, int y, int refreshFlag)
 //		str = income_des_array[recNo-1];
 
 	font_bld.put( x    , y, text_reports.str_income_desc(recNo-1, nationPtr->is_monster()) );
-	font_bld.put( x+370, y, m.format( (int) nationPtr->income_365days(recNo-1), 2 ) );
+	font_bld.put( x+370, y, misc.format( (int) nationPtr->income_365days(recNo-1), 2 ) );
 }
 //----------- End of static function put_income_rec -----------//
 
@@ -281,7 +281,7 @@ static void put_expense_rec(int recNo, int x, int y, int refreshFlag)
 
 	// font_bld.put( x    , y, expense_des_array[recNo-1] );
 	font_bld.put( x    , y, text_reports.str_expense_desc(recNo-1, nationPtr->is_monster()) ); // expense_des_array[recNo-1] );
-	font_bld.put( x+370, y, m.format( (int) nationPtr->expense_365days(recNo-1), 2 ) );
+	font_bld.put( x+370, y, misc.format( (int) nationPtr->expense_365days(recNo-1), 2 ) );
 }
 //----------- End of static function put_expense_rec -----------//
 

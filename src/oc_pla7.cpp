@@ -66,7 +66,7 @@ void CampaignEastWest::plot_a7_create_game()
 
 	//---- create towns for the rebel nation ----//
 
-	int townAddCount   = 2 + m.random(2);		// 2 to 3 towns
+	int townAddCount   = 2 + misc.random(2);		// 2 to 3 towns
 	int hasFortPercent = 100;
 
 	create_town( plot_nation_recno1, townAddCount, hasFortPercent );
@@ -116,7 +116,7 @@ void CampaignEastWest::plot_a7_create_game()
 
 			short bestTown[MAX_RACE];
 			int s;
-			for( s = MAX_TRAINEE - 2 - m.random(2) ; s > 0 && firmSpecial->scan_best_recruitable_town(bestTown) > 0; --s )
+			for( s = MAX_TRAINEE - 2 - misc.random(2) ; s > 0 && firmSpecial->scan_best_recruitable_town(bestTown) > 0; --s )
 			{
 				firmSpecial->recruit_trainee( bestTown[0], TRAIN_UNIT_SPECIAL, COMMAND_AUTO );
 			}

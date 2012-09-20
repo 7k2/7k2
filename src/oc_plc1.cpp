@@ -69,7 +69,7 @@ void CampaignEastWest::plot_c1_create_game()
 		if( unitPtr->is_own() && !unitPtr->item.id
 			&& item_res.can_pick(ITEM_UNIT_CHANGE_NATION, i) )
 		{
-			unitPtr->item.set(ITEM_UNIT_CHANGE_NATION, item_res.random_para(ITEM_UNIT_CHANGE_NATION, m.rand()));
+			unitPtr->item.set(ITEM_UNIT_CHANGE_NATION, item_res.random_para(ITEM_UNIT_CHANGE_NATION, misc.rand()));
 
 			// -------- select the unit ------//
 			unitPtr->select( itemCreated == maxItemCount );

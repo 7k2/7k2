@@ -98,15 +98,15 @@ int Sys::init()
    //------- initialize basic vars --------//
 
 	#ifdef BETA
-		debug_session       = m.is_file_exist("DEBUG.SYS");
-		testing_session     = m.is_file_exist("TESTING.SYS");
-		scenario_cheat_flag = m.is_file_exist("EDITOR.SYS");
+		debug_session       = misc.is_file_exist("DEBUG.SYS");
+		testing_session     = misc.is_file_exist("TESTING.SYS");
+		scenario_cheat_flag = misc.is_file_exist("EDITOR.SYS");
 	#endif
 
 	#ifdef DEBUG
-		debug_session       = m.is_file_exist("DEBUG.SYS");
-		testing_session     = m.is_file_exist("TESTING.SYS");
-		scenario_cheat_flag = m.is_file_exist("EDITOR.SYS");
+		debug_session       = misc.is_file_exist("DEBUG.SYS");
+		testing_session     = misc.is_file_exist("TESTING.SYS");
+		scenario_cheat_flag = misc.is_file_exist("EDITOR.SYS");
 	#endif
 
 	// ##### begin Gilbert 15/2 ########//
@@ -501,7 +501,7 @@ int Sys::set_config_dir()
    MSG("Game config dir path: %s\n", dir_config);
 
    // create the config directory
-   if (!m.mkpath(dir_config))
+   if (!misc.mkpath(dir_config))
    {
       ERR("Unable to acquire a usable game config dir.\n");
       dir_config[0] = 0;

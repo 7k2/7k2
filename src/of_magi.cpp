@@ -996,7 +996,7 @@ int FirmMagic::calc_live_point_cost( int magicId, int targetXLoc, int targetYLoc
 
 	int cost = magicInfo->min_live_point;
 
-	int dist1 = m.area_distance( loc_x1, loc_y1, loc_x2, loc_y2, 
+	int dist1 = misc.area_distance( loc_x1, loc_y1, loc_x2, loc_y2,
 		targetXLoc, targetYLoc, targetXLoc, targetYLoc );
 	// ####### begin Gilbert 21/3 #######//
 	int dist2 = 0;
@@ -1027,7 +1027,7 @@ int FirmMagic::calc_cash_cost( int magicId, int targetXLoc, int targetYLoc, int 
 
 	int cost = magicInfo->min_cost;
 
-	int dist1 = m.area_distance( loc_x1, loc_y1, loc_x2, loc_y2, 
+	int dist1 = misc.area_distance( loc_x1, loc_y1, loc_x2, loc_y2,
 		targetXLoc, targetYLoc, targetXLoc, targetYLoc );
 	// ####### begin Gilbert 21/3 #######//
 	int dist2 = 0;

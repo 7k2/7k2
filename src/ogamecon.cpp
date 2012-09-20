@@ -63,7 +63,7 @@ void Game::del_win_condition(int i)
 {
 	if( i > 0 && i <= win_condition_count )
 	{
-		m.del_array_rec( win_condition, MAX_WIN_CONDITION, sizeof(win_condition[0]), i );
+		misc.del_array_rec( win_condition, MAX_WIN_CONDITION, sizeof(win_condition[0]), i );
 		--win_condition_count;
 	}
 }
@@ -97,7 +97,7 @@ void Game::del_lose_condition(int i)
 {
 	if( i > 0 && i <= lose_condition_count )
 	{
-		m.del_array_rec( lose_condition, MAX_LOSE_CONDITION, sizeof(lose_condition[0]), i );
+		misc.del_array_rec( lose_condition, MAX_LOSE_CONDITION, sizeof(lose_condition[0]), i );
 		--lose_condition_count;
 	}
 }

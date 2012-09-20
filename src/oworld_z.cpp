@@ -425,7 +425,7 @@ void ZoomMatrix::draw()
 	{
 		// no scrolling
 	}
-	else if( m.is_touch( update_abs_x1, update_abs_y1, update_abs_x2, update_abs_y2,
+	else if( misc.is_touch( update_abs_x1, update_abs_y1, update_abs_x2, update_abs_y2,
 		last_abs_x1, last_abs_y1, last_abs_x2, last_abs_y2) )
 	{
 		// scrolling
@@ -509,8 +509,8 @@ void ZoomMatrix::draw()
 
 				BYTE *lastDrawStatePtr = last_draw_state + max_x_loc * yLoc + xLoc;
 
-				if( m.is_touch( locAbsX1, locAbsY1, locAbsX2, locAbsY2, update_abs_x1, update_abs_y1, update_abs_x2, update_abs_y2)
-					&& ( !m.is_touch( locAbsX1, locAbsY1, locAbsX2, locAbsY2, last_abs_x1, last_abs_y1, last_abs_x2, last_abs_y2)
+				if( misc.is_touch( locAbsX1, locAbsY1, locAbsX2, locAbsY2, update_abs_x1, update_abs_y1, update_abs_x2, update_abs_y2)
+					&& ( !misc.is_touch( locAbsX1, locAbsY1, locAbsX2, locAbsY2, last_abs_x1, last_abs_y1, last_abs_x2, last_abs_y2)
 					|| topRow+rowCount < last_top_row || topRow+rowCount > last_bottom_row 
 					|| leftCol+colCount < last_left_col || leftCol+colCount > last_right_col
 					|| *lastDrawStatePtr != newDrawState ) )
@@ -695,7 +695,7 @@ void ZoomMatrix::draw()
 void ZoomMatrix::disp()
 {
 #ifdef DEBUG
-	unsigned long startTime = m.get_time();
+	unsigned long startTime = misc.get_time();
 #endif
 	if( save_image_buf )
 	{
@@ -722,7 +722,7 @@ void ZoomMatrix::disp()
 		just_drawn_flag=0;
 	}
 #ifdef DEBUG
-	startTime = m.get_time() - startTime;
+	startTime = misc.get_time() - startTime;
 	{
 		VgaFrontLock vgaLock;
 		startTime = 0;		// dummy for setting breaking point
@@ -765,14 +765,14 @@ void ZoomMatrix::draw_white_site()
 void ZoomMatrix::draw_frame()
 {
 #ifdef DEBUG
-	unsigned long startTime = m.get_time();
-	unsigned long drawObjectTime = m.get_time();
+	unsigned long startTime = misc.get_time();
+	unsigned long drawObjectTime = misc.get_time();
 #endif
 	draw_objects();
 
 #ifdef DEBUG
-	drawObjectTime = m.get_time() - drawObjectTime;
-	unsigned long miscDrawTime = m.get_time();
+	drawObjectTime = misc.get_time() - drawObjectTime;
+	unsigned long miscDrawTime = misc.get_time();
 #endif
 
 	draw_build_marker();
@@ -794,7 +794,7 @@ void ZoomMatrix::draw_frame()
 	draw_magic_effects();
 
 #ifdef DEBUG
-	miscDrawTime = m.get_time() - miscDrawTime;
+	miscDrawTime = misc.get_time() - miscDrawTime;
 #endif
 
 }
@@ -975,7 +975,7 @@ void ZoomMatrix::draw_weather_effects()
 	//                99 - 1             (rest states)
 	// see world.process
 
-	unsigned long mRandom = m.get_random_seed();
+	unsigned long mRandom = misc.get_random_seed();
 	if( world.lightning_signal >= 105 && world.lightning_signal <= 108)
 	{
 		if( !init_lightning )
@@ -1014,7 +1014,7 @@ void ZoomMatrix::draw_weather_effects()
 	short snowScale = weather.snow_scale();
 	if( snowScale > 0 && init_snow == 0)
 	{
-		long backupSeed = m.get_random_seed();
+		long backupSeed = misc.get_random_seed();
 
 		// start of snow
 		snow.set_bound(ZOOM_X1, ZOOM_Y1, ZOOM_X2, ZOOM_Y2);

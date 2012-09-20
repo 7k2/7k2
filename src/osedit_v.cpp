@@ -370,7 +370,7 @@ void ScenarioEditor::disp_victory_main(int refreshFlag)
 			button_next.create_text(INFO_X1+20, INFO_Y1+30, INFO_X1+100, INFO_Y1+50, text_editor.str_next() ); //"Next" );
 			button_cancel.create_text(INFO_X1+120, INFO_Y1+30, INFO_X1+200, INFO_Y1+50, text_editor.str_cancel() ); //"Cancel" );
 		}
-		font_whbl.right_put( INFO_X1+120, INFO_Y1+12, m.format(selected_scalar) );
+		font_whbl.right_put( INFO_X1+120, INFO_Y1+12, misc.format(selected_scalar) );
 		button_scalar_up10.paint();
 		button_scalar_up.paint();
 		button_scalar_down.paint();

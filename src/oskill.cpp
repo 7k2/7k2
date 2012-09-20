@@ -65,18 +65,18 @@ void Skill::init(int unitId, int initCombatLevel, int initSkillLevel)
 
 	//-------- initialize potential ---------//
 
-	switch( m.random(15) )
+	switch( misc.random(15) )
 	{
 		case 0:
-			skill_potential = 50+m.random(51);	 // 50 to 100 potential
+			skill_potential = 50+misc.random(51);	 // 50 to 100 potential
 			break;
 
 		case 1:
-			skill_potential = 25+m.random(26);	 // 25 to 50 potential
+			skill_potential = 25+misc.random(26);	 // 25 to 50 potential
 			break;
 
 		case 2:
-			skill_potential = 10+m.random(15);	 // 10 to 25 potential
+			skill_potential = 10+misc.random(15);	 // 10 to 25 potential
 			break;
 	}
 }

@@ -90,7 +90,7 @@ void Battle::run(NewNationPara *mpGame, int mpPlayerCount)
 
 	#ifdef DEBUG2
 		File seedFile;
-		char *chPtr = m.format(m.get_random_seed());
+		char *chPtr = misc.format(misc.get_random_seed());
 		seedFile.file_create("mapseed.rs");
 		seedFile.file_write(chPtr, strlen(chPtr));
 		seedFile.file_close();
@@ -521,7 +521,7 @@ void Battle::create_ai_nation()
 	for( i=0 ; i<aiHumanCount ; i++ )
 	{
 		if( config.random_start_up && !game.is_campaign_mode() )
-			raceId = m.random(MAX_RACE)+1;
+			raceId = misc.random(MAX_RACE)+1;
 		else
 			raceId = nation_array.random_unused_race();
 
@@ -535,7 +535,7 @@ void Battle::create_ai_nation()
 	for( i=0 ; i<aiMonsterCount ; i++ )
 	{
 		if( config.random_start_up && !game.is_campaign_mode() )
-			raceId = -(m.random(MAX_MONSTER_TYPE)+1);
+			raceId = -(misc.random(MAX_MONSTER_TYPE)+1);
 		else
 			raceId = -nation_array.random_unused_monster_type();
 
@@ -573,14 +573,14 @@ int Battle::create_one_human_asset(Nation* nationPtr)
 		{
 			int unitId;
 
-			if( m.random(2)==0 )
+			if( misc.random(2)==0 )
 				unitId = race_res[nationPtr->race_id]->infantry_unit_id;
 			else
-				unitId = race_res[ m.random(MAX_RACE)+1 ]->infantry_unit_id;
+				unitId = race_res[ misc.random(MAX_RACE)+1 ]->infantry_unit_id;
 
 			int rankId;
 
-			if( m.random(4)==0 )				// lower probability
+			if( misc.random(4)==0 )				// lower probability
 				rankId = RANK_GENERAL;
 			else
 				rankId = RANK_SOLDIER;
@@ -697,7 +697,7 @@ int Battle::create_human_town(Nation* nationPtr)
 
 	//---- attempt to locate an area for building the town using town_state_array ---//
 
-	int stateRecno = m.random(town_state_array.size())+1;
+	int stateRecno = misc.random(town_state_array.size())+1;
 
 	for( int i=town_state_array.size() ; i>0 ; i-- )
 	{
@@ -853,7 +853,7 @@ void Battle::create_independent_town(int addCount)
 	{
 		err_when( ++loopCount > 10000 );
 
-		raceId = m.random(MAX_RACE)+1;
+		raceId = misc.random(MAX_RACE)+1;
 
 		if( raceCountArray[raceId-1]==0 )
 		{
@@ -998,7 +998,7 @@ int Battle::create_unit(int nationRecno, int unitId, int rankId, int nextXLoc1, 
 
 	//-------- add the unit now --------//
 
-	int unitLoyalty = 80 + m.random(20);
+	int unitLoyalty = 80 + misc.random(20);
 
 	// ###### begin Gilbert 9/4 #########//
 	// if create in campaign, use CampaignNation->king
@@ -1040,17 +1040,17 @@ int Battle::create_unit(int nationRecno, int unitId, int rankId, int nextXLoc1, 
 				break;
 
 			case RANK_GENERAL:
-				unitPtr->skill.set_skill_level(40 + m.random(50));		// 40 to 90
-				unitPtr->skill.skill_potential = m.random(50);
-				unitPtr->set_combat_level(30 + m.random(70));		// 30 to 100
+				unitPtr->skill.set_skill_level(40 + misc.random(50));		// 40 to 90
+				unitPtr->skill.skill_potential = misc.random(50);
+				unitPtr->set_combat_level(30 + misc.random(70));		// 30 to 100
 				break;
 
 			case RANK_SOLDIER:
 				if( unitPtr->race_id )
 				{
-					unitPtr->skill.set_skill_level(10+m.random(10));	// 10 to 20
-					unitPtr->skill.skill_potential = m.random(50);
-					unitPtr->set_combat_level(20+m.random(60));		// 20 to 80
+					unitPtr->skill.set_skill_level(10+misc.random(10));	// 10 to 20
+					unitPtr->skill.skill_potential = misc.random(50);
+					unitPtr->set_combat_level(20+misc.random(60));		// 20 to 80
 				}
 				break;
 
@@ -1088,7 +1088,7 @@ int Battle::create_town(int nationRecno, int raceId, int xLoc, int yLoc, int ini
 		if( !initPop )
 		{
 			if( config.random_start_up && !game.is_campaign_mode() )
-				initPop = 30 + m.random(31);		// 30 to 60
+				initPop = 30 + misc.random(31);		// 30 to 60
 			else
 				initPop = 60;
 		}
@@ -1100,7 +1100,7 @@ int Battle::create_town(int nationRecno, int raceId, int xLoc, int yLoc, int ini
 		int townResistance = town_array.independent_town_resistance();
 
 		if( !initPop )
-			initPop = 30 + m.random(21);			// 30 to 50
+			initPop = 30 + misc.random(21);			// 30 to 50
 
 		townPtr->init_pop( initPop, townResistance, 0, 1 ); 	// last 1-first initialization at the beginning of the game
 	}
@@ -1115,7 +1115,7 @@ int Battle::create_town(int nationRecno, int raceId, int xLoc, int yLoc, int ini
 	{
 		if( config.independent_town_resistance == OPTION_MODERATE )
 		{
-			int rc = m.random(11);		// 0 to 10
+			int rc = misc.random(11);		// 0 to 10
 
 			if( rc >= 9 )			//	9 to 10
 				townPtr->set_current_wall_level(2);
@@ -1126,7 +1126,7 @@ int Battle::create_town(int nationRecno, int raceId, int xLoc, int yLoc, int ini
 
 		else if( config.independent_town_resistance == OPTION_HIGH )
 		{
-			int rc = m.random(11);		// 0 to 10
+			int rc = misc.random(11);		// 0 to 10
 
 			if( rc >= 7 )			//	7 to 10
 				townPtr->set_current_wall_level(2);
@@ -1267,7 +1267,7 @@ int Battle::create_firm_next_to_place(Place* placePtr, int firmId,
 
 	int effectiveDis = world.effective_distance(firmId, (placePtr->cast_to_Firm() ? placePtr->cast_to_Firm()->firm_id : 0) );
 
-	if( m.points_distance( placePtr->center_x, placePtr->center_y,
+	if( misc.points_distance( placePtr->center_x, placePtr->center_y,
 		 buildXLoc+firmInfo->loc_width/2, buildYLoc+firmInfo->loc_height/2 )
 		 > effectiveDis )
 	{
@@ -1325,7 +1325,7 @@ void Battle::create_monster_lair(int nationRecno, int addCount)
 		if( nationRecno )
 			monsterId = nation_array[nationRecno]->monster_id();
 		else
-			monsterId = m.random(MAX_MONSTER_TYPE)+1;
+			monsterId = misc.random(MAX_MONSTER_TYPE)+1;
 
 		int firmRecno = firm_array.generate_firm(xLoc+LAIR_INTER_SPACE, yLoc+LAIR_INTER_SPACE, nationRecno,
 							 FIRM_LAIR, monster_res[monsterId]->firm_build_code );
@@ -1372,14 +1372,14 @@ void Battle::create_monster_lair(int nationRecno, int addCount)
 
 		Unit* unitPtr = unit_array[unitRecno];
 
-		unitPtr->skill.set_skill_level( 20 + m.random(80) );
-		unitPtr->set_combat_level( 50 + m.random(50) );
+		unitPtr->skill.set_skill_level( 20 + misc.random(80) );
+		unitPtr->set_combat_level( 50 + misc.random(50) );
 
 		firmLair->assign_overseer(unitRecno);	// assign the king as the overseer of the command base
 
 		//------- create monster soldiers -----//
 
-		int soldierCount = MAX_SOLDIER/4 + m.random(MAX_SOLDIER/3)+1;
+		int soldierCount = MAX_SOLDIER/4 + misc.random(MAX_SOLDIER/3)+1;
 
 		for( int j=0 ; j<soldierCount ; j++ )
 			firmLair->recruit_soldier(COMMAND_AUTO);
@@ -1388,8 +1388,8 @@ void Battle::create_monster_lair(int nationRecno, int addCount)
 
 		for( j=0 ; j<firmLair->soldier_count ; j++, soldierPtr++ )
 		{
-			soldierPtr->skill.set_combat_level( 30 + m.random(30) );
-			soldierPtr->skill.set_skill_level( 10 + m.random(10) );
+			soldierPtr->skill.set_combat_level( 30 + misc.random(30) );
+			soldierPtr->skill.set_skill_level( 10 + misc.random(10) );
 		}
 	*/
 	}
@@ -1531,7 +1531,7 @@ void Battle::create_random_item()
 	// ##### end Gilbert 9/2 #######//
 		return;
 
-	int addCount = 3 + m.random(4);		// 3 to 6 free items on the map
+	int addCount = 3 + misc.random(4);		// 3 to 6 free items on the map
 	int maxTries = (placement_range_x2-placement_range_x1) * (placement_range_y2-placement_range_y1);
 
 	for( int i=0 ; i<addCount ; i++ )

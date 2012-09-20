@@ -135,7 +135,7 @@ void Game::run_main_menu_option(int optionId)
 	{
 		const char *shortcutFilename = "7k2home.url";
 
-		if( !m.is_file_exist(shortcutFilename) )
+		if( !misc.is_file_exist(shortcutFilename) )
 		{
 			// create 7k2home.url file
 
@@ -147,7 +147,7 @@ void Game::run_main_menu_option(int optionId)
 			urlFile.file_close();
 		}
 
-		if( m.is_file_exist("7k2home.url") )
+		if( misc.is_file_exist("7k2home.url") )
 		{
 			HINSTANCE hinst = ShellExecute( vga.main_hwnd, "open", shortcutFilename, NULL, "", SW_SHOWNORMAL );
 		}
@@ -443,7 +443,7 @@ void Game::main_menu()
 	mouse_cursor.set_icon(CURSOR_NORMAL);
 	vga_front.bar(0,0,VGA_WIDTH-1,VGA_HEIGHT-1,V_BLACK);
 
-	unsigned long lastRedrawTime = m.get_time();
+	unsigned long lastRedrawTime = misc.get_time();
 
 	{
 		VgaFrontLock vgaLock;
@@ -470,11 +470,11 @@ void Game::main_menu()
 				continue;
 			}
 #endif
-			if( sys.need_redraw_flag || m.get_time() - lastRedrawTime > 8000 )
+			if( sys.need_redraw_flag || misc.get_time() - lastRedrawTime > 8000 )
 			{
 				refreshFlag = MMOPTION_ALL;
 				sys.need_redraw_flag = 0;
-				lastRedrawTime = m.get_time();	// redraw every 8 sec. Such that if background erased at the beginning, redraw
+				lastRedrawTime = misc.get_time();	// redraw every 8 sec. Such that if background erased at the beginning, redraw
 			}
 
 			VgaFrontReLock vgaReLock;

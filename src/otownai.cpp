@@ -71,7 +71,7 @@ void Town::process_ai()
 	{
 		LOG_MSG(" update_base_town_status");
 		update_base_town_status();
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 	}
 
 	//------ think about granting villagers ---//
@@ -80,7 +80,7 @@ void Town::process_ai()
 	{
 		LOG_MSG(" think_reward");
 		think_reward();
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 	}
 
 	//----- if this town should migrate now -----//
@@ -91,7 +91,7 @@ void Town::process_ai()
 		{
 			LOG_MSG(" think_ai_migrate");
 			think_ai_migrate();
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 		}
 
 		return;		// don't do anything else if the town is about to migrate
@@ -105,10 +105,10 @@ void Town::process_ai()
 		LOG_MSG(" think_build_fort");
 		if( think_build_fort() )
 		{
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 			return;
 		}
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 	}
 
 	//----- the following are base town only functions ----//
@@ -122,7 +122,7 @@ void Town::process_ai()
 	{
 		LOG_MSG("think_collect_tax");
 		think_collect_tax();
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 	}
 
 	//---- think about scouting in an unexplored map ----//
@@ -145,10 +145,10 @@ void Town::process_ai()
 	{
 		LOG_MSG("think_split_town");
 		think_split_town();
-		LOG_MSG(m.get_random_seed() );
+		LOG_MSG(misc.get_random_seed() );
 		LOG_MSG("think_move_between_town");
 		think_move_between_town();
-		LOG_MSG(m.get_random_seed() );
+		LOG_MSG(misc.get_random_seed() );
 	}
 
 	//---- think about attacking firms/units nearby ---//
@@ -158,18 +158,18 @@ void Town::process_ai()
 		LOG_MSG(" think_attack_nearby_enemy");
 		if( think_attack_nearby_enemy() )
 		{
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 			return;
 		}
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		LOG_MSG(" think_attack_linked_enemy");
 		if( think_attack_linked_enemy() )
 		{
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 			return;
 		}
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 	}
 
 	//---- think about capturing enemy towns ----//
@@ -178,7 +178,7 @@ void Town::process_ai()
 	{
 		LOG_MSG(" think_capture_enemy_town");
 		think_capture_enemy_town();
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 	}
 
 	//--- think about setting up firms next to this town ---//
@@ -189,10 +189,10 @@ void Town::process_ai()
 		LOG_MSG(" think_build_market");
 		if( think_build_market() )
 		{
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 			return;
 		}
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		//--- the following functions will only be called when the nation has at least a mine ---//
 
@@ -208,20 +208,20 @@ void Town::process_ai()
 		LOG_MSG(" think_build_research");
 		if( think_build_research() )
 		{
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 			return;
 		}
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		//----- think about building espionage college -----//
 
 		LOG_MSG(" think_build_spy");
 		if( think_build_spy() )
 		{
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 			return;
 		}
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		//---- only build the following if we have enough food ----//
 
@@ -230,33 +230,33 @@ void Town::process_ai()
 			LOG_MSG(" think_build_special");
 			if( think_build_special() )
 			{
-				LOG_MSG(m.get_random_seed());
+				LOG_MSG(misc.get_random_seed());
 				return;
 			}
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 
 			LOG_MSG(" think_build_war_factory");
 			if( think_build_war_factory() )
 			{
-				LOG_MSG(m.get_random_seed());
+				LOG_MSG(misc.get_random_seed());
 				return;
 			}
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 
 			LOG_MSG(" think_build_base");
 			if( think_build_base() )
 			{
-				LOG_MSG(m.get_random_seed());
+				LOG_MSG(misc.get_random_seed());
 				return;
 			}
-			LOG_MSG(m.get_random_seed());
+			LOG_MSG(misc.get_random_seed());
 		}
 
 		//-------- think build inn ---------//
 
 		LOG_MSG(" think_build_inn");
 		think_build_inn();
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 	}
 }
 //--------- End of function Town::process_ai ----------//
@@ -1389,7 +1389,7 @@ int Town::ai_settle_new(int raceId)
 
 	//------- it must be within the effective town-to-town distance ---//
 
-	if( m.points_distance( center_x, center_y, xLoc+(STD_TOWN_LOC_WIDTH-1)/2,
+	if( misc.points_distance( center_x, center_y, xLoc+(STD_TOWN_LOC_WIDTH-1)/2,
 		yLoc+(STD_TOWN_LOC_HEIGHT-1)/2 ) > world.effective_distance(0,0) )
 	{
 		return 0;
@@ -1462,7 +1462,7 @@ int Town::think_attack_nearby_enemy()
 
 					enemyCombatLevel += (int) unitPtr->hit_points;
 
-					if( enemyXLoc == -1 || m.random(5)==0 )
+					if( enemyXLoc == -1 || misc.random(5)==0 )
 					{
 						enemyXLoc = xLoc;
 						enemyYLoc = yLoc;
@@ -1491,7 +1491,7 @@ int Town::think_attack_nearby_enemy()
 
 					enemyCombatLevel += MAX(50, firmCombatLevel);		// minimum 50 points for each firm
 
-					if( enemyXLoc == -1 || m.random(5)==0 )
+					if( enemyXLoc == -1 || misc.random(5)==0 )
 					{
 						enemyXLoc = firmPtr->loc_x1;
 						enemyYLoc = firmPtr->loc_y1;
@@ -1753,15 +1753,15 @@ int Town::think_scout()
 
 	int destX, destY;
 
-	if( m.random(2)==0 )
-		destX = center_x + 50 + m.random(50);
+	if( misc.random(2)==0 )
+		destX = center_x + 50 + misc.random(50);
 	else
-		destX = center_x - 50 - m.random(50);
+		destX = center_x - 50 - misc.random(50);
 
-	if( m.random(2)==0 )
-		destY = center_y + 50 + m.random(50);
+	if( misc.random(2)==0 )
+		destY = center_y + 50 + misc.random(50);
 	else
-		destY = center_y - 50 - m.random(50);
+		destY = center_y - 50 - misc.random(50);
 
 	destX = MAX(0, destX);
 	destX = MIN(MAX_WORLD_X_LOC-1, destX);

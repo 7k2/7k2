@@ -158,7 +158,7 @@ void Sys::disp_frame(int dispCampaignMsg)
 		return;
 
 #ifdef DEBUG
-	unsigned long startTime = m.get_time();
+	unsigned long startTime = misc.get_time();
 	unsigned long updateViewTime = 0;
 	unsigned long infoUpdateTime = 0;
 	unsigned long dispMapTime = 0;
@@ -233,30 +233,30 @@ void Sys::disp_frame(int dispCampaignMsg)
 		else
 		{
 #ifdef DEBUG
-			updateViewTime = m.get_time();
+			updateViewTime = misc.get_time();
 #endif
 
 			update_view();
 
 #ifdef DEBUG
-			updateViewTime = m.get_time() - updateViewTime;
-			infoUpdateTime = m.get_time();
+			updateViewTime = misc.get_time() - updateViewTime;
+			infoUpdateTime = misc.get_time();
 #endif 
 
 			info.update();
 
 #ifdef DEBUG
-			infoUpdateTime = m.get_time() - infoUpdateTime;
+			infoUpdateTime = misc.get_time() - infoUpdateTime;
 #endif 
 
 		//-------- display the mini map ----------//
 
 #ifdef DEBUG
-			dispMapTime = m.get_time();
+			dispMapTime = misc.get_time();
 #endif
 			disp_map();
 #ifdef DEBUG
-			dispMapTime = m.get_time() - dispMapTime;
+			dispMapTime = misc.get_time() - dispMapTime;
 #endif
 	
 			//------ display tutorial text -------//
@@ -278,11 +278,11 @@ void Sys::disp_frame(int dispCampaignMsg)
 		{
 #if(defined(USE_FLIP) )
 	#ifdef DEBUG
-			flipTime = m.get_time();
+			flipTime = misc.get_time();
 	#endif
 			vga.flip();
 	#ifdef DEBUG
-			flipTime = m.get_time() - flipTime;
+			flipTime = misc.get_time() - flipTime;
 	#endif
 			help.flip();			// exchange short_front_buf and short_back_buf
 #endif
@@ -305,7 +305,7 @@ void Sys::disp_frame(int dispCampaignMsg)
 	need_redraw_flag = 0;
 
 #ifdef DEBUG
-	startTime = m.get_time() - startTime;
+	startTime = misc.get_time() - startTime;
 //	{
 //		VgaFrontLock vgaLock;
 		startTime = 0;			// set break point here
@@ -376,7 +376,7 @@ void Sys::disp_zoom()
 
 	if( zoom_need_redraw )		// requested by other modules to redraw the pre-drawn zoom background
 	{
-		long backupSeed = m.get_random_seed();
+		long backupSeed = misc.get_random_seed();
 
 		// #### begin Gilbert 8/2 #####//
 		world.zoom_matrix->just_drawn_flag = 0;	// request world.zoom_matrix->disp() to call draw()
@@ -388,11 +388,11 @@ void Sys::disp_zoom()
 	//-------- disp zoom area --------//
 
 #ifdef DEBUG
-	unsigned long dispTime = m.get_time();
+	unsigned long dispTime = misc.get_time();
 #endif
 	world.zoom_matrix->disp();
 #ifdef DEBUG
-	dispTime = m.get_time() - dispTime;
+	dispTime = misc.get_time() - dispTime;
 #endif
 
 	//---- draw sprite white sites if in debug mode ----//
@@ -405,16 +405,16 @@ void Sys::disp_zoom()
 	//------- draw foreground objects --------//
 
 #ifdef DEBUG
-	unsigned long drawFrameTime = m.get_time();
+	unsigned long drawFrameTime = misc.get_time();
 #endif
 	world.zoom_matrix->draw_frame();
 #ifdef DEBUG
-	drawFrameTime = m.get_time() - drawFrameTime;
+	drawFrameTime = misc.get_time() - drawFrameTime;
 #endif
 
 
 #ifdef DEBUG
-	unsigned long miscTime = m.get_time();
+	unsigned long miscTime = misc.get_time();
 #endif
 
 	//----- draw the frame of the selected firm/town -----//
@@ -433,7 +433,7 @@ void Sys::disp_zoom()
 		disp_frames_per_second();
 
 #ifdef DEBUG
-	miscTime = m.get_time() - miscTime;
+	miscTime = misc.get_time() - miscTime;
 	vga_front.temp_unlock();
 	vga_back.temp_unlock();
 	// set break point here
@@ -455,7 +455,7 @@ void Sys::blt_virtual_buf()
 	//--- in a debug sesion, vga_front is not the true front buffer, now copy it to the true one ---//
 
 #ifdef DEBUG
-	unsigned long startTime = m.get_time();
+	unsigned long startTime = misc.get_time();
 #endif
 	int frontLocked=0;
 
@@ -471,7 +471,7 @@ void Sys::blt_virtual_buf()
 		vga_front.lock_buf();
 
 #ifdef DEBUG
-	startTime = m.get_time() - startTime;
+	startTime = misc.get_time() - startTime;
 	startTime = 0;
 #endif
 }
@@ -518,7 +518,7 @@ void Sys::disp_frames_per_second()
 
 	//------- get the curren system time ---------//
 
-	DWORD curTime = m.get_time();		// in millisecond
+	DWORD curTime = misc.get_time();		// in millisecond
 
 	//----------- first time calling -------------//
 
@@ -749,7 +749,7 @@ void Sys::capture_screen()
       str += i;
       str += ".BMP";
 
-      if( !m.is_file_exist(str) )
+      if( !misc.is_file_exist(str) )
          break;
    }
 

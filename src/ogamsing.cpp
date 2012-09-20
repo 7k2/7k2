@@ -281,7 +281,7 @@ static int select_option2()
 	cy = 331-35;
 	for( i = 0; i < OPTION_HARDEST-OPTION_EASIEST+1; ++i )
 	{
-		strcpy( diffButtonStr[i], m.roman_number(i+1) );
+		strcpy( diffButtonStr[i], misc.roman_number(i+1) );
 		w = font_thin_black.text_width(diffButtonStr[i]);
 		h = font_thin_black.text_height();
 		diffGroup[i].create( cx, cy, cx+w+10, cy+h+10,
@@ -668,7 +668,7 @@ static int select_option2()
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display picture -------//
@@ -744,7 +744,7 @@ static int select_option2()
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//
@@ -868,7 +868,7 @@ static int select_option2()
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//
@@ -931,7 +931,7 @@ static int select_option2()
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//
@@ -997,7 +997,7 @@ static int select_option2()
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						// ----- display start, cancel button ------//
@@ -1023,7 +1023,7 @@ static int select_option2()
 					{
 						enoughPeopleButton.paint(tempConfig.goal_population_flag);
 						font_bold_black.put( peopleInc.x1-65, peopleInc.y1, 
-							m.format(tempConfig.goal_population), 1, peopleInc.x1-1);
+							misc.format(tempConfig.goal_population), 1, peopleInc.x1-1);
 						peopleInc.paint();
 						peopleDec.paint();
 					}
@@ -1031,7 +1031,7 @@ static int select_option2()
 					{
 						enoughIncomeButton.paint(tempConfig.goal_economic_score_flag);
 						font_bold_black.put( incomeInc.x1-65, incomeInc.y1, 
-							m.format(tempConfig.goal_economic_score), 1, incomeInc.x1-1 );
+							misc.format(tempConfig.goal_economic_score), 1, incomeInc.x1-1 );
 						incomeInc.paint();
 						incomeDec.paint();
 					}
@@ -1039,7 +1039,7 @@ static int select_option2()
 					{
 						enoughScoreButton.paint(tempConfig.goal_total_score_flag);
 						font_bold_black.put( scoreInc.x1-65, scoreInc.y1, 
-							m.format(tempConfig.goal_total_score), 1, scoreInc.x1-1 );
+							misc.format(tempConfig.goal_total_score), 1, scoreInc.x1-1 );
 						scoreInc.paint();
 						scoreDec.paint();
 					}
@@ -1047,7 +1047,7 @@ static int select_option2()
 					{
 						timeLimitButton.paint(tempConfig.goal_year_limit_flag);
 						int x2 = font_bold_black.put( yearInc.x1-100, yearInc.y1, 
-							m.format(tempConfig.goal_year_limit), 1, yearInc.x1-60-1 );
+							misc.format(tempConfig.goal_year_limit), 1, yearInc.x1-60-1 );
 						font_thin_black.put( yearInc.x1-60, yearInc.y1, text_game_menu.str_goal_time_units(), 1 );	// "years"
 						yearInc.paint();
 						yearDec.paint();
@@ -1061,7 +1061,7 @@ static int select_option2()
 				if( optionMode != OPTION_SPECIES && refreshFlag & SGOPTION_DIFFICULTY )
 				{
 					font_bld.center_put( 40, 85, 82, 105, text_game_menu.str_level_in_score(), 1 );	// "Level"
-					font_bold_black.center_put( 40, 105, 82, 125, m.format(tempConfig.single_player_difficulty(0)), 1 );
+					font_bold_black.center_put( 40, 105, 82, 125, misc.format(tempConfig.single_player_difficulty(0)), 1 );
 				}
 
 				refreshFlag = 0;
@@ -1516,7 +1516,7 @@ static void i_disp_int_button(ButtonCustom *button, int repaintBody)
 	Font *fontPtr = button->pushed_flag ? &font_bold_red : &font_thin_black;
 	// top center align
 	fontPtr->center_put( button->x1, button->y1, button->x2, button->y1+fontPtr->font_height-1,
-		m.format(button->custom_para.value) );
+		misc.format(button->custom_para.value) );
 }
 // ------ end of static function i_disp_int_button ------//
 

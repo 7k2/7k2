@@ -189,7 +189,7 @@ int Nation::think_capture_independent(int hireCapturer)
 			{
 				Town* ownTown = town_array[ ai_town_array[j] ];
 
-				int townDistance = m.points_distance(targetTown->center_x, targetTown->center_y,
+				int townDistance = misc.points_distance(targetTown->center_x, targetTown->center_y,
 										 ownTown->center_x, ownTown->center_y);
 
 				if( info.game_date-info.game_start_date >
@@ -335,7 +335,7 @@ int Nation::start_capture(int townRecno, int hireCapturer)
 
 	int firmId;		// the AI may build a fort or a camp to capture the town
 
-	if( m.random(4)==0 || ai_should_spend(30+pref_military_development/3) )
+	if( misc.random(4)==0 || ai_should_spend(30+pref_military_development/3) )
 		firmId = FIRM_FORT;
 	else
 		firmId = FIRM_CAMP;

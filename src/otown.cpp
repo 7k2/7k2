@@ -108,7 +108,7 @@ void Town::init(int nationRecno, int raceId, int xLoc, int yLoc, int builderRecn
 	ai_town = !nation_recno || nation_array[nation_recno]->nation_type == NATION_AI;    // nation_recno==0 for independent towns
 	ai_link_checked = 1;			// check the linked towns and firms connected only if ai_link_checked==0
 
-	independent_unit_join_nation_min_rating = 100 + m.random(150);		// the minimum rating a nation must have in order for an independent unit to join it
+	independent_unit_join_nation_min_rating = 100 + misc.random(150);		// the minimum rating a nation must have in order for an independent unit to join it
 
 	setup_date = info.game_date;
 
@@ -541,7 +541,7 @@ void Town::next_day()
 	{
 		LOG_MSG(" population_grow");
 		population_grow();
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 	}
 
 	err_when(population>MAX_TOWN_POPULATION);
@@ -550,7 +550,7 @@ void Town::next_day()
 
 	LOG_MSG(" update_camp_link");
 	update_camp_link();
-	LOG_MSG(m.get_random_seed());
+	LOG_MSG(misc.get_random_seed());
 
 	//------ update target loyalty/resistance -------//
 
@@ -566,7 +566,7 @@ void Town::next_day()
 			LOG_MSG(" update_target_resistance");
 			update_target_resistance();		// update resistance for independent towns
 		}
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 	}
 
 	//------ update loyalty/resistance -------//
@@ -583,7 +583,7 @@ void Town::next_day()
 			LOG_MSG(" update_target_resistance");
 			update_resistance();
 		}
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		if( town_array.is_deleted(townRecno) )
 			return;
@@ -595,7 +595,7 @@ void Town::next_day()
 	{
 		LOG_MSG(" think_rebel");
 		think_rebel();
-		LOG_MSG(m.get_random_seed() );
+		LOG_MSG(misc.get_random_seed() );
 
 		if( town_array.is_deleted(townRecno) )
 			return;
@@ -608,7 +608,7 @@ void Town::next_day()
 	{
 		LOG_MSG(" think_surrender");
 		think_surrender();		// for nation town only, independent town surrender is handled in update_resistance()
-		LOG_MSG(m.get_random_seed() );
+		LOG_MSG(misc.get_random_seed() );
 
 		if( town_array.is_deleted(townRecno) )
 			return;
@@ -632,7 +632,7 @@ void Town::next_day()
 	{
 		LOG_MSG(" process_food");
 		process_food(wallManPower);
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 
 		if( town_array.is_deleted(townRecno) )
 			return;
@@ -644,7 +644,7 @@ void Town::next_day()
 	{
 		LOG_MSG(" process_auto");
 		process_auto();
-		LOG_MSG(m.get_random_seed() );
+		LOG_MSG(misc.get_random_seed() );
 
 		if( town_array.is_deleted(townRecno) )
 			return;
@@ -664,7 +664,7 @@ void Town::next_day()
 	if( info.game_date%30 == town_recno%30 )
 		spy_array.catch_spy(SPY_TOWN, town_recno);
 
-	LOG_MSG(m.get_random_seed() );
+	LOG_MSG(misc.get_random_seed() );
 
 	if( town_array.is_deleted(townRecno) )
 		return;
@@ -690,7 +690,7 @@ void Town::next_day()
 		if( nation_recno==0 || nation_array[nation_recno]->find_best_place_loc(FIRM_INN, loc_x1, loc_y1, buildXLoc, buildYLoc) )		// whether it's FIRM_INN or not really doesn't matter, just any firm type will do
 			no_neighbor_space = 0;
 
-		LOG_MSG(m.get_random_seed());
+		LOG_MSG(misc.get_random_seed());
 	}
 
 	//------ decrease penalties -----//
@@ -1070,7 +1070,7 @@ void Town::set_nation(int newNationRecno)
 	//------- reset town_combat_level -------//
 
 	town_combat_level = 0;
-	independent_unit_join_nation_min_rating = 100 + m.random(150);		// prevent it from changing nation again too soon
+	independent_unit_join_nation_min_rating = 100 + misc.random(150);		// prevent it from changing nation again too soon
 
 	//------- reset build wall vars -------//
 
@@ -1635,7 +1635,7 @@ void Town::think_rebel()
 
 	//------- create other rebel units in the rebel group -----//
 
-	int raceRebelCount = (int) (population-spy_count) * (30+m.random(30)) / 100;		// 30% - 60% of the unit will rebel.
+	int raceRebelCount = (int) (population-spy_count) * (30+misc.random(30)) / 100;		// 30% - 60% of the unit will rebel.
 
 	err_when(raceRebelCount+1 > MAX_TOWN_POPULATION); // plus 1 for the leader, cannot excess MAX_TOWN_POPULATION, consider the case these units settle immediately
 
@@ -1718,8 +1718,8 @@ int Town::create_rebel_unit(int isLeader)
 
 	if( isLeader )
 	{
-		int combatLevel 	  = 10 + population*2 + m.random(10);		// the higher the population is, the higher the combat level will be
-		int leadershipLevel = 10 + population   + m.random(10);		// the higher the population is, the higher the combat level will be
+		int combatLevel 	  = 10 + population*2 + misc.random(10);		// the higher the population is, the higher the combat level will be
+		int leadershipLevel = 10 + population   + misc.random(10);		// the higher the population is, the higher the combat level will be
 
 		unitPtr->set_combat_level( MIN(combatLevel, 100) );
 		unitPtr->skill.set_skill_level( MIN(leadershipLevel, 100) );
@@ -1774,7 +1774,7 @@ void Town::being_attack_hit(BaseObj* attackerObj, float damagePoint)
 		{
 			// only call out defender when the attacking unit is within the effective defending distance
 
-			if( m.points_distance( attackerObj->obj_loc_x1(), attackerObj->obj_loc_y1(),
+			if( misc.points_distance( attackerObj->obj_loc_x1(), attackerObj->obj_loc_y1(),
 				 center_x, center_y ) <= EFFECTIVE_DEFEND_DISTANCE )
 			{
 				int loopCount=0;
@@ -1925,7 +1925,7 @@ void Town::being_attack_hit(BaseObj* attackerObj, float damagePoint)
 			if( zeroLoyaltyResistance &&
 				 attackerNationRecno && nation_array[attackerNationRecno]->is_monster() )
 			{
-				if( m.random(50)==0 )
+				if( misc.random(50)==0 )
 				{
 					int unitRecno = recruit(false, COMMAND_AUTO);		// false-not a wagon, just a unit
 
@@ -2292,7 +2292,7 @@ int Town::closest_own_camp()
 			continue;
 		}
 
-		curDistance = m.points_distance( center_x, center_y,
+		curDistance = misc.points_distance( center_x, center_y,
 						  firmPtr->center_x, firmPtr->center_y );
 
 		if( curDistance < minDistance )

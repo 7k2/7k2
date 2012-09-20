@@ -725,14 +725,14 @@ void FirmCamp::disp_spy_info(int dispY1, int refreshFlag)
 		// ------- display loyalty ---------//
 
 	//	info.disp_loyalty( x, y+14, x+60, unitLoyalty, unitLoyalty, nation_recno, refreshFlag );
-		info.disp_loyalty( INFO_X1+20, y+12, INFO_X2-99 - font_snds.text_width(m.format(unitLoyalty, 4)),
+		info.disp_loyalty( INFO_X1+20, y+12, INFO_X2-99 - font_snds.text_width(misc.format(unitLoyalty, 4)),
 							unitLoyalty, unitLoyalty, nation_recno, refreshFlag );
 	
 		// ------- display combat ----------//
 
 		// x2 = font_snds.put( x+110, y+12, "Combat" ) + 10;
 		x2 = font_snds.put( x+110, y+12, text_unit.str_combat_level() ) + 10;
-		font_snds.right_put( INFO_X2-10, y+12, m.format(unitCombat, 4) );
+		font_snds.right_put( INFO_X2-10, y+12, misc.format(unitCombat, 4) );
 	//	font_snds.put( x2, y+14, unitCombat );
 
 	}
@@ -743,7 +743,7 @@ void FirmCamp::disp_spy_info(int dispY1, int refreshFlag)
 
 //	x2 = font_snds.put( x+110, y+26, "Spying" ) + 10;
 	x2 = font_snds.put( x+110, y+26, text_unit.str_spy_skill() ) + 10;
-	font_snds.right_put( INFO_X2-10, y+26, m.format(unitSpying, 4) );
+	font_snds.right_put( INFO_X2-10, y+26, misc.format(unitSpying, 4) );
 //	font_snds.put( x2, y+28, unitSpying );
 
 	// -------- display spy action ------//

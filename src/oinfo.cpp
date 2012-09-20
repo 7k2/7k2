@@ -190,7 +190,7 @@ void Info::init(int yyyy, int mm, int dd)
 
 	//----------------------------------//
 
-	start_play_time = m.get_time();	// the time player start playing the game
+	start_play_time = misc.get_time();	// the time player start playing the game
 	total_play_time = 0;             // total time the player has played in all saved games
 	display_campaign_mission_briefing = 0;
 	display_hot_key = 0;
@@ -247,7 +247,7 @@ void Info::init_random_seed(int randomSeed)
 		random_seed = randomSeed;
 	}
 
-	m.set_random_seed(random_seed);
+	misc.set_random_seed(random_seed);
 
 	//------ write random seed --------//
 
@@ -257,7 +257,7 @@ void Info::init_random_seed(int randomSeed)
 
 		fileMapSeed.file_create( "MAP.RS" );
 
-		String str(m.format(random_seed,1));
+		String str(misc.format(random_seed,1));
 
 		fileMapSeed.file_write(str, str.len());
 	}
@@ -590,7 +590,7 @@ void Info::disp_heading()
 			i = 9;
 		else
 			i = config.frame_speed /3;
-		str += m.format(i, 4);
+		str += misc.format(i, 4);
 		font_news.center_put( ZOOM_X1, ZOOM_Y1, ZOOM_X2, ZOOM_Y2 -(font_news.height()<<1), str);
 
 		game_speed_info_display_delay--;
@@ -813,12 +813,12 @@ void Info::disp_heading()
 				int tempCash = (int)(nationPtr->cash - nationPtr->increased_cash);
 				if( tempCash >= 0 )
 				{
-					strPtr = m.format( (int)tempCash, 4 );			// format type 4 - no thousand separators
+					strPtr = misc.format( (int)tempCash, 4 );			// format type 4 - no thousand separators
 				}
 				else
 				{
 					str = "-";
-					str += m.format( (int)-tempCash, 4 );		// format type 4 - no thousand separators
+					str += misc.format( (int)-tempCash, 4 );		// format type 4 - no thousand separators
 					strPtr = str;
 				}
 				if (nationPtr->increased_cash > 1000)
@@ -856,12 +856,12 @@ void Info::disp_heading()
 				int tempCash = (int)(nationPtr->cash - nationPtr->increased_cash);
 				if( tempCash >= 0 )
 				{
-					strPtr = m.format( (int)tempCash, 4 );			// format type 4 - no thousand separators
+					strPtr = misc.format( (int)tempCash, 4 );			// format type 4 - no thousand separators
 				}
 				else
 				{
 					str = "-";
-					str += m.format( (int)-tempCash, 4 );		// format type 4 - no thousand separators
+					str += misc.format( (int)-tempCash, 4 );		// format type 4 - no thousand separators
 					strPtr = str;
 				}
 				if (nationPtr->increased_cash > 1000)
@@ -927,7 +927,7 @@ void Info::disp_heading()
 
 		if( dispValue >= 0 )
 		{
-			str = m.format( (int)dispValue, 4 );			// format type 4 - no thousand separators
+			str = misc.format( (int)dispValue, 4 );			// format type 4 - no thousand separators
 			if (current_display_mode.mode_id == MODE_ID_800x600x16)
 			{
 				tempx = font_snds.disp( REPU_BUTTON_X1 +30, REPU_BUTTON_Y1 +12, str, REPU_BUTTON_X1 +120);
@@ -945,7 +945,7 @@ void Info::disp_heading()
 		else
 		{
 			str  = "-";
-			str += m.format( (int)-dispValue, 4 );		// format type 4 - no thousand separators
+			str += misc.format( (int)-dispValue, 4 );		// format type 4 - no thousand separators
 			if (current_display_mode.mode_id == MODE_ID_800x600x16)
 			{
 				tempx = font_red.disp( REPU_BUTTON_X1 +30, REPU_BUTTON_Y1 +12, str, REPU_BUTTON_X1 +120);
@@ -969,7 +969,7 @@ void Info::disp_heading()
 			else
 				str += "-";
 
-			str += m.format( abs(dispChange), 4);
+			str += misc.format( abs(dispChange), 4);
 			str += ")";
 			
 			if (str[2] == '-')
@@ -1115,7 +1115,7 @@ void Info::process_viewing_spy()
 		/*
 			//--- on average, a spy will get caught in 5 to 15 days when viewing the secret of its enemy ---//
 
-			if( m2.random(5+spyPtr->spy_skill/5) )		// use m2 to avoid multiplayer sync problem
+			if( misc2.random(5+spyPtr->spy_skill/5) )		// use misc2 to avoid multiplayer sync problem
 			{
 				spyPtr->set_exposed(COMMAND_PLAYER);
 				isValid = 0;

@@ -77,7 +77,7 @@ void Site::disp_info(int refreshFlag)
 			text_firm.str_alchemy_raw(object_id) );
 
 		//str = "Estimated Reserves ";
-		// str += m.format(reserve_qty, 1);
+		// str += misc.format(reserve_qty, 1);
 		//font_whbl.center_put( INFO_X1+20, LINE2_Y, INFO_X2-10, LINE2_Y+20, str );
 		font_whbl.center_put( INFO_X1+20, LINE2_Y, INFO_X2-10, LINE2_Y+20,
 			text_firm.str_estimated_resource(reserve_qty) ); 
@@ -139,7 +139,7 @@ void Site::disp_info(int refreshFlag)
 		font_snds.put( INFO_X1+20, LINE1_Y, text_firm.str_treasure_if_1() ); // "Treasure" );
 
 		font_snds.put( INFO_X1+20, LINE2_Y, text_firm.str_treasure_if_2() ); // "Worth" );
-		font_snds.put( INFO_X1+120, LINE2_Y, m.format( object_id, 2) );
+		font_snds.put( INFO_X1+120, LINE2_Y, misc.format( object_id, 2) );
 	}
 	else if( site_type == SITE_ITEM )
 	{
@@ -439,7 +439,7 @@ void Site::disp_edit_mode(int refreshFlag)
 
 			edit_id_enable = 1;
 			x = font_whbl.put( x1, y, text_firm.str_treasure_if_2(), 0, x2 );	// "Worth" );
-			x = edit_id_x2 = font_blue.put( (edit_id_x1=x+20), (edit_id_y1=y), m.format(object_id, 2), 0, x2 );
+			x = edit_id_x2 = font_blue.put( (edit_id_x1=x+20), (edit_id_y1=y), misc.format(object_id, 2), 0, x2 );
 			edit_id_y2 = edit_id_y1+font_blue.max_font_height;
 			y += 20;
 

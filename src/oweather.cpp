@@ -526,7 +526,7 @@ short Weather::quake_rate(short x, short y)
 	short quakeY = quake_y();
 	short radius = quake_radius();
 
-	short dist = m.points_distance( x, y, quakeX, quakeY );
+	short dist = misc.points_distance( x, y, quakeX, quakeY );
 	if( dist <= radius )
 	{
 		short damage = 100 - dist / 2;

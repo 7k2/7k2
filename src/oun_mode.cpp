@@ -130,7 +130,7 @@ void Unit::process_mode_camp_defender()
 
 	for( int i=startPoint ; i<=endPoint ; i++ )
 	{
-		m.cal_move_around_a_point(i, attackScanRange, attackScanRange, xOffset, yOffset);
+		misc.cal_move_around_a_point(i, attackScanRange, attackScanRange, xOffset, yOffset);
 
 		xLoc = curXLoc + xOffset;
 		yLoc = curYLoc + yOffset;

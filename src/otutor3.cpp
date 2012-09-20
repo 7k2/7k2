@@ -370,7 +370,7 @@ int Tutor::select_learning_campaign_menu()
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 
 						vga.use_front();
@@ -397,7 +397,7 @@ int Tutor::select_learning_campaign_menu()
 
 							fontPtr->center_put(OPTION_SWITCH_X1, OPTION_SWITCH_Y1+OPTION_SWITCH_Y_SPACING*i,
 								OPTION_SWITCH_X2, OPTION_SWITCH_Y2+OPTION_SWITCH_Y_SPACING*i, 
-								m.roman_number(i+1) );
+								misc.roman_number(i+1) );
 						}
 						font_bold_black.put( 230, 386, text_game_menu.str_building_set() );
 						
@@ -734,7 +734,7 @@ int Tutor::select_learning_campaign_menu()
 			int keyCode = mouse.is_key( mouse.scan_code, mouse.event_skey_state, (WORD) 0, K_IS_CTRL | K_CHAR_KEY );
 		   if (keyCode)
 			{
-				keyCode = m.lower(keyCode);
+				keyCode = misc.lower(keyCode);
 				if (keyCode == 't')
 				{
 					tutorial_finish_count = 99;

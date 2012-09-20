@@ -103,7 +103,7 @@ void CampaignEastWest::stage_26_init_vars()
 	//------ set game event vars -------//
 
 	rebel_count = MAX(1, campaign_difficulty-1);
-	next_rebel_date = info.game_date + 30 + m.random(30);
+	next_rebel_date = info.game_date + 30 + misc.random(30);
 
 	general_defect_count = 5;
 
@@ -167,11 +167,11 @@ int CampaignEastWest::stage_26_create_town()
 {
 	//----- create independent towns ------//
 
-	Battle::create_independent_town(3+m.random(2));
+	Battle::create_independent_town(3+misc.random(2));
 
 	//---------- create towns ---------//
 
-	int townAddCount   = 5 + m.random(3);		// 5 to 7
+	int townAddCount   = 5 + misc.random(3);		// 5 to 7
 	int hasFortPercent = 50;
 
 	return create_town(PLAYER_NATION_RECNO, townAddCount, hasFortPercent);
@@ -190,7 +190,7 @@ int CampaignEastWest::stage_26_create_firm()
 	int townRecno1 = king_oversee_town_recno(PLAYER_NATION_RECNO);
 	int townRecno2 = random_pick_town_with_camp(PLAYER_NATION_RECNO, 2);		// only pick towns with <= 2 links
 
-	if( townRecno2 && m.random(2)==0 )		// swap the town in 50% chance
+	if( townRecno2 && misc.random(2)==0 )		// swap the town in 50% chance
 	{
 		int t=townRecno1;
 		townRecno1 = townRecno2;
@@ -246,7 +246,7 @@ void CampaignEastWest::stage_26_next_day()
 	if( should_rebel(30) )
 		town_defect(PLAYER_NATION_RECNO);
 
-	if( m.random(60+nation_array.nation_count*100)==0 && nation_array.nation_count < campaign_difficulty+1 &&
+	if( misc.random(60+nation_array.nation_count*100)==0 && nation_array.nation_count < campaign_difficulty+1 &&
 		 general_defect_count > 0 ) 		// stop forming new nations when a specific number of new nations have already been formed.
 	{
 		general_defect_count--;
@@ -266,7 +266,7 @@ void CampaignEastWest::stage_26_next_day()
 
 			if( firmPtr && firmPtr->inn_unit_count > 0 )
 			{
-				firmPtr->del_inn_unit( m.random( firmPtr->inn_unit_count ) + 1 );
+				firmPtr->del_inn_unit( misc.random( firmPtr->inn_unit_count ) + 1 );
 				break;
 			}
 		}
@@ -299,7 +299,7 @@ void CampaignEastWest::stage_26_process_game_result()
 
 		info.game_year = game_year;			// revert info.game_year back to campaign's game year so that the game's time will not advance
 
-		m.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
+		misc.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
 	}
 }
 //---- End of function CampaignEastWest::stage_26_process_game_result -----//

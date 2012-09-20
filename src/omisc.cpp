@@ -1274,7 +1274,7 @@ void Dump(int i);
 //SXM
 void Misc::change_file_ext(char* desFileName, const char* srcFileName, const char* newExt)
 {
-   int nameLen = m.str_chr(srcFileName, '.');	// include the '.' in the nameLen
+   int nameLen = misc.str_chr(srcFileName, '.');	// include the '.' in the nameLen
 
 #if(defined(CHINESE))
 #ifdef DEBUG
@@ -1747,7 +1747,7 @@ int Misc::area_distance(int x1a, int y1a, int x2a, int y2a,
 //
 void Misc::randomize_chance()
 {
-	random_chance = m.random(100)+1;
+	random_chance = misc.random(100)+1;
 	random_chance_accumulated = 0;
 }
 //---------- End of function Misc::randomize_chance ---------//

@@ -80,7 +80,7 @@ void CampaignEastWest::plot_a4_create_game()
 				&& minotaurNation->find_best_place_loc(FIRM_LAIR, minePtr->loc_x1, minePtr->loc_y1, buildXLoc, buildYLoc) )
 			{
 				create_monster_lair( buildXLoc, buildYLoc, plot_nation_recno1, 
-					MAX_SOLDIER - m.random(MAX_SOLDIER/2), 20 + campaign_difficulty*10 );
+					MAX_SOLDIER - misc.random(MAX_SOLDIER/2), 20 + campaign_difficulty*10 );
 			}
 		}
 	}

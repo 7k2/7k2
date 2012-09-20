@@ -54,7 +54,7 @@ int CampaignEastWest::stage_27_create_game()
 
 	//--- randomly init the current situation -----//
 
-	set_cur_situation( m.random(CAMPAIGN_SITUATION_COUNT)+1 );
+	set_cur_situation( misc.random(CAMPAIGN_SITUATION_COUNT)+1 );
 
 	//------- create objects and vars --------//
 
@@ -163,7 +163,7 @@ int CampaignEastWest::stage_27_create_nation()
 
 int CampaignEastWest::stage_27_create_town()
 {
-	Battle::create_independent_town(4+m.random(3));		// 4-6 independent towns at the beginning
+	Battle::create_independent_town(4+misc.random(3));		// 4-6 independent towns at the beginning
 
 	int townAddCount   = 4;
 	int hasFortPercent = 100;
@@ -271,7 +271,7 @@ void CampaignEastWest::stage_27_process_game_result()
 
 		info.game_year = game_year;			// revert info.game_year back to campaign's game year so that the game's time will not advance
 
-		m.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
+		misc.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
 	}
 }
 //---- End of function CampaignEastWest::stage_27_process_game_result -----//

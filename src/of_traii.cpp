@@ -398,21 +398,21 @@ void FirmTrain::disp_trainee_list(int dispY1, int refreshFlag )
 						if( attribute >= 0 )
 						{
 							font->center_put( x, yHp, x+TRAINEE_X_SPACING, yHp+font->max_font_height, 
-								m.format(attribute) );
+								misc.format(attribute) );
 						}
 					}
 					else if( ownSpy )		// display spy icon
 						vga.active_buf->put_bitmap_trans( x+TRAINEE_X_SPACING/2-8, yHp-5, image_icon.read("U_SPY") );
 					else					// display combat skill
 						font->center_put( x, yHp, x+TRAINEE_X_SPACING, yHp+font->max_font_height, 
-							m.format(representAttribute) );
+							misc.format(representAttribute) );
 				}
 				else
 				{
 					// display spy skill
 					err_when( !ownSpy );
 					font_whbl.center_put( x, yHp, x+TRAINEE_X_SPACING, yHp+font->max_font_height, 
-						m.format(spy_array[ownSpy]->spy_skill) );
+						misc.format(spy_array[ownSpy]->spy_skill) );
 				}
 			}
 		}
@@ -529,8 +529,8 @@ void FirmTrain::disp_trainee_info(int dispY1, int refreshFlag )
 			// ------- display loyalty ---------//
 			if( unit_res[traineePtr->unit_id]->class_info.has_loyalty )
 			{
-				info.disp_loyalty( x, y+12, INFO_X2-99 - font_snds.text_width(m.format(traineePtr->loyalty, 4)),
-									//		font_snds.text_width(m.format(traineePtr->loyalty, 4)) -
+				info.disp_loyalty( x, y+12, INFO_X2-99 - font_snds.text_width(misc.format(traineePtr->loyalty, 4)),
+									//		font_snds.text_width(misc.format(traineePtr->loyalty, 4)) -
 									//		font_snds.text_width("11"),
 											traineePtr->loyalty, traineePtr->loyalty, nation_recno, refreshFlag, disp_combat_or_skill==4 );
 			}
@@ -542,7 +542,7 @@ void FirmTrain::disp_trainee_info(int dispY1, int refreshFlag )
 			if( unit_res[traineePtr->unit_id]->class_info.has_combat_level )
 			{
 				x2 = (disp_combat_or_skill==1?font_blu2:font_snds).put( x+110, y+12, text_unit.str_combat_level() ) + 10;
-				font_snds.right_put( INFO_X2-10, y+12, m.format(traineePtr->combat_level(), 4) );
+				font_snds.right_put( INFO_X2-10, y+12, misc.format(traineePtr->combat_level(), 4) );
 			//	font_snds.put( x2, y+14, traineePtr->combat_level() );
 			}
 
@@ -552,7 +552,7 @@ void FirmTrain::disp_trainee_info(int dispY1, int refreshFlag )
 				&& traineePtr->skill_level() > 0 )
 			{
 				x2 = (disp_combat_or_skill==2?font_blu2:font_snds).put( x+110, y+26, text_unit.str_leadership() ) + 10;
-				font_snds.right_put( INFO_X2-10, y+26, m.format(traineePtr->skill_level(), 4) );
+				font_snds.right_put( INFO_X2-10, y+26, misc.format(traineePtr->skill_level(), 4) );
 			//	font_snds.put( x2, y+28, traineePtr->skill_level() );
 			}
 
@@ -560,13 +560,13 @@ void FirmTrain::disp_trainee_info(int dispY1, int refreshFlag )
 			if( traineePtr->spy_skill > 0 )
 			{
 				x2 = (disp_combat_or_skill==3?font_blu2:font_snds).put( x, y+26, text_unit.str_spy_skill() ) + 10;
-				font_snds.right_put( INFO_X2-100, y+26, m.format((int)traineePtr->spy_skill, 4) );
+				font_snds.right_put( INFO_X2-100, y+26, misc.format((int)traineePtr->spy_skill, 4) );
 			//	font_snds.put( x2, y+28, (int) traineePtr->spy_skill );
 			}
 			else if( traineePtr->is_own_spy() )
 			{
 				x2 = (disp_combat_or_skill==3?font_blu2:font_snds).put( x, y+26, text_unit.str_spy_skill() ) + 10;
-				font_snds.right_put( INFO_X2-100, y+26, m.format(spy_array[traineePtr->spy_recno]->spy_skill, 4) );
+				font_snds.right_put( INFO_X2-100, y+26, misc.format(spy_array[traineePtr->spy_recno]->spy_skill, 4) );
 			//	font_snds.put( x2, y+28, spy_array[traineePtr->spy_recno]->spy_skill );
 			}
 		}
@@ -687,7 +687,7 @@ void FirmTrain::disp_train_menu(int refreshFlag)
 
 				// display loyalty
 				font_whbl.center_put( x, yLoyalty, x+TRAINEE_X_SPACING, yLoyalty+font_snds.max_font_height,
-					m.format((int) townPtr->loyalty) );
+					misc.format((int) townPtr->loyalty) );
 			}
 		}
 	}
@@ -841,7 +841,7 @@ void FirmTrain::disp_edit_mode(int& refreshFlag, int& y, int dispBG)
 			edit_combat_enable = 1;
 
 			x = font_whbl.put( x, y, " (", 0, x2 );
-			x = edit_combat_pot_x2 = font_blue.put( (edit_combat_pot_x1=x), (edit_combat_pot_y1=y), m.format(traineePtr->train_combat_potential,3), 0, x2 );
+			x = edit_combat_pot_x2 = font_blue.put( (edit_combat_pot_x1=x), (edit_combat_pot_y1=y), misc.format(traineePtr->train_combat_potential,3), 0, x2 );
 			edit_combat_pot_y2 = edit_combat_pot_y1 + font_blue.max_font_height;
 			edit_combat_pot_enable = 1;
 			x = font_whbl.put( x, y, ")", 0, x2 );
@@ -858,7 +858,7 @@ void FirmTrain::disp_edit_mode(int& refreshFlag, int& y, int dispBG)
 			edit_skill_enable = 1;
 
 			x = font_whbl.put( x, y, " (", 0, x2 );
-			x = edit_skill_pot_x2 = font_blue.put( (edit_skill_pot_x1=x), (edit_skill_pot_y1=y), m.format(traineePtr->train_skill_potential,3), 0, x2 );
+			x = edit_skill_pot_x2 = font_blue.put( (edit_skill_pot_x1=x), (edit_skill_pot_y1=y), misc.format(traineePtr->train_skill_potential,3), 0, x2 );
 			edit_skill_pot_y2 = edit_skill_pot_y1 + font_blue.max_font_height;
 			edit_skill_pot_enable = 1;
 			x = font_whbl.put( x, y, ")", 0, x2 );
@@ -875,7 +875,7 @@ void FirmTrain::disp_edit_mode(int& refreshFlag, int& y, int dispBG)
 			edit_spy_enable = 1;
 
 			x = font_whbl.put( x, y, " (", 0, x2 );
-			x = edit_spy_pot_x2 = font_blue.put( (edit_spy_pot_x1=x), (edit_spy_pot_y1=y), m.format(traineePtr->train_spy_potential,3), 0, x2 );
+			x = edit_spy_pot_x2 = font_blue.put( (edit_spy_pot_x1=x), (edit_spy_pot_y1=y), misc.format(traineePtr->train_spy_potential,3), 0, x2 );
 			edit_spy_pot_y2 = edit_spy_pot_y1 + font_blue.max_font_height;
 			edit_spy_pot_enable = 1;
 			x = font_whbl.put( x, y, ")", 0, x2 );

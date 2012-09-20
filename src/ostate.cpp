@@ -107,7 +107,7 @@ void StateArray::generate( int stateCount )
 	//-------- generate area ----------//
 
 	int needRetry = 0;
-	int avgSeparation = m.sqrt( max_x_loc * max_y_loc / state_count );
+	int avgSeparation = misc.sqrt( max_x_loc * max_y_loc / state_count );
 
 	int loopCount = 0;
 	do
@@ -143,7 +143,7 @@ void StateArray::generate( int stateCount )
 				// check separation
 				for( int t = 1; t < s; ++t )
 				{
-					if( m.diagonal_distance(xLoc, yLoc, operator[](t)->center_x, operator[](t)->center_y)
+					if( misc.diagonal_distance(xLoc, yLoc, operator[](t)->center_x, operator[](t)->center_y)
 						* 2 < avgSeparation )
 						closeFlag = 1;
 				}
@@ -650,6 +650,6 @@ unsigned long StateArray::random( unsigned long  u)
 	if( game.is_campaign_mode() )
 		return game.campaign()->random(u);
 	else
-		return m.random(u);
+		return misc.random(u);
 }
 // --------- end of function StateArray::random ---------//

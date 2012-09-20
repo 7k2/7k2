@@ -554,7 +554,7 @@ int Help::should_disp()
 	if( last_mouse_x==mouse.cur_x && last_mouse_y==mouse.cur_y &&
 		 !mouse.left_press && !mouse.right_press ) // && !mouse.any_click(2) )
 	{
-		if( m.get_time() - mouse_still_time >= HELP_INACTIVE_TIME )
+		if( misc.get_time() - mouse_still_time >= HELP_INACTIVE_TIME )
 	// ####### end Gilbert 13/7 #########//
 		{
 			return 1;
@@ -564,7 +564,7 @@ int Help::should_disp()
 	{
 		last_mouse_x = mouse.cur_x;
 		last_mouse_y = mouse.cur_y;
-		mouse_still_time = m.get_time();
+		mouse_still_time = misc.get_time();
 	}
 
 	return 0;
@@ -1019,7 +1019,7 @@ void HelpSaveScreen::hide_area(int x1, int y1, int x2, int y2 )
 
 	++hide_area_count;
 
-	if( !hiding_flag && m.is_touch( x1, y1, x2, y2,
+	if( !hiding_flag && misc.is_touch( x1, y1, x2, y2,
 		save_scr_x1, save_scr_y1, save_scr_x2, save_scr_y2 ) )
 	{
 		// don't handle mouse cursor

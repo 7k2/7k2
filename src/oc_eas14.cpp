@@ -64,7 +64,7 @@ int CampaignEastWest::stage_14_create_game()
 
 	//---- create the player force ----//
 
-	create_troop(PLAYER_NATION_RECNO, 66-campaign_difficulty*6, 50+m.random(20) );		// 80 - average combat level, an elite force
+	create_troop(PLAYER_NATION_RECNO, 66-campaign_difficulty*6, 50+misc.random(20) );		// 80 - average combat level, an elite force
 
 	//------ init stage 1 vars -------//
 
@@ -151,13 +151,13 @@ int CampaignEastWest::stage_14_create_nation()
 
 int CampaignEastWest::stage_14_create_lair()
 {
-	int lairAddCount = 8 + m.random(3);						// add 6 to 7 Fryhtan Lairs
+	int lairAddCount = 8 + misc.random(3);						// add 6 to 7 Fryhtan Lairs
 	int independentTownAddCount=0;
-	int specialFirmCount= 5 + m.random(2);
+	int specialFirmCount= 5 + misc.random(2);
 	int soldierCombatLevel = 55 + campaign_difficulty * 5;
 
-	if( m.random(2)==0 )		// 50% chance having independent towns
-		independentTownAddCount = 6 + m.random(3);		// 6 to 8 independent towns
+	if( misc.random(2)==0 )		// 50% chance having independent towns
+		independentTownAddCount = 6 + misc.random(3);		// 6 to 8 independent towns
 
 	create_lair(cur_monster_nation_recno, STAGE_14_MONSTER_NATION_RECNO, lairAddCount, independentTownAddCount, specialFirmCount, soldierCombatLevel);
 

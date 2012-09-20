@@ -149,7 +149,7 @@ int CampaignEastWest::stage_20_create_nation()
 
 int CampaignEastWest::stage_20_create_town()
 {
-	int townAddCount   = 5 + m.random(3);
+	int townAddCount   = 5 + misc.random(3);
 	int hasFortPercent = 90;
 
 	return create_town( STAGE_20_EASTERN_NATION_RECNO, townAddCount, hasFortPercent);
@@ -168,7 +168,7 @@ int CampaignEastWest::stage_20_create_firm()
 	int townRecno1 = king_oversee_town_recno(STAGE_20_EASTERN_NATION_RECNO);
 	int townRecno2 = random_pick_town_with_camp(STAGE_20_EASTERN_NATION_RECNO, 2);		// only pick towns with <= 2 links
 
-	if( townRecno2 && m.random(2)==0 )		// swap the town in 50% chance
+	if( townRecno2 && misc.random(2)==0 )		// swap the town in 50% chance
 	{
 		int t=townRecno1;
 		townRecno1 = townRecno2;
@@ -189,7 +189,7 @@ int CampaignEastWest::stage_20_create_firm()
 
 	//----- four possible situations -------//
 
-	int eastSituation = m.random(2)+1;
+	int eastSituation = misc.random(2)+1;
 
 	//-------------------------------------------------//
 	// The target state has an emphasis on weapon
@@ -209,7 +209,7 @@ int CampaignEastWest::stage_20_create_firm()
 		{
 			FirmCamp* firmCamp = firm_array[ nationPtr->ai_camp_array[i] ]->cast_to_FirmCamp();
 
-			int addCount = MAX_SOLDIER - firmCamp->soldier_count - m.random(3);		// don't always full up, sometimes leave a free slots empty
+			int addCount = MAX_SOLDIER - firmCamp->soldier_count - misc.random(3);		// don't always full up, sometimes leave a free slots empty
 
 			for( int j=addCount ; j>0 ; j-- )
 				add_weapon_to_camp( firmCamp->firm_recno );
@@ -284,7 +284,7 @@ void CampaignEastWest::stage_20_process_game_result()
 		//--- if there is an independent state, 66% chance that it will ---//
 		//--- turn towards you in admiration of your victory and power ----//
 
-		if( state_array.nation_state_count(0) > 0 && m.random(3)>0 )
+		if( state_array.nation_state_count(0) > 0 && misc.random(3)>0 )
 			set_event( EVENT_INDEPENDENT_SURRENDER );
 		else
 			set_event( EVENT_RANDOM_POINT_4 );
@@ -298,7 +298,7 @@ void CampaignEastWest::stage_20_process_game_result()
 
 		info.game_year = game_year;			// revert info.game_year back to campaign's game year so that the game's time will not advance
 
-		m.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
+		misc.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
 	}
 }
 //---- End of function CampaignEastWest::stage_20_process_game_result -----//

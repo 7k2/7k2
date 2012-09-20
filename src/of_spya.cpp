@@ -101,7 +101,7 @@ void FirmSpy::think_train_new()
 
 	//----- determine which town to train the special unit from ---//
 
-	int linkId = m.random( linked_town_count );
+	int linkId = misc.random( linked_town_count );
 
 	for( int i=0 ; i<linked_town_count ; i++ )
 	{
@@ -112,7 +112,7 @@ void FirmSpy::think_train_new()
 
 		//------ think about training a civilian spy -------//
 
-		if( m.random(2)==0 )
+		if( misc.random(2)==0 )
 		{
 			if( has_spy(townPtr->race_id, true) )		// true - is civilian
 				continue;
@@ -122,13 +122,13 @@ void FirmSpy::think_train_new()
 				int rc, counterSpy;
 
 				if( nationPtr->pref_counter_spy < 25 )
-					counterSpy = m.random(3)==0;		// 33% chance
+					counterSpy = misc.random(3)==0;		// 33% chance
 
 				else if( nationPtr->pref_counter_spy < 75 )
-					counterSpy = m.random(2)==0;		// 50% chance
+					counterSpy = misc.random(2)==0;		// 50% chance
 
 				else
-					counterSpy = m.random(3)!=0;		// 66% chance
+					counterSpy = misc.random(3)!=0;		// 66% chance
 
 				if( counterSpy )
 					rc = nationPtr->think_assign_spy_own_town(townPtr->race_id, region_id);
@@ -149,7 +149,7 @@ void FirmSpy::think_train_new()
 			if( has_spy(townPtr->race_id, false) )		// false - is not civilian
 				continue;
 
-			int trainType = m.random(2)==0 ? TRAIN_UNIT_INFANTRY : TRAIN_UNIT_SPECIAL;
+			int trainType = misc.random(2)==0 ? TRAIN_UNIT_INFANTRY : TRAIN_UNIT_SPECIAL;
 
 			if( can_train_from_town(townPtr->town_recno, required_linked_firm[trainType]) )
 			{
@@ -192,13 +192,13 @@ int FirmSpy::has_spy(int raceId, int isCivilian)
 void FirmSpy::think_spy_action()
 {
 	Nation* nationPtr = nation_array[nation_recno];
-	int traineeId = m.random(trainee_count)+1;
+	int traineeId = misc.random(trainee_count)+1;
 
 	//--- if the nation's reputation is negative, then only do not produce spies too often ---//
 
 	if( nationPtr->reputation < 0 )
 	{
-		if( m.random(-nationPtr->reputation/5) != 0 )
+		if( misc.random(-nationPtr->reputation/5) != 0 )
 			return;
 	}
 
@@ -223,13 +223,13 @@ void FirmSpy::think_spy_action()
 			int townRecno, counterSpy;
 
 			if( nationPtr->pref_counter_spy < 25 )
-				counterSpy = m.random(3)==0;		// 33% chance
+				counterSpy = misc.random(3)==0;		// 33% chance
 
 			else if( nationPtr->pref_counter_spy < 75 )
-				counterSpy = m.random(2)==0;		// 50% chance
+				counterSpy = misc.random(2)==0;		// 50% chance
 
 			else
-				counterSpy = m.random(3)!=0;		// 66% chance
+				counterSpy = misc.random(3)!=0;		// 66% chance
 
 			if( counterSpy )
 				townRecno = nationPtr->think_assign_spy_own_town(traineePtr->race_id, region_id);

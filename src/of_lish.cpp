@@ -287,7 +287,7 @@ void FirmLishorr::process_monster_firm()
 	
 						enemyCombatLevel += (int) unitPtr->hit_points;
 
-						if( enemyXLoc == -1 || m.random(5)==0 )
+						if( enemyXLoc == -1 || misc.random(5)==0 )
 						{
 							enemyXLoc = xLoc;
 							enemyYLoc = yLoc;
@@ -328,7 +328,7 @@ void FirmLishorr::process_monster_firm()
 
 						enemyCombatLevel += MAX(50, firmCombatLevel);		// minimum 50 points for each firm
 
-						if( enemyXLoc == -1 || m.random(5)==0 )
+						if( enemyXLoc == -1 || misc.random(5)==0 )
 						{
 							enemyXLoc = firmPtr->loc_x1;
 							enemyYLoc = firmPtr->loc_y1;
@@ -377,7 +377,7 @@ void FirmLishorr::process_monster_firm()
 		}
 
       //### begin trevor 24/3 ####//
-		if( m.random(chance) < t && (info.game_month == 2 || info.game_month == 7))
+		if( misc.random(chance) < t && (info.game_month == 2 || info.game_month == 7))
 		{
 			Firm*	firmPtr = firm_array[firm_recno];
 			int firmRecno = create_firm_next_to_place( firmPtr, FIRM_WILDE_LISHORR, -MONSTER_KHARSHUF, 0, 6 );

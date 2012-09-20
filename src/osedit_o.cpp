@@ -249,7 +249,7 @@ void ScenarioEditor::disp_hero_view()
 				int unitId;
 				if( heroInfo->infantry_unit && heroInfo->special_unit )
 				{
-				//	if( m.random(2)==0 )
+				//	if( misc.random(2)==0 )
 						unitId = race_res[heroInfo->race_id]->infantry_unit_id;
 				//	else
 				//		unitId = race_res[heroInfo->race_id]->special_unit_id;
@@ -316,7 +316,7 @@ int ScenarioEditor::detect_hero_view()
 				int unitId;
 				if( heroInfo->infantry_unit && heroInfo->special_unit )
 				{
-				//	if( m.random(2)==0 )
+				//	if( misc.random(2)==0 )
 						unitId = race_res[heroInfo->race_id]->infantry_unit_id;
 				//	else
 				//		unitId = race_res[heroInfo->race_id]->special_unit_id;

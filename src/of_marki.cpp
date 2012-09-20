@@ -296,19 +296,19 @@ void FirmMarket::disp_market_info(int dispY1, int refreshFlag)
 		else
 		{
 			font_snds.put( x, y+16, "Sales" );
-			font_snds.right_put( x+56, y+16, m.format((int)marketGoods->sales_365days()) );
+			font_snds.right_put( x+56, y+16, misc.format((int)marketGoods->sales_365days()) );
 		}
 
 		// ------- display quantity -----//
 
 		if( !show_sale_debug_info )
 		{
-			font_snds.center_put( x, y+20, x+56, y+36, m.format((int)marketGoods->stock_qty) );
+			font_snds.center_put( x, y+20, x+56, y+36, misc.format((int)marketGoods->stock_qty) );
 		}
 		else
 		{
 			font_snds.put( x, y, "Stock" );
-			font_snds.right_put( x+56, y, m.format((int)marketGoods->stock_qty) );
+			font_snds.right_put( x+56, y, misc.format((int)marketGoods->stock_qty) );
 		}
 
 		// -------- disp demand -------//
@@ -316,7 +316,7 @@ void FirmMarket::disp_market_info(int dispY1, int refreshFlag)
 		if( show_sale_debug_info )
 		{
 			font_snds.put( x, y+32, "Demand" );
-			font_snds.right_put( x+56, y+32, m.format((int)marketGoods->month_demand) );
+			font_snds.right_put( x+56, y+32, misc.format((int)marketGoods->month_demand) );
 		}
 
 		// ------ display icon ---------//

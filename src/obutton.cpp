@@ -514,7 +514,7 @@ int Button::detect(unsigned keyCode1, unsigned keyCode2, int detectRight, int su
 	//----- paint the button with pressed shape ------//
 
 	#define PRESSED_TIMEOUT_SECONDS  1      // 1 seconds
-	DWORD timeOutTime = m.get_time()+PRESSED_TIMEOUT_SECONDS*1000;
+	DWORD timeOutTime = misc.get_time()+PRESSED_TIMEOUT_SECONDS*1000;
 
 	if( elastic )
 	{
@@ -526,7 +526,7 @@ int Button::detect(unsigned keyCode1, unsigned keyCode2, int detectRight, int su
 			sys.yield();
 			mouse.get_event();
 
-			if( m.get_time() >= timeOutTime )
+			if( misc.get_time() >= timeOutTime )
 				break;
 
 			// leave the rectangle, cancel press
@@ -554,7 +554,7 @@ int Button::detect(unsigned keyCode1, unsigned keyCode2, int detectRight, int su
 			sys.yield();
 			mouse.get_event();
 
-			if( m.get_time() >= timeOutTime )
+			if( misc.get_time() >= timeOutTime )
 				break;
 		}
    }
@@ -581,7 +581,7 @@ void Button::wait_press(int timeOut)
 	#define INACTIVE_TIMEOUT_SECONDS  10      // 10 seconds
 
 	int   lastMouseX= -1, lastMouseY;
-	DWORD timeOutTime = m.get_time()+INACTIVE_TIMEOUT_SECONDS*1000;
+	DWORD timeOutTime = misc.get_time()+INACTIVE_TIMEOUT_SECONDS*1000;
 
 	mouse.get_event();			// clean up previous mouse events
 
@@ -597,14 +597,14 @@ void Button::wait_press(int timeOut)
 		{
 			if( lastMouseX == mouse.cur_x && lastMouseY == mouse.cur_y )
 			{
-				if( m.get_time() >= timeOutTime )
+				if( misc.get_time() >= timeOutTime )
 					break;
 			}
 			else
 			{
 				lastMouseX  = mouse.cur_x;
 				lastMouseY  = mouse.cur_y;
-				timeOutTime = m.get_time()+INACTIVE_TIMEOUT_SECONDS*1000; 
+				timeOutTime = misc.get_time()+INACTIVE_TIMEOUT_SECONDS*1000;
 			}
 		}
 	}

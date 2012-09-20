@@ -335,14 +335,14 @@ float Unit::actual_damage()
 
 	// -------- pierce damage -------- //
 
-	attackDamage += m.random(3);
+	attackDamage += misc.random(3);
 	if( 100 == MAX_COMBAT_TRAIN )
 	{
-		deciDamage += attackInfo->pierce_damage * m.random( 1+MIN(combatLevel, MAX_COMBAT_TRAIN) );
+		deciDamage += attackInfo->pierce_damage * misc.random( 1+MIN(combatLevel, MAX_COMBAT_TRAIN) );
 	}
 	else
 	{
-		deciDamage += attackInfo->pierce_damage * m.random( 1+MIN(combatLevel, MAX_COMBAT_TRAIN) )
+		deciDamage += attackInfo->pierce_damage * misc.random( 1+MIN(combatLevel, MAX_COMBAT_TRAIN) )
 			* 100 / MAX_COMBAT_TRAIN;
 	}
 
@@ -418,7 +418,7 @@ float Unit::actual_damage()
 				leaderXLoc = -1;
 
 			if( leaderXLoc >= 0 &&
-				 m.points_distance(cur_x_loc(), cur_y_loc(), leaderXLoc, leaderYLoc) <= EFFECTIVE_LEADING_DISTANCE )
+				 misc.points_distance(cur_x_loc(), cur_y_loc(), leaderXLoc, leaderYLoc) <= EFFECTIVE_LEADING_DISTANCE )
 			{
 				// ##### begin Gilbert 17/6 #####//
 				// deciDamage += attackDamage * leaderUnit->skill_level();

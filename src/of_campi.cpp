@@ -662,7 +662,7 @@ void FirmCamp::disp_soldier_list(int dispY1, int refreshFlag, int dispSpyMenu)
 						}
 						if( attribute >= 0 )	// hide attribute on some cases
 							font->center_put( x, yHp, x+SOLDIER_X_SPACING, 
-								yHp+font->max_font_height, m.format(attribute) );
+								yHp+font->max_font_height, misc.format(attribute) );
 					}
 					else if( ownSpy )		// display spy icon
 					{
@@ -671,7 +671,7 @@ void FirmCamp::disp_soldier_list(int dispY1, int refreshFlag, int dispSpyMenu)
 					else if( unitInfo->class_info.has_combat_level ) 	// display combat skill
 					{
 						font->center_put( x, yHp, x+SOLDIER_X_SPACING, yHp+font->max_font_height, 
-							m.format(combatLevel) );
+							misc.format(combatLevel) );
 					}
 
 					if( itemId )
@@ -687,7 +687,7 @@ void FirmCamp::disp_soldier_list(int dispY1, int refreshFlag, int dispSpyMenu)
 					// display spy skill
 					err_when( !ownSpy );
 					font_whbl.center_put( x, yHp, x+SOLDIER_X_SPACING, yHp+font->max_font_height, 
-						m.format(spy_array[ownSpy]->spy_skill) );
+						misc.format(spy_array[ownSpy]->spy_skill) );
 				}
 
 				// display hit points bar
@@ -1273,7 +1273,7 @@ void FirmCamp::disp_soldier_info(int dispY1, int refreshFlag)
 			// ###### end Gilbert 24/3 #######//
 			{
 				str += " ";
-				str += m.roman_number( soldierPtr->get_weapon_version() );
+				str += misc.roman_number( soldierPtr->get_weapon_version() );
 			}
 		}
 
@@ -1292,12 +1292,12 @@ void FirmCamp::disp_soldier_info(int dispY1, int refreshFlag)
 		if( unitInfo->class_info.has_loyalty && nation_recno )
 		{
 			if (soldierPtr->loyalty != soldierPtr->target_loyalty(firm_recno))
-				info.disp_loyalty( x, y+12, INFO_X2-99 - font_snds.text_width(m.format(soldierPtr->loyalty, 4)) -
-						font_snds.text_width(m.format(soldierPtr->target_loyalty(firm_recno), 4)) -
+				info.disp_loyalty( x, y+12, INFO_X2-99 - font_snds.text_width(misc.format(soldierPtr->loyalty, 4)) -
+						font_snds.text_width(misc.format(soldierPtr->target_loyalty(firm_recno), 4)) -
 						font_snds.text_width("11"),
 						soldierPtr->loyalty, soldierPtr->target_loyalty(firm_recno), nation_recno, refreshFlag, disp_combat_or_skill==4 );
 			else
-				info.disp_loyalty( x, y+12, INFO_X2-99 - font_snds.text_width(m.format(soldierPtr->loyalty, 4)),
+				info.disp_loyalty( x, y+12, INFO_X2-99 - font_snds.text_width(misc.format(soldierPtr->loyalty, 4)),
 						soldierPtr->loyalty, soldierPtr->target_loyalty(firm_recno), nation_recno, refreshFlag, disp_combat_or_skill==4 );
 		}
 
@@ -1307,7 +1307,7 @@ void FirmCamp::disp_soldier_info(int dispY1, int refreshFlag)
 		{
 			// x2 = (disp_combat_or_skill==1?font_blu2:font_snds).put( x+110, y+12, "Combat" ) + 10;
 			x2 = (disp_combat_or_skill==1?font_blu2:font_snds).put( x+110, y+12, text_unit.str_combat_level() ) + 10;
-			font_snds.right_put( INFO_X2-10, y+12, m.format(soldierPtr->combat_level(),4) );
+			font_snds.right_put( INFO_X2-10, y+12, misc.format(soldierPtr->combat_level(),4) );
 		}
 
 		// ------- display leadership -------//
@@ -1316,7 +1316,7 @@ void FirmCamp::disp_soldier_info(int dispY1, int refreshFlag)
 		{
 //			x2 = (disp_combat_or_skill==2?font_blu2:font_snds).put( x+110, y+26, "Leadership" ) + 10;
 			x2 = (disp_combat_or_skill==2?font_blu2:font_snds).put( x+110, y+26, text_unit.str_leadership() ) + 10;
-			font_snds.right_put( INFO_X2-10, y+26, m.format(soldierPtr->skill_level(),4) );
+			font_snds.right_put( INFO_X2-10, y+26, misc.format(soldierPtr->skill_level(),4) );
 		}
 
 		// ##### end Gilbert 24/3 ##########//
@@ -1325,9 +1325,9 @@ void FirmCamp::disp_soldier_info(int dispY1, int refreshFlag)
 
 //		x2 = font_snds.put( x, y+26, "Hit Points" ) + 10;
 		x2 = font_snds.put( x, y+26, text_unit.str_hit_points() ) + 10;
-		str = m.format(soldierPtr->hit_points, 4);
+		str = misc.format(soldierPtr->hit_points, 4);
 		str += "/";
-		str += m.format(soldierPtr->max_hit_points(), 4);
+		str += misc.format(soldierPtr->max_hit_points(), 4);
 		font_snds.right_put( INFO_X2-100, y+26, str );
 	}
 }
@@ -1425,12 +1425,12 @@ void FirmCamp::disp_overseer_info(int dispY1, int refreshFlag)
 		err_when( unitPtr->unit_id == UNIT_WAGON );
 
 		if (unitPtr->loyalty != unitPtr->target_loyalty)
-			info.disp_loyalty( x, y+12, INFO_X2-99 - font_snds.text_width(m.format(unitPtr->loyalty, 4)) -
-						font_snds.text_width(m.format(unitPtr->target_loyalty, 4)) -
+			info.disp_loyalty( x, y+12, INFO_X2-99 - font_snds.text_width(misc.format(unitPtr->loyalty, 4)) -
+						font_snds.text_width(misc.format(unitPtr->target_loyalty, 4)) -
 						font_snds.text_width("11"),
 						unitPtr->loyalty, unitPtr->target_loyalty, nation_recno, refreshFlag, disp_combat_or_skill==4 );
 		else
-			info.disp_loyalty( x, y+12, INFO_X2-99 - font_snds.text_width(m.format(unitPtr->loyalty, 4)),
+			info.disp_loyalty( x, y+12, INFO_X2-99 - font_snds.text_width(misc.format(unitPtr->loyalty, 4)),
 						unitPtr->loyalty, unitPtr->target_loyalty, nation_recno, refreshFlag, disp_combat_or_skill==4 );
 	}
 
@@ -1445,9 +1445,9 @@ void FirmCamp::disp_overseer_info(int dispY1, int refreshFlag)
 		// x2 = (disp_combat_or_skill==1?font_blu2:font_snds).put( x+110, y+12, "Combat" ) + 10;
 		//SXM
 		x2 = (disp_combat_or_skill==1?font_blu2:font_snds).put( x+110, y+12, text_unit.str_combat_level() ) + 10;
-		font_snds.right_put( INFO_X2-10, y+12, m.format(unitPtr->combat_level(),4) );
+		font_snds.right_put( INFO_X2-10, y+12, misc.format(unitPtr->combat_level(),4) );
 //		x2 = (disp_combat_or_skill==1?font_blu2:font_snds).put( x+110, y+15, text_unit.str_combat_level() ) + 10;
-//		font_snds.right_put( INFO_X2-10, y+15, m.format(unitPtr->combat_level(),4) );
+//		font_snds.right_put( INFO_X2-10, y+15, misc.format(unitPtr->combat_level(),4) );
 		//SXM
 	}
 		
@@ -1458,9 +1458,9 @@ void FirmCamp::disp_overseer_info(int dispY1, int refreshFlag)
 		// x2 = (disp_combat_or_skill==2?font_blu2:font_snds).put( x+110, y+26, "Leadership" ) + 10;
 		//SXM
 		x2 = (disp_combat_or_skill==2?font_blu2:font_snds).put( x+110, y+26, text_unit.str_leadership() ) + 10;
-		font_snds.right_put( INFO_X2-10, y+26, m.format(unitPtr->skill_level(),4) );
+		font_snds.right_put( INFO_X2-10, y+26, misc.format(unitPtr->skill_level(),4) );
 //		x2 = (disp_combat_or_skill==2?font_blu2:font_snds).put( x+110, y+29, text_unit.str_leadership() ) + 10;
-//		font_snds.right_put( INFO_X2-10, y+29, m.format(unitPtr->skill_level(),4) );
+//		font_snds.right_put( INFO_X2-10, y+29, misc.format(unitPtr->skill_level(),4) );
 		//SXM
 	}
 
@@ -1471,9 +1471,9 @@ void FirmCamp::disp_overseer_info(int dispY1, int refreshFlag)
 	x2 = font_snds.put( x, y+26, text_unit.str_hit_points() ) + 10;
 //	x2 = font_snds.put( x, y+29, text_unit.str_hit_points() ) + 10;
 	//SXM
-	str = m.format((int)unitPtr->hit_points, 4);
+	str = misc.format((int)unitPtr->hit_points, 4);
 	str += "/";
-	str += m.format(unitPtr->max_hit_points(), 4);
+	str += misc.format(unitPtr->max_hit_points(), 4);
 	//SXM
 	font_snds.right_put( INFO_X2-100, y+26, str );
 //	font_snds.right_put( INFO_X2-100, y+29, str );
@@ -1648,7 +1648,7 @@ void FirmCamp::disp_edit_mode(int& refreshFlag, int& y, int dispBG)
 				&& soldierPtr->get_weapon_version() > 1 )
 			{
 				str += " ";
-				str += m.roman_number( soldierPtr->get_weapon_version() );
+				str += misc.roman_number( soldierPtr->get_weapon_version() );
 			}
 		}
 		font_whbl.put( x1, y, str, 0, x2, 1 );

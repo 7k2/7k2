@@ -176,7 +176,7 @@ int CampaignEastWest::stage_25_create_nation()
 
 int CampaignEastWest::stage_25_create_town()
 {
-	int townAddCount   = 4 + m.random(2);		// 4 to 5
+	int townAddCount   = 4 + misc.random(2);		// 4 to 5
 	int hasFortPercent = 50;
 
 	return create_town(PLAYER_NATION_RECNO, townAddCount, hasFortPercent);
@@ -254,7 +254,7 @@ void CampaignEastWest::stage_25_process_game_result()
 
 		info.game_year = game_year;			// revert info.game_year back to campaign's game year so that the game's time will not advance
 
-		m.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
+		misc.set_random_seed( saved_random_seed );		// restore the random seed so that the game will replay in the same way
 	}
 }
 //---- End of function CampaignEastWest::stage_25_process_game_result -----//

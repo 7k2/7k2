@@ -54,7 +54,7 @@ int CampaignEastWest::stage_12_create_game()
 
 	//--- randomly init the current situation -----//
 
-	set_cur_situation( m.random(CAMPAIGN_SITUATION_COUNT)+1 );
+	set_cur_situation( misc.random(CAMPAIGN_SITUATION_COUNT)+1 );
 
 	//------- create objects and vars --------//
 
@@ -170,7 +170,7 @@ int CampaignEastWest::stage_12_create_town()
 
 	//------ generate a StateArray ---------//
 
-	int townAddCount  = 8 + m.random(3);		// add 8 to 10 player towns
+	int townAddCount  = 8 + misc.random(3);		// add 8 to 10 player towns
 	int addedCount=0;
 
 	StateArray townStateArray;
@@ -188,9 +188,9 @@ int CampaignEastWest::stage_12_create_town()
 		int soldierAddCount;
 
 		if( addedCount%2==0 )
-			soldierAddCount = MAX_SOLDIER/4 + m.random(MAX_SOLDIER/4) + 1;
+			soldierAddCount = MAX_SOLDIER/4 + misc.random(MAX_SOLDIER/4) + 1;
 		else
-			soldierAddCount = MAX_SOLDIER/2 + m.random(MAX_SOLDIER/2) + 1;
+			soldierAddCount = MAX_SOLDIER/2 + misc.random(MAX_SOLDIER/2) + 1;
 
 		if( create_nation_town(PLAYER_NATION_RECNO, xLoc, yLoc, 1, 0, soldierAddCount) )		// 0-the race of the town need not to be the same as the nation
 			addedCount++;
@@ -214,7 +214,7 @@ int CampaignEastWest::stage_12_create_firm()
 	int townRecno1 = king_oversee_town_recno(PLAYER_NATION_RECNO);
 	int townRecno2 = random_pick_town_with_camp(PLAYER_NATION_RECNO, 2);		// only pick towns with <= 2 links
 
-	if( townRecno2 && m.random(2)==0 )		// swap the town in 50% chance
+	if( townRecno2 && misc.random(2)==0 )		// swap the town in 50% chance
 	{
 		int t=townRecno1;
 		townRecno1 = townRecno2;
@@ -229,7 +229,7 @@ int CampaignEastWest::stage_12_create_firm()
 
 	//------ create additional military/economic firms ------//
 
-	int addCount = 1+m.random(2);		// 1 to 2
+	int addCount = 1+misc.random(2);		// 1 to 2
 
 	for( int i=0 ; i<addCount ; i++ )
 	{
@@ -241,18 +241,18 @@ int CampaignEastWest::stage_12_create_firm()
 
 		if( has_situation )
 		{
-			rc = m.random( cur_situation.economy_level+cur_situation.military_level )
+			rc = misc.random( cur_situation.economy_level+cur_situation.military_level )
 				  < cur_situation.economy_level;
 		}
 		else
 		{
-			rc = m.random(2)==0;
+			rc = misc.random(2)==0;
 		}
 
 		if( rc )
 			rc = create_economic_firm(townRecno);
 		else
-			rc = create_military_firm(townRecno, 30+m.random(30));		// power rating: 30 to 60
+			rc = create_military_firm(townRecno, 30+misc.random(30));		// power rating: 30 to 60
 
 		if( !rc )
 			break;

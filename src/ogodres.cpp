@@ -95,7 +95,7 @@ void GodRes::second_init()
 //
 //		do
 //		{
-//			monsterId = m.random(MAX_MONSTER_TYPE)+1;
+//			monsterId = misc.random(MAX_MONSTER_TYPE)+1;
 //
 //			err_when( ++loopCount > 1000 );
 //		}
@@ -151,19 +151,19 @@ void GodRes::load_god_info()
 
 		godInfo->god_id = i+1;
 
-		godInfo->race_id = m.atoi(godRec->race_id, godRec->RACE_ID_LEN);
-		godInfo->unit_id = m.atoi(godRec->unit_id, godRec->UNIT_ID_LEN);
+		godInfo->race_id = misc.atoi(godRec->race_id, godRec->RACE_ID_LEN);
+		godInfo->unit_id = misc.atoi(godRec->unit_id, godRec->UNIT_ID_LEN);
 
-		godInfo->exist_pray_points = m.atoi(godRec->exist_pray_points, godRec->PRAY_POINTS_LEN);
-		godInfo->power_pray_points = m.atoi(godRec->power_pray_points, godRec->PRAY_POINTS_LEN);
+		godInfo->exist_pray_points = misc.atoi(godRec->exist_pray_points, godRec->PRAY_POINTS_LEN);
+		godInfo->power_pray_points = misc.atoi(godRec->power_pray_points, godRec->PRAY_POINTS_LEN);
 
 		godInfo->can_cast_power   = godRec->can_cast_power == '1';
-		godInfo->cast_power_range = m.atoi(godRec->cast_power_range, godRec->CAST_POWER_RANGE_LEN);
+		godInfo->cast_power_range = misc.atoi(godRec->cast_power_range, godRec->CAST_POWER_RANGE_LEN);
 
 		godInfo->can_attack = godRec->can_attack == '1';
  
-		godInfo->out_effect_id = m.atoi(godRec->out_effect_id, godRec->OUT_EFFECT_ID_LEN);
-		m.rtrim_fld( godInfo->out_effect_code, godRec->out_effect_code, godRec->OUT_EFFECT_CODE_LEN );
+		godInfo->out_effect_id = misc.atoi(godRec->out_effect_id, godRec->OUT_EFFECT_ID_LEN);
+		misc.rtrim_fld( godInfo->out_effect_code, godRec->out_effect_code, godRec->OUT_EFFECT_CODE_LEN );
 	}
 }
 //--------- End of function GodRes::load_god_info ---------//

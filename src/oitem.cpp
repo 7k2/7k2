@@ -179,7 +179,7 @@ void Item::init_random( int lowRare, int highRare, int unitId, Skill *skillPtr)
 		{
 			++match;
 
-			if( m.random(match) == 0 )
+			if( misc.random(match) == 0 )
 				selectedItem = i;
 		}
 	}
@@ -199,7 +199,7 @@ void Item::init_random( int lowRare, int highRare, int unitId, Skill *skillPtr)
 //
 void Item::random_para()
 {
-	para = item_res.random_para( id, m.rand() );
+	para = item_res.random_para( id, misc.rand() );
 }
 //-------- end of function Item::random_para ----------//
 

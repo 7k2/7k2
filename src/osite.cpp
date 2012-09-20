@@ -140,7 +140,7 @@ int SiteArray::add_site(int xLoc, int yLoc, int siteType, int objectId, int rese
 
 		for( int i=1 ; i<ADD_SITE_RANGE*ADD_SITE_RANGE ; i++ )
 		{
-			m.cal_move_around_a_point(i, ADD_SITE_RANGE, ADD_SITE_RANGE, xOffset, yOffset);
+			misc.cal_move_around_a_point(i, ADD_SITE_RANGE, ADD_SITE_RANGE, xOffset, yOffset);
 
 			xLoc = curXLoc + xOffset;
 			yLoc = curYLoc + yOffset;
@@ -437,7 +437,7 @@ int SiteArray::create_raw_site(int regionId, int townRecno)
 
 	//----- pick a raw material type -----//
 
-	int rawId = m.random(MAX_RAW)+1;
+	int rawId = misc.random(MAX_RAW)+1;
 
 	for( i=0 ; i<MAX_RAW ; i++ )
 	{
@@ -503,7 +503,7 @@ int SiteArray::create_raw_site(int regionId, int townRecno)
 	{
 		if( world.can_build_firm( locX1+INTER_PLACE_SPACE, locY1+INTER_PLACE_SPACE, FIRM_MINE)	 )	
 		{
-			int reserveQty = MAX_RAW_RESERVE_QTY * (60 + m.random(40)) / 100;
+			int reserveQty = MAX_RAW_RESERVE_QTY * (60 + misc.random(40)) / 100;
 			return add_site( locX1+INTER_PLACE_SPACE, locY1+INTER_PLACE_SPACE, SITE_RAW, rawId, reserveQty );		// xLoc+1 & yLoc+1 as the located size is 3x3, the raw site is at the center of it
 		}
 	}
@@ -537,7 +537,7 @@ int SiteArray::scan_site(int xLoc, int yLoc, int siteType)
 
 		if( siteType==0 || sitePtr->site_type==siteType )
 		{
-			siteDis = m.points_distance( xLoc, yLoc, sitePtr->map_x_loc, sitePtr->map_y_loc );
+			siteDis = misc.points_distance( xLoc, yLoc, sitePtr->map_x_loc, sitePtr->map_y_loc );
 
 			if( siteDis < minDis )
 			{
@@ -698,7 +698,7 @@ int Site::ai_get_site_object()
 
 	for( int i=2 ; i<notifyGetRange*notifyGetRange ; i++ )
 	{
-		m.cal_move_around_a_point(i, notifyGetRange, notifyGetRange, xOffset, yOffset);
+		misc.cal_move_around_a_point(i, notifyGetRange, notifyGetRange, xOffset, yOffset);
 
 		xLoc = map_x_loc + xOffset;
 		yLoc = map_y_loc + yOffset;

@@ -214,10 +214,10 @@ void World::process()
 	}
 	if( lightning_signal == 106 && config.weather_effect)
 	{
-		lightning_strike(m.random(MAX_MAP_WIDTH), m.random(MAX_MAP_HEIGHT), 1);
+		lightning_strike(misc.random(MAX_MAP_WIDTH), misc.random(MAX_MAP_HEIGHT), 1);
 	}
 	if(lightning_signal == 100)
-		lightning_signal = 5 + m.random(10);
+		lightning_signal = 5 + misc.random(10);
 	else if( lightning_signal)
 		lightning_signal--;
 	// ###### end Gilbert 11/8 ########//
@@ -360,7 +360,7 @@ int World::detect_scroll()
 			if( mouse_cursor.frame_flag )    // if it's now in frame selection mode
 				return 0;
 
-			if( next_scroll_time && m.get_time() < next_scroll_time )      // just scrolled not too long ago, wait for a little while before next scroll.
+			if( next_scroll_time && misc.get_time() < next_scroll_time )      // just scrolled not too long ago, wait for a little while before next scroll.
 				return 0;
 
 			int rc=0;
@@ -416,7 +416,7 @@ int World::detect_scroll()
 			if( rc )
 			{
 				sys.zoom_need_redraw = 1;        // ask the zoom window to refresh next time
-				next_scroll_time     = m.get_time() + 500/(config.scroll_speed+1);
+				next_scroll_time     = misc.get_time() + 500/(config.scroll_speed+1);
 			}
 
 			return rc;
@@ -475,7 +475,7 @@ int World::detect_scroll()
 				//
 				//------------------------------------------------------//
 
-				DWORD step = m.get_time() - begin_scroll_time;
+				DWORD step = misc.get_time() - begin_scroll_time;
 				step = step * config.scroll_speed / 500;
 				if( step == 0 )		// scroll instantly
 					step = 1;
@@ -521,7 +521,7 @@ int World::detect_scroll()
 			{
 				if( (last_scroll_flag = currentScrollFlag) )
 				{
-					begin_scroll_time = m.get_time();
+					begin_scroll_time = misc.get_time();
 					begin_scroll_top_x_loc = last_scroll_top_x_loc = zoom_matrix->top_x_loc;
 					begin_scroll_top_y_loc = last_scroll_top_y_loc = zoom_matrix->top_y_loc;
 				}
@@ -1067,7 +1067,7 @@ void World::load_map(char* fileName)
 
    for( int i=0 ; i<max_x_loc*max_y_loc ; i++ )
    {
-      loc_matrix[i].terrain_id = terrainId+m.random(3);
+      loc_matrix[i].terrain_id = terrainId+misc.random(3);
    }
 
    assign_map();
@@ -1183,7 +1183,7 @@ inline int World::check_unit_space(int xLoc1, int yLoc1, int xLoc2, int yLoc2, i
 
 			Town* townPtr = town_array[i];
 
-			int curDistance = m.points_distance(townPtr->center_x, townPtr->center_y, xLoc1, yLoc2 );
+			int curDistance = misc.points_distance(townPtr->center_x, townPtr->center_y, xLoc1, yLoc2 );
 
 			if( curDistance < maxDistance )
 			{
@@ -1488,8 +1488,8 @@ int World::locate_space_random(int& xLoc1, int& yLoc1, int xLoc2, int yLoc2,
 
    for( i=0 ; i<maxTries ; i++ )
    {
-      xLoc = xLoc1 + m.random(scanWidth);
-      yLoc = yLoc1 + m.random(scanHeight);
+      xLoc = xLoc1 + misc.random(scanWidth);
+      yLoc = yLoc1 + misc.random(scanHeight);
 		canBuildFlag=1;
 
 		//---------- check if the area is all free ----------//
@@ -1925,7 +1925,7 @@ void World::draw_link_line(int srcFirmId, int srcTownRecno, int srcXLoc1,
 
 			//-------- check the distance --------//
 
-			if( m.points_distance( townPtr->center_x, townPtr->center_y,
+			if( misc.points_distance( townPtr->center_x, townPtr->center_y,
 				 srcXLoc, srcYLoc ) > effectiveDis )
 			{
 				continue;
@@ -1991,7 +1991,7 @@ void World::draw_link_line(int srcFirmId, int srcTownRecno, int srcXLoc1,
 			effectiveDis = world.effective_distance(srcFirmId, firmPtr->firm_id);
 		// ######## end Gilbert 28/4 ##########//
 
-		if( m.points_distance( firmPtr->center_x, firmPtr->center_y, srcXLoc, srcYLoc ) > effectiveDis )
+		if( misc.points_distance( firmPtr->center_x, firmPtr->center_y, srcXLoc, srcYLoc ) > effectiveDis )
 			continue;
 
 		// ##### begin Gilbert 6/7 ########//
@@ -2269,7 +2269,7 @@ int World::detect_firm_town()
 
 			firmPtr = firm_array[i];
 
-			if( m.is_touch( mouseAbsX, mouseAbsY, mouseAbsX, mouseAbsY,
+			if( misc.is_touch( mouseAbsX, mouseAbsY, mouseAbsX, mouseAbsY,
 				firmPtr->abs_x1, firmPtr->abs_y1, firmPtr->abs_x2, firmPtr->abs_y2 ) )
 			{
 				power.reset_selection();
@@ -2296,7 +2296,7 @@ int World::detect_firm_town()
 
 			townPtr = town_array[i];
 
-			if( m.is_touch( mouseAbsX, mouseAbsY, mouseAbsX, mouseAbsY,
+			if( misc.is_touch( mouseAbsX, mouseAbsY, mouseAbsX, mouseAbsY,
 				 townPtr->abs_x1, townPtr->abs_y1, townPtr->abs_x2, townPtr->abs_y2 ) )
 			{
 				power.reset_selection();
@@ -2722,7 +2722,7 @@ void World::process_visibility()
 		// ##### patch end Gilbert 18/1 ######//
 		{
 #ifdef DEBUG
-			unsigned long startTime = m.get_time();
+			unsigned long startTime = misc.get_time();
 #endif
 #ifdef ASM_FOR_MSVC
 			int count = max_x_loc * max_y_loc;
@@ -2758,7 +2758,7 @@ process_visit_level2:
 #endif
 
 #ifdef DEBUG
-			startTime = m.get_time() - startTime;
+			startTime = misc.get_time() - startTime;
 			startTime =  0; // set break point here
 #endif
 		}

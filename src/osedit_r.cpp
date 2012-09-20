@@ -84,7 +84,7 @@ void ScenarioEditor::disp_diplomacy_main(int refreshFlag)
 	for( (n = 1); n <= nation_array.size(); ++n, x += X_SPACING )
 	{
 		if( !nation_array.is_deleted(n) )
-			//font_whbl.center_put( x, y, x+X_SPACING, y+Y_SPACING, m.format(n) );
+			//font_whbl.center_put( x, y, x+X_SPACING, y+Y_SPACING, misc.format(n) );
 			nation_array[n]->disp_nation_color(x, y );
 	}
 

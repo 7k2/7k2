@@ -100,7 +100,7 @@ int GameFile::save_game(const char *path, const char* fileName, const char *game
 	{
 		DWORD freeSpace = DWORD( (double)freeCluster * sectorPerCluster * bytePerSector / 1024.0);
 
-		if( m.is_file_exist(file_name) )
+		if( misc.is_file_exist(file_name) )
 		{	
 			// if overwritting existing file, count the file size of the existing file
 			file.file_open(file_name);
@@ -132,7 +132,7 @@ int GameFile::save_game(const char *path, const char* fileName, const char *game
 			char backupChar = *lastSlash;
 			err_when( backupChar != '\\' );
 			*lastSlash = '\0';		// truncate to and not including the last '\\'
-			m.mkpath( file_name );
+			misc.mkpath( file_name );
 			*lastSlash = backupChar;		// res
 		}
 	}
@@ -357,7 +357,7 @@ void GameFile::set_file_name(const char *path, const char *extension)
 	{
 		if( (size_t) i < strlen(baseName) && j < NAME_PREFIX_LEN )
 		{
-			nameChar = m.upper(baseName[i]);
+			nameChar = misc.upper(baseName[i]);
 
 			if( ( nameChar >= 'A' && nameChar <= 'Z' ) ||
 				 ( nameChar >= '0' && nameChar <= '9' ) )
@@ -443,9 +443,9 @@ void GameFile::save_process()
 {
    //--------- set the total playing time --------//
 
-	info.total_play_time += m.get_time()-info.start_play_time;
+	info.total_play_time += misc.get_time()-info.start_play_time;
 
-   info.start_play_time  = m.get_time();
+   info.start_play_time  = misc.get_time();
 }
 //--------- End of function GameFile::save_process -------//
 
@@ -458,7 +458,7 @@ void GameFile::save_process()
 //
 void GameFile::load_process()
 {
-	info.start_play_time = m.get_time();       // the time player start playing the game
+	info.start_play_time = misc.get_time();       // the time player start playing the game
 	config.disable_ai_flag = 0;
 
 	//-- if the player is in the diplomatic message screen, rebuild the talk choice list --//
