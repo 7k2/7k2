@@ -118,10 +118,12 @@ static int sort_display_function( const void *a, const void *b );
 
 static void draw_cubic_plane(int x, int y, LocationCorners, UCHAR);
 
+#ifdef NO_WINDOWS
 typedef struct tagPOINT {
 	LONG x;
 	LONG y;
 } POINT;
+#endif
 
 static int test_inside_polygon(int x, int y, POINT *vertex, int verCount);
 

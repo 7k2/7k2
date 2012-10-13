@@ -27,6 +27,7 @@
 
 #include <win32_compat.h>
 
+#ifdef NO_WINDOWS
 typedef struct _GUID
 {
 #ifdef _MSC_VER
@@ -38,6 +39,7 @@ typedef struct _GUID
     unsigned short Data3;
     unsigned char  Data4[ 8 ];
 } GUID;
+#endif
 
 #ifdef IMAGICMP
 	#define MultiPlayerType MultiPlayerIM

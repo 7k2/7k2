@@ -141,6 +141,7 @@
 typedef unsigned char  UCHAR;
 
 // the bitmap file structure /////////////////////////////////////////////////
+#ifdef NO_WINDOWS
 #pragma pack(1)
 typedef struct {
 	WORD  bfType;
@@ -173,6 +174,7 @@ typedef struct tagPALETTEENTRY {
 } PALETTEENTRY;
 
 const uint8_t PC_NOCOLLAPSE = 0x04;
+#endif
 
 typedef struct bitmap_file_tag
         {
