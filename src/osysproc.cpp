@@ -267,7 +267,7 @@ void Sys::main_loop(int isLoadedGame)
 
 	while( 1 )
 	{
-#ifndef NO_WINDOWS  // FIXME
+#if 0  // FIXME
 		MSG msg;
 
 		if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
@@ -543,7 +543,7 @@ void Sys::main_loop(int isLoadedGame)
 		}
 		else
 		{
-#ifndef NO_WINDOWS  // FIXME
+#if 0  // FIXME
 			WaitMessage();
 #endif
 		}

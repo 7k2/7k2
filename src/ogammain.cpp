@@ -213,7 +213,7 @@ void Game::disp_gen_game_status(int addStep)
 	{
 		VgaFrontLock vgaLock;
 
-#ifndef NO_WINDOWS  // FIXME
+#if 0  // FIXME
 		MSG msg;
 		while (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE) > 0)
 		{
@@ -450,7 +450,7 @@ void Game::main_menu()
 
 		while(1)
 		{
-#ifndef NO_WINDOWS  // FIXME
+#if 0  // FIXME
 			MSG msg;
 			if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
 			{
@@ -731,7 +731,7 @@ void Game::single_player_menu()
 
 		while(1)
 		{
-#ifndef NO_WINDOWS  // FIXME
+#if 0  // FIXME
 			MSG msg;
 			if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
 			{
@@ -899,7 +899,7 @@ void Game::scenario_editor_menu()
 
 		while(1)
 		{
-#ifndef NO_WINDOWS  // FIXME
+#if 0  // FIXME
 			MSG msg;
 			if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
 			{
@@ -1112,7 +1112,7 @@ void Game::multi_player_menu(char *cmdLine)
 
 		while(1)
 		{
-#ifndef NO_WINDOWS  // FIXME
+#if 0  // FIXME
 			MSG msg;
 			if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
 			{

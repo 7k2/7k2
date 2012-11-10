@@ -610,7 +610,7 @@ static int select_option2()
 
 		while(1)
 		{
-#ifndef NO_WINDOWS  // FIXME
+#if 0  // FIXME
 			MSG msg;
 			if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
 			{

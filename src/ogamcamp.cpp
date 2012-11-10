@@ -521,7 +521,7 @@ int Game::select_campaign_menu()
 
 		while(1)
 		{
-#ifndef NO_WINDOWS  // FIXME
+#if 0  // FIXME
 			MSG msg;
 			if (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE))
 			{
