@@ -35,7 +35,7 @@
 // and POST_CHK_VAL after them, so when freeing them, we could
 // know whether they have been underrun/overun or not
 
-#define CHK_VAL_SIZE    sizeof(long)
+#define CHK_VAL_SIZE    sizeof(int)
 
 #define PRE_CHK_VAL     0x12345678      // value to detect underrun
 #define POST_CHK_VAL    0x87654321      // value to detect overrun
@@ -121,8 +121,8 @@ char* Mem::add(unsigned memSize, const char* fileName, int fileLine)
       // so Mem::del() can use these check value to detect
       // underrun && overrun
 
-      *((long*)allocPtr)                        = PRE_CHK_VAL;
-      *((long*)(allocPtr+CHK_VAL_SIZE+memSize)) = POST_CHK_VAL;
+      *((int*)allocPtr)                        = PRE_CHK_VAL;
+      *((int*)(allocPtr+CHK_VAL_SIZE+memSize)) = POST_CHK_VAL;
 
       // fill the allocated block with a value, which may
       // have chance to reveal some hiden bugs
@@ -185,8 +185,8 @@ char* Mem::add_clear(unsigned memSize, const char* fileName, int fileLine)
 		// so Mem::del() can use these check value to detect
 		// underrun && overrun
 
-		*((long*)allocPtr)                        = PRE_CHK_VAL;
-		*((long*)(allocPtr+CHK_VAL_SIZE+memSize)) = POST_CHK_VAL;
+		*((int*)allocPtr)                        = PRE_CHK_VAL;
+		*((int*)(allocPtr+CHK_VAL_SIZE+memSize)) = POST_CHK_VAL;
 
 		// fill the allocated block with a value, which may
 		// have chance to reveal some hiden bugs
@@ -300,8 +300,8 @@ char* Mem::resize(void *orgPtr, unsigned memSize, const char* fileName, int file
 
             // set the POST_CHK_VAL again as the size of it has changed
 
-				*((long*)newPtr)                        = PRE_CHK_VAL;
-            *((long*)(newPtr+CHK_VAL_SIZE+memSize)) = POST_CHK_VAL;
+				*((int*)newPtr)                        = PRE_CHK_VAL;
+            *((int*)(newPtr+CHK_VAL_SIZE+memSize)) = POST_CHK_VAL;
 
             info_array[i].ptr  = newPtr + CHK_VAL_SIZE;
             info_array[i].size = memSize;
@@ -340,10 +340,10 @@ void Mem::del(void *freePtr, const char* fileName, int fileLine)
 
          //---- Check for Underwrite and Overwrite error ---//
 
-         if( *((long*)truePtr) != PRE_CHK_VAL )
+         if( *((int*)truePtr) != PRE_CHK_VAL )
             err.run( "Mem::del - Memory Underwritten, File name:%s, line no.:%d\n", fileName, fileLine );
 
-         if( *((long*)(truePtr+CHK_VAL_SIZE+info_array[i].size)) != POST_CHK_VAL )
+         if( *((int*)(truePtr+CHK_VAL_SIZE+info_array[i].size)) != POST_CHK_VAL )
             err.run( "Mem::del - Memory Overwritten, File name:%s, line no.:%d\n", fileName, fileLine );
 
          // fill the to be freed block with a value, which may
