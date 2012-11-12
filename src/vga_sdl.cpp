@@ -363,6 +363,7 @@ void VgaSDL::handle_messages()
 	   sys.active_flag = 1;
 	   sys.need_redraw_flag = 1;
 	   sys.unpause();
+	   SDL_SetModState(KMOD_NONE);
 	   mouse.update_skey_state();
 	   SDL_ShowCursor(SDL_DISABLE);
 	}
