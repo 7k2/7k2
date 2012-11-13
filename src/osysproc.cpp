@@ -339,6 +339,10 @@ void Sys::main_loop(int isLoadedGame)
 
 			int unreadyPlayerFlag = 0;
 
+			//------- play sound effect ------//
+
+			se_ctrl.flush();
+
 			if( config.frame_speed>0 )              // 0-frozen
 			{
 				if( remote.is_enable() )      // && is_sync_frame )
@@ -1021,10 +1025,6 @@ void Sys::process()
 
 	frame_count++;
 	is_sync_frame = frame_count%3==0;	// check if sychronization should take place at this frame (for handling one sync per n frames)
-
-	//------- play sound effect ------//
-
-	se_ctrl.flush();
 
 	//--------- process objects -----------//
 
