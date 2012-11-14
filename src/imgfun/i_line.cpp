@@ -68,7 +68,7 @@ void IMGline(short *imageBuf, int pitch, int w, int h, int x1, int y1, int x2, i
 			line_point(imageBuf, pitch / 2, w, h, x, y, color);
 			y += diry;
 			acc += deltax;
-			if (acc >= deltay) x += dirx;
+			if (acc >= deltay) { x += dirx; acc -= deltay; }
 		}
 	}
 	else
@@ -79,7 +79,7 @@ void IMGline(short *imageBuf, int pitch, int w, int h, int x1, int y1, int x2, i
 			line_point(imageBuf, pitch / 2, w, h, x, y, color);
 			x += dirx;
 			acc += deltay;
-			if (acc >= deltax) y += diry;
+			if (acc >= deltax) { y += diry; acc -= deltax; }
 		}
 	}
 }
