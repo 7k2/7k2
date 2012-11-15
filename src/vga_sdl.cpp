@@ -59,7 +59,7 @@ RGBColor log_alpha_func(RGBColor, int, int);
 
 //-------- Begin of function VgaSDL::VgaSDL ----------//
 
-VgaSDL::VgaSDL() : screen(NULL), video_mode_flags(SDL_WINDOW_SHOWN)
+VgaSDL::VgaSDL() : screen(NULL), video_mode_flags(SDL_WINDOW_SHOWN|SDL_WINDOW_RESIZABLE)
 {
    memset(game_pal, 0, sizeof(SDL_Color)*256);
    vga_color_table = new ColorTable;
@@ -393,6 +393,40 @@ void VgaSDL::handle_messages()
    }
 }
 //-------- End of function VgaSDL::handle_messages --------//
+
+
+//-------- Begin of function VgaSDL::change_resolution --------//
+int VgaSDL::change_resolution(int width, int height)
+{
+   screen = NULL;
+   SDL_SetWindowSize(window, width, height);
+   screen = SDL_GetWindowSurface(window);
+   if( screen == NULL )
+   {
+      ERR("Could not get window surface: %s\n", SDL_GetError());
+      return 0;
+   }
+
+   if( sys.use_true_front )                // if we are currently in triple buffer mode, don't lock the front buffer otherwise the system will hang up
+   {
+      init_front(&vga_true_front);
+      init_back(&vga_front);
+      vga_front.is_front = 1;       // set it to 1, overriding the setting in init_back()
+      init_back(&vga_back);
+   }
+   else
+   {
+      init_front(&vga_front);
+      init_back(&vga_back);
+   }
+
+   vga_front.lock_buf();
+
+   vga_back.lock_buf();
+
+   return 1;
+}
+//-------- End of function VgaSDL::change_resolution --------//
 
 
 namespace

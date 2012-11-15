@@ -561,8 +561,6 @@ void Sys::disp_frames_per_second()
 
 int Sys::change_display_mode(int modeId)
 {
-	return 0;
-#if 0
 	if( modeId == current_display_mode.mode_id )
 		return 0;
 	
@@ -580,47 +578,36 @@ int Sys::change_display_mode(int modeId)
 
 	// unlock surface
 
-	if( vga_back.dd_buf && vga_back.buf_locked )
+	if( vga_back.is_inited() && vga_back.buf_locked )
 	{
 		DEBUG_LOG("Attempt vga_back.unlock_buf()");
 		vga_back.unlock_buf();
 		DEBUG_LOG("vga_back.unlock_buf() finish");
 	}
 
-	if( vga_front.dd_buf && vga_front.buf_locked )
+	if( vga_front.is_inited() && vga_front.buf_locked )
 	{
 		DEBUG_LOG("Attempt vga_front.unlock_buf()");
 		vga_front.unlock_buf();
 		DEBUG_LOG("vga_front.unlock_buf() finish");
 	}
 
-#if(defined(USE_FLIP))
-	// detach back buffer
-	vga_front.detach_surface( &vga_back );
-#endif
-
 	// deinit surface
 
 	DEBUG_LOG("Attempt vga_back.deinit()");
 	vga_back.deinit();
-   DEBUG_LOG("vga_back.deinit() finish");
+	DEBUG_LOG("vga_back.deinit() finish");
 
-   DEBUG_LOG("Attempt vga_front.deinit()");
-   vga_front.deinit();
-   DEBUG_LOG("Attempt vga_front.deinit() finish");
+	DEBUG_LOG("Attempt vga_front.deinit()");
+	vga_front.deinit();
+	DEBUG_LOG("Attempt vga_front.deinit() finish");
 
-//   if( sys.debug_session )
-   if( use_true_front )
-   {
-      DEBUG_LOG("Attempt vga_true_front.deinit()");
-      vga_true_front.deinit();
-      DEBUG_LOG("vga_true_front.deinit() finish");
-   }
-
-	// ##### begin Gilbert 30/10 ######//
-	// show mouse
-	ShowCursor(TRUE);
-	// ##### end Gilbert 30/10 ######//
+	if( use_true_front )
+	{
+		DEBUG_LOG("Attempt vga_true_front.deinit()");
+		vga_true_front.deinit();
+		DEBUG_LOG("vga_true_front.deinit() finish");
+	}
 
 	// change display mode
 
@@ -630,73 +617,24 @@ int Sys::change_display_mode(int modeId)
 
 	if( displayModeInfo )
 	{
-		DEBUG_LOG("Attemp vga.set_mode()");
-		if( vga.set_mode(displayModeInfo->screen_width, displayModeInfo->screen_height) )
+		DEBUG_LOG("Attemp vga.change_resolution()");
+		DisplayModeInfo::set_current_display_mode(modeId);
+		if( vga.change_resolution(displayModeInfo->screen_width, displayModeInfo->screen_height) )
 			rc = 1;
-		DEBUG_LOG("Attemp vga.set_mode() finish");
+		DEBUG_LOG("Attemp vga.change_resolution() finish");
 	}
 
-	if( rc )
-	{
-		DisplayModeInfo::set_current_display_mode(modeId);
-	}
-	else
+	if( !rc )
 	{
 		// cannot change mode, remain at the same mode
 		modeId = oldMode;
 		displayModeInfo = DisplayModeInfo::get_display_info(modeId);
+		if( !vga.change_resolution(displayModeInfo->screen_width, displayModeInfo->screen_height) )
+		{
+			sys.signal_exit_flag = 1;
+			return 0;
+		}
 	}
-
-	// ##### begin Gilbert 30/10 ######//
-	// show mouse
-	ShowCursor(FALSE);
-	// ##### end Gilbert 30/10 ######//
-
-	// re-create surface
-
-//	if( sys.debug_session )                // if we are currently in a debug session, don't lock the front buffer otherwise the system will hang up
-	if( use_true_front )                // if we are currently in a triple buffer mode, don't lock the front buffer otherwise the system will hang up
-   {
-      DEBUG_LOG("Attempt vga_true_front.init_front()");
-		vga_true_front.init_front( vga.dd_obj );
-
-      DEBUG_LOG("Attempt vga_front.init_back()");
-      vga_front.init_back( vga.dd_obj );
-      vga_front.is_front = 1;       // set it to 1, overriding the setting in init_back()
-
-		DEBUG_LOG("Attempt vga_back.init_back()");
-		vga_back.init_back( vga.dd_obj );
-		DEBUG_LOG("vga_back.init_back() finish");
-
-   }
-   else
-   {
-      vga_front.init_front( vga.dd_obj );
-#if(!defined(USE_FLIP))
-		vga_back.init_back( vga.dd_obj );		// create in system memory
-#else
-		vga_back.init_back( vga.dd_obj, 0, 0, 1 );		// create in video memory
-#endif
-   }
-
-   //DEBUG_LOG("Attempt vga_back.init_back()");
-   //vga_back.init_back( vga.dd_obj );
-   //DEBUG_LOG("vga_back.init_back() finish");
-
-	// attach back buffer
-#if(defined(USE_FLIP))
-	vga_front.attach_surface( &vga_back );
-#endif
-
-	// lock surface
-
-   DEBUG_LOG("Attempt vga_front.lock_buf()");
-   vga_front.lock_buf();
-   DEBUG_LOG("vga_front.lock_buf() finish");
-
-   DEBUG_LOG("Attempt vga_back.lock_buf()");
-   vga_back.lock_buf();
-   DEBUG_LOG("vga_back.lock_buf() finish");
 
 	if( mouse.init_flag )
 	{
@@ -705,7 +643,7 @@ int Sys::change_display_mode(int modeId)
 	}
 
 	// update the boundary of anim_line
-   anim_line.init(ZOOM_X1, ZOOM_Y1, ZOOM_X2, ZOOM_Y2);
+	anim_line.init(ZOOM_X1, ZOOM_Y1, ZOOM_X2, ZOOM_Y2);
 
 	vga_front.lock_stack_count = tempVgaFrontLockStackCount;
 	vga_front.lock_bit_stack =   tempVgaFrontLockBitStack;
@@ -726,7 +664,6 @@ int Sys::change_display_mode(int modeId)
 	// ##### end Gilbert 30/10 #######//
 
 	return rc;
-#endif
 }
 //-------- End of function Sys::change_mode --------//
 

@@ -64,6 +64,7 @@ public:
 	int	is_full_screen() { return 0; }
 	void	toggle_full_screen() {};
 	void	flip();
+	int	change_resolution(int width, int height);
 	void	update_screen();
 
 	int	translate_color(unsigned char c)			// calc 8-bit color to 16-bit color // new for 16 bit
