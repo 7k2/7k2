@@ -22,9 +22,9 @@ An out-of-tree build is the recommended way of compiling the source code:
 
 To cross-compile the game for Windows:
 
-	$ cmake -DCMAKE_SYSTEM_NAME:string=Windows -DCMAKE_CXX_COMPILER:filepath=i686-w64-mingw32-g++ ..
+	$ cmake -DCMAKE_SYSTEM_NAME:string=Windows -DCMAKE_C_COMPILER:filepath=i686-w64-mingw32-gcc ..
 
-You will need to replace `i686-w64-mingw32-g++` with the appropriate
+You will need to replace `i686-w64-mingw32-gcc` with the appropriate
 cross-compiler. You might also need to tell CMake where to find the libraries
 (`libOpenAL32.dll.a`, etc.) and headers. For example, if the files are located
 in `/home/7k2/win32/include` and `/home/7k2/win32/lib`, add
