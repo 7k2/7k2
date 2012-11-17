@@ -4,11 +4,14 @@ Seven Kingdoms II: The Fryhtan Wars
 Requirements
 ------------
 
-* GCC 3.0 or later
+* GCC 3.0 or later / Microsoft Visual C++ 2010 or later
 * SDL2 2.0.0 or later
 * CMake 2.8.0 or later
 * libjpeg 6b or later
 * OpenAL 1.13 or later
+
+For those who wish to build the game with MSVC, please see "INSTALL.MSVC.md"
+for instructions.
 
 Building the game
 -----------------
