@@ -1115,7 +1115,7 @@ void World::load_map(char* fileName)
 //
 // return 1 for true. 0 for false
 //
-inline int World::check_unit_space(int xLoc1, int yLoc1, int xLoc2, int yLoc2, int mobileType, int buildFlag)
+int World::check_unit_space(int xLoc1, int yLoc1, int xLoc2, int yLoc2, int mobileType, int buildFlag)
 {
 	if(xLoc1<0 || xLoc1>=MAX_WORLD_X_LOC)
 		return 0;
