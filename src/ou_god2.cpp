@@ -565,7 +565,7 @@ void UnitGod::think_japanese_god()
 
 	struct
 	{
-		unsigned char array[sizeof(ai_para)-1];
+		unsigned char array[(sizeof((UnitGod*) 0)->ai_para)-1];
 		char count;
 	} aiParaStruct;
 	err_when( sizeof(aiParaStruct) != sizeof(ai_para) );
@@ -857,7 +857,7 @@ void UnitGod::think_persian_god()
 
 	struct
 	{
-		unsigned char array[sizeof(ai_para)-1];
+		unsigned char array[(sizeof((UnitGod*) 0)->ai_para)-1];
 		char count;
 	} aiParaStruct;
 	err_when( sizeof(aiParaStruct) != sizeof(ai_para) );
