@@ -234,7 +234,7 @@ public:
 	int	has_hill()			{ return (loc_flag & LOCATE_BLOCK_MASK) == LOCATE_IS_HILL; }
 	int	can_add_hill()		// exception : it has already a hill
 			{ return has_hill() || // (loc_flag & LOCATE_WALK_LAND) &&
-			!cargo_recno && !(loc_flag & (LOCATE_BLOCK_MASK | LOCATE_SITE_MASK)); }
+			(!cargo_recno && !(loc_flag & (LOCATE_BLOCK_MASK | LOCATE_SITE_MASK))); }
 	void	set_hill(int hillId);
 	int   hill_id1()			{ return cargo_recno; }
 	int   hill_id2()			{ return extra_para; }
