@@ -1482,7 +1482,7 @@ int CampaignEastWest::event_fryhtan_invade_east()
 
 	attack_state( attacker_state_recno, target_state_recno, attackResult, 1, 3 );
 
-	if( attackResult = 1 )
+	if( attackResult == 1 )
 	{
 		disp_narrative( res_event.read("16B") );
 	}
