@@ -136,13 +136,13 @@ void Projectile::draw(int outLine, int drawFlag)
 	{
 		// ###### begin Gilbert 3/3 #########//
 		UCHAR tempCurDir;
-		if( cur_action = SPRITE_DIE )
+		if( cur_action == SPRITE_DIE )
 		{
 			tempCurDir = cur_dir;
 			cur_dir = (final_dir & 7) | 16;			// downward direction
 		}
 		Bullet::draw(outLine, drawFlag);
-		if( cur_action = SPRITE_DIE )
+		if( cur_action == SPRITE_DIE )
 		{
 			cur_dir = tempCurDir;
 		}
