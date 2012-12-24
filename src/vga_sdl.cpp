@@ -308,6 +308,42 @@ void VgaSDL::init_color_table()
 //----------- End of function VgaSDL::init_color_table ----------//
 
 
+//-------- Begin of function VgaSDL::is_full_screen --------//
+int VgaSDL::is_full_screen()
+{
+   return video_mode_flags & SDL_WINDOW_FULLSCREEN;
+}
+//-------- End of function VgaSDL::is_full_screen ----------//
+
+
+//-------- Begin of function VgaSDL::toggle_full_screen --------//
+void VgaSDL::toggle_full_screen()
+{
+   if( SDL_SetWindowFullscreen(window, static_cast<SDL_bool>(!is_full_screen())) == 0 )
+   {
+      screen = SDL_GetWindowSurface(window);
+      if( screen == NULL )
+      {
+         ERR("Could not get window surface: %s\n", SDL_GetError());
+         return;
+      }
+      if( sys.use_true_front )
+      {
+         vga_true_front.deinit();
+         init_front(&vga_true_front);
+      }
+      video_mode_flags ^= SDL_WINDOW_FULLSCREEN;
+   }
+   else
+   {
+      ERR("Could not change to %s mode: %s\n",
+          is_full_screen() ? "windowed" : "fullscreen", SDL_GetError());
+   }
+   sys.need_redraw_flag = 1;
+}
+//-------- End of function VgaSDL::toggle_full_screen ----------//
+
+
 //----------- Begin of function VgaSDL::flip ----------//
 void VgaSDL::flip()
 {
@@ -398,6 +434,12 @@ void VgaSDL::handle_messages()
 //-------- Begin of function VgaSDL::change_resolution --------//
 int VgaSDL::change_resolution(int width, int height)
 {
+   int was_full_screen = is_full_screen();
+   if( was_full_screen )
+   {
+      // Cannot change window size in fullscreen mode.
+      toggle_full_screen();
+   }
    screen = NULL;
    SDL_SetWindowSize(window, width, height);
    screen = SDL_GetWindowSurface(window);
@@ -405,6 +447,10 @@ int VgaSDL::change_resolution(int width, int height)
    {
       ERR("Could not get window surface: %s\n", SDL_GetError());
       return 0;
+   }
+   if( was_full_screen )
+   {
+      toggle_full_screen();
    }
 
    if( sys.use_true_front )                // if we are currently in triple buffer mode, don't lock the front buffer otherwise the system will hang up

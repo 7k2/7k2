@@ -75,6 +75,8 @@ Sys::Sys()
    common_data_buf = mem_add( COMMON_DATA_BUF_SIZE );
 
    view_mode = MODE_NORMAL;         // the animation mode
+
+   toggle_full_screen_flag = 0;
 }
 //----------- End of function Sys::Sys -----------//
 

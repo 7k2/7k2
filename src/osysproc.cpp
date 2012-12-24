@@ -689,6 +689,12 @@ void Sys::yield()
 
    vga.handle_messages();
 
+   if( toggle_full_screen_flag )
+   {
+      toggle_full_screen_flag = 0;
+      vga.toggle_full_screen();
+   }
+
    mouse.poll_event();
 
    audio.yield();

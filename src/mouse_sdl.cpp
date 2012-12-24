@@ -1077,12 +1077,19 @@ int MouseSDL::poll_event()
 			int mod = event.key.keysym.mod &
 					(KMOD_CTRL|KMOD_SHIFT|KMOD_ALT);
 			if (mod == KMOD_LALT || mod == KMOD_RALT) {
-				if (event.key.keysym.sym == SDLK_F4) {
+				if (event.key.keysym.sym == SDLK_RETURN) {
+					bypass = 1;
+					sys.toggle_full_screen_flag = 1;
+					sys.need_redraw_flag = 1;
+					SDL_SetModState(KMOD_NONE);
+					update_skey_state();
+				} else if (event.key.keysym.sym == SDLK_F4) {
 					bypass = 1;
 					sys.signal_exit_flag = 1;
 				}
 			} else if (mod == KMOD_LCTRL || mod == KMOD_RCTRL) {
-				if (event.key.keysym.sym == SDLK_g) {
+				if (event.key.keysym.sym == SDLK_g &&
+						!vga.is_full_screen()) {
 					static int grabbed = 0;
 					bypass = 1;
 					SDL_Window *window = SDL_GetWindowFromID(event.key.windowID);

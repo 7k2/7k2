@@ -61,8 +61,8 @@ public:
 
 	void	handle_messages();
 	void	flag_redraw() {};
-	int	is_full_screen() { return 0; }
-	void	toggle_full_screen() {};
+	int	is_full_screen();
+	void	toggle_full_screen();
 	void	flip();
 	int	change_resolution(int width, int height);
 	void	update_screen();
