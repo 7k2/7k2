@@ -637,7 +637,7 @@ void ZoomMatrix::draw()
 
 		// end : outer loop
 		// ##### begin Gilbert 11/2 ######//
-		if( rowCount & 15 == 0 )
+		if( (rowCount & 15) == 0 )
 			sys.yield();
 		// ##### end Gilbert 11/2 ######//
 
