@@ -273,6 +273,8 @@ void Battle::run(NewNationPara *mpGame, int mpPlayerCount)
 	//--- give the control to the system main loop, start the game now ---//
 
 	game.main_loop_all();
+
+	town_state_array.deinit();
 }
 //--------- End of function Battle::run ---------//
 
