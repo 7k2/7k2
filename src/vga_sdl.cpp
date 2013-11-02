@@ -53,13 +53,18 @@ VgaBuf* VgaBase::active_buf   = &vga_front;      // default: front buffer
 
 short transparent_code_w;
 
+static int desktop_bpp = 0;
+static int window_pitch = 0;
+static Uint32 window_pixel_format = 0;
+
 // ------ declare static function ----------//
 
 RGBColor log_alpha_func(RGBColor, int, int);
 
 //-------- Begin of function VgaSDL::VgaSDL ----------//
 
-VgaSDL::VgaSDL() : screen(NULL), video_mode_flags(SDL_WINDOW_SHOWN|SDL_WINDOW_RESIZABLE)
+VgaSDL::VgaSDL() : window(NULL), renderer(NULL), screen(NULL), target(NULL),
+                   texture(NULL), video_mode_flags(SDL_WINDOW_SHOWN|SDL_WINDOW_RESIZABLE)
 {
    memset(game_pal, 0, sizeof(SDL_Color)*256);
    vga_color_table = new ColorTable;
@@ -84,21 +89,65 @@ VgaSDL::~VgaSDL()
 //
 int VgaSDL::create_window()
 {
-   window = SDL_CreateWindow("Seven Kingdoms II: The Fryhtan Wars",
-			     SDL_WINDOWPOS_CENTERED,
-			     SDL_WINDOWPOS_CENTERED,
-			     VGA_WIDTH,
-			     VGA_HEIGHT,
-			     video_mode_flags);
-   if (window == NULL)
+   if (SDL_CreateWindowAndRenderer(800,
+                                   600,
+                                   video_mode_flags,
+                                   &window,
+                                   &renderer) < 0)
    {
+      ERR("Could not create window and renderer: %s\n", SDL_GetError());
       SDL_Quit();
       return 0;
    }
+
+   SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
+   SDL_RenderSetLogicalSize(renderer, VGA_WIDTH, VGA_HEIGHT);
+
+   SDL_RendererInfo info;
+   if (SDL_GetRendererInfo(renderer, &info) == 0)
+   {
+      MSG("Name of renderer: %s\n", info.name);
+      MSG("Using software fallback: %s\n", info.flags & SDL_RENDERER_SOFTWARE ? "yes" : "no");
+      MSG("Using hardware acceleration: %s\n", info.flags & SDL_RENDERER_ACCELERATED ? "yes" : "no");
+      MSG("V-sync: %s\n", info.flags & SDL_RENDERER_PRESENTVSYNC ? "on" : "off");
+      MSG("Rendering to texture support: %s\n", info.flags & SDL_RENDERER_TARGETTEXTURE ? "yes" : "no");
+      MSG("Maximum texture width: %d\n", info.max_texture_width);
+      MSG("Maximum texture height: %d\n", info.max_texture_height);
+   }
+
+   window_pixel_format = SDL_GetWindowPixelFormat(window);
+   if (window_pixel_format == SDL_PIXELFORMAT_UNKNOWN)
+   {
+      ERR("Unknown pixel format: %s\n", SDL_GetError());
+      SDL_Quit();
+      return 0;
+   }
+   MSG("Pixel format: %s\n", SDL_GetPixelFormatName(window_pixel_format));
+
+   window_pitch = VGA_WIDTH * SDL_BYTESPERPIXEL(window_pixel_format);
+
+   if (SDL_PIXELTYPE(window_pixel_format) == SDL_PIXELTYPE_PACKED32)
+   {
+      desktop_bpp = 32;
+   }
+   else if (SDL_PIXELTYPE(window_pixel_format) == SDL_PIXELTYPE_PACKED16)
+   {
+      desktop_bpp = 16;
+   }
+   else if (SDL_PIXELTYPE(window_pixel_format) == SDL_PIXELTYPE_PACKED8)
+   {
+      desktop_bpp = 8;
+   }
    else
    {
-      return 1;
+      ERR("Unsupported pixel type\n");
+      SDL_Quit();
+      return 0;
    }
+
+   SDL_SetWindowTitle(window, WIN_TITLE);
+
+   return 1;
 }
 //-------- End of function VgaSDL::init_window --------//
 
@@ -124,8 +173,19 @@ int VgaSDL::init()
    if( !create_window() )
       return 0;
 
-   screen = SDL_GetWindowSurface(window);
-   if (screen == NULL)
+   if ( !create_texture() )
+   {
+      SDL_Quit();
+      return 0;
+   }
+
+   if ( !create_surface(target, desktop_bpp) )
+   {
+      SDL_Quit();
+      return 0;
+   }
+
+   if ( !create_surface(screen, VGA_BPP) )
    {
       SDL_Quit();
       return 0;
@@ -240,10 +300,12 @@ void VgaSDL::deinit()
 
    vga_front.deinit();
 
+   destroy_surface(screen);
+   destroy_surface(target);
+   destroy_texture();
    destroy_window();
 
    SDL_Quit();
-   screen = NULL;
    video_mode_flags = 0;
 }
 //-------- End of function VgaSDL::deinit ----------//
@@ -311,7 +373,7 @@ void VgaSDL::init_color_table()
 //-------- Begin of function VgaSDL::is_full_screen --------//
 int VgaSDL::is_full_screen()
 {
-   return video_mode_flags & SDL_WINDOW_FULLSCREEN;
+   return video_mode_flags & SDL_WINDOW_FULLSCREEN_DESKTOP;
 }
 //-------- End of function VgaSDL::is_full_screen ----------//
 
@@ -319,26 +381,20 @@ int VgaSDL::is_full_screen()
 //-------- Begin of function VgaSDL::toggle_full_screen --------//
 void VgaSDL::toggle_full_screen()
 {
-   if( SDL_SetWindowFullscreen(window, static_cast<SDL_bool>(!is_full_screen())) == 0 )
-   {
-      screen = SDL_GetWindowSurface(window);
-      if( screen == NULL )
-      {
-         ERR("Could not get window surface: %s\n", SDL_GetError());
-         return;
-      }
-      if( sys.use_true_front )
-      {
-         vga_true_front.deinit();
-         init_front(&vga_true_front);
-      }
-      video_mode_flags ^= SDL_WINDOW_FULLSCREEN;
+   int result = 0;
+
+   if (!is_full_screen()) {
+      result = SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
+      video_mode_flags ^= SDL_WINDOW_FULLSCREEN_DESKTOP;
+   } else {
+      result = SDL_SetWindowFullscreen(window, 0);
+      video_mode_flags ^= SDL_WINDOW_FULLSCREEN_DESKTOP;
    }
-   else
-   {
-      ERR("Could not change to %s mode: %s\n",
-          is_full_screen() ? "windowed" : "fullscreen", SDL_GetError());
+   if (result < 0) {
+      ERR("Could not toggle fullscreen: %s\n", SDL_GetError());
+      return;
    }
+
    sys.need_redraw_flag = 1;
 }
 //-------- End of function VgaSDL::toggle_full_screen ----------//
@@ -370,9 +426,12 @@ void VgaSDL::update_screen()
 {
    static Uint32 ticks = 0;
    Uint32 cur_ticks = SDL_GetTicks();
-   if (cur_ticks > ticks + 5 || cur_ticks < ticks) {
+   if (cur_ticks > ticks + 34 || cur_ticks < ticks) {
       ticks = cur_ticks;
-      SDL_UpdateWindowSurface(window);
+      SDL_BlitSurface(screen, NULL, target, NULL);
+      SDL_UpdateTexture(texture, NULL, target->pixels, window_pitch);
+      SDL_RenderCopy(renderer, texture, NULL, NULL);
+      SDL_RenderPresent(renderer);
    }
 }
 //----------- End of function VgaSDL::update_screen ----------//
@@ -434,24 +493,17 @@ void VgaSDL::handle_messages()
 //-------- Begin of function VgaSDL::change_resolution --------//
 int VgaSDL::change_resolution(int width, int height)
 {
-   int was_full_screen = is_full_screen();
-   if( was_full_screen )
-   {
-      // Cannot change window size in fullscreen mode.
-      toggle_full_screen();
-   }
-   screen = NULL;
+   destroy_surface(screen);
+   destroy_surface(target);
+   destroy_texture();
+
    SDL_SetWindowSize(window, width, height);
-   screen = SDL_GetWindowSurface(window);
-   if( screen == NULL )
-   {
-      ERR("Could not get window surface: %s\n", SDL_GetError());
-      return 0;
-   }
-   if( was_full_screen )
-   {
-      toggle_full_screen();
-   }
+   SDL_RenderSetLogicalSize(renderer, VGA_WIDTH, VGA_HEIGHT);
+   window_pitch = VGA_WIDTH * SDL_BYTESPERPIXEL(window_pixel_format);
+
+   create_texture();
+   create_surface(target, desktop_bpp);
+   create_surface(screen, VGA_BPP);
 
    if( sys.use_true_front )                // if we are currently in triple buffer mode, don't lock the front buffer otherwise the system will hang up
    {
@@ -473,6 +525,69 @@ int VgaSDL::change_resolution(int width, int height)
    return 1;
 }
 //-------- End of function VgaSDL::change_resolution --------//
+
+
+//-------- Begin of function VgaSDL::create_surface --------//
+//
+bool VgaSDL::create_surface(SDL_Surface *&surface, int bpp)
+{
+   surface = SDL_CreateRGBSurface(0, VGA_WIDTH, VGA_HEIGHT, bpp, 0, 0, 0, 0);
+   if (!surface)
+   {
+      return false;
+   }
+   else
+   {
+      return true;
+   }
+}
+//-------- End of function VgaSDL::create_surface --------//
+
+
+//-------- Begin of function VgaSDL::create_texture --------//
+//
+bool VgaSDL::create_texture()
+{
+   texture = SDL_CreateTexture(renderer,
+                               window_pixel_format,
+                               SDL_TEXTUREACCESS_STREAMING,
+                               VGA_WIDTH,
+                               VGA_HEIGHT);
+   if (!texture)
+   {
+      return false;
+   }
+   else
+   {
+      return true;
+   }
+}
+//-------- End of function VgaSDL::create_texture --------//
+
+
+//-------- Begin of function VgaSDL::destroy_surface --------//
+//
+void VgaSDL::destroy_surface(SDL_Surface *&surface)
+{
+   if (surface != NULL)
+   {
+      SDL_FreeSurface(surface);
+      surface = NULL;
+   }
+}
+//-------- End of function VgaSDL::destroy_surface --------//
+
+
+//-------- Begin of function VgaSDL::destroy_texture --------//
+void VgaSDL::destroy_texture()
+{
+   if (texture != NULL)
+   {
+      SDL_DestroyTexture(texture);
+      texture = NULL;
+   }
+}
+//-------- End of function VgaSDL::destroy_texture --------//
 
 
 namespace

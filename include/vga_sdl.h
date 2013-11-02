@@ -37,7 +37,10 @@ class VgaSDL : public VgaBase
 {
 private:
 	SDL_Window *window;
+	SDL_Renderer *renderer;
 	SDL_Surface *screen;
+	SDL_Surface *target;
+	SDL_Texture *texture;
 	Uint32 video_mode_flags;
 	SDL_Color game_pal[256];
 
@@ -82,6 +85,10 @@ private:
 	int   init_pal(const char* fileName);
 	int   create_window();
 	void  destroy_window();
+	bool  create_surface(SDL_Surface *&surface, int bpp);
+	bool  create_texture();
+	void  destroy_surface(SDL_Surface *&surface);
+	void  destroy_texture();
 };
 
 typedef VgaSDL Vga;
