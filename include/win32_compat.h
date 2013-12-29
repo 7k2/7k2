@@ -112,7 +112,7 @@ static const uint64_t SECS_1601_TO_1970 = (369 * 365 + 89) * SECSPERDAY;
 static const uint64_t TICKS_1601_TO_1970 = SECS_1601_TO_1970 * TICKSPERSEC;
 
 // Implementation taken from the Wine project.
-inline void CoFileTimeNow(FILETIME *lpFileTime)
+inline void GetSystemTimeAsFileTime(FILETIME *lpFileTime)
 {
 	// http://msdn.microsoft.com/en-us/library/windows/desktop/aa383713(v=vs.85).aspx
 	union LARGE_INTEGER

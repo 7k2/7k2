@@ -524,7 +524,7 @@ int GameFile::write_game_header(File* filePtr)
 
 	//----- set the file date ------//
 
-	CoFileTimeNow(&file_date);
+	GetSystemTimeAsFileTime(&file_date);
 
 	//------- write GameFile to the saved game file -------//
 
