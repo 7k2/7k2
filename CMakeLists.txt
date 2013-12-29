@@ -3,13 +3,14 @@ project(7K2)
 set(CMAKE_MODULE_PATH ${CMAKE_HOME_DIRECTORY}/cmake/modules)
 
 if(${MSVC})
-  set(CMAKE_PREFIX_PATH ""
-      CACHE PATH "Path to 3rd party libraries")
-  add_definitions(-D_CRT_SECURE_NO_WARNINGS)
-  include(CheckIncludeFile)
-  CHECK_INCLUDE_FILE(stdint.h HAVE_STDINT_H)
+  if(NOT ${CMAKE_PREFIX_PATH})
+    set(CMAKE_PREFIX_PATH ""
+        CACHE PATH "Path to 3rd party libraries")
+  endif()
+  add_definitions(/D_CRT_SECURE_NO_WARNINGS /DWIN32_LEAN_AND_MEAN)
+  find_path(HAVE_STDINT_H stdint.h)
   if(NOT ${HAVE_STDINT_H})
-    include_directories(${CMAKE_HOME_DIRECTORY/cmake/include})
+    include_directories(${CMAKE_HOME_DIRECTORY}/cmake/include)
   endif()
 endif()
 
