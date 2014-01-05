@@ -443,6 +443,7 @@ set(7k2_SOURCES
   oworld.cpp
   oworld_m.cpp
   oworld_z.cpp
+  player_desc.cpp
   surface_sdl.cpp
   vga_sdl.cpp
   vga_util.cpp
