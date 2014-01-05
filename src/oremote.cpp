@@ -33,7 +33,7 @@
 #include <opower.h>
 #include <onation.h>
 #include <oremote.h>
-#include <odplay.h>
+#include <multiplayer.h>
 #include <oerrctrl.h>
 
 //---------- Define static variables ----------//
@@ -87,7 +87,7 @@ Remote::~Remote()
 //									 REMOTE_WSOCK_TCPIP, REMOTE_WSOCK_IPX,
 //									 REMOTE_MODEM, REMOTE_NULL_MODEM
 //
-void Remote::init(MultiPlayerType *mp)
+void Remote::init(MultiPlayer *mp)
 {
 	if( connectivity_mode )
 		deinit();
@@ -174,7 +174,7 @@ int Remote::number_of_opponent()
 	err_when(!connectivity_mode);
 
 	//return wsock_ptr->number_of_player;
-	return mp_ptr->player_pool.size()-1;
+	return mp_ptr->get_player_count()-1;
 }
 //--------- End of function Remote::number_of_opponent ----------//
 
@@ -186,7 +186,7 @@ DWORD Remote::self_player_id()
 	err_when(!connectivity_mode);
 
 	// return wsock_ptr->self_player_id;
-	return mp_ptr->my_player_id;
+	return mp_ptr->get_my_player_id();
 }
 //--------- End of function Remote::self_player_id ----------//
 
@@ -319,7 +319,7 @@ DWORD Remote::next_send_frame(int nationRecno, DWORD frameCount)
 // 0 - not lobbied, 1 - create game, 2 - join game
 int Remote::is_lobbied()
 {
-	if( mp_obj.init_flag )
+	if( mp_obj.is_initialized() )
 		return mp_obj.is_lobbied();
 	else
 		return 0;

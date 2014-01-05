@@ -371,7 +371,7 @@ public:
 
 //----------- Define class Remote -----------//
 
-class MultiPlayerType;
+class MultiPlayer;
 
 class Remote
 {
@@ -390,7 +390,7 @@ public:
 	char					handle_vga_lock;
 	int					connectivity_mode;
 	int					poll_msg_flag;
-	MultiPlayerType*	mp_ptr;
+	MultiPlayer*	mp_ptr;
 
 	//--------- send queue -----------//
 
@@ -425,7 +425,7 @@ public:
 	Remote();
 	~Remote();
 
-	void			init(MultiPlayerType *);
+	void			init(MultiPlayer *);
 	void			deinit();
 
 	void			init_start_mp();

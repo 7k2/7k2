@@ -178,7 +178,7 @@ public:
 	short*		get_color_remap_table(int nationRecno, int selectedFlag);
 	static void	disp_gen_game_status( int addStep );
 
-	void 			multi_player_menu(char *cmdLine);
+	void 			multi_player_menu(int lobbied, char *game_host);
 
 	int			is_edit_mode()			{ return game_mode == GAME_SCENARIO_EDITOR; }
 
@@ -214,10 +214,12 @@ private:
 	void			scenario_editor_menu();
 
 	void			single_player_game(int);
-	void			multi_player_game(char *cmdLine);
-	void			load_mp_game(char *saveFileName, char *cmdLine);
+	void			multi_player_game(int lobbied, char *game_host);
+	void			load_mp_game(char *saveFileName, int lobbied, char *game_host);
 	void			view_encyclopedia();
 	void			view_credits();
+
+	int			input_box(const char *tell_string, char *name, int name_len);
 
 	void			run_campaign();
 	int			select_campaign_menu();
@@ -228,6 +230,8 @@ private:
 	//------- multiplayer game functions -------//
 
 	int 			mp_select_mode(char *saveGameName);
+	int 			mp_get_leader_board();
+	int 			mp_join_session(int session_id, char *player_name);
 	int			mp_select_service();
 	int			mp_select_session();
 	int			mp_select_option(NewNationPara*, int*);

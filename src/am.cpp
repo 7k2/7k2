@@ -88,7 +88,7 @@
 #include <oexpmask.h>
 #include <oregion.h>
 #include <owarpt.h>
-#include <odplay.h>
+#include <multiplayer.h>
 #include <oerrctrl.h>
 #include <omusic.h>
 #include <olog.h>
@@ -117,6 +117,7 @@
 #include <ot_talk.h>
 #include <ot_news.h>
 #include <ot_sedit.h>
+#include <dbglog.h>
 
 //------- define game version constant --------//
 
@@ -201,7 +202,7 @@ TextResEditor		text_editor;
 
 //-------- multiplayer objects -----------//
 
-MultiPlayerType	mp_obj;
+MultiPlayer	mp_obj;
 // MultiPlayerDP	mp_dp;
 // MultiPlayerIM	mp_im;
 Remote            remote;
@@ -369,6 +370,7 @@ unsigned long	last_unit_transform_fortress_profile_time = 0L;
 
 #endif
 
+DBGLOG_DEFAULT_CHANNEL(am);
 
 //------- Define static functions --------//
 
@@ -387,6 +389,12 @@ static void extra_error_handler();
 //
 int main(int argc, char **argv)
 {
+	const char *lobbyJoinCmdLine = "-join";
+	const char *lobbyHostCmdLine = "-host";
+	const char *lobbyNameCmdLine = "-name";
+	char *join_host = NULL;
+	int lobbied = 0;
+
 	sys.set_config_dir();
 
 	//try to read from config.dat, moved to AM.CPP
@@ -428,48 +436,49 @@ int main(int argc, char **argv)
 	}
 #endif
 
-#ifdef IMAGICMP
-	static char lobbyLaunchCmdLine[] = "IM";
-#else
-	static char lobbyLaunchCmdLine[] = "-!lobby!";
-#endif
+	//----- read command line arguments -----//
+
+	for (int i = 0; i < argc; i++) {
+		if (!strcmp(argv[i], lobbyJoinCmdLine)) {
+			if (lobbied) {
+				ERR("You cannot specify multiple -host or -join options.\n");
+				return 1;
+			}
+			if (i >= argc - 1) {
+				ERR("The %s switch requires a hostname parameter.\n", lobbyJoinCmdLine);
+				return 1;
+			}
+			lobbied = 1;
+			join_host = argv[i+1];
+			i++;
+		} else if (!strcmp(argv[i], lobbyHostCmdLine)) {
+			if (lobbied) {
+				ERR("You cannot specify multiple -host or -join options.\n");
+				return 1;
+			}
+			lobbied = 1;
+		} else if (!strcmp(argv[i], lobbyNameCmdLine)) {
+			if (i >= argc - 1) {
+				ERR("The %s switch requires a name parameter.\n", lobbyNameCmdLine);
+				return 1;
+			}
+			strncpy(config.player_name, argv[i+1], config.PLAYER_NAME_LEN);
+			config.player_name[config.PLAYER_NAME_LEN] = 0;
+			i++;
+		}
+	}
 
 	if( !sys.init() )
 		return FALSE;
 
    err.set_extra_handler( extra_error_handler );   // set extra error handler, save the game when a error happens
 
-//#ifdef DEMO
-//	game.demo_disp_logo();
-//   game.main_menu();
-//#else
-	// ######## begin Gilbert 2/7 #######//
-#if 0  // FIXME
-	if( strstr(lpCmdLine, lobbyLaunchCmdLine) != NULL )
-	{
-		mp_obj.pre_init();
-		mp_obj.init_lobbied( MAX_NATION, lpCmdLine );
-		if( mp_obj.init_flag )
-		{
-			// player register
-			game.multi_player_menu(lpCmdLine);		// if detect launched from lobby
-			mp_obj.deinit();
-		}
-		else
-		{
-			mp_obj.deinit();
-			game.main_menu();
-		}
-	}
-	else
-	{
+	if (!lobbied)
 		game.main_menu();
-	}
-#endif
-	// ######## end Gilbert 24/2 #######//
-//#endif
-
-	game.main_menu();
+#ifndef DISABLE_MULTI_PLAYER
+	else
+		game.multi_player_menu(lobbied, join_host);
+#endif // DISABLE_MULTI_PLAYER
 
 #ifdef DEMO
 	if (vga.is_inited())

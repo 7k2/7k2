@@ -22,9 +22,10 @@
 // Descrition : Error control
 
 #include <oerrctrl.h>
-#include <odplay.h>
+#include <multiplayer.h>
 #include <crc.h>
 #include <all.h>
+#include <stdint.h>
 
 #define DEBUG_LOG_LOCAL 1
 #include <olog.h>
@@ -38,7 +39,7 @@ const int TIME_OUT = 2000;		// 2 sec
 const int CONNECT_LOST_TIME = 20000;			// 20 sec
 static String debugStr;
 
-void ErrorControl::init(MultiPlayerType *mp, char ecPlayerId )
+void ErrorControl::init(MultiPlayer *mp, char ecPlayerId )
 {
 	// ---------- initialize dp_id array ---------- //
 	memset(dp_id, 0, sizeof(dp_id) );
@@ -166,8 +167,6 @@ int ErrorControl::send(char ecPlayerId, void *dataPtr, long unsigned int dataLen
 		}
 	}
 
-	mp_ptr->after_send();
-
 	return 1;
 }
 
@@ -199,7 +198,9 @@ int ErrorControl::is_player_valid(char ecPlayerId)
 
 void ErrorControl::set_player_lost(char ecPlayerId)
 {
+	mp_ptr->delete_player(dp_id[ecPlayerId-1]);
 	dp_id[ecPlayerId-1] = 0;
+	connecting_player_count--;
 
 	clear_acked_frame();		// some send_queue message may be waiting this player's ack
 }
@@ -208,8 +209,8 @@ void ErrorControl::yield()
 {
 	// -------- receive any frame from dplay -----------//
 	char *recvPtr;
-	DWORD recvLen;
-	PID_TYPE from, to;
+	uint32_t recvLen;
+	PID_TYPE from;
 
 	static int simError = 1;
 
@@ -225,13 +226,10 @@ void ErrorControl::yield()
 		if( dp_id[p-1] && !mp_ptr->is_player_connecting(dp_id[p-1]) )
 		{
 			set_player_lost(p);
-			connecting_player_count--;
 		}
 	}
 
-	mp_ptr->before_receive();
-
-	while( (recvPtr = mp_ptr->receive(&from, &to, &recvLen, &sysMsgCount)) != NULL
+	while( (recvPtr = mp_ptr->receive(&from, &recvLen, &sysMsgCount)) != NULL
 		|| sysMsgCount != 0)
 	{
 		// -------- detect any player lost ---------//
@@ -243,7 +241,6 @@ void ErrorControl::yield()
 				if( dp_id[p-1] && !mp_ptr->is_player_connecting(dp_id[p-1]) )
 				{
 					set_player_lost(p);
-					connecting_player_count--;
 				}
 			}
 		}
@@ -504,8 +501,6 @@ void ErrorControl::yield()
 	// ------ retransmit any un-acked and time-out-ed frame -------//
 	clear_acked_frame();
 	re_transmit();
-
-	mp_ptr->after_send();	// re_transmit() will call after_send
 }
 
 
@@ -721,6 +716,4 @@ void ErrorControl::re_transmit(int promptFactor)
 			}
 		}
 	}
-
-	mp_ptr->after_send();
 }

@@ -42,7 +42,7 @@
 #include <oprofile.h>
 #include <ogammenu.h>
 #include <obox.h>
-#include <odplay.h>
+#include <multiplayer.h>
 #include <ot_gmenu.h>
 #include <ocoltbl.h>
 
@@ -97,7 +97,7 @@ void Game::run_main_menu_option(int optionId)
 	{
 #ifndef DISABLE_MULTI_PLAYER
 		game_mode = GAME_MULTI_PLAYER;
-		multi_player_menu(NULL);
+		multi_player_menu(0, NULL);
 #endif
 	}
 
@@ -1019,11 +1019,11 @@ void Game::scenario_editor_menu()
 //#ifndef DISABLE_MULTI_PLAYER
 //---------- Begin of function Game::multi_player_menu ----------//
 //
-void Game::multi_player_menu(char *cmdLine)
+void Game::multi_player_menu(int lobbied, char *game_host)
 {
 	mouse_cursor.set_icon(CURSOR_NORMAL);
 
-	if( cmdLine != NULL && mp_obj.init_flag && mp_obj.is_lobbied() )
+	if( mp_obj.is_initialized() && mp_obj.is_lobbied() )
 	{
 		// find player profile
 		char* lobbiedName = mp_obj.get_lobbied_name();
@@ -1037,7 +1037,7 @@ void Game::multi_player_menu(char *cmdLine)
 				player_profile.save();
 
 				game_file_array.init( player_profile.save_game_path(NULL), "*.SVM" );	// necessary to set the path and extension
-				multi_player_game(cmdLine);
+				multi_player_game(lobbied, game_host);
 
 				return;
 			}
@@ -1065,7 +1065,7 @@ void Game::multi_player_menu(char *cmdLine)
 				if( loadFileName[0]
 					&& game_file.load_game(player_profile.save_game_path(NULL), loadFileName) )
 				{
-					load_mp_game( loadFileName, cmdLine );
+					load_mp_game( loadFileName, lobbied, game_host );
 				}
 				else
 				{
@@ -1074,7 +1074,7 @@ void Game::multi_player_menu(char *cmdLine)
 					if( game_file_array.menu(3, &loadedRecno) == 1 )
 					{
 						err_when( !loadedRecno );
-						load_mp_game(game_file_array[loadedRecno]->file_name, cmdLine);
+						load_mp_game(game_file_array[loadedRecno]->file_name, lobbied, game_host);
 					}
 				}
 				{
@@ -1105,7 +1105,7 @@ void Game::multi_player_menu(char *cmdLine)
 //	char optionFlag[5] = { 1, 1, 1, 1, 1, };
 
 	int refreshFlag = SPOPTION_ALL;
-	bool launchMode = (cmdLine != NULL);
+	bool launchMode = lobbied;
 
 	{
 		VgaFrontLock vgaLock;
@@ -1215,7 +1215,7 @@ void Game::multi_player_menu(char *cmdLine)
 			{
 				game_file_array.init( player_profile.save_game_path(NULL), "*.SVM" );	// necessary to set the path and extension
 
-				multi_player_game(cmdLine);
+				multi_player_game(lobbied, game_host);
 
 				if (launchMode && !sys.signal_exit_flag )
 				{
@@ -1241,7 +1241,7 @@ void Game::multi_player_menu(char *cmdLine)
 				// ##### begin Gilbert 20/1 #######//
 				{
 					err_when( !loadedRecno );
-					load_mp_game(game_file_array[loadedRecno]->file_name, cmdLine);
+					load_mp_game(game_file_array[loadedRecno]->file_name, lobbied, game_host);
 				}
 				{
 					char signalExitFlagBackup = sys.signal_exit_flag;

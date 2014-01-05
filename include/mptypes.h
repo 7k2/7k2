@@ -25,43 +25,12 @@
 #ifndef __MPTYPES_H
 #define __MPTYPES_H
 
-#include <win32_compat.h>
+#include <stdint.h>
 
-#ifdef NO_WINDOWS
-typedef struct _GUID
-{
-#ifdef _MSC_VER
-    unsigned long  Data1;
-#else
-    unsigned int   Data1;
-#endif
-    unsigned short Data2;
-    unsigned short Data3;
-    unsigned char  Data4[ 8 ];
-} GUID;
-#endif
+#define PID_TYPE uint32_t
+#define BROADCAST_PID 0
+#define SessionIdType uint32_t
 
-#ifdef IMAGICMP
-	#define MultiPlayerType MultiPlayerIM
-	#define mp_obj mp_im
-	#define BROADCAST_PID IMMBROADCAST
-	#define PID_TYPE IMMPID
-	#define ServiceProviderDesc IMServiceProvider
-	#define ServiceIdType DWORD
-	#define SessionDesc IMSessionDesc
-	#define SessionIdType DWORD
-	#define PlayerDesc IMPlayer
-#else
-	#define MultiPlayerType MultiPlayerDP
-	#define DPID_ALLPLAYERS 0
-	#define BROADCAST_PID DPID_ALLPLAYERS
-	typedef DWORD DPID, *LPDPID, *LPDWORD;
-	#define PID_TYPE DPID
-	#define ServiceProviderDesc DPServiceProvider
-	#define ServiceIdType GUID
-	#define SessionDesc DPSessionDesc
-	#define SessionIdType GUID
-	#define PlayerDesc DPPlayer
-#endif
+#define MP_FRIENDLY_NAME_LEN 64
 
 #endif
