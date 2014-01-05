@@ -8,6 +8,7 @@ set(7k2_SOURCES
   input_stream.cpp
   mem_input_stream.cpp
   mouse_sdl.cpp
+  multiplayer.cpp
   oai_act.cpp
   oai_act2.cpp
   oai_attk.cpp
