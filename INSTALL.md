@@ -9,6 +9,7 @@ Requirements
 * CMake 2.8.0 or later
 * libjpeg 6b or later
 * OpenAL 1.13 or later
+* ENet 1.3.8 or later
 
 For those who wish to build the game with MSVC, please see "INSTALL.MSVC.md"
 for instructions.

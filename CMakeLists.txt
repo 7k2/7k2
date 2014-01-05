@@ -14,6 +14,7 @@ if(${MSVC})
   endif()
 endif()
 
+find_package(ENet REQUIRED)
 find_package(JPEG REQUIRED)
 find_package(OpenAL REQUIRED)
 find_package(SDL2 REQUIRED)

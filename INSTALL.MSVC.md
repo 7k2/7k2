@@ -11,6 +11,14 @@ First, create a new folder hierarchy to hold the libraries that 7K2 needs:
 
 Then, build the libraries by following the steps below.
 
+ENet library
+------------
+* Download the source code from http://enet.bespin.org/SourceDistro.html
+* It comes with Win32 and Win64 binaries, so there's no need to compile the
+  source code
+* Copy `include\enet` to `3rdPartyLibs\Include`
+* Copy `enet.lib` or `enet64.lib` (64-bit) to `3rdPartyLibs\Lib`
+
 JPEG library
 ------------
 * Download the source code from http://www.ijg.org/
