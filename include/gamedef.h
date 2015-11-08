@@ -46,11 +46,8 @@ extern const int GAME_VERSION;
 #endif
 
 // config dir
-#ifdef NO_WINDOWS
-#define DEFAULT_DIR_CONFIG PATH_DELIM ".config" PATH_DELIM "7k2"
-#else // WINDOWS
-#define DEFAULT_DIR_CONFIG PATH_DELIM "7k2"
-#endif
+#define CONFIG_ORGANIZATION_NAME "7kfans.com"
+#define CONFIG_APPLICATION_NAME "7k2"
 
 #define DIR_RES               "resource"PATH_DELIM
 #define DIR_SPRITE            "sprite"PATH_DELIM
