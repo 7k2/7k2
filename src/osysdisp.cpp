@@ -54,6 +54,9 @@
 #include <ovgalock.h>
 #include <otutor.h>
 #include <ot_gmenu.h>
+#include <dbglog.h>
+
+DBGLOG_DEFAULT_CHANNEL(Sys);
 
 //---------- define static variables ----------//
 
@@ -673,6 +676,20 @@ int Sys::change_display_mode(int modeId)
 //
 void Sys::capture_screen()
 {
+   // NB: Increase this when allowing more decimals in the screenshot file, or when changing the screenshot filename
+   enum {MAX_SCREENSHOT_FILENAME_LENGTH = 8};
+
+   char full_path[MAX_PATH+1];
+   int path_len;
+
+   strcpy(full_path, dir_config);
+   path_len = strlen(full_path);
+   if (path_len + MAX_SCREENSHOT_FILENAME_LENGTH > MAX_PATH)
+   {
+      ERR("Path to the screenshots too long.\n");
+      return;
+   }
+
    String str("7K");
 
    int i;
@@ -686,7 +703,9 @@ void Sys::capture_screen()
       str += i;
       str += ".BMP";
 
-      if( !misc.is_file_exist(str) )
+      strcpy(full_path + path_len, str);
+
+      if( !misc.is_file_exist(full_path) )
          break;
    }
 
@@ -697,12 +716,12 @@ void Sys::capture_screen()
    if( use_true_front )    // in triple buffer , the buffer is not locked, we need to lock it for capturing the screen
    {
       vga_true_front.lock_buf();
-      vga_true_front.write_bmp_file(str);
+      vga_true_front.write_bmp_file(full_path);
       vga_true_front.unlock_buf();
    }
    else
    {
-      vga_front.write_bmp_file(str);
+      vga_front.write_bmp_file(full_path);
    }
 
    //------ display msg --------//
