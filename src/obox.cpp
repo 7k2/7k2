@@ -344,7 +344,7 @@ void Box::ask_button(Button& buttonOk, Button& buttonCancel, const char* strOk, 
 //          0 - if user select "Cancel" button
 //
 //
-int Box::ask(char* msgStr, char* buttonDes1, char* buttonDes2, int x1, int y1)
+int Box::ask(const char* msgStr, const char* buttonDes1, const char* buttonDes2, int x1, int y1)
 {
    int rc;
 
@@ -440,7 +440,7 @@ void Box::print(char* formatStr, ... )
 // [int]   x1, y1 = the left corner of the box, if not given
 //                  center the box on the screen
 //
-void Box::tell(char* tellStr, int x1, int y1)
+void Box::tell(const char* tellStr, int x1, int y1)
 {
    calc_size(tellStr,BOX_TOP_MARGIN+BOX_BOTTOM_MARGIN,x1,y1);   // calculate x1, y1, x2, y2 depended on the tellStr
 
