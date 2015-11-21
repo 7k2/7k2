@@ -123,6 +123,7 @@ void MouseSDL::init()
 
 	init_flag = 1;
 
+	SDL_StopTextInput();
 	SDL_ShowCursor(SDL_DISABLE);
 }
 //------------- End of MouseSDL::init -------------//
