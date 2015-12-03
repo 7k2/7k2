@@ -25,8 +25,9 @@
 #include <otxtres.h>
 #include <all.h>
 #include <ofiletxt.h>
-#include <stdio.h>
+#include <c99_printf.h>
 #include <stdlib.h>
+#include <math.h>
 
 
 #if(defined(SPANISH))
@@ -291,14 +292,15 @@ char *TextResource::get_free_short_str(char *srcStr)
 // 
 char* TextResource::format(double inNum, int formatType)
 {
-   enum { MONEY_DEC_PLACE = 2 };
-
    char *outBuf = get_free_short_str();
    char   *outPtr=outBuf;
+   char   floatBuf[35];
    char   *floatStr;
-   int    i, intDigit, sign;    // intDigit = no. of integer digits
+   int    i, intDigit;    // intDigit = no. of integer digits
 
-   floatStr = fcvt( inNum, MONEY_DEC_PLACE, &intDigit, &sign );
+   intDigit = snprintf( floatBuf, sizeof(floatBuf), "%.0lf", fabs(inNum) * 100.0 );
+   intDigit -= 2;
+   floatStr = floatBuf;
 
    #ifdef DEBUG
       if( intDigit > 29 )            // integer digits can't exceed 29
