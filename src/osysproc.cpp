@@ -692,7 +692,7 @@ void Sys::yield()
    if( toggle_full_screen_flag )
    {
       toggle_full_screen_flag = 0;
-      vga.toggle_full_screen();
+      vga.set_full_screen_mode(-1);
    }
 
    mouse.poll_event();

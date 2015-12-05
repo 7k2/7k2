@@ -63,7 +63,7 @@ public:
 	virtual void handle_messages() =0;
 	virtual void flag_redraw() =0;
 	virtual int is_full_screen() =0;
-	virtual void toggle_full_screen() =0;
+	virtual void set_full_screen_mode(int mode) =0;
 	virtual void flip() =0;
 	virtual int change_resolution(int width, int height) =0;
 };

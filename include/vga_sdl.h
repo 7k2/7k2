@@ -41,7 +41,6 @@ private:
 	SDL_Surface *screen;
 	SDL_Surface *target;
 	SDL_Texture *texture;
-	Uint32 video_mode_flags;
 	SDL_Color game_pal[256];
 
 public:
@@ -65,7 +64,7 @@ public:
 	void	handle_messages();
 	void	flag_redraw() {};
 	int	is_full_screen();
-	void	toggle_full_screen();
+	void	set_full_screen_mode(int mode);
 	void	flip();
 	int	change_resolution(int width, int height);
 	void	update_screen();

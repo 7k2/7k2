@@ -64,7 +64,7 @@ RGBColor log_alpha_func(RGBColor, int, int);
 //-------- Begin of function VgaSDL::VgaSDL ----------//
 
 VgaSDL::VgaSDL() : window(NULL), renderer(NULL), screen(NULL), target(NULL),
-                   texture(NULL), video_mode_flags(SDL_WINDOW_SHOWN|SDL_WINDOW_RESIZABLE)
+                   texture(NULL)
 {
    memset(game_pal, 0, sizeof(SDL_Color)*256);
    vga_color_table = new ColorTable;
@@ -91,7 +91,7 @@ int VgaSDL::create_window()
 {
    if (SDL_CreateWindowAndRenderer(800,
                                    600,
-                                   video_mode_flags,
+                                   SDL_WINDOW_SHOWN|SDL_WINDOW_RESIZABLE,
                                    &window,
                                    &renderer) < 0)
    {
@@ -306,7 +306,6 @@ void VgaSDL::deinit()
    destroy_window();
 
    SDL_Quit();
-   video_mode_flags = 0;
 }
 //-------- End of function VgaSDL::deinit ----------//
 
@@ -373,23 +372,36 @@ void VgaSDL::init_color_table()
 //-------- Begin of function VgaSDL::is_full_screen --------//
 int VgaSDL::is_full_screen()
 {
-   return video_mode_flags & SDL_WINDOW_FULLSCREEN_DESKTOP;
+   return ((SDL_GetWindowFlags(window) & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0);
 }
 //-------- End of function VgaSDL::is_full_screen ----------//
 
 
-//-------- Begin of function VgaSDL::toggle_full_screen --------//
-void VgaSDL::toggle_full_screen()
+//-------- Begin of function VgaSDL::set_full_screen_mode --------//
+//
+// mode -1: toggle
+// mode  0: windowed
+// mode  1: full screen without display mode change (stretched to desktop)
+void VgaSDL::set_full_screen_mode(int mode)
 {
    int result = 0;
+   uint32_t flags = 0;
 
-   if (!is_full_screen()) {
-      result = SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
-      video_mode_flags ^= SDL_WINDOW_FULLSCREEN_DESKTOP;
-   } else {
-      result = SDL_SetWindowFullscreen(window, 0);
-      video_mode_flags ^= SDL_WINDOW_FULLSCREEN_DESKTOP;
+   switch (mode)
+   {
+      case -1:
+         flags = is_full_screen() ? 0 : SDL_WINDOW_FULLSCREEN_DESKTOP;
+         break;
+      case 0:
+         break;
+      case 1:
+         flags = SDL_WINDOW_FULLSCREEN_DESKTOP;
+         break;
+      default:
+         err_now("invalid mode");
    }
+
+   result = SDL_SetWindowFullscreen(window, flags);
    if (result < 0) {
       ERR("Could not toggle fullscreen: %s\n", SDL_GetError());
       return;
@@ -397,7 +409,7 @@ void VgaSDL::toggle_full_screen()
 
    sys.need_redraw_flag = 1;
 }
-//-------- End of function VgaSDL::toggle_full_screen ----------//
+//-------- End of function VgaSDL::set_full_screen_mode ----------//
 
 
 //----------- Begin of function VgaSDL::flip ----------//
