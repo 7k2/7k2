@@ -1,7 +1,7 @@
 /*
  * Seven Kingdoms 2: The Fryhtan War
  *
- * Copyright 2010 Jesse Allen
+ * Copyright 2010,2015 Jesse Allen
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,7 +57,9 @@ public:
 		  void	handle_messages() {};
 		  void	flag_redraw() {};
 		  int	is_full_screen() { return 0; }
+		  int	is_input_grabbed() { return 0; }
 		  void	set_full_screen_mode(int mode) {};
+		  void	set_window_grab(int mode) {};
 		  void	flip() {};
 
 		  int		translate_color(unsigned char c)			// calc 8-bit color to 16-bit color // new for 16 bit
