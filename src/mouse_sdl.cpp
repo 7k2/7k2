@@ -1081,7 +1081,6 @@ int MouseSDL::poll_event()
 				if (event.key.keysym.sym == SDLK_RETURN) {
 					bypass = 1;
 					sys.toggle_full_screen_flag = 1;
-					sys.need_redraw_flag = 1;
 					SDL_SetModState(KMOD_NONE);
 					update_skey_state();
 				} else if (event.key.keysym.sym == SDLK_F4) {
