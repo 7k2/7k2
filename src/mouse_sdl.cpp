@@ -2,7 +2,7 @@
  * Seven Kingdoms 2: The Fryhtan War
  *
  * Copyright 1999 Enlight Software Ltd.
- * Copyright 2010 Jesse Allen
+ * Copyright 2010,2015 Jesse Allen
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -995,24 +995,27 @@ int MouseSDL::poll_event()
 
 		switch (event.type) {
 		case SDL_MOUSEMOTION:
-		// SDL already accelerates relative mouse motions.
-		// Disable to let the user control speed outside of game.
-#ifdef MOUSE_RELATIVE
-			cur_x += micky_to_displacement(event.motion.xrel);
-			cur_y += micky_to_displacement(event.motion.yrel);
+			if(vga.is_input_grabbed()) {
+#ifdef MOUSE_ACCEL
+				cur_x += micky_to_displacement(event.motion.xrel);
+				cur_y += micky_to_displacement(event.motion.yrel);
 #else
-			cur_x = event.motion.x;
-			cur_y = event.motion.y;
+				cur_x += event.motion.xrel;
+				cur_y += event.motion.yrel;
 #endif
+			} else {
+				cur_x = event.motion.x;
+				cur_y = event.motion.y;
+			}
 			switch( bound_type ) {
 			case 0:		// rectangular boundary
 				if(cur_x < bound_x1)
 					cur_x = bound_x1;
-				if(cur_x > bound_x2)
+				else if(cur_x > bound_x2)
 					cur_x = bound_x2;
 				if(cur_y < bound_y1)
 					cur_y = bound_y1;
-				if(cur_y > bound_y2)
+				else if(cur_y > bound_y2)
 					cur_y = bound_y2;
 				break;
 			case 1:		// rhombus boundary
@@ -1021,11 +1024,11 @@ int MouseSDL::poll_event()
 				int boundMarginY = abs(cur_x - (bound_x1+bound_x2)/2);
 				if( cur_x < bound_x1+boundMarginX )
 					cur_x = bound_x1+boundMarginX;
-				if( cur_x > bound_x2-boundMarginX )
+				else if( cur_x > bound_x2-boundMarginX )
 					cur_x = bound_x2-boundMarginX;
 				if( cur_y < bound_y1+boundMarginY )
 					cur_y = bound_y1+boundMarginY;
-				if( cur_y > bound_y2-boundMarginY )
+				else if( cur_y > bound_y2-boundMarginY )
 					cur_y = bound_y2-boundMarginY;
 			}
 				break;

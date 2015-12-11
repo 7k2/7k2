@@ -2,7 +2,7 @@
  * Seven Kingdoms 2: The Fryhtan War
  *
  * Copyright 1999 Enlight Software Ltd.
- * Copyright 2010 Jesse Allen
+ * Copyright 2010,2015 Jesse Allen
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -291,6 +291,8 @@ int VgaSDL::set_mode(int width, int height)
 
 void VgaSDL::deinit()
 {
+   SDL_SetRelativeMouseMode(SDL_FALSE);
+
    vga_back.deinit();
 
    if( sys.use_true_front )
@@ -417,6 +419,7 @@ void VgaSDL::set_full_screen_mode(int mode)
    }
 
    sys.need_redraw_flag = 1;
+   set_window_grab(flags == SDL_WINDOW_FULLSCREEN_DESKTOP);
 }
 //-------- End of function VgaSDL::set_full_screen_mode ----------//
 
@@ -444,6 +447,7 @@ void VgaSDL::set_window_grab(int mode)
          err_now("invalid mode");
    }
    SDL_SetWindowGrab(window, grabbed);
+   SDL_SetRelativeMouseMode(grabbed);
 }
 //-------- End of function VgaSDL::set_window_grab ----------//
 
