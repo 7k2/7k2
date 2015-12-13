@@ -193,10 +193,21 @@ void Game::disp_version()
 #endif
 	// ####### end Gilbert 5/6 ########//
 
+#if(defined(DEBUG))
+	str += " (DEBUG)";
+#endif
+
 	if( str.len() > 40 )
 		font_san.center_put( 0, VGA_HEIGHT-20, VGA_WIDTH-1, VGA_HEIGHT-1, str );
 	else
-		font_zoom.put( VGA_WIDTH-100, 73, str );
+	{
+		// Extra space for " (DEBUG)".
+		int debug_str_width = 0;
+#if(defined(DEBUG))
+		debug_str_width = 16;
+#endif
+		font_zoom.put( VGA_WIDTH-100-debug_str_width, 73, str );
+	}
 }
 //---------- End of function Game::disp_version ---------//
 
