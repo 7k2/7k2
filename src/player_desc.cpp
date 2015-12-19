@@ -2,7 +2,7 @@
  * Seven Kingdoms 2: The Fryhtan War
  *
  * Copyright 1999 Enlight Software Ltd.
- * Copyright 2010,2011 Jesse Allen
+ * Copyright 2010,2011,2015 Jesse Allen
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,27 +32,15 @@ PlayerDesc::PlayerDesc()
 	strcpy(name, "?Anonymous?");
 	address.host = ENET_HOST_ANY;
 	address.port = 0;
-	connecting = 1;
 	authorized = 0;
 }
 
-PlayerDesc::PlayerDesc(uint32_t id, ENetAddress *address)
+PlayerDesc::PlayerDesc(ENetAddress *address)
 {
-	this->id = id;
+	id = 0;
 	strcpy(name, "?Anonymous?");
 	this->address.host = address->host;
 	this->address.port = address->port;
-	connecting = 1;
-	authorized = 0;
-}
-
-PlayerDesc::PlayerDesc(uint32_t id, char *name)
-{
-	this->id = id;
-	strcpy(this->name, name);
-	address.host = ENET_HOST_ANY;
-	address.port = 0;
-	connecting = 1;
 	authorized = 0;
 }
 
@@ -62,7 +50,6 @@ PlayerDesc::PlayerDesc(char *name)
 	strcpy(this->name, name);
 	address.host = ENET_HOST_ANY;
 	address.port = 0;
-	connecting = 1;
 	authorized = 0;
 }
 

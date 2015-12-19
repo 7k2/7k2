@@ -2,7 +2,7 @@
  * Seven Kingdoms 2: The Fryhtan War
  *
  * Copyright 1999 Enlight Software Ltd.
- * Copyright 2010,2011,2013 Jesse Allen
+ * Copyright 2010,2011,2013,2015 Jesse Allen
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -84,6 +84,7 @@ private:
 	int               max_players;
 
 	PlayerDesc        *player_pool[MAX_NATION];
+	PlayerDesc        *pending_pool[MAX_NATION];
 
 	char *            recv_buf;
 
@@ -114,6 +115,7 @@ public:
 	bool   is_protocol_supported(ProtocolType);
 	int    is_update_available();
 	void   game_starting();
+	void   disable_new_connections();
 
 	// ------- functions on session --------//
 	int    set_remote_session_provider(const char *server);
@@ -121,19 +123,17 @@ public:
 	void   sort_sessions(int sortType);
 	int    create_session(char *sessionName, char *password, char *playerName, int maxPlayers);
 	int    join_session(SessionDesc *session, char *playerName);
-	void   close_session();
+	int    close_session();
 	SessionDesc* get_session(int i);
 	SessionDesc *get_current_session();
 
 	// -------- functions on player management -------//
-	int         add_player(uint32_t id, char *name, ENetAddress *address, char contact);
-	int         auth_player(uint32_t id, char *name, char *password);
-	int         set_my_player_id(uint32_t id);
-	void        set_player_name(uint32_t id, char *name);
-	void        delete_player(uint32_t id);
+	int         add_player(uint32_t playerId, char *name, ENetAddress *address, char contact);
+	int         auth_player(uint32_t playerId, char *name, char *password);
+	int         set_my_player_id(uint32_t playerId);
+	void        delete_player(uint32_t playerId);
 	void        poll_players();
 	PlayerDesc* get_player(int i);
-	PlayerDesc* get_player(ENetAddress *address);
 	PlayerDesc* search_player(uint32_t playerId);
 	int         is_player_connecting(uint32_t playerId);
 	int         get_player_count();
@@ -145,9 +145,14 @@ public:
 
 private:
 	int open_port(uint16_t port, int fallback);
+	void close_port();
 
-	PlayerDesc *create_player(ENetAddress *address);
-	ENetPeer *get_peer(uint32_t id);
+	uint32_t get_avail_player_id();
+	int add_pending_player(PlayerDesc *player);
+	PlayerDesc* yank_pending_player(uint32_t playerId);
+	PlayerDesc* yank_pending_player(ENetAddress *address);
+	ENetPeer *get_peer(uint32_t playerId);
+	ENetPeer *get_peer(ENetAddress *address);
 };
 
 extern MultiPlayer mp_obj;

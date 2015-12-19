@@ -2,7 +2,7 @@
  * Seven Kingdoms 2: The Fryhtan War
  *
  * Copyright 1999 Enlight Software Ltd.
- * Copyright 2010,2011 Jesse Allen
+ * Copyright 2010,2011,2015 Jesse Allen
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,13 +33,11 @@ class PlayerDesc
 public:
 	uint32_t id;
 	char name[MP_FRIENDLY_NAME_LEN+1];
-	char connecting;
 	char authorized;
 	ENetAddress address;
 
 	PlayerDesc();
-	PlayerDesc(uint32_t id, ENetAddress *address);
-	PlayerDesc(uint32_t id, char *name);
+	PlayerDesc(ENetAddress *address);
 	PlayerDesc(char *name);
 
 	uint32_t pid();

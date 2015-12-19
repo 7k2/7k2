@@ -770,7 +770,6 @@ int Sys::is_mp_sync( int *unreadyPlayerFlag)
 {
    #define RESEND_TIME_OUT            2000    // if the other machines still aren't ready after 2 seconds, send the notification again
    #define RESEND_AGAIN_TIME_OUT      1000    // keep resending if no responses
-   #define CONNECTION_LOST_TIME_OUT  20000    // ask for connection lost handling aftering waiting for 5 seconds.
 
    //---- if we haven't been ready for the next frame yet ----//
 
@@ -912,23 +911,16 @@ int Sys::is_mp_sync( int *unreadyPlayerFlag)
 
    if( nationRecno>0 )
    {
-      DEBUG_LOG("a nation not ready");
-		DEBUG_LOG(nationRecno);
+      if( !ec_remote.is_player_valid(nationRecno) )
+      {
+         DEBUG_LOG("Connection Lost");
+         DEBUG_LOG(nationRecno);
 
-		if( misc.get_time() >= last_frame_time+RESEND_TIME_OUT )
-		{
-			//---- if it has been time out for too long, carry out connection lost handling ---//
-
-			if( // misc.get_time() >= last_frame_time+CONNECTION_LOST_TIME_OUT ||
-				!ec_remote.is_player_valid(nationRecno))
-         {
-            DEBUG_LOG( "Connection Lost" );
-				news_array.multi_connection_lost(nationRecno);
-				// may allow save game here, ask user whether to save the game
-				nationPtr->nation_type = NATION_AI;    // let computer take over the nation
-				nation_array.ai_nation_count++;
-			}
-		}
+         news_array.multi_connection_lost(nationRecno);
+         // may allow save game here, ask user whether to save the game
+         nationPtr->nation_type = NATION_AI;    // let computer take over the nation
+         nation_array.ai_nation_count++;
+      }
 
       return 0;
    }
