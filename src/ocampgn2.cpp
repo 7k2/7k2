@@ -77,7 +77,6 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <math.h>
-#include <malloc.h> 
 #include <string.h>
 
 //#include <ddraw.h>          // include DirectDraw stuff

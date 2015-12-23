@@ -32,7 +32,6 @@
 #include <ostr.h>
 #include <ofile.h>
 #include <gamedef.h>
-#include <malloc.h>
 #include <oerror.h>
 
 //-------- define standard type ---------//
