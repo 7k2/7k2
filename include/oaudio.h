@@ -21,7 +21,6 @@
 #ifndef OAUDIO_H
 #define OAUDIO_H
 
-#define USE_OPENAL
 #if defined(USE_OPENAL)
 #include <openal_audio.h>
 #else

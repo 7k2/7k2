@@ -1,0 +1,86 @@
+******-----------------------------------------------------------------******
+****** THIS IS AN EXPERIMENTAL FORK.                                   ******
+****** THE OFFICIAL REPO LIVES HERE: https://7kfans.com/git/?p=7k2.git ******
+******-----------------------------------------------------------------******
+
+Seven Kingdoms II: The Fryhtan Wars
+===================================
+
+Release version: 1.20
+Project website: https://www.7kfans.com
+
+This is a GPL release of the Seven Kingdoms II: The Fryhtan Wars source code
+thanks to Enlight Software which granted the ability to license the game under
+a free and open source license in 2010. See the file "COPYING" for the details
+of the license. We are indebted to Enlight for making the 7kfans project
+possible and giving a new chance to build a community for fans of the game.
+
+
+Summary of changes in this release
+----------------------------------
+* Switched to using SDL2, replacing DirectX.
+* Gained support for full-screen stretching.
+* Switched to using ENet, replacing DirectPlay.
+* Switched to using OpenAL, replacing DirectSound.
+* Several bug fixes.
+
+Thanks to all who made this release possible.
+
+
+System Requirements
+-------------------
+
+The game is known to run on recent versions of 32-bit Linux.
+
+Multiplayer support is currently experimental. It uses port 19256.
+
+
+Building the game
+-----------------
+
+Required dependencies
+* GCC 4.xx or later
+    - OR -
+  Clang 3.4.1 or later
+* SDL 2.0.2 or later (https://libsdl.org/)
+* ENet 1.3.10 or later (http://enet.bespin.org/)
+* OpenAL Soft 1.14 or later (http://kcat.strangesoft.net/openal.html)
+* libjpeg 6b or later (http://ijg.org/)
+
+Optional dependencies
+* Autoconf 2.65 or later (when using git snapshot)
+
+Configuration options
+* --enable-mouse-accel: Make the mouse move faster in full screen.
+
+
+Running
+-------
+
+As the game data and music have not been released under the GPL, you need to
+install the original game first (either from CD or a digital distribution
+service). The game data also needs to be patched to version 1.20, if not
+already. Then, convert all the game data files to lowercase. Finally, copy the
+7k2 exe to the game data directory and run it from there.
+
+
+Game music
+----------
+
+Playing from the CD is no longer supported, so you will need to extract the
+audio tracks and copy them to the music directory. The tracks need to be
+renamed as follows:
+
+Track -> Name
+  01  -> cbrief.wav
+  02  -> cfrywin.wav
+  03  -> menu.wav
+  04  -> lose.wav
+  05  -> win.wav
+  06  -> bkmusic1.wav
+  07  -> bkmusic2.wav
+  08  -> bkmusic3.wav
+  09  -> bkmusic4.wav
+  10  -> bkmusic5.wav
+  11  -> bkmusic6.wav
+  12  -> bkmusic7.wav
