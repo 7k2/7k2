@@ -1,5 +1,5 @@
 /*
- * Seven Kingdoms: Ancient Adversaries
+ * Seven Kingdoms 2: The Fryhtan War
  *
  * Copyright 2010 Jesse Allen
  *
