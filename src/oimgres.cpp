@@ -226,15 +226,30 @@ void ImageRes::put_large(VgaBuf* vgaBuf, int x, int y, int bitmapId)
 //
 void ImageRes::put_to_buf(VgaBuf* vgaBufPtr, const char* imageName)
 {
+	put_to_buf(vgaBufPtr, 0, 0, imageName);
+}
+//---------- End of function ImageRes::put_to_buf --------//
+
+
+//-------- Start of function ImageRes::put_to_buf --------//
+//
+// Put the image to the specified Vga buffer.
+//
+// <VgaBuf*> vgaBufPtr = the pointer to the Vga buffer
+// <int>	 x,y       = the location of the image
+// <char*>	 imageName = name of the image
+//
+void ImageRes::put_to_buf(VgaBuf* vgaBufPtr, int x, int y, const char* imageName)
+{
 	if( read_all )
 	{
-		vgaBufPtr->put_bitmap(0, 0, get_ptr(imageName));
+		vgaBufPtr->put_bitmap(x, y, get_ptr(imageName));
 	}
 	else
 	{
 		int	dataSize;
 		File* filePtr = get_file(imageName, dataSize);
-		vgaBufPtr->put_large_bitmap(0, 0, filePtr);
+		vgaBufPtr->put_large_bitmap(x, y, filePtr);
 	}
 }
 //---------- End of function ImageRes::put_to_buf --------//

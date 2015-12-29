@@ -52,6 +52,7 @@ public:
 	void  put_large(VgaBuf*,int,int,int);
 
 	void  put_to_buf(VgaBuf* vgaBufPtr, const char* imageName);
+	void  put_to_buf(VgaBuf* vgaBufPtr, int x, int y, const char* imageName);
 	void  put_to_buf(VgaBuf* vgaBufPtr, int bitmapId);
 };
 
