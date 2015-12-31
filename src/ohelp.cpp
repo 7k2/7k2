@@ -200,6 +200,10 @@ void Help::load(char* helpFileName)
 			iptr->area1024x768_y1 = (short) fileTxt.get_num();
 			iptr->area1024x768_x2 = (short) fileTxt.get_num();
 			iptr->area1024x768_y2 = (short) fileTxt.get_num();
+			iptr->area1600x900_x1 = iptr->area1024x768_x1 + 576;
+			iptr->area1600x900_y1 = iptr->area1024x768_y1;
+			iptr->area1600x900_x2 = iptr->area1024x768_x2 + 576;
+			iptr->area1600x900_y2 = iptr->area1024x768_y2;
 			iptr->monster_human_interface = (short) fileTxt.get_num();// 0 when display for both interfaces
 																						 // 1 when display only for monster interface
 																						 // 2 when display only for human interface
@@ -342,6 +346,21 @@ void Help::disp()
 				}
 			}
 			break;
+
+		case MODE_ID_1600x900x16:
+			helpInfo = help_info_array + (i = first_help_by_area);
+			for( ; i<last_help_by_area ; i++, helpInfo++ )
+			{
+				if( !helpInfo->help_code[0] && mouse.in_area( helpInfo->area1600x900_x1, helpInfo->area1600x900_y1,
+					helpInfo->area1600x900_x2, helpInfo->area1600x900_y2) &&
+					( (helpInfo->monster_human_interface == 1 && config.race_id < 0) ||
+						(helpInfo->monster_human_interface == 2 && config.race_id > 0) ||
+						(helpInfo->monster_human_interface == 0) ) )
+				{
+					break;
+				}
+			}
+			break;
 		default:
 			err_here();
 		}
@@ -383,6 +402,12 @@ void Help::disp()
 		case MODE_ID_1024x768x16:
 			disp_help( (helpInfo->area1024x768_x1+helpInfo->area1024x768_x2)/2,
 						(helpInfo->area1024x768_y1+helpInfo->area1024x768_y2)/2,
+						 helpInfo->help_title, helpInfo->help_text_ptr );
+			break;
+
+		case MODE_ID_1600x900x16:
+			disp_help( (helpInfo->area1600x900_x1+helpInfo->area1600x900_x2)/2,
+						(helpInfo->area1600x900_y1+helpInfo->area1600x900_y2)/2,
 						 helpInfo->help_title, helpInfo->help_text_ptr );
 			break;
 
@@ -749,6 +774,26 @@ void Help::disp_short_help(VgaBuf *vgaBuf)
 					help_y1 = helpInfo->area1024x768_y1;
 					help_x2 = helpInfo->area1024x768_x2;
 					help_y2 = helpInfo->area1024x768_y2;
+					break;
+				}
+			}
+			break;
+
+		case MODE_ID_1600x900x16:
+			helpInfo = help_info_array + (i = first_help_by_area);
+			for( ; i<last_help_by_area ; i++, helpInfo++ )
+			{
+				if( !helpInfo->help_code[0] && mouse.in_area( helpInfo->area1600x900_x1, helpInfo->area1600x900_y1,
+					helpInfo->area1600x900_x2, helpInfo->area1600x900_y2) &&
+					!(game.game_mode == GAME_TUTORIAL && tutor.should_not_display_report_button_flag) &&
+					( (helpInfo->monster_human_interface == 1 && config.race_id < 0) ||
+						(helpInfo->monster_human_interface == 2 && config.race_id > 0) ||
+						(helpInfo->monster_human_interface == 0) ) )
+				{
+					help_x1 = helpInfo->area1600x900_x1;
+					help_y1 = helpInfo->area1600x900_y1;
+					help_x2 = helpInfo->area1600x900_x2;
+					help_y2 = helpInfo->area1600x900_y2;
 					break;
 				}
 			}

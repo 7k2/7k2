@@ -60,6 +60,7 @@ struct HelpInfo
 	char  help_code[HELP_CODE_LEN+1];			// either identify the help message by help code or area position
 	short area800x600_x1, area800x600_y1, area800x600_x2, area800x600_y2;
 	short area1024x768_x1, area1024x768_y1, area1024x768_x2, area1024x768_y2;
+	short area1600x900_x1, area1600x900_y1, area1600x900_x2, area1600x900_y2;
 	short monster_human_interface; // 0 when display for both interfaces
 											 // 1 when display only for monster interface
 											 // 2 when display only for human interface

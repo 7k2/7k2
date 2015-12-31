@@ -842,7 +842,7 @@ int Config::validate()
 
 	// ----------- display mode -----------//
 
-	if( display_mode_id != MODE_ID_800x600x16 && display_mode_id != MODE_ID_1024x768x16 )
+	if( display_mode_id != MODE_ID_800x600x16 && display_mode_id != MODE_ID_1024x768x16 && display_mode_id != MODE_ID_1600x900x16 )
 		invalidPoint = 0x3c0;
 
 	if( invalidPoint != 0 )

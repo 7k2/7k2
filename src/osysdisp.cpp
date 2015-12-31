@@ -109,6 +109,12 @@ void Sys::detect_button()
 		x = 819;
 		y = 80;
 	}
+	else if (current_display_mode.mode_id == MODE_ID_1600x900x16)
+	{
+		VIEW_MODE_BUTTON_X_SPACE = VIEW_MODE_BUTTON_WIDTH + 37;
+		x = 1395;
+		y = 80;
+	}
 	else
 		err_here();
 
@@ -119,6 +125,12 @@ void Sys::detect_button()
 	};
 	for( i=0 ; i<8 ; i++, x+=VIEW_MODE_BUTTON_X_SPACE )
 	{
+		if(( ((i-1) % 2) == 1) && (current_display_mode.mode_id == MODE_ID_1600x900x16))
+		{
+			x = 1395;
+			y = y + VIEW_MODE_BUTTON_HEIGHT;
+		}
+
 		if(( ((i-1) % 2) == 1) && (current_display_mode.mode_id == MODE_ID_1024x768x16))
 		{
 			x = 819;

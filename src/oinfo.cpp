@@ -340,6 +340,12 @@ void Info::disp_panel()
 		if( config.race_id < 0 )
 			vga_back.put_bitmap(800, 1, image_interface.read("1024-HUM"));
 	}
+	else if (current_display_mode.mode_id == MODE_ID_1600x900x16)
+	{
+		image_interface.put_to_buf( &vga_back, 576, 0, "MSCR1024" );
+		if( config.race_id < 0 )
+			vga_back.put_bitmap(1376, 1, image_interface.read("1024-HUM"));
+	}
 	else
 		err_here();
 	
@@ -713,7 +719,7 @@ void Info::disp_heading()
 			font_snds.disp( FOOD_X1, FOOD_Y1, "", FOOD_X1 +FOOD_LENGTH);	// clear the display 
 			font_snds.disp( CASH_X1, CASH_Y1, "", CASH_X1 +CASH_LENGTH);	
 		}
-		else if (current_display_mode.mode_id == MODE_ID_1024x768x16)
+		else if (current_display_mode.mode_id == MODE_ID_1024x768x16 || current_display_mode.mode_id == MODE_ID_1600x900x16)
 		{
 			font_snds.disp( FOOD_X1, FOOD_Y1, "", FOOD_X1 +FOOD_LENGTH);	// clear the display 
 			font_snds.disp( CASH_X1, CASH_Y1, "", CASH_X1 +CASH_LENGTH);	
@@ -728,7 +734,7 @@ void Info::disp_heading()
 		{
 			if (current_display_mode.mode_id == MODE_ID_800x600x16)
 				thumbBmp = image_icon.get_ptr( "REPU_DW" );
-			else if (current_display_mode.mode_id == MODE_ID_1024x768x16)
+			else if (current_display_mode.mode_id == MODE_ID_1024x768x16 || current_display_mode.mode_id == MODE_ID_1600x900x16)
 				thumbBmp = image_icon.get_ptr( "REDW1024" );
 			else
 				err_here();
@@ -736,7 +742,7 @@ void Info::disp_heading()
 		}
 		if (current_display_mode.mode_id == MODE_ID_800x600x16)
 			font_snds.disp( REPU_BUTTON_X1 +30, REPU_BUTTON_Y1 +12, "", REPU_BUTTON_X1 +100);
-		else if (current_display_mode.mode_id == MODE_ID_1024x768x16)
+		else if (current_display_mode.mode_id == MODE_ID_1024x768x16 || current_display_mode.mode_id == MODE_ID_1600x900x16)
 		{
 			if( config.race_id > 0 )
 			{
@@ -784,7 +790,7 @@ void Info::disp_heading()
 			else
 				font_snds.disp( tempx, FOOD_Y1, strPtr, FOOD_X1 +FOOD_LENGTH);
 		}
-		else if (current_display_mode.mode_id == MODE_ID_1024x768x16)
+		else if (current_display_mode.mode_id == MODE_ID_1024x768x16 || current_display_mode.mode_id == MODE_ID_1600x900x16)
 		{
 			strPtr = nationPtr->total_food_str();
 			if (strPtr[0] == '-')
@@ -849,7 +855,7 @@ void Info::disp_heading()
 			else
 				font_snds.disp( tempx, CASH_Y1, strPtr, CASH_X1 +CASH_LENGTH);
 		}
-		else if (current_display_mode.mode_id == MODE_ID_1024x768x16)
+		else if (current_display_mode.mode_id == MODE_ID_1024x768x16 || current_display_mode.mode_id == MODE_ID_1600x900x16)
 		{
 			if (nationPtr->increased_cash > 0)
 			{
@@ -918,7 +924,7 @@ void Info::disp_heading()
 		{
 			if (current_display_mode.mode_id == MODE_ID_800x600x16)
 				thumbBmp = image_icon.get_ptr(changeAmt >= 0 ? (char*)"REPU_UP" : (char*)"REPU_DW" );
-			else if (current_display_mode.mode_id == MODE_ID_1024x768x16)
+			else if (current_display_mode.mode_id == MODE_ID_1024x768x16 || current_display_mode.mode_id == MODE_ID_1600x900x16)
 				thumbBmp = image_icon.get_ptr(changeAmt >= 0 ? (char*)"REUP1024" : (char*)"REDW1024" );
 			else 
 				err_here();
@@ -932,7 +938,7 @@ void Info::disp_heading()
 			{
 				tempx = font_snds.disp( REPU_BUTTON_X1 +30, REPU_BUTTON_Y1 +12, str, REPU_BUTTON_X1 +120);
 			}
-			else if (current_display_mode.mode_id == MODE_ID_1024x768x16)
+			else if (current_display_mode.mode_id == MODE_ID_1024x768x16 || current_display_mode.mode_id == MODE_ID_1600x900x16)
 			{
 				if ( config.race_id > 0 )
 					font_snds.disp( REPU_BUTTON_X1 +12, REPU_BUTTON_Y1 +27, str, REPU_BUTTON_X1 +50);
@@ -950,7 +956,7 @@ void Info::disp_heading()
 			{
 				tempx = font_red.disp( REPU_BUTTON_X1 +30, REPU_BUTTON_Y1 +12, str, REPU_BUTTON_X1 +120);
 			}
-			else if (current_display_mode.mode_id == MODE_ID_1024x768x16)
+			else if (current_display_mode.mode_id == MODE_ID_1024x768x16 || current_display_mode.mode_id == MODE_ID_1600x900x16)
 			{
 				if ( config.race_id > 0 )
 					font_red.disp( REPU_BUTTON_X1 +12, REPU_BUTTON_Y1 +27, str, REPU_BUTTON_X1 +50);
@@ -978,7 +984,7 @@ void Info::disp_heading()
 				{
 					font_red.disp( tempx, REPU_BUTTON_Y1 +12, str, REPU_BUTTON_X1 +120);
 				}
-				else if (current_display_mode.mode_id == MODE_ID_1024x768x16)
+				else if (current_display_mode.mode_id == MODE_ID_1024x768x16 || current_display_mode.mode_id == MODE_ID_1600x900x16)
 				{
 					if ( config.race_id > 0 )
 						font_red.disp( REPU_BUTTON_X1 +2, REPU_BUTTON_Y1 +39, str, REPU_BUTTON_X1 +50);
@@ -994,7 +1000,7 @@ void Info::disp_heading()
 				{
 					font_snds.disp( tempx, REPU_BUTTON_Y1 +12, str, REPU_BUTTON_X1 +120);
 				}
-				else if (current_display_mode.mode_id == MODE_ID_1024x768x16)
+				else if (current_display_mode.mode_id == MODE_ID_1024x768x16 || current_display_mode.mode_id == MODE_ID_1600x900x16)
 				{
 					if ( config.race_id > 0 )
 						font_snds.disp( REPU_BUTTON_X1 +2, REPU_BUTTON_Y1 +39, str, REPU_BUTTON_X1 +50);

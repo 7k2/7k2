@@ -25,7 +25,7 @@
 #include <omodeid.h>
 #include <all.h>
 
-#define MAX_DISPLAY_MODE_ID 2
+#define MAX_DISPLAY_MODE_ID 3
 
 
 static DisplayModeInfo display_info_array[MAX_DISPLAY_MODE_ID] = 
@@ -65,6 +65,25 @@ static DisplayModeInfo display_info_array[MAX_DISPLAY_MODE_ID] =
 		848+50, 122-95, 56,							// cash_x1, y1, length
 		801-2, 80-5, 1018, 168,						// scroll_menu_x1, y1, x2, y2 
 		32, 2, 1018, 762							// mouse_x1,y1,x2,y2
+	},
+
+	// 1600x900x16
+	{
+		MODE_ID_1600x900x16,					// mode id
+		1600,900, 16,							// screen_width, height, bbp
+		32, 2, 1375, 894, 1344, 893,				// zoom_matrix_x1,y1,x2,y2,width,height  {y1 must never 0, 64 must be a factor of y1 - y2}
+		1392, 193, 1591, 392, 200, 200,			// map_matrix_x1,y1,x2,y2,width,height
+	//	810, 120, 1018, 167,					// top_menu_x1,y1,x2,y2
+		1380-5, 2, 1599, 74,						// top_menu_x1,y1,x2,y2
+		1376, 426, 1599, 751,					// info_x1,y1,x2,y2
+		1513, 171, 24, 24,						// map_mode_button_x1, y1, width, height
+		1477, 20+60,								// menu_button_x1, y1
+		1390+155, 165-165,								// repu_button_x1, y1
+		1451, 150-90, 150,							// date_x1, y1, length
+		1523-120, 122-95, 72,							// food_x1, y1, length
+		1424+50, 122-95, 56,							// cash_x1, y1, length
+		1377-2, 80-5, 1594, 168,						// scroll_menu_x1, y1, x2, y2
+		32, 2, 1594, 894							// mouse_x1,y1,x2,y2
 	},
 };
 

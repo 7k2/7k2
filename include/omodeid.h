@@ -31,6 +31,7 @@
 #define MODE_ID_DEFAULT			0
 #define MODE_ID_800x600x16		0	
 #define MODE_ID_1024x768x16	1
+#define MODE_ID_1600x900x16	2
 
 
 // -------- define struct DisplayModeInfo --------------//

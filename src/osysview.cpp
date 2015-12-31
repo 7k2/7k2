@@ -75,6 +75,8 @@ void Sys::disp_view_mode(int observeMode)
 	static short darkenYM0[MODE_TO_DISPLAY_COUNT] = {  7,   7,   7,   7,  29,  29,  29,  29};
 	static short darkenXM1[MODE_TO_DISPLAY_COUNT] = { 819, 931, 819, 931, 819, 931, 819, 931 };//{ 810, 931, 819, 940, 810, 931, 819, 940 };
 	static short darkenYM1[MODE_TO_DISPLAY_COUNT] = {  80,  80, 102, 102, 124, 124, 146, 146 };//{  10,  10,  35,  35,  60,  60,  85,  85 };
+	static short darkenXM2[MODE_TO_DISPLAY_COUNT] = { 1395, 1507, 1395, 1507, 1395, 1507, 1395, 1507 };
+	static short darkenYM2[MODE_TO_DISPLAY_COUNT] = {  80,  80, 102, 102, 124, 124, 146, 146 };//same as 1024x768.
 
 	short *darkenX, *darkenY;
 	if (current_display_mode.mode_id == MODE_ID_800x600x16)
@@ -86,6 +88,11 @@ void Sys::disp_view_mode(int observeMode)
 	{
 		darkenX = darkenXM1;
 		darkenY = darkenYM1;
+	}
+	else if (current_display_mode.mode_id == MODE_ID_1600x900x16)
+	{
+		darkenX = darkenXM2;
+		darkenY = darkenYM2;
 	}
 	else
 	{
