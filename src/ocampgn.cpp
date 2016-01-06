@@ -595,8 +595,14 @@ int Campaign::random_unused_race(bool isMonster)
 
 	//------ randomly pick one -------//
 
+	int maxIndex = MAX_MONSTER_TYPE;
+	if( !isMonster )
+	{
+		maxIndex = MAX_RACE;
+	}
+
 	int raceId;
-	for( raceId = 1; raceId <= MAX_RACE; ++raceId )
+	for( raceId = 1; raceId <= maxIndex; ++raceId )
 	{
 		if( raceUsed[raceId-1] == 0 )
 			++raceCount;
@@ -606,7 +612,7 @@ int Campaign::random_unused_race(bool isMonster)
 	{
 		raceCount = (char)random(raceCount);
 		// choose the raceCount-th raceId which raceUsed[raceId-1]==0
-		for( raceId = 1; raceId <= MAX_RACE; ++raceId )
+		for( raceId = 1; raceId <= maxIndex; ++raceId )
 		{
 			if( raceUsed[raceId-1] == 0 )
 			{
@@ -616,11 +622,11 @@ int Campaign::random_unused_race(bool isMonster)
 				--raceCount;
 			}
 		}
-		err_when(raceId > MAX_RACE);
+		err_when(raceId > maxIndex);
 	}
 	else
 	{
-		raceId = 1+(char)random(MAX_RACE);
+		raceId = 1+(char)random(maxIndex);
 	}
 
 	mem_del( raceUsed );
