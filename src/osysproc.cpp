@@ -642,6 +642,29 @@ void Sys::sleep(int time)
 }
 //-------- End of function Sys::sleep --------//
 
+
+//-------- Begin of function Sys::show_error_dialog ----------//
+//
+// Show SDL error dialog that does not depend on video init. This is a blocking
+// routine, and never should be used after init.
+//
+void Sys::show_error_dialog(const char *formatStr, ...)
+{
+   enum { RESULT_STR_LEN=200 };
+
+   static char resultStr[RESULT_STR_LEN+1];
+
+   va_list argPtr;
+
+   va_start( argPtr, formatStr );
+   vsnprintf( resultStr, RESULT_STR_LEN, formatStr, argPtr );
+   va_end( argPtr );
+
+   SDL_ShowSimpleMessageBox( SDL_MESSAGEBOX_ERROR, "Seven Kingdoms 2", resultStr, NULL );
+}
+//----------- End of function Sys::show_error_dialog ----------//
+
+
 //-------- Begin of function Sys::restore --------//
 //
 int Sys::restore()

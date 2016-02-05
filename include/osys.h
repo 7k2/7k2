@@ -186,6 +186,8 @@ public:
 	void		unpause();
 	void		sleep(int time);
 
+	void		show_error_dialog(const char *formatStr, ...);
+
 	void		mp_request_save(DWORD frame);
 	void		mp_clear_request_save();
 

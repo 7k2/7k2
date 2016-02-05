@@ -494,7 +494,7 @@ int Sys::set_config_dir()
    // create the config directory
    if (!misc.mkpath(dir_config))
    {
-      ERR("Unable to acquire a usable game config dir.\n");
+      show_error_dialog("Unable to determine a location for storing the game configuration.");
       dir_config[0] = 0;
       return 0;
    }
