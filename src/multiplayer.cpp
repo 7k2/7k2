@@ -39,7 +39,7 @@ const uint16_t UDP_GAME_PORT = 19256;
 SessionDesc::SessionDesc()
 {
 	id = 0;
-	memset(password, 0, sizeof(session_name));
+	memset(session_name, 0, sizeof(session_name));
 	memset(password, 0, sizeof(password));
 	this->address.host = ENET_HOST_ANY;
 	this->address.port = UDP_GAME_PORT;
